@@ -9,7 +9,6 @@
 #define BUILDING_H_
 
 #include <vector>
-#include <tr1/functional>
 
 #include "Floor.h"
 #include "Elevator.h"
