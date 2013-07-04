@@ -5,5 +5,6 @@
 #include "Building.h"
 
 int main() {
-	Building Building(3);
+	Building building(3);
+	building.runSimulation();
 }
