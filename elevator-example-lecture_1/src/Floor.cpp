@@ -11,14 +11,22 @@ using std::endl;
 
 #include "Floor.h"
 
-Floor::Floor() {
-	cout << "Creating floor." << endl;
+Floor::Floor(int number):
+		number(number) {
+	cout << "Creating floor ["
+		 << number
+		 << "]" << endl;
 }
 
-Floor::Floor(const Floor& floor){
-	cout << "Copying floor." << endl;
+Floor::Floor(const Floor& floor):
+			number(floor.number+1) {
+	cout << "Copying floor ["
+		 << floor.number
+		 << "]" << endl;
 }
 
 Floor::~Floor() {
-	cout << "Destroying floor." << endl;
+	cout << "Destroying floor ["
+		 << number
+		 << "]" << endl;
 }

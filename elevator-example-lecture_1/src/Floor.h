@@ -10,12 +10,16 @@
 
 class Floor {
 public:
-	Floor();
+	Floor(int number);
 	~Floor();
 	Floor(const Floor& floor);
 
-private:
+	inline int getNumber() const {
+		return number;
+	}
 
+private:
+	int number;
 };
 
 #endif /* FLOOR_H_ */

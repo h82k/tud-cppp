@@ -18,11 +18,13 @@ public:
 	Building(int numberOfFloors);
 	~Building();
 
-	void runSimulation();
+	inline int numberOfFloors() const {
+		return floors.size();
+	}
 
 private:
 	std::vector<Floor> floors;
-	Elevator elevator;
+	const Elevator elevator;
 };
 
 #endif /* BUILDING_H_ */
