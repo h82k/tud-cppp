@@ -5,15 +5,32 @@
 using std::cout;
 using std::endl;
 
+#include <algorithm>
+
 #include "Building.h"
 
-Building::Building(int numberOfFloors)
-//:		floors(numberOfFloors, Floor(0))
+
+Building::Building(int numberOfFloors,
+		           ConstElevatorStrategyPtr strategy):
+		floors(numberOfFloors, Floor(0)),
+		elevator(&floors[0], strategy)
 {
-	cout << "Creating building with " << numberOfFloors << " floors." << endl;
+	for (int i = 0; i < numberOfFloors; i++)
+		floors[i].setNumber(i);
+
+	cout << "Building(...): "
+		 << "Creating building with "
+		 << numberOfFloors
+		 << " floors." << endl;
+
+	cout << "Building(...): "
+		 << "Elevator is on Floor: "
+		 << elevator.getCurrentFloor()->getNumber()
+		 << endl;
 }
 
 Building::~Building() {
-	cout << "Destroying building." << endl;
+	cout << "~Building(): "
+		 << "Destroying building." << endl;
 }
 

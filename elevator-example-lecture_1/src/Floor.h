@@ -11,11 +11,15 @@
 class Floor {
 public:
 	Floor(int number);
-	~Floor();
 	Floor(const Floor& floor);
+	~Floor();
 
 	inline int getNumber() const {
 		return number;
+	}
+
+	inline void setNumber(int n) {
+		number = n;
 	}
 
 private:

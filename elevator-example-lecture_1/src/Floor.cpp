@@ -6,27 +6,29 @@
  */
 
 #include <iostream>
-using std::cout;
-using std::endl;
+using namespace std;
 
 #include "Floor.h"
 
 Floor::Floor(int number):
 		number(number) {
-	cout << "Creating floor ["
+	cout << "Floor(): "
+		 << "Creating floor ["
 		 << number
 		 << "]" << endl;
 }
 
 Floor::Floor(const Floor& floor):
-			number(floor.number+1) {
-	cout << "Copying floor ["
+			number(floor.number) {
+	cout << "Floor(const Floor&): "
+		 << "Copying floor ["
 		 << floor.number
 		 << "]" << endl;
 }
 
 Floor::~Floor() {
-	cout << "Destroying floor ["
+	cout << "~Floor(): "
+		 << "Destroying floor ["
 		 << number
 		 << "]" << endl;
 }

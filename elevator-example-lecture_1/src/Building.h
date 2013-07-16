@@ -15,16 +15,20 @@
 
 class Building {
 public:
-	Building(int numberOfFloors);
+	Building(int numberOfFloors, ConstElevatorStrategyPtr strategy);
 	~Building();
 
 	inline int numberOfFloors() const {
 		return floors.size();
 	}
 
+	inline Elevator& getElevator() {
+		return elevator;
+	}
+
 private:
 	std::vector<Floor> floors;
-	const Elevator elevator;
+	Elevator elevator;
 };
 
 #endif /* BUILDING_H_ */

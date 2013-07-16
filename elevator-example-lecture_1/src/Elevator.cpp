@@ -11,12 +11,22 @@ using std::endl;
 
 #include "Elevator.h"
 
-Elevator::Elevator() {
-	cout << "Creating elevator." << endl;
+Elevator::Elevator(const Floor* currentFloor,
+		           ConstElevatorStrategyPtr strategy):
+	currentFloor(currentFloor), strategy(strategy) {
+	cout  << "Elevator(): "
+		  << "Creating elevator." << endl;
 }
 
 Elevator::~Elevator(){
-	cout << "Destroying elevator." << endl;
+	cout << "~Elevator(): "
+		 << "Destroying elevator." << endl;
 }
 
+void Elevator::moveToNextFloor(){
+	cout << "Elevator::moveToNextFloor(): "
+		 << " Polymorphic call to strategy." << endl;
+
+	currentFloor = strategy->next(this);
+}
 
