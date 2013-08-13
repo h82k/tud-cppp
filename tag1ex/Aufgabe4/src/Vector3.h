@@ -1,8 +1,5 @@
 /*
  * Vector3.h
- *
- *  Created on: Aug 3, 2013
- *      Author: jgdo
  */
 
 #ifndef VECTOR3_H_

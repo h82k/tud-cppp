@@ -1,8 +1,5 @@
 /*
  * PatternPrinter.h
- *
- *  Created on: Jul 29, 2013
- *      Author: jgdo
  */
 
 #ifndef PATTERNPRINTER_H_

@@ -1,8 +1,5 @@
 /*
  * CharGenerator.h
- *
- *  Created on: Jul 29, 2013
- *      Author: jgdo
  */
 
 #ifndef CHARGENERATOR_H_

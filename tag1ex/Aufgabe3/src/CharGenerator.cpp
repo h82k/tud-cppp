@@ -1,8 +1,5 @@
 /*
  * CharGenerator.cpp
- *
- *  Created on: Jul 29, 2013
- *      Author: jgdo
  */
 #include "CharGenerator.h"
 

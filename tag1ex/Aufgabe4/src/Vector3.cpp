@@ -1,8 +1,5 @@
 /*
  * Vektor3.cpp
- *
- *  Created on: Aug 3, 2013
- *      Author: jgdo
  */
 
 #include "Vector3.h"

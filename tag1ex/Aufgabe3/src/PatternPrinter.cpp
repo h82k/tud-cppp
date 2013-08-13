@@ -1,8 +1,5 @@
 /*
  * PatternPrinter.cpp
- *
- *  Created on: Jul 29, 2013
- *      Author: jgdo
  */
 #include <iostream>
 using namespace std;

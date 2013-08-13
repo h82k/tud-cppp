@@ -1,8 +1,5 @@
 /*
  * functions.cpp
- *
- *  Created on: 15.07.2013
- *      Author: jgdo
  */
 #include "functions.h"
 

@@ -1,8 +1,5 @@
 /*
  * main.cpp
- *
- *  Created on: Aug 3, 2013
- *      Author: jgdo
  */
 
 #include <iostream>
