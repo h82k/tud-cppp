@@ -1,8 +1,5 @@
 /*
  * Elevator.cpp
- *
- *  Created on: May 14, 2013
- *      Author: jgdo
  */
 
 #include <stdlib.h> 
@@ -13,34 +10,36 @@ using namespace std;
 #include "Elevator.h"
 
 Elevator::Elevator() :
-		currentFloor_(0), usedEnergy(0) {
+		currentFloor(0), consumedEnergy(0) {
 }
 
 void Elevator::moveToFloor(int floor) {
-	usedEnergy += abs(currentFloor_ - floor);
-	currentFloor_ = floor;
+	consumedEnergy += abs(currentFloor - floor);
+	currentFloor = floor;
 	
 	cout << "Moving to floor " << floor << endl;
 }
 
 void Elevator::addPeople(std::vector<Person> people) {
-	containedPeople_.insert(containedPeople_.end(), people.begin(), people.end());
+	containedPeople.insert(containedPeople.end(), people.begin(), people.end());
 	
 	cout << "Adding " << people.size() << " people" << endl;
 }
 
 std::vector<Person> Elevator::removeArrivedPeople() {
-	std::vector<Person> stay;
-	std::vector<Person> arrived;
+	std::vector<Person> stay; // list of people who stay in elevator
+	std::vector<Person> arrived; // list of people who arrived at their destination
 	
-	for(int i = 0; i < containedPeople_.size(); i++) {
-		if(containedPeople_.at(i).destinationFloor() == getFloor())
-			arrived.push_back(containedPeople_.at(i));
+	// check for each person ...
+	for(int i = 0; i < containedPeople.size(); i++) {
+		// whether it arrived
+		if(containedPeople.at(i).destinationFloor() == getFloor())
+			arrived.push_back(containedPeople.at(i));
 		else
-			stay.push_back(containedPeople_.at(i));
+			stay.push_back(containedPeople.at(i));
 	}
 	
-	containedPeople_ = stay;
+	containedPeople = stay;
 	
 	cout << "Removing " << arrived.size() << " arrived people" << endl; 
 	

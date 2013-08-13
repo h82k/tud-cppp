@@ -1,25 +1,31 @@
 /*
  * Person.h
- *
- *  Created on: May 14, 2013
- *      Author: jgdo
  */
 
 #ifndef PERSON_H_
 #define PERSON_H_
 
+/*
+ * Represents a person with a destination floor.
+ */
 class Person {
 public:
+	/**
+	 * Create a person with given destination
+	 */
 	Person(int destinationFloor);
+
+	/** Called when this person is destroyed. */
 	~Person();
-	
-	inline int destinationFloor() {
-		return destinationFloor_;
+
+	/** Get destination floor of this person */
+	inline int getDestinationFloor() {
+		return destinationFloor;
 	}
 	
 private:
-	int destinationFloor_;
+	/** destination floor of this person */
+	int destinationFloor;
 };
-
 
 #endif /* PERSON_H_ */

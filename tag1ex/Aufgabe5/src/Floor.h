@@ -1,8 +1,5 @@
 /*
  * Floor.h
- *
- *  Created on: May 14, 2013
- *      Author: jgdo
  */
 
 #ifndef FLOOR_H_
@@ -13,28 +10,28 @@
 
 #include "Person.h"
 
+/**
+ * Represents a building floor with waiting people.
+ */
 class Floor {
 public:
-	Floor();
-
 	/** Return number of people on this floor */
 	inline int getNumPeople() {
-		return containedPeople_.size();
+		return containedPeople.size();
 	}
 	
-	/** return i-th human on this floor */
-	inline Person getHuman(int i) {
-		return containedPeople_.at(i);
+	/** return i-th person on this floor */
+	inline Person getPerson(int i) {
+		return containedPeople.at(i);
 	}
 	
-	/** Add a human to this floor */
-	void addWaitingHuman(Person h);
+	/** Add a person to this floor */
+	void addWaitingPerson(Person h);
 	
 	/** remove all humans from this floor */
 	std::vector<Person> removeAllPeople();
-
 private:
-	std::vector<Person> containedPeople_;
+	std::vector<Person> containedPeople;
 };
 
 #endif /* FLOOR_H_ */

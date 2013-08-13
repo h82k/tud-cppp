@@ -1,8 +1,5 @@
 /*
  * Building.h
- *
- *  Created on: May 14, 2013
- *      Author: jgdo
  */
 
 #ifndef BUILDING_H_
@@ -13,27 +10,37 @@
 #include "Floor.h"
 #include "Elevator.h"
 
+/**
+ * Represents a Building with floors and an Elevator
+ */
 class Building {
 public:
+	/**
+	 * Create a Building with given number of floors.
+	 */
 	Building(int numberOfFloors);
 
-	/** return number of floors */
-	inline int getNumberOfFLoors() {
-		return floors_.size();
+	/** get number of floors */
+	inline int getNumOfFloors() {
+		return floors.size();
 	}
 	
-	/** return a certain floor */
+	/** get a certain floor */
 	inline Floor& getFloor(int floor) {
-		return floors_.at(floor);
+		return floors.at(floor);
 	}
-
+	
+	/** get the elevator */
 	inline Elevator& getElevator() {
-		return elevator_;
+		return elevator;
 	}
 	
 private:
-	std::vector<Floor> floors_;
-	Elevator elevator_;
+	/** Floors of this building */
+	std::vector<Floor> floors;
+
+	/** the Elevator */
+	Elevator elevator;
 };
 
 #endif /* BUILDING_H_ */

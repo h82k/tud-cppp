@@ -1,8 +1,5 @@
 /*
  * Elevator.h
- *
- *  Created on: May 14, 2013
- *      Author: jgdo
  */
 
 #ifndef ELEVATOR_H_
@@ -12,16 +9,24 @@
 
 #include "Person.h"
 
+/**
+ * Represents an Elevator which can contain people and move to a floor.
+ */
 class Elevator {
 public:
+	/**
+	 * Create an empty Elevator.
+	 */
 	Elevator();
 
+	/** get number of floor the elevator is currently at. */
 	inline int getFloor() {
-		return currentFloor_;
+		return currentFloor;
 	}
 	
-	inline double engergyConsumed() {
-		return usedEnergy;
+	/** get consumed energy */
+	inline double getEngergyConsumed() {
+		return consumedEnergy;
 	}
 	
 	/** Moves the elevator to given floor */
@@ -29,12 +34,12 @@ public:
 
 	/** Returns number of people in Elevator */
 	inline int getNumPeople() {
-		return containedPeople_.size();
+		return containedPeople.size();
 	}
 	
-	/** returns i-th human in Elevator */
-	inline Person getHuman(int i) {
-		return containedPeople_.at(i);
+	/** returns i-th person in Elevator */
+	inline Person getPerson(int i) {
+		return containedPeople.at(i);
 	}
 	
 	/** add people to Elevator */
@@ -44,10 +49,14 @@ public:
 	std::vector<Person> removeArrivedPeople();
 
 private:
-	int currentFloor_;
-	std::vector<Person> containedPeople_;
+	/** current floor number */
+	int currentFloor;
 
-	double usedEnergy;
+	/** people in elevator */
+	std::vector<Person> containedPeople;
+
+	/** energy consumed */
+	double consumedEnergy;
 };
 
 #endif /* ELEVATOR_H_ */
