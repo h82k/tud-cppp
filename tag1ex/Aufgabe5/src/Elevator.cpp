@@ -33,7 +33,7 @@ std::vector<Person> Elevator::removeArrivedPeople() {
 	// check for each person ...
 	for(int i = 0; i < containedPeople.size(); i++) {
 		// whether it arrived
-		if(containedPeople.at(i).destinationFloor() == getFloor())
+		if(containedPeople.at(i).getDestinationFloor() == getFloor())
 			arrived.push_back(containedPeople.at(i));
 		else
 			stay.push_back(containedPeople.at(i));

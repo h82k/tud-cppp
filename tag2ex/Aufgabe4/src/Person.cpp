@@ -12,10 +12,10 @@ using namespace std;
 
 Person::Person(int destinationFloor) :
 		destinationFloor_(destinationFloor) {
-	cout << "Creating Human with destination " << destinationFloor << endl;
+	cout << "Creating Person with destination " << destinationFloor << endl;
 }
 
 Person::~Person() {
-	cout << "Deleting Human with destination " << destinationFloor_ << endl;
+	cout << "Deleting Person with destination " << destinationFloor_ << endl;
 }
 
