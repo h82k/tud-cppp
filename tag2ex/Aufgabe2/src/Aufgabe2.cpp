@@ -44,21 +44,21 @@ int* readNumbers(int *size) {
 int main() {
 	int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	
-	// a)
-	//	for (int i = 0; i < 10; i++)
-	//		cout << arr[i] << endl;
+	// Teil a)
+	for (int i = 0; i < 10; i++)
+		cout << arr[i] << endl;
 	
-	// b)
+	// Teil b)
 	printArray(arr, 10);
 	
-	// c)
-	// printArrayPointer(arr, 10);
+	// Teil c)
+	printArrayPointer(arr, 10);
 	
-	// d)
-	// printArray(arr, arr + 10);
+	// Teil d)
+	printArray(arr, arr + 10);
 	
-	// e)
-	// printArray(arr + 3, arr + 7); // elements 4, 5, 6, 7
+	// Teil e)
+	printArray(arr + 3, arr + 7); // elements 4, 5, 6, 7
 	
 	// f)
 	int size; // variable to store array size

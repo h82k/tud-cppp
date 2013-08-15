@@ -1,9 +1,5 @@
 //============================================================================
 // Name        : Aufgabe3.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
 //============================================================================
 
 #include <iostream>
@@ -19,11 +15,16 @@ int main() {
 	list.appendElement(3);
 	list.prependElement(0);
 	
-	for (int i = 0; i < list.getSize(); i++) {
-		cout << list.getNthElement(i) << endl;
+	List list2(list);
+	
+	list.deleteFirst();
+	list.deleteFirst();
+	
+	for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
+		cout << *iter << endl;
 	}
 
-	for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
+	for (ListIterator iter = list2.begin(); iter != list2.end(); iter++) {
 		cout << *iter << endl;
 	}
 	

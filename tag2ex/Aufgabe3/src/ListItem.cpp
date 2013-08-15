@@ -9,19 +9,23 @@
 
 ListItem::ListItem(ListItem *prev, ListItem *next, int content) :
 		previous(prev), next(next), content(content) {
-	if(previous)
+	if (previous)
 		previous->next = this;
 	
-	if(next)
+	if (next)
 		next->previous = this;
 }
 
 ListItem::~ListItem() {
-	if(previous)
+	if (previous)
 		previous->next = next;
 	
-	if(next)
+	if (next)
 		next->previous = previous;
+}
+
+ListItem::ListItem(const ListItem& other) {
+	// nothing here since never called
 }
 
 int& ListItem::getContent() {

@@ -1,8 +1,5 @@
 /*
  * ListIterator.cpp
- *
- *  Created on: Aug 12, 2013
- *      Author: jgdo
  */
 
 #include "ListItem.h"

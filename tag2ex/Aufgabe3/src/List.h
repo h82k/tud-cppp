@@ -1,8 +1,5 @@
 /*
  * List.h
- *
- *  Created on: Aug 11, 2013
- *      Author: jgdo
  */
 
 #ifndef LIST_H_
@@ -18,6 +15,9 @@ public:
 
 	/** Delete the list and all elements */
 	~List();
+	
+	/** Create List as copy of other list */
+	List(const List& other);
 
 	/** append an element to end of the list */
 	void appendElement(int i);

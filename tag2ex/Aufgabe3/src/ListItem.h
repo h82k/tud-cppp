@@ -1,8 +1,5 @@
 /*
  * ListItem.h
- *
- *  Created on: Aug 11, 2013
- *      Author: jgdo
  */
 
 #ifndef LISTITEM_H_
@@ -37,6 +34,9 @@ private:
 
 	/** content of the list item */
 	int content;
+	
+	/** Copy constructor in private area to forbid copying */
+	ListItem(const ListItem& other);
 };
 
 #endif /* LISTITEM_H_ */

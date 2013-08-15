@@ -1,8 +1,5 @@
 /*
  * ListListIterator.h
- *
- *  Created on: Aug 12, 2013
- *      Author: jgdo
  */
 
 #ifndef LISTITERATOR_H_

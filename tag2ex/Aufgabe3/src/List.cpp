@@ -1,8 +1,5 @@
 /*
  * List.cpp
- *
- *  Created on: Aug 11, 2013
- *      Author: jgdo
  */
 
 #include <cstdlib>
@@ -18,12 +15,18 @@ List::~List() {
 		deleteFirst();
 }
 
+List::List(const List& other) :
+		first(NULL), last(NULL), currentSize(0) {
+	for (ListItem *item = other.first; item != NULL; item = item->getNext())
+		appendElement(item->getContent());
+}
+
 void List::appendElement(int i) {
 	ListItem *item = new ListItem(last, NULL, i);
 	last = item;
 	
 	// if size WAS 0, set first item to newly created item
-	if (currentSize++ == 0) 
+	if (currentSize++ == 0)
 		first = item;
 }
 
@@ -59,13 +62,14 @@ int& List::getLast() {
 
 int List::deleteFirst() {
 	if (first) {
-		int content = first->getContent();
-		
+		int content = first->getContent(); // save content
+		        
 		ListItem *next = first->getNext();
 		delete first; // delete first element
 		first = next; // and the current first element to next of first element before
-		
-		if (next == NULL) // do not forget to reset last element if list is empty
+		        
+		if (next == NULL
+		) // do not forget to reset last element if list is empty
 			last = NULL;
 		
 		currentSize--;
@@ -81,8 +85,9 @@ int List::deleteLast() {
 		ListItem *prev = last->getPrevious();
 		delete last; // delete last element
 		last = prev; // and the current last element to previous of last element before
-		
-		if (last == NULL) // do not forget to reset first element if list is empty
+		        
+		if (last == NULL
+		) // do not forget to reset first element if list is empty
 			first = NULL;
 		
 		currentSize--;
