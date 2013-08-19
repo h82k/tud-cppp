@@ -10,11 +10,11 @@ using namespace std;
 #include "Elevator.h"
 
 Elevator::Elevator() :
-		currentFloor(0), consumedEnergy(0) {
+		currentFloor(0), energyConsumed(0) {
 }
 
 void Elevator::moveToFloor(int floor) {
-	consumedEnergy += abs(currentFloor - floor);
+	energyConsumed += abs(currentFloor - floor);
 	currentFloor = floor;
 	
 	cout << "Moving to floor " << floor << endl;

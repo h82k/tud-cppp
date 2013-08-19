@@ -25,8 +25,8 @@ public:
 	}
 	
 	/** get consumed energy */
-	inline double getEngergyConsumed() {
-		return consumedEnergy;
+	inline double getEnergyConsumed() {
+		return energyConsumed;
 	}
 	
 	/** Moves the elevator to given floor */
@@ -56,7 +56,7 @@ private:
 	std::vector<Person> containedPeople;
 
 	/** energy consumed */
-	double consumedEnergy;
+	double energyConsumed;
 };
 
 #endif /* ELEVATOR_H_ */
