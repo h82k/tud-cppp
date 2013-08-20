@@ -27,7 +27,7 @@ int main() {
 		}
 	}
 
-	cout << "Energy consumed: " << b.getElevator().getEngergyConsumed() << endl;
+	cout << "Energy consumed: " << b.getElevator().getEnergyConsumed() << endl;
 	
 	return 0;
 }

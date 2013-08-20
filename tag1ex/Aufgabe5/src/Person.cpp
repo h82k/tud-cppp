@@ -12,6 +12,11 @@ Person::Person(int destinationFloor) :
 	cout << "Creating Person with destination " << destinationFloor << endl;
 }
 
+Person::Person(const Person& other) :
+		destinationFloor(other.destinationFloor) {
+	cout << "Copying person with destination " << destinationFloor << endl;
+}
+
 Person::~Person() {
 	cout << "Deleting Person with destination " << destinationFloor << endl;
 }

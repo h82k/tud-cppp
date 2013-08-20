@@ -15,6 +15,11 @@ public:
 	 */
 	Person(int destinationFloor);
 
+	/**
+	 * Copy a person
+	 */
+	Person(const Person& other);
+
 	/** Called when this person is destroyed. */
 	~Person();
 
