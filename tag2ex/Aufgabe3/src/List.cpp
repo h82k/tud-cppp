@@ -39,6 +39,22 @@ void List::prependElement(int i) {
 		last = item;
 }
 
+void List::insertElementAt(int i, int pos) {
+	if (pos <= 0)
+		prependElement(i);
+	if (pos >= getSize())
+		appendElement(i);
+	else {
+		ListItem* p = first;
+		// iterate over elements
+		while (pos-- > 0)
+			p = p->getNext();
+		
+		new ListItem(p->getPrevious(), p, i);
+		currentSize++;
+	}
+}
+
 int List::getSize() const {
 	return currentSize;
 }
@@ -94,6 +110,24 @@ int List::deleteLast() {
 		return content;
 	} else
 		return 0;
+}
+
+int List::deleteAt(int pos) {
+	if (pos <= 0)
+		return deleteFirst();
+	else if (pos >= currentSize - 1)
+		return deleteLast();
+	else {
+		ListItem* p = first;
+		// iterate over elements
+		while (pos-- > 0)
+			p = p->getNext();
+		
+		int content = p->getContent();
+		delete p;
+		currentSize--;
+		return content;
+	}
 }
 
 ListIterator List::begin() {
