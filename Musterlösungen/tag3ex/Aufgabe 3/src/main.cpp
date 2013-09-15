@@ -20,9 +20,9 @@ int main() {
 	const int numPeople = 20;
 	Building b(numFloors);
 	
-	// randomy add some people
+	// randomly add some people
 	for (int i = 0; i < numPeople; i++)
-		b.getFloor(rand() % numFloors).addWaitingHuman(boost::make_shared<Person>(rand() % numFloors));
+		b.addWaitingPerson(rand() % numFloors, boost::make_shared<Person>(rand() % numFloors));
 	
 	Building b2(b);
 	

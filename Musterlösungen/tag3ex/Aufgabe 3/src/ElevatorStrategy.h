@@ -18,7 +18,7 @@ public:
 	 * Creates a plan for the simulation. 
 	 * Default implementation does nothing but saving the building pointer.
 	 */
-	virtual void createPlan(Building*);
+	virtual void createPlan(const Building*);
 
 	/** 
 	 * get next floor to visit.
@@ -27,7 +27,7 @@ public:
 
 protected:
 	/** Pointer to current building, set by createPlan() */
-	Building* building;
+	const Building* building;
 };
 
 #endif /* ELEVATORSTRATEGY_H_ */

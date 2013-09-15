@@ -9,7 +9,7 @@ Floor::Floor() {
 	
 }
 
-void Floor::addWaitingHuman(PersonPtr h) {
+void Floor::addWaitingPerson(PersonPtr h) {
 	containedPeople.push_back(h);
 }
 

@@ -13,7 +13,7 @@ using namespace std;
 EnergySavingStrategy::~EnergySavingStrategy() {
 }
 
-void EnergySavingStrategy::createPlan(Building* building) {
+void EnergySavingStrategy::createPlan(const Building* building) {
 	ElevatorStrategy::createPlan(building);
 	
 	std::list<int> tmpPlan;
@@ -27,7 +27,7 @@ int EnergySavingStrategy::nextFloor() {
 	return f;
 }
 
-std::list<int> EnergySavingStrategy::getPotentiaNextlFloors(Building& currentBuilding) {
+std::list<int> EnergySavingStrategy::getPotentiaNextlFloors(const Building& currentBuilding) {
 	std::list<int> floors;
 	
 	// check all persons in elevator
@@ -46,7 +46,7 @@ std::list<int> EnergySavingStrategy::getPotentiaNextlFloors(Building& currentBui
 	return floors;
 }
 
-void EnergySavingStrategy::backtrack(Building& currentBuilding, std::list<int>& tmpPlan, int& maxEnergy) {
+void EnergySavingStrategy::backtrack(const Building& currentBuilding, std::list<int>& tmpPlan, int& maxEnergy) {
 	// explore possible movements
 	std::list<int> floors = getPotentiaNextlFloors(currentBuilding);
 	if (floors.empty()) { // no movements possible since we are done
@@ -60,9 +60,9 @@ void EnergySavingStrategy::backtrack(Building& currentBuilding, std::list<int>& 
 			Building b(currentBuilding);
 			
 			// try current movement on building copy
-			b.getElevator().moveToFloor(*iter);
-			b.getElevator().removeArrivedPeople();
-			b.getElevator().addPeople(b.getFloor(b.getElevator().getFloor()).removeAllPeople());
+			b.moveElevatorToFloor(*iter);
+			b.removeArrivedPeople();
+			b.letPopleIn();
 			
 			// abort if energy is too high already
 			if (b.getElevator().getEnergyConsumed() > maxEnergy) // don't check

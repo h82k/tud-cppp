@@ -35,6 +35,20 @@ public:
 		return elevator;
 	}
 	
+	/** 
+	 * Let people on current floor go into the elevator.
+	 */
+	void letPopleIn();
+	
+	/** remove people from elevator on current floor which arrived at their destination */
+	std::vector<Person> removeArrivedPeople();
+	
+	/** moves the building's elevator to given floor */
+	void moveElevatorToFloor(int i);
+	
+	/** Add a person to given floor */
+	void addWaitingPerson(int floor, Person p);
+	
 private:
 	/** Floors of this building */
 	std::vector<Floor> floors;

@@ -25,7 +25,7 @@ public:
 	}
 	
 	/** Add a human to this floor */
-	void addWaitingHuman(PersonPtr h);
+	void addWaitingPerson(PersonPtr h);
 	
 	/** remove all humans from this floor */
 	std::list<PersonPtr> removeAllPeople();

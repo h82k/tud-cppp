@@ -15,7 +15,7 @@ class EnergySavingStrategy: public ElevatorStrategy {
 public:
 	virtual ~EnergySavingStrategy();
 
-	virtual void createPlan(Building*);
+	virtual void createPlan(const Building*);
 	virtual int nextFloor();
 
 private:
@@ -23,7 +23,7 @@ private:
 	 * Return a list with potential floors to find next. 
 	 * Potential floors are floors which either contain people or are set as destination floor by people in elevator.
 	 */
-	std::list<int> getPotentiaNextlFloors(Building& currentBuilding);
+	std::list<int> getPotentiaNextlFloors(const Building& currentBuilding);
 
 	/**
 	 * Backtracks a possible solution.
@@ -32,7 +32,7 @@ private:
 	 * @param tmpPlan: list for floor targets performed before
 	 * @param maxEnergy: current max energy. Can be overwritten if better plan was found
 	 */
-	void backtrack(Building& currentBuilding, std::list<int>& tmpPlan, int& maxEngery);
+	void backtrack(const Building& currentBuilding, std::list<int>& tmpPlan, int& maxEngery);
 
 	/** current plan */
 	std::list<int> plan;

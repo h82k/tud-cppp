@@ -15,3 +15,18 @@ Building::Building(int numberOfFloors) {
 		floors.push_back(Floor());
 }
 
+void Building::letPopleIn() {
+	elevator.addPeople(floors.at(elevator.getFloor()).removeAllPeople());
+}
+
+std::vector<Person> Building::removeArrivedPeople() {
+	return elevator.removeArrivedPeople();
+}
+
+void Building::moveElevatorToFloor(int i) {
+	elevator.moveToFloor(i);
+}
+
+void Building::addWaitingPerson(int floor, Person p) {
+	floors.at(floor).addWaitingPerson(p);
+}

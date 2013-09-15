@@ -8,7 +8,7 @@ ElevatorStrategy::~ElevatorStrategy() {
 	
 }
 
-void ElevatorStrategy::createPlan(Building *b) {
+void ElevatorStrategy::createPlan(const Building *b) {
 	building = b;
 }
 

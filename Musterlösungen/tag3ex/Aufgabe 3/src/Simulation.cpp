@@ -20,14 +20,13 @@ std::list<int> runSimulation(Building& building, ElevatorStrategy& strategy) {
 		// cout << "moving to floor " << nextFloor << endl;
 		
 		visitedFloors.push_back(nextFloor);
-		building.getElevator().moveToFloor(nextFloor);
+		building.moveElevatorToFloor(nextFloor);
 		
-		int n = building.getElevator().removeArrivedPeople().size();
+		int n = building.removeArrivedPeople().size();
 		// cout << "removing " << n << " arrived people" << endl;
 		
-		Floor& f = building.getFloor(building.getElevator().getFloor());
-		// cout << "letting " << f.getContainedPeople().size() << " people in" << endl;
-		building.getElevator().addPeople(f.removeAllPeople());
+		building.letPopleIn();
+		// cout << "letting people in" << endl;
 	}
 
 	// cout << "end" << endl;
