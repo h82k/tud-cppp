@@ -62,7 +62,7 @@ void EnergySavingStrategy::backtrack(const Building& currentBuilding, std::list<
 			// try current movement on building copy
 			b.moveElevatorToFloor(*iter);
 			b.removeArrivedPeople();
-			b.letPopleIn();
+			b.letPeopleIn();
 			
 			// abort if energy is too high already
 			if (b.getElevator().getEnergyConsumed() > maxEnergy) // don't check

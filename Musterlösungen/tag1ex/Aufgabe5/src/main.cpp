@@ -18,7 +18,7 @@ int main() {
 	for (int f = 0; f < b.getNumOfFloors(); f++) {
 		b.moveElevatorToFloor(f);
 		// collect all people at current floor
-		b.letPopleIn();
+		b.letPeopleIn();
 		
 		// move each person to its destination and let it out
 		while (b.getElevator().getNumPeople() > 0) {

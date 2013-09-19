@@ -25,7 +25,7 @@ std::list<int> runSimulation(Building& building, ElevatorStrategy& strategy) {
 		int n = building.removeArrivedPeople().size();
 		// cout << "removing " << n << " arrived people" << endl;
 		
-		building.letPopleIn();
+		building.letPeopleIn();
 		// cout << "letting people in" << endl;
 	}
 

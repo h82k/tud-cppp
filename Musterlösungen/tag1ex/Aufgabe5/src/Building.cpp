@@ -15,7 +15,7 @@ Building::Building(int numberOfFloors) {
 		floors.push_back(Floor());
 }
 
-void Building::letPopleIn() {
+void Building::letPeopleIn() {
 	elevator.addPeople(floors.at(elevator.getFloor()).removeAllPeople());
 }
 

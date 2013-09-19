@@ -38,7 +38,7 @@ public:
 	/** 
 	 * Let people on current floor go into the elevator.
 	 */
-	void letPopleIn();
+	void letPeopleIn();
 	
 	/** remove people from elevator on current floor which arrived at their destination */
 	std::vector<Person> removeArrivedPeople();
