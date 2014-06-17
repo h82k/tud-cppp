@@ -1,0 +1,91 @@
+\documentclass[
+  accentcolor=tud1c,	% Color theme for TUD corporate design
+  colorbacktitle,		% Titlepage has colored background for title area
+  inverttitle,			% Font color of title on titlepage is inverted
+  german,				% Document is in english
+  twoside
+]{tudexercise}
+
+\usepackage[ngerman]{babel}
+\usepackage{units}
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\lstloadlanguages{C++}
+\lstset{language=C++}
+\lstset{captionpos=b}
+\lstset{tabsize=3}
+\lstset{breaklines=true}
+\lstset{columns=flexible,keywordstyle=\color{red},stringstyle=\color{blue}}
+\lstset{literate=%
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}2
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+}
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+
+\newcommand{\tag}{6}
+\setcounter{section}{18}
+
+\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
+\subtitle{Übungen für den \tag{}. Tag}
+
+\begin{document}
+
+\begin{examheader}
+	\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
+\end{examheader}
+\maketitle 
+
+
+\section{Programmieraufgabe}
+
+Schreiben Sie zum Abschluss ein größeres Programm für den Mikrocontroller. Sie haben hierbei die freie Wahl, die beiden folgenden Aufgaben sind lediglich Beispiele für Programme.
+
+\begin{enumerate}
+
+\item Erstellen Sie das Spiel Pong. Zwei Gegner sollen je einen Balken (Rechteck) am linken oder rechten Rand des Spielfeldes mit den Schiebereglern steuern können, um einen Ball (ein Quadrat) im Spiel zu halten. Erreicht der Ball den linken oder rechten Rand des Spielfelds, so bekommt der Spieler auf der anderen Seite einen Punkt. Gewonnen hat der Spieler, der zuerst 3 Punkte hat. Die aktuelle Punktzahl beider Spieler soll auf der 7-Segment-Anzeige ausgegeben werden.
+\begin{center}
+\includegraphics[scale=0.4]{pong}
+\end{center}
+Hinweise:
+\begin{itemize}
+\item Der Ball wird am oberen und unteren Rand sowie an den Balken der Spieler \glqq{}reflektiert\grqq{} -- verlässt also niemals das Spielfeld.
+\end{itemize}
+
+\item Implementieren Sie das \glqq{}Game of Life\grqq{}. Das Display von 128\,x\,64 Pixel ist das Spielfeld. Jedes Pixel steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist. Jede Zelle hat acht Nachbarzellen, die ebens tot oder lebendig sein können. Zu Beginn gibt es eine vordefinierte Anfangsgeneration. Durch festgelegte Regeln wird die nachfolgende Generation ermittelt.\\
+Die Spielregeln lauten:
+\begin{itemize}
+\item Eine lebende Zelle mit 1 oder weniger lebenden Nachbarn stirbt wegen Einsamkeit.
+\item Eine lebende Zelle mit 4 oder mehr lebenden Nachbarn stirbt wegen Übervölkerung.
+\item Eine lebende Zelle mit 2 oder 3 lebenden Nachbarn bleibt am Leben.
+\item Eine tote Zelle mit genau 3 lebenden Nachbarn wird in der nächsten Generation geboren werden, andernfalls bleibt sie tot.
+\end{itemize}
+Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand). Verwenden Sie als Anfangsgeneration entweder eine zufällige Population oder eine der folgenden Figuren:
+\begin{center}
+\includegraphics[scale=1]{gol_init1}
+\hspace{5mm}
+\includegraphics[scale=1]{gol_init2}
+\hspace{5mm}
+\includegraphics[scale=1]{gol_init3}
+\end{center}
+Hinweise:
+\begin{itemize}
+\item Verwenden Sie als Spielfeld folgendes mehrdimensionales Array:
+\texttt{unsigned char gamefield[128][8];}
+\item Ein weiteres mehrdimensionales Array bietet sich an, um die zukünftige Generation erzeugen zu können.
+\item Achten Sie beim torusförmigen Feld unbedingt darauf, dass Sie nicht über die Grenzen des Spielfelds hinaus zugreifen!
+\item Weitere Informationen zum Game of Life finden Sie unter:\\
+http://de.wikipedia.org/wiki/Conways\_Spiel\_des\_Lebens
+\end{itemize}
+
+\end{enumerate}
+
+
+\end{document}
