@@ -144,7 +144,7 @@ int main() {
 \end{lstlisting}
 \end{minipage}
 
-Welche Adressen werden übereinstimmen, welche werden sich unterscheiden? Probieren Sie das Programm aus und versuche Sie, die Ausgabe nachzuvollziehen.
+Welche Adressen werden übereinstimmen, welche werden sich unterscheiden? Probieren Sie das Programm aus und vollziehen Sie die Ausgabe nach.
 
 \end{enumerate}
 
@@ -161,9 +161,9 @@ z.B.
 \end{lstlisting}
 
 Falls das Array global ist, muss die Größe eine konstante Zahl sein, falls das Array in einer Funktion auf dem Stack angelegt wurde, kann die Größe auch durch eine Variable vorgegeben werden. Auf jeden Fall bleibt diese während der Existenz des Arrays konstant und kann sich nach dem Anlegen nicht mehr ändern.\\
-Beim anlegen eines Arrays kann man dieses auch direkt initialisieren:
+Beim Anlegen eines Arrays kann man dieses auch direkt initialisieren:
 \begin{lstlisting}
-	int arr[5] = { 1 , 2, 3, 4, 5};
+	int arr[5] = { 1, 2, 3, 4, 5};
 \end{lstlisting}
 Man kann die Größe optional auch weglassen, in diesem Fall wird sie der Compiler anhand der angegebenen Elemente selbst ermitteln. \\
 
@@ -187,15 +187,15 @@ Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger in
 
 Somit kann man auf beliebige Elemente des Array über den Zeiger zugreifen:
 \begin{lstlisting}
-	*(pArr+0); // erstes Element
-	*(pArr+1); // zweites Element
-	*(pArr+2) // drittes Element
-	*(pArr + i) // i-tes Element
+	*(pArr + 0); // erstes Element
+	*(pArr + 1); // zweites Element
+	*(pArr + 2); // drittes Element
+	*(pArr + i); // i-tes Element
 	
 	pArr++; // inkrementiere Zeiger im 1 !!!
 	
-	*(pArr + 0) // ZWEITES Element von arr
-	*(pArr + 2) // VIERTES Element von arr
+	*(pArr + 0); // zweites(!!) Element von arr
+	*(pArr + 2); // viertes(!!) Element von arr
 \end{lstlisting}
 
 Tatsächlich ist \textbf{*(p+i)} in \textbf{jeder Hinsicht äquivalent} zu \textbf{p[i]}. Das bedeutet, dass man sowohl auf das i-te Element eines Arrays über \textbf{*(arr + i)} zugreifen kann, als auch über \textbf{pointer[i]} auf das Element, auf welches der Zeiger \emph{pointer+i} zeigt!
@@ -205,37 +205,48 @@ Tatsächlich ist \textbf{*(p+i)} in \textbf{jeder Hinsicht äquivalent} zu \text
 
 \item In C++ kann man Arrays nicht direkt an Funktionen übergeben. Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
-Schreiben Sie eine Funktion, die einen const-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt. Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden. 
+Schreiben Sie eine Funktion, die einen \emph{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt. Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Es gibt auch den Typ \emph{size\_t}, der von vielen Standardklassen (z.B. \emph{std::vector}) verwendet wird}:
+\begin{lstlisting}
+	void printElements(const int *const array, const unsigned int size) {
+		// ...
+	}
+\end{lstlisting}
 
 \item Wie wir vorher gesehen haben, kann man mit Zeigern auch rechnen und diese nachträglich ändern. Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder Iteration den Zeiger selbst inkrementieren! 
 
 \begin{lstlisting}
 	for(int* p = pArr; p != pArr + 10; p++) {
 		// *p contains current element
-		...
+		// ...
 	}
 \end{lstlisting}
 
 Schreiben Sie die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden Zeiger anstatt eines Indices verwendet.
 
-\item Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man stattdessen die Adresse des Elements nach dem letzten Element angibt. Dadurch werden Schleifen der Form
+\item Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man  die Adresse des Elements nach dem letzten Element angibt. Dadurch werden Schleifen der Form
 \begin{lstlisting}
 	for(int* p = begin; p != end; p++) {
 		// *p contains current element
-		...
+		// ...
 	}
 \end{lstlisting}
 
-möglich. Schreiben Sie die Funktion aus der vorherigen Aufgabe entsprechend um. Vergessen Sie nicht, den Zeiger als const zu definieren, da Elemente nur gelesen werden.
+möglich. Schreiben Sie die Funktion aus der vorherigen Aufgabe entsprechend um. Vergessen Sie nicht, den Zeiger als \emph{const} zu definieren, da Elemente nur gelesen werden.
 
-\item Die obige Methode, über Elemente eines Arrays zu iterieren, mag Ihnen zunächst etwas ungewöhnlich erscheinen. Diese hat aber den Vorteil, dass man anstatt des ganzen Arrays auch nur einen (zusammenhängenden) Teil davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente bildet. Beispiel:
+\item Die obige Methode, über Elemente eines Arrays zu iterieren, mag Ihnen zunächst etwas ungewöhnlich erscheinen.
+Diese hat jedoch den Vorteil, dass man anstatt des ganzen Arrays auch nur einen (zusammenhängenden) Teil davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente bildet.
+Beispiel:
 \begin{lstlisting}
 	int arr[10];
 	printElements(arr+5, arr+8); // Print elements with index 5, 6, 7
 \end{lstlisting}
-Experimentieren Sie mit dieser Übergabemethode in Zusammenhang mit Ihrer bisherigen Ausgabefunktion!
+Experimentieren Sie etwas mit dieser Übergabemethode in Ihrer eigenen Funktion!
 
-\item Bisher haben wir das Array auf dem Stack angelegt. Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen. Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert. Mittels \textbf{delete[]} kann (muss!) man den belegten Speicher nach Benutzung wieder freigeben. Beispiel:
+\item Bisher haben wir das Array auf dem Stack angelegt
+Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen.
+Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.
+Mittels \textbf{delete[]} kann, nein \textbf{muss} man den belegten Speicher nach Benutzung wieder freigeben.
+Beispiel:
 \begin{lstlisting}
 	int* pArr = new int[10]; // size can be a variable
 	doSomethingWith(pArr, 10);
@@ -243,15 +254,26 @@ Experimentieren Sie mit dieser Übergabemethode in Zusammenhang mit Ihrer bisher
 \end{lstlisting}
 Beachten Sie die \textbf{[]} nach delete. Diese geben an, dass ein Array und nicht bloß ein Element gelöscht werden soll.
 
-Ein Anwendungsfall von dynamischen Arrays sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben. Schreiben Sie eine Funktion, die beliebig viele Zahlen von der Konsole mittels \emph{cin} einließt. Der Benutzer soll dabei zuvor gefragt werden, wie viele Zahlen er eingeben möchte. Speichern Sie die Zahlen in einem dynamisch angelegten Array ab und lassen Sie die Funktion den Zeiger darauf zurückgeben. 
+Ein Anwendungsfall von dynamischen Arrays sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben. Schreiben Sie eine Funktion, die beliebig viele Zahlen von der Konsole mittels \emph{cin} einließt.
+Der Benutzer soll dabei zuvor gefragt werden, wie viele Zahlen er eingeben möchte. Speichern Sie die Zahlen in einem dynamisch angelegten Array ab und lassen Sie die Funktion den Zeiger darauf zurückgeben.
+Hier ist ein Beispiel wie \emph{cin} zu verwenden ist:
+\begin{lstlisting}
+// #include<iostream>
+// using namespace std;
 
-Zusätzlich zum Zeiger muss die Funktion auch die Möglichkeit haben, ihrem Aufrufer die Größe des angelegten Arrays mitzuteilen. Fügen Sie der Funktion deshalb einen weiteren Parameter hinzu, in dem entweder per Referenz oder per Zeiger eine Variable übergeben wird, um dort die Größe abzulegen. 
+unsigned int size;
+cout << "Größe: ";
+cin >> size;
+cout << "Gewählte Größe: " << size << endl;
+\end{lstlisting}
 
-Geben Sie die eingelesenen Werte wieder auf der Konsole aus.
-Vergessen Sie nicht, am Ende den Speicher wieder freizugeben.
+Zusätzlich zum Zeiger muss die Funktion auch die Möglichkeit haben, ihrem Aufrufer die Größe des angelegten Arrays mitzuteilen. Fügen Sie der Funktion deshalb einen weiteren Parameter hinzu, in dem entweder per Referenz oder per Zeiger eine Variable übergeben wird, um dort die Größe abzulegen\footnote{Sie merken sicherlich schon jetzt, dass es umständlich ist, wenn man die Größe eines Arrays separat speichern und übergeben muss.}. 
+
+Geben Sie die eingelesenen Werte auf der Konsole aus.
+Vergessen Sie nicht, am Ende den Speicher freizugeben.
 \end{enumerate}
 
-Noch ein paar Worte zum Schluss: In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt. Sie sind als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird. Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie z.B. einem Buffer-Overflow kommen, der ein erhebliches Sicherheitsrisiko darstellt. Bevorzugen Sie deshalb Container-Klassen wie \emph{std::vector} aus der STL anstelle von direkten Arrays. Beachten Sie außerdem, dass der Operator \textbf{delete[]} zwar das Array löscht, den Zeiger aber \textbf{nicht} auf \emph{NULL} setzt. Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind. Setzen Sie deshalb Zeiger nach einem \textbf{delete} sofort auf \emph{NULL}, um Speicherfehler zu vermeiden. \\
+Noch ein paar Worte zum Schluss: In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt. Sie sind als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird. Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie z.B. einem Buffer-Overflow kommen, der ein erhebliches Sicherheitsrisiko darstellt. Bevorzugen Sie deshalb Container-Klassen wie \emph{std::vector} aus der STL anstelle von direkten Arrays. Beachten Sie außerdem, dass der Operator \textbf{delete[]} zwar das Array löscht, den Zeiger aber \textbf{nicht} auf \emph{NULL} setzt. Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind. Setzen Sie deshalb Zeiger nach einem \textbf{delete/delete[]} sofort auf \emph{NULL}, um Speicherfehler zu vermeiden. \\
 
 Um die Größe eines Arrays zu ermitteln, können Sie den \emph{sizeof()}-Operator benutzen. Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht. Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgröße des Arrays durch die Größe eines Elements geteilt werden, um auf die Anzahl der Elemente zu kommen.
 \begin{lstlisting}
@@ -269,7 +291,8 @@ Beachten Sie, dass \emph{sizeof()} \textbf{nicht} dazu verwendet werden kann, um
 \end{lstlisting}
 
 \section{Verkettete Listen}
-In dieser Aufgabe wollen wir eine doppelt verkettete Liste von Integern implementieren. Dazu brauchen wir zwei Klassen - ein \emph{ListItem}, welches ein Element der Liste mit dem Inhalt darstellt, sowie \emph{List}, die Zeiger auf Anfangs und Endelemente enthält und den eigentlichen Zugangspunkt für die Liste bildet.
+In dieser Aufgabe wollen wir eine doppelt verkettete Liste von Integern implementieren. Dazu brauchen wir zwei Klassen: 
+\emph{ListItem} stellt ein Element der Liste mit dessen Inhalt dar und \emph{List} speichert die Zeiger auf Anfangs und Endelemente und bildet den eigentlichen Zugangspunkt für die Liste.
 
 \includegraphics[width=1\textwidth]{list.png}
 
@@ -278,7 +301,8 @@ Wir werden am Tag 4 auf dieser Aufgabe aufbauen und die Liste um weitere Funktio
 \begin{enumerate}
 \item Beginnen Sie mit der Klasse \emph{ListItem}. \emph{ListItem} soll die zu speichernde Zahl sowie Verweise auf das vorherige und nächste \emph{ListItem} als Attribute haben. Verwenden Sie dazu Zeiger und keine Referenzen, da Referenzen nachträglich nicht mehr geändert werden können. Auch können Referenzen nicht \emph{NULL} sein, was aber in unserem Fall nötig ist, um zu markieren, dass ein Element keine Vor- oder Nachfolger hat. \\
 
-Der Konstruktor sollte sowohl seine eigenen \emph{next} und \emph{previous} Zeiger initialisieren, als auch die seiner Vor- und Nachfolgerelemente. \emph{getContent()} soll eine Referenz auf den Inhalt zurückgeben, damit dieser durch eine Zuweisung modifiziert werden kann.
+Der Konstruktor sollte sowohl seine eigenen \emph{next} und \emph{previous} Zeiger initialisieren, als auch die seiner Vor- und Nachfolgerelemente. 
+Die Methode \emph{getContent()} soll eine Referenz auf den Inhalt zurückgeben, damit dieser durch eine Zuweisung modifiziert werden kann.
 
 \begin{lstlisting}
 class ListItem {
@@ -295,13 +319,13 @@ public:
 	**/
 	~ListItem();
 
-	/** return element content as reference */
+	/** returns reference to element content */
 	int& getContent();
 
-	/** next list item, NULL if there is no next */
+	/** next list item, NULL if there is no next item*/
 	ListItem* getNext();
 
-	/** previous list item, NULL if there is no previous */
+	/** previous list item, NULL if there is no previous item*/
 	ListItem* getPrevious();
 
 private:
@@ -386,7 +410,8 @@ Um den Zugriff möglichst komfortabel zu gestalten, werden wir den Iterator als 
 	}
 \end{lstlisting}
 
-Fangen Sie mit einer Grundversion des Iterators an. Erstellen Sie einen Konstruktor, der die Attribute des Iterators entsprechend Initialisiert. Implementieren Sie den Vergleichsoperator \textbf{!=} sowie den Dereferenzierungsoperator \textbf{*}. Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben. Sie brauchen in dieser Aufgabe nicht zu prüfen, ob \emph{item} tatsächlich auf ein gültiges Element zeigt. Zum Vergleichen zweier Iteratoren prüfen Sie, ob die \emph{item} und \emph{list} Zeiger identisch sind. Vergleichen Sie nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \emph{item} NULL ist, der Iterator also auf kein Element zeigt.  \\
+Fangen Sie mit einer Grundversion des Iterators an. Erstellen Sie einen Konstruktor, der die Attribute des Iterators entsprechend initialisiert.
+Implementieren Sie den Vergleichsoperator \textbf{!=} sowie den Dereferenzierungsoperator \textbf{*}. Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben. Sie brauchen in dieser Aufgabe nicht zu prüfen, ob \emph{item} tatsächlich auf ein gültiges Element zeigt. Zum Vergleichen zweier Iteratoren prüfen Sie, ob die \emph{item} und \emph{list} Zeiger identisch sind. Vergleichen Sie nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \emph{item} NULL ist, der Iterator also auf kein Element zeigt.  \\
 
 \begin{lstlisting}
 class ListIterator {
@@ -482,14 +507,16 @@ Probieren Sie auch die andere Richtung aus.
 \end{enumerate}
 
 \section{Smart Pointers}
-In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \emph{boost::shared\_ptr} und \emph{boost::weak\_ptr} der boost-Bibliothek verwenden. Die boost-Bibliothek wurde bereits mit dem zu diesem Praktikum dazugehörenden Eclipse-Installer installiert. 
+In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \emph{boost::shared\_ptr} und \emph{boost::weak\_ptr} der Boost-Bibliothek verwenden. Boost wurde bereits mit dem zu diesem Praktikum dazugehörenden Eclipse-Installer installiert. 
 
 \begin{enumerate}
 \item Erstellen Sie ein neues Projekt und binden Sie die Header-Ordner der boost-Bibliothek zu dem Include-Pfad des Compilers ein. Klicken Sie dafür mit der rechten Maustaste auf Ihr Projekt und wählen Sie Properties
-im Kontextmenü. Wählen Sie dort \textbf{C/C++ General} $\rightarrow$ \textbf{Path and Symbols}. Markieren Sie \textbf{GNU C++} und klicken Sie auf \textbf{Add...} um den Dialog zu öffnen. Der Pfad des boost-Ordners ist bereits in der Variable \emph{BOOST\_ROOT} gespeichert. Geben Sie deshalb \textbf{\$\{BOOST\_ROOT\}} als Ordner ein und markieren Sie das Kästchen \textbf{Add to all configurations}. Bestätigen Sie mit \textbf{OK} und schießen Sie den Dialog\\\\
+im Kontextmenü (Shortcut: \emph{Alt+Enter}). Wählen Sie dort \textbf{C/C++ General} $\rightarrow$ \textbf{Path and Symbols}. Markieren Sie \textbf{GNU C++} und klicken Sie auf \textbf{Add...} um den Dialog zu öffnen. Der Pfad des boost-Ordners ist bereits in der Variable \emph{BOOST\_ROOT} gespeichert.
+Wählen Sie im Dialog die Schaltfläche \textbf{Variables...} und klicken Sie doppelt auf \textbf{BOOST\_ROOT}, sodass im Feld \textbf{Directory} der Eintrag \textbf{\$\{BOOST\_ROOT\}} erscheint.
+Markieren Sie das Kästchen \textbf{Add to all configurations}. Bestätigen Sie mit \textbf{OK} und schießen Sie den Dialog\\\\
 \includegraphics[width=0.94\textwidth]{boost.png}
 
-\item Erstellen Sie eine Klasse \emph{TreeNode}, die einen Knoten eines Binärbaums darstellt. Jeder Knoten hat einen Inhalt (int) sowie einen Zeiger auf seine beiden Kindknoten. Diese Zeiger werden Smart Pointers sein, die das Speichermanagement übernehmen. Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen. Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
+\item Erstellen Sie eine Klasse \emph{TreeNode}, die einen Knoten eines Binärbaums darstellt. Jeder Knoten hat einen Inhalt (\emph{int}) sowie einen Zeiger auf seine beiden Kindknoten. Diese Zeiger werden Smart Pointers sein, die das Speichermanagement übernehmen. Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen. Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
 
 \begin{lstlisting}
 #include <boost/shared_ptr.hpp>
