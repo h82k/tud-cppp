@@ -66,10 +66,13 @@ Hinweise:
 Implementieren Sie das \glqq{}Game of Life\grqq{}\footnote{siehe auch \url{http://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens}}. Das Display von 128\,x\,64 Pixel ist das Spielfeld. Jedes Pixel steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist. Jede Zelle hat acht Nachbarzellen, die ebens tot oder lebendig sein können. Zu Beginn gibt es eine vordefinierte Anfangsgeneration. Durch festgelegte Regeln wird die nachfolgende Generation ermittelt.\\
 Die Spielregeln lauten:
 \begin{itemize}
-\item Eine lebende Zelle mit 1 oder weniger lebenden Nachbarn stirbt aus Einsamkeit.
-\item Eine lebende Zelle mit 4 oder mehr lebenden Nachbarn stirbt wegen Übervölkerung.
-\item Eine lebende Zelle mit 2 oder 3 lebenden Nachbarn bleibt am Leben.
-\item Eine tote Zelle mit genau 3 lebenden Nachbarn wird in der nächsten Generation geboren werden, andernfalls bleibt sie tot.
+\item Eine \textbf{lebende Zelle} \dots
+\begin{itemize}
+\item \dots mit 1 oder 0 lebenden Nachbarn stirbt aus Einsamkeit.
+\item \dots mit 4 oder mehr lebenden Nachbarn stirbt wegen Übervölkerung.
+\item \dots mit 2 oder 3 lebenden Nachbarn bleibt am Leben.
+\end{itemize}
+\item Eine \textbf{tote Zelle} mit genau 3 lebenden Nachbarn wird in der nächsten Generation geboren werden, andernfalls bleibt sie tot.
 \end{itemize}
 Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand). Verwenden Sie als Anfangsgeneration entweder eine zufällige Population oder eine der folgenden Figuren:
 \begin{center}
@@ -85,6 +88,22 @@ Hinweise:
 \texttt{unsigned char gamefield[128][8];}
 \item Ein weiteres mehrdimensionales Array bietet sich an, um die zukünftige Generation erzeugen zu können.
 \item Achten Sie beim torusförmigen Feld unbedingt darauf, dass Sie nicht über die Grenzen des Spielfelds hinaus zugreifen!
+\end{itemize}
+
+\section{Weitere Ideen}
+
+Der Fantasie sind keine Grenzen gesetzt:
+
+\begin{itemize}
+\item Asteroids\\
+\begin{center}\includegraphics[width=.5\textwidth]{asteroids.png}\end{center}
+\item Pacman\\
+\begin{center}\includegraphics[width=.3\textwidth]{pacman.png}\end{center}
+\item Labrinth
+\begin{center}\includegraphics[width=.4\textwidth]{maze.png}\end{center}
+\item \glqq Ausweichspiele\grqq{} 
+\begin{center}\includegraphics[width=.4\textwidth]{hugo.png}\end{center}
+\item \dots
 \end{itemize}
 
 
