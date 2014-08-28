@@ -47,12 +47,16 @@
 
 
 \noindent Heute ist es an der Zeit, Ihr neu erlerntes Wissen bei der Programmierung von Microcontrollern umzusetzen.
-Sie haben hierbei die freie Wahl - die beiden folgenden Aufgaben sind lediglich Beispiele für Programme.
+Du hast hierbei die freie Wahl - die beiden folgenden Aufgaben sind lediglich Beispiele für Programme.
 
 \section{Pong}
 
 
-Erstellen Sie das Spiel Pong. Zwei Gegner sollen je einen Balken (Rechteck) am linken oder rechten Rand des Spielfeldes mit den Schiebereglern steuern können, um einen Ball (ein Quadrat) im Spiel zu halten. Erreicht der Ball den linken oder rechten Rand des Spielfelds, so bekommt der Spieler auf der anderen Seite einen Punkt. Gewonnen hat der Spieler, der zuerst 3 Punkte hat. Die aktuelle Punktzahl beider Spieler soll auf der 7-Segment-Anzeige ausgegeben werden.
+Erstellen Sie das Spiel Pong.
+Zwei Gegner sollen je einen Balken (Rechteck) am linken oder rechten Rand des Spielfeldes mit den Schiebereglern steuern können, um einen Ball (ein Quadrat) im Spiel zu halten.
+Erreicht der Ball den linken oder rechten Rand des Spielfelds, so bekommt der Spieler auf der anderen Seite einen Punkt.
+Gewonnen hat der Spieler, der zuerst 3 Punkte hat.
+Die aktuelle Punktzahl beider Spieler soll auf der 7-Segment-Anzeige ausgegeben werden.
 \begin{center}
 \includegraphics[scale=0.4]{pong}
 \end{center}
@@ -63,7 +67,12 @@ Hinweise:
 
 \section{Game of Life}
 
-Implementieren Sie das \glqq{}Game of Life\grqq{}\footnote{siehe auch \url{http://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens}}. Das Display von 128\,x\,64 Pixel ist das Spielfeld. Jedes Pixel steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist. Jede Zelle hat acht Nachbarzellen, die ebens tot oder lebendig sein können. Zu Beginn gibt es eine vordefinierte Anfangsgeneration. Durch festgelegte Regeln wird die nachfolgende Generation ermittelt.\\
+Implementiere das \glqq{}Game of Life\grqq{}\footnote{siehe auch \url{http://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens}}.
+Das Display von 128\,x\,64 Pixel ist das Spielfeld.
+Jedes Pixel steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist.
+Jede Zelle hat acht Nachbarzellen, die ebenso tot oder lebendig sein können.
+Zu Beginn gibt es eine vordefinierte Anfangsgeneration.
+Durch festgelegte Regeln wird die nachfolgende Generation ermittelt.\\
 Die Spielregeln lauten:
 \begin{itemize}
 \item Eine \textbf{lebende Zelle} \dots
@@ -74,7 +83,8 @@ Die Spielregeln lauten:
 \end{itemize}
 \item Eine \textbf{tote Zelle} mit genau 3 lebenden Nachbarn wird in der nächsten Generation geboren werden, andernfalls bleibt sie tot.
 \end{itemize}
-Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand). Verwenden Sie als Anfangsgeneration entweder eine zufällige Population oder eine der folgenden Figuren:
+Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand). 
+Verwende als Anfangsgeneration entweder eine zufällige Population oder eine der folgenden Figuren:
 \begin{center}
 \includegraphics[scale=1]{gol_init1}
 \hspace{5mm}
@@ -84,10 +94,10 @@ Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was 
 \end{center}
 Hinweise:
 \begin{itemize}
-\item Verwenden Sie als Spielfeld folgendes mehrdimensionales Array:
+\item Verwende als Spielfeld folgendes mehrdimensionales Array:
 \texttt{unsigned char gamefield[128][8];}
 \item Ein weiteres mehrdimensionales Array bietet sich an, um die zukünftige Generation erzeugen zu können.
-\item Achten Sie beim torusförmigen Feld unbedingt darauf, dass Sie nicht über die Grenzen des Spielfelds hinaus zugreifen!
+\item Achte beim torusförmigen Feld unbedingt darauf, dass du nicht über die Grenzen des Spielfelds hinaus zugreifst!
 \end{itemize}
 
 \section{Weitere Ideen}

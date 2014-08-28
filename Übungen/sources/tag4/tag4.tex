@@ -35,6 +35,7 @@
 }
 
 \parindent0pt
+\parskip2ex
 
 \newcommand{\tag}{4}
 
@@ -51,67 +52,151 @@
 \vspace{5mm}
 
 \section{Mehrfachvererbung}
-Nehmen Sie als Basis für diese Aufgabe die 1. Aufgabe aus der gestrigen Übung.
+Nimm dir als Basis für diese Aufgabe die 1.\,Aufgabe aus der gestrigen Übung.
 
 \begin{enumerate}
-\item
-Schreiben Sie die Klasse \emph{Employee}, die einen Mitarbeiter darstellt. \emph{Employee} soll von \emph{Person} erben und den Namen seines Vorgesetzten als Attribut beinhalten. Erweitern Sie auch entsprechend die Methode \emph{getInfo()}.
+\item \textbf{Klasse \emph{Employee}}
+Schreibe die Klasse \emph{Employee}, die einen Mitarbeiter darstellt.
+\emph{Employee} soll von \emph{Person} erben und den Namen seines Vorgesetzten als Attribut beinhalten.
+Erweitere auch entsprechend die Methode \emph{getInfo()}.
 
-\item
-Schreiben Sie nun eine Klasse \emph{StudentAssistant} um eine wissenschaftliche Hilfskraft zu modellieren. Eine wissenschaftliche Hilfskraft ist ein Student und gleichzeitig auch ein Mitarbeiter. Dementsprechend soll \emph{StudentAssistant} sowohl von \emph{Student} als auch von \emph{Employee} erben. Weitere Attribute sind nicht nötig. Überschreiben Sie \emph{getInfo()}, um alle Daten auszugeben. Ändern Sie dazu die Sichtbarkeit der Attribute sowohl von \emph{Student} als auch von \emph{Employee} von private auf protected. \\
+\item \textbf{Klasse \emph{StudentAssistant}}
+Schreibe nun eine Klasse \emph{StudentAssistant}, die eine wissenschaftliche Hilfskraft modelliert.
+Eine wissenschaftliche Hilfskraft ist ein Student und gleichzeitig auch ein Mitarbeiter.
+Dementsprechend soll \emph{StudentAssistant} sowohl von \emph{Student} als auch von \emph{Employee} erben.
+Weitere Attribute sind nicht nötig.
+Überschreibe \emph{getInfo()}, um alle Daten auszugeben.
+Ändere dazu die Sichtbarkeit der Attribute sowohl von \emph{Student} als auch von \emph{Employee} von \emph{private} auf \emph{protected}. \\
 
-Sie werden feststellen, dass sich die Klasse nicht kompilieren lässt, falls Sie das Attribut \emph{name} direkt verwenden, da in einer \emph{StudentAssistant}-Instanz zwei Instanzen von \emph{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb müssen Sie mittels dem Scope-Operator $::$ angeben, welche Basis Sie genau meinen.
+Du wirst feststellen, dass sich die Klasse nicht kompilieren lässt, falls du das Attribut \emph{name} direkt verwendest, da in einer \emph{StudentAssistant}-Instanz zwei Instanzen von \emph{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb müsse mittels dem Scope-Operator $::$ angeben, welche Basis du genau meinst.
 \begin{lstlisting}
 Employee::name
 // or
 Student::name
 \end{lstlisting}
 
-Testen Sie Ihre Implementierung, indem Sie das Ergebnis von \emph{getInfo()} direkt in der \emph{main} ausgeben.
+Teste deine Implementierung, indem du das Ergebnis von \emph{getInfo()} direkt in der \emph{main} ausgibst.
 
-\item
-Versuchen Sie nun, \emph{printPersonInfo()} mit einer Instanz von \emph{StudentAssistant} aufzurufen. Auch hier wird der Compiler mit einer Fehlermeldung abbrechen, da er nicht weiß, welche der beiden Basisklassen er nehmen soll. Diesmal ist es in C++ allerdings nicht mehr möglich, die Basisklasse zu spezifizieren, weshalb wir anders vorgehen werden. Wir werden dafür sorgen, dass \emph{Person} nur ein Mal in \emph{StudentAssistant} vorhanden ist. \\
+\item \textbf{Virtuelle Vererbung}
+Versuche nun, \emph{printPersonInfo()} mit einer Instanz von \emph{StudentAssistant} aufzurufen. Auch hier wird der Compiler mit einer Fehlermeldung abbrechen, da er nicht weiß, welche der beiden Basisklassen er nehmen soll.
+Diesmal ist es in C++ allerdings nicht mehr möglich, die Basisklasse zu spezifizieren, weshalb wir anders vorgehen werden.
+Wir sorgen mittels virtueller Vererbung dafür, dass \emph{Person} nur ein Mal in \emph{StudentAssistant} vorhanden ist.
 
-Lassen Sie dazu \emph{Student} und \emph{Employee} virtuell von \emph{Person} erben. Sie werden feststellen, dass sich auch dieses Mal das Programm nicht fehlerfrei kompilieren lässt. Folgendes ist der Grund: Sowohl \emph{Student} als auch \emph{Employee} versuchen, einen Konstruktor von \emph{Person} aufzurufen. Da \emph{Person} aber nur ein einziges mal in \emph{StudentAssistant} vorhanden ist, müsste der Konstruktor demnach zwei mal aufgerufen werden - ein mal von \emph{Student} und ein mal von \emph{Employee}. Dies würde jedoch grob gegen die Sprachprinzipien verstoßen. Deshalb wird der Konstruktor von \emph{Person} weder von \emph{Student} noch von \emph{Employee} aufgerufen! Stattdessen müssen Sie in der Initialisierungsliste von \emph{StudentAssistant} angeben, welcher Konstruktor von \emph{Person} aufgerufen werden soll. Die Konstruktoraufrufe innerhalb von \emph{Student} und \emph{Employee} laufen stattdessen ins Leere, auch wenn sie syntaktisch vorhanden sind! Fügen Sie deshalb ein \textbf{Person(name)} in die Initialisierungsliste von \emph{StudentAssistant} hinzu.\\
+Lasse dazu \emph{Student} und \emph{Employee} virtuell von \emph{Person} erben.
+Noch lässt sich das Programm nicht kompilieren, denn sowohl \emph{Student} als auch \emph{Employee} versuchen, einen Konstruktor von \emph{Person} aufzurufen.
+Da \emph{Person} aber nur ein einziges mal in \emph{StudentAssistant} vorhanden ist, müsste der Konstruktor demnach zwei mal aufgerufen werden -- einmal von \emph{Student} und einmal von \emph{Employee}.
+Dies würde jedoch grob gegen die Sprachprinzipien verstoßen.
+Deshalb wird der Konstruktor von \emph{Person} weder von \emph{Student} noch von \emph{Employee} aufgerufen!
+Stattdessen müssen wir in der Initialisierungsliste von \emph{StudentAssistant} angeben, welcher Konstruktor von \emph{Person} aufgerufen werden soll.
+Die Konstruktoraufrufe innerhalb von \emph{Student} und \emph{Employee} laufen stattdessen ins Leere, auch wenn sie syntaktisch vorhanden sind! Füge deshalb ein \textbf{Person(name)} in die Initialisierungsliste von \emph{StudentAssistant} hinzu.\\
 
-Testen Sie Ihre Implementierung. Versuchen Sie auch Folgendes: Ändern Sie die Namen in den Konstruktoraufrufen von \emph{Student} und \emph{Employee} in der Initialisierungsliste von \emph{StudentAssistant} und beobachten Sie die Ausgabe. Machen Sie sich dadurch klar, welche Probleme Mehrfachvererbung von implementierten Klassen verursachen kann!\\
+Teste deine Implementierung.
+Versuche auch Folgendes: Ändere die Namen in den Konstruktoraufrufen von \emph{Student} und \emph{Employee} in der Initialisierungsliste von \emph{StudentAssistant} und beobachte die Ausgabe. 
+Mache dir dadurch klar, welche Probleme Mehrfachvererbung von implementierten Klassen verursachen kann!\\
 
 \end{enumerate}
 
-Eine Alternative zur Implementierungsvererbung stellt Schnittstellenvererbung dar, wie es in Java üblich ist. Dabei werden Schnittstellen (Klassen mit ausschließlich abstrakten Methoden und ohne Attribute) definiert und nur diese vererbt. Zusätzlich gibt es Implementierungen von diesen Schnittstellen. Man würde also \emph{Person}, \emph{Student}, \emph{Employee} und \emph{StudentAssistant} in jeweils zwei Klassen aufteilen, einmal die Schnittstelle und einmal die Implementierung. Die Schnittstellen würden voneinander erben, z.B. \emph{StudentBase} von \emph{PersonBase}, und entsprechende abstrakte Methoden wie \textbf{virtual string StudentBase::GetStudentID() = 0} bereitstellen. Die Implementierung würde ausschließlich von der jeweiliger Schnittstelle erben (\emph{Student} von \emph{StudentBase}). Diese Variante erscheint zwar aufwändiger als Implementierungsvererbung, vermeidet aber viele der dabei entstehenden Probleme. 
+Eine Alternative zur Implementierungsvererbung stellt \textbf{Schnittstellenvererbung} dar, wie es in Java üblich ist. Dabei werden Schnittstellen (Klassen mit ausschließlich abstrakten Methoden und ohne Attribute) definiert und nur diese vererbt.
+Zusätzlich gibt es Implementierungen von diesen Schnittstellen.
+Man würde also \emph{Person}, \emph{Student}, \emph{Employee} und \emph{StudentAssistant} in jeweils zwei Klassen aufteilen, eine Schnittstelle und eine Implementierung.
+Die Schnittstellen würden voneinander erben, z.B. \emph{StudentBase} von \emph{PersonBase}, und entsprechende pur virtuelle/abstrakte Methoden wie \emph{virtual string StudentBase::GetStudentID() = 0} bereitstellen.
+Die Implementierung würde ausschließlich von der jeweiliger Schnittstelle erben (\emph{Student} von \emph{StudentBase}).
+Diese Variante erscheint zwar aufwändiger als Implementierungsvererbung, vermeidet aber viele der dabei entstehenden Probleme. 
+Schnittstellenvererbung kann in Java eingesetzt werden, um Mehrfachvererbung zu realisieren.
+
 
 \section{Template Funktionen}
 \begin{enumerate}
-\item Implementieren Sie die Funktion
+\item \textbf{Templatefunktionen implementieren}
+Implementiere die folgende Funktion, die das Maximum von zwei Variablen liefert:
 \begin{lstlisting}
 template<class T>
 const T& maximum(const T& t1, const T& t2);
 \end{lstlisting}
 
-die das Maximum von zwei Variablen liefert. Durch die Verwendung von Templates soll die Funktion mit verschiedenen Datentypen funktionieren. Testen Sie Ihre Implementierung.
+Durch die Verwendung von Templates soll die Funktion mit verschiedenen Datentypen funktionieren.
+Teste deine Implementierung.
 
-\item Legen Sie nun zwei Variablen vom Typ \emph{int} und \emph{short} an, und versuchen Sie, mittels \emph{maximum()} das Maximum zu bestimmen. Der Compiler wird mit der Fehlermeldung \textbf{no matching function for call...} abbrechen, da er nicht weiß, ob \emph{int} oder \emph{short} der Template-Parameter sein soll. Geben Sie deshalb den Template-Parameter mittels \emph{maximum<int>()} beim Aufruf von \emph{maximum()} explizit an. Die übergebenen Parameter werden dabei vom Compiler automatisch in den gewünschten Typ umgewandelt.
+In der Vorlesung haben wir gesehen, dass jede Verwendung von \emph{t1} und \emph{t2} in \emph{maximum} eine Schnittstelle induziert, die der Typ $T$ bereitstellen muss.
+Das bedeutet, dass \emph{t1} und \emph{t2} alle Konstruktoren, Methoden und Operatoren zur Verfügung stellen, die in \emph{maximum} genutzt werden.
 
-\item Erstellen Sie eine Klasse \emph{C}, die eine Zahl als Attribut beinhaltet. Implementieren Sie einen passenden Konstruktor sowie einen Getter für diese Zahl. Nun wollen wir unsere Funktion  \emph{maximum()} verwenden, um zu entscheiden, welches von zwei \emph{C}-Objekten die größere Zahl beinhaltet. Überlegen Sie sich, was zu tun ist, und implementieren Sie es. Hinweis: Schauen Sie sich an, welche Operatoren Ihre Implementierung von \emph{maximum()} verwendet. Diese müssen auch auf Objekte der Klasse \emph{C} anwendbar sein (z.B. durch Operatorenüberladung).
+Wie sieht diese Schnittstelle in diesem Fall aus?
+
+\item \textbf{Explizite Angabe der Typparameter}
+Lege nun zwei Variablen vom Typ \emph{int} und \emph{short} an, und versuche, mittels \emph{maximum()} das Maximum zu bestimmen.
+Der Compiler wird mit der Fehlermeldung \textbf{no matching function for call...} abbrechen, da er nicht weiß, ob \emph{int} oder \emph{short} der Template-Parameter sein soll.
+Gib deshalb den Template-Parameter mittels \emph{maximum<int>()} beim Aufruf von \emph{maximum()} explizit an.
+Die übergebenen Parameter werden dabei vom Compiler automatisch in den gewünschten Typ umgewandelt.
+
+\item \textbf{Induzierte Schnittstelle implementieren}
+Erstelle eine Klasse \emph{C}, die eine Zahl als Attribut beinhaltet. Implementiere einen passenden Konstruktor sowie einen Getter für diese Zahl. Nun wollen wir unsere Funktion  \emph{maximum()} verwenden, um zu entscheiden, welches von zwei \emph{C}-Objekten die größere Zahl beinhaltet.
+Überlege dir, was zu tun ist, und implementiere es. 
+
+\emph{Hinweis}: Die Klasse \emph{C} muss mindestens die durch \emph{maximum} induzierte Schnittstelle implementieren.
 
 \end{enumerate}
 
-\section{Klassentemplates}
-Erinnern Sie sich an die Klasse \emph{Vector3} aus dem ersten Praktikumstag. Diese hat den Datentyp \emph{double} für die einzelnen Komponenten verwendet. Schreiben Sie die Klasse so um, dass der Datentyp der Komponenten durch einen Template-Parameter angegeben werden kann. Fügen Sie dafür der Klasse \emph{Vector3} einen Template-Parameter hinzu und ersetzen Sie jedes Aufkommen von \emph{double} mit dem Template-Parameter. Vergessen Sie nicht, die Implementierung in den Header zu verschieben, da der Compiler die Definition einer Klasse kennen muss, um beim Einsetzen des Template-Parameters den richtigen Code zu generieren.\\
+\section{Generische Vektor-Implementierung}
+Erinnere dich an die Klasse \emph{Vector3} aus dem ersten Praktikumstag. Diese hat den Datentyp \emph{double} für die einzelnen Komponenten verwendet. Schreibe die Klasse so um, dass der Datentyp der Komponenten durch einen Template-Parameter angegeben werden kann.
+Füge dafür der Klasse \emph{Vector3} einen Template-Parameter hinzu und ersetze jedes Aufkommen von \emph{double} mit dem Template-Parameter.
+Vergiss nicht, die Implementierung in den Header zu verschieben, da der Compiler die Definition einer Klasse kennen muss, um beim Einsetzen des Template-Parameters den richtigen Code zu generieren.\\
 
-Verbessern Sie außerdem die Effizienz und Sauberkeit der \emph{Vector3}-Klasse, in dem Sie die Parameterübergabe in den entsprechenden Methoden auf \emph{const} Reference umstellen und alle Getter als const deklarieren. 
+Verbessere außerdem die Effizienz und Sauberkeit der \emph{Vector3}-Klasse, in dem du die Parameterübergabe in den entsprechenden Methoden auf \emph{const} Referenzen umstellst und alle Getter als \emph{const} deklarierst. 
 
-\section{Verkettete Liste}
+
+\section{Array selber implementieren (optional)}
+\label{sec:array}
+
+Nachdem du jetzt gesehen hast, dass es störend ist, wenn man die Größe eines Arrays immer getrennt zu den gespeicherten Daten verwalten muss, ist ein sinnvoller Schritt, eine eigene Array-Klasse zu implementieren, die Daten und Größe des Arrays zusammen speichert.
+
+Eine möglicher Anwendungsfall sieht so aus:
+
+\begin{lstlisting}
+    #include "Array.h"
+    #include <iostream>
+    #include <string>
+
+	using namespace std;
+
+	template<class T>
+	void printFirst(const Array<T> &array) {
+		cout << array[0] << endl;
+	}
+	
+	int main(int argc, char **argv) {
+		Array<std::string> stringArray(10);
+		stringArray[0] = "Hello World";
+		
+		printFirst(stringArray);
+		
+		return 0;
+	}
+\end{lstlisting}
+
+\emph{Hinweis}:
+Diese Idee ist natürlich nicht neu.
+Boost bietet eine eigene Array-Implementierung in der Klasse \emph{boost::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}, die seit C++11 auch in der Standardbibliothek unter dem Namen \emph{std::array} zu finden ist.
+
+\section{Generische Verkettete Liste}
+\label{sec:list}
 \begin{enumerate}
-\item Schreiben Sie die Klassen \emph{List}, \emph{ListItem} und \emph{ListIterator} aus dem zweiten Praktikumstag so um, dass man den Inhaltstyp der Liste über ein Template-Parameter angeben kann.\\
+\item 
+Schreibe die Klassen \emph{List}, \emph{ListItem} und \emph{ListIterator} aus dem zweiten Praktikumstag so um, dass man den Inhaltstyp der Liste über ein Template-Parameter angeben kann.\\
 
-Dazu müssen einige Änderungen gemacht werden. Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern als const Referenz übergeben werden. Zum anderen sollten die Methoden zum Löschen von Elementen \textbf{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann. Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.\\
+Dazu müssen einige Änderungen gemacht werden.
+Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern als \emph{const} Referenz übergeben werden.
+Zum anderen sollten die Methoden zum Löschen von Elementen \textbf{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann.
+Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.
 
-Tipp: Arbeiten Sie die Klassen nacheinander ab, beginnend bei \emph{ListItem}, und stellen Sie sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor Sie zur nächsten übergehen. Vergessen Sie nicht, dass Sie auch hier die Implementierung in die Header verschieben müssen. Da Header an sich nicht kompiliert werden, müssen Sie diese zum Kompilieren in eine Quellcodedatei einbinden.\\
+\emph{Tipp}: Arbeite die Klassen nacheinander ab, beginnend bei \emph{ListItem}.
+Stelle sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor du zur nächsten übergehst.
+Vergiss nicht, dass du auch hier die Implementierung in die Header verschieben musst.
+Da Header an sich nicht kompiliert werden, müssen wir diese zum Kompilieren in eine (leere) Quellcodedatei einbinden.\\
 
-\item Überladen Sie den Operator $<<$, sodass Listen direkt über ein \emph{ostream} wie z.B. \emph{cout} ausgegeben werden können. 
+\item
+Überlade den Operator $<<$, sodass Listen direkt über ein \emph{ostream} wie z.B. \emph{cout} ausgegeben werden können. 
 
-\item Testen Sie Ihre Implementierung. Probieren Sie auch folgendes aus und beobachten Sie die Ausgabe.
+\item Teste deine Implementierung. Probiere auch folgendes aus und beobachte die Ausgabe.
 
 \begin{lstlisting}
 	List<List<int> > list; //  ">>" is an operator, so use "> >" for nested templates
@@ -129,23 +214,27 @@ Tipp: Arbeiten Sie die Klassen nacheinander ab, beginnend bei \emph{ListItem}, u
 \end{enumerate}
 
 \section{Callbacks}
-In dieser Aufgabe werden mehrere Methoden zur Realisierung von  Callbacks in C++ vorgestellt und implementiert. Callbacks können zu verschiedenen Zwecken eingesetzt werden, wo man sonst das Observer Pattern benutzen würde. Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die aufgerufen werden soll, sobald der Button gedrückt wird. Wir werden Callbacks dazu verwenden, um den Benutzer bei jedem Schritt eines laufenden Algorithmus über den aktuellen Fortschritt zu informieren.
+In dieser Aufgabe werden mehrere Methoden zur Realisierung von Callbacks in C++ vorgestellt und implementiert. 
+Callbacks können als Alternative zum Observer Pattern\footnote{\url{http://de.wikipedia.org/wiki/Observer_Pattern}} eingesetzt werden.
+Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die aufgerufen werden soll, sobald der Button gedrückt wird.
+Wir werden Callbacks dazu verwenden, um den Benutzer bei jedem Schritt eines laufenden Algorithmus über den aktuellen Fortschritt zu informieren.
 
 \begin{enumerate}
 
-\item Implementieren Sie folgenden Algorithmus, der das Problem der Türme von Hanoi löst (Quelle: Wikipedia). \\
+\item \textbf{Basisalgorithmus}
+Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.\footnote{\url{http://de.wikipedia.org/wiki/Turm_von_Hanoi}} \\
 \begin{algorithm}[H]
  \SetAlgoLined
- \textbf{funktion} hanoi (\textbf{Zahl} i, \textbf{Stab} a, \textbf{Stab} b, \textbf{Stab} c) { \\
+ \textbf{funktion} hanoi (\textbf{Number} i, \textbf{Pile} a, \textbf{Pile} b, \textbf{Pile} c) { \\
      \If{i > 0} {
-        hanoi(i-1, a, c, b);\\
-        verschiebe oberste Scheibe von ''a'' nach ''c''; \\
-        hanoi(i-1, b, a, c); \\
+        hanoi(i-1, a, c, b); \tcp{Move i-1 slices from pile ''a'' to ''b''}
+        Move slice from ''a'' to ''c''; \\
+        hanoi(i-1, b, a, c); \tcp{Move i-1 slices from pile ''b'' to ''c''}
      }
  }
 \end{algorithm}
 
-Sie brauchen keine Türme zu modellieren und zu verschieben, es reicht, lediglich eine Ausgabe auf die Konsole zu machen. Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
+Du brauchst keine Türme zu modellieren und zu verschieben, es reicht, lediglich eine Ausgabe auf die Konsole zu machen. Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
 \begin{lstlisting}
 1 -> 3
 1 -> 2
@@ -156,10 +245,11 @@ Sie brauchen keine Türme zu modellieren und zu verschieben, es reicht, lediglic
 1 -> 3
 \end{lstlisting}
 
-\item
-Nun wollten wie die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern. \\
+\item \textbf{Callbacks mit Funktionszeigern}
+Nun wollten wie die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
 
-Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet. Ändern Sie Ihre Implementierung entsprechend um:
+Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet.
+Ändere deine Implementierung entsprechend um:
 
 \begin{lstlisting}
 void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
@@ -169,7 +259,7 @@ void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
 }
 \end{lstlisting}
 
-Nun können Sie eine Funktion mit zwei Parametern an \emph{hanoi()} übergeben.
+Nun könne eine Funktion mit zwei Parametern an \emph{hanoi()} übergeben.
 \begin{lstlisting}
 void print(int from, int to) {
 	cout << from << " -> " << to << endl;
@@ -178,8 +268,10 @@ void print(int from, int to) {
 hanoi(3, 1, 2, 3, print);
 \end{lstlisting}
 
-\item
-Ein Nachteil der vorherigen Implementierung ist, dass nur reine Funktionen als Callback übergeben werden können.  Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates. Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
+\item \textbf{Callbacks mit Funktoren}
+Ein Nachteil der vorherigen Implementierung ist, dass nur reine Funktionen als Callback übergeben werden können.
+Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates.
+Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
 \begin{lstlisting}
 template<class T>
 void hanoi(int i, int a, int b, int c, T callback) ...
@@ -189,23 +281,33 @@ Dadurch kann an \emph{hanoi()} fast alles übergeben werden, was sich syntaktisc
 \begin{lstlisting}
 	callback(a, c);
 \end{lstlisting}
-aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Functors}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt\#Funktionsobjekt}}). Dabei müssen nicht einmal die Parametertypen (\emph{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist. \\
+aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Functors}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
+Dabei müssen nicht einmal die Parametertypen (\emph{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist. \\
 
-Testen Sie Ihre Implementierung sowohl mit der \emph{print} Funktion als auch mit einem Functor. Schreiben Sie dafür eine einfache Klasse und überladen Sie deren \emph{operator()}:
+Teste deine Implementierung mit einem Functor.
+Schreibe dafür eine einfache Klasse und überlade deren \emph{operator()}:
 \begin{lstlisting}
 	void operator()(int from, int to);
 \end{lstlisting}
 
-\item Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ansprechende Möglichkeit für Callbacks geliefert, beherbergt jedoch mehrere, teils gravierende, Schattenseiten. \\
+\item \textbf{Callbacks mit \emph{Callback}-Klasse}
+Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ansprechende Möglichkeit für Callbacks geliefert, beherbergt jedoch mehrere, teils gravierende, Schattenseiten.
 
-Zum Einen ist es dadurch immer noch nicht möglich, beliebige Methoden einer Klasse als Callback zu übergeben. Durch Methodencallbacks könnten Klassen mehrere unabhängige Callback-Methoden besitzen. Zum Anderen ist \emph{hanoi} nun an den Callback-Typ \textbf{gekoppelt}. Wenn wir also \emph{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback. Dies kann sich insbesondere bei komplexeren Anwendungen von Callbacks sehr negativ widerspiegeln. Stellen Sie sich vor, Sie hätten ein GUI-Framework mit verschiedenen Elementen, die Callbacks nutzen, z.B. Buttons. Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt. Immer\textbf{} wenn ein Button als Parameter an eine Funktion übergeben wird, müsste diese Funktion den Callbacktyp ebenfalls als Template-Parameter entgegennehmen:
+Zum einen ist es dadurch immer noch nicht möglich, beliebige Methoden einer Klasse als Callback zu übergeben.
+Durch Methodencallbacks könnten Klassen mehrere unabhängige Callback-Methoden besitzen.
+Zum anderen ist \emph{hanoi} nun an den Callback-Typ \textbf{gekoppelt}. Wenn wir also \emph{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback.
+Dies kann sich insbesondere bei komplexeren Anwendungen von Callbacks sehr negativ widerspiegeln.
+Stell dir vor, du hättest ein GUI-Framework mit verschiedenen Elementen, die Callbacks nutzen, z.B. Buttons.
+Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt.
+Immer wenn ein Button als Parameter an eine Funktion übergeben wird, müsste diese Funktion den Callbacktyp ebenfalls als Template-Parameter entgegennehmen:
 
 \begin{lstlisting}
 template<class T>
 void doSomethingWithButton(Button<T>& btn);
 \end{lstlisting}
 
-Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen. Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Compile-Zeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
+Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
+Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Compile-Zeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
 
 Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann, und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist. Ziel ist es, folgendes zu ermöglichen:
 \begin{lstlisting}
@@ -220,9 +322,12 @@ hanoi(..., Callback(c)); // functor callback
 hanoi(..., Callback(&C::print, &c)); // method callback
 \end{lstlisting} 
 
-Die Idee dahinter ist Folgendes: Wir definieren eine abstrakte Klasse  \emph{CallbackBase}, die eine abstrakte Methode \emph{void call() = 0} enthält. Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \emph{call()} entsprechend reimplementiert. \\
+Die Idee dahinter ist Folgendes:
+Wir definieren eine abstrakte Klasse \emph{CallbackBase}, die eine abstrakte Methode \emph{void call() = 0} enthält.
+Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \emph{call()} entsprechend reimplementiert.
 
-Fangen Sie mit der Klasse \emph{CallbackBase} an. Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, fügen Sie \emph{call()} einen Parameter vom Typ \emph{ParamT} hinzu, wobei \emph{ParamT} ein Template-Pameter von \emph{CallbackBase} sein soll. Der Klassenrumpf lautet also
+Fange mit der Klasse \emph{CallbackBase} an.
+Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \emph{call()} einen Parameter vom Typ \emph{ParamT} hinzu, wobei \emph{ParamT} ein Template-Pameter von \emph{CallbackBase} sein soll. Der Klassenrumpf lautet also
 
 \begin{lstlisting}
 template<class ParamT>
@@ -233,17 +338,20 @@ public:
 };
 \end{lstlisting} 
 
-Falls ein Callback eigentlich mehrere Parameter erfordert, müssen diese entsprechend in ein Containerobjekt gepackt werden. Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, würden aber den Rahmen dieses Praktikums sprengen.
+Falls ein Callback eigentlich mehrere Parameter erfordert, müssen diese entsprechend in ein Containerobjekt gepackt werden.
+Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, würden aber den Rahmen dieses Praktikums sprengen.
 
-Tipp: Sie können diese und alle nachfolgenden Klassen in einem einzigen Header implementieren, weil die Klassen sehr kurz sind und außerdem semantisch stark zusammenhängen.
+\emph{Tipp}: Du kannst diese und alle nachfolgenden Klassen in einem einzigen Header implementieren, weil die Klassen sehr kurz sind und außerdem semantisch stark zusammenhängen.
 
 
 \item
-\textbf{FunctionCallback}:
-Implementieren Sie nun die erste Unterklasse \emph{template<class ParamT> FunctionCallback}, die von \emph{CallbackBase<ParamT>} erbt.  \emph{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird. Ebenso soll \emph{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird. \\
+\textbf{Klasse \emph{FunctionCallback}}:
+Implementiere nun die erste Unterklasse \emph{template<class ParamT> FunctionCallback}, die von \emph{CallbackBase<ParamT>} erbt.  \emph{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
+Ebenso soll \emph{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird. \\
 
-Testen Sie Ihre Implementierung. Lassen Sie \emph{hanoi()} einen Zeiger auf \emph{CallbackBase} nehmen, übergeben Sie aber die Adresse eines \emph{FunctionCallback} Objektes.
-Sie können folgende Vorlage verwenden:
+Teste deine Implementierung.
+Lasse \emph{hanoi()} einen Zeiger auf \emph{CallbackBase} nehmen, übergebe aber die Adresse eines \emph{FunctionCallback} Objektes.
+Du kannst folgende Vorlage verwenden:
 \begin{lstlisting}
 #include<utility>
 typedef std::pair<int, int> intpair;
@@ -265,67 +373,91 @@ int main() {
 
 
 \item
-\textbf{FunctorCallback}:
-Implementieren Sie nun die Unterklasse \emph{template<class ParamT, class ClassT> FunctorCallback}. Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden. Speichern Sie das zu verwendende Functor-Objekt als Referenz ab, um Kopien zu vermeiden. Achten Sie auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden. Testen Sie Ihre Implementierung! 
+\textbf{Klasse \emph{FunctorCallback}}:
+Implementiere nun die Unterklasse \emph{template<class ParamT, class ClassT> FunctorCallback}.
+Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden.
+Speichere das zu verwendende Funktor-Objekt als Referenz ab, um Kopien zu vermeiden.
+Achte auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden.
+Teste deine Implementierung! 
 
 
 
 \item
-\textbf{MethodCallback}:
-Implementieren Sie nun die letzte Unterklasse \emph{template<class ParamT, class ClassT> MethodCallback}. Beachten Sie, dass nun zwei Attribute nötig sind - ein Methodenzeiger und ein Zeiger auf das zu verwendende Objekt. Testen Sie Ihre Implementierung.
+\textbf{Klasse \emph{MethodCallback}}:
+Implementiere nun die letzte Unterklasse \emph{template<class ParamT, class ClassT> MethodCallback}.
+Beachte, dass nun zwei Attribute nötig sind - ein Methodenzeiger und ein Zeiger auf das zu verwendende Objekt.
+Teste deine Implementierung.
 
-Tipp: Verwenden Sie beispielsweise folgende Signatur für den Konstruktor von \emph{MethodCallback}:
+\emph{Tipp}: Verwende beispielsweise folgende Signatur für den Konstruktor von \emph{MethodCallback}:
 \begin{lstlisting}
 MethodCallCallback(void(ClassT::*method)(ParamT), ClassT* object)
 \end{lstlisting}
 
-Tipp 2: Gegeben einen Zeiger \emph{object} auf ein Objekt, einen Zeiger \emph{method} auf eines seiner Methoden und einen Parameter \emph{p} für die Methode, sieht ein Aufruf von \emph{method} wie folgt aus:
+\emph{Tipp 2}: Gegeben einen Zeiger \emph{object} auf ein Objekt, einen Zeiger \emph{method} auf eines seiner Methoden und einen Parameter \emph{p} für die Methode, sieht ein Aufruf von \emph{method} wie folgt aus:
 \begin{lstlisting}
 	(object->*method)(p);
 \end{lstlisting}
 
 \item
 \textbf{Callback}: 
-Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt. Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das Ihnen schon bekannte  Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht. Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben. Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion  die passende Unterklasse selbst aussucht.
+Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.
+Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das dir schon bekannte  Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht.
+Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
+Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion  die passende Unterklasse selbst aussucht.
 
-Schreiben Sie eine Klasse \emph{template<class ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase} Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überladen Sie den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet. \\
+Schreibe eine Klasse \emph{template<class ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase} Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet. \\
 
-Implementieren Sie nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert. Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instanziieren. Der zweite Konstruktor soll eine Referenz auf ein Functor-Objekt erwarten und  \emph{FunctorCallback} instanziieren, und der dritte entsprechend ein \emph{MethodCallback}. Beachten Sie, das die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \emph{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.\\
+Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
+Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instantiieren.
+Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \emph{FunctorCallback} instanziieren, und der dritte entsprechend ein \emph{MethodCallback}.
+Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \emph{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.\\
 
-Testen Sie Ihre Implementierung in Zusammenhang mit der \emph{hanoi}-Funktion. Sie können das \emph{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden. 
+Teste deine Implementierung in Zusammenhang mit der \emph{hanoi}-Funktion. Du kannst das \emph{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden. 
 
 \end{enumerate}
 
 \textbf{Nachwort}:
 Für produktive C++-Programme bietet Boost fertige Funktionen und Klassen, um Callbacks zu realisieren, z.B. \emph{boost::function<...>} und \emph{boost::bind()}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/function.html}}. Diese können mit beliebiger Anzahl von Parametern umgehen und beinhalten viele weitere Features.
 
+
+
 \section{STL Container} 
 In dieser Aufgabe werden wir den Umgang mit den Containern \emph{std::vector} und \emph{std::list} aus der Standard Template Library üben.
-Es ist sinnvoll, wenn Sie während der Übung eine C++-Referenz zum Nachschlagen bereithalten, z.B. \url{http://www.cplusplus.com/}.
-Schauen Sie sich auch die Vorlesungsfolien genau an, da diese viele nützliche Codebeispiele enthalten.
-\vspace{1ex}
+Es ist sinnvoll, wenn du während der Übung eine C++-Referenz zum Nachschlagen bereithältst, z.B. \url{http://www.cplusplus.com/}.
+Schaue dir auch die Vorlesungsfolien genau an, da diese nützliche Codebeispiele enthalten.
 
 Die Klasse \emph{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann. \emph{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, seine aktuelle Kapazität überschritten wird.
 Auch müssen viele Elemente verschoben werden, wenn der Vektor in der Mitte oder am Anfang modifiziert wird.
 Der große Vorteil von \emph{std::vector} ist der \emph{wahlfreie Zugrif}, d.h. man kann auf beliebige Elemente mit konstantem Aufwand zugreifen.
 
 \begin{enumerate}
-\item Schreiben Sie als erstes eine Funktion \emph{template<class T> void print(const T\& t)}, die beliebige STL-Container auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen. Nutzen Sie dazu die Funktion \emph{copy()} sowie die Klasse \emph{ostream\_iterator<int>}, um den entsprechenden \emph{OutputIterator} zu erzeugen.
+\item 
+Schreibe zunächst eine Funktion \emph{template<class T> void print(const T\& t)}, die beliebige STL-Container auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
+Nutze dazu die Funktion \emph{copy()} sowie die Klasse \emph{ostream\_iterator<int>}, um den entsprechenden \emph{OutputIterator} zu erzeugen.
 
-\item Legen Sie ein \emph{int}-Array an und initialisieren Sie es mit den Zahlen 1 bis 5. Legen Sie nun ein \emph{vector<int>} an und initialisieren Sie es mit den Zahlen aus dem Array.
+\item
+Lege ein \emph{int}-Array an und initialisiere es mit den Zahlen 1 bis 5.
+Lege nun einen \emph{vector<int>} an und initialisiere ihn mit den Zahlen aus dem Array.
 
-\item Legen Sie eine Liste \emph{list<int>} an und initialisieren Sie diese mit dem zweiten bis vierten Element des Vektors. Tipp: Sie können auf Iteratoren eines Vektors (genauso wie auf Zeiger) Zahlen addieren, um diese zu verschieben.
+\item
+Lege eine Liste \emph{list<int>} an und initialisiere diese mit dem zweiten bis vierten Element des Vektors.
+\emph{Tipp}: Du kannst auf Iteratoren eines Vektors (genauso wie auf Zeiger) Zahlen addieren, um diese zu verschieben.
 
-\item Fügen Sie mittels \emph{list<T>::insert()} das letzte Element des Vektors an den Anfang der Liste hinzu.
+\item
+Füge mittels \emph{list<T>::insert()} das letzte Element des Vektors an den Anfang der Liste hinzu.
 
-\item Löschen Sie alle Elemente des Vektors mit einem einzigen Methodenaufruf.
+\item
+Lösche alle Elemente des Vektors mit einem einzigen Methodenaufruf.
 
-\item Mittels \emph{remove\_copy\_if()} kann man Elemente aus einem Container in einen anderen kopieren und dabei bestimmte Elemente löschen lassen. Nutzen Sie diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachten Sie, dass \emph{remove\_copy\_if()} keine neue Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \emph{OutputIterator} kopiert. \\\\
-Deshalb dürfen Sie \emph{vec.end()} \textbf{nicht} als \emph{OutputIterator} nehmen, da dieser "{}hinter"{} das letzte Element zeigt und weder dereferenziert noch inkrementiert werden darf. Nutzen Sie stattdessen die Methode \emph{back\_inserter()}, um einen Iterator zu erzeugen, der neue Elemente an den Vektor anhängen kann.
+\item
+Mittels \emph{remove\_copy\_if()} kann man Elemente aus einem Container in einen anderen kopieren und dabei bestimmte Elemente löschen lassen.
+Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachte, dass \emph{remove\_copy\_if()} keine neue Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \emph{OutputIterator} kopiert.
+
+Deshalb kannst du \emph{vec.end()} \textbf{nicht} als \emph{OutputIterator} nehmen, da dieser "{}hinter"{} das letzte Element zeigt und weder dereferenziert noch inkrementiert werden darf. Nutze stattdessen die Methode \emph{back\_inserter()}, um einen Iterator zu erzeugen, der neue Elemente an den Vektor anhängen kann.
 \end{enumerate}
 
 \section{Exceptions}
-Auch in C++ besteht die Möglichkeit, Fehler mittels Exceptions zu signalisieren und zu verarbeiten.
+Ähnlich wie in Java können Fehler in C++ mittels Exceptions signalisiert werden.
 
 \begin{lstlisting}
 try {
@@ -339,19 +471,22 @@ try {
 ...
 \end{lstlisting} 
 
-Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java. Das aus Java bekannte \emph{finally}-Konstrukt existiert in C++ nicht. Außerdem kann jede Art von Wert geworfen werden, also sowohl ein beliebiges Objekt als auch ein primitiver Wert wie z.B. ein \emph{int}. In der Praxis wird es jedoch empfohlen,  den geworfenen Wert von \emph{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzten. \\
+Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java.
+Das aus Java bekannte \emph{finally}-Konstrukt existiert in C++ nicht.
+Außerdem kann jede Art von Wert geworfen werden -- sowohl Objekte als auch primitive Werte wie z.B. \emph{int}.
+In der Praxis wird es jedoch empfohlen, den geworfenen Wert von \emph{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzten. \\
 
-Im Gegensatz zu Java kann man Objekte nicht nur per Referenz sondern auch \emph{per-Value} werfen und fangen. In diesem Fall wird das geworfene Objekt nach der Behandlung im \textbf{catch}-Block automatisch zerstört. Wenn es \emph{per-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf. Beispiel:
+Im Gegensatz zu Java kann man Objekte nicht nur \emph{by-Reference} sondern auch \emph{by-Value} werfen und fangen. In diesem Fall wird das geworfene Objekt nach der Behandlung im \textbf{catch}-Block automatisch zerstört. Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf. Beispiel:
 
 \begin{lstlisting}
-1. Catch by value
+// 1. Catch by value
 try {
 	throw C(); // create new object of class C and throw it 
 } catch(C c) { // catch c by value => a copy of c is created when catching
 	...
 }
 
-2. Catch by reference
+// 2. Catch by reference
 try {
 	throw C(); // create new object of class C and throw it 
 } catch(const C& c) { // catch c by reference, no copy is created
@@ -359,33 +494,46 @@ try {
 }
 \end{lstlisting} 
 
-In der Praxis hat es sich durchgesetzt, \emph{per Value} zu werfen und \emph{per const Reference} zu fangen.
+In der Praxis hat es sich durchgesetzt, \emph{by-Value} zu werfen und \emph{by-const-Reference} zu fangen.
 
 \begin{enumerate}
-\item Erstellen Sie eine Klasse \emph{C} und implementieren Sie einen Konstruktor, einen Copy-Konstruktor und einen Destruktor. Versehen Sie diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während der Ausführung ersichtlich wird.
+\item 
+Erstelle eine Klasse \emph{C} und implementiere einen Konstruktor, einen Copy-Konstruktor und einen Destruktor.
+Versehe diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während der Ausführung ersichtlich wird.
 
-\item Experimentieren Sie mit Exceptions. Probieren Sie insbesondere die beiden o.g. Fälle aus und beobachten Sie die Ausgabe. Wann wird ein Objekt erstellt/kopiert/gelöscht? Testen Sie auch, was passiert, wenn Sie mehrere \textbf{catch}-Blöcke erstellen und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen? Spielt die Reihenfolge eine Rolle?
+\item 
+Experimentiere mit Exceptions.
+Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe. 
+Wann wird ein Objekt erstellt/kopiert/gelöscht? 
+Teste auch, was passiert, wenn du mehrere \textbf{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen?
+Spielt die Reihenfolge eine Rolle?
 
-\item Fügen Sie der Klasse \emph{List} aus Aufgabe 4 Bereichsprüfungen hinzu. Schreiben Sie die Methoden \emph{insertElementAt()}, \emph{getNthElement()} und \emph{deleteAt()} so um, dass eine Exception geworfen wird, falls der angegebene Index die Größe der Liste überschreitet. Nehmen Sie dafür die Klasse \emph{std::out\_of\_range} aus dem \emph{stdexcept} Header.
+\item
+Füge der Klasse \emph{List} aus \ref{sec:list} (oder dem Array aus \ref{sec:array}) Bereichsprüfungen hinzu.
+Schreibe die Methoden \emph{insertElementAt()}, \emph{getNthElement()} und \emph{deleteAt()} so um, dass eine Exception geworfen wird, falls der angegebene Index die Größe der Liste überschreitet. 
+Nimm dafür die Klasse \emph{std::out\_of\_range} aus dem \emph{stdexcept} Header.
 
-\item Testen Sie Ihre Implementierung. Provozieren Sie eine Exception, indem Sie falsche Indices angeben, und fangen Sie die Exception als \emph{const} Referenz ab. Sie können die Methode \emph{what()} benutzen, um an den Nachrichtentext der Exception zu gelangen.
+\item
+Teste deine Implementierung.
+Provoziere eine Exception, indem du falsche Indices angibst, und fange die Exception als \emph{const} Referenz ab. Du kannst die Methode \emph{what()} benutzen, um an den Nachrichtentext der Exception zu gelangen.
 
 \end{enumerate}
 
 \section{C Einführung}
-In den nächsten Tagen werden Sie Programme für eine Embedded Plattform in C entwickeln. Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
+In den nächsten Tagen werde Programme für eine Embedded Plattform in C entwickeln. 
+Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
 
 \begin{itemize}
-\item Kein OO-Konzept, keine Klassen, nur Strukturen.
+\item Kein OO-Konzept, keine Klassen, nur Strukturen (\emph{struct}).
 \item Keine Templates
 \item Keine Referenzen, nur Zeiger und Werte
-\item Kein \emph{new} und \emph{delete}, sondern \emph{malloc()} und \emph{free()}
-\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden
-\item Funktionen ohne echte Parameter müssen \emph{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
-\item Keine Streams, stattdessen \emph{(f)printf} zur Ausgabe auf Konsole und in Dateien
-\item Kein \emph{bool} Datentyp, stattdessen ist alles ungleich 0 gleich wahr und 0 ist gleich falsch
+\item Kein \emph{new} und \emph{delete}, sondern \emph{malloc()} und \emph{free()} (\verb|#include <stdlib.h>|)
+\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
+\item Parameterlose Funktionen müssen \emph{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
+\item Keine Streams, stattdessen \emph{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
+\item Kein \emph{bool} Datentyp, stattdessen wird 0 als \emph{false} und alle anderen Zahlen als \emph{true} gewertet
 \item Keine Default-Argumente
-\item Keine \emph{std::string} Klasse, nur \emph{char}-Arrays
+\item Keine \emph{std::string} Klasse, nur \emph{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
 \item Keine Namespaces
 \end{itemize}
 
@@ -394,11 +542,11 @@ Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail e
 \begin{itemize}
 \item[] \textbf{Kein OO-Konzept}\\\\
 In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
-Stattdessen gibt es Strukturen (\textbf{structs}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.\\
+Stattdessen gibt es Strukturen (\textbf{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.\\
 
 Die Syntax dafür lautet
 \begin{lstlisting}
-	struct <Name> { // Name ohne <>
+	struct MyStruct {
 		<Type1> <Name11>, <Name12>, ...;
 		<Type2> <Name21>, <Name22>, ...;
 	};
@@ -443,8 +591,10 @@ Man kann die Deklaration eines \textbf{struct} auch direkt in den \textbf{typede
 	} Point;
 \end{lstlisting}
 
-\item[] \textbf{Kein \emph{new} und \emph{delete}}\\\\
-Anstelle von \emph{new} und \emph{delete} werden die Funktionen \emph{malloc} und \emph{free} verwendet, um Speicher auf dem Heap zu reservieren. Diese sind im Header \emph{stdlib.h} deklariert.
+\item[] \textbf{Kein \emph{new} und \emph{delete}}
+
+Anstelle von \emph{new} und \emph{delete} werden die Funktionen \emph{malloc} und \emph{free} verwendet, um Speicher auf dem Heap zu reservieren. 
+Diese sind im Header \emph{stdlib.h} deklariert.
 
 \begin{lstlisting}
 	#include <stdlib.h>
@@ -453,8 +603,11 @@ Anstelle von \emph{new} und \emph{delete} werden die Funktionen \emph{malloc} un
 	free(points);
 \end{lstlisting} 
 
-\item[] \textbf{Ausgabe auf Konsole per \emph{printf}}\\\\
-Im Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden. \emph{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen. Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
+\item[] \textbf{Ausgabe auf Konsole per \emph{printf}}
+
+Im Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden.
+\emph{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
+Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
 Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf()} zu nutzen, muss der Header \emph{stdio.h} eingebunden werden. 
 
 \begin{lstlisting}
@@ -470,18 +623,22 @@ Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf
 	printf("c = %c, i = %d\n", c, i); // Zeichen und Integer ausgeben
 \end{lstlisting} 
 
-Weitere Möglichkeiten von \emph{printf()} können Sie unter \url{http://www.cplusplus.com/reference/cstdio/printf/} nachlesen.
+Weitere Möglichkeiten von \emph{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
 
 \end{itemize}
 
+Zum Abschluss noch ein paar Aufgaben, um mit C etwas warm zu werden:
+
 \begin{enumerate}
-\item Schreiben Sie ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt. Die Formatierung soll entsprechend dem Beispiel erfolgen:
+\item 
+Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt. 
+Die Formatierung soll entsprechend dem Beispiel erfolgen:
 \begin{lstlisting}
  2   4   6   8  10
 12  14  16  ...
 \end{lstlisting}
 
-\item Versuchen Sie, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).
+\item Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).
 \end{enumerate}
 
 \end{document}
