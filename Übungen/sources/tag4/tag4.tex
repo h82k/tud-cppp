@@ -11,17 +11,18 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithm2e}
+\usepackage{paralist}
 
 \definecolor{commentgreen}{RGB}{50,127,50}
 
 
 \usepackage{listings}
-\usepackage{listings}
-\lstloadlanguages{C++}
+\lstloadlanguages{C++,[gnu]make}
 \lstset{language=C++}
 \lstset{captionpos=b}
 \lstset{tabsize=3}
 \lstset{breaklines=true}
+\lstset{basicstyle=\ttfamily}
 \lstset{columns=flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
 \lstset{literate=%
 {Ö}{{\"O}}1
@@ -33,6 +34,10 @@
 {ö}{{\"o}}1
 {'}{{\textquotesingle}}1
 }
+
+\lstnewenvironment{lstmake} %
+	{\lstset{language=[gnu]make}} %
+	{}
 
 \parindent0pt
 \parskip2ex
@@ -505,7 +510,7 @@ Versehe diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während de
 Experimentiere mit Exceptions.
 Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe. 
 Wann wird ein Objekt erstellt/kopiert/gelöscht? 
-Teste auch, was passiert, wenn du mehrere \textbf{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen?
+Teste auch, was passiert, wenn du mehrere \emph{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen?
 Spielt die Reihenfolge eine Rolle?
 
 \item
@@ -519,98 +524,99 @@ Provoziere eine Exception, indem du falsche Indices angibst, und fange die Excep
 
 \end{enumerate}
 
+
 \section{C Einführung}
 In den nächsten Tagen werde Programme für eine Embedded Plattform in C entwickeln. 
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
 
 \begin{itemize}
-\item Kein OO-Konzept, keine Klassen, nur Strukturen (\emph{struct}).
-\item Keine Templates
-\item Keine Referenzen, nur Zeiger und Werte
-\item Kein \emph{new} und \emph{delete}, sondern \emph{malloc()} und \emph{free()} (\verb|#include <stdlib.h>|)
-\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
-\item Parameterlose Funktionen müssen \emph{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
-\item Keine Streams, stattdessen \emph{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
-\item Kein \emph{bool} Datentyp, stattdessen wird 0 als \emph{false} und alle anderen Zahlen als \emph{true} gewertet
-\item Keine Default-Argumente
-\item Keine \emph{std::string} Klasse, nur \emph{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
-\item Keine Namespaces
+	\item Kein OO-Konzept, keine Klassen, nur Strukturen (\emph{struct}).
+	\item Keine Templates
+	\item Keine Referenzen, nur Zeiger und Werte
+	\item Kein \emph{new} und \emph{delete}, sondern \emph{malloc()} und \emph{free()} (\verb|#include <stdlib.h>|)
+	\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
+	\item Parameterlose Funktionen müssen \emph{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
+	\item Keine Streams, stattdessen \emph{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
+	\item Kein \emph{bool} Datentyp, stattdessen wird 0 als \emph{false} und alle anderen Zahlen als \emph{true} gewertet
+	\item Keine Default-Argumente
+	\item Keine \emph{std::string} Klasse, nur \emph{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
+	\item Keine Namespaces
 \end{itemize}
 
 Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail eingehen.
 
 \begin{itemize}
-\item[] \textbf{Kein OO-Konzept}\\\\
-In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
-Stattdessen gibt es Strukturen (\textbf{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.\\
-
-Die Syntax dafür lautet
-\begin{lstlisting}
+	\item[] \textbf{Kein OO-Konzept}\\\\
+	In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
+	Stattdessen gibt es Strukturen (\textbf{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.\\
+	
+	Die Syntax dafür lautet
+	\begin{lstlisting}
 	struct MyStruct {
-		<Type1> <Name11>, <Name12>, ...;
-		<Type2> <Name21>, <Name22>, ...;
+	<Type1> <Name11>, <Name12>, ...;
+	<Type2> <Name21>, <Name22>, ...;
 	};
-\end{lstlisting} 
-
-Zum Beispiel
-\begin{lstlisting}
+	\end{lstlisting} 
+	
+	Zum Beispiel
+	\begin{lstlisting}
 	struct Point {
-		int x;
-		int y;
+	int x;
+	int y;
 	};
-\end{lstlisting}
-
-Die Sichtbarkeit aller Attribute ist automatisch \emph{public}. \\
-
-Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \textbf{struct} angeben:
-
-\begin{lstlisting}
+	\end{lstlisting}
+	
+	Die Sichtbarkeit aller Attribute ist automatisch \emph{public}. \\
+	
+	Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \textbf{struct} angeben:
+	
+	\begin{lstlisting}
 	void foo(struct Point* p) {
-		...
+	...
 	}
 	...
 	int main(void) {
-		struct Point point;
-		foo(&point);
+	struct Point point;
+	foo(&point);
 	}
-\end{lstlisting}
-
-Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \textbf{typedef} auf den \textbf{struct} definiert:
-
-\begin{lstlisting}
+	\end{lstlisting}
+	
+	Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \textbf{typedef} auf den \textbf{struct} definiert:
+	
+	\begin{lstlisting}
 	typedef struct Point Point_t;
 	...
 	Point_t point;
-\end{lstlisting}
-
-Man kann die Deklaration eines \textbf{struct} auch direkt in den \textbf{typedef} einbauen:
-\begin{lstlisting}
+	\end{lstlisting}
+	
+	Man kann die Deklaration eines \textbf{struct} auch direkt in den \textbf{typedef} einbauen:
+	\begin{lstlisting}
 	typedef struct {
-		int x;
-		int y;	
+	int x;
+	int y;	
 	} Point;
-\end{lstlisting}
-
-\item[] \textbf{Kein \emph{new} und \emph{delete}}
-
-Anstelle von \emph{new} und \emph{delete} werden die Funktionen \emph{malloc} und \emph{free} verwendet, um Speicher auf dem Heap zu reservieren. 
-Diese sind im Header \emph{stdlib.h} deklariert.
-
-\begin{lstlisting}
+	\end{lstlisting}
+	
+	\item[] \textbf{Kein \emph{new} und \emph{delete}}
+	
+	Anstelle von \emph{new} und \emph{delete} werden die Funktionen \emph{malloc} und \emph{free} verwendet, um Speicher auf dem Heap zu reservieren. 
+	Diese sind im Header \emph{stdlib.h} deklariert.
+	
+	\begin{lstlisting}
 	#include <stdlib.h>
 	Point* points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
 	// ...
 	free(points);
-\end{lstlisting} 
-
-\item[] \textbf{Ausgabe auf Konsole per \emph{printf}}
-
-Im Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden.
-\emph{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
-Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
-Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf()} zu nutzen, muss der Header \emph{stdio.h} eingebunden werden. 
-
-\begin{lstlisting}
+	\end{lstlisting} 
+	
+	\item[] \textbf{Ausgabe auf Konsole per \emph{printf}}
+	
+	Im Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden.
+	\emph{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
+	Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
+	Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf()} zu nutzen, muss der Header \emph{stdio.h} eingebunden werden. 
+	
+	\begin{lstlisting}
 	#include <stdio.h>
 	printf("Hallo Welt\n"); // Hallo Welt + neue Zeile ausgeben
 	
@@ -621,24 +627,436 @@ Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf
 	int i;
 	char c;
 	printf("c = %c, i = %d\n", c, i); // Zeichen und Integer ausgeben
-\end{lstlisting} 
-
-Weitere Möglichkeiten von \emph{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
-
+	\end{lstlisting} 
+	
+	Weitere Möglichkeiten von \emph{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
+	
 \end{itemize}
 
 Zum Abschluss noch ein paar Aufgaben, um mit C etwas warm zu werden:
 
 \begin{enumerate}
-\item 
-Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt. 
-Die Formatierung soll entsprechend dem Beispiel erfolgen:
+	\item 
+	Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt. 
+	Die Formatierung soll entsprechend dem Beispiel erfolgen:
+	\begin{lstlisting}
+	2   4   6   8  10
+	12  14  16  ...
+	\end{lstlisting}
+	
+	\item Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).
+\end{enumerate}
+
+
+
+
+\section{Makefiles (optional)}
+
+In dieser Übung erkunden wir, wie man Makefile-Projekte in Eclipse aufbaut.
+Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können.
+
+\begin{enumerate}
+\item\textbf{Projekt anlegen}
+Öffne \emph{File $\to$ New $\to$ C++ Project} und wähle \textbf{Project type: Makefile project/Empty Project}.
+Wähle als \textbf{Toolchain} \textbf{MinGW GCC} aus und suche dir einen Projektnamen aus.
+
+Das erzeugte Projekt ist ziemlich leer.
+Lege zunächst ein Makefile an über \textbf{File $\to$ New $\to$ Other\dots} und dann \textbf{File}.
+
+Eclipse erwartet, dass das Makefile ein Target mit dem Namen \emph{all} hat.
+Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
+Lege nun das Target \emph{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
+\begin{lstmake}
+all:	
+	@echo "Running all..."
+\end{lstmake}
+
+Wenn du jetzt \emph{Build} aufrufst, sollte in der \emph{Console View} in etwa Folgendes erscheinen:
+\begin{verbatim}
+18:17:25 **** Incremental Build of configuration Default for project ExerciseMakefileProject ****
+make all 
+Running all...
+
+18:17:26 Build Finished (took 140ms)
+\end{verbatim}
+
+\item\textbf{Erster Compilevorgang}
+
+Jetzt ist es an der Zeit, ein Programm mittels \emph{make} zu kompilieren.
+Lege dazu eine C++-Sourcedatei \emph{main.cpp} mit einer \emph{main}-Funktion an, die etwas sinnvolles ausgibt.
+
+Entgegen unserer bisherigen Erfahrung musst du nun manuell in das Makefile eintragen, dass \emph{main.cpp} gebaut werden soll.
+Ersetze die Dummy-Ausgabe daher durch einen Compiler-Aufruf an \emph{g++}:
+\begin{lstmake}
+all:
+	g++ -o main.exe main.cpp
+\end{lstmake}
+
+Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \emph{main.exe} im Projekthauptverzeichnis abgelegt.
+
+\item\textbf{Klasse \emph{Building}}
+Jetzt fügen wir die Klasse \emph{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet:
+
+\begin{minipage}[t]{.45\textwidth}
 \begin{lstlisting}
- 2   4   6   8  10
-12  14  16  ...
+/*
+* File: Building.h
+*/
+#ifndef BUILDING_H_
+#define BUILDING_H_
+
+#include <string>
+
+class Building {
+public:
+    Building(unsigned int numFloors);
+    const std::string toString() const;
+private:
+    unsigned int numFloors;
+};
+#endif
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{.45\textwidth}
+\begin{lstlisting}
+/*
+* File: Building.cpp
+*/
+#include "Building.h"
+
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+Building::Building(unsigned int numFloors) :
+    numFloors(numFloors) {}
+
+const std::string Building::toString() const{
+    stringstream output;
+    output << "A building with " 
+           << this->numFloors 
+           << " floors\n";
+    return output.str();
+}
+\end{lstlisting}
+\end{minipage}
+
+Erzeuge in \emph{main} eine zweistöckige Instanz von \emph{Building} und gib diese mittels \emph{Building::toString} auf der Konsole aus.
+
+Damit das Projekt kompiliert, muss auch \emph{Building} im Makefile eingetragen werden.
+Passe dazu den Compileraufruf an:
+\begin{lstmake}
+all:
+    g++ -o main.exe main.cpp Building.cpp
+\end{lstmake}
+
+Wenn du das Projekt gebaut hast, sollte auf der Konsole eine Ausgabe deines Gebäudes erscheinen.
+
+\item\textbf{Compiler-Aufrufe auslagern}
+In der Vorlesung haben wir gesehen, dass \emph{make} anhand der Zeitstempel von Dateien dazu in der Lage ist, zu erkennen, wann ein Programmteil neu gebaut werden muss.
+Aktuell nutzen wir diese Möglichkeit noch nicht:
+Egal ob wir \emph{main.cpp}, \emph{Building.cpp} oder \emph{Building.h} verändert haben, immer wird das gesamte Projekt neu gebaut.
+In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
+
+Mache das Target \emph{all} jetzt abhängig von den Objektdateien \emph{main.o} und \emph{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \emph{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
+\begin{lstmake}
+all: main.o Building.o
+	g++ -o main.exe main.o Building.o
+
+main.o: main.cpp
+	g++ -c -o main.o main.cpp
+
+Building.o: Building.cpp
+	g++ -c -o Building.o Building.cpp
+\end{lstmake}
+
+Baue das Projekt nun erneut, du solltest drei Aufrufe von \emph{g++} sehen:
+\begin{verbatim}
+make all 
+g++ -c -o main.o main.cpp
+g++ -c -o Building.o Building.cpp
+g++ -o main.exe main.o Building.o
+\end{verbatim}
+Baust du das Projekt nun erneut, so wird nur noch der Linker aufgerufen:
+\begin{verbatim}
+make all 
+g++ -o main.exe main.o Building.o
+\end{verbatim}
+
+\item\textbf{Linker-Aufruf auslagern}
+Wie können wir diesen an sich unnötigen Aufruf ebenfalls noch loswerden?
+Eine Lösung ist es, das Target \emph{all} von \emph{main.exe} abhängig zu machen und ein neues Ziel \emph{main.exe} zu definieren:
+\begin{lstmake}
+all: main.exe
+
+main.exe: main.o Building.o
+	g++ -o main.exe main.o Building.o
+
+# ...
+\end{lstmake}
+
+Wenn du das Projekt jetzt baust, erhältst du erfreulicherweise die Rückmeldung, dass nichts zu tun ist:
+\begin{verbatim}
+make all 
+make: Nothing to be done for `all'.
+\end{verbatim}
+
+\item\textbf{Inkrementelles Bauen}
+Wir erproben jetzt, wie sich Veränderungen an einer der drei Dateien auf die Ausführung von \emph{make} auswirken.
+Mache nacheinander kleine Änderungen -- das können auch Kommentare sein -- an den Dateien \emph{main.cpp}, \emph{Building.h} und \emph{Building.cpp} und baue das Projekt nach jeder Änderung.
+
+Dir fällt auf, dass Änderungen an \emph{Building.h} von \emph{make} nicht bemerkt werden; die Datei taucht ja nirgendwo explizit im Makefile auf.
+
+Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
+
+
+\item\textbf{Header als Abhängigkeiten}
+Du hast kennengelernt, dass man Implementierungen auch \emph{inline} in einem Header machen kann, zum Beispiel wenn diese klein sind.
+
+Bewege \emph{toString} nun nach \emph{Buidling.h}:
+\begin{lstlisting}
+#include <sstream>
+// ...
+inline const std::string toString() const{
+
+    std::stringstream output;
+    output << "A building with " << this->numFloors << " floors\n";
+    return output.str();
+}
 \end{lstlisting}
 
-\item Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).
+Baue das Projekt; es kompiliert nicht! Warum? Genau aus dem Grund, dass \emph{make} das Header-File nicht \glqq kennt\grqq{}.
+Jetzt gibt es im Projekt keine Definition von \emph{toString} wie uns der Linker auch mitteilt:
+\begin{verbatim}
+main.o:main.cpp:(.text+0x5c): undefined reference to `Building::toString() const'
+collect2: ld returned 1 exit status
+\end{verbatim}
+
+Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \emph{main.o} nicht nur abhängig von \emph{Building.cpp}, sondern auch von \emph{Building.h} ist:
+\begin{lstmake}
+# ...
+main.o: main.cpp Building.h
+	g++ -c -o main.o main.cpp
+# ...
+\end{lstmake}
+
+Ist das eine schöne Lösung?
+Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \emph{\#include} in eine Sourcedatei einbinden.
+Schlimmer noch: Wir müssten über rekursive Includes Bescheid wissen, z.B. wenn \emph{Building.h} einen anderen veränderlichen Header wie \emph{Floor.h} einbindet.
+
+Glücklicherweise hilft uns \emph{g++} bei diesem Problem.
+
+\item\textbf{Header automatisch als Abhängigkeiten deklarieren}
+
+Wir automatisieren jetzt die Erkennung von Headern als Abhängigkeiten.
+Lösche dazu die Abhängigkeit \emph{Building.h} des Targets \emph{main.o} und füge in den Compiler-Aufrufen die Parameter \emph{-MMD -MP} hinzu.
+Binde außerdem die Dateien \emph{Building.d} und \emph{main.d} ein wie unten dargestellt:
+\begin{lstmake}
+all: main.exe
+
+main.exe: main.o Building.o
+	g++ -o main.exe main.o Building.o
+
+main.o: main.cpp
+	g++ -c -MMD -MP -o main.o main.cpp
+
+Building.o: Building.cpp
+	g++ -c -MMD -MP -o Building.o Building.cpp
+
+-include Building.d main.d
+\end{lstmake}
+
+Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\emph{main.exe, Building.h, Building.cpp}).
+Das anschließende Bauen sollte nun funktionieren.
+
+Der Trick ist, dass \emph{g++} beim Kompilieren für jede Sourcedatei ein Makefile generiert, das dessen eingebundene Header als Abhängigkeiten enthält (\emph{main.d, Building.d}).
+
+Wenn du jetzt Änderungen an der \emph{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \emph{Building.h} erkannt.
+
+
+
+
+\item\textbf{Target \emph{clean}}
+
+Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
+Diese Aufgabe lässt sich mittels \emph{make} ebenfalls automatisieren.
+
+Lege dazu ein neues Target \emph{clean} ohne Abhängigkeiten an und füge einen entsprechenden Löschbefehl ein:
+\begin{lstmake}
+clean:
+	rm -rf main.o Building.o main.d Building.d main.exe
+
+.PHONY: clean
+\end{lstmake}
+Das Spezial-Target \emph{.PHONY} dient dazu, \emph{make} zu signalisieren, dass \emph{clean} keine Datei ist, die gebaut werden soll.
+Würden wir dieses Target auslassen und eine Datei mit Namen \emph{clean} erzeugen, würde \emph{make} die Regel nie ausführen, weil die Datei ja existiert und keine Abhängigkeiten besitzt.
+Probier' es ruhig aus!
+
+Um \emph{clean} ausführen zu können, öffne die \textbf{Make Target} View über \textbf{Window $\to$ Show View $\to$ Other\dots $\to$ Make/Make Target}.
+
+Klicke rechts auf dein Projekt und wähle \textbf{New\dots}.
+Gib in das Feld \textbf{Make Target} \textbf{\emph{clean}} ein und lasse den Rest unverändert.
+Unter deinem Projekt wurde nun ein neuer Knoten mit dem Namen \emph{clean} eingefügt.
+Wenn du diesen doppelt anklickst, wird das Target \emph{clean} ausgeführt.
+
+Lege dir nun auch ein ausführbares Target für \emph{all} an.
+
+
+
+
+
+\item\textbf{Generisches Compiler-Target}
+Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder weniger identisch sind: \emph{main.o} und \emph{Building.o}.
+
+\emph{make} bietet für solche Situationen generische Regeln an, die mittels Wildcards beschrieben werden.
+
+Ersetze die beiden spezifischen Targets durch folgendes generisches:
+\begin{lstmake}
+%.o: %.cpp
+	g++ -MMD -MP -c $< -o $@
+\end{lstmake}
+Die etwas kryptischen Ausdrücke \emph{\$<} und \emph{\$@} werden durch die aktuelle Abhängigkeit und Target ersetzt.
+
+Lösche alle automatisch generierten Dateien (\emph{make clean}) und baue das Projekt neu.
+
+
+
+
+
+\item\textbf{Variablen in make}
+
+Im Moment sieht unser Makefile in etwas so aus:
+\begin{lstmake}
+all: main.exe
+
+main.exe: main.o Building.o
+	g++ -o main.exe main.o Building.o
+
+%.o: %.cpp
+	g++ -MMD -MP -c $< -o $@
+
+-include Building.d main.d
+
+clean:
+	rm -rf main.o Building.o main.d Building.d main.exe
+	
+.PHONY: clean
+\end{lstmake}
+
+Dir ist sicherlich eine andere Form der Redundanz aufgefallen:
+Noch immer haben wir die Tatsache, dass es im Moment zwei Sourcedateien gibt, an unterschiedlichen Stellen im Makefile festgelegt.
+Wenn wir nun als nächstes die \emph{Floor}-Klasse entwerfen, müssten wir diese hinzufügen
+\begin{compactitem}
+\item als Abhängigkeit von \emph{main.exe},
+\item zum Linker-Aufruf in \emph{main.exe},
+\item in der \emph{-include}-Direktive und
+\item im Lösch-Target, und das gleich doppelt!
+\end{compactitem}
+Das ist natürlich immer noch ziemlich fehleranfällig.
+
+Wir würden also gerne nur an \emph{einer} Stelle definieren, welche Sourcedateien Teil unseres Projektes sind.
+
+Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Object-Dateien an.
+Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\emph{main.o Building.o}' und ersetze das Auftreten der beiden Object-Dateien mit dieser Variablen:
+\begin{lstmake}
+objFiles=main.o Building.o
+
+all: main.exe
+
+main.exe: $(objFiles)
+	g++ -o main.exe $(objFiles)
+	
+# and so on...
+\end{lstmake}
+\emph{Tipp}: Eclipse bietet für Variablennamen automatische Vervollständigung an (\emph{Ctrl+Space}).
+
+Wiederhole die Prozedur für die Dependency-Dateien ('\emph{dFiles=main.d Building.d}') und das ausführbare Programm ('\emph{programName=main.exe}').
+Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
+
+Am Ende sollte dein Makefile in etwa so aussehen:
+\begin{lstmake}
+programName=main.exe
+objFiles=main.o Building.o
+dFiles=main.d Building.d
+
+all: $(programName)
+
+$(programName): $(objFiles)
+	g++ -o $(programName) $(objFiles)
+
+%.o: %.cpp
+	g++ -MMD -MP -c $< -o $@
+
+-include $(dFiles)
+
+clean:
+	rm -rf $(objFiles) $(dFiles) $(programName) 
+	
+.PHONY: clean
+\end{lstmake}
+%$ for syntax highlighting
+
+Wie wir die verbliebene Redundanz auflösen, sehen wir in der nächsten Teilaufgabe.
+
+\item\textbf{Wildcard-Ausdrücke}
+
+Die beiden Variablen \emph{objFiles} und \emph{dFiles} sind strukturell ähnlich -- wieder etwas, das wir loswerden wollen.
+Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu definieren, oder?
+
+Lege dazu eine neue Variable \emph{sourceFiles} mit den beiden Sourcedateien an.
+Der folgende Snippet zeigt, wie man nun mittels Suffix-Ausdrücken die anderen beiden Variablen erzeugt:
+\begin{lstmake}
+programName = main.exe
+sourceFiles = main.cpp Building.cpp
+objFiles   = $(sourceFiles:.cpp=.o)
+dFiles     = $(sourceFiles:.cpp=.d)
+
+# ...
+\end{lstmake}
+
+Es geht sogar noch allgemeiner:
+Du kannst per regulärem Ausdruck definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \emph{sourceFiles} wie folgt definierst:
+
+\begin{lstmake}
+sourceFiles=$(wildcard ./*.cpp)
+\end{lstmake}
+%$ for syntax highlighting
+
 \end{enumerate}
+
+Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhängig davon ist, wie viele Sourcedateien du im aktuellen Verzeichnis hältst und wie sie genau heißen -- wichtig ist nur die Endung \emph{cpp}.
+
+Hier nochmal das vollständige Makefile:
+\begin{lstmake}
+programName=main.exe
+sourceFiles=$(wildcard ./*.cpp)
+objFiles=$(sourceFiles:.cpp=.o)
+dFiles=$(sourceFiles:.cpp=.d)
+
+all: $(programName)
+
+$(programName): $(objFiles)
+	g++ -o $(programName) $(objFiles)
+
+%.o: %.cpp
+	g++ -MMD -MP -c $< -o $@
+
+-include $(dFiles)
+
+clean:
+	rm -rf $(objFiles) $(dFiles) $(programName)
+
+.PHONY: clean
+\end{lstmake}
+
+\textbf{Nachwort}:
+
+Wenn du diese Aufgabe durchgestanden hast, hast du einen Eindruck davon erhalten, wie gut man sich auskennen muss, um ein Projekt mittels \emph{make} zu managen;
+dabei sind dies hier nur äußerst wenige der Möglichkeiten, die \emph{make} bietet\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}.
+
+In der Praxis existieren Build-Tools, die eine wesentlich besser zu verstehende Beschreibungssprache verwenden und daraus Makefiles generieren.
+Beispiele sind \emph{cmake}\footnote{\url{http://www.cmake.org/cmake/help/cmake_tutorial.html}} oder \emph{qmake}\footnote{\url{http://qt-project.org/doc/qt-4.8/qmake-tutorial.html}} (Bestandteil von Qt).
+
 
 \end{document}
