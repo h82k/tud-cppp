@@ -2,7 +2,7 @@
   accentcolor=tud1c,	% Color theme for TUD corporate design
   colorbacktitle,		% Titlepage has colored background for title area
   inverttitle,			% Font color of title on titlepage is inverted
-  german,				% Document is in english
+  german,
   twoside
 ]{tudexercise}
 
@@ -11,32 +11,36 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithm2e}
+\usepackage{paralist}
 
 \definecolor{commentgreen}{RGB}{50,127,50}
 
-\setlength{\parskip}{2ex}
-
 
 \usepackage{listings}
-\usepackage{listings}
-\lstloadlanguages{C++}
+\lstloadlanguages{C++,[gnu]make}
 \lstset{language=C++}
 \lstset{captionpos=b}
 \lstset{tabsize=3}
 \lstset{breaklines=true}
+\lstset{basicstyle=\ttfamily}
 \lstset{columns=flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
 \lstset{literate=%
-{Ö}{{\"O}}1
-{Ä}{{\"A}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{ö}{{\"o}}1
-{'}{{\textquotesingle}}1
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+	{'}{{\textquotesingle}}1
 }
 
+\lstnewenvironment{lstmake} %
+{\lstset{language=[gnu]make}} %
+{}
+
 \parindent0pt
+\parskip2ex
 
 \newcommand{\tag}{1}
 
@@ -52,13 +56,34 @@
 
 \vspace{5mm}
 
-\section{Generelle Hinweise}
+\section*{Generelle Hinweise}
 
 Die Instruktionen auf den Übungsblättern sind in der Du-Form gehalten; wir hoffen, dass ist kein Problem. :-)
 
 C++ ist nicht einfach zu erlernen; insbesondere die Interpretation der Compilerfehler ist eine Kunst für sich.
 Bitte aktiv um Hilfe, wenn du nicht weiterkommst.
 
+\section*{Shortcuts}
+
+Das Arbeiten mit Eclipse macht erst so richtig Spaß, wenn man einige Shortcuts beherrscht.
+Dazu zählen:
+\begin{description}
+	\item[Autocomplete (\emph{Ctrl+Space})]
+	Hier erhältst du Vervollständigungsvorschläge und andere Hinweise.
+	Versuche es mal mit \emph{std::}, \emph{using namespace}.
+	Wenn du \emph{main} tippst und \emph{Ctrl+Space} drückst, generiert Eclipse für dich die \emph{main}-Funktion.
+	
+	\item[Umbenennen (\emph{Alt+Shift+R})]
+	Mit dieser Funktion kannst du Variablen, Funktionen, Klassen,\dots umbenennen.
+	
+	\item[Neu (\emph{Ctrl+N})]
+	Hier kannst du schnell neue Resourcen (Dateien, Projekte,\dots) anlegen.
+	
+	\item[Header$\leftrightarrow$Source (\emph{Ctrl+Tab})]
+	Auf diese Weise kannst du schnell zwischen dem Header und der Implementierungdatei hin- und herspringen.
+	
+	\item[Go to (\emph{Ctrl+Click}/\emph{F3})] Wenn du \emph{Ctrl} gedrückt hältst und auf ein Element klickst (Funktion, Klasse,\dots), navigiert Eclipse dorthin.
+\end{description}
 
 \section{Eclipse CDT}
 
@@ -300,7 +325,7 @@ Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mi
 Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
 Der Prototyp von \emph{printStars(int n)} lautet \emph{void printStars(int n);}
 
-Kopiere deine beiden Funktionen nach \emph{functions.cpp}.
+Verschiebe deine beiden Funktionen nach \emph{functions.cpp}.
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \item
@@ -479,7 +504,7 @@ Wirf deine Lösung also bitte nicht direkt weg.
 Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
 
 \begin{enumerate}
-\item 
+\item \textbf{Konstruktor}
 Schreibe eine Klasse \emph{Vector3} mit den Attributen \emph{a}, \emph{b} und \emph{c} vom Typ \emph{double}, die die einzelnen Komponenten eines 3-dimensionalen Vektors darstellen.
 Die Klasse soll drei Konstruktoren besitzen, einen parameterlosen Default-Konstruktor, der den Vektor mit \textbf{0} initialisiert, einen Konstruktor mit 3 Parametern, der die einzelnen Vektor-Komponenten auf die gegebenen Werte setzt, und einen Copy-Konstruktor.
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
@@ -487,16 +512,21 @@ Er nimmt eine Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \em
 Die Übergabe sollte dabei per const Reference geschehen.
 Näheres dazu in der Vorlesung.
 Bis dahin übernimm einfach die folgende Syntax für den Prototypen:
+% const & ist hier nötig weil sonst rekursiv immer wieder der Kopierkonstruktor aufgerufen würde
 \begin{lstlisting}
 Vector3(const Vector3& other);
 \end{lstlisting} 
 
-Dadurch kannst du \emph{other} wie ein gewöhnliches \emph{Vector3}-Objekt verwenden, es jedoch nicht verändern. \\
+Dadurch kannst du \emph{other} wie ein gewöhnliches \emph{Vector3}-Objekt verwenden, es jedoch nicht verändern.
+
+Füge jeden Konstruktor eine Ausgabe auf die Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
+
+\item \textbf{Destruktor}
 
 Erstelle außerdem einen Destruktor.
 Ein Destruktor ist eine Methode, die automatisch beim Löschen des Objektes aufgerufen wird. Die Syntax des Prototypen lautet
 \begin{lstlisting}
-	~Vector3();
+~Vector3();
 \end{lstlisting} 
 
 und die Implementierung entsprechend
@@ -506,13 +536,13 @@ Vector3::~Vector3() {
 }
 \end{lstlisting} 
 
-Füge in beide Konstruktoren und den Destruktor eine Ausgabe auf die Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
+Füge den Destruktor eine Ausgabe auf die Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
 
-\item
+\item\textbf{Vektoraddition}
 Überlade den Operator \textbf{+} der Klasse \emph{Vector3}, der eine komponentenweise Vektoraddition durchführt.
 Die Signatur lautet
 \begin{lstlisting}
-Vector3 operator+(const Vector3 &rhs);
+Vector3 operator+(Vector3 rhs);
 \end{lstlisting}
 Das \emph{Vector3} links ist dabei der Rückgabetyp der Überladung, der Parameter rhs die rechte Seite (\glqq right-hand-side\grqq{}) des \textbf{+}-Operators.
 Dadurch, dass du den Operator als Member der Klasse deklarierst, nimmt die aktuelle Instanz hierbei automatisch die linke Seite der Operation an.
@@ -520,26 +550,26 @@ Platziere den Prototyp im \emph{public}-Bereich der \emph{Vector3} Klasse.
 
 Die Implementierung lautet dementsprechend:
 \begin{lstlisting}
-Vector3 Vector3::operator+(const Vector3 rhs) {
+Vector3 Vector3::operator+(Vector3 rhs) {
 	...
 }
 \end{lstlisting}
 
 Du kannst nun innerhalb der Methode durch \emph{a}, \emph{b} und \emph{c} auf eigene Attribute und über  \emph{rhs.a}, \emph{rhs.b} und \emph{rhs.c} auf Attribute der rechten Seite zugreifen.
 
-\item
+\item\textbf{Vektorsubtraktion und Skalarprodukt}\\[0ex]
 Überlade auf die gleiche Weise auch die Operatoren $-$ für eine komponentenweise Vektorsubtraktion sowie \textbf{*} für ein Skalarprodukt.
 Der Rückgabetyp eines Skalarprodukts ist kein \emph{Vector3} sondern ein Skalar (\emph{double})!
 
 Jetzt kannst du Vektoren durch \emph{v1 + v2}, \emph{v1 - v2} und \emph{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden.
 
-\item
+\item\textbf{Ausgabeoperator (\emph{\texttt{operator<<}})}
 Um die Korrektheit unserer Implementierung zu testen, brauchen wie eine Ausgabemöglichkeit eines \emph{Vektor3}-Objektes, idealerweise mit der gewohnten \emph{cout \textbf{$<<$} ...} Syntax.
 Dazu überladen wir den \textbf{$<<$} Operator.
 
-Diesmal müssen wir die Überladung \textbf{außerhalb} der \emph{Vektor3}-Klasse definieren, weil auf unser \emph{Vektor3}-Objekt nun auf der rechten Seite der Operation stehen muss. Der Funktionsprototyp lautet 
+Diesmal müssen wir die Überladung \textbf{außerhalb} der \emph{Vektor3}-Klasse definieren, weil auf unser \emph{Vektor3}-Objekt nun auf der rechten Seite der Operation steht. Der Funktionsprototyp lautet 
 \begin{lstlisting}
-std::ostream& operator<<(std::ostream& out, const Vector3 rhs);
+std::ostream& operator<<(std::ostream& out, Vector3 rhs);
 \end{lstlisting}
 
 Als linke Seite wird hierbei ein \emph{ostream}-Objekt (wie z.B. \emph{cout}) erwartet.
@@ -547,7 +577,7 @@ Um Ausgabeketten \emph{cout} \textbf{$<<$} \dots \textbf{$<<$} \dots zu ermögli
 
 Die Implementierung hat folgende Form:
 \begin{lstlisting}
-ostream& operator<<(ostream& out, const Vector3 rhs)  {
+ostream& operator<<(ostream& out, Vector3 rhs)  {
 	out << ... ;
 	return out;
 }
@@ -556,7 +586,7 @@ ostream& operator<<(ostream& out, const Vector3 rhs)  {
 Fülle die Funktion aus und kompiliere das Projekt.
 Vergiss nicht, den \emph{iostream} Header und \emph{std} Namespace einzubinden.
 
-\item
+\item\textbf{Komponenten-Getter}
 Der Compiler wird mit der Fehlermeldung 
 \begin{verbatim}
 error: 'double Vector3::a' is private within this context
@@ -564,13 +594,12 @@ error: 'double Vector3::a' is private within this context
 abbrechen.
 Dies liegt daran, dass die Attribute \emph{a}, \emph{b} und \emph{c} privat und nur innerhalb der Klasse sichtbar sind.
 Erstelle deshalb Getter-Methoden für die einzelnen Vektorkomponenten und verwende diese in der Ausgabefunktion.
-Wenn alles funktioniert hat, kannst du beliebige \emph{Vector3}-Objekte über 
+Wenn alles funktioniert hat, kannst du beliebige \emph{Vector3}-Objekte ausgeben:
 \begin{lstlisting}
 cout << v << endl;
 \end{lstlisting} 
-ausgeben.
 
-\item
+\item\textbf{Testen}
 Teste deine bisher definierten Methoden und Funktionen.
 Probiere auch Kombinationen von verschiedenen Operatoren aus und beobachte das Ergebnis.
 Schreibe auch eine einfache Funktion, die Vektoren als Parameter nimmt. 
@@ -579,29 +608,6 @@ Dies liegt daran, dass die Objekte immer per Call-By-Value übergeben und dabei 
 Wie dies vermieden werden kann, sehen wir im nächsten Teil des Praktikums.
 
 \end{enumerate}
-
-\section{Shortcuts}
-
-Das Arbeiten mit Eclipse macht erst so richtig Spaß, wenn man einige Shortcuts beherrscht.
-Dazu zählen:
-\begin{description}
-\item[Autocomplete (Ctrl+Space)]
-Hier erhältst du Vervollständigungsvorschläge und andere Hinweise.
-Versuche es mal mit \emph{std::}, \emph{using namespace}.
-Wenn du \emph{main} tippst und \emph{Ctrl+Space} drückst, generiert Eclipse für dich die \emph{main}-Funktion.
-
-\item[Umbenennen (Alt+Shift+R)]
-Mit dieser Funktion kannst du Variablen, Funktionen, Klassen,\dots umbenennen.
-
-\item[Neu (Ctrl+N)]
-Hier kannst du schnell neue Resourcen (Dateien, Projekte,\dots) anlegen.
-
-\item[Header$\leftrightarrow$Source (Ctrl+Tab)]
-Auf diese Weise kannst du schnell zwischen dem Header und der Implementierungdatei hin- und herspringen.
-
-\item[Go to (Ctrl+Click)] Wenn du \emph{Ctrl} gedrückt hältst und auf ein Element klickst (Funktion, Klasse,\dots), navigiert Eclipse dorthin.
-
-\end{description}
 
 
 \section{Aufzug}
