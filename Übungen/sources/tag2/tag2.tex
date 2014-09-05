@@ -1,41 +1,4 @@
-\documentclass[
-  accentcolor=tud1c,	% Color theme for TUD corporate design
-  colorbacktitle,		% Titlepage has colored background for title area
-  inverttitle,			% Font color of title on titlepage is inverted
-  german,				% Document is in english
-  twoside
-]{tudexercise}
-
-\usepackage[ngerman]{babel}
-\usepackage{units}
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-
-
-\definecolor{commentgreen}{RGB}{50,127,50}
-
-
-\usepackage{listings}
-\usepackage{listings}
-\lstloadlanguages{C++}
-\lstset{language=C++}
-\lstset{captionpos=b}
-\lstset{tabsize=3}
-\lstset{breaklines=true}
-\lstset{columns=flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
-\lstset{literate=%
-{Ö}{{\"O}}1
-{Ä}{{\"A}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{ö}{{\"o}}1
-{'}{{\textquotesingle}}1
-}
-
-\parindent0pt
-\parskip2ex
+\input{../common_head.tex}
 
 \newcommand{\tag}{2}
 
@@ -60,7 +23,7 @@ Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder
 Als Ausgangsbasis kann dieses Programmfragment dienen:
 \begin{lstlisting}
 int intVal = 42;
-int* pIntVal = &intVal;
+int *pIntVal = &intVal;
 cout << "Wert von IntVal " << intVal << endl;
 cout << "Wert von &IntVal " << &intVal << endl;
 cout << "Wert von pIntVal " << pIntVal << endl;
@@ -138,7 +101,7 @@ Probiere dabei beide möglichen Übergabevarianten (Call-by-Reference, Call-by-P
 \begin{lstlisting}
 void foo(int& i) {
 	int i2 = i;
-	int& i3 = i;
+	int &i3 = i;
 	
 	cout << "i = " << i << endl;
 	cout << "i2 = " << i2 << endl;
@@ -198,7 +161,7 @@ Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger in
 Beispiel:
 
 \begin{lstlisting}
-	int* pArr = arr;
+	int *pArr = arr;
 	cout << "Address of first element: "  << pArr << endl;
 	cout << "Address of second element: " << pArr+1 << endl;
 	cout << "Address of third element: "  << pArr+2 << endl;
@@ -242,7 +205,7 @@ Wie wir vorher gesehen haben, kann man mit Zeigern auch rechnen und diese nachtr
 Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder Iteration den Zeiger selbst inkrementieren! 
 
 \begin{lstlisting}
-	for(int* p = pArr; p != pArr + 10; p++) {
+	for(const int *p = array; p != array + 10; p++) {
 		// *p contains current element
 		// ...
 	}
@@ -254,7 +217,7 @@ Schreibe die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden
 Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man  die Adresse des Elements nach dem letzten Element angibt.
 Dadurch werden Schleifen der Form
 \begin{lstlisting}
-	for(int* p = begin; p != end; p++) {
+	for(const int *p = begin; p != end; p++) {
 		// *p contains current element
 		// ...
 	}

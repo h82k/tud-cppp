@@ -1,46 +1,4 @@
-\documentclass[
-  accentcolor=tud1c,	% Color theme for TUD corporate design
-  colorbacktitle,		% Titlepage has colored background for title area
-  inverttitle,			% Font color of title on titlepage is inverted
-  german,
-  twoside
-]{tudexercise}
-
-\usepackage[ngerman]{babel}
-\usepackage{units}
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage{algorithm2e}
-\usepackage{paralist}
-
-\definecolor{commentgreen}{RGB}{50,127,50}
-
-
-\usepackage{listings}
-\lstloadlanguages{C++,[gnu]make}
-\lstset{language=C++}
-\lstset{captionpos=b}
-\lstset{tabsize=3}
-\lstset{breaklines=true}
-\lstset{basicstyle=\ttfamily}
-\lstset{columns=flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
-\lstset{literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}2
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1
-	{'}{{\textquotesingle}}1
-}
-
-\lstnewenvironment{lstmake} %
-{\lstset{language=[gnu]make}} %
-{}
-
-\parindent0pt
-\parskip2ex
+\input{../common_head.tex}
 
 \newcommand{\tag}{1}
 
