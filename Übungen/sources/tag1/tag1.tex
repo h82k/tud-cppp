@@ -2,24 +2,19 @@
 
 \newcommand{\tag}{1}
 
-\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-\subtitle{Übungen für den \tag{}. Tag}
+\cppSetTitle
 
 \begin{document}
 
-\begin{examheader}
-	\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
-\end{examheader}
-\maketitle 
+\cppSetHeaderAndMakeTitle 
 
-\vspace{5mm}
 
 \section*{Generelle Hinweise}
 
 Die Instruktionen auf den Übungsblättern sind in der Du-Form gehalten; wir hoffen, dass ist kein Problem. :-)
 
 C++ ist nicht einfach zu erlernen; insbesondere die Interpretation der Compilerfehler ist eine Kunst für sich.
-Bitte aktiv um Hilfe, wenn du nicht weiterkommst.
+\textbf{Bitte aktiv um Hilfe, wenn du nicht weiterkommst.}
 
 \section*{Shortcuts}
 
@@ -464,13 +459,14 @@ Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du nat�
 \begin{enumerate}
 \item \textbf{Konstruktor}
 Schreibe eine Klasse \emph{Vector3} mit den Attributen \emph{a}, \emph{b} und \emph{c} vom Typ \emph{double}, die die einzelnen Komponenten eines 3-dimensionalen Vektors darstellen.
-Die Klasse soll drei Konstruktoren besitzen, einen parameterlosen Default-Konstruktor, der den Vektor mit \textbf{0} initialisiert, einen Konstruktor mit 3 Parametern, der die einzelnen Vektor-Komponenten auf die gegebenen Werte setzt, und einen Copy-Konstruktor.
+Die Klasse soll drei Konstruktoren besitzen, einen parameterlosen \textbf{Default-Konstruktor}, der den Vektor mit \textbf{0} initialisiert, einen \textbf{Konstruktor mit 3 Parametern}, der die einzelnen Vektor-Komponenten auf die gegebenen Werte setzt, und einen \textbf{Copy-Konstruktor}.
+
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
 Er nimmt eine Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \emph{Vector3}) als Parameter und kopiert alle Attribute.
 Die Übergabe sollte dabei per const Reference geschehen.
-Näheres dazu in der Vorlesung.
+Näheres dazu in der Vorlesung\footnote{Erklärung: Würden wir \emph{other} by-Value übergeben, müsste eine Kopie von \emph{other} angelegt werden.
+	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.}.
 Bis dahin übernimm einfach die folgende Syntax für den Prototypen:
-% const & ist hier nötig weil sonst rekursiv immer wieder der Kopierkonstruktor aufgerufen würde
 \begin{lstlisting}
 Vector3(const Vector3& other);
 \end{lstlisting} 

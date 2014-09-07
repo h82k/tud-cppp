@@ -1,49 +1,13 @@
-\documentclass[
-  accentcolor=tud1c,	% Color theme for TUD corporate design
-  colorbacktitle,		% Titlepage has colored background for title area
-  inverttitle,			% Font color of title on titlepage is inverted
-  german,				% Document is in english
-  twoside
-]{tudexercise}
-
-\usepackage[ngerman]{babel}
-\usepackage{units}
-\usepackage[utf8]{inputenc}
-
-\usepackage{url}
-
-\usepackage{listings}
-\lstloadlanguages{C++}
-\lstset{language=C++}
-\lstset{captionpos=b}
-\lstset{tabsize=3}
-\lstset{breaklines=true}
-\lstset{columns=flexible,keywordstyle=\color{red},stringstyle=\color{blue}}
-\lstset{literate=%
-{Ö}{{\"O}}1
-{Ä}{{\"A}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{ö}{{\"o}}1
-}
-
-\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
-\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+\input{../common_head.tex}
 
 \newcommand{\tag}{6}
-\setcounter{section}{18}
+%\setcounter{section}{18}
 
-\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-\subtitle{Übungen für den \tag{}. Tag}
+\cppSetTitle
 
 \begin{document}
 
-\begin{examheader}
-	\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
-\end{examheader}
-\maketitle 
+\cppSetHeaderAndMakeTitle 
 
 
 \noindent Heute ist es an der Zeit, Ihr neu erlerntes Wissen bei der Programmierung von Microcontrollern umzusetzen.

@@ -2,15 +2,11 @@
 
 \newcommand{\tag}{2}
 
-\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-\subtitle{Übungen für den \tag{}. Tag}
+\cppSetTitle
 
 \begin{document}
-
-\begin{examheader}
-	\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
-\end{examheader}
-\maketitle 
+	
+\cppSetHeaderAndMakeTitle 
 
 \vspace{5mm}
 
@@ -93,13 +89,13 @@ Tipp 2: Nur tatsächlich angelegte Variablen haben Adressen. Ausdrücke wie a + 
 \end{lstlisting}
 
 \item Schreibe eine Funktion \emph{swap}, die zwei \emph{int}-Variablen miteinander vertauscht. 
-Probiere dabei beide möglichen Übergabevarianten (Call-by-Reference, Call-by-Pointer) aus. 
+Probiere dabei beide möglichen Übergabevarianten (per Referenz, per Pointer) aus. 
 
 \item Sieh dir folgendes Programm an:
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}
-void foo(int& i) {
+void foo(int &i) {
 	int i2 = i;
 	int &i3 = i;
 	

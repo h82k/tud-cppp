@@ -1,52 +1,12 @@
-\documentclass[
-  accentcolor=tud1c,	% Color theme for TUD corporate design
-  colorbacktitle,		% Titlepage has colored background for title area
-  inverttitle,			% Font color of title on titlepage is inverted
-  german,				% Document is in english
-  twoside
-]{tudexercise}
-
-\usepackage[ngerman]{babel}
-\usepackage{units}
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage{algorithm2e}
-
-\definecolor{commentgreen}{RGB}{50,127,50}
-
-
-\usepackage{listings}
-\usepackage{listings}
-\lstloadlanguages{C++}
-\lstset{language=C++}
-\lstset{captionpos=b}
-\lstset{tabsize=3}
-\lstset{breaklines=true}
-\lstset{columns=flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
-\lstset{literate=%
-{Ö}{{\"O}}1
-{Ä}{{\"A}}1
-{Ü}{{\"U}}1
-{ß}{{\ss}}2
-{ü}{{\"u}}1
-{ä}{{\"a}}1
-{ö}{{\"o}}1
-{'}{{\textquotesingle}}1
-}
-
-\parindent0pt
+\input{../common_head.tex}
 
 \newcommand{\tag}{3}
 
-\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-\subtitle{Übungen für den \tag{}. Tag}
+\cppSetTitle
 
 \begin{document}
-
-\begin{examheader}
-	\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
-\end{examheader}
-\maketitle 
+	
+\cppSetHeaderAndMakeTitle  
 
 \vspace{5mm}
 

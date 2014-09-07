@@ -9,6 +9,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{units}
 \usepackage{hyperref}
+\usepackage{booktabs}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithm2e}
 \usepackage{paralist}
@@ -41,3 +42,19 @@
 
 \parindent0pt
 \parskip2ex
+
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+
+\newcommand{\cppSetTitle}{
+	\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
+	\subtitle{Übungen für den \tag{}. Tag}
+}
+
+\newcommand{\cppSetHeaderAndMakeTitle}{
+	\begin{examheader}
+		\textmb{Übung zum C/C++-Praktikum - Tag \tag{}}
+	\end{examheader}
+	\maketitle
+}
