@@ -35,13 +35,13 @@ Implementiere auch einen Destruktor.
 Überschreibe die Methode \emph{getInfo()}, sodass zusätzlich zum Namen auch die Matrikelnummer zurückgegeben wird.
 Du kannst bei Bedarf die \emph{getInfo()}-Implementierung der Elternklasse \emph{Person} von \emph{Student} aus mittels \textbf{Person::getInfo()} aufrufen.
 
-\item \textbf{Instanzen anlegen}
+\item 
 Erstelle nun in \emph{main()} je eine Person und einen Studenten und gib deren Daten auf der Konsole aus.
 Vergewissere dich, dass bei \emph{Student} auch die Matrikelnummer ausgegeben wird.
-Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an und vollziehe diese nach.
+Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an, und versuche, diese nachzuvollziehen.
 
-\item\textbf{\emph{printPersonInfo}}
-Implementiere nun die folgende Funktion (z.B. in \emph{main.cpp}):
+\item
+Implementiere nun die Funktion 
 \begin{lstlisting}
 /** Prints person information on console */
 void printPersonInfo(const Person* person);
@@ -157,10 +157,10 @@ Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \emph{Buil
 Implementiere eine einfache Aufzugstrategie.
 Diese soll folgendermaßen vorgehen: 
 Falls der Aufzug momentan leer ist, soll zum tiefsten Stockwerk gefahren werden, wo sich noch Personen befinden.
-Falls der Aufzug nicht leer ist, wird das Zielstockwerk eines der Personen im Aufzug ausgewählt.
+Falls der Aufzug nicht leer ist, wird das Zielstockwerk einer der Personen im Aufzug ausgewählt.
 
 \item \textbf{Implementierung von \emph{runSimulation}}
-Ändere nun \emph{runSimulation()} entsprechend um, sodass die Simulation anhand der gegebenen Strategie durchführt wird.
+Ändere nun \emph{runSimulation()} entsprechend um, sodass die Simulation anhand der gegebenen Strategie durchgeführt wird.
 Folgender Pseudocode kann dir als Denkhilfe dienen: \\
 \begin{algorithm}[H]
  \SetAlgoLined
@@ -176,8 +176,8 @@ Folgender Pseudocode kann dir als Denkhilfe dienen: \\
 \item \textbf{Systemtest} 
 Teste deine Implementierung mit der bisher erstellten, einfachen Strategie.
 
-\item \textbf{Neue Aufzusstrategien (optional)}
-Entwickele eigene Aufzugstrategien. 
+\item \textbf{Neue Aufzugstrategien (optional)}
+Entwickle eigene Aufzugstrategien. 
 Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
 Hierfür könnte Backtracking verwenden\footnote{\url{Siehe http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um optimale Lösungen durch Ausprobieren zu finden. Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
 
