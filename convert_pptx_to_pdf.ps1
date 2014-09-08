@@ -61,6 +61,9 @@ $root = ($pwd).Path
 $folder = "Vorlesung" 
 
 Foreach ($ifile in $(ls "$root\$folder" -Filter "*.pptx")) { 
+
+    $forceConversion = $False
+
   # Build name of output file 
   $pathname = split-path $ifile 
   $filename = split-path $ifile -leaf  
@@ -73,7 +76,7 @@ Foreach ($ifile in $(ls "$root\$folder" -Filter "*.pptx")) {
   
   $lastWriteForInput = (Get-Item $fullInputPath).LastWriteTime
   $lastWriteForOutput = (Get-Item $fullOutputPath).LastWriteTime
-  if ($lastWriteForInput -gt $lastWriteForOutput) {
+  if ($lastWriteForInput -gt $lastWriteForOutput -or $forceConversion) {
     echo "  [$oFile] Converting..."
     Convert-PptxToPDF -ifile $fullInputPath -OFile $fullOutputPath
   } else {
