@@ -59,7 +59,7 @@ Eine Alternative zur Implementierungsvererbung stellt \textbf{Schnittstellenvere
 Zusätzlich gibt es Implementierungen von diesen Schnittstellen.
 Man würde also \emph{Person}, \emph{Student}, \emph{Employee} und \emph{StudentAssistant} in jeweils zwei Klassen aufteilen, eine Schnittstelle und eine Implementierung.
 Die Schnittstellen würden voneinander erben, z.B. \emph{StudentBase} von \emph{PersonBase}, und entsprechende pur virtuelle/abstrakte Methoden wie \emph{virtual string StudentBase::GetStudentID() = 0} bereitstellen.
-Die Implementierung würde ausschließlich von der jeweiliger Schnittstelle erben (\emph{Student} von \emph{StudentBase}).
+Die Implementierung würde ausschließlich von der jeweiligen Schnittstelle erben (\emph{Student} von \emph{StudentBase}).
 Diese Variante erscheint zwar aufwändiger als Implementierungsvererbung, vermeidet aber viele der dabei entstehenden Probleme. 
 Schnittstellenvererbung kann in Java eingesetzt werden, um Mehrfachvererbung zu realisieren.
 
@@ -173,7 +173,7 @@ Du brauchst keine Türme zu modellieren und zu verschieben, es reicht, lediglich
 \end{lstlisting}
 
 \item \textbf{Callbacks mit Funktionszeigern}
-Nun wollten wie die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
+Nun wollen wir die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
 
 Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet.
 Ändere deine Implementierung entsprechend um:
@@ -186,7 +186,7 @@ void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
 }
 \end{lstlisting}
 
-Nun könne eine Funktion mit zwei Parametern an \emph{hanoi()} übergeben.
+Nun können wir eine Funktion mit zwei Parametern an \emph{hanoi()} übergeben.
 \begin{lstlisting}
 void print(int from, int to) {
 	cout << from << " -> " << to << endl;
@@ -303,7 +303,7 @@ int main() {
 \textbf{Klasse \emph{FunctorCallback}}:
 Implementiere nun die Unterklasse \emph{template<class ParamT, class ClassT> FunctorCallback}.
 Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden.
-Speichere das zu verwendende Funktor-Objekt als Referenz ab, um Kopien zu vermeiden.
+Speichere das zu verwendende Functor-Objekt als Referenz ab, um Kopien zu vermeiden.
 Achte auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden.
 Teste deine Implementierung! 
 
@@ -330,12 +330,12 @@ MethodCallCallback(void(ClassT::*method)(ParamT), ClassT* object)
 Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.
 Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das dir schon bekannte  Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht.
 Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
-Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion  die passende Unterklasse selbst aussucht.
+Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion die passende Unterklasse selbst aussucht.
 
-Schreibe eine Klasse \emph{template<class ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase} Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet. \\
+Schreibe eine Klasse \emph{template<class ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet. \\
 
 Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
-Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instantiieren.
+Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instanziieren.
 Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \emph{FunctorCallback} instanziieren, und der dritte entsprechend ein \emph{MethodCallback}.
 Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \emph{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.\\
 
@@ -353,9 +353,10 @@ In dieser Aufgabe werden wir den Umgang mit den Containern \emph{std::vector} un
 Es ist sinnvoll, wenn du während der Übung eine C++-Referenz zum Nachschlagen bereithältst, z.B. \url{http://www.cplusplus.com/}.
 Schaue dir auch die Vorlesungsfolien genau an, da diese nützliche Codebeispiele enthalten.
 
-Die Klasse \emph{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann. \emph{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, seine aktuelle Kapazität überschritten wird.
+Die Klasse \emph{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann. \emph{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, wenn seine aktuelle Kapazität überschritten wird.
 Auch müssen viele Elemente verschoben werden, wenn der Vektor in der Mitte oder am Anfang modifiziert wird.
-Der große Vorteil von \emph{std::vector} ist der \emph{wahlfreie Zugrif}, d.h. man kann auf beliebige Elemente mit konstantem Aufwand zugreifen.
+Der große Vorteil von \emph{std::vector} ist der \emph{wahlfreie Zugriff}, d.h. man kann auf beliebige Elemente mit konstantem Aufwand zugreifen.
+
 
 \begin{enumerate}
 \item 
@@ -378,7 +379,7 @@ Lösche alle Elemente des Vektors mit einem einzigen Methodenaufruf.
 
 \item
 Mittels \emph{remove\_copy\_if()} kann man Elemente aus einem Container in einen anderen kopieren und dabei bestimmte Elemente löschen lassen.
-Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachte, dass \emph{remove\_copy\_if()} keine neue Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \emph{OutputIterator} kopiert.
+Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachte, dass \emph{remove\_copy\_if()} keine neuen Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \emph{OutputIterator} kopiert.
 
 Deshalb kannst du \emph{vec.end()} \textbf{nicht} als \emph{OutputIterator} nehmen, da dieser "{}hinter"{} das letzte Element zeigt und weder dereferenziert noch inkrementiert werden darf. Nutze stattdessen die Methode \emph{back\_inserter()}, um einen Iterator zu erzeugen, der neue Elemente an den Vektor anhängen kann.
 \end{enumerate}
@@ -401,7 +402,7 @@ try {
 Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java.
 Das aus Java bekannte \emph{finally}-Konstrukt existiert in C++ nicht.
 Außerdem kann jede Art von Wert geworfen werden -- sowohl Objekte als auch primitive Werte wie z.B. \emph{int}.
-In der Praxis wird es jedoch empfohlen, den geworfenen Wert von \emph{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzten. \\
+In der Praxis wird es jedoch empfohlen, den geworfenen Wert von \emph{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzen. \\
 
 Im Gegensatz zu Java kann man Objekte nicht nur \emph{by-Reference} sondern auch \emph{by-Value} werfen und fangen. In diesem Fall wird das geworfene Objekt nach der Behandlung im \textbf{catch}-Block automatisch zerstört. Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf. Beispiel:
 
@@ -448,7 +449,7 @@ Provoziere eine Exception, indem du falsche Indices angibst, und fange die Excep
 
 
 \section{C Einführung}
-In den nächsten Tagen werde Programme für eine Embedded Plattform in C entwickeln. 
+In den nächsten Tagen werden wir Programme für eine Embedded Plattform in C entwickeln. 
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
 
 \begin{itemize}
@@ -533,7 +534,7 @@ Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail e
 	
 	\item[] \textbf{Ausgabe auf Konsole per \emph{printf}}
 	
-	Im Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden.
+	Um Daten auf der Konsole auszugeben, kann die Funktion \emph{printf} verwendet werden.
 	\emph{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
 	Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
 	Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \emph{printf()} zu nutzen, muss der Header \emph{stdio.h} eingebunden werden. 
@@ -880,7 +881,7 @@ Lösche alle automatisch generierten Dateien (\emph{make clean}) und baue das Pr
 
 \item\textbf{Variablen in make}
 
-Im Moment sieht unser Makefile in etwas so aus:
+Im Moment sieht unser Makefile in etwa so aus:
 \begin{lstmake}
 all: main.exe
 
