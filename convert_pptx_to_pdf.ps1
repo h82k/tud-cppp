@@ -69,9 +69,14 @@ Foreach ($ifile in $(ls "$root\$folder" -Filter "*.pptx")) {
  
   $fullInputPath = "$root\$folder\$iFile"
   $fullOutputPath = "$root\$folder\$oFile"
-  echo "Converting..."
-  echo "  $fullInputPath"
-  echo "  $fullOutputPath"
+  echo "Checking..."
   
-   Convert-PptxToPDF -ifile $fullInputPath -OFile $fullOutputPath
+  $lastWriteForInput = (Get-Item $fullInputPath).LastWriteTime
+  $lastWriteForOutput = (Get-Item $fullOutputPath).LastWriteTime
+  if ($lastWriteForInput -gt $lastWriteForOutput) {
+    echo "  [$oFile] Converting..."
+    Convert-PptxToPDF -ifile $fullInputPath -OFile $fullOutputPath
+  } else {
+    echo "  [$oFile] Already up-to-date"
+  }
 } 
