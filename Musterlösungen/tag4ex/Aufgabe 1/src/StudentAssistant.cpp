@@ -8,7 +8,7 @@
 using namespace std;
 
 StudentAssistant::StudentAssistant(const std::string& name, const std::string& studentID, const std::string supervisor) :
-		Person(name), Student("Student", studentID), Employee("Employee", studentID) {
+		Person(name), Student("Student", studentID), Employee("Employee", supervisor) {
 	cout << "Creating StudentAssistant " << name << endl;
 }
 
