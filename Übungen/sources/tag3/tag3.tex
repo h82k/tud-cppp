@@ -90,7 +90,7 @@ Einzelne Knotentypen wie Addition und Subtraktion werden von \emph{Expression} a
 Schreibe die abstrakte Klasse \emph{Expression}.
 Diese soll als Basisklasse für alle Ausdrücke dienen.
 Implementiere einen parameterlosen Konstruktor und einen virtuellen Destruktor, die je eine Meldung auf der Konsole ausgeben, sodass es bei der Ausführung ersichtlich wird, wann eine \emph{Expression} erzeugt und wann zerstört wird.
-Deklariere außerdem eine abstrakte (\emph{pure virtual}) Methode \emph{double compute()}, die das Ergebnis des Ausdrucks berechnen und zurückgeben soll. 
+Deklariere außerdem eine abstrakte (\emph{pure virtual}) Methode \emph{virtual double compute() = 0;}, die das Ergebnis des Ausdrucks berechnen und zurückgeben soll. 
 
 \item \textbf{Klasse \emph{NumberExpression}}
 Schreibe die Klasse \emph{NumberExpression}, die ein (Baum-)Blatt mit einer Zahl darstellt.
