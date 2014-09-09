@@ -70,7 +70,7 @@ Schnittstellenvererbung kann in Java eingesetzt werden, um Mehrfachvererbung zu 
 Implementiere die folgende Funktion, die das Maximum von zwei Variablen liefert:
 \begin{lstlisting}
 template<class T>
-const T& maximum(const T& t1, const T& t2);
+const T &maximum(const T &t1, const T &t2);
 \end{lstlisting}
 
 Durch die Verwendung von Templates soll die Funktion mit verschiedenen Datentypen funktionieren.
@@ -230,7 +230,7 @@ Immer wenn ein Button als Parameter an eine Funktion übergeben wird, müsste di
 
 \begin{lstlisting}
 template<class T>
-void doSomethingWithButton(Button<T>& btn);
+void doSomethingWithButton(Button<T> &btn);
 \end{lstlisting}
 
 Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
@@ -317,7 +317,7 @@ Teste deine Implementierung.
 
 \emph{Tipp}: Verwende beispielsweise folgende Signatur für den Konstruktor von \emph{MethodCallback}:
 \begin{lstlisting}
-MethodCallCallback(void(ClassT::*method)(ParamT), ClassT* object)
+MethodCallCallback(void(ClassT::*method)(ParamT), ClassT *object)
 \end{lstlisting}
 
 \emph{Tipp 2}: Gegeben einen Zeiger \emph{object} auf ein Objekt, einen Zeiger \emph{method} auf eines seiner Methoden und einen Parameter \emph{p} für die Methode, sieht ein Aufruf von \emph{method} wie folgt aus:
@@ -360,7 +360,7 @@ Der große Vorteil von \emph{std::vector} ist der \emph{wahlfreie Zugriff}, d.h.
 
 \begin{enumerate}
 \item 
-Schreibe zunächst eine Funktion \emph{template<class T> void print(const T\& t)}, die beliebige STL-Container auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
+Schreibe zunächst eine Funktion \emph{template<class T> void print(const T \&t)}, die beliebige STL-Container auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
 Nutze dazu die Funktion \emph{copy()} sowie die Klasse \emph{ostream\_iterator<int>}, um den entsprechenden \emph{OutputIterator} zu erzeugen.
 
 \item
@@ -417,7 +417,7 @@ try {
 // 2. Catch by reference
 try {
 	throw C(); // create new object of class C and throw it 
-} catch(const C& c) { // catch c by reference, no copy is created
+} catch(const C &c) { // catch c by reference, no copy is created
 	...
 }
 \end{lstlisting} 
@@ -494,7 +494,7 @@ Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail e
 	Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \textbf{struct} angeben:
 	
 	\begin{lstlisting}
-	void foo(struct Point* p) {
+	void foo(struct Point *p) {
 	...
 	}
 	...
@@ -527,7 +527,7 @@ Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail e
 	
 	\begin{lstlisting}
 	#include <stdlib.h>
-	Point* points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
+	Point *points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
 	// ...
 	free(points);
 	\end{lstlisting} 
