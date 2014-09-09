@@ -15,7 +15,7 @@
 Von der Toolseite aus unterscheidet sich die Entwicklung für den Mikrocontroller kaum von den bisherigen Übungen, da die Toolchain mit in Eclipse integriert ist.
 Der Programmcode wird in Eclipse geschrieben, kompiliert und gelinkt.
 Danach wird das Programm automatisch auf den Mikrocontroller übertragen (\emph{FLASHly}) und der Controller neu gestartet.
-Soll manuell das Programm neu gestartet werden, ohne ein neues Programm zu übertragen, hilft ein kurzer Druck auf den blauen Reset-Knopf.
+Soll das Programm manuell neu gestartet werden, ohne ein neues Programm zu übertragen, hilft ein kurzer Druck auf den blauen Reset-Knopf.
 
 
 \section{Systemtest}
@@ -30,8 +30,8 @@ Das Programm sollte auf der Sieben-Segment-Anzeige des Boards eine \textit{42} a
 Selbst wenn der Build- und Übertragungsprozess erfolgreich war, wirst du zunächst eine Fehlermeldung erhalten.
 Dieser Fehler verschwindet, wenn du einen Standard-COM-Port einstellst.
 
-Du kannst den Standard-COM-Port in the Projekteigenschaften festlegen.
-Gehe dazu in den Projekteigenschaften (Rechtsklick auf das Projekt) zu \emph{C/C++-Builder $\to$ Settings} und wählen den Baumeintrag \emph{FLASHly/General}.
+Du kannst den Standard-COM-Port in den Projekteigenschaften festlegen.
+Gehe dazu in den Projekteigenschaften (Rechtsklick auf das Projekt) zu \emph{C/C++-Builder $\to$ Settings} und wähle den Baumeintrag \emph{FLASHly/General}.
 Hier kannst du den Standardport in das Feld \emph{COM port} eintragen.
 
 \textbf{Wichtig}: Wenn du das USB-Kabel aus- und wieder einsteckst, wird sich die Nummer des COM-Ports ändern.
@@ -49,7 +49,7 @@ Implementiere ein Programm, das die Zahlen 0 bis 99 auf der Sieben-Segment-Anzei
 Nach jeder Ausgabe einer Zahl soll eine Pause eingelegt werden.
 Hinweise:\begin{itemize}
 \item 
-Für die Ausgabe der Zahlen 0 bis 9 steht Ihnen ein Array \textbf{\emph{DEC7SEG}} zur Verfügung, welches die benötigten Were für die Ports für die jeweiligen Ziffern enthält.
+Für die Ausgabe der Zahlen 0 bis 9 steht Ihnen ein Array \textbf{\emph{DEC7SEG}} zur Verfügung, welches die benötigten Werte für die Ports für die jeweiligen Ziffern enthält.
 
 \item 
 Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \texttt{\_\_wait\_nop()} aufruft.
@@ -58,7 +58,7 @@ Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datenty
 
 \item
 Die beiden Anzeigen sind an den \textbf{Ports 09} und \textbf{00} angeschlossen.
-Die Ansteuerung erfolgt logisch invertiert, das bedeutet, wenn ein Ausgang für ein Segment logisch 0 ist leuchtet dieses, bei 1 ist es aus.
+Die Ansteuerung erfolgt logisch invertiert, das bedeutet, wenn ein Ausgang für ein Segment logisch 0 ist, leuchtet dieses, bei 1 ist es aus.
 
 \item
 Beispiel: ein \glqq{}E\grqq{} kann durch das Setzen der Pins 0, 3, 4, 5 und 6 auf low gezeichnet werden.\footnote{
@@ -86,7 +86,7 @@ Ein Button ist üblicherweise für mehrere tausend CPU-Zyklen gedrückt!
 
 \item
 Ein Tastendruck ist durch den Übergang von \emph{high} auf \emph{low} definiert.
-Da in jedem Zyklus nur der aktuell Wert abgefragt werden kann, musst du den aktuellen Wert mit einem gespeicherten Wert aus dem vorigen Durchlauf vergleichen.
+Da in jedem Zyklus nur der aktuelle Wert abgefragt werden kann, musst du den aktuellen Wert mit einem gespeicherten Wert aus dem vorigen Durchlauf vergleichen.
 
 \item
 Der linke Taster ist an Port 07 Pin 0, der rechte an Port 7 Pin 1 angeschlossen.
