@@ -570,10 +570,10 @@ Zum Abschluss noch ein paar Aufgaben, um mit C etwas warm zu werden:
 	\item Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).
 \end{enumerate}
 
-\section{Array selber implementieren (optional)}
+\section{Eigene Arrays (optional)}
 \label{sec:array}
 
-Nachdem du jetzt gesehen hast, dass es störend ist, wenn man die Größe eines Arrays immer getrennt zu den gespeicherten Daten verwalten muss, ist ein sinnvoller Schritt, eine eigene Array-Klasse zu implementieren, die Daten und Größe des Arrays zusammen speichert.
+Nachdem du bei unseren Übungen zu Arrays gesehen hast, dass es störend ist, wenn man die Größe eines Arrays immer getrennt zu den gespeicherten Daten verwalten muss, ist ein sinnvoller Schritt, eine eigene Array-Klasse zu implementieren, die Daten und Größe des Arrays zusammen speichert.
 
 Eine möglicher Anwendungsfall sieht so aus:
 
@@ -586,22 +586,48 @@ using namespace std;
 
 template<class T>
 void printFirst(const Array<T> &array) {
-cout << array[0] << endl;
+    cout << array[0] << endl;
 }
 
 int main(int argc, char **argv) {
-Array<std::string> stringArray(10);
-stringArray[0] = "Hello World";
+    Array<std::string> stringArray(10);
+    stringArray[0] = "Hello World";
 
-printFirst(stringArray);
+    printFirst(stringArray);
 
-return 0;
+    return 0;
 }
 \end{lstlisting}
 
-\emph{Hinweis}:
+\emph{Hinweise}:
+\begin{itemize}
+\item
+Überlege dir, welche Operatoren/Methoden das obige Code-Beispiel von Array verlangt.
+Unter anderem musst du jeweils einen \emph{const} und einen nicht-\emph{const} \emph{operator[]} implementieren.
+
+\item
+Du kannst auch Exceptions (z.B. \emph{std::out\_of\_range} aus \emph{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
+
+\item
+Eine fortgeschrittene Übung ist es, Iteratoren oder \emph{operator+} für das Array bereitszustellen, sodass du z.B. die Funktion \emph{std::copy} aus der STL verwenden kannst, um ein Array zu kopieren:
+\begin{lstlisting}
+#include <algorithm> // copy
+#include <iterator> // back_inserter
+#include <vector>
+// ...
+Array<int> array(10);
+std::vector<int> vector;
+std::copy(array, array + 4, std::back_inserter(vector));
+\end{lstlisting}
+
+\item
 Diese Idee ist natürlich nicht neu.
-Boost bietet eine eigene Array-Implementierung in der Klasse \emph{boost::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}, die seit C++11 auch in der Standardbibliothek unter dem Namen \emph{std::array} zu finden ist.
+Seit C++11 gibt es eine Array-Implementierung in der C++-Standardbibliothek (\emph{std::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}).
+Du findest die gleiche Klasse auch als \emph{boost::array} in Boost.
+Wenn du damit experimentieren willst, mussst du die Compiler-Unterstützung für C++11 einschalten.
+Gehe dazu in die Projekteigenschaften (\emph{Rechtsklick} $\to$ Properties) und setzte unter \emph{C/C++-Build/Settings/GCC C++ Compiler/Dialect} das Feld \emph{Language Standard} auf \emph{ISO C++11}.
+\end{itemize}
+
 
 
 

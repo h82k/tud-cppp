@@ -54,7 +54,16 @@ Für die Ausgabe der Zahlen 0 bis 9 steht Ihnen ein Array \textbf{\emph{DEC7SEG}
 \item 
 Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \texttt{\_\_wait\_nop()} aufruft.
 Eine Konstante \textbf{\emph{DELAY}} steht dir zur Verfügung für die Anzahl der Schleifendurchläufe.
-Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datentyp \emph{long} verwendst!
+Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datentyp \emph{long} verwendst:
+\begin{lstlisting}
+int main(void) {
+    long d;
+    // ...
+    for (d = 0; d < DELAY; ++d) {
+        __wait_nop();
+    }
+}
+\end{lstlisting}
 
 \item
 Die beiden Anzeigen sind an den \textbf{Ports 09} und \textbf{00} angeschlossen.
@@ -69,6 +78,11 @@ Beispiel: ein \glqq{}E\grqq{} kann durch das Setzen der Pins 0, 3, 4, 5 und 6 au
 \quad Binär: 10000110
 
 \quad Hexadezimal: 0x86
+
+\item
+Es kann sinnvoll sein, deine Anzeige für hexadezimale Zeichen zu erweitern.
+Ergänze dazu das Array \emph{DEC7SEG}, sodass die Zahlen 10 bis 15 als \texttt{A},\dots,\texttt{F} dargestellt werden können.
+
 \end{itemize}
 \begin{center}\includegraphics[width=0.3\textwidth]{7seg}\end{center}
 
@@ -120,11 +134,35 @@ void set7Seg(int i)        // set the seven-segment display to the given number 
 \subsection{p04\_adc}
 Schreibe ein Programm, das den Spannungswert von \emph{AN1} (linker Schieberegler) auf der linken Sieben-Segment-Anzeige und den Spannungswert von \emph{AN2} (rechter Schieberegler) auf der recht Sieben-Segment-Anzeige ausgibt.
 Skaliere dazu den resultierenden Wertebereich (0 bis 255) auf 0 bis 9.\\
+
+Verwende zur Initialisierung des A/D-Wandlers folgenden Code:
+\begin{lstlisting}
+// Start of function.
+unsigned char result;
+
+// Initialisation
+ADCS_MD   = 3;		// ADC Stop Mode
+ADCS_S10  = 1;		// 8 Bit Precision
+ADER0_ADE1 = 1;	    // Activate analog inputs AN1 + AN2
+ADER0_ADE2 = 1;     //  (ADER0: Inputs AN0 to AN7)
+\end{lstlisting}
+Anschließend kannst du mit folgendem Code (hier für den Kanal 1) eine A/D-Wandlung vornehmen:
+\begin{lstlisting}
+ADSR = 0x6C00 + (3 << 5) + 3;	      // Start and end channel is 1
+
+ADCS_STRT = 1;				// Start A/D conversion
+while (ADCS_INT == 0) { }	// Wait for A/D conversion to finish
+result = ADCRL;			// store result (1 Byte)
+ADCS_INT = 0;				// Set bit to 0 for next conversion
+\end{lstlisting}
+
 Hinweise:
 \begin{itemize}
-\item Einige Funktionen aus \ref{exercise7SegmentUtil} kannst du hier eingesetzt werden.
+\item 
+Einige Funktionen aus \ref{exercise7SegmentUtil} kannst du hier eingesetzt werden.
 
-\item Achte auf die richtige Initialisierung von \textit{ADER0}.
+\item 
+Achte auf die richtige Initialisierung von \textit{ADER0}.
 
 \item Der Wert für \textit{ADSR} besteht aus 16 Bits (0110 11xx xxxy yyyy\textsubscript{b}), wobei xxxxx für den Startkanal der Konvertierung und yyyyy für den Endkanal steht. Für unsere Zwecke nehmen diese beiden 5\,Bit Blöcke immer entweder 00001 (AN1) oder 00010 (AN2) an.
 Daher sieht die Initialisierung von ADSR etwas kryptisch aus:
@@ -144,7 +182,7 @@ Ziel dieser Aufgabe ist es, die linke Seite des Displays anzusteuern und alle Ze
 Hinweise:
 \begin{itemize}
 \item
-Für diese Aufgabe benötigst du die Dokumentation des Displays (\textit{Display\_AV128641YFBY-WSV\#.pdf}), dort insbesondere den Abschnitt mit den Befehlen: Setzen der x- und y-Adresse, Einschalten des Displays, Senden von Daten.
+Für diese Aufgabe benötigst du die Dokumentation des Displays (\textit{<SVN>/Doku/Display\_AV128641YFBY-WSV.pdf}), dort insbesondere den Abschnitt mit den Befehlen: Setzen der x- und y-Adresse, Einschalten des Displays, Senden von Daten.
 
 \item
 Achte darauf, nach jedem Befehl (Daten oder Instruktion) das Enable-Signal an das Display zu senden.
