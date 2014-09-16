@@ -40,11 +40,11 @@ Dazu zählen:
 
 \section{Eclipse CDT}
 
-Für alle Übungen des C/C++ Praktikums werden wir Eclipse zusammen mit dem C/C++ Development Tooling (CDT) und dem MinGW gcc Compiler verwenden.
+Für alle Übungen des C/C++ Praktikums werden wir Eclipse zusammen mit dem C/C++ Development Tooling (CDT) und dem MinGW GCC Compiler verwenden.
 Wir gehen davon aus, dass du den generellen Umgang Eclipse bereits aus der Java-Programmierung kennst und nur die Unterschiede zur C++-Programmierung erläutert werden müssen.
 
 Alle Tools sind bereits auf den Poolrechnern vorinstalliert.
-Falls du mit deinem Nodebook arbeiten möchtest, findest du den Installer (Windows) unter: \url{https://www.dropbox.com/sh/rn714n1ugt6t3ke/AAB2rCt7FCHstSCp_NbnLekya?dl=0}.
+Falls du mit deinem Notebook arbeiten möchtest, findest du den Installer (Windows) unter: \url{https://www.dropbox.com/sh/rn714n1ugt6t3ke/AAB2rCt7FCHstSCp_NbnLekya?dl=0}.
 
 Verwende zum Starten von Eclipse den \textbf{\emph{Eclipse für CPPP $\rightarrow$ Eclipse}} Eintrag im Startmenü bzw. das \textbf{\emph{eclipse.cmd}} Script im Installationsordner.
 Starte bitte nicht \emph{eclipse.exe} direkt, weil dabei nicht alle benötigten Pfade gesetzt werden.
@@ -70,9 +70,9 @@ Die Toolchain sollte bereits automatisch auf MinGW voreingestellt sein.
 \subsection{Neue Dateien hinzufügen}
 
 Um eine neue Sourcecode-Datei zum Projekt hinzuzufügen, klicke mit der rechten Maustaste auf das Projekt und wähle \textbf{New $\rightarrow$ Source File}.
-Gib einen Dateinahmen (z.B. \emph{main.cpp}) ein und bestätige mit 
+Gib einen Dateinamen (z.B. \emph{main.cpp}) ein und bestätige mit 
 \textbf{Finish}. 
-Verfahrn analog, um Header-Dateien zu erstellen, wähle jedoch \textbf{New $\rightarrow$ Header File} im Kontextmenü.
+Verfahre analog, um Header-Dateien zu erstellen, wähle jedoch \textbf{New $\rightarrow$ Header File} im Kontextmenü.
 Sourcecode-Dateien tragen in der Regel die Endung \emph{.cpp}, Header-Dateien \emph{.h} oder \emph{.hpp} (Wir empfehlen \emph{.h} zu benutzen).
 
 \begin{center}
@@ -195,7 +195,7 @@ Das kann passieren, wenn man dem Compiler durch einen Prototypen mitteilt, dass 
 
 \subsection{Primitive Datentypen}
 Die primitiven Datentypen in C++ sind ähnlich denen in Java.
-Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar
+Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
 Standardmäßig sind Zahlen vorzeichenbehaftet.
 Mittels \textbf{unsigned} kann man vorzeichenlose Variablen deklarieren.
 Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
@@ -237,7 +237,7 @@ Jetzt haben wir einen Ausgangspunkt für eine eigene Implementierung.
 
 
 \item 
-Schrei eine Funktion \emph{printStars(int n)}\footnote{Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
+Schreibe eine Funktion \emph{printStars(int n)}\footnote{Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
 Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.}, die \emph{n}-mal ein \textbf{*} auf der Konsole ausgibt und mit einem Zeilenvorschub abschließt.
 Ein Aufruf von \emph{printStars(5)} sollte folgende Ausgabe generieren:
 \begin{lstlisting}
@@ -301,7 +301,7 @@ ijk
 Implementiere dazu eine Funktion \emph{char nextChar()}.
 Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \emph{char} zurückgeben, beginnend bei \emph{\textquotesingle a\textquotesingle}.
 Dazu muss sich \emph{nextChar()} intern das aktuelle Zeichen merken.
-Dies kann durch die Verwendung von \emph{static}-Variablen erreicht werden. \emph{static}-Variablen sind Variablen, die ihren alten Wert beim Wiedereintritt in die Funktion einnehmen.
+Dies kann durch die Verwendung von \emph{static}-Variablen erreicht werden. \emph{static}-Variablen sind Variablen, die ihren alten Wert beim Wiedereintritt in die Funktion annehmen.
 Ein statische Variable \emph{c} wird mittels 
 \begin{lstlisting}
 static char c = 'a';
@@ -333,7 +333,7 @@ class MyClass {
 
 Genauso wie bei Funktionen wird auch bei Methoden von Klassen zwischen Deklaration und Implementierung unterschieden.
 Die Struktur der Klasse mit allen Attributen und Methodenprototypen wird im Header beschrieben, während die Sourcecode-Datei nur Implementierungen enthält.
-Da wir noch keine Methoden definiert haben, ist unsere Sourcecode-Datei  entsprechend leer.
+Da wir noch keine Methoden definiert haben, ist unsere Sourcecode-Datei entsprechend leer.
 
 \item
 Füge Ihrer Klasse nun das \emph{private} Attribut \emph{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird. Im Gegensatz zu Java  werden in C++ die Access-Modifier \emph{public}/\emph{private}/\emph{protected} nicht bei jeder Methode einzeln sondern blockweise angegeben. Dazu wird der jeweilige Access-Modifier an die gewünschte Stelle in der Klassendeklaration geschrieben und mit einem Doppelpunkt abgeschlossen.  Alle darauffolgenden Deklarationen werden nun unter diesem Modifier erstellt. Beispiel:
@@ -355,7 +355,7 @@ private:
 Füge das Attribut \emph{nextChar} als \textbf{private} hinzu.
 
 \item
-Noch wurde \emph{nextChar} keinen Wert zugewiesen.
+Noch wurde \emph{nextChar} kein Wert zugewiesen.
 Das wollen wir nun nachholen und einen Konstruktor für die Klasse \emph{CharGenerator} erstellen, der \emph{nextChar} auf einen Anfangswert setzt.
 Der Konstruktor wird als eine Methode ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann, in unserem Fall zunächst 
 \begin{lstlisting}
@@ -462,7 +462,7 @@ Schreibe eine Klasse \emph{Vector3} mit den Attributen \emph{a}, \emph{b} und \e
 Die Klasse soll drei Konstruktoren besitzen, einen parameterlosen \textbf{Default-Konstruktor}, der den Vektor mit \textbf{0} initialisiert, einen \textbf{Konstruktor mit 3 Parametern}, der die einzelnen Vektor-Komponenten auf die gegebenen Werte setzt, und einen \textbf{Copy-Konstruktor}.
 
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
-Er nimmt eine Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \emph{Vector3}) als Parameter und kopiert alle Attribute.
+Er nimmt ein Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \emph{Vector3}) als Parameter und kopiert alle Attribute.
 Die Übergabe sollte dabei per const Reference geschehen.
 Näheres dazu in der Vorlesung\footnote{Erklärung: Würden wir \emph{other} by-Value übergeben, müsste eine Kopie von \emph{other} angelegt werden.
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.}.
@@ -473,7 +473,7 @@ Vector3(const Vector3& other);
 
 Dadurch kannst du \emph{other} wie ein gewöhnliches \emph{Vector3}-Objekt verwenden, es jedoch nicht verändern.
 
-Füge jeden Konstruktor eine Ausgabe auf die Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
+Füge jedem Konstruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
 
 \item \textbf{Destruktor}
 
@@ -490,7 +490,7 @@ Vector3::~Vector3() {
 }
 \end{lstlisting} 
 
-Füge den Destruktor eine Ausgabe auf die Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
+Füge dem Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
 
 \item\textbf{Vektoraddition}
 Überlade den Operator \textbf{+} der Klasse \emph{Vector3}, der eine komponentenweise Vektoraddition durchführt.
@@ -586,7 +586,7 @@ Dabei soll \emph{int currentFloor} die Nummer des aktuellen Stockwerks repräsen
 In \emph{containedPeople} werden die sich aktuell im Aufzug befindlichen Menschen gespeichert.
 Dafür benutzen wir die Klasse \emph{vector} aus dem \emph{std} Namespace.
 Binde dazu den Header \emph{vector} ein.
-Der Container \emph{vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \emph{Vector} Klasse bereitt.
+Der Container \emph{vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \emph{Vector} Klasse bereit.
 Der Typ in spitzen Klammern (\emph{<Person>} in \emph{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \emph{Person}-Objekte gespeichert werden sollen.
 
 Schreibe Getter für \emph{currentFloor} und \emph{energyConsumed}.
