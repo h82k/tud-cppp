@@ -27,7 +27,6 @@ void wait(long time){
 	}
 }
 
-/* your functions here */
 void lcd_sendEnable(void) {
 	wait(LCD_T);
 	LCD_PIN_E   = 1;
