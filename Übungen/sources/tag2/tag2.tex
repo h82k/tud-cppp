@@ -191,7 +191,7 @@ In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
 Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
 Schreibe eine Funktion, die einen \emph{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
-Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \emph{unsigned int} wird of der Standard-Typ \emph{size\_t} genutzt (z.B. in \emph{std::vector}).}:
+Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \emph{unsigned int} wird oft der Standard-Typ \emph{size\_t} genutzt (z.B. in \emph{std::vector}).}:
 \begin{lstlisting}
 	void printElements(const int *const array, const unsigned int size);
 \end{lstlisting}
@@ -210,7 +210,7 @@ Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder
 Schreibe die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden Zeiger anstatt eines Indexes verwendet.
 
 \item
-Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man  die Adresse des Elements nach dem letzten Element angibt.
+Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man die Adresse des Elements nach dem letzten Element angibt.
 Dadurch werden Schleifen der Form
 \begin{lstlisting}
 	for(const int *p = begin; p != end; p++) {
@@ -226,7 +226,7 @@ Du kannst hier \emph{const} doppelt verwenden, um auch sicherzustellen, dass der
 
 \item 
 Die obige Methode, über Elemente eines Arrays zu iterieren, mag dir zunächst etwas ungewöhnlich erscheinen.
-Sie hat jedoch den Vorteil, dass man anstatt des ganzen Arrays auch kleinere zusammenhängenden Teil davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente setzt.
+Sie hat jedoch den Vorteil, dass man anstatt des ganzen Arrays auch kleinere zusammenhängende Teile davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente setzt.
 Beispiel:
 \begin{lstlisting}
 	int arr[10];
@@ -297,7 +297,7 @@ Beachte, dass \emph{sizeof()} \textbf{nicht} dazu verwendet werden kann, um die 
 \section{Verkettete Listen}
 In dieser Aufgabe wollen wir eine doppelt verkettete Liste von Integern implementieren.
 Dazu brauchen wir zwei Klassen: 
-\emph{ListItem} stellt ein Element der Liste mit dessen Inhalt dar und \emph{List} speichert die Zeiger auf Anfangs und Endelemente und bildet den eigentlichen Zugangspunkt für die Liste.
+\emph{ListItem} stellt ein Element der Liste mit dessen Inhalt dar und \emph{List} speichert die Zeiger auf Anfangs- und Endelemente und bildet den eigentlichen Zugangspunkt für die Liste.
 
 \begin{center}
 	\includegraphics[width=.7\textwidth]{list.png}
@@ -431,7 +431,7 @@ Kopiere die Liste und gib die Elemente nacheinander aus.
 \item 
 Bisher haben wir über \emph{getNthElement()} auf die Elemente der Liste zugegriffen.
 Diese Methode kann insbesondere bei langen Listen sehr langsam sein.
-Deshalb werden wir einen Iterator schreiben, über den man auf die Listenelemente sequenziell zugreifen kann.
+Deshalb werden wir einen Iterator schreiben, über den man auf die Listenelemente sequentiell zugreifen kann.
 Der Iterator soll dabei einen Zeiger auf das aktuell betrachtete Element der Liste halten.
 
 Um den Zugriff möglichst komfortabel zu gestalten, werden wir den Iterator als eine Art Zeiger implementieren, den man über \textbf{$++$} und \textbf{$--$} in der Liste verschieben kann.
@@ -444,7 +444,7 @@ Somit können wir unsere Liste ähnlich zu \emph{std::vector} verwenden:
 \end{lstlisting}
 
 Beginne mit einer Grundversion des Iterators.
-Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und zeiger auf die Liste) entsprechend initialisiert.
+Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und Zeiger auf die Liste) entsprechend initialisiert.
 Implementiere den Vergleichsoperator \textbf{!=} sowie den Dereferenzierungsoperator \textbf{*}.
 Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben.
 Du brauchst nicht zu prüfen, ob \emph{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können STL-Iteratoren übrigens auch nicht!).
@@ -516,7 +516,7 @@ Du wirst in den Methoden auf private Attribute der Liste zugreifen müssen. Um d
 Dadurch würde jedoch jeder die Möglichkeit bekommen, direkt auf die Items der Liste zuzugreifen, was dem Geheimnisprinzip zuwiderläuft.
 Deshalb werden wir \emph{ListIterator} stattdessen explizit erlauben, auf \emph{private}-Attribute der Liste zuzugreifen.
 Dazu müssen wir \emph{ListIterator} als \textbf{friend} von \emph{List} deklarieren.
-Fügen dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klasse) zur Klassendefinition von \emph{List} hinzu:
+Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klasse) zur Klassendefinition von \emph{List} hinzu:
 \begin{lstlisting}
 friend class ListIterator;
 \end{lstlisting}
@@ -524,7 +524,7 @@ friend class ListIterator;
 Überlade auf die gleiche Weise auch den \textbf{$--$} Operator sowohl in Postfix als auch Präfix-Form. \\
 
 Nun ist unsere Implementierung fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
-Implementiere dazu die flgenden Methoden innerhalb der \emph{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen. 
+Implementiere dazu die folgenden Methoden innerhalb der \emph{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen. 
 \begin{lstlisting}
 /** Returns an iterator pointing to the first element */
 ListIterator begin();
@@ -543,7 +543,7 @@ class ListItem;
 class List;
 \end{lstlisting}
 
-Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagt, dass die Klassen existieren, aber später definiert werden. Nun kannst problemlos \emph{ListIterator.h} in \emph{List.h} einbinden. 
+Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagen, dass die Klassen existieren, aber später definiert werden. Nun kannst problemlos \emph{ListIterator.h} in \emph{List.h} einbinden. 
 
 \item
 Teste deine Implementierung.
@@ -639,7 +639,7 @@ Führe das Programm aus und beobachte die Ausgabe.
 Sobald \emph{main} verlassen wird, wird der Zeiger \emph{node} gelöscht, und somit auch das dahinterliegende \emph{TreeNode}-Objekt mit all seinen Kindknoten.
 
 Um ganz sicher zu gehen, dass der Baum tatsächlich beim Löschen des letzten Zeigers zerstört wurde und nicht etwa durch das Beenden des Programms, kannst du \emph{node} mit einem anderen Baum überschreiben.
-Füge in diesem Fall am Ende des Programms eine Textausgabe hinzu, damit es ersichtlich wird, dass der erste Baum noch vor Verlassen der \emph{main} gelöscht wurde.
+Füge in diesem Fall am Ende des Programms eine Textausgabe hinzu, damit ersichtlich wird, dass der erste Baum noch vor Verlassen der \emph{main} gelöscht wurde.
 
 \item Nun wollen wir \emph{TreeNode} so erweitern, dass jeder Knoten Kenntnisse über seinen Elternknoten besitzt.
 Füge das Attribut  
@@ -703,8 +703,8 @@ Nun sollte sich \emph{TreeNode} wie gewünscht verhalten.
 
 \section{Fortsetzung Aufzug}
 In dieser Aufgabe erweitern und verbessern wir unseren Aufzugsimulator, sodass das Kopieren von Personen wegfällt.
-Dies werden wir erreichen, indem wir nicht direkt mit \emph{Person}-Objekten oder -Rohzeigern sondern mit Smart Pointern arbeiten.
-Dadurch müssen wir beim Verschieben von Personen in den Aufzug nur die Smart Pointers kopieren, während die \emph{Person}-Objekte selbst bestehen bleiben.
+Dies werden wir erreichen, indem wir nicht direkt mit \emph{Person}-Objekten oder -rohzeigern sondern mit Smart Pointern arbeiten.
+Dadurch müssen wir beim Verschieben von Personen in den Aufzug nur die Smart Pointer kopieren, während die \emph{Person}-Objekte selbst bestehen bleiben.
 
 Ein weiterer Vorteil ist, dass wir von jeder Person genau ein Exemplar im Speicher halten.
 Möchten wir beispielsweise den Namen einer Person ändern, ist dies überall, wo die Person auftaucht sofort und konsistent sichtbar.
@@ -736,7 +736,7 @@ typedef boost::shared_ptr<Person> PersonPtr;
 \end{lstlisting}
 
 \item \textbf{Effizientere Listen}
-Ändere in der Klasse \emph{Elevator} alle Vorkommen von \emph{vector} nach \emph{list} um, da wir nun eine Verkettete Liste verwenden werden, um Personen zu speichern.
+Ändere in der Klasse \emph{Elevator} alle Vorkommen von \emph{vector} nach \emph{list} um, da wir nun eine verkettete Liste verwenden werden, um Personen zu speichern.
 Dadurch kann man Personen auch in der Mitte der Liste effizient löschen.
 
 Die \emph{list}-Klasse enthält keine Methode \emph{at()}.
@@ -751,7 +751,7 @@ Lösche dazu die Methode \emph{getPerson()} und füge die folgende Methode hinzu
 
 Dadurch kann von außen lesend auf die Leute im Aufzug zugegriffen werden.
 Ändere außerdem den Inhaltstyp des Containers von \emph{Person} auf \emph{PersonPtr}, da wir Smart Pointer auf Personen speichern werden und nicht die Personen direkt.
-Passen die Signaturen aller Methoden in \emph{Elevator} entsprechend an.
+Passe die Signaturen aller Methoden in \emph{Elevator} entsprechend an.
 
 \item 
 Jetzt müssen wir die Methode \emph{removeArrivedPeople()} anpassen.
