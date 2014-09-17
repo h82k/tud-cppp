@@ -13,7 +13,7 @@ void printPersonInfo(const Person* p) {
 }
 
 int main() {
-	Person peter("Peter")
+	Person peter("Peter");
 	Student laura("Laura", "123456");
 	
 	printPersonInfo(&peter);

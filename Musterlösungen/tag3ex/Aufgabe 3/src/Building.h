@@ -5,8 +5,10 @@
 #ifndef BUILDING_H_
 #define BUILDING_H_
 
+#include <list>
 #include <vector>
 
+#include "Person.h"
 #include "Floor.h"
 #include "Elevator.h"
 
