@@ -16,11 +16,11 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" id="cdt.managedbuild.toolchain.gnu.mingw.base.2067589099" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.mingw.base.2067589099" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
 					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.2067589099.426547649" name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.56380429" name="cdt.managedbuild.toolchain.gnu.mingw.base" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE" id="cdt.managedbuild.target.gnu.platform.mingw.base.723414726" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder id="cdt.managedbuild.toolchain.gnu.mingw.base.2067589099.344368600" managedBuildOn="false" name="Gnu Make Builder.Preference Configuration" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
+							<builder id="cdt.managedbuild.toolchain.gnu.mingw.base.2067589099.344368600" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.467569161" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.640200826" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
