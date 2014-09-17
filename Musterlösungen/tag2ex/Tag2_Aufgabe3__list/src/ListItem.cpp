@@ -24,10 +24,6 @@ ListItem::~ListItem() {
 		next->previous = previous;
 }
 
-ListItem::ListItem(const ListItem& other) {
-	// nothing here since never called
-}
-
 int& ListItem::getContent() {
 	return content;
 }

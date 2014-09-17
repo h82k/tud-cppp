@@ -2,8 +2,9 @@
  * List.cpp
  */
 
-#include <cstdlib>
 #include "List.h"
+
+#include <cstddef>
 
 List::List() :
 		first(NULL), last(NULL), currentSize(0) {
@@ -17,6 +18,7 @@ List::~List() {
 
 List::List(const List& other) :
 		first(NULL), last(NULL), currentSize(0) {
+	// Copy list item-wise to avoid having two lists pointing at the same list items
 	for (ListItem *item = other.first; item != NULL; item = item->getNext())
 		appendElement(item->getContent());
 }
@@ -24,19 +26,21 @@ List::List(const List& other) :
 void List::appendElement(int i) {
 	ListItem *item = new ListItem(last, NULL, i);
 	last = item;
-	
-	// if size WAS 0, set first item to newly created item
-	if (currentSize++ == 0)
+
+	if (first == NULL)
 		first = item;
+
+	currentSize++;
 }
 
 void List::prependElement(int i) {
 	ListItem *item = new ListItem(NULL, first, i);
 	first = item;
-	
-	// if size WAS 0, set last item to newly created item
-	if (currentSize++ == 0)
+
+	if (last == NULL)
 		last = item;
+
+	currentSize++;
 }
 
 void List::insertElementAt(int i, int pos) {
@@ -49,7 +53,7 @@ void List::insertElementAt(int i, int pos) {
 		// iterate over elements
 		while (pos-- > 0)
 			p = p->getNext();
-		
+
 		new ListItem(p->getPrevious(), p, i);
 		currentSize++;
 	}
@@ -60,11 +64,12 @@ int List::getSize() const {
 }
 
 int& List::getNthElement(int n) {
+	int index = n;
 	ListItem* p = first;
 	// iterate over elements
-	while (n-- > 0)
+	while (index-- > 0)
 		p = p->getNext();
-	
+
 	return p->getContent();
 }
 
@@ -79,15 +84,14 @@ int& List::getLast() {
 int List::deleteFirst() {
 	if (first) {
 		int content = first->getContent(); // save content
-		        
+
 		ListItem *next = first->getNext();
 		delete first; // delete first element
 		first = next; // and the current first element to next of first element before
-		        
-		if (next == NULL
-		) // do not forget to reset last element if list is empty
+
+		if (next == NULL) // do not forget to reset last element if list is empty
 			last = NULL;
-		
+
 		currentSize--;
 		return content;
 	} else
@@ -97,15 +101,14 @@ int List::deleteFirst() {
 int List::deleteLast() {
 	if (last) {
 		int content = last->getContent();
-		
+
 		ListItem *prev = last->getPrevious();
 		delete last; // delete last element
 		last = prev; // and the current last element to previous of last element before
-		        
-		if (last == NULL
-		) // do not forget to reset first element if list is empty
+
+		if (last == NULL) // do not forget to reset first element if list is empty
 			first = NULL;
-		
+
 		currentSize--;
 		return content;
 	} else
@@ -118,11 +121,12 @@ int List::deleteAt(int pos) {
 	else if (pos >= currentSize - 1)
 		return deleteLast();
 	else {
+		int index = pos;
 		ListItem* p = first;
 		// iterate over elements
-		while (pos-- > 0)
+		while (index-- > 0)
 			p = p->getNext();
-		
+
 		int content = p->getContent();
 		delete p;
 		currentSize--;

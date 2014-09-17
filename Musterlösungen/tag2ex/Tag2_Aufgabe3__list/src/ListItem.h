@@ -35,7 +35,7 @@ private:
 	/** content of the list item */
 	int content;
 	
-	/** Copy constructor in private area to forbid copying */
+	/** Copy constructor in private area to forbid copying. No implementation! */
 	ListItem(const ListItem& other);
 };
 

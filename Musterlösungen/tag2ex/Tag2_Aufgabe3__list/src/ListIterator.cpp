@@ -6,7 +6,7 @@
 #include "List.h"
 #include "ListIterator.h"
 
-#include <cstdlib>
+#include <cstddef>
 
 ListIterator::ListIterator(List* list, ListItem* item) :
 		list(list), item(item) {
