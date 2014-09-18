@@ -606,6 +606,16 @@ Binde dazu den Header \emph{vector} ein.
 Der Container \emph{vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \emph{Vector} Klasse bereit.
 Der Typ in spitzen Klammern (\emph{<Person>} in \emph{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \emph{Person}-Objekte gespeichert werden sollen.
 
+Implementiere zunächst einen Konstruktor, der die Attribute von \emph{Elevator} sinnvoll initialisiert.
+Da \emph{containedPeople} leer initialisiert wird, brauchst du dafür keinen expliziten Aufruf.
+
+\begin{lstlisting}
+    /** Creates an elevator located at floor 0 */
+	Elevator::Elevator() :
+	    currentFloor(0),
+	    energyConsumed(0.0) {}
+\end{lstlisting}
+
 Schreibe Getter für \emph{currentFloor} und \emph{energyConsumed}.
 Implementiere außerdem die Methoden
 \begin{lstlisting}
@@ -660,6 +670,7 @@ Implementiere die folgenden Methoden:
 	/** Removes all persons from this floor and return them */
 	std::vector<Person> removeAllPeople();
 \end{lstlisting}
+
 
 Nutze \emph{containedPeople.clear()} um alle Elemente eines \emph{vector}s zu löschen.
 
