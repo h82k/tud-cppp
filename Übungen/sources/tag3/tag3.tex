@@ -35,6 +35,21 @@ Implementiere auch einen Destruktor.
 Überschreibe die Methode \emph{getInfo()}, sodass zusätzlich zum Namen auch die Matrikelnummer zurückgegeben wird.
 Du kannst bei Bedarf die \emph{getInfo()}-Implementierung der Elternklasse \emph{Person} von \emph{Student} aus mittels \textbf{Person::getInfo()} aufrufen.
 
+\emph{Tipp:}
+In C++ gibt es leider keine Möglichkeit zu deklarieren, dass eine Methode eine andere überschreibt (vergleichbar mit der Annotation \emph{@Override} in Java).
+
+Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht (siehe Abbildung~\ref{fig:override-hint})
+\begin{figure}[h!]
+\begin{center}
+	\includegraphics{eclipse_override_method_hint.png}
+\end{center}
+\caption{Hinweis in Eclipse, dass eine Methode überschrieben wird. 
+	Mit einem Klick auf das Dreieck navigiert man zur entsprechenden Methode in der Elternklasse.}
+\label{fig:override-hint}
+\end{figure}
+
+
+
 \item 
 Erstelle nun in \emph{main()} je eine Person und einen Studenten und gib deren Daten auf der Konsole aus.
 Vergewissere dich, dass bei \emph{Student} auch die Matrikelnummer ausgegeben wird.
@@ -79,10 +94,13 @@ Deklariere deshalb in beiden Klassen den Destruktor als \textbf{virtual} und tes
 In dieser Aufgabe wollen wir Vererbung und Polymorphie dazu nutzen, um mathematische Ausdrücke als Bäume von Primitivoperationen zu modellieren.
 Dazu werden wir eine abstrakte Oberklasse \emph{Expression} mit der abstrakten Methode \emph{compute()} erstellen.
 Einzelne Knotentypen wie Addition und Subtraktion werden von \emph{Expression} abgeleitet und implementieren \emph{compute()}, um die jeweilige Operation zu realisieren.
+\begin{figure}[h]
 \begin{center}
 	\includegraphics[width=.75\textwidth]{ExpressionTree.png}\\
-	Abbildung: Beispielausdruck mit Ausdrucksbaum und Klassenhierarchie.
+	\caption{Abbildung: Beispielausdruck mit Ausdrucksbaum und Klassenhierarchie}
 \end{center}
+\end{figure}
+
 
 \begin{enumerate}
 
