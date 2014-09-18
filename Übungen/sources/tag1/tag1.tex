@@ -485,7 +485,7 @@ Näheres dazu in der Vorlesung\footnote{Erklärung: Würden wir \emph{other} by-
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.}.
 Bis dahin übernimm einfach die folgende Syntax für den Prototypen:
 \begin{lstlisting}
-Vector3(const Vector3& other);
+Vector3(const Vector3 &other);
 \end{lstlisting} 
 
 Dadurch kannst du \emph{other} wie ein gewöhnliches \emph{Vector3}-Objekt verwenden, es jedoch nicht verändern.
@@ -540,7 +540,7 @@ Dazu überladen wir den \textbf{$<<$} Operator.
 
 Diesmal müssen wir die Überladung \textbf{außerhalb} der \emph{Vektor3}-Klasse definieren, weil auf unser \emph{Vektor3}-Objekt nun auf der rechten Seite der Operation steht. Der Funktionsprototyp lautet 
 \begin{lstlisting}
-std::ostream& operator<<(std::ostream& out, Vector3 rhs);
+std::ostream& operator<<(std::ostream &out, Vector3 rhs);
 \end{lstlisting}
 
 Als linke Seite wird hierbei ein \emph{ostream}-Objekt (wie z.B. \emph{cout}) erwartet.
@@ -548,7 +548,7 @@ Um Ausgabeketten \emph{cout} \textbf{$<<$} \dots \textbf{$<<$} \dots zu ermögli
 
 Die Implementierung hat folgende Form:
 \begin{lstlisting}
-ostream& operator<<(ostream& out, Vector3 rhs)  {
+ostream& operator<<(ostream &out, Vector3 rhs)  {
 	out << ... ;
 	return out;
 }
@@ -665,17 +665,22 @@ Nutze \emph{containedPeople.clear()} um alle Elemente eines \emph{vector}s zu l�
 
 \item\textbf{Klasse Building}
 Schreibe eine Klasse \emph{Building}.
-Der Konstruktor soll dabei die Anzahl der Stockwerke als Parameter erhalten.
 Füge einen Aufzug \emph{elevator} sowie \emph{std::vector<Floor> floors} als private Attribute hinzu.
-Implementiere einen Getter, der den Aufzug als Referenz (\emph{Elevator\&}) zurückgibt.
+Der Konstruktor soll die Anzahl der Stockwerke als Parameter erhalten und die Liste der Stockwerke (\emph{floors}) mit einer entsprechenden Anzahl Stockwerke füllen.
 Implementiere dazu die folgenden Methoden:
 
 \begin{lstlisting}
+	/** Constructs a building with the given number of floors */
+	Buidling(unsigned int floors);
+	
 	/** Returns number of floors */
 	int getNumOfFloors();
 	
 	/** Returns a certain floor as reference*/
 	Floor& getFloor(int floor);
+	
+	/** Returns the elevator of this building */
+	Elevator& getElevator();
 \end{lstlisting}
 
 
@@ -685,7 +690,7 @@ Um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufkette
 	b.getElevator().addPeople(b.getFloor(b.getElevator().getFloor()).removeAllPeople());
 \end{lstlisting} 
 
-zu vermeiden, werden wir \emph{Building} einige weitere Methoden hinzufügen.
+zu vermeiden (\emph{Law of Demeter}), werden wir \emph{Building} einige weitere Methoden hinzufügen.
 Der Simulator sollte nur mit Methoden der Klasse \emph{Building} kommunizieren.
 Implementiere hierfür folgende Komfortmethoden:
 

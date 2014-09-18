@@ -59,7 +59,7 @@ Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an, und versuche,
 Implementiere nun die Funktion 
 \begin{lstlisting}
 /** Prints person information on console */
-void printPersonInfo(const Person* person);
+void printPersonInfo(const Person *person);
 \end{lstlisting}
 
 Dadurch dass \emph{person} als const Zeiger übergeben wird, können auch Unterklassen von \emph{Person}, wie z.B. \emph{Student}, übergeben werden. 
@@ -78,7 +78,7 @@ Teste deine Implementierung erneut und vergewissere dich, dass nun immer die ric
 Lege einen Studenten dynamisch auf dem Heap an und speichere die Adresse  in einem Zeiger auf eine \emph{Person}.
 Lösche die Person anschließend.
 \begin{lstlisting}
-	Person* pTim = new Student("Tim", "321654");
+	Person *pTim = new Student("Tim", "321654");
 	delete pTim;
 \end{lstlisting}
 
@@ -117,7 +117,7 @@ Implementiere den Konstruktor und virtuellen Destruktor und versehe auch diese m
 Die Methode \emph{compute()} gibt die gespeicherte Zahl zurück.
 
 \item \textbf{Klasse \emph{BinaryExpression}}
-Schreibe die abstrakte Klasse \emph{BinaryExpression} mit den \emph{protected} Attributen \emph{Expression* left, *right}.
+Schreibe die abstrakte Klasse \emph{BinaryExpression} mit den \emph{protected} Attributen \emph{Expression *left, *right}.
 Implementiere den Konstruktor und virtuellen Destruktor mit entsprechender Ausgabe.
 Vergiss nicht, im Destruktor die beiden Zweige zu löschen. 
 
@@ -165,7 +165,7 @@ public:
 
 protected:
 	/** Pointer to current building, set by createPlan() */
-	const Building* building;
+	const Building *building;
 };
 \end{lstlisting}
 

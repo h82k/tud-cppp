@@ -151,7 +151,7 @@ So ist der \textbf{Bezeichner} des Arrays gleichzeitig die \textbf{Adresse des e
 Somit kann man sowohl durch \textbf{*arr} als auch durch \textbf{arr[0]} auf das erste Element zugreifen.
 Analog dazu kann man auch einen Zeiger auf das erste Element anlegen:
 \begin{lstlisting}
-	int* pArr = arr;
+	int *pArr = arr;
 \end{lstlisting}
 Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen.
 Beispiel:
@@ -241,7 +241,7 @@ Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.
 Mittels \textbf{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
 Beispiel:
 \begin{lstlisting}
-	int* pArr = new int[10]; // size can be a variable
+	int *pArr = new int[10]; // size can be a variable
 	doSomethingWith(pArr, 10);
 	delete[] pArr; // <-- notice the [] !
 \end{lstlisting}
@@ -289,7 +289,7 @@ Um die Größe eines Arrays zu ermitteln, kannst du den \emph{sizeof()}-Operator
 Beachte, dass \emph{sizeof()} \textbf{nicht} dazu verwendet werden kann, um die Größe des Arrays herauszufinden, auf die ein Zeiger zeigt. In diesem Fall wird \emph{sizeof()} nämlich die \textbf{Größe des Zeigers} und nicht die Größe des Arrays liefern!
 \begin{lstlisting}
 	int arr[10];
-	int* pArr = arr;
+	int *pArr = arr;
 	cout << sizeof(pArr) << endl; // 4 on 32-bit machine, 8 on 64-bit
 \end{lstlisting}
 
@@ -324,7 +324,7 @@ public:
 	 * Creates a list item between two elements and stores the given content in the new item
 	 * Also modifies the corresponding previous and next pointers of prev and next item
 	 **/
-	ListItem(ListItem* prev, ListItem* next, int content);
+	ListItem(ListItem *prev, ListItem *next, int content);
 
 	/** 
 	 * Deletse a list item. Changes also the pointers of previous and next elements to not
@@ -416,7 +416,7 @@ public:
 
 private:
 	/** First and last item pointers. NULL if and only if list is empty */
-	ListItem* first, *last;
+	ListItem *first, *last;
 	
 	/** Current size of the list */
 	int currentSize;
@@ -464,8 +464,8 @@ public:
 	bool operator!=(const ListIterator& other) const;
 
 private:
-	List* list;
-	ListItem* item;
+	List *list;
+	ListItem *item;
 };
 \end{lstlisting} 
 
@@ -654,7 +654,7 @@ Da der Elternknoten beim Erzeugen eines \emph{TreeNode}s undefiniert ist, brauch
 Implementiere die folgende Methode, die einem Knoten seinen Elternknoten zuweist:
 \begin{lstlisting}
 	/** Set parent of this node */
-	void setParent(const TreeNodePtr& p);
+	void setParent(const TreeNodePtr &p);
 \end{lstlisting}
 
 \emph{Hinweis}:
