@@ -6,7 +6,6 @@
 #define VECTOR3_H_
 
 #include <iostream>
-using namespace std;
 
 class Vector3 {
 public:
@@ -35,6 +34,6 @@ private:
 	double a, b, c;
 };
 
-ostream& operator<<(ostream& out, Vector3 rhs);
+std::ostream& operator<<(std::ostream& out, Vector3 rhs);
 
 #endif /* VECTOR3_H_ */
