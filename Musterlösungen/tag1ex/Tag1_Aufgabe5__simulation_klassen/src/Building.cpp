@@ -11,12 +11,15 @@ using std::endl;
 
 Building::Building(int numberOfFloors) {
 	// add given number of floors
-	while (numberOfFloors-- > 0)
+	for(int i = 0; i < numberOfFloors; ++i) {
 		floors.push_back(Floor());
+	}
 }
 
 void Building::letPeopleIn() {
-	elevator.addPeople(floors.at(elevator.getFloor()).removeAllPeople());
+	int floor = elevator.getFloor();
+	std::vector<Person> people = floors.at(floor).removeAllPeople();
+	elevator.addPeople(people);
 }
 
 std::vector<Person> Building::removeArrivedPeople() {

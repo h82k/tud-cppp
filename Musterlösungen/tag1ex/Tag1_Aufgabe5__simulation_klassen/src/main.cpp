@@ -22,7 +22,8 @@ int main() {
 		
 		// move each person to its destination and let it out
 		while (b.getElevator().getNumPeople() > 0) {
-			b.moveElevatorToFloor(b.getElevator().getPerson(0).getDestinationFloor());
+			int dest = b.getElevator().getPerson(0).getDestinationFloor();
+			b.moveElevatorToFloor(dest);
 			b.removeArrivedPeople();
 		}
 	}
