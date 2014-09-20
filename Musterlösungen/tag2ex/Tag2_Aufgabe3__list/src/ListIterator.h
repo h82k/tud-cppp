@@ -32,8 +32,8 @@ public:
 	bool operator!=(const ListIterator& other) const;
 
 private:
-	List* list;
-	ListItem* item;
+	List *list;
+	ListItem *item;
 };
 
 #endif /* LISTITERATOR_H_ */
