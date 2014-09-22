@@ -1,11 +1,11 @@
 /*
- * PlusExpression.h
+ * PlusExpression.hpp
  */
 
-#ifndef PLUSEXPRESSION_H_
-#define PLUSEXPRESSION_H_
+#ifndef PLUSEXPRESSION_HPP_
+#define PLUSEXPRESSION_HPP_
 
-#include "BinaryExpression.h"
+#include "BinaryExpression.hpp"
 
 class PlusExpression: public BinaryExpression {
 public:
@@ -15,4 +15,4 @@ public:
 	virtual double compute();
 };
 
-#endif /* PLUSEXPRESSION_H_ */
+#endif /* PLUSEXPRESSION_HPP_ */

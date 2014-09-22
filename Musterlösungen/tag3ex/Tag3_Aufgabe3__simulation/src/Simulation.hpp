@@ -1,14 +1,14 @@
 /*
- * Simulation.h
+ * Simulation.hpp
  */
 
-#ifndef SIMULATION_H_
-#define SIMULATION_H_
+#ifndef SIMULATION_HPP_
+#define SIMULATION_HPP_
 
-#include "ElevatorStrategy.h"
+#include "ElevatorStrategy.hpp"
 #include <list>
 
 /** Runs an elevator simulation on given building with given strategy */
 std::list<int> runSimulation(Building& building, ElevatorStrategy& strategy);
 
-#endif /* SIMULATION_H_ */
+#endif /* SIMULATION_HPP_ */

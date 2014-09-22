@@ -1,9 +1,9 @@
 /*
- * Person.h
+ * Person.hpp
  */
 
-#ifndef PERSON_H_
-#define PERSON_H_
+#ifndef PERSON_HPP_
+#define PERSON_HPP_
 
 #include <boost/shared_ptr.hpp>
 
@@ -22,4 +22,4 @@ private:
 
 typedef boost::shared_ptr<Person> PersonPtr;
 
-#endif /* PERSON_H_ */
+#endif /* PERSON_HPP_ */

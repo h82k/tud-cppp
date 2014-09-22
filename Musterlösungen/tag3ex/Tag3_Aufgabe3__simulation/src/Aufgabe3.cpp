@@ -7,10 +7,10 @@ using namespace std;
 
 #include <boost/make_shared.hpp>
 
-#include "Building.h"
-#include "Simulation.h"
-#include "SimpleElevatorStrategy.h"
-#include "EnergySavingStrategy.h"
+#include "Building.hpp"
+#include "Simulation.hpp"
+#include "SimpleElevatorStrategy.hpp"
+#include "EnergySavingStrategy.hpp"
 
 #include <ctime>
 

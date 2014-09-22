@@ -2,7 +2,7 @@
  * PlusExpression.cpp
  */
 
-#include "PlusExpression.h"
+#include "PlusExpression.hpp"
 
 #include <iostream>
 using namespace std;

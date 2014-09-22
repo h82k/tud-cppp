@@ -1,11 +1,11 @@
 /*
- * MinusExpression.h
+ * MinusExpression.hpp
  */
 
-#ifndef MINUSEXPRESSION_H_
-#define MINUSEXPRESSION_H_
+#ifndef MINUSEXPRESSION_HPP_
+#define MINUSEXPRESSION_HPP_
 
-#include "BinaryExpression.h"
+#include "BinaryExpression.hpp"
 
 class MinusExpression: public BinaryExpression {
 public:
@@ -16,4 +16,4 @@ public:
 private:
 };
 
-#endif /* MINUSEXPRESSION_H_ */
+#endif /* MINUSEXPRESSION_HPP_ */

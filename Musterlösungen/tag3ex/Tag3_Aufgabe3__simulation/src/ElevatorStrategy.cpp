@@ -2,7 +2,7 @@
  * ElevatorStrategy.cpp
  */
 
-#include "ElevatorStrategy.h"
+#include "ElevatorStrategy.hpp"
 
 ElevatorStrategy::~ElevatorStrategy() {
 	

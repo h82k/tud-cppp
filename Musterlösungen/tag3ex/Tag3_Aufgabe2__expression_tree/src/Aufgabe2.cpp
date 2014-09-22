@@ -5,9 +5,9 @@
 #include <iostream>
 using namespace std;
 
-#include "NumberExpression.h"
-#include "PlusExpression.h"
-#include "MinusExpression.h"
+#include "NumberExpression.hpp"
+#include "PlusExpression.hpp"
+#include "MinusExpression.hpp"
 
 
 int main() {

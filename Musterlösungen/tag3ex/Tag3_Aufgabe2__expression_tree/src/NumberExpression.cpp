@@ -2,7 +2,7 @@
  * NumberExpression.cpp
  */
 
-#include "NumberExpression.h"
+#include "NumberExpression.hpp"
 
 #include <iostream>
 using namespace std;

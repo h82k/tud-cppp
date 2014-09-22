@@ -2,8 +2,8 @@
  * EnergySavingStrategy.cpp
  */
 
-#include "EnergySavingStrategy.h"
-#include "Simulation.h"
+#include "EnergySavingStrategy.hpp"
+#include "Simulation.hpp"
 
 #include <limits>
 #include <cmath>

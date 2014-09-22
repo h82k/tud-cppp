@@ -1,11 +1,11 @@
 /*
- * NumberExpression.h
+ * NumberExpression.hpp
  */
 
-#ifndef NUMBEREXPRESSION_H_
-#define NUMBEREXPRESSION_H_
+#ifndef NUMBEREXPRESSION_HPP_
+#define NUMBEREXPRESSION_HPP_
 
-#include "Expression.h"
+#include "Expression.hpp"
 
 class NumberExpression: public Expression {
 public:
@@ -18,4 +18,4 @@ private:
 	double number;
 };
 
-#endif /* NUMBEREXPRESSION_H_ */
+#endif /* NUMBEREXPRESSION_HPP_ */

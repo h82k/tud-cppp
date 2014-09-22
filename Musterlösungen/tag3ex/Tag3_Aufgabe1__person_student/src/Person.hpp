@@ -1,9 +1,9 @@
 /*
- * Person.h
+ * Person.hpp
  */
 
-#ifndef PERSON_H_
-#define PERSON_H_
+#ifndef PERSON_HPP_
+#define PERSON_HPP_
 
 #include <string>
 
@@ -18,4 +18,4 @@ protected:
 	std::string name;
 };
 
-#endif /* PERSON_H_ */
+#endif /* PERSON_HPP_ */

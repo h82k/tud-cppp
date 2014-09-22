@@ -3,7 +3,7 @@
  *
  */
 
-#include "Floor.h"
+#include "Floor.hpp"
 
 Floor::Floor() {
 	

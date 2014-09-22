@@ -2,7 +2,7 @@
  * Simulation.cpp
  */
 
-#include "Simulation.h"
+#include "Simulation.hpp"
 
 #include <iostream>
 #include <list>

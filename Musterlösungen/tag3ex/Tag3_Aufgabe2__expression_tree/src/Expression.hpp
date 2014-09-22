@@ -1,9 +1,9 @@
 /*
- * Expression.h
+ * Expression.hpp
  */
 
-#ifndef EXPRESSION_H_
-#define EXPRESSION_H_
+#ifndef EXPRESSION_HPP_
+#define EXPRESSION_HPP_
 
 class Expression {
 public:
@@ -16,4 +16,4 @@ private:
 	Expression(const Expression&);
 };
 
-#endif /* EXPRESSION_H_ */
+#endif /* EXPRESSION_HPP_ */

@@ -5,7 +5,7 @@
  *      Author: jgdo
  */
 
-#include "BinaryExpression.h"
+#include "BinaryExpression.hpp"
 
 #include <iostream>
 

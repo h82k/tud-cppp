@@ -2,7 +2,7 @@
  * Student.cpp
  */
 
-#include "Student.h"
+#include "Student.hpp"
 
 #include <iostream>
 using namespace std;

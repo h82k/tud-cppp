@@ -1,11 +1,11 @@
 /*
- * EnergySavingStrategy.h
+ * EnergySavingStrategy.hpp
  */
 
-#ifndef ENERGYSAVINGSTRATEGY_H_
-#define ENERGYSAVINGSTRATEGY_H_
+#ifndef ENERGYSAVINGSTRATEGY_HPP_
+#define ENERGYSAVINGSTRATEGY_HPP_
 
-#include "ElevatorStrategy.h"
+#include "ElevatorStrategy.hpp"
 #include <list>
 
 /**
@@ -38,4 +38,4 @@ private:
 	std::list<int> plan;
 };
 
-#endif /* ENERGYSAVINGSTRATEGY_H_ */
+#endif /* ENERGYSAVINGSTRATEGY_HPP_ */

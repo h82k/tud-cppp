@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Student.h"
+#include "Student.hpp"
 
 /** prints person information on console */
 void printPersonInfo(const Person* p) {

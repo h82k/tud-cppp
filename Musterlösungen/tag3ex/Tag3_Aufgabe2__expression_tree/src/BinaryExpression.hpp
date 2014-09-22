@@ -1,11 +1,11 @@
 /*
- * BinaryExpression.h
+ * BinaryExpression.hpp
  */
 
-#ifndef BINARYEXPRESSION_H_
-#define BINARYEXPRESSION_H_
+#ifndef BINARYEXPRESSION_HPP_
+#define BINARYEXPRESSION_HPP_
 
-#include "Expression.h"
+#include "Expression.hpp"
 
 class BinaryExpression: public Expression {
 public:
@@ -16,4 +16,4 @@ protected:
 	Expression *left, *right;
 };
 
-#endif /* BINARYEXPRESSION_H_ */
+#endif /* BINARYEXPRESSION_HPP_ */

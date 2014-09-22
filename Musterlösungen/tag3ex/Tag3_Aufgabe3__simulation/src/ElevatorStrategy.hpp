@@ -1,11 +1,11 @@
 /*
- * ElevatorStrategy.h
+ * ElevatorStrategy.hpp
  */
 
-#ifndef ELEVATORSTRATEGY_H_
-#define ELEVATORSTRATEGY_H_
+#ifndef ELEVATORSTRATEGY_HPP_
+#define ELEVATORSTRATEGY_HPP_
 
-#include "Building.h"
+#include "Building.hpp"
 
 /**
  * Elevator strategy base class. Used to determine at which floor the elevator should move next.
@@ -30,4 +30,4 @@ protected:
 	const Building* building;
 };
 
-#endif /* ELEVATORSTRATEGY_H_ */
+#endif /* ELEVATORSTRATEGY_HPP_ */
