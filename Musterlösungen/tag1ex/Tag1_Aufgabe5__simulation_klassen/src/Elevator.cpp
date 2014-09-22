@@ -2,7 +2,7 @@
  * Elevator.cpp
  */
 
-#include <stdlib.h> 
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
