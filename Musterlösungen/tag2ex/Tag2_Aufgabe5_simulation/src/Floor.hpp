@@ -1,14 +1,14 @@
 /*
- * Floor.h
+ * Floor.hpp
  */
 
-#ifndef FLOOR_H_
-#define FLOOR_H_
+#ifndef FLOOR_HPP_
+#define FLOOR_HPP_
 
 #include <list>
 #include <set>
 
-#include "Person.h"
+#include "Person.hpp"
 
 class Floor {
 public:
@@ -34,4 +34,4 @@ private:
 	std::list<PersonPtr> containedPeople;
 };
 
-#endif /* FLOOR_H_ */
+#endif /* FLOOR_HPP_ */

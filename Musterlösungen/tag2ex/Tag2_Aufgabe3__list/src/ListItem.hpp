@@ -1,9 +1,9 @@
 /*
- * ListItem.h
+ * ListItem.hpp
  */
 
-#ifndef LISTITEM_H_
-#define LISTITEM_H_
+#ifndef LISTITEM_HPP_
+#define LISTITEM_HPP_
 
 class ListItem {
 public:
@@ -39,4 +39,4 @@ private:
 	ListItem(const ListItem& other);
 };
 
-#endif /* LISTITEM_H_ */
+#endif /* LISTITEM_HPP_ */

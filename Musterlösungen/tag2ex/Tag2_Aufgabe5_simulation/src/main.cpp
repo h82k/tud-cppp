@@ -7,7 +7,7 @@ using namespace std;
 
 #include <boost/make_shared.hpp>
 
-#include "Building.h"
+#include "Building.hpp"
 
 int main() {
 	Building b(3);

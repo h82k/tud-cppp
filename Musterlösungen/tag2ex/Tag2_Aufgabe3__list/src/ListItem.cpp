@@ -5,7 +5,7 @@
  *      Author: jgdo
  */
 
-#include "ListItem.h"
+#include "ListItem.hpp"
 
 ListItem::ListItem(ListItem *prev, ListItem *next, int content) :
 		previous(prev), next(next), content(content) {

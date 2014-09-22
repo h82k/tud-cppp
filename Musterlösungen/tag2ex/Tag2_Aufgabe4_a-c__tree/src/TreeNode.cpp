@@ -5,7 +5,7 @@
  *      Author: jgdo
  */
 
-#include "TreeNode.h"
+#include "TreeNode.hpp"
 
 #include <iostream>
 using namespace std;

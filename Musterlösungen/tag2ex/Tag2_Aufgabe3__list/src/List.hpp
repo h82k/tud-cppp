@@ -1,12 +1,12 @@
 /*
- * List.h
+ * List.hpp
  */
 
-#ifndef LIST_H_
-#define LIST_H_
+#ifndef LIST_HPP_
+#define LIST_HPP_
 
-#include "ListItem.h"
-#include "ListIterator.h"
+#include "ListItem.hpp"
+#include "ListIterator.hpp"
 
 class List {
 public:
@@ -66,4 +66,4 @@ private:
 	friend class ListIterator;
 };
 
-#endif /* LIST_H_ */
+#endif /* LIST_HPP_ */

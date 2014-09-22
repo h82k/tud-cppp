@@ -1,9 +1,9 @@
 /*
- * ListListIterator.h
+ * ListListIterator.hpp
  */
 
-#ifndef LISTITERATOR_H_
-#define LISTITERATOR_H_
+#ifndef LISTITERATOR_HPP_
+#define LISTITERATOR_HPP_
 
 class ListItem;
 class List;
@@ -36,4 +36,4 @@ private:
 	ListItem *item;
 };
 
-#endif /* LISTITERATOR_H_ */
+#endif /* LISTITERATOR_HPP_ */

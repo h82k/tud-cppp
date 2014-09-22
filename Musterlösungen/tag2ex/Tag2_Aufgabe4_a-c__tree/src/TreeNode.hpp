@@ -1,12 +1,12 @@
 /*
- * TreeNode.h
+ * TreeNode.hpp
  *
  *  Created on: Aug 15, 2013
  *      Author: jgdo
  */
 
-#ifndef TREENODE_H_
-#define TREENODE_H_
+#ifndef TREENODE_HPP_
+#define TREENODE_HPP_
 
 #include <boost/shared_ptr.hpp>
 
@@ -34,4 +34,4 @@ private:
 	int content;
 };
 
-#endif /* TREENODE_H_ */
+#endif /* TREENODE_HPP_ */

@@ -7,7 +7,7 @@
 using std::cout;
 using std::endl;
 
-#include "Building.h"
+#include "Building.hpp"
 
 Building::Building(int numberOfFloors) {
 	// add given number of floors
