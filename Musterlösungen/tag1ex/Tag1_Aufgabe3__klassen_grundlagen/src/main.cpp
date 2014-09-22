@@ -1,5 +1,5 @@
 #include <iostream>
-#include "PatternPrinter.h"
+#include "PatternPrinter.hpp"
 
 using namespace std;
 

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#include "Elevator.h"
+#include "Elevator.hpp"
 
 Elevator::Elevator() :
 		currentFloor(0), energyConsumed(0) {

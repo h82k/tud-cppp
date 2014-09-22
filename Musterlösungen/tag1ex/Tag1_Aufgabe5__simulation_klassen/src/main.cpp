@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Building.h"
+#include "Building.hpp"
 
 int main() {
 	Building b(3);

@@ -1,11 +1,11 @@
 /*
- * PatternPrinter.h
+ * PatternPrinter.hpp
  */
 
-#ifndef PATTERNPRINTER_H_
-#define PATTERNPRINTER_H_
+#ifndef PATTERNPRINTER_HPP_
+#define PATTERNPRINTER_HPP_
 
-#include "CharGenerator.h"
+#include "CharGenerator.hpp"
 
 class PatternPrinter {
 public:
@@ -20,4 +20,4 @@ private:
 	CharGenerator charGenerator;
 };
 
-#endif /* PATTERNPRINTER_H_ */
+#endif /* PATTERNPRINTER_HPP_ */

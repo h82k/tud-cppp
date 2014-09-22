@@ -1,9 +1,9 @@
 /*
- * CharGenerator.h
+ * CharGenerator.hpp
  */
 
-#ifndef CHARGENERATOR_H_
-#define CHARGENERATOR_H_
+#ifndef CHARGENERATOR_HPP_
+#define CHARGENERATOR_HPP_
 
 
 class CharGenerator {
@@ -15,4 +15,4 @@ private:
 	char nextChar;
 };
 
-#endif /* CHARGENERATOR_H_ */
+#endif /* CHARGENERATOR_HPP_ */

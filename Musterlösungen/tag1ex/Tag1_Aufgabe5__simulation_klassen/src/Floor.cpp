@@ -2,7 +2,7 @@
  * Floor.cpp
  */
 
-#include "Floor.h"
+#include "Floor.hpp"
 
 void Floor::addWaitingPerson(Person h) {
 	containedPeople.push_back(h);

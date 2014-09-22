@@ -1,9 +1,9 @@
 /*
- * Person.h
+ * Person.hpp
  */
 
-#ifndef PERSON_H_
-#define PERSON_H_
+#ifndef PERSON_HPP_
+#define PERSON_HPP_
 
 /*
  * Represents a person with a destination floor.
@@ -33,4 +33,4 @@ private:
 	int destinationFloor;
 };
 
-#endif /* PERSON_H_ */
+#endif /* PERSON_HPP_ */

@@ -1,13 +1,13 @@
 /*
- * Elevator.h
+ * Elevator.hpp
  */
 
-#ifndef ELEVATOR_H_
-#define ELEVATOR_H_
+#ifndef ELEVATOR_HPP_
+#define ELEVATOR_HPP_
 
 #include <vector>
 
-#include "Person.h"
+#include "Person.hpp"
 
 /**
  * Represents an Elevator which can contain people and move to a floor.
@@ -59,4 +59,4 @@ private:
 	double energyConsumed;
 };
 
-#endif /* ELEVATOR_H_ */
+#endif /* ELEVATOR_HPP_ */

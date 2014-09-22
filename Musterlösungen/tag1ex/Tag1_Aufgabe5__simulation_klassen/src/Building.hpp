@@ -1,14 +1,14 @@
 /*
- * Building.h
+ * Building.hpp
  */
 
-#ifndef BUILDING_H_
-#define BUILDING_H_
+#ifndef BUILDING_HPP_
+#define BUILDING_HPP_
 
 #include <vector>
 
-#include "Floor.h"
-#include "Elevator.h"
+#include "Floor.hpp"
+#include "Elevator.hpp"
 
 /**
  * Represents a Building with floors and an Elevator
@@ -57,4 +57,4 @@ private:
 	Elevator elevator;
 };
 
-#endif /* BUILDING_H_ */
+#endif /* BUILDING_HPP_ */

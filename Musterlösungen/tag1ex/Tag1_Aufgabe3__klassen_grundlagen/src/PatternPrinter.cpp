@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-#include "PatternPrinter.h"
+#include "PatternPrinter.hpp"
 
 PatternPrinter::PatternPrinter() :
 		charGenerator('k') {

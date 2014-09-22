@@ -2,7 +2,7 @@
  * Human.cpp
  */
 
-#include "Person.h"
+#include "Person.hpp"
 
 #include <iostream>
 using namespace std;

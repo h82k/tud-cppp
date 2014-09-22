@@ -1,7 +1,7 @@
 /*
  * CharGenerator.cpp
  */
-#include "CharGenerator.h"
+#include "CharGenerator.hpp"
 
 CharGenerator::CharGenerator(char initialChar) :
 		nextChar(initialChar) {

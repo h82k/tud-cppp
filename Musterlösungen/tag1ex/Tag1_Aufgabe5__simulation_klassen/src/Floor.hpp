@@ -1,14 +1,14 @@
 /*
- * Floor.h
+ * Floor.hpp
  */
 
-#ifndef FLOOR_H_
-#define FLOOR_H_
+#ifndef FLOOR_HPP_
+#define FLOOR_HPP_
 
 #include <vector>
 #include <set>
 
-#include "Person.h"
+#include "Person.hpp"
 
 /**
  * Represents a building floor with waiting people.
@@ -34,4 +34,4 @@ private:
 	std::vector<Person> containedPeople;
 };
 
-#endif /* FLOOR_H_ */
+#endif /* FLOOR_HPP_ */

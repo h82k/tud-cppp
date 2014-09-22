@@ -1,9 +1,9 @@
 /*
- * Vector3.h
+ * Vector3.hpp
  */
 
-#ifndef VECTOR3_H_
-#define VECTOR3_H_
+#ifndef VECTOR3_HPP_
+#define VECTOR3_HPP_
 
 #include <iostream>
 
@@ -36,4 +36,4 @@ private:
 
 std::ostream& operator<<(std::ostream& out, Vector3 rhs);
 
-#endif /* VECTOR3_H_ */
+#endif /* VECTOR3_HPP_ */
