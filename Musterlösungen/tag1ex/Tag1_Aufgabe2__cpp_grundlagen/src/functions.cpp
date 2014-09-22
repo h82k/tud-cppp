@@ -1,7 +1,7 @@
 /*
  * functions.cpp
  */
-#include "functions.h"
+#include "functions.hpp"
 
 #include <iostream>
 using namespace std;

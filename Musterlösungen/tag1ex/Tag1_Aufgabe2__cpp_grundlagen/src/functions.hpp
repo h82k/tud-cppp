@@ -1,9 +1,9 @@
 /*
- * functions.h
+ * functions.hpp
  */
 
-#ifndef FUNCTIONS_H_
-#define FUNCTIONS_H_
+#ifndef FUNCTIONS_HPP_
+#define FUNCTIONS_HPP_
 
 void print_star(int n);
 
@@ -17,4 +17,4 @@ void print_char(int n);
 
 void task_e();
 
-#endif /* FUNCTIONS_H_ */
+#endif /* FUNCTIONS_HPP_ */

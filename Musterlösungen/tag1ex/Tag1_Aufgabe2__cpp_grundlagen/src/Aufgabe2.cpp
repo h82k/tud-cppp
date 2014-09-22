@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include "functions.h"
+#include "functions.hpp"
 
 int main() {
 	task_e();
