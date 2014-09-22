@@ -5,9 +5,9 @@
 #include <iostream>
 using namespace std;
 
-#include "Employee.h"
-#include "Student.h"
-#include "StudentAssistant.h"
+#include "Employee.hpp"
+#include "Student.hpp"
+#include "StudentAssistant.hpp"
 
 /** prints person information on console */
 void printPersonInfo(const Person* p) {

@@ -1,10 +1,11 @@
 /*
- * Callback.h
+ * Callback.hpp
  */
 
-#ifndef CALLBACK_H_
-#define CALLBACK_H_
+#ifndef CALLBACK_HPP_
+#define CALLBACK_HPP_
 
+#include <boost/shared_ptr.hpp>
 
 template<class ParamT>
 class CallbackBase {
@@ -31,7 +32,6 @@ public:
 private:
 	void (*fp)(ParamT);
 };
-
 
 template<class ParamT, class FunctorT>
 class FunctorCallback: public CallbackBase<ParamT> {
@@ -68,5 +68,28 @@ private:
 	ClassT* obj;
 };
 
+template<class ParamT>
+class Callback {
+public:
+	Callback(void(*fp)(ParamT)) :
+			callbackPtr(new FunctionCallback<ParamT>(fp)) {
+	}
+	
+	template<class FunctorT>
+	Callback(FunctorT& fp) :
+			callbackPtr(new FunctorCallback<ParamT, FunctorT>(fp)) {
+	}
+	
+	template<class ClassT>
+	Callback(void(ClassT::*mp)(ParamT), ClassT* obj) :
+			callbackPtr(new MethodCallback<ParamT, ClassT>(mp, obj)) {
+	}
+	
+	void operator()(ParamT t) {
+		callbackPtr->call(t);
+	}
+private:
+	boost::shared_ptr<CallbackBase<ParamT> > callbackPtr;
+};
 
-#endif /* CALLBACK_H_ */
+#endif /* CALLBACK_HPP_ */

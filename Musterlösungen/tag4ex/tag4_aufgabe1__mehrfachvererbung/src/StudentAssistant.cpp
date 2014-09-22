@@ -2,7 +2,7 @@
  * StudentAssistant.cpp
  */
 
-#include "StudentAssistant.h"
+#include "StudentAssistant.hpp"
 
 #include <iostream>
 using namespace std;

@@ -1,11 +1,11 @@
 /*
- * Student.h
+ * Student.hpp
  */
 
-#ifndef STUDENT_H_
-#define STUDENT_H_
+#ifndef STUDENT_HPP_
+#define STUDENT_HPP_
 
-#include "Person.h"
+#include "Person.hpp"
 
 class Student: public virtual Person {
 public:
@@ -18,4 +18,4 @@ protected:
 	std::string studentID;
 };
 
-#endif /* STUDENT_H_ */
+#endif /* STUDENT_HPP_ */

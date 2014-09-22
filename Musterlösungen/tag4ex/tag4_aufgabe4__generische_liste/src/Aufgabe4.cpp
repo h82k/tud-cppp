@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "List.h"
+#include "List.hpp"
 
 int main() {
 	List<List<int> > list; //  >> is an operator, so use > > for nested templates

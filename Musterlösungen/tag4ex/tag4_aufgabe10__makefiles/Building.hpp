@@ -1,5 +1,5 @@
-#ifndef BUILDING_H_
-#define BUILDING_H_
+#ifndef BUILDING_HPP_
+#define BUILDING_HPP_
 
 #include <string>
 #include <sstream>

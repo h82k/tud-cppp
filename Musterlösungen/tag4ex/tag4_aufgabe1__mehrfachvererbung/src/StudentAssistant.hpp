@@ -1,12 +1,12 @@
 /*
- * StudentAssistant.h
+ * StudentAssistant.hpp
  */
 
-#ifndef STUDENTASSISTANT_H_
-#define STUDENTASSISTANT_H_
+#ifndef STUDENTASSISTANT_HPP_
+#define STUDENTASSISTANT_HPP_
 
-#include "Employee.h"
-#include "Student.h"
+#include "Employee.hpp"
+#include "Student.hpp"
 
 class StudentAssistant: public Student, public Employee {
 public:
@@ -16,4 +16,4 @@ public:
 	virtual std::string getInfo() const;
 };
 
-#endif /* STUDENTASSISTANT_H_ */
+#endif /* STUDENTASSISTANT_HPP_ */

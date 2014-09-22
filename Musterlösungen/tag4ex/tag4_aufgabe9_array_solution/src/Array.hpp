@@ -1,10 +1,8 @@
-#ifndef ARRAY_H_
-#define ARRAY_H_
+#ifndef ARRAY_HPP_
+#define ARRAY_HPP_
 
 #include <iostream>
 #include <boost/smart_ptr.hpp>
-
-typedef unsigned int size_t;
 
 /**
  * Custom implementation of an array.
@@ -132,4 +130,4 @@ Array<T> Array<T>::operator+(size_t delta) {
 	return offsetArray;
 }
 
-#endif /* ARRAY_H_ */
+#endif /* ARRAY_HPP_ */

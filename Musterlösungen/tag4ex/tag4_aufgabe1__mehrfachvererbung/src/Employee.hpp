@@ -1,11 +1,11 @@
 /*
- * Employee.h
+ * Employee.hpp
  */
 
-#ifndef EMPLOYEE_H_
-#define EMPLOYEE_H_
+#ifndef EMPLOYEE_HPP_
+#define EMPLOYEE_HPP_
 
-#include "Person.h"
+#include "Person.hpp"
 
 class Employee: public virtual Person {
 public:
@@ -17,4 +17,4 @@ protected:
 	std::string supervisor;
 };
 
-#endif /* EMPLOYEE_H_ */
+#endif /* EMPLOYEE_HPP_ */

@@ -1,16 +1,15 @@
 /*
- * List.h
+ * List.hpp
  */
 
-#ifndef LIST_H_
-#define LIST_H_
+#ifndef LIST_HPP_
+#define LIST_HPP_
 
 #include <cstdlib>
-#include "ListItem.h"
-#include "ListIterator.h"
+#include "ListItem.hpp"
+#include "ListIterator.hpp"
 
 #include <iostream>
-#include <stdexcept>
 
 template<class T>
 class List {
@@ -30,13 +29,13 @@ public:
 	/** prepend an element to beginning of the list */
 	void prependElement(const T& i);
 
-	/** insert element at position pos. throws out_of_range if pos is out of range */
+	/** insert element at position pos. append/prepend element if pos outside of range*/
 	void insertElementAt(const T& i, int pos);
 
 	/** number of elements in list */
 	int getSize() const;
 
-	/* return n-th element. throws out_of_range if pos is out of range. slow! */
+	/* return n-th element. No range checks. slow! */
 	T& getNthElement(int n);
 
 	/** return first element */
@@ -51,7 +50,7 @@ public:
 	/** delete last element */
 	void deleteLast();
 
-	/** delete element at given position. throws out_of_range if pos is out of range. */
+	/** delete element at given position. delete first/last if pos outside of range */
 	void deleteAt(int pos);
 
 	/** iterator to first element */
@@ -112,11 +111,9 @@ void List<T>::prependElement(const T& i) {
 
 template<class T>
 void List<T>::insertElementAt(const T& i, int pos) {
-	if (pos < 0 || pos > getSize())
-		throw std::out_of_range("List::insertElementAt() out of range");
-	else if (pos == 0)
+	if (pos <= 0)
 		prependElement(i);
-	if (pos == getSize())
+	if (pos >= getSize())
 		appendElement(i);
 	else {
 		ListItem<T>* p = first;
@@ -136,9 +133,6 @@ int List<T>::getSize() const {
 
 template<class T>
 T& List<T>::getNthElement(int n) {
-	if (n < 0 || n >= getSize())
-		throw std::out_of_range("List::getNthElement() out of range");
-	
 	ListItem<T>* p = first;
 	// iterate over elements
 	while (n-- > 0)
@@ -190,11 +184,9 @@ void List<T>::deleteLast() {
 /** delete element at given position. delete first/last if pos outside of range */
 template<class T>
 void List<T>::deleteAt(int pos) {
-	if (pos < 0 || pos >= getSize())
-		throw std::out_of_range("List::deleteAt() out of range");
-	else if (pos == 0)
+	if (pos <= 0)
 		return deleteFirst();
-	else if (pos == getSize() - 1)
+	else if (pos >= currentSize - 1)
 		return deleteLast();
 	else {
 		ListItem<T>* p = first;
@@ -230,4 +222,4 @@ std::ostream& operator<<(ostream& out, List<T>& list) {
 	return out;
 }
 
-#endif /* LIST_H_ */
+#endif /* LIST_HPP_ */

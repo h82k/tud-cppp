@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Vector3.h"
+#include "Vector3.hpp"
 
 int main() {
 	cout << Vector3<int>(1, 2, 3) / 5 << endl; // should be (0, 0, 0)

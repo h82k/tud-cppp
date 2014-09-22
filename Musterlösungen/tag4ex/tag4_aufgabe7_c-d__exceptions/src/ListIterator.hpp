@@ -1,9 +1,9 @@
 /*
- * ListListIterator.h
+ * ListListIterator.hpp
  */
 
-#ifndef LISTITERATOR_H_
-#define LISTITERATOR_H_
+#ifndef LISTITERATOR_HPP_
+#define LISTITERATOR_HPP_
 
 #include <cstdlib>
 
@@ -99,4 +99,4 @@ bool ListIterator<T>::operator!=(const ListIterator<T>& other) const {
 
 
 
-#endif /* LISTITERATOR_H_ */
+#endif /* LISTITERATOR_HPP_ */

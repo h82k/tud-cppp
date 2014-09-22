@@ -1,9 +1,9 @@
 /*
- * ListItem.h
+ * ListItem.hpp
  */
 
-#ifndef LISTITEM_H_
-#define LISTITEM_H_
+#ifndef LISTITEM_HPP_
+#define LISTITEM_HPP_
 
 template<class T>
 class ListItem {
@@ -80,4 +80,4 @@ ListItem<T>* ListItem<T>::getPrevious() {
 }
 
 
-#endif /* LISTITEM_H_ */
+#endif /* LISTITEM_HPP_ */

@@ -1,4 +1,4 @@
-#include "Building.h"
+#include "Building.hpp"
 
 #include <string>
 
