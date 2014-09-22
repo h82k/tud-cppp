@@ -29,7 +29,7 @@ void printArray(const int *begin, const int *end) {
 
 int* readNumbers(int *size) {
 	int n;
-	cout << "Geben Sie die Größe ein: ";
+	cout << "Geben Sie die Groesse ein: ";
 	cin >> n;
 	
 	cout << "Geben Sie " << n << " Zahlen ein: " << endl;
