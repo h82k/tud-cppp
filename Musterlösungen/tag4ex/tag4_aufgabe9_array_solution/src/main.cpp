@@ -48,5 +48,7 @@ int main(int argc, char **argv) {
 	} catch (out_of_range &ex) {
 		cout << "Oh oh: " << ex.what() << endl;
 	}
+
+	cout << "Done." << endl;
 	return 0;
 }
