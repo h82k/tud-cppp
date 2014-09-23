@@ -12,30 +12,45 @@
 
 \section{Umgang mit den Mikrocontroller-Boards}
 
-Von der Toolseite aus unterscheidet sich die Entwicklung für den Mikrocontroller kaum von den bisherigen Übungen, da die Toolchain mit in Eclipse integriert ist.
+Von der Toolseite aus unterscheidet sich die Entwicklung für den Mikrocontroller kaum von den bisherigen Übungen, da die Toolchain für die Embedded-Entwicklung in Eclipse integriert ist.
 Der Programmcode wird in Eclipse geschrieben, kompiliert und gelinkt.
-Danach wird das Programm automatisch auf den Mikrocontroller übertragen (\emph{FLASHly}) und der Controller neu gestartet.
+Danach wird das Programm automatisch auf den Mikrocontroller übertragen (via \emph{FLASHly}) und der Controller neu gestartet.
 Soll das Programm manuell neu gestartet werden, ohne ein neues Programm zu übertragen, hilft ein kurzer Druck auf den blauen Reset-Knopf.
 
 
 \section{Systemtest}
 
-Teste das Zusammenspiel von Eclipse / Compiler / Flash auf Mikrocontroller, in dem du das vorgegebene Projekt \emph{p00\_flash} baust.
-Dies sollte am Schluss automatisch das Programm auf den angeschlossenen Mikrocontroller übertragen.
-Das Programm sollte auf der Sieben-Segment-Anzeige des Boards eine \textit{42} anzeigen.
+Teste das Zusammenspiel von Eclipse / Compiler / Flash auf Mikrocontroller, indem du das vorgegebene Projekt \emph{p00\_flash} baust.
 
-\textbf{Wichtig}: Das USB-Kabel muss am Hub in der Buchse stecken, die mit \emph{Data} beschriftet ist.
+Du wirst nach dem (emulierten) COM-Port gefragt, an dem der Microcontroller angeschlossen ist:
+\begin{center}
+	\includegraphics[scale=.7]{com_port_drop_down.png}
+\end{center}
+Den entsprechenden Port ermittelst du entweder durch Ausprobieren (hohe Portnummern sind wahrscheinlicher) oder du öffnest den \emph{\textbf{Geräte-Manager}} und suchst unter \textbf{\emph{Anschlüsse (COM \& LPT)}} nach dem \emph{\textbf{USB Serial Port}}. 
 
-\emph{Tipp}:
-Selbst wenn der Build- und Übertragungsprozess erfolgreich war, wirst du zunächst eine Fehlermeldung erhalten.
-Dieser Fehler verschwindet, wenn du einen Standard-COM-Port einstellst.
 
-Du kannst den Standard-COM-Port in den Projekteigenschaften festlegen.
-Gehe dazu in den Projekteigenschaften (Rechtsklick auf das Projekt) zu \emph{C/C++-Builder $\to$ Settings} und wähle den Baumeintrag \emph{FLASHly/General}.
-Hier kannst du den Standardport in das Feld \emph{COM port} eintragen.
+Auf der Sieben-Segment-Anzeige des Boards sollte nun eine \textit{42} erscheinen.
 
-\textbf{Wichtig}: Wenn du das USB-Kabel aus- und wieder einsteckst, wird sich die Nummer des COM-Ports ändern.
-Du musst diese Änderung in den Settings entsprechend nachziehen.
+\textbf{Wichtig [Pool-PCs]}: Das USB-Kabel muss am Hub in der Buchse stecken, die mit \emph{Data} beschriftet ist.
+
+\subsection{Standard-COM-Port}
+
+Selbst wenn der Build- und Übertragungsprozess erfolgreich war, wirst du zunächst eine Fehlermeldung erhalten:
+\begin{center}
+	\includegraphics[scale=.7]{flashly_dummy_error_message.png}
+\end{center}
+
+Dieser Fehler verschwindet, wenn du einen Standard-COM-Port wie folgt einstellst:
+Öffne die \textbf{Projekteigenschaften} (Rechtsklick auf das Projekt) zu \emph{C/C++-Builder $\to$ Settings} und wähle den Baumeintrag \emph{FLASHly/General}.
+Hier kannst du den COM-Port in das Feld \emph{COM port} eintragen.
+
+\textbf{Sehr wichtig}: Wenn du das USB-Kabel aus- und wieder einsteckst, kann sich die Nummer des COM-Ports ändern.
+Du musst diese Änderung in den Einstellungen entsprechend nachziehen.
+
+\subsubsection{Troubleshooting}
+
+Manchmal scheitert das Beschreiben des Microcontrollers aus ansonsten unerfindlichen Gründen.
+In diesem Fall kann es helfen, den Schiebeschalter (bei der DSUB9-Buchse) während des Programmierens auf \textbf{\emph{PROG}} und danach wieder auf \textbf{\emph{RUN}} zu stellen.
 
 \section{Embedded-Entwicklung}
 
