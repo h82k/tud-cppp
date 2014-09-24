@@ -13,7 +13,7 @@ const char DEC7SEG[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 
 // wait a specified amount of cycles
 void wait(long cycle) {
 	long i;
-	for (i = 0; i < cycle; i++)
+	for (i = 0; i < cycle; ++i)
 		__wait_nop();
 }
 

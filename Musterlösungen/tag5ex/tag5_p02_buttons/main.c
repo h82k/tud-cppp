@@ -11,12 +11,11 @@ typedef struct decimal {
 	unsigned short tens;
 } decimal;
 
-void wait(long time) {
+// wait a specified amount of cycles
+void wait(long cycle) {
 	long i;
-
-	for(i = 0; i < time; i++) {
+	for (i = 0; i < cycle; ++i
 		__wait_nop();
-	}
 }
 
 // increment a decimal number
@@ -67,8 +66,11 @@ void print(decimal number) {
 
 void main(void) {
 	/* your definitions here */
+	// set the previous state of the buttons to a non-zero (i.e. non pressed) value
 	int prev_left = 1;
 	int prev_right = 1;
+	int cur_left = BUTTON_LEFT;
+	int cur_right = BUTTON_RIGHT;
 	decimal number = {0,0};
 	
 	// initialize I/O-ports
@@ -85,13 +87,26 @@ void main(void) {
 
 	for (;;) {
 		/* your code here */
-		if (BUTTON_LEFT == 0 && BUTTON_LEFT != prev_left)
+		// buffer the current left button input to avoid problems
+		cur_left = BUTTON_LEFT;
+		// check whether the left button is pressed comparing with the previous state
+		if (cur_left == 0 && cur_left != prev_left)
 			number = dec(number);
-		if (BUTTON_RIGHT == 0 && BUTTON_RIGHT != prev_right)
+		
+		// buffer the current right button input to avoid problems
+		cur_right = BUTTON_RIGHT;
+		// check whether the left button is pressed comparing with the previous state 
+		if (cur_right == 0 && cur_right != prev_right)
 			number = inc(number);
-		prev_left = BUTTON_LEFT;
-		prev_right = BUTTON_RIGHT;
+		
+		// store the current state of the buttons for the next iteration
+		prev_left = cur_left;
+		prev_right = cur_right;
+		
+		// display the number calculated
 		print(number);
+		
+		// wait once
 		wait(10);
 	}
 	
