@@ -53,7 +53,7 @@
 									<listOptionValue builtIn="false" value="DF0000"/>
 									<listOptionValue builtIn="false" value="FF0000"/>
 								</option>
-								<option id="org.eclipse.cdt.fujitsuF2MC16.flashly.general.com.1285002818" superClass="org.eclipse.cdt.fujitsuF2MC16.flashly.general.com" value="6" valueType="string"/>
+								<option id="org.eclipse.cdt.fujitsuF2MC16.flashly.general.com.1285002818" name="COM Port" superClass="org.eclipse.cdt.fujitsuF2MC16.flashly.general.com" value="6" valueType="string"/>
 							</tool>
 						</toolChain>
 					</folderInfo>

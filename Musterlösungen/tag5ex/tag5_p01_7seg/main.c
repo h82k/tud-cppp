@@ -26,7 +26,7 @@ void main(void) {
 			PDR09 = DEC7SEG[i];
 			PDR00 = DEC7SEG[j];
 			// wait DELAY ticks
-			for (d = 0; < DELAY; ++d) {
+			for (d = 0; d < DELAY; ++d) {
 				__wait_nop();
 			}
 		}
