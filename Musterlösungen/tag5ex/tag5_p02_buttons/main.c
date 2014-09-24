@@ -7,9 +7,17 @@ const char DEC7SEG[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 
 
 // define a decimal number consisting of two digits
 typedef struct decimal {
-	short units;
-	short tens;
+	unsigned short units;
+	unsigned short tens;
 } decimal;
+
+void wait(long time) {
+	long i;
+
+	for(i = 0; i < time; i++) {
+		__wait_nop();
+	}
+}
 
 // increment a decimal number
 decimal inc(decimal number) {
@@ -21,10 +29,10 @@ decimal inc(decimal number) {
 	else {
 		if(number.units < 9) {
 			result.tens = number.tens;
-			++result.units;
+			result.units = ++number.units;
 		}
 		else {
-			++result.tens;
+			result.tens = ++number.tens;
 			result.units = 0;
 		}
 	}
@@ -41,10 +49,10 @@ decimal dec(decimal number) {
 	else {
 		if (number.units > 0){
 			result.tens = number.tens;
-			--result.units;
+			result.units = --number.units;
 		}
 		else {
-			--result.tens;
+			result.tens = --number.tens;
 			result.units = 9;
 		}
 	}
@@ -84,7 +92,7 @@ void main(void) {
 		prev_left = BUTTON_LEFT;
 		prev_right = BUTTON_RIGHT;
 		print(number);
-		__wait_nop();
+		wait(10);
 	}
 	
 }
