@@ -79,11 +79,13 @@ void main(void) {
 	ADER0_ADE2 = 1;		// (ADER0: Inputs AN0 - AN7)
 
 	for (;;) {
+		// read the AD value from channel 1 and display its value
 		value = getADValue(1);
 		setLeft7Seg(scaleInt(value));
 		
 		wait(5);
 		
+		// read the AD value from channel 2 and display its value
 		value = getADValue(2);
 		setRight7Seg(scaleInt(value));
 		
