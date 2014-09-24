@@ -14,7 +14,7 @@ typedef struct decimal {
 // wait a specified amount of cycles
 void wait(long cycle) {
 	long i;
-	for (i = 0; i < cycle; ++i
+	for (i = 0; i < cycle; ++i)
 		__wait_nop();
 }
 
