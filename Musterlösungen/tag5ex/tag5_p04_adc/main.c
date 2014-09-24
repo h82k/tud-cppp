@@ -2,54 +2,57 @@
 
 const char DEC7SEG[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
 #define DELAY 300000l
+// definitions to increase readability
+#define SEG_LEFT PDR09
+#define SEG_RIGHT PDR00
 
-void wait(long time) {
+// wait a specified amount of cycles
+void wait(long cycle) {
 	long i;
-
-	for(i = 0; i < time; i++) {
+	for (i = 0; i < cycle; ++i)
 		__wait_nop();
-	}
 }
 
-void SetLeft7Seg(int i) {
-	if(i >= 0 && i <= 9){
-		PDR09 = DEC7SEG[i];
-	}
+// set the left seven segment display
+void setLeft7Seg(int i) {
+	if (i > 9 || i < 0)
+		return;
+	SEG_LEFT = DEC7SEG[i];
 }
 
-void SetRight7Seg(int i) {
-	if(i >= 0 && i <= 9){
-		PDR00 = DEC7SEG[i];
-	}
-
+// set the right seven segment display
+void setRight7Seg(int i) {
+	if (i > 9 || i < 0)
+		return;
+	SEG_RIGHT = DEC7SEG[i];
 }
 
-//displays a two digit value
-void Set7Seg(int i) {
-	int left, right;
-
-	right = i % 10;
-	left = (i - right)/10;
-
-	SetLeft7Seg(left);
-	SetRight7Seg(right);
-
+// set both seven segment displays
+void set7Seg(int i) {
+	// determine units and tens
+	// note checking whether i is greater than 99 is omitted here
+	// but implemented in the set seven segment display methods
+	int units = i % 10;
+	int tens = (i - units) / 10;
+	// display i on both seven segment displays
+	setLeft7Seg(tens);
+	setRight7Seg(units);
 }
 
-//Scale from 0-255 to 0-9
-int ScaleInt(int num) {
-	return (num*9)/255;
+// scale from 0-255 to 0-9
+int scaleInt(int num) {
+	return (num * 10) / 256;
 }
 
 //returns the value for specified channel
 int getADValue(int channel) {
 	int result;
-
-	ADSR = 0x6C00 + (channel << 5) + channel; 			  //Start and end channel is channelNumber
-	ADCS_STRT = 1;										  //Start A/D conversion
-	while(ADCS_INT == 0) {} 							  //Wait for conversion to finish
-	result = ADCRL;										  //Store result (1 Byte)
-	ADCRL = 0;										      //Set bit to 0 for next conversion
+	
+	ADSR = 0x6C00 + (channel << 5) + channel; 			  // Start and end channel is channelNumber
+	ADCS_STRT = 1;										  // Start A/D conversion
+	while(ADCS_INT == 0) {} 							  // Wait for conversion to finish
+	result = ADCRL;										  // Store result (1 Byte)
+	ADCRL = 0;										      // Set bit to 0 for next conversion
 	return result;
 }
 
@@ -69,21 +72,21 @@ void main(void) {
 	PIER07 = 0x03;		// enable input
 							// 0x03 = 00000011 (bin)
 
-	//Initialisation of AD converter
-	ADCS_MD = 3; 		//ADC Stop Mode
-	ADCS_S10 = 1;		//8 Bit Precision
-	ADER0_ADE1 = 1;		//Activate analog input AN1 + AN2
-	ADER0_ADE2 = 1;		//(ADER0: Inputs AN0 - AN7)
+	// Initialisation of AD converter
+	ADCS_MD = 3; 		// ADC Stop Mode
+	ADCS_S10 = 1;		// 8 Bit Precision
+	ADER0_ADE1 = 1;		// Activate analog input AN1 + AN2
+	ADER0_ADE2 = 1;		// (ADER0: Inputs AN0 - AN7)
 
 	for (;;) {
 		value = getADValue(1);
-		SetLeft7Seg(ScaleInt(value));
-
+		setLeft7Seg(scaleInt(value));
+		
 		wait(5);
-
+		
 		value = getADValue(2);
-		SetRight7Seg(ScaleInt(value));
-
+		setRight7Seg(scaleInt(value));
+		
 		wait(5);
 
 	}

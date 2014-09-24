@@ -36,14 +36,8 @@ void set7Seg(int i) {
 	// determine units and tens
 	// note checking whether i is greater than 99 is omitted here
 	// but implemented in the set seven segment display methods
-	int tens;
-	int units;
-	tens = 0;
-	while (i >= 10) {
-		i -= 10;
-		++tens;
-	}
-	units = i;
+	int units = i % 10;
+	int tens = (i - units) / 10;
 	// display i on both seven segment displays
 	setLeft7Seg(tens);
 	setRight7Seg(units);
