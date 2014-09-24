@@ -122,12 +122,15 @@ Der linke Taster ist an Port 07 Pin 0, der rechte an Port 7 Pin 1 angeschlossen.
 Bei gedrücktem Taster liegt ein Low-Pegel am Eingang, sonst ein High-Pegel.
 Du kannst den Zustand eines Pins wie folgt abfragen:
 \begin{lstlisting}
-char stateOfLeftButton = PDR07_P0; 
-char stateOfRightButton = PDR07_P1;
+char stateOfLeftButton; 
+char stateOfRightButton;
+// ...
+stateOfLeftButton = PDR07_P0; 
+stateOfRightButton = PDR07_P1;
 \end{lstlisting}
 
 \item
-Die Moduloberechnung von negativen Zahlen kann problematisch werden.
+Die Moduloberechnung von negativen Zahlen kann problematisch sein.
 Hier hilft es, wenn du vor der Modulooperation den Divisor hinzuaddierst.
 Beispiel:
 \begin{lstlisting}
