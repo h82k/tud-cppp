@@ -64,6 +64,8 @@ void main(void) {
 	int number = 0;
 	int prev_left = 1;
 	int prev_right = 1;
+	int cur_left = BUTTON_LEFT;
+	int cur_right = BUTTON_RIGHT;
 	
 	// initialize I/O-ports
 	PDR00  = 0xff;
