@@ -157,6 +157,7 @@ Verwende zur Initialisierung des A/D-Wandlers folgenden Code:
 \begin{lstlisting}
 // Start of function.
 unsigned char result;
+unsigned char channelNumber;
 
 // Initialisation
 ADCS_MD   = 3;		// ADC Stop Mode
@@ -166,7 +167,8 @@ ADER0_ADE2 = 1;     //  (ADER0: Inputs AN0 to AN7)
 \end{lstlisting}
 Anschließend kannst du mit folgendem Code (hier für den Kanal 1) eine A/D-Wandlung vornehmen:
 \begin{lstlisting}
-ADSR = 0x6C00 + (3 << 5) + 3;	      // Start and end channel is 1
+channelNumber = 1;
+ADSR = 0x6C00 + (channelNumber << 5) + channelNumber;	      // Start and end channel is channelNumber
 
 ADCS_STRT = 1;				// Start A/D conversion
 while (ADCS_INT == 0) { }	// Wait for A/D conversion to finish
@@ -185,8 +187,8 @@ Achte auf die richtige Initialisierung von \textit{ADER0}.
 \item Der Wert für \textit{ADSR} besteht aus 16 Bits (0110 11xx xxxy yyyy\textsubscript{b}), wobei xxxxx für den Startkanal der Konvertierung und yyyyy für den Endkanal steht. Für unsere Zwecke nehmen diese beiden 5\,Bit Blöcke immer entweder 00001 (AN1) oder 00010 (AN2) an.
 Daher sieht die Initialisierung von ADSR etwas kryptisch aus:
 \begin{verbatim}
-// Start and end channel is 3
-ADSR = 0x6C00 + (3 << 5) + 3;
+// Start and end channel is 1
+ADSR = 0x6C00 + (1 << 5) + 1;
 \end{verbatim}
 
 \item
