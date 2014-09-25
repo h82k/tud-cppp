@@ -22,6 +22,7 @@ void wait(long cycle) {
 		__wait_nop();
 }
 
+// trigger lcd read
 void lcd_sendEnable(void) {
 	LCD_PIN_E = 1;
 	wait(LCD_T);
@@ -29,6 +30,9 @@ void lcd_sendEnable(void) {
 	wait(LCD_T);
 }
 
+// turn one or both parts of the on or off
+// cs1 --> chip select 1 (left part)
+// cs2 --> chip select 2 (right part)
 void lcd_on_off(int DB0, int cs1, int cs2) {
 	if (DB0)
 		DB0 = 1;
@@ -40,11 +44,14 @@ void lcd_on_off(int DB0, int cs1, int cs2) {
 	lcd_sendEnable();
 }
 
+// write one byte to every cell of every activated lcd parts
 void lcd_write(int data) {
 	int x;
 	int y;
+	// reduce input to one byte (more cannot be written in one step)
 	data = data % 256;
 	for (x = 0; x < 8; ++x) {
+		// set input to receive instructions
 		LCD_PIN_DI = 0;
 		// set x address
 		LCD_PORT_DB = 0xB8 + x;
@@ -53,7 +60,7 @@ void lcd_write(int data) {
 		LCD_PORT_DB = 0x40;// + y;
 		lcd_sendEnable();
 		for (y = 0; y < 64; ++y) {
-			// send 8 Bit
+			// send 8 Bit (set input to receive data)
 			LCD_PIN_DI = 1;
 			LCD_PORT_DB = data;
 			lcd_sendEnable();
@@ -88,8 +95,8 @@ void main(void) {
 	
 	
 	/* your code here */
-	lcd_on_off(1,1,0);
-	lcd_write(0xaa);
+	lcd_on_off(1,1,0);		// turn on the left part of the lcd
+	lcd_write(0xaa);		// write the pattern 0xaa = 0b10101010
 	
 	for (;;) {
 		__wait_nop();
