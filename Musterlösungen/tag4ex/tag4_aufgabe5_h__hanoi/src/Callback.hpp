@@ -7,6 +7,9 @@
 
 #include <boost/shared_ptr.hpp>
 
+/**
+ * Base class for all types of callbacks.
+ */
 template<class ParamT>
 class CallbackBase {
 public:
@@ -16,6 +19,9 @@ public:
 	virtual void call(ParamT t) = 0;
 };
 
+/**
+ * Callback class that takes a function pointer
+ */
 template<class ParamT>
 class FunctionCallback: public CallbackBase<ParamT> {
 public:
@@ -33,6 +39,9 @@ private:
 	void (*fp)(ParamT);
 };
 
+/**
+ * Callback class that takes a functor
+ */
 template<class ParamT, class FunctorT>
 class FunctorCallback: public CallbackBase<ParamT> {
 public:
@@ -50,6 +59,9 @@ private:
 	FunctorT& fp;
 };
 
+/**
+ * Callback class that takes an object and a method callback
+ */
 template<class ParamT, class ClassT>
 class MethodCallback: public CallbackBase<ParamT> {
 public:
@@ -68,6 +80,10 @@ private:
 	ClassT* obj;
 };
 
+/**
+ * Central callback class that offers a constructor
+ * for each type of callback.
+ */
 template<class ParamT>
 class Callback {
 public:

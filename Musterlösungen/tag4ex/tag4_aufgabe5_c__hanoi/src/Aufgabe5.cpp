@@ -17,7 +17,7 @@ public:
 };
 
 template<class T>
-void hanoi(int i, int a, int b, int c, T callback) {
+void hanoi(int i, int a, int b, int c, T &callback) {
 	if (i > 0) {
 		hanoi(i - 1, a, c, b, callback);
 		// moving a to c
