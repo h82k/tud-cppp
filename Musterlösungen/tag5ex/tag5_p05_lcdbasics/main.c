@@ -53,11 +53,11 @@ void lcd_write(int data) {
 	for (x = 0; x < 8; ++x) {
 		// set input to receive instructions
 		LCD_PIN_DI = 0;
-		// set x address
-		LCD_PORT_DB = 0xB8 + x;
+		// set y address
+		LCD_PORT_DB = 0xB8 + y;
 		lcd_sendEnable();
-		// set y address;
-		LCD_PORT_DB = 0x40;// + y;
+		// set x address;
+		LCD_PORT_DB = 0x40;
 		lcd_sendEnable();
 		for (y = 0; y < 64; ++y) {
 			// send 8 Bit (set input to receive data)
