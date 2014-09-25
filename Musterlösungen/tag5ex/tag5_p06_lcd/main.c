@@ -18,15 +18,16 @@ unsigned char lcd_buffer[128][8];
 unsigned char (*lcd_activeBuffer)[LCD_HEIGHT / 8] = lcd_buffer;
 
 
-enum{ LEFT, RIGHT} side;
+enum {LEFT, RIGHT} side;
 
-void wait(long time){
+// wait a specified amount of cycles
+void wait(long cycle) {
 	long i;
-	for(i = 0; i < time; i++){
+	for (i = 0; i < cycle; ++i)
 		__wait_nop();
-	}
 }
 
+// trigger lcd read
 void lcd_sendEnable(void) {
 	wait(LCD_T);
 	LCD_PIN_E   = 1;
@@ -35,21 +36,22 @@ void lcd_sendEnable(void) {
 	wait(LCD_T);
 }
 
-
+// clear lcd buffer (disable all pixels in the buffer)
 void lcd_clear(void) {
 	int x, y;
-	for (x = 0; x < LCD_WIDTH; x++) {
-		for (y = 0; y < 8; y++) {
+	for (x = 0; x < LCD_WIDTH; ++x) {
+		for (y = 0; y < 8; ++y) {
 			lcd_buffer[x][y] = 0;
 		}
 	}
 }
 
+// flush the content of the buffer to the lcd
 void lcd_flush(void) {
 	int x, y, offsetx;
 		side = LEFT;
 
-		for (side = LEFT; side <= RIGHT; side++) {
+		for (side = LEFT; side <= RIGHT; ++side) {
 
 			// side
 			LCD_PIN_CS1 = (side == LEFT) ? 1 : 0;
@@ -57,7 +59,7 @@ void lcd_flush(void) {
 			offsetx = (side == LEFT) ? 0 : 64;
 
 			// note that x and y are the LCD ones here!
-			for (y = 0; y < 8; y++) {
+			for (y = 0; y < 8; ++y) {
 
 				// send y address
 				LCD_PIN_DI  = 0;
@@ -69,7 +71,7 @@ void lcd_flush(void) {
 				LCD_PORT_DB = 0x40;
 				lcd_sendEnable();
 
-				for (x = offsetx; x < offsetx + 64; x++) {
+				for (x = offsetx; x < offsetx + 64; ++x) {
 					// send data
 					LCD_PIN_DI  = 1;
 					LCD_PORT_DB = lcd_activeBuffer[x][y];
@@ -89,6 +91,7 @@ void lcd_flush(void) {
 		lcd_activeBuffer = lcd_buffer;
 }
 
+// set or delete one specific pixel in the lcd buffer array
 void lcd_drawPixel(int x,int y, int z) {
 	unsigned char old = lcd_buffer[x][y / 8];
 
@@ -129,16 +132,18 @@ void main(void) {
 	LCD_PIN_RESET = 1;	// RESET must be OFF (1)
 	LCD_PIN_RW    = 0;	// write always
 	
-	lcd_clear();
+	lcd_clear();		// reset buffer at startup
 	
 	for (;;) {
-	
-		for (x = 0; x < 128; x++) {
-			for (y = 0; y < 64; y++) {
+		
+		// draw chess pattern
+		for (x = 0; x < 128; ++x) {
+			for (y = 0; y < 64; ++y) {
 				lcd_drawPixel(x, y, ((x/4) + (y/4)) % 2);
 			}
 		}
-
+		
+		// push the new data generated above to the lcd
 		lcd_flush();
 
 	}
