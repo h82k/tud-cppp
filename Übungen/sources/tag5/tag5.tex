@@ -182,7 +182,7 @@ Hinweise:
 Einige Funktionen aus \ref{exercise7SegmentUtil} kannst du hier einsetzen.
 
 \item 
-Achte auf die richtige Initialisierung von \textit{ADER0}.
+Achte auf die richtige Aktivierung der analogen Kanäle (\textit{ADER0}).
 
 \item Der Wert für \textit{ADSR} besteht aus 16 Bits (0110 11xx xxxy yyyy\textsubscript{b}), wobei xxxxx für den Startkanal der Konvertierung und yyyyy für den Endkanal steht. Für unsere Zwecke nehmen diese beiden 5\,Bit Blöcke immer entweder 00001 (AN1) oder 00010 (AN2) an.
 Daher sieht die Initialisierung von ADSR etwas kryptisch aus:
@@ -197,76 +197,124 @@ Lies die beiden Werte nacheinander aus, verwende also immer die gleiche Zahl fü
 \end{itemize}
 
 \subsection{p05\_lcdbasics}
-Ziel dieser Aufgabe ist es, die linke Seite des Displays anzusteuern und alle Zellen mit dem Wert aa\textsubscript{h} (10101010\textsubscript{b}) zu belegen.
+Ziel dieser Aufgabe ist es, die linke Seite des Displays anzusteuern und alle Zellen mit dem Wert AA\textsubscript{h} (10101010\textsubscript{b}) zu belegen, was einem sehr feinen Streifenmuster entspricht.
+
+Für diese Aufgabe benötigst du die Dokumentation des Displays (\textit{<SVN>/Doku/Display\_AV128641YFBY-WSV.pdf}), dort insbesondere den Abschnitt mit den Befehlen: Setzen der x- und y-Adresse, Einschalten des Displays, Senden von Daten.
+
+\paragraph*{Einführung LCD}
+
+Die Ansteuerung des LCD erfolgt über Pins mit festgelegten Funktionen.
+Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorgegeben, sodass die Pins über einfache Namen angesteuert werden können. Die Namen entsprechen den Pins, wie sie im Datenblatt ab Seite 10 zu finden sind.
+
+\begin{center}
+	\begin{tabular}{l|l|l}
+		\toprule
+		\textbf{Name} & \textbf{Funktion} & \textbf{Pin/Port} \\ 
+		\midrule
+		LCD\_PORT\_DB & Datenbus (DB0 - DB7) & P01 \\ 
+		LCD\_PIN\_DI & Data (1) / Instruction (0) & P02\_0 \\ 
+		LCD\_PIN\_RW & Read (1) / Write (0) & P02\_1 \\ 
+		LCD\_PIN\_E & Enable & P02\_2 \\ 
+		LCD\_PIN\_CS1 & Linker Chip (1 = aktiv) & P02\_3 \\ 
+		LCD\_PIN\_CS2 & Rechter Chip (1 = aktiv) & P02\_4 \\ 
+		LCD\_PIN\_RESET & Reset-Signal (0 = aktiv) & P02\_5 \\ 
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik).
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{display_aufbau}
+\end{center}
+
+Welche Hälfte einen Befehl verarbeiten soll, wird ausgewählt, indem deren Chip-Select-Signal auf 1 gesetzt wird, das andere auf 0:
+\begin{lstlisting}
+// Select left display part (CS1)
+LCD_PIN_CS1 = 1;
+LCD_PIN_CS2 = 0;
+// Select right display part (CS2)
+LCD_PIN_CS1 = 0;
+LCD_PIN_CS2 = 1;
+\end{lstlisting}
+
+
+\paragraph*{Befehle senden}
+Ein Befehl an das Display besteht grundsätzlich aus zwei Phasen:
+\begin{enumerate}[1.)]
+\item
+Setzen der entsprechenden Pins (meist \emph{LCD\_PIN\_DI}, \emph{LCD\_PORT\_DB}).
+
+Eventuell selektieren der Displayhälfte über \emph{LCD\_PIN\_CS1, LCD\_PIN\_CS2}.
+
+\item
+Senden des \emph{enable}-Signals.
+Setze dazu den Enable-Pin auf 1, warte kurz, setze den Pin wieder auf 0 und warte erneut kurz.
+Verwende als Warteintervall die Konstante \emph{LCD\_T}.
+
+Es empfiehlt sich, für dieses Signal eine eigene Funtkion zu schreiben (\textit{void lcd\_sendEnable(void)}).
+\end{enumerate}
+
+\paragraph*{Auf das Display zeichnen}
+
+Das Vorgehen zum Zeichnen sieht in etwa wie folgt aus:
+\begin{enumerate}
+	\item Setzen der x-Adresse (\emph{page})
+	\item Setzen der y-Adresse (Spalte)
+	\item Senden von 8 Bit Daten (eine \glqq{}Zelle\grqq{} von 8 Pixeln Höhe)
+\end{enumerate}
+
 
 Hinweise:
 \begin{itemize}
 \item
-Für diese Aufgabe benötigst du die Dokumentation des Displays (\textit{<SVN>/Doku/Display\_AV128641YFBY-WSV.pdf}), dort insbesondere den Abschnitt mit den Befehlen: Setzen der x- und y-Adresse, Einschalten des Displays, Senden von Daten.
+Denke daran, \emph{LCD\_PIN\_E} zu Beginn des Programms mit 0 zu initialisieren.
 
 \item
-Achte darauf, nach jedem Befehl (Daten oder Instruktion) das Enable-Signal an das Display zu senden.
-Es empfiehlt sich, eine Funktion \textit{void lcd\_sendEnable(void)} zu implementieren, die den Enable-Pin auf 1 setzt, kurz wartet und dann wieder auf 0 setzt und erneut kurz wartet.
-Verwende als Warteintervall die Konstante \emph{LCD\_T}.
-Denke daran, das Enable-Pin zu Beginn des Programms mit 0 zu initialisieren.
+Das Reset-Signal (\emph{LCD\_PIN\_RESET}) muss immer 1 (deaktiviert) sein.
 
 \item
-Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik).
-Welche Hälfte einen Befehl verarbeiten soll wird ausgewählt, in dem deren Chip-Select-Signal \emph{CS1} bzw. \emph{CS2} auf 1 gesetzt wird, das andere auf 0.
-
-\item
-Die Ansteuerung erfolgt über Pins mit festgelegten Funktionen. Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorgegeben, so dass die Pins über einfache Namen angesteuert werden können. Die Namen entsprechen den Pins, wie sie im Datenblatt ab Seite 10 zu finden sind.
-
-\begin{center}
-\begin{tabular}{l|l|l}
-	\toprule
-\textbf{Name} & \textbf{Funktion} & \textbf{Pin/Port} \\ 
- \midrule
-LCD\_PORT\_DB & Datenbus (DB0 - DB7) & P01 \\ 
-LCD\_PIN\_DI & Data (1) / Instruction (0) & P02\_0 \\ 
-LCD\_PIN\_RW & Read (1) / Write (0) & P02\_1 \\ 
-LCD\_PIN\_E & Enable & P02\_2 \\ 
-LCD\_PIN\_CS1 & Linker Chip (1 = aktiv) & P02\_3 \\ 
-LCD\_PIN\_CS2 & Rechter Chip (1 = aktiv) & P02\_4 \\ 
-LCD\_PIN\_RESET & Reset-Signal (0 = aktiv) & P02\_5 \\ 
-\bottomrule
-\end{tabular}
-\end{center}
-
-\item
-Grundsätzliches Prinzip zum Senden von Befehlen:
-\begin{enumerate}
-	\item
-	Daten am Datenbus bereitstellen: PORT\_DB, PIN\_DI, PIN\_RW wie gewünscht setzen, ein Chip-Select (PIN\_CS1 oder PIN\_CS2) aktivieren
-	
-	\item
-	Enable-Signal schicken (z.B. \textit{void lcd\_sendEnable(void)})
-\end{enumerate}
-Beachte: Das Reset-Signal muss immer 1 (deaktiviert) sein.
-
-\item Vorgehen zum Schreiben von Bilddaten:
-\begin{enumerate}
-	\item Setzen der x-Adresse (Zeilenblock)
-	\item Setzen der y-Adresse (Spalte)
-	\item Senden von 8 Bit Daten (eine \glqq{}Zelle\grqq{} von 8 Pixeln Höhe)
-\end{enumerate}
-Vereinfachung: Der \textit{x}-Zähler wird nach dem Senden von Daten im Display automatisch hochgezählt.
-Somit kann \textit{y} zu Beginn jeder Zeile auf 0 gesetzt werden und muss danach für den Rest der Zeile nicht mehr manuell gesetzt werden.
-
-\begin{center}\includegraphics[width=0.6\textwidth]{display_aufbau}\end{center}
-
-
+Der \textit{x}-Zähler wird nach dem Senden von Daten zum Display automatisch hochgezählt.
+Somit ist es sinnvoll, beim Zeichnen zuerst über die Seiten (\emph{y}) zu iterieren und innerhalb dieser Schleife über die Spalten (\emph{x}):
+\begin{lstlisting}
+char y;
+char x;
+for (y = 0; y < 8; ++y)
+{
+	// LCD: set y address to 'y'
+	// LCD: set x address to 0
+	for (x = 0; x < 64; ++x)
+	{
+	    // LCD: draw pixel -> column/x address is incremented automatically
+	}
+}
+\end{lstlisting}
 \end{itemize}
 
 \subsection{p06\_lcd}
-Nun soll das Display wie ein Bildschirm angesteuert werden können. Es gibt einen Buffer \textit{lcd\_buffer}, auf dem Pixeloperationen durchgeführt werden sollen. 
-Schreibe folgende Funktionen:
+Nun soll das Display wie ein Bildschirm angesteuert werden können.
+Dazu wirst du einen Framebuffer verwenden, der den Bildschirminhalt repräsentiert.
+In jeder Iteration wird der Framebuffer zunächst vollständig vorbereitet und dann am Stück übertragen.
+
+Die Vorlage enthält bereits ein Array \textit{lcd\_buffer}, das als Framebuffer fungieren soll.
+
+Implementiere nun folgende Funktionen:
 \begin{lstlisting}
-void lcd_clear()                             // Clear buffer (set all slots to 0)
-void lcd_drawPixel(int x, int y, int black)  // Sets a pixel at (x,y) if black == 1
-                                             // Clears a pixel at (x,y) if black == 0
-                                             // Ignore if x,y, or black is invalid
-void lcd_flush()                             // Show buffer on display
+/**
+ * Clears the frame buffer, setting all pixels to 0.
+ */
+void lcd_clear();                      
+
+/**
+ * Sets (if black == 1) or clears (if black == 0) a pixel in the
+ * frame buffer.
+ * Does nothing, if any input parameter is invalid.
+ */
+void lcd_drawPixel(int x, int y, int black);
+
+/**
+ * Displays the frame buffer on the LCD
+ */
+void lcd_flush();
 \end{lstlisting}
 Hinweise:
 \begin{itemize}
@@ -274,10 +322,15 @@ Hinweise:
 Ein Testprogramm steht bereits zur Verfügung, welches ein Schachbrettmuster auf dem Display ausgibt -- wenn deine Funktionen komplett und korrekt implementiert sind.
 
 \item
-Achte auch hier darauf, dass das Display zunächst per Befehl eingeschaltet werden muss.
+Achte auch hier darauf, dass das Display zunächst per Befehl eingeschaltet werden muss (\emph{Display on}).
 
 \item
-Für die Funktion \textit{lcd\_drawPixel} werden Bitoperationen benötigt. Eine Skizze kann hier sinnvoll sein, um sich vorzustellen, wie die Bitoperationen arbeiten.
+Für die Funktion \textit{lcd\_drawPixel} werden die Bitoperationen AND und OR sowie der Shift-Operator \verb|<<| benötigt.
+Eine Skizze kann hier sinnvoll sein, um sich vorzustellen, wie die Bitoperationen arbeiten.
+
+\item
+Wenn du später bewegte Dinge visualisierst, kann es sein, dass das Display flimmert.
+Hier hilft es, entweder die Anzeige nur zu verändern, wenn sich tatsächlich etwas bewegt oder das Display vor dem Schreiben des Framebuffers aus- (\emph{Display off}) und danach wieder einzuschalten (\emph{Display off}).
 \end{itemize}
 
 
