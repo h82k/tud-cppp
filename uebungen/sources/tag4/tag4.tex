@@ -141,6 +141,8 @@ Da Header an sich nicht kompiliert werden, müssen wir diese zum Kompilieren in 
 \end{enumerate}
 
 \section{Callbacks}
+
+\paragraph*{Motivation für Callbacks}
 In dieser Aufgabe werden mehrere Methoden zur Realisierung von Callbacks in C++ vorgestellt und implementiert. 
 Callbacks können als Alternative zum Observer Pattern\footnote{\url{http://de.wikipedia.org/wiki/Observer_Pattern}} eingesetzt werden.
 Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die aufgerufen werden soll, sobald der Button gedrückt wird.
@@ -218,6 +220,8 @@ Schreibe dafür eine einfache Klasse und überlade deren \emph{operator()}:
 \end{lstlisting}
 
 \item \textbf{Callbacks mit \emph{Callback}-Klasse}
+
+\paragraph*{Probleme der bisherigen Implementierung}
 Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ansprechende Möglichkeit für Callbacks geliefert, beherbergt jedoch mehrere, teils gravierende, Schattenseiten.
 
 Zum einen ist es dadurch immer noch nicht möglich, beliebige Methoden einer Klasse als Callback zu übergeben.
@@ -236,7 +240,9 @@ void doSomethingWithButton(Button<T> &btn);
 Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
 Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Compile-Zeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
 
-Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann, und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist. Ziel ist es, folgendes zu ermöglichen:
+\paragraph*{Lösung mittels \emph{Callback}-Klasse}
+
+Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\emph{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist. Ziel ist es, folgendes zu ermöglichen:
 \begin{lstlisting}
 void hanoi(..., Callback callback) {
 	...
@@ -252,6 +258,12 @@ hanoi(..., Callback(&C::print, &c)); // method callback
 Die Idee dahinter ist Folgendes:
 Wir definieren eine abstrakte Klasse \emph{CallbackBase}, die eine abstrakte Methode \emph{void call() = 0} enthält.
 Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \emph{call()} entsprechend reimplementiert.
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{callback_metamodel.png}
+\end{center}
+
+\paragraph*{\emph{CallbackBase}}
 
 Fange mit der Klasse \emph{CallbackBase} an.
 Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \emph{call()} einen Parameter vom Typ \emph{ParamT} hinzu, wobei \emph{ParamT} ein Template-Pameter von \emph{CallbackBase} sein soll. Der Klassenrumpf lautet also
@@ -326,7 +338,7 @@ MethodCallCallback(void(ClassT::*method)(ParamT), ClassT *object)
 \end{lstlisting}
 
 \item
-\textbf{Callback}: 
+\textbf{Klasse \emph{Callback}}: 
 Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.
 Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das dir schon bekannte  Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht.
 Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
