@@ -1,35 +1,25 @@
 #include "mb96348hs.h"
 
 const char DEC7SEG[10] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80, 0x90};
-#define DELAY 300000l
 
-
-
-/* your functions here */
-
-
+// initialize I/O-ports
+void initIO(void) {
+	PDR00  = 0xff;
+	DDR00  = 0xff;		// set port00 as output (right seven-segment display)
+	PDR09  = 0xff;
+	DDR09  = 0xff;		// set port09 as output (left seven-segment display)
+	PDR07  = 0x00;
+	DDR07  = 0xfc;		// set P07_0 and P07_1 as input (buttons) - 0xfc = 11111100 (bin)
+	PIER07 = 0x03;		// enable input - 0x03 = 00000011 (bin)
+}
 
 void main(void) {
-	/* definitions go here */
+	/* your definitions here */
 	
-	
-	
-	// initialize I/O-ports
-	PDR00  = 0xff;
-	DDR00  = 0xff;		// Set Port00 as output (right 7Segment display)
-	PDR09  = 0xff;
-	DDR09  = 0xff;		// Set Port09 as output (left 7Segment display)
-	
-	PDR07  = 0x00;
-	DDR07  = 0xfc;		// Set P07_0 and P07_1 as input (buttons)
-							// 0xfc = 11111100 (bin)
-	PIER07 = 0x03;		// enable input
-							// 0x03 = 00000011 (bin)
-	
-	
+	// init buttons and seven-segment displays
+	initIO();
 	
 	for (;;) {
-		/* your code gere */
+		/* your code here */
 	}
-	
 }

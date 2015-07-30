@@ -64,8 +64,18 @@ void print(decimal number) {
 	PDR00 = DEC7SEG[number.units];
 }
 
+// initialize I/O-ports
+void initIO(void) {
+	PDR00  = 0xff;
+	DDR00  = 0xff;		// set port00 as output (right seven-segment display)
+	PDR09  = 0xff;
+	DDR09  = 0xff;		// set port09 as output (left seven-segment display)
+	PDR07  = 0x00;
+	DDR07  = 0xfc;		// set P07_0 and P07_1 as input (buttons) - 0xfc = 11111100 (bin)
+	PIER07 = 0x03;		// enable input - 0x03 = 00000011 (bin)
+}
+
 void main(void) {
-	/* your definitions here */
 	// set the previous state of the buttons to a non-zero (i.e. non pressed) value
 	int prev_left = 1;
 	int prev_right = 1;
@@ -73,20 +83,10 @@ void main(void) {
 	int cur_right = BUTTON_RIGHT;
 	decimal number = {0,0};
 	
-	// initialize I/O-ports
-	PDR00  = 0xff;
-	DDR00  = 0xff;		// Set Port00 as output (right 7Segment display)
-	PDR09  = 0xff;
-	DDR09  = 0xff;		// Set Port09 as output (left 7Segment display)
+	// init buttons and seven-segment displays
+	initIO();
 	
-	PDR07  = 0x00;
-	DDR07  = 0xfc;		// Set P07_0 and P07_1 as input (buttons)
-							// 0xfc = 11111100 (bin)
-	PIER07 = 0x03;		// enable input
-							// 0x03 = 00000011 (bin)
-
 	for (;;) {
-		/* your code here */
 		// buffer the current left button input to avoid problems
 		cur_left = BUTTON_LEFT;
 		// check whether the left button is pressed comparing with the previous state
@@ -109,5 +109,4 @@ void main(void) {
 		// wait once
 		wait(10);
 	}
-	
 }
