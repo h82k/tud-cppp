@@ -8,4 +8,131 @@
 
 \cppSetHeaderAndMakeTitle
 
+
+
+\section*{Einführung}
+
+C++ --> aktiv Hilfe ersuchen
+
+Eclipse Tutorial
+
+Git Tutorial
+
+Übungsmaterial Link
+
+Einführung in C++
+
+\subsection*{Eclipse Shortcuts}
+Das Arbeiten mit Eclipse macht erst so richtig Spaß, wenn man einige Shortcuts beherrscht.
+Dazu zählen:
+\begin{description}
+	\item[Autocomplete (\emph{Ctrl+Space})]
+	Hier erhältst du Vervollständigungsvorschläge und andere Hinweise.
+	Versuche es mal mit \emph{std::}, \emph{using namespace}.
+	Wenn du \emph{main} tippst und \emph{Ctrl+Space} drückst, generiert Eclipse für dich die \emph{main}-Funktion.
+	\item[Umbenennen (\emph{Alt+Shift+R})]
+	Mit dieser Funktion kannst du Variablen, Funktionen, Klassen,\dots umbenennen.
+	\item[Neu (\emph{Ctrl+N})]
+	Hier kannst du schnell neue Resourcen (Dateien, Projekte,\dots) anlegen.
+	\item[Header$\leftrightarrow$Source (\emph{Ctrl+Tab})]
+	Auf diese Weise kannst du schnell zwischen dem Header und der Implementierungdatei hin- und herspringen.
+	\item[Go to (\emph{Ctrl+Click}/\emph{F3})]
+	Wenn du \emph{Ctrl} gedrückt hältst und auf ein Element klickst (Funktion, Klasse,\dots), navigiert Eclipse dorthin.
+	\item[Build (\emph{Ctrl+B})]
+	Startet den Buildprozess (Aufruf von Compiler und Linker)
+\end{description}
+
+
+
+\section{C++ Grundlagen, Funktionen und Strukturierung}
+
+Nach dieser kurzen Einführung darfst du dir jetzt selber die Hände schmutzig machen.
+
+Wir lernen als zunächst die Kontrollstrukturen (if/for/while) von C++ kennen, die weitgehend gleich sind wie in Java.
+In den folgenden Aufgaben werden die Unterschiede und Gemeinsamkeiten stückweise erläutert.
+
+\begin{enumerate}
+
+\item Lege ein neues \glqq{}Hello World\grqq{}-Projekt an (\emph{File} $\rightarrow$ \emph{New} $\rightarrow$ \emph{C++ Project} $\rightarrow$ \emph{Hello World C++ Project}).
+Kompiliere und starte das Programm.
+
+Jetzt haben wir einen Ausgangspunkt für eine eigene Implementierung.
+
+
+\item 
+Schreibe eine Funktion \emph{printStars(int n)}\footnote{Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
+Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.}, die \emph{n}-mal ein \textbf{*} auf der Konsole ausgibt und mit einem Zeilenvorschub abschließt.
+Ein Aufruf von \emph{printStars(5)} sollte folgende Ausgabe generieren:
+\begin{lstlisting}
+*****
+\end{lstlisting}
+
+Platziere die Funktion \emph{vor} der \emph{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
+Benutze die erstellte Funktion \emph{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
+Verwende hierzu Schleifen.
+\begin{lstlisting}
+*****
+****
+***
+**
+*
+**
+***
+****
+*****
+\end{lstlisting}
+
+\item
+Lagere dein Programm aus Aufgabenteil b) in eine eigene Datei aus.
+Gehe dazu folgendermaßen vor: 
+
+Erstelle eine neue Header-Datei \emph{functions.h} und eine neue Sourcecode-Datei \emph{functions.cpp}. 
+
+Binde \emph{functions.h} in beide Sourcecode-Dateien mittels 
+einer \textbf{\#include} ein.
+Vergiss nicht, auch in \emph{functions.cpp} den \emph{std}-Namespace sowie \emph{iostream} einzubinden, falls du dort Elemente der Standardbibliothek benutzen möchtest.
+
+Vermeide bei größeren Programmen bitte unbedingt, den Namespace bereits im Header einzubinden!
+Dadurch würden alle Dateien, die den Header einbinden, den Namespace ebenfalls einbinden, was zu Namenskonflikten und anderen hässlichen Überraschungen führen kann.
+Benutze daher im Header immer voll qualifizierte Bezeichner (z.B. \emph{std::string}, \emph{std::ostream}).
+
+Schreibe nun in \emph{functions.h} \textbf{Funktionsprototypen} für die beiden Funktionen aus b).
+Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
+Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
+Der Prototyp von \emph{printStars(int n)} lautet \emph{void printStars(int n);}
+
+Verschiebe deine beiden Funktionen nach \emph{functions.cpp}.
+Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
+
+\item
+Erweitere das in Aufgabenteil c) erstellte Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
+Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
+Gib gegebenenfalls eine Fehlermeldung aus.
+Zum Einlesen verwendest du \texttt{cin >{}> \emph{variable}}.
+Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \emph{functions.cpp} aus.
+
+\item Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
+Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}. Beispiel:
+\begin{lstlisting}
+abc
+de
+f
+gh
+ijk
+\end{lstlisting}
+
+Implementiere dazu eine Funktion \emph{char nextChar()}.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \emph{char} zurückgeben, beginnend bei \emph{\textquotesingle a\textquotesingle}.
+Dazu muss sich \emph{nextChar()} intern das aktuelle Zeichen merken.
+Dies kann durch die Verwendung von \emph{static}-Variablen erreicht werden. \emph{static}-Variablen sind Variablen, die ihren alten Wert beim Wiedereintritt in die Funktion annehmen.
+Ein statische Variable \emph{c} wird mittels 
+\begin{lstlisting}
+static char c = 'a';
+\end{lstlisting}
+deklariert.
+In diesem Fall wird c \textbf{einmalig zu Beginn des Programms} mit 'a' initialisiert und kann später beliebig verändert werden.
+\end{enumerate} 
+
+
+
 \end{document}
