@@ -4,3 +4,45 @@
 [submodule "solutions/day5/d5_s01_7seg/uc_includes"]
 	path = solutions/day5/d5_s01_7seg/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day6/d6_s1_maze/uc_includes"]
+	path = solutions/day6/d6_s1_maze/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day6/d6_s1_pong/uc_includes"]
+	path = solutions/day6/d6_s1_pong/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day5/d5_s03_util/uc_includes"]
+	path = solutions/day5/d5_s03_util/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day5/d5_s04_adc/uc_includes"]
+	path = solutions/day5/d5_s04_adc/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day5/d5_s05_lcdbasics/uc_includes"]
+	path = solutions/day5/d5_s05_lcdbasics/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day5/d5_s06_lcd/uc_includes"]
+	path = solutions/day5/d5_s06_lcd/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e00_test/uc_includes"]
+	path = projects/day5/d5_e00_test/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e01_7seg/uc_includes"]
+	path = projects/day5/d5_e01_7seg/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e02_buttons/uc_includes"]
+	path = projects/day5/d5_e02_buttons/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e03_util/uc_includes"]
+	path = projects/day5/d5_e03_util/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e04_adc/uc_includes"]
+	path = projects/day5/d5_e04_adc/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e05_lcdbasics/uc_includes"]
+	path = projects/day5/d5_e05_lcdbasics/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day5/d5_e06_lcd/uc_includes"]
+	path = projects/day5/d5_e06_lcd/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "projects/day6/d6_e1_game/uc_includes"]
+	path = projects/day6/d6_e1_game/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
