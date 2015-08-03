@@ -1,5 +1,5 @@
 #include "functions.hpp"
 
 int main() {
-	task_e();
+	fun::task_e();
 }

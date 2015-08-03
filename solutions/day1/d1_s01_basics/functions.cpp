@@ -1,15 +1,14 @@
 #include "functions.hpp"
 #include <iostream>
-using namespace std;
 
-void print_star(int n) {
+void fun::print_star(int n) {
 	while (n-- > 0) {
-		cout << '*';
+		std::cout << '*';
 	}
-	cout << endl;
+	std::cout << std::endl;
 }
 
-void task_b() {
+void fun::task_b() {
 	for (int i = 5; i > 1; --i) {
 		print_star(i);
 	}
@@ -18,11 +17,11 @@ void task_b() {
 	}
 }
 
-void task_d() {
+void fun::task_d() {
 	int width;
 	do {
-		cout << "Geben Sie die Breite ein ";
-		cin >> width;
+		std::cout << "Geben Sie die Breite ein ";
+		std::cin >> width;
 	} while (width < 1 || width > 75);
 	
 	for (int i = width; i > 1; --i) {
@@ -33,7 +32,7 @@ void task_d() {
 	}
 }
 
-char next_char() {
+char fun::next_char() {
 	static char c = 'z';
 	if (c >= 'z') {
 		c = 'a';
@@ -44,18 +43,18 @@ char next_char() {
 	return c;
 }
 
-void print_char(int n) {
+void fun::print_char(int n) {
 	while (n-- > 0) {
-		cout << next_char();
+		std::cout << next_char();
 	}
-	cout << endl;
+	std::cout << std::endl;
 }
 
-void task_e() {
+void fun::task_e() {
 	int width;
 	do {
-		cout << "Geben Sie die Breite ein ";
-		cin >> width;
+		std::cout << "Geben Sie die Breite ein ";
+		std::cin >> width;
 	} while (width < 1 || width > 75);
 	
 	for (int i = width; i > 1; --i) {
