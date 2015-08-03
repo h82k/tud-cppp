@@ -144,7 +144,7 @@ ListIterator<T> List<T>::end() {
 }
 
 template<class T>
-std::ostream& operator<<(ostream& out, List<T>& list) {
+std::ostream& operator<<(std::ostream& out, List<T>& list) {
 	out << "[";
 	ListIterator<T> iter = list.begin();
 	if (iter != list.end()) {

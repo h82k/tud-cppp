@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 	printNthElement(stringArray, 9);
 	try {
 		printNthElement(stringArray, 10);
-	} catch (out_of_range &ex) {
+	} catch (std::out_of_range &ex) {
 		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
@@ -27,21 +27,21 @@ int main(int argc, char **argv) {
 	
 	try {
 		printNthElement(arrayFromOffset1, 9);
-	} catch (out_of_range &ex) {
+	} catch (std::out_of_range &ex) {
 		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
 	try {
 		// Create an invalid view (offset too large) of the orignal array.
-		Array<string> arrayFromOffset2 = stringArray + 10;
-	} catch (out_of_range &ex) {
+		Array<std::string> arrayFromOffset2 = stringArray + 10;
+	} catch (std::out_of_range &ex) {
 		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
 	// Check that accumulating offset (applying operator+ twice) works
 	try {
-		Array<string> arrayFromOffset3 = arrayFromOffset1 + 9;
-	} catch (out_of_range &ex) {
+		Array<std::string> arrayFromOffset3 = arrayFromOffset1 + 9;
+	} catch (std::out_of_range &ex) {
 		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	

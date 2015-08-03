@@ -35,7 +35,7 @@ double Vector3::operator*(Vector3 rhs) {
 	return a * rhs.a + b * rhs.b + c * rhs.c;
 }
 
-ostream& operator<<(ostream& out, Vector3 rhs) {
+std::ostream& operator<<(std::ostream& out, Vector3 rhs) {
 	out << "(" << rhs.getA() << ", " << rhs.getB() << ", " << rhs.getC() << ")";
 	return out;
 }

@@ -1,5 +1,5 @@
 #include "Elevator.hpp"
-#include <cstdlib>
+#include <cmath>
 #include <iostream>
 
 Elevator::Elevator():
@@ -7,7 +7,7 @@ Elevator::Elevator():
 {}
 
 void Elevator::moveToFloor(int floor) {
-	energyConsumed += abs(currentFloor - floor);
+	energyConsumed += std::abs(currentFloor - floor);
 	currentFloor = floor;
 	std::cout << "Moving to floor " << floor << std::endl;
 }

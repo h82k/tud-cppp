@@ -12,6 +12,6 @@ StudentAssistant::~StudentAssistant() {
 }
 
 std::string StudentAssistant::getInfo() const {
-	return string("StudentAssistant ") + name + string("; ") + studentID + string("; ") + supervisor;
+	return std::string("StudentAssistant ") + name + std::string("; ") + studentID + std::string("; ") + supervisor;
 }
 

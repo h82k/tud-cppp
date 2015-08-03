@@ -7,7 +7,7 @@
 template<class T>
 void print(const T& t) {
 	std::cout << "[";
-	copy(t.begin(), t.end(), ostream_iterator<int>(std::cout, ", "));
+	std::copy(t.begin(), t.end(), std::ostream_iterator<int>(std::cout, ", "));
 	std::cout << "]" << std::endl;
 }
 
@@ -18,11 +18,11 @@ bool pred(int i) {
 int main() {
 	// b)
 	int numbers[] = { 1, 2, 3, 4, 5 };
-	vector<int> vec(numbers, numbers + 5);
+	std::vector<int> vec(numbers, numbers + 5);
 	print(vec);
 	
 	// c)
-	list<int> lst(vec.begin() + 1, vec.begin() + 4);
+	std::list<int> lst(vec.begin() + 1, vec.begin() + 4);
 	print(lst);
 	
 	// d)
@@ -34,6 +34,6 @@ int main() {
 	print(vec);
 	
 	// f) 
-	remove_copy_if(lst.begin(), lst.end(), back_inserter(vec), pred);
+	std::remove_copy_if(lst.begin(), lst.end(), back_inserter(vec), pred);
 	print(vec);
 }

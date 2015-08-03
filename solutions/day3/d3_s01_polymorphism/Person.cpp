@@ -12,6 +12,6 @@ Person::~Person() {
 }
 
 std::string Person::getInfo() const {
-	return string("Person ") + name;
+	return std::string("Person ") + name;
 }
 

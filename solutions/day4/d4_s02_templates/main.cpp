@@ -20,7 +20,7 @@ private:
 	int number;
 };
 
-ostream& operator<<(ostream& out, const C& c) {
+std::ostream& operator<<(std::ostream& out, const C& c) {
 	return out << c.getNumber();
 }
 

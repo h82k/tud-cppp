@@ -12,7 +12,7 @@ Student::~Student() {
 }
 
 std::string Student::getInfo() const {
-	return string("Student ") + name + string("; ") + studentID;
+	return std::string("Student ") + name + std::string("; ") + studentID;
 }
 
 

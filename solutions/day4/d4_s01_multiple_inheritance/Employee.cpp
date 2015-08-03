@@ -12,6 +12,6 @@ Employee::~Employee() {
 }
 
 std::string Employee::getInfo() const {
-	return string("Employee ") + name + string("; ") + supervisor;
+	return std::string("Employee ") + name + std::string("; ") + supervisor;
 }
 

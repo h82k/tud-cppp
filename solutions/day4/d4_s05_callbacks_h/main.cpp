@@ -2,7 +2,7 @@
 #include <iostream>
 #include <utility>
 
-typedef pair<int, int> intpair;
+typedef std::pair<int, int> intpair;
 
 class C {
 public:
