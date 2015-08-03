@@ -16,11 +16,15 @@ public:
 	}
 };
 
+// NOTE: This will NOT compile if both catches are used simultaneously.
+// The catch by value conflicts with the catch by reference.
 int main() {
 	try {
 		throw C();
+	// either use catch by reference ...
 	} catch (const C& c) {
 		std::cout << "catch C&" << std::endl;
+	// ... or catch by value
 	} catch (C c) {
 		std::cout << "catch C" << std::endl;
 	}
