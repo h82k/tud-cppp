@@ -177,7 +177,7 @@ void List<T>::deleteLast() {
 		delete last; // delete last element
 		last = prev; // and the current last element to previous of last element before
 		// do not forget to reset first element if list is empty
-		if (last == NULL)
+		if (last == NULL) {
 			first = NULL;
 		}
 		--currentSize;
