@@ -1,0 +1,6 @@
+[submodule "solutions/day5/d5_s02_buttons/uc_includes"]
+	path = solutions/day5/d5_s02_buttons/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day5/d5_s01_7seg/uc_includes"]
+	path = solutions/day5/d5_s01_7seg/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
