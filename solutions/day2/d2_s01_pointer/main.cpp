@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 
 /**
 *****************************************
@@ -38,25 +37,25 @@ void swapReference(int& i1, int& i2) {
 void foo(int& i) {
 	int i2 = i;
 	int& i3 = i;
-	cout << "i = " << i << endl;
-	cout << "i2 = " << i2 << endl;
-	cout << "i3 = " << i3 << endl;
-	cout << "&i = " << &i << endl;
-	cout << "&i2 = " << &i2 << endl;
-	cout << "&i3 = " << &i3 << endl;
+	std::cout << "i = " << i << std::endl;
+	std::cout << "i2 = " << i2 << std::endl;
+	std::cout << "i3 = " << i3 << std::endl;
+	std::cout << "&i = " << &i << std::endl;
+	std::cout << "&i2 = " << &i2 << std::endl;
+	std::cout << "&i3 = " << &i3 << std::endl;
 }
 
 int main() {
 	// Teil d)
 	int i1 = 3, i2 = 5;
-	cout << i1 << " " << i2 << endl;
+	std::cout << i1 << " " << i2 << std::endl;
 	swapPointer(&i1, &i2);
-	cout << i1 << " " << i2 << endl;
+	std::cout << i1 << " " << i2 << std::endl;
 	swapReference(i1, i2);
-	cout << i1 << " " << i2 << endl;
+	std::cout << i1 << " " << i2 << std::endl;
 	// Teil f)
 	int var = 42;
-	cout << "&var = " << &var << endl;
+	std::cout << "&var = " << &var << std::endl;
 	foo(var);
 }
 

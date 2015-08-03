@@ -1,7 +1,6 @@
 #include "Elevator.hpp"
 #include <cstdlib>
 #include <iostream>
-using namespace std;
 
 Elevator::Elevator():
 	currentFloor(0), energyConsumed(0)
@@ -10,12 +9,12 @@ Elevator::Elevator():
 void Elevator::moveToFloor(int floor) {
 	energyConsumed += abs(currentFloor - floor);
 	currentFloor = floor;
-	cout << "Moving to floor " << floor << endl;
+	std::cout << "Moving to floor " << floor << std::endl;
 }
 
 void Elevator::addPeople(std::vector<Person> people) {
 	containedPeople.insert(containedPeople.end(), people.begin(), people.end());
-	cout << "Adding " << people.size() << " people" << endl;
+	std::cout << "Adding " << people.size() << " people" << std::endl;
 }
 
 std::vector<Person> Elevator::removeArrivedPeople() {
@@ -34,6 +33,6 @@ std::vector<Person> Elevator::removeArrivedPeople() {
 	}
 	
 	containedPeople = stay;
-	cout << "Removing " << arrived.size() << " arrived people" << endl; 
+	std::cout << "Removing " << arrived.size() << " arrived people" << std::endl;
 	return arrived;
 }

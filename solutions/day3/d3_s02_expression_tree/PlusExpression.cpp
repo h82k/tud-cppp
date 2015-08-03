@@ -1,15 +1,14 @@
 #include "PlusExpression.hpp"
 #include <iostream>
-using namespace std;
 
 PlusExpression::~PlusExpression() {
-	cout << "Deleting PlusExpression" << endl;
+	std::cout << "Deleting PlusExpression" << std::endl;
 }
 
 PlusExpression::PlusExpression(Expression *left, Expression *right):
 	BinaryExpression(left, right)
 {
-	cout << "creating PlusExpression" << endl;
+	std::cout << "creating PlusExpression" << std::endl;
 }
 
 double PlusExpression::compute() {

@@ -1,6 +1,5 @@
 #include "Building.hpp"
 #include <iostream>
-using namespace std;
 
 int main() {
 	Building b(3);
@@ -20,5 +19,5 @@ int main() {
 			b.removeArrivedPeople();
 		}
 	}
-	cout << "Energy consumed: " << b.getElevator().getEnergyConsumed() << endl;
+	std::cout << "Energy consumed: " << b.getElevator().getEnergyConsumed() << std::endl;
 }

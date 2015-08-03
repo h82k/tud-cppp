@@ -3,13 +3,12 @@
 #include <list>
 #include <algorithm>
 #include <iterator>
-using namespace std;
 
 template<class T>
 void print(const T& t) {
-	cout << "[";
-	copy(t.begin(), t.end(), ostream_iterator<int>(cout, ", "));
-	cout << "]" << endl;
+	std::cout << "[";
+	copy(t.begin(), t.end(), ostream_iterator<int>(std::cout, ", "));
+	std::cout << "]" << std::endl;
 }
 
 bool pred(int i) {

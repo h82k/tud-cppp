@@ -1,14 +1,13 @@
 #include <iostream>
-using namespace std;
 
 void print(int from, int to) {
-	cout << from << " -> " << to << endl;
+	std::cout << from << " -> " << to << std::endl;
 }
 
 class C {
 public:
 	void operator()(int from, int to) {
-		cout << "C: " << from << " -> " << to << endl;
+		std::cout << "C: " << from << " -> " << to << std::endl;
 	}
 };
 

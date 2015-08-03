@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 
 void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
 	if (i > 0) {
@@ -11,7 +10,7 @@ void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
 }
 
 void print(int from, int to) {
-	cout << from << " -> " << to << endl;
+	std::cout << from << " -> " << to << std::endl;
 }
 
 int main() {

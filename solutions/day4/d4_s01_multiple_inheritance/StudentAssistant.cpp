@@ -1,15 +1,14 @@
 #include "StudentAssistant.hpp"
 #include <iostream>
-using namespace std;
 
 StudentAssistant::StudentAssistant(const std::string& name, const std::string& studentID, const std::string supervisor):
 	Person(name), Student("Student", studentID), Employee("Employee", supervisor)
 {
-	cout << "Creating StudentAssistant " << name << endl;
+	std::cout << "Creating StudentAssistant " << name << std::endl;
 }
 
 StudentAssistant::~StudentAssistant() {
-	cout << "Deleting StudentAssistant " << Student::name << endl;
+	std::cout << "Deleting StudentAssistant " << Student::name << std::endl;
 }
 
 std::string StudentAssistant::getInfo() const {

@@ -1,26 +1,25 @@
 #include "Callback.hpp"
 #include <iostream>
 #include <utility>
-using namespace std;
 
 typedef pair<int, int> intpair;
 
 void print(intpair p) {
-	cout << p.first << " -> " << p.second << endl;
+	std::cout << p.first << " -> " << p.second << std::endl;
 }
 
 class C {
 public:
 	C() {}
 	C(const C&) {
-		cout << "copying C" << endl;
+		std::cout << "copying C" << std::endl;
 	}
 	
 	void print(intpair p) {
-		cout << "C::print(): " << p.first << " -> " << p.second << endl;
+		std::cout << "C::print(): " << p.first << " -> " << p.second << std::endl;
 	}
 	void operator()(intpair p) {
-		cout << "C::(): " << p.first << " -> " << p.second << endl;
+		std::cout << "C::(): " << p.first << " -> " << p.second << std::endl;
 	}
 };
 

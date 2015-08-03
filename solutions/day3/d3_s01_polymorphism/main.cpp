@@ -1,10 +1,9 @@
 #include "Student.hpp"
 #include <iostream>
-using namespace std;
 
 /** prints person information on console */
 void printPersonInfo(const Person* p) {
-	cout << p->getInfo() << endl;
+	std::cout << p->getInfo() << std::endl;
 }
 
 int main() {

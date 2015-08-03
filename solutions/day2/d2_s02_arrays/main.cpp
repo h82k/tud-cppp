@@ -1,36 +1,35 @@
 #include <iostream>
-using namespace std;
 
 // Teil b)
 void printArray(const int *arr, int size) {
 	for (int i = 0; i < size; ++i) {
-		cout << arr[i] << endl;
+		std::cout << arr[i] << std::endl;
 	}
 }
 
 // Teil c)
 void printArrayPointer(const int *arr, int size) {
 	for (const int *p = arr; p != arr + size; ++p) {
-		cout << *p << endl;
+		std::cout << *p << std::endl;
 	}
 }
 
 // Teil d)
 void printArray(const int *begin, const int *end) {
 	for (const int *p = begin; p != end; ++p) {
-		cout << *p << endl;
+		std::cout << *p << std::endl;
 	}
 }
 
 int* readNumbers(int *size) {
 	int n;
-	cout << "Geben Sie die Groesse ein: ";
-	cin >> n;
+	std::cout << "Geben Sie die Groesse ein: ";
+	std::cin >> n;
 	
-	cout << "Geben Sie " << n << " Zahlen ein: " << endl;
+	std::cout << "Geben Sie " << n << " Zahlen ein: " << std::endl;
 	int *arr = new int[n];
 	for (int i = 0; i < n; ++i) {
-		cin >> arr[i];
+		std::cin >> arr[i];
 	}
 	*size = n;
 	return arr;
@@ -40,7 +39,7 @@ int main() {
 	int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	// Teil a)
 	for (int i = 0; i < 10; ++i) {
-		cout << arr[i] << endl;
+		std::cout << arr[i] << std::endl;
 	}
 	
 	// Teil b)

@@ -1,10 +1,9 @@
 #include "Building.hpp"
 #include <iostream>
-using namespace std;
 
 int main() {
-	cout << "Hello World" << endl;
+	std::cout << "Hello World" << std::endl;
 	Building house(2);
-	cout << house.toString() << endl;
+	std::cout << house.toString() << std::endl;
 }
 

@@ -1,11 +1,10 @@
 #include "Array.hpp"
 #include <string>
 #include <iostream>
-using namespace std;
 
 template<class T>
 void printNthElement(const Array<T> &array, size_t position) {
-	cout << array[position] << endl;
+	std::cout << array[position] << std::endl;
 }
 
 int main(int argc, char **argv) {
@@ -19,7 +18,7 @@ int main(int argc, char **argv) {
 	try {
 		printNthElement(stringArray, 10);
 	} catch (out_of_range &ex) {
-		cout << "Oh oh: " << ex.what() << endl;
+		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
 	// Create a view of the array
@@ -29,22 +28,22 @@ int main(int argc, char **argv) {
 	try {
 		printNthElement(arrayFromOffset1, 9);
 	} catch (out_of_range &ex) {
-		cout << "Oh oh: " << ex.what() << endl;
+		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
 	try {
 		// Create an invalid view (offset too large) of the orignal array.
 		Array<string> arrayFromOffset2 = stringArray + 10;
 	} catch (out_of_range &ex) {
-		cout << "Oh oh: " << ex.what() << endl;
+		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
 	// Check that accumulating offset (applying operator+ twice) works
 	try {
 		Array<string> arrayFromOffset3 = arrayFromOffset1 + 9;
 	} catch (out_of_range &ex) {
-		cout << "Oh oh: " << ex.what() << endl;
+		std::cout << "Oh oh: " << ex.what() << std::endl;
 	}
 	
-	cout << "Done." << endl;
+	std::cout << "Done." << std::endl;
 }

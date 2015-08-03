@@ -1,15 +1,14 @@
 #include "Student.hpp"
 #include <iostream>
-using namespace std;
 
 Student::Student(const std::string& name, const std::string& studentID):
 	Person(name), studentID(studentID)
 {
-	cout << "Creating Student " << name << endl;
+	std::cout << "Creating Student " << name << std::endl;
 }
 
 Student::~Student() {
-	cout << "Deleting Student " << name << endl;
+	std::cout << "Deleting Student " << name << std::endl;
 }
 
 std::string Student::getInfo() const {

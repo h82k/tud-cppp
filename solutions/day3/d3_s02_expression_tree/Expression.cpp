@@ -1,12 +1,11 @@
 #include "Expression.hpp"
 #include <iostream>
-using namespace std;
 
 Expression::Expression() {
-	cout << "Creating Expression" << endl;
+	std::cout << "Creating Expression" << std::endl;
 }
 
 Expression::~Expression() {
-	cout << "Deleting Expression" << endl;
+	std::cout << "Deleting Expression" << std::endl;
 }
 

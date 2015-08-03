@@ -7,7 +7,6 @@
 
 #include "TreeNode.hpp"
 #include <iostream>
-using namespace std;
 
 TreeNodePtr TreeNode::createNode(int content, TreeNodePtr left, TreeNodePtr right) {
 	return TreeNodePtr(new TreeNode(content, left, right));
@@ -16,10 +15,10 @@ TreeNodePtr TreeNode::createNode(int content, TreeNodePtr left, TreeNodePtr righ
 TreeNode::TreeNode(int content, TreeNodePtr left, TreeNodePtr right):
 	leftChild(left), rightChild(right), content(content)
 {
-	cout << "creating " << content << endl;
+	std::cout << "creating " << content << std::endl;
 }
 
 TreeNode::~TreeNode() {
-	cout << "deleting " << content << endl;
+	std::cout << "deleting " << content << std::endl;
 }
 

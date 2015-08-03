@@ -1,6 +1,5 @@
 #include "PatternPrinter.hpp"
 #include <iostream>
-using namespace std;
 
 PatternPrinter::PatternPrinter():
 	charGenerator('k')
@@ -8,16 +7,16 @@ PatternPrinter::PatternPrinter():
 
 void PatternPrinter::printNChars(int n) {
 	while (n-- > 0) {
-		cout << charGenerator.generateNextChar();
+		std::cout << charGenerator.generateNextChar();
 	}
-	cout << endl;
+	std::cout << std::endl;
 }
 
 int PatternPrinter::readWidth() {
 	int width;
 	do {
-		cout << "Geben Sie die Breite ein ";
-		cin >> width;
+		std::cout << "Geben Sie die Breite ein ";
+		std::cin >> width;
 	} while (width < 1 || width > 75);
 	return width;
 }

@@ -1,19 +1,18 @@
 #include <iostream>
-using namespace std;
 
 /** Class for showing exception effects */
 class C {
 public:
 	C() {
-		cout << "C" << endl;
+		std::cout << "C" << std::endl;
 	}
 	
 	~C() {
-		cout << "~C" << endl;
+		std::cout << "~C" << std::endl;
 	}
 	
 	C(const C& other) {
-		cout << "copy C" << endl;
+		std::cout << "copy C" << std::endl;
 	}
 };
 
@@ -21,9 +20,9 @@ int main() {
 	try {
 		throw C();
 	} catch (const C& c) {
-		cout << "catch C&" << endl;
+		std::cout << "catch C&" << std::endl;
 	} catch (C c) {
-		cout << "catch C" << endl;
+		std::cout << "catch C" << std::endl;
 	}
-	cout << "end" << endl;
+	std::cout << "end" << std::endl;
 }

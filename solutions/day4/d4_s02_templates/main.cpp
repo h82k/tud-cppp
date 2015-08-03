@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 
 template<class T>
 const T& maximum(const T& t1, const T& t2) {
@@ -28,9 +27,9 @@ ostream& operator<<(ostream& out, const C& c) {
 int main() {
 	// Aufgabe a)
 	C c1(23), c2(42);
-	cout << maximum(c1, c2) << endl;
+	std::cout << maximum(c1, c2) << std::endl;
 	
 	int i = 1;
 	short s = 2;
-	cout << maximum<int>(i, s) << endl;
+	std::cout << maximum<int>(i, s) << std::endl;
 }

@@ -1,15 +1,14 @@
 #include "NumberExpression.hpp"
 #include <iostream>
-using namespace std;
 
 NumberExpression::NumberExpression(double n):
 	number(n)
 {
-	cout << "Creating NumberExpression" << endl;
+	std::cout << "Creating NumberExpression" << std::endl;
 }
 
 NumberExpression::~NumberExpression() {
-	cout << "Deleting NumberExpression" << endl;
+	std::cout << "Deleting NumberExpression" << std::endl;
 }
 
 double NumberExpression::compute() {

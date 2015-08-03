@@ -1,15 +1,14 @@
 #include "Employee.hpp"
 #include <iostream>
-using namespace std;
 
 Employee::Employee(const std::string& name, const std::string& supervisor):
 	Person(name), supervisor(supervisor)
 {
-	cout << "Creating Employee " << name << endl;
+	std::cout << "Creating Employee " << name << std::endl;
 }
 
 Employee::~Employee() {
-	cout << "Deleting Employee " << name << endl;
+	std::cout << "Deleting Employee " << name << std::endl;
 }
 
 std::string Employee::getInfo() const {

@@ -1,15 +1,14 @@
 #include "MinusExpression.hpp"
 #include <iostream>
-using namespace std;
 
 MinusExpression::~MinusExpression() {
-	cout << "Deleting MinusExpression" << endl;
+	std::cout << "Deleting MinusExpression" << std::endl;
 }
 
 MinusExpression::MinusExpression(Expression *left, Expression *right):
 	BinaryExpression(left, right)
 {
-	cout << "creating MinusExpression" << endl;
+	std::cout << "creating MinusExpression" << std::endl;
 }
 
 double MinusExpression::compute() {

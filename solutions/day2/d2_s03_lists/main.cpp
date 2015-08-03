@@ -1,6 +1,5 @@
 #include "List.hpp"
 #include <iostream>
-using namespace std;
 
 int main() {
 	List list;
@@ -22,12 +21,12 @@ int main() {
 	list.deleteLast();			// delete 3
 	// list should be 2, 3 now
 	
-	cout << "list size = " << list.getSize() << endl;
+	std::cout << "list size = " << list.getSize() << std::endl;
 	for (ListIterator iter = list.begin(); iter != list.end(); ++iter) {
-		cout << *iter << endl;
+		std::cout << *iter << std::endl;
 	}
-	cout << endl << "list2 size = " << list2.getSize() << endl;
+	std::cout << std::endl << "list2 size = " << list2.getSize() << std::endl;
 	for (ListIterator iter = list2.begin(); iter != list2.end(); ++iter) {
-		cout << *iter << endl;
+		std::cout << *iter << std::endl;
 	}
 }

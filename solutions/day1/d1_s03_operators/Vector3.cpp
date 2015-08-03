@@ -1,27 +1,26 @@
 #include "Vector3.hpp"
 
-using namespace std;
 
 Vector3::Vector3():
 	a(0), b(0), c(0)
 {
-	cout << "creating Vector3()" << endl;
+	std::cout << "creating Vector3()" << std::endl;
 }
 
 Vector3::Vector3(double a, double b, double c):
 	a(a), b(b), c(c)
 {
-	cout << "creating Vector3(" << a << ", " << b << ", " << c << ")" << endl;
+	std::cout << "creating Vector3(" << a << ", " << b << ", " << c << ")" << std::endl;
 }
 
 Vector3::Vector3(const Vector3& other):
 	a(other.a), b(other.b), c(other.c)
 {
-	cout << "copying Vector3(" << a << ", " << b << ", " << c << ")" << endl;
+	std::cout << "copying Vector3(" << a << ", " << b << ", " << c << ")" << std::endl;
 }
 
 Vector3::~Vector3() {
-	cout << "deleting Vector3(" << a << ", " << b << ", " << c << ")" << endl;
+	std::cout << "deleting Vector3(" << a << ", " << b << ", " << c << ")" << std::endl;
 }
 
 Vector3 Vector3::operator+(Vector3 rhs) {

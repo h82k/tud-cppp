@@ -5,7 +5,6 @@
 #include "EnergySavingStrategy.hpp"
 #include <ctime>
 #include <iostream>
-using namespace std;
 
 int main() {
 	srand(time(NULL));
@@ -23,7 +22,7 @@ int main() {
 	int floors1 = runSimulation(b, strat).size();
 	int floors2 = runSimulation(b2, strat2).size();
 	
-	cout << "\t\t      energy  stops" << endl;
-	cout << "simple strategy:\t" << b2.getElevator().getEnergyConsumed() << "\t" << floors2 << endl;
-	cout << "optimal strategy:\t" << b.getElevator().getEnergyConsumed() << "\t" << floors1 << endl;
+	std::cout << "\t\t      energy  stops" << std::endl;
+	std::cout << "simple strategy:\t" << b2.getElevator().getEnergyConsumed() << "\t" << floors2 << std::endl;
+	std::cout << "optimal strategy:\t" << b.getElevator().getEnergyConsumed() << "\t" << floors1 << std::endl;
 }

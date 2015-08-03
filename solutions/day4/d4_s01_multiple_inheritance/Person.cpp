@@ -1,15 +1,14 @@
 #include "Person.hpp"
 #include <iostream>
-using namespace std;
 
 Person::Person(const std::string& name):
 	name(name)
 {
-	cout << "Creating Person " << name << endl;
+	std::cout << "Creating Person " << name << std::endl;
 }
 
 Person::~Person() {
-	cout << "Deleting Person " << name << endl;
+	std::cout << "Deleting Person " << name << std::endl;
 }
 
 std::string Person::getInfo() const {
