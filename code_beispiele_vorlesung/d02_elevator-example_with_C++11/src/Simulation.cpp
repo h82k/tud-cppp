@@ -6,6 +6,8 @@
  */
 
 #include <ctime>
+#include <cstdlib>
+#include <list>
 
 #include "Human.h"
 #include "Building.h"
@@ -16,7 +18,7 @@ const std::list<HumanPtr> createPeopleList(int n) {
 	
 	people.clear();
 	while(n-- > 0)
-		people.push_back(HumanPtr(new Human(rand() % 10)));
+		people.push_back(HumanPtr(new Human(std::rand() % 10)));
 	
 	return people;
 }
