@@ -1,7 +1,7 @@
 #include "mb96348hs.h"
-#include "library/util.h"
-#include "library/lcd.h"
-#include "library/adc.h"
+#include "16FXlib/util.h"
+#include "16FXlib/lcd.h"
+#include "16FXlib/adc.h"
 
 const char DEC7SEG[10] = { 0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8,
 		0x80, 0x90 };

@@ -20,7 +20,7 @@ F2MS		= $(WINE) $(SOFTUNE_DIR)/F2MS.EXE
 FLASHLY		= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
 
 # sources
-#INCLUDE	= uc_includes library
+#INCLUDE	= uc_includes 16FXlib
 #SOURCES	= main.c $(wildcard $(addsuffix /*.c, $(INCLUDE)))
 #ASM		= $(wildcard $(addsuffix /*.asm, $(INCLUDE))) $(patsubst %.c, %.asm, $(SOURCES))
 INCLUDE		= $(shell find . -type d)

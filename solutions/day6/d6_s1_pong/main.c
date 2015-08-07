@@ -12,11 +12,11 @@
 #define LEFT_COLLISION GAME_WIDTH - 1 - BAR_WIDTH
 #define RIGHT_COLLISION 0 + BAR_WIDTH
 
-#include "library/util.h"
-#include "library/lcd.h"
-#include "library/adc.h"
-#include "library/seg.h"
-#include "library/buttons.h"
+#include "16FXlib/util.h"
+#include "16FXlib/lcd.h"
+#include "16FXlib/adc.h"
+#include "16FXlib/seg.h"
+#include "16FXlib/buttons.h"
 #include "math.h"
 
 typedef struct ballData {

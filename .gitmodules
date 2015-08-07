@@ -46,3 +46,12 @@
 [submodule "projects/day6/d6_e1_game/uc_includes"]
 	path = projects/day6/d6_e1_game/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day6/d6_s1_pong/16FXlib"]
+	path = solutions/day6/d6_s1_pong/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
+[submodule "solutions/day6/d6_s1_maze/16FXlib"]
+	path = solutions/day6/d6_s1_maze/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
+[submodule "projects/day6/d6_e1_game/16FXlib"]
+	path = projects/day6/d6_e1_game/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
