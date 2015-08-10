@@ -5,6 +5,8 @@
  *      Author: anjorin
  */
 
+#include <iostream>
+
 #include "ElevatorStrategy.h"
 #include "Elevator.h"
 

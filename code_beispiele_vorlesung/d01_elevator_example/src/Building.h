@@ -15,7 +15,7 @@
 
 class Building {
 public:
-	Building(int numberOfFloors, ConstElevatorStrategyPtr strategy);
+	Building(int numberOfFloors, const ElevatorStrategy *strategy);
 	~Building();
 
 	inline int numberOfFloors() const {

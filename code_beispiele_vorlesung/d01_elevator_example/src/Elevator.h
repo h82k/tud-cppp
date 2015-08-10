@@ -13,7 +13,7 @@
 
 class Elevator {
 public:
-	Elevator(const Floor*, ConstElevatorStrategyPtr);
+	Elevator(const Floor*, const ElevatorStrategy *);
 	~Elevator();
 
 	inline const Floor* getCurrentFloor() const{
@@ -23,8 +23,8 @@ public:
 	void moveToNextFloor();
 
 private:
-	const Floor* currentFloor;
-	ConstElevatorStrategyPtr strategy;
+	const Floor *currentFloor;
+	const ElevatorStrategy *strategy;
 };
 
 #endif /* ELEVATOR_H_ */

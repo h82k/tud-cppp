@@ -11,7 +11,7 @@ using std::endl;
 
 
 Building::Building(int numberOfFloors,
-		           ConstElevatorStrategyPtr strategy):
+		           const ElevatorStrategy *strategy):
 		floors(numberOfFloors, Floor(0)),
 		elevator(&floors[0], strategy)
 {

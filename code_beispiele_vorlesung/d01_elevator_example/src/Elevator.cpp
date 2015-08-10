@@ -12,7 +12,7 @@ using std::endl;
 #include "Elevator.h"
 
 Elevator::Elevator(const Floor* currentFloor,
-		           ConstElevatorStrategyPtr strategy):
+		           const ElevatorStrategy *strategy):
 	currentFloor(currentFloor), strategy(strategy) {
 	cout  << "Elevator(): "
 		  << "Creating elevator." << endl;

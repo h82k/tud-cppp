@@ -5,6 +5,8 @@
  *      Author: anjorin
  */
 
+#include <iostream>
+
 #include "EnergyMinimizingStrategy.h"
 #include "Elevator.h"
 using namespace std;
