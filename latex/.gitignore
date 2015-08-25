@@ -4,3 +4,4 @@
 *.log
 day*.pdf
 *.out
+*.synctex.gz
