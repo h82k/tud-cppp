@@ -3,5 +3,6 @@
 *.fls
 *.log
 day*.pdf
+cheatsheet.pdf
 *.out
 *.synctex.gz
