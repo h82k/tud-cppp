@@ -16,9 +16,9 @@ Einzeilige Kommentare können durch \texttt{//}, mehrzeilige durch \texttt{/* ..
 
 \hints{
 	\item Bei Fragen und Problemen aktiv um Hilfe bitten
-	\item Die Materialien zur Übung sind unter TODO zu finden
+	\item Die Materialien zur Übung sind unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises} zu finden
 	% includes a Eclipse tutorial and a Git tutorial
-	\item Die Materialien zur Vorlesung sind unter TODO zu finden
+	\item Die Materialien zur Vorlesung sind unter \url{https://github.com/Echtzeitsysteme/tud-cpp-lecture} zu finden
 }
 
 \section{Hello World}
@@ -51,6 +51,9 @@ In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout
 	\item Sourcecodedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
 }
 
+
+
+\newpage
 \section{C++ Grundlagen, Funktionen und Strukturierung}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
@@ -82,8 +85,14 @@ Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wir
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcecode-Datei \texttt{functions.cpp}.
-Binde \texttt{functions.hpp} in beide Sourcecode-Dateien ein indem du
+Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcecode-Datei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+\begin{lstlisting}
+#ifndef FUNCTIONS_HPP_
+#define FUNCTIONS_HPP_
+// your header ...
+#endif /* FUNCTIONS_HPP_ */
+\end{lstlisting}
+Binde danach \texttt{functions.hpp} in beide Sourcecode-Dateien ein indem du
 \begin{lstlisting}
 #include "functions.hpp"
 \end{lstlisting}
@@ -97,11 +106,10 @@ Der Prototyp von \texttt{printStars(int n)} lautet \texttt{void printStars(int n
 
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
-
 \hints{
 	\item Denke daran, auch in \texttt{functions.cpp} \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
-	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \textbf{\#include <Bibliotheksname>} sowie per \textbf{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
-	\item Header Guards %TODO
+	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \texttt{\#include <Bibliotheksname>} sowie per \texttt{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
+	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \texttt{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
 }
 
 \subsection{Eingabe}
@@ -138,13 +146,25 @@ static char c = 'a';
 deklariert.
 In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit 'a' initialisiert und kann später beliebig verändert werden.
 
-\hints{
-	\item char Darstellung %TODO
-}
-
 \subsection{Namensräume}
-Erweitere das Programm %TODO namespace fun
+Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
+Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie folgt in einen \texttt{namespace} setzt.
+\begin{lstlisting}
+namespace fun {
+	// function prototypes ...
+};	// semicolon!
+\end{lstlisting}
+Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \texttt{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+\begin{lstlisting}
+void fun::print_star(int n) {
+	// ...
+}
+\end{lstlisting}
 
+Vergisst man den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
+Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\texttt{print\_star(int n)} und \texttt{fun::print\_star(int n)} sind unterschiedliche Funktionen!).
+
+\newpage
 \section{Klassen}
 Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Hierfür werden wir nun eine Klasse schreiben, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
 
@@ -155,16 +175,16 @@ Diese Methode hat jedoch mehrere Nachteile, unter anderem kann man die Funktion 
 
 
 \subsection{a}
-Lege ein neues Projekt an und füge dem Projekt eine neue leere Klasse \emph{CharGenerator} hinzu.
+Lege ein neues Projekt an und füge dem Projekt eine neue leere Klasse \texttt{CharGenerator} hinzu.
 Obwohl Eclipse Klassenrümpfe automatisch generieren kann, wollen wir aus Übungsgründen die Klasse diesmal manuell erstellen.
-Erzeuge dazu einen Header \emph{CharGenerator.hpp} und eine Sourcecode-Datei \emph{CharGenerator.cpp}.
-Binde \emph{CharGenerator.hpp} in \emph{CharGenerator.cpp} und in \emph{main.cpp} ein.
+Erzeuge dazu einen Header \texttt{CharGenerator.hpp} und eine Sourcecode-Datei \texttt{CharGenerator.cpp}.
+Binde \texttt{CharGenerator.hpp} in \texttt{CharGenerator.cpp} und in \texttt{main.cpp} ein.
 
-Erstelle nun den Klassenrumpf von \emph{CharGenerator} in der Header-Datei. Die allgemeine Syntax lautet hierbei
+Erstelle nun den Klassenrumpf von \texttt{CharGenerator} in der Header-Datei. Die allgemeine Syntax lautet hierbei
 
 \begin{lstlisting}
 class MyClass {
-}; // semi-colon!
+}; // semicolon!
 \end{lstlisting}
 
 Genauso wie bei Funktionen wird auch bei Methoden von Klassen zwischen Deklaration und Implementierung unterschieden.
@@ -172,7 +192,7 @@ Die Struktur der Klasse mit allen Attributen und Methodenprototypen wird im Head
 Da wir noch keine Methoden definiert haben, ist unsere Sourcecode-Datei entsprechend leer.
 
 \subsection{b}
-Füge Ihrer Klasse nun das \emph{private} Attribut \emph{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird. Im Gegensatz zu Java  werden in C++ die Access-Modifier \emph{public}/\emph{private}/\emph{protected} nicht bei jeder Methode einzeln sondern blockweise angegeben. Dazu wird der jeweilige Access-Modifier an die gewünschte Stelle in der Klassendeklaration geschrieben und mit einem Doppelpunkt abgeschlossen.  Alle darauffolgenden Deklarationen werden nun unter diesem Modifier erstellt. Beispiel:
+Füge Ihrer Klasse nun das \texttt{private} Attribut \texttt{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird. Im Gegensatz zu Java  werden in C++ die Access-Modifier \texttt{public}/\texttt{private}/\texttt{protected} nicht bei jeder Methode einzeln sondern blockweise angegeben. Dazu wird der jeweilige Access-Modifier an die gewünschte Stelle in der Klassendeklaration geschrieben und mit einem Doppelpunkt abgeschlossen.  Alle darauffolgenden Deklarationen werden nun unter diesem Modifier erstellt. Beispiel:
 
 \begin{lstlisting}
 class Foo {
@@ -188,17 +208,17 @@ private:
 };
 \end{lstlisting}
 
-Füge das Attribut \emph{nextChar} als \textbf{private} hinzu.
+Füge das Attribut \texttt{nextChar} als \textbf{private} hinzu.
 
 \subsection{c}
-Noch wurde \emph{nextChar} kein Wert zugewiesen.
-Das wollen wir nun nachholen und einen Konstruktor für die Klasse \emph{CharGenerator} erstellen, der \emph{nextChar} auf einen Anfangswert setzt.
+Noch wurde \texttt{nextChar} kein Wert zugewiesen.
+Das wollen wir nun nachholen und einen Konstruktor für die Klasse \texttt{CharGenerator} erstellen, der \texttt{nextChar} auf einen Anfangswert setzt.
 Der Konstruktor wird als eine Methode ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann, in unserem Fall zunächst
 \begin{lstlisting}
 CharGenerator();
 \end{lstlisting}
 
-Erstelle den Konstruktorprototypen im \emph{public}-Bereich der Klasse und eine Implementierung in der Sourcecode-Datei. Damit der Compiler weiß, zu welcher Klasse eine Methode/Konstruktor gehört, muss man vor dem Methodennamen den Scope der Klasse angeben.
+Erstelle den Konstruktorprototypen im \texttt{public}-Bereich der Klasse und eine Implementierung in der Sourcecode-Datei. Damit der Compiler weiß, zu welcher Klasse eine Methode/Konstruktor gehört, muss man vor dem Methodennamen den Scope der Klasse angeben.
 
 \begin{lstlisting}
 CharGenerator::CharGenerator() {  // Konstruktor von CharGenerator.
@@ -206,14 +226,14 @@ CharGenerator::CharGenerator() {  // Konstruktor von CharGenerator.
 }
 \end{lstlisting}
 
-Um \emph{nextChar} einen Wert zuzuweisen, werden wir eine sogenannte Initialisierungsliste verwenden.
+Um \texttt{nextChar} einen Wert zuzuweisen, werden wir eine sogenannte Initialisierungsliste verwenden.
 Diese beschreibt, wie die Attribute einer Klasse initialisiert werden.
 Dadurch wird garantiert, dass beim Eintritt in den Konstruktorrumpf alle Objektattribute bereits initialisiert sind und verwendet werden dürfen.
 
 Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributennamen und ihren Initialisierungsargumenten in Klammern.
 
 Die Reihenfolge der Initialisierungsliste sollte der Deklarationsreihenfolge entsprechen.
-Konstanten \emph{müssen} in der Initialisierungsliste zugewiesen werden.
+Konstanten \textbf{müssen} in der Initialisierungsliste zugewiesen werden.
 
 Beispiel:
 
@@ -222,10 +242,10 @@ CharGenerator::CharGenerator(): nextChar('a') {
 }
 \end{lstlisting}
 
-Initialisiere nun \emph{nextChar} mit 'a' wie beschrieben.
+Initialisiere nun \texttt{nextChar} mit 'a' wie beschrieben.
 
 \subsection{d}
-Schreibe nun eine \emph{public} Methode \emph{char generateNextChar()} die analog zur vorherigen Aufgabe das nächste auszugebende Zeichen zurückgibt.
+Schreibe nun eine \texttt{public} Methode \texttt{char generateNextChar()} die analog zur vorherigen Aufgabe das nächste auszugebende Zeichen zurückgibt.
 Teile die Methode in Prototyp und Implementierung auf.
 Vergiss auch hier nicht, den Scope der Klasse bei der Implementierung anzugeben:
 
@@ -237,14 +257,14 @@ char CharGenerator::generateNextChar() {
 
 \subsection{e}
 Teste deine Implementierung.
-Lege in der \emph{main}-Funktion ein \emph{CharGenerator}-Objekt mittels \textbf{CharGenerator charGen;} an.
-Ein \textbf{new} ist dabei nicht erforderlich (näheres dazu in der nächsten Vorlesung).
+Lege in der \texttt{main}-Funktion ein \texttt{CharGenerator}-Objekt mittels \texttt{CharGenerator charGen;} an.
+Ein \texttt{new} ist dabei nicht erforderlich (näheres dazu in der nächsten Vorlesung).
 
-Rufe \emph{generateNextChar()} einige Male auf und überprüfe das Ergebnis über die Konsole oder den Debugger.
+Rufe \texttt{generateNextChar()} einige Male auf und überprüfe das Ergebnis über die Konsole oder den Debugger.
 
 \subsection{f}
-Wir wollen nun angeben können, mit welchem Zeichen unser \emph{CharGenerator} beginnen soll.
-Erweitere dazu den Konstruktor um einen Parameter \emph{char initialChar} und ändere die Initialisierung von \emph{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
+Wir wollen nun angeben können, mit welchem Zeichen unser \texttt{CharGenerator} beginnen soll.
+Erweitere dazu den Konstruktor um einen Parameter \texttt{char initialChar} und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
 
 Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte \emph{Default Parameter} angeben.
 Weise hierzu den Parameter im Prototypen einfach einen Wert zu.
@@ -267,23 +287,25 @@ CharGenerator charGen('x');
 \end{lstlisting}
 
 \subsection{g}
-Erstelle eine neue Klasse \emph{PatternPrinter} und füge ein \emph{CharGenerator}-Objekt \emph{charGenerator} als privates Attribut hinzu.
-Erstelle auch einen leeren, parameterlosen Konstruktor für \emph{PatternPrinter}.
+Erstelle eine neue Klasse \texttt{PatternPrinter} und füge ein \texttt{CharGenerator}-Objekt \texttt{charGenerator} als privates Attribut hinzu.
+Erstelle auch einen leeren, parameterlosen Konstruktor für \texttt{PatternPrinter}.
 
-Ohne eine Initialisierungsliste wird \emph{charGenerator} mit dem Default-Parameter initialisiert.
-Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \emph{charGenerator} mit dem entsprechenden Argument initialisiert werden.
+Ohne eine Initialisierungsliste wird \texttt{charGenerator} mit dem Default-Parameter initialisiert.
+Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \texttt{charGenerator} mit dem entsprechenden Argument initialisiert werden.
 
 \subsection{h}
-Erstelle die Methoden \emph{void printNChars(int n)}, \emph{int readWidth()} und \emph{void printPattern()}, die entsprechend \emph{n} Zeichen auf die Konsole ausgeben, die Breite einlesen und unter Verwendungen aller Methoden das Muster aus der vorherigen Aufgabe auf der Konsole ausgeben.
-\emph{printNChars} sollte hierbei \emph{charGenerator} benutzen, um das nächste Zeichen ermitteln.
+Erstelle die Methoden \texttt{void printNChars(int n)}, \texttt{int readWidth()} und \texttt{void printPattern()}, die entsprechend \texttt{n} Zeichen auf die Konsole ausgeben, die Breite einlesen und unter Verwendungen aller Methoden das Muster aus der vorherigen Aufgabe auf der Konsole ausgeben.
+\texttt{printNChars} sollte hierbei \texttt{charGenerator} benutzen, um das nächste Zeichen ermitteln.
 
-Teste deine Implementierung, indem du ein \emph{PatternPrinter}-Objekt anlegst und \emph{printPattern()} darauf aufrufst.
+Teste deine Implementierung, indem du ein \texttt{PatternPrinter}-Objekt anlegst und \texttt{printPattern()} darauf aufrufst.
 
 
+
+\newpage
 \section{Operatorüberladung}
-In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\emph{operator+}), \textbf{*} (\emph{operator*}),\dots zu überladen.
+In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\texttt{operator+}), \textbf{*} (\texttt{operator*}),\dots zu überladen.
 Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
-Du hast bereits das Objekt \emph{cout} der Klasse \emph{ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \emph{std::string}, \emph{int},\dots komfortabel zu tätigen.
+Du hast bereits das Objekt \texttt{std::cout} der Klasse \texttt{ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \texttt{std::string}, \texttt{int},\dots komfortabel zu tätigen.
 In dieser Aufgabe wollen wir eine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
 
 Wir werden am Tag 4 auf dieser Aufgabe aufbauen und den Vektor um weitere Funktionen erweitern.
@@ -291,20 +313,20 @@ Wirf deine Lösung also bitte nicht direkt weg.
 Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
 
 \subsection{Konstruktor}
-Schreibe eine Klasse \emph{Vector3} mit den Attributen \emph{a}, \emph{b} und \emph{c} vom Typ \emph{double}, die die einzelnen Komponenten eines 3-dimensionalen Vektors darstellen.
+Schreibe eine Klasse \texttt{Vector3} mit den Attributen \texttt{a}, \texttt{b} und \texttt{c} vom Typ \texttt{double}, die die einzelnen Komponenten eines 3-dimensionalen Vektors darstellen.
 Die Klasse soll drei Konstruktoren besitzen, einen parameterlosen \textbf{Default-Konstruktor}, der den Vektor mit \textbf{0} initialisiert, einen \textbf{Konstruktor mit 3 Parametern}, der die einzelnen Vektor-Komponenten auf die gegebenen Werte setzt, und einen \textbf{Copy-Konstruktor}.
 
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
-Er nimmt ein Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \emph{Vector3}) als Parameter und kopiert alle Attribute.
+Er nimmt ein Objekt vom gleichen Typ wie die Klasse selbst (in unserem Fall \texttt{Vector3}) als Parameter und kopiert alle Attribute.
 Die Übergabe sollte dabei per const Reference geschehen.
-Näheres dazu in der Vorlesung\footnote{Erklärung: Würden wir \emph{other} by-Value übergeben, müsste eine Kopie von \emph{other} angelegt werden.
-	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.}.
+Näheres dazu in der Vorlesung\footnote{Erklärung: Würden wir \texttt{other} by-Value übergeben, müsste eine Kopie von \texttt{other} angelegt werden.
+Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.}.
 Bis dahin übernimm einfach die folgende Syntax für den Prototypen:
 \begin{lstlisting}
 Vector3(const Vector3 &other);
 \end{lstlisting}
 
-Dadurch kannst du \emph{other} wie ein gewöhnliches \emph{Vector3}-Objekt verwenden, es jedoch nicht verändern.
+Dadurch kannst du \texttt{other} wie ein gewöhnliches \texttt{Vector3}-Objekt verwenden, es jedoch nicht verändern.
 
 Füge jedem Konstruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
 
@@ -326,14 +348,14 @@ Vector3::~Vector3() {
 Füge dem Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können
 
 \subsection{Vektoraddition}
-Überlade den Operator \textbf{+} der Klasse \emph{Vector3}, der eine komponentenweise Vektoraddition durchführt.
+Überlade den Operator \textbf{+} der Klasse \texttt{Vector3}, der eine komponentenweise Vektoraddition durchführt.
 Die Signatur lautet
 \begin{lstlisting}
 Vector3 operator+(Vector3 rhs);
 \end{lstlisting}
-Das \emph{Vector3} links ist dabei der Rückgabetyp der Überladung, der Parameter rhs die rechte Seite (\glqq right-hand-side\grqq{}) des \textbf{+}-Operators.
+Das \texttt{Vector3} links ist dabei der Rückgabetyp der Überladung, der Parameter rhs die rechte Seite (\glqq right-hand-side\grqq{}) des \textbf{+}-Operators.
 Dadurch, dass du den Operator als Member der Klasse deklarierst, nimmt die aktuelle Instanz hierbei automatisch die linke Seite der Operation an.
-Platziere den Prototyp im \emph{public}-Bereich der \emph{Vector3} Klasse.
+Platziere den Prototyp im \texttt{public}-Bereich der \texttt{Vector3} Klasse.
 
 Die Implementierung lautet dementsprechend:
 \begin{lstlisting}
@@ -342,25 +364,25 @@ Vector3 Vector3::operator+(Vector3 rhs) {
 }
 \end{lstlisting}
 
-Du kannst nun innerhalb der Methode durch \emph{a}, \emph{b} und \emph{c} auf eigene Attribute und über  \emph{rhs.a}, \emph{rhs.b} und \emph{rhs.c} auf Attribute der rechten Seite zugreifen.
+Du kannst nun innerhalb der Methode durch \texttt{a}, \texttt{b} und \texttt{c} auf eigene Attribute und über  \texttt{rhs.a}, \texttt{rhs.b} und \texttt{rhs.c} auf Attribute der rechten Seite zugreifen.
 
 \subsection{Vektorsubtraktion und Skalarprodukt}%\\[0ex]
 Überlade auf die gleiche Weise auch die Operatoren $-$ für eine komponentenweise Vektorsubtraktion sowie \textbf{*} für ein Skalarprodukt.
-Der Rückgabetyp eines Skalarprodukts ist kein \emph{Vector3} sondern ein Skalar (\emph{double})!
+Der Rückgabetyp eines Skalarprodukts ist kein \texttt{Vector3} sondern ein Skalar (\texttt{double})!
 
-Jetzt kannst du Vektoren durch \emph{v1 + v2}, \emph{v1 - v2} und \emph{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden.
+Jetzt kannst du Vektoren durch \texttt{v1 + v2}, \texttt{v1 - v2} und \texttt{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden.
 
-\subsection{Ausgabeoperator (\emph{\texttt{operator<<}})}
-Um die Korrektheit unserer Implementierung zu testen, brauchen wie eine Ausgabemöglichkeit eines \emph{Vektor3}-Objektes, idealerweise mit der gewohnten \emph{cout \textbf{$<<$} ...} Syntax.
-Dazu überladen wir den \textbf{$<<$} Operator.
+\subsection{Ausgabeoperator (\texttt{operator<<}}
+Um die Korrektheit unserer Implementierung zu testen, brauchen wie eine Ausgabemöglichkeit eines \texttt{Vektor3}-Objektes, idealerweise mit der gewohnten \texttt{std::cout $<<$ ...} Syntax.
+Dazu überladen wir den $<<$ Operator.
 
-Diesmal müssen wir die Überladung \textbf{außerhalb} der \emph{Vektor3}-Klasse definieren, weil auf unser \emph{Vektor3}-Objekt nun auf der rechten Seite der Operation steht. Der Funktionsprototyp lautet
+Diesmal müssen wir die Überladung \textbf{außerhalb} der \texttt{Vektor3}-Klasse definieren, weil auf unser \texttt{Vektor3}-Objekt nun auf der rechten Seite der Operation steht. Der Funktionsprototyp lautet
 \begin{lstlisting}
 std::ostream& operator<<(std::ostream &out, Vector3 rhs);
 \end{lstlisting}
 
-Als linke Seite wird hierbei ein \emph{ostream}-Objekt (wie z.B. \emph{cout}) erwartet.
-Um Ausgabeketten \emph{cout} \textbf{$<<$} \dots \textbf{$<<$} \dots zu ermöglichen, muss das Ausgabeobjekt auch zurückgegeben werden. Damit das \emph{ostream}-Objekt nicht jedes Mal kopiert wird, wird es als Referenz \textbf{\&} durchgereicht.
+Als linke Seite wird hierbei ein \texttt{ostream}-Objekt (wie z.B. \texttt{std::cout}) erwartet.
+Um Ausgabeketten \texttt{std::cout} $<<$ \dots $<<$ \dots zu ermöglichen, muss das Ausgabeobjekt auch zurückgegeben werden. Damit das \texttt{ostream}-Objekt nicht jedes Mal kopiert wird, wird es als Referenz \textbf{\&} durchgereicht.
 
 Die Implementierung hat folgende Form:
 \begin{lstlisting}
@@ -371,7 +393,7 @@ ostream& operator<<(ostream &out, Vector3 rhs)  {
 \end{lstlisting}
 
 Fülle die Funktion aus und kompiliere das Projekt.
-Vergiss nicht, den \emph{iostream} Header und \emph{std} Namespace einzubinden.
+Denke daran, den \texttt{iostream} Header einzubinden.
 
 \subsection{Komponenten-Getter}
 Der Compiler wird mit der Fehlermeldung
@@ -379,9 +401,9 @@ Der Compiler wird mit der Fehlermeldung
 error: 'double Vector3::a' is private within this context
 \end{verbatim}
 abbrechen.
-Dies liegt daran, dass die Attribute \emph{a}, \emph{b} und \emph{c} privat und nur innerhalb der Klasse sichtbar sind.
+Dies liegt daran, dass die Attribute \texttt{a}, \texttt{b} und \texttt{c} privat und nur innerhalb der Klasse sichtbar sind.
 Erstelle deshalb Getter-Methoden für die einzelnen Vektorkomponenten und verwende diese in der Ausgabefunktion.
-Wenn alles funktioniert hat, kannst du beliebige \emph{Vector3}-Objekte ausgeben:
+Wenn alles funktioniert hat, kannst du beliebige \texttt{Vector3}-Objekte ausgeben:
 \begin{lstlisting}
 cout << v << endl;
 \end{lstlisting} 
@@ -390,15 +412,16 @@ cout << v << endl;
 Teste deine bisher definierten Methoden und Funktionen.
 Probiere auch Kombinationen von verschiedenen Operatoren aus und beobachte das Ergebnis.
 Schreibe auch eine einfache Funktion, die Vektoren als Parameter nimmt.
-Wie du siehst, werden sehr viele \emph{Vector3}-Objekte erstellt, kopiert und gelöscht.
+Wie du siehst, werden sehr viele \texttt{Vector3}-Objekte erstellt, kopiert und gelöscht.
 Dies liegt daran, dass die Objekte immer per Call-By-Value übergeben und dabei kopiert werden.
 Wie dies vermieden werden kann, sehen wir im nächsten Teil des Praktikums.
 
 
+
+\newpage
 \section{Aufzugssimulation}
 In dieser Aufgabe soll ein Grundgerüst für den in der Vorlesung vorgestellten Aufzug-Simulator geschaffen werden.
-Folgendes Klassendiagramm veranschaulicht die Klassenstruktur.
-
+%Folgendes Klassendiagramm veranschaulicht die Klassenstruktur.
 %\includegraphics{figures/Aufzug.png} %TODO replace with header file
 
 \textbf{Hinweis:}
@@ -407,25 +430,25 @@ Generell gilt, dass diese Aufgaben eher länger sind und das bisher Gelernte fes
 Falls du feststellst, dass dir im Moment die Zeit dafür fehlt, kannst du diese Aufgaben auch nach hinten verschieben und als ausführliche Klausurvorbereitung nutzen.
 
 \subsection{Klasse Person}
-Schreibe eine Klasse \emph{Person}.
-Diese soll ein Attribut \emph{int destinationFloor} haben, welches das Zielstockwerk angibt.
+Schreibe eine Klasse \texttt{Person}.
+Diese soll ein Attribut \texttt{int destinationFloor} haben, welches das Zielstockwerk angibt.
 Initialisiere das Attribut im Konstruktor und schreibe einen entsprechenden Getter.
 Füge dem Konstruktor außerdem eine Ausgabe auf die Konsole hinzu, um später beim Programmlauf den Erzeugungsprozess besser nachvollziehen zu können.
-Erstelle zudem einen Destruktor für \emph{Person} sowie den Copy-Konstruktor.
-Vergiss nicht, im Copy-Konstruktor \emph{destinationFloor} des anderes Objekts zu übernehmen.
+Erstelle zudem einen Destruktor für \texttt{Person} sowie den Copy-Konstruktor.
+Vergiss nicht, im Copy-Konstruktor \texttt{destinationFloor} des anderes Objekts zu übernehmen.
 Erstelle auch hier eine Konsolenausgabe, um den Lebenszyklus darzustellen.
 
 \subsection{Klasse Elevator}
-Schreibe eine Klasse \emph{Elevator} mit den Attributen \emph{int currentFloor}, \emph{double energyConsumed} sowie \emph{std::vector<Person> containedPeople}.
-Dabei soll \emph{int currentFloor} die Nummer des aktuellen Stockwerks repräsentieren, \emph{double energyConsumed} die verbrauchte Energie.
-In \emph{containedPeople} werden die sich aktuell im Aufzug befindlichen Menschen gespeichert.
-Dafür benutzen wir die Klasse \emph{vector} aus dem \emph{std} Namespace.
-Binde dazu den Header \emph{vector} ein.
-Der Container \emph{vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \emph{Vector} Klasse bereit.
-Der Typ in spitzen Klammern (\emph{<Person>} in \emph{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \emph{Person}-Objekte gespeichert werden sollen.
+Schreibe eine Klasse \texttt{Elevator} mit den Attributen \texttt{int currentFloor}, \texttt{double energyConsumed} sowie \texttt{std::vector<Person> containedPeople}.
+Dabei soll \texttt{int currentFloor} die Nummer des aktuellen Stockwerks repräsentieren, \texttt{double energyConsumed} die verbrauchte Energie.
+In \texttt{containedPeople} werden die sich aktuell im Aufzug befindlichen Menschen gespeichert.
+Dafür benutzen wir die Klasse \texttt{std::vector} aus der Standardbibliothek.
+Binde dazu den Header \texttt{vector} ein.
+Der Container \texttt{std::vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \texttt{Vector} Klasse bereit.
+Der Typ in spitzen Klammern (\texttt{<Person>} in \texttt{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \texttt{Person}-Objekte gespeichert werden sollen.
 
-Implementiere zunächst einen Konstruktor, der die Attribute von \emph{Elevator} sinnvoll initialisiert.
-Da \emph{containedPeople} leer initialisiert wird, brauchst du dafür keinen expliziten Aufruf.
+Implementiere zunächst einen Konstruktor, der die Attribute von \texttt{Elevator} sinnvoll initialisiert.
+Da \texttt{containedPeople} leer initialisiert wird, brauchst du dafür keinen expliziten Aufruf.
 
 \begin{lstlisting}
     /** Creates an elevator located at floor 0 */
@@ -434,7 +457,7 @@ Da \emph{containedPeople} leer initialisiert wird, brauchst du dafür keinen exp
 	    energyConsumed(0.0) {}
 \end{lstlisting}
 
-Schreibe Getter für \emph{currentFloor} und \emph{energyConsumed}.
+Schreibe Getter für \texttt{currentFloor} und \texttt{energyConsumed}.
 Implementiere außerdem die Methoden
 \begin{lstlisting}
 	/** Returns number of people in Elevator */
@@ -444,7 +467,7 @@ Implementiere außerdem die Methoden
 	Person getPerson(int i);
 \end{lstlisting}
 
-Du kannst mit \emph{containedPeople.size()} auf die Länge eines \emph{vector}s zugreifen und mittels \emph{containedPeople.at(i)} auf das i-te Element. \\
+Du kannst mit \texttt{containedPeople.size()} auf die Länge eines Vektors zugreifen und mittels \texttt{containedPeople.at(i)} auf das i-te Element. \\
 
 Implementiere auch die Methode
 \begin{lstlisting}
@@ -464,15 +487,15 @@ Als letztes müssen wir die Methoden zum Ein- und Aussteigen implementieren:
 	std::vector<Person> removeArrivedPeople();
 \end{lstlisting}
 
-Du kannst dabei \emph{containedPeople.push\_back(Person)} nutzen, um eine einzelne Person zur Menge der Insassen hinzuzufügen.
-Um die Leute aussteigen zu lassen, die an ihrem Zielstockwerk angekommen sind, erstelle in der Methode zwei temporäre \emph{vector}-Container   \emph{stay} und \emph{arrived}.
+Du kannst dabei \texttt{containedPeople.push\_back(Person)} nutzen, um eine einzelne Person zur Menge der Insassen hinzuzufügen.
+Um die Leute aussteigen zu lassen, die an ihrem Zielstockwerk angekommen sind, erstelle in der Methode zwei temporäre \texttt{std::vector}-Container \texttt{stay} und \texttt{arrived}.
 Iteriere nun über alle Leute im Aufzug und prüfe, ob das Zielstockwerk der Person mit dem aktuellen Stockwerk des Aufzugs übereinstimmt.
-Wenn ja, lasse die Person aussteigen, indem du sie zu der \emph{arrived}-Liste mittels \emph{push\_back()} hinzufügst.
-Andernfalls muss die Person im Aufzug verbleiben (\emph{stay}-Liste).
-Gib am Ende die arrived-Liste zurück, und ersetze \emph{containedPeople} durch \emph{stay}.
+Wenn ja, lasse die Person aussteigen, indem du sie zu der \texttt{arrived}-Liste mittels \texttt{push\_back()} hinzufügst.
+Andernfalls muss die Person im Aufzug verbleiben (\texttt{stay}-Liste).
+Gib am Ende die arrived-Liste zurück, und ersetze \texttt{containedPeople} durch \texttt{stay}.
 
 \subsection{Klasse Floor}
-Schreibe die Klasse \emph{Floor} mit dem Attribut \emph{std::vector<Person> containedPeople}.
+Schreibe die Klasse \texttt{Floor} mit dem Attribut \texttt{std::vector<Person> containedPeople}.
 Implementiere die folgenden Methoden:
 
 \begin{lstlisting}
@@ -490,12 +513,12 @@ Implementiere die folgenden Methoden:
 \end{lstlisting}
 
 
-Nutze \emph{containedPeople.clear()} um alle Elemente eines \emph{vector}s zu löschen.
+Nutze \texttt{containedPeople.clear()} um alle Elemente eines Vektors zu löschen.
 
 \subsection{Klasse Building}
-Schreibe eine Klasse \emph{Building}.
-Füge einen Aufzug \emph{elevator} sowie \emph{std::vector<Floor> floors} als private Attribute hinzu.
-Der Konstruktor soll die Anzahl der Stockwerke als Parameter erhalten und die Liste der Stockwerke (\emph{floors}) mit einer entsprechenden Anzahl Stockwerke füllen.
+Schreibe eine Klasse \texttt{Building}.
+Füge einen Aufzug \texttt{elevator} sowie \texttt{std::vector<Floor> floors} als private Attribute hinzu.
+Der Konstruktor soll die Anzahl der Stockwerke als Parameter erhalten und die Liste der Stockwerke (\texttt{floors}) mit einer entsprechenden Anzahl Stockwerke füllen.
 Implementiere dazu die folgenden Methoden:
 
 \begin{lstlisting}
@@ -519,8 +542,8 @@ Um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufkette
 	b.getElevator().addPeople(b.getFloor(b.getElevator().getFloor()).removeAllPeople());
 \end{lstlisting}
 
-zu vermeiden (\emph{Law of Demeter}), werden wir \emph{Building} einige weitere Methoden hinzufügen.
-Der Simulator sollte nur mit Methoden der Klasse \emph{Building} kommunizieren.
+zu vermeiden (\emph{Law of Demeter}), werden wir \texttt{Building} einige weitere Methoden hinzufügen.
+Der Simulator sollte nur mit Methoden der Klasse \texttt{Building} kommunizieren.
 Implementiere hierfür folgende Komfortmethoden:
 
 \begin{lstlisting}
@@ -556,8 +579,8 @@ Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheina
 \begin{algorithm}[H]
  \SetAlgoLined
  \For{Floor floor \textbf{in} Building}{
-   Move \emph{elevator} to Floor \emph{floor};\\
-   Let all people on \emph{floor} into \emph{elevator};\\
+   Move \texttt{elevator} to Floor \texttt{floor};\\
+   Let all people on \texttt{floor} into \texttt{elevator};\\
    
   \While{elevator has people} {
     Move Elevator to destination Floor of first Person in Elevator; \\
@@ -569,8 +592,6 @@ Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheina
 Gib am Ende auch die verbrauchte Energie aus.
 Schau dir die Ausgabe genau an und versuche nachzuvollziehen, warum Personen so oft kopiert werden.
 Denke daran, dass diese bei einer Übergabe als Argument kopiert werden.
-
-
 
 
 
