@@ -23,7 +23,7 @@ Einzeilige Kommentare können durch \texttt{//}, mehrzeilige durch \texttt{/* ..
 
 \section{Hello World}
 Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
-Füge eine neue Sourcecodedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
+Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
 Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
 Füge anschließend folgendes Programm ein, kompiliere und führe es aus.
 %[numbers=left, numbersep=0pt, xleftmargin=10pt]
@@ -48,7 +48,7 @@ In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout
 \hints{
 	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
 	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
-	\item Sourcecodedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
+	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
 }
 
 
@@ -85,14 +85,14 @@ Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wir
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcecode-Datei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
 \begin{lstlisting}
 #ifndef FUNCTIONS_HPP_
 #define FUNCTIONS_HPP_
 // your header ...
 #endif /* FUNCTIONS_HPP_ */
 \end{lstlisting}
-Binde danach \texttt{functions.hpp} in beide Sourcecode-Dateien ein indem du
+Binde danach \texttt{functions.hpp} in beide Sourcedateien ein indem du
 \begin{lstlisting}
 #include "functions.hpp"
 \end{lstlisting}
@@ -125,7 +125,7 @@ Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nac
 
 \subsection{Fortlaufendes Alphabet}
 Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
-Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \textquotesingle a\textquotesingle.
+Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
 Beispiel:
 \begin{lstlisting}
 abc
@@ -136,7 +136,7 @@ ijk
 \end{lstlisting}
 
 Implementiere dazu eine Funktion \texttt{char nextChar()}.
-Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \texttt{char} zurückgeben, beginnend bei \textquotesingle a\textquotesingle.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \texttt{char} zurückgeben, beginnend bei \emph{a}.
 Dazu muss sich \texttt{nextChar()} intern das aktuelle Zeichen merken.
 Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren alten Wert beim Wiedereintritt in die Funktion.
 Ein statische Variable \texttt{c} wird mittels
@@ -144,7 +144,7 @@ Ein statische Variable \texttt{c} wird mittels
 static char c = 'a';
 \end{lstlisting}
 deklariert.
-In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit 'a' initialisiert und kann später beliebig verändert werden.
+In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit \emph{a} initialisiert und kann später beliebig verändert werden.
 
 \subsection{Namensräume}
 Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
@@ -168,117 +168,86 @@ Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur 
 \section{Klassen}
 Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Hierfür werden wir nun eine Klasse schreiben, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
 
-Anstatt
-In der vorherigen Übung haben wir den Modifier \textbf{static} verwendet, um eine Funktion zu erstellen, welche fortlaufende Zeichen generiert.
-Diese Methode hat jedoch mehrere Nachteile, unter anderem kann man die Funktion nicht in mehreren Threads gleichzeitig nutzen (Ausnahme C++11).
-
-
-
-\subsection{a}
-Lege ein neues Projekt an und füge dem Projekt eine neue leere Klasse \texttt{CharGenerator} hinzu.
-Obwohl Eclipse Klassenrümpfe automatisch generieren kann, wollen wir aus Übungsgründen die Klasse diesmal manuell erstellen.
-Erzeuge dazu einen Header \texttt{CharGenerator.hpp} und eine Sourcecode-Datei \texttt{CharGenerator.cpp}.
-Binde \texttt{CharGenerator.hpp} in \texttt{CharGenerator.cpp} und in \texttt{main.cpp} ein.
-
-Erstelle nun den Klassenrumpf von \texttt{CharGenerator} in der Header-Datei. Die allgemeine Syntax lautet hierbei
-
+\subsection{Definition}
+Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration (Headerdatei) und Implementation (Sourcedatei) aufgeteilt.
+Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Header beschrieben, während die Sourcedatei nur die Implementation der Funktionen und Initialisierungen statischer Variablen enthält.
+Standardmäßig sind alle Elemente einer Klasse privat.
+Im Gegensatz zu Java werden in C++ die Access-Modifier \texttt{public}/\texttt{private}/\texttt{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
 \begin{lstlisting}
-class MyClass {
-}; // semicolon!
-\end{lstlisting}
-
-Genauso wie bei Funktionen wird auch bei Methoden von Klassen zwischen Deklaration und Implementierung unterschieden.
-Die Struktur der Klasse mit allen Attributen und Methodenprototypen wird im Header beschrieben, während die Sourcecode-Datei nur Implementierungen enthält.
-Da wir noch keine Methoden definiert haben, ist unsere Sourcecode-Datei entsprechend leer.
-
-\subsection{b}
-Füge Ihrer Klasse nun das \texttt{private} Attribut \texttt{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird. Im Gegensatz zu Java  werden in C++ die Access-Modifier \texttt{public}/\texttt{private}/\texttt{protected} nicht bei jeder Methode einzeln sondern blockweise angegeben. Dazu wird der jeweilige Access-Modifier an die gewünschte Stelle in der Klassendeklaration geschrieben und mit einem Doppelpunkt abgeschlossen.  Alle darauffolgenden Deklarationen werden nun unter diesem Modifier erstellt. Beispiel:
-
-\begin{lstlisting}
-class Foo {
+class ClassName {
 public:
-	void iAmPublic(); // public method
-	// more public members
-protected:
-	void iAmProtected(); // protected method
-	// more protected members
+	// public members ...
 private:
-	void iAmPrivate(); // private method
-	...
-};
+	// private members ...
+};	// semicolon!
 \end{lstlisting}
 
-Füge das Attribut \texttt{nextChar} als \textbf{private} hinzu.
+Erzeuge einen Header \texttt{CharGenerator.hpp} und erstelle den Klassenrumpf der \texttt{CharGenerator} Klasse.
+Füge der Klasse das \texttt{private} Attribut \texttt{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \texttt{public} Konstruktorprototypen \texttt{CharGenerator()}, der \texttt{nextChar} auf \emph{a} initialiseren soll.
+Füge noch eine \texttt{public} Funktionsprototypen \texttt{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
 
-\subsection{c}
-Noch wurde \texttt{nextChar} kein Wert zugewiesen.
-Das wollen wir nun nachholen und einen Konstruktor für die Klasse \texttt{CharGenerator} erstellen, der \texttt{nextChar} auf einen Anfangswert setzt.
-Der Konstruktor wird als eine Methode ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann, in unserem Fall zunächst
+
+\hints{
+	\item Ein Konstruktor wird als eine Funktion ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann.
+}
+
+\subsection{Implementation}
+Wie bei der Verwendung von \texttt{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte getrennt angegeben werden.
+
 \begin{lstlisting}
-CharGenerator();
-\end{lstlisting}
-
-Erstelle den Konstruktorprototypen im \texttt{public}-Bereich der Klasse und eine Implementierung in der Sourcecode-Datei. Damit der Compiler weiß, zu welcher Klasse eine Methode/Konstruktor gehört, muss man vor dem Methodennamen den Scope der Klasse angeben.
-
-\begin{lstlisting}
-CharGenerator::CharGenerator() {  // Konstruktor von CharGenerator.
-	...
+void ClassName::functionName() {
+	// function implementation ...
 }
 \end{lstlisting}
 
-Um \texttt{nextChar} einen Wert zuzuweisen, werden wir eine sogenannte Initialisierungsliste verwenden.
-Diese beschreibt, wie die Attribute einer Klasse initialisiert werden.
-Dadurch wird garantiert, dass beim Eintritt in den Konstruktorrumpf alle Objektattribute bereits initialisiert sind und verwendet werden dürfen.
-
-Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributennamen und ihren Initialisierungsargumenten in Klammern.
-
-Die Reihenfolge der Initialisierungsliste sollte der Deklarationsreihenfolge entsprechen.
-Konstanten \textbf{müssen} in der Initialisierungsliste zugewiesen werden.
-
-Beispiel:
+Um Attribute zu initialisieren wird üblicherweise eine sogenannte Initialisierungsliste im Konstruktor verwendet, da diese vor dem Eintritt in den Konstruktorrumpf aufgerufen wird.
+Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributnamen und ihren Initialisierungsargumenten in Klammern.
 
 \begin{lstlisting}
-CharGenerator::CharGenerator(): nextChar('a') {
+ClassName::ClassName():
+	// initializer list:
+	attributeOne(initialValueOne),
+	attributeTwo(initialValueTwo)
+{
+	// constructor body
 }
 \end{lstlisting}
 
-Initialisiere nun \texttt{nextChar} mit 'a' wie beschrieben.
+Erzeuge eine Sourcedatei \texttt{CharGenerator.cpp} für die Implementation der Klasse und binde die \texttt{CharGenerator.hpp} ein.
+Implementiere den Konstruktor, indem du \texttt{nextChar} mit \emph{a} in der Initialisierungsliste initialisierst.
+Implementiere zudem \texttt{generateNextChar()}, indem du \texttt{nextChar} zurückgibst.
 
-\subsection{d}
-Schreibe nun eine \texttt{public} Methode \texttt{char generateNextChar()} die analog zur vorherigen Aufgabe das nächste auszugebende Zeichen zurückgibt.
-Teile die Methode in Prototyp und Implementierung auf.
-Vergiss auch hier nicht, den Scope der Klasse bei der Implementierung anzugeben:
-
-\begin{lstlisting}
-char CharGenerator::generateNextChar() {
-	...
+\hints{
+	\item Die Reihenfolge der Initialisierungsliste sollte der Deklarationsreihenfolge entsprechen.
+	\item Konstanten \textbf{müssen} in der Initialisierungsliste zugewiesen werden, damit diese zur Laufzeit bekannt sind.
 }
+
+\subsection{Instanziierung}
+Erzeuge wie aus den vorherigen Aufgaben bekannt eine \texttt{main.cpp} mit einer \texttt{main()} Funktion in der du ein \texttt{CharGenerator}-Objekt erzeugst und \texttt{generateNextChar()} mehrfach aufrufst und ausgibst.
+\begin{lstlisting}
+CharGenerator charGen;
+char next = charGen.generateNextChar();
+std::cout << next << std::endl;
 \end{lstlisting}
+Überprüfe das Ergebnis über die Konsole oder den Debugger.
 
-\subsection{e}
-Teste deine Implementierung.
-Lege in der \texttt{main}-Funktion ein \texttt{CharGenerator}-Objekt mittels \texttt{CharGenerator charGen;} an.
-Ein \texttt{new} ist dabei nicht erforderlich (näheres dazu in der nächsten Vorlesung).
+\hints{
+	\item Um ein Objekt zu erzeugen, muss in C++ kein \texttt{new} verwendet werden (siehe dazu nächste Vorlesung).
+}
 
-Rufe \texttt{generateNextChar()} einige Male auf und überprüfe das Ergebnis über die Konsole oder den Debugger.
-
-\subsection{f}
-Wir wollen nun angeben können, mit welchem Zeichen unser \texttt{CharGenerator} beginnen soll.
-Erweitere dazu den Konstruktor um einen Parameter \texttt{char initialChar} und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
-
-Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte \emph{Default Parameter} angeben.
-Weise hierzu den Parameter im Prototypen einfach einen Wert zu.
-An der Implementierung muss nichts geändert werden.
+\subsection{Default-Parameter}
+Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte Default-Parameter angeben, der beim Aufruf weggelassen werden kann.
+Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen ohne die Implementation zu ändern.
 \begin{lstlisting}
 class CharGenerator {
 public:
 	CharGenerator(char initialChar = 'a');
-	...
+	//...
 };
 \end{lstlisting}
 
-Nun ist die Angabe des Startzeichens optional und kann auf Wunsch weggelassen werden.
-Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls Default-Werte angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
+Wir wollen nun angeben können, mit welchem Zeichen unser \texttt{CharGenerator} beginnen soll.
+Erweitere dazu den Konstruktor um einen Parameter \texttt{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
 
 Teste deine Implementierung sowohl mit als auch ohne Angabe des Startzeichens.
 Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
@@ -286,18 +255,30 @@ Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
 CharGenerator charGen('x');
 \end{lstlisting}
 
-\subsection{g}
-Erstelle eine neue Klasse \texttt{PatternPrinter} und füge ein \texttt{CharGenerator}-Objekt \texttt{charGenerator} als privates Attribut hinzu.
-Erstelle auch einen leeren, parameterlosen Konstruktor für \texttt{PatternPrinter}.
+\hints{
+	\item Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls Default-Werte angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
+}
 
-Ohne eine Initialisierungsliste wird \texttt{charGenerator} mit dem Default-Parameter initialisiert.
-Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \texttt{charGenerator} mit dem entsprechenden Argument initialisiert werden.
-
-\subsection{h}
-Erstelle die Methoden \texttt{void printNChars(int n)}, \texttt{int readWidth()} und \texttt{void printPattern()}, die entsprechend \texttt{n} Zeichen auf die Konsole ausgeben, die Breite einlesen und unter Verwendungen aller Methoden das Muster aus der vorherigen Aufgabe auf der Konsole ausgeben.
-\texttt{printNChars} sollte hierbei \texttt{charGenerator} benutzen, um das nächste Zeichen ermitteln.
+\subsection{PatternPrinter}
+Implementiere folgende Klasse.
+\begin{lstlisting}
+class PatternPrinter {
+private:
+	CharGenerator charGen;
+public:
+	PatternPrinter();
+	void printNChars(int n);	// print n characters to the console
+	int readWidth();			// read width (user input)
+	void printPattern();		// print pattern using CharGenerator methods
+};
+\end{lstlisting}
 
 Teste deine Implementierung, indem du ein \texttt{PatternPrinter}-Objekt anlegst und \texttt{printPattern()} darauf aufrufst.
+
+\hints{
+	\item Ohne eine Initialisierungsliste wird \texttt{charGenerator} mit dem Default-Parameter initialisiert.
+	Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \texttt{charGenerator} mit dem entsprechenden Argument initialisiert werden.
+}
 
 
 
