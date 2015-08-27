@@ -26,7 +26,7 @@ Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightar
 Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
 Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
 Füge anschließend folgendes Programm ein, kompiliere und führe es aus.
-%[numbers=left, numbersep=0pt, xleftmargin=10pt]
+
 \begin{lstlisting}
 	#include <iostream>
 	int main() {
@@ -60,6 +60,7 @@ Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln o
 \subsection{Sterne}
 Schreibe eine Funktion \texttt{printStars(int n)}, die \texttt{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
+
 \begin{lstlisting}
 *****
 \end{lstlisting}
@@ -67,6 +68,7 @@ Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
 Platziere die Funktion \textbf{vor} der \texttt{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
 Benutze die erstellte Funktion \texttt{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
 Verwende hierzu Schleifen.
+
 \begin{lstlisting}
 *****
 ****
@@ -86,16 +88,20 @@ Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wir
 
 \subsection{Auslagern der Datei}
 Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+
 \begin{lstlisting}
 #ifndef FUNCTIONS_HPP_
 #define FUNCTIONS_HPP_
 // your header ...
 #endif /* FUNCTIONS_HPP_ */
 \end{lstlisting}
+
 Binde danach \texttt{functions.hpp} in beide Sourcedateien ein indem du
+
 \begin{lstlisting}
 #include "functions.hpp"
 \end{lstlisting}
+
 verwendest.
 Verschiebe deine beiden Funktionen nach \texttt{functions.cpp}.
 
@@ -117,16 +123,19 @@ Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der
 Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
 Gib gegebenenfalls eine Fehlermeldung aus.
 Verwende zum Einlesen \texttt{std::cin} und den \emph{extraction operator}:
+
 \begin{lstlisting}
 int zahl;
 std::cin >> zahl;
 \end{lstlisting}
+
 Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \texttt{functions.cpp} aus.
 
 \subsection{Fortlaufendes Alphabet}
 Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
 Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
 Beispiel:
+
 \begin{lstlisting}
 abc
 de
@@ -140,21 +149,26 @@ Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \texttt{ch
 Dazu muss sich \texttt{nextChar()} intern das aktuelle Zeichen merken.
 Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren alten Wert beim Wiedereintritt in die Funktion.
 Ein statische Variable \texttt{c} wird mittels
+
 \begin{lstlisting}
 static char c = 'a';
 \end{lstlisting}
+
 deklariert.
 In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit \emph{a} initialisiert und kann später beliebig verändert werden.
 
 \subsection{Namensräume}
 Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie folgt in einen \texttt{namespace} setzt.
+
 \begin{lstlisting}
 namespace fun {
 	// function prototypes ...
 };	// semicolon!
 \end{lstlisting}
+
 Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \texttt{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+
 \begin{lstlisting}
 void fun::print_star(int n) {
 	// ...
@@ -173,6 +187,7 @@ Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration 
 Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Header beschrieben, während die Sourcedatei nur die Implementation der Funktionen und Initialisierungen statischer Variablen enthält.
 Standardmäßig sind alle Elemente einer Klasse privat.
 Im Gegensatz zu Java werden in C++ die Access-Modifier \texttt{public}/\texttt{private}/\texttt{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
+
 \begin{lstlisting}
 class ClassName {
 public:
@@ -224,11 +239,13 @@ Implementiere zudem \texttt{generateNextChar()}, indem du \texttt{nextChar} zur�
 
 \subsection{Instanziierung}
 Erzeuge wie aus den vorherigen Aufgaben bekannt eine \texttt{main.cpp} mit einer \texttt{main()} Funktion in der du ein \texttt{CharGenerator}-Objekt erzeugst und \texttt{generateNextChar()} mehrfach aufrufst und ausgibst.
+
 \begin{lstlisting}
 CharGenerator charGen;
 char next = charGen.generateNextChar();
 std::cout << next << std::endl;
 \end{lstlisting}
+
 Überprüfe das Ergebnis über die Konsole oder den Debugger.
 
 \hints{
@@ -238,6 +255,7 @@ std::cout << next << std::endl;
 \subsection{Default-Parameter}
 Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte Default-Parameter angeben, der beim Aufruf weggelassen werden kann.
 Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen ohne die Implementation zu ändern.
+
 \begin{lstlisting}
 class CharGenerator {
 public:
@@ -251,6 +269,7 @@ Erweitere dazu den Konstruktor um einen Parameter \texttt{char initialChar}, wel
 
 Teste deine Implementierung sowohl mit als auch ohne Angabe des Startzeichens.
 Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
+
 \begin{lstlisting}
 CharGenerator charGen('x');
 \end{lstlisting}
@@ -261,6 +280,7 @@ CharGenerator charGen('x');
 
 \subsection{PatternPrinter}
 Implementiere folgende Klasse.
+
 \begin{lstlisting}
 class PatternPrinter {
 private:
@@ -297,6 +317,7 @@ In dieser Aufgabe wollen wir eine eigene Vektor-Klasse schreiben und einige Oper
 \subsection{Konstruktor und Destruktor}
 Implementiere folgende Klasse.
 Füge jedem Konstruktor und Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können.
+
 \begin{lstlisting}
 class Vector3 {
 public:
@@ -315,10 +336,13 @@ Sinnvollerweise wird noch \texttt{const} vor oder nach der Typbezeichnung eingef
 
 Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
 Die Syntax des Prototypen lautet
+
 \begin{lstlisting}
 ~ClassName();
 \end{lstlisting}
+
 und die Implementation entsprechend
+
 \begin{lstlisting}
 ClassName::~ClassName() {/* destructor implementation ... */}
 \end{lstlisting}
