@@ -8,4 +8,97 @@
 
 \cppSetHeaderAndMakeTitle
 
+\section{Zeiger und Referenzen Grundlagen}
+
+\subsection{Experimente}
+Experimentiere mit Zeigern, Adressen und Referenzen.
+Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder zusammenhängen.
+Als Ausgangsbasis kann folgendes Programmfragment dienen.
+
+\begin{lstlisting}
+int intVal = 42;
+int *pIntVal = &intVal;
+cout << "Wert von IntVal " << intVal << endl;
+cout << "Wert von &IntVal " << &intVal << endl;
+cout << "Wert von pIntVal " << pIntVal << endl;
+cout << "Wert von *pIntVal " << *pIntVal << endl;
+cout << "Wert von &pIntVal " << &pIntVal << endl;
+\end{lstlisting}
+
+\subsection{Bedeutung verstehen}
+Seien \texttt{intVal} und \texttt{pIntVal} wie oben gegeben.
+Versuche die Bedeutung folgender Ausdrücke zu verstehen.
+Welche Regelmäßigkeiten stellst du fest?
+
+\begin{lstlisting}
+*&intVal;
+*&pIntVal;
+&*pIntVal;
+**&pIntVal;
+*&*&intVal;
+&*&pIntVal;
+*&*pIntVal;
+\end{lstlisting}
+
+\hints{
+	\item Gehe dabei von innen nach außen vor.
+}
+
+
+\subsection{Gültigkeit}
+Warum sind folgende Ausdrücke ungültig?
+
+\begin{lstlisting}
+*intVal;
+**pIntVal;
+**&*pIntVal;
+&*intVal;
+&42;
+\end{lstlisting}
+
+\hints{
+	\item Finde heraus, welchen Typ der Ausdruck hätte haben müssen.
+	\item Nur tatsächlich angelegte Variablen haben Adressen. Ausdrücke wie a + b oder direkt kodierte Zahlenliterale wie 42 haben keine Adresse-
+}
+
+\subsection{Variablentausch}
+Schreibe eine Funktion \texttt{swap}, die zwei \texttt{int}-Variablen miteinander vertauscht.
+Probiere dabei beide möglichen Übergabevarianten (per Referenz, per Pointer) aus.
+
+\subsection{Programmanalyse}
+Sieh dir folgendes Programm an.
+
+\vbox{%fixes empty page
+\begin{lstlisting}
+#include <iostream>
+
+void foo(int &i) {
+	int i2 = i;
+	int &i3 = i;
+	
+	std::cout << "i = " << i << std::endl;
+	std::cout << "i2 = " << i2 << std::endl;
+	std::cout << "i3 = " << i3 << std::endl;
+	std::cout << "&i = " << &i << std::endl;
+	std::cout << "&i2 = " << &i2 << std::endl;
+	std::cout << "&i3 = " << &i3 << std::endl;
+}
+
+int main() {
+	int var = 42;
+	std::cout << "&var = " << &var << std::endl;
+	foo(var);
+}
+\end{lstlisting}
+}
+
+Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
+Führe das Programm aus.
+Hast du diese Ausgabe erwartet?
+
+
+
+
+
+
 \end{document}
