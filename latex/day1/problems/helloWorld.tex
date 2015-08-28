@@ -1,0 +1,29 @@
+\section{Hello World}
+Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
+Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
+Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
+Füge anschließend folgendes Programm ein, kompiliere und führe es aus.
+
+\begin{lstlisting}
+	#include <iostream>
+	int main() {
+		std::cout << "Hello World" << std::endl;
+	}
+\end{lstlisting}
+
+Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \texttt{main} und Rückgabetyp \texttt{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
+Dieser wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
+Typischerweise wird im Erfolgsfall 0 zurückgegeben.
+
+Die erste Zeile des obigen Programms bindet den Header der \texttt{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
+Diese Bibliothek ist Teil der C++-Standardbibliothek, welche eine Sammlung an generischen Containern, Algorithmen und vielen häufig genutzten Funktionen ist.
+Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \texttt{namespace} (in diesem Fall \texttt{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \texttt{cout} und \texttt{endl}).
+Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \texttt{namespace} zu kapseln, welcher analog zu \texttt{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
+
+In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout} eingefügt, gefolgt von \texttt{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
+
+\hints{
+	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
+	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
+	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
+}

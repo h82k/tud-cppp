@@ -1,0 +1,123 @@
+\section{C++ Grundlagen, Funktionen und Strukturierung}
+Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
+
+\subsection{Sterne}
+Schreibe eine Funktion \texttt{printStars(int n)}, die \texttt{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
+Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
+
+\begin{lstlisting}
+*****
+\end{lstlisting}
+
+Platziere die Funktion \textbf{vor} der \texttt{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
+Benutze die erstellte Funktion \texttt{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
+Verwende hierzu Schleifen.
+
+\begin{lstlisting}
+*****
+****
+***
+**
+*
+**
+***
+****
+*****
+\end{lstlisting}
+
+\hints{
+	\item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
+Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
+}
+
+\subsection{Auslagern der Datei}
+Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+
+\begin{lstlisting}
+#ifndef FUNCTIONS_HPP_
+#define FUNCTIONS_HPP_
+// your header ...
+#endif /* FUNCTIONS_HPP_ */
+\end{lstlisting}
+
+Binde danach \texttt{functions.hpp} in beide Sourcedateien ein indem du
+
+\begin{lstlisting}
+#include "functions.hpp"
+\end{lstlisting}
+
+verwendest.
+Verschiebe deine beiden Funktionen nach \texttt{functions.cpp}.
+
+Schreibe nun in \texttt{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
+Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
+Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
+Der Prototyp von \texttt{printStars(int n)} lautet \texttt{void printStars(int n);}
+
+Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
+
+\hints{
+	\item Denke daran, auch in \texttt{functions.cpp} \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
+	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \texttt{\#include <Bibliotheksname>} sowie per \texttt{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
+	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \texttt{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
+}
+
+\subsection{Eingabe}
+Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
+Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
+Gib gegebenenfalls eine Fehlermeldung aus.
+Verwende zum Einlesen \texttt{std::cin} und den \emph{extraction operator}:
+
+\begin{lstlisting}
+int zahl;
+std::cin >> zahl;
+\end{lstlisting}
+
+Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \texttt{functions.cpp} aus.
+
+\subsection{Fortlaufendes Alphabet}
+Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
+Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
+Beispiel:
+
+\begin{lstlisting}
+abc
+de
+f
+gh
+ijk
+\end{lstlisting}
+
+Implementiere dazu eine Funktion \texttt{char nextChar()}.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \texttt{char} zurückgeben, beginnend bei \emph{a}.
+Dazu muss sich \texttt{nextChar()} intern das aktuelle Zeichen merken.
+Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren alten Wert beim Wiedereintritt in die Funktion.
+Ein statische Variable \texttt{c} wird mittels
+
+\begin{lstlisting}
+static char c = 'a';
+\end{lstlisting}
+
+deklariert.
+In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit \emph{a} initialisiert und kann später beliebig verändert werden.
+
+\subsection{Namensräume}
+Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
+Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie folgt in einen \texttt{namespace} setzt.
+
+\begin{lstlisting}
+namespace fun {
+	// function prototypes ...
+};	// semicolon!
+\end{lstlisting}
+
+Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \texttt{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+
+\begin{lstlisting}
+void fun::print_star(int n) {
+	// ...
+}
+\end{lstlisting}
+
+Vergisst man den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
+Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\texttt{print\_star(int n)} und \texttt{fun::print\_star(int n)} sind unterschiedliche Funktionen!).

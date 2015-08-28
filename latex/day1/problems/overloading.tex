@@ -1,0 +1,111 @@
+\section{Operatorüberladung}
+In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\texttt{operator+}), \textbf{*} (\texttt{operator*}),\dots zu überladen.
+Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
+Du hast bereits das Objekt \texttt{std::cout} der Klasse \texttt{ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \texttt{std::string}, \texttt{int},\dots komfortabel zu tätigen.
+In dieser Aufgabe wollen wir eine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
+
+\hints{
+	\item Wir werden am Tag 4 auf dieser Aufgabe aufbauen und den Vektor um weitere Funktionen erweitern.
+	Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
+}
+
+\subsection{Konstruktor und Destruktor}
+Implementiere folgende Klasse.
+Füge jedem Konstruktor und Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können.
+
+\begin{lstlisting}
+class Vector3 {
+public:
+	Vector3();											// initialize vector with zero
+	Vector3(double a, double b, double c);		// initialize vector with a, b, c
+	Vector3(const Vector3& other);				// copy a vector
+	~Vector3();											// destroy a vector
+private:
+	double a, b, c;									// vector components
+};
+\end{lstlisting}
+
+Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
+Jeder Copy-Konstruktor benötigt eine Referenz auf ein Objekt vom gleichen Typ wie die Klasse selbst als Parameter. 
+Sinnvollerweise wird noch \texttt{const} vor oder nach der Typbezeichnung eingefügt (aber vor \texttt{\&}), da typischerweise das Ursprungsobjekt nicht verändert wird.
+
+Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
+Die Syntax des Prototypen lautet
+
+\begin{lstlisting}
+~ClassName();
+\end{lstlisting}
+
+und die Implementation entsprechend
+
+\begin{lstlisting}
+ClassName::~ClassName() {/* destructor implementation ... */}
+\end{lstlisting}
+
+\hints{
+	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
+	\item Der Compiler wird automatisch einen \texttt{public} Destruktor und \texttt{public} Copy-Konstruktor erzeugen, falls sie nicht definiert wurden. Ebenso wird ein \texttt{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren definiert wurden.
+	\item Würden wir beim Copy-Konstruktor \texttt{other} by-Value übergeben, müsste eine Kopie von \texttt{other} angelegt werden.
+	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.
+}
+
+\subsection{Vektoraddition, -subtraktion und Skalarprodukt}
+Erweitere die Klasse um folgende \texttt{public} Funktionen, um Vektoren durch \texttt{v1 + v2}, \texttt{v1 - v2} und \texttt{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden zu können, indem die Operatoren +, - und * überladen werden.
+
+\begin{lstlisting}
+Vector3 operator+(Vector3 rhs);		// add two vectors component-by-component
+Vector3 operator-(Vector3 rhs);		// subtract two vectors component-by-component
+double operator*(Vector3 rhs);		// determine the dot product of two vectors
+\end{lstlisting}
+
+Innerhalb der Methode kannst du durch \texttt{a}, \texttt{b} und \texttt{c} auf eigene Attribute und über  \texttt{rhs.a}, \texttt{rhs.b} und \texttt{rhs.c} auf Attribute der rechten Seite zugreifen. Denke daran, bei der Implementation den Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt anzugeben.
+
+\begin{lstlisting}
+Vector3 Vector3::operator+(Vector3 rhs) {/* function implementation ...*/}
+Vector3 Vector3::operator-(Vector3 rhs) {/* function implementation ...*/}
+double Vector3::operator*(Vector3 rhs)  {/* function implementation ...*/}
+\end{lstlisting}
+
+\hints{
+	\item Der Parameter \texttt{rhs} steht für die rechte Seite (\glqq right-hand-side\grqq{}) des jeweiligen Operators.
+	Dadurch, dass der Operator als Member der Klasse deklariert wurde, nimmt die aktuelle Instanz hierbei automatisch die linke Seite der Operation an.
+	\item Der Rückgabetyp eines Skalarprodukts (dot product) ist kein \texttt{Vector3} sondern ein Skalar (\texttt{double})!
+}
+
+\subsection{Ausgabe}
+Überlade den $<<$ Operator zur Ausgabe eines Vektors mit der gewohnten \texttt{std::cout $<<$ ...} Syntax, indem du den folgenden Funktionsprototypen \textbf{außerhalb} der Klassendefinition setzt
+
+\begin{lstlisting}
+std::ostream& operator<<(std::ostream &out, Vector3 rhs);
+\end{lstlisting}
+
+und innerhalb der Sourcedatei wie folgt implementierst.
+
+\begin{lstlisting}
+ostream& operator<<(ostream &out, Vector3 rhs)  {
+	out << ... ;
+	return out;
+}
+\end{lstlisting}
+
+Definiere zudem Funktionen die die Werte für die \texttt{private} Attribute \texttt{a}, \texttt{b} und \texttt{c} zurückgeben (Getterfunktionen), anderenfalls wird der Compiler beim Zugriff auf die Attribute folgende Fehlermeldung werfen.
+\begin{verbatim}
+error: 'double Vector3::a' is private within this context
+\end{verbatim}
+
+\hints{
+	\item Denke daran, den \texttt{iostream} Header einzubinden.
+	\item Diesmal mussten wir die Überladung \textbf{außerhalb} der \texttt{Vektor3}-Klasse definieren, weil auf unser \texttt{Vektor3}-Objekt auf der rechten Seite der Operation steht.
+	Als linke Seite wird hierbei ein \texttt{ostream}-Objekt (wie z.B. \texttt{std::cout}) erwartet, um Ausgabeketten \texttt{std::cout} $<<$ \dots $<<$ \dots zu ermöglichen.
+	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden, damit das \texttt{ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \textbf{\&} durchgereicht.
+	\item Anstatt Getter und Setter für \texttt{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \texttt{friend} erlauben.
+}
+
+
+\subsection{Testen}
+Teste deine bisher definierten Methoden und Funktionen.
+Probiere auch Kombinationen von verschiedenen Operatoren aus und beobachte das Ergebnis.
+Schreibe auch eine einfache Funktion, die Vektoren als Parameter nimmt.
+Wie du siehst, werden sehr viele \texttt{Vector3}-Objekte erstellt, kopiert und gelöscht.
+Dies liegt daran, dass die Objekte immer per Call-By-Value übergeben und dabei kopiert werden.
+Wie dies vermieden werden kann, sehen wir im nächsten Teil des Praktikums.
