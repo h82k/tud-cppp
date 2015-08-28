@@ -1,17 +1,18 @@
 \input{../common_head.tex}
-
 \newcommand{\exday}{6}
-
 \cppSetTitle
 
 \begin{document}
 
+% header and title
 \cppSetHeaderAndMakeTitle
 
+% problems
 \section{Implementation eines beliebigen Programms}
 Nach Kennenlernen aller Ein- und Ausgabemöglichkeiten des Boards besteht die Aufgabe darin ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
 Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anreiz dienen.
-Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende uc\_library zu verwenden (TODO siehe Dokumentation).
+Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \texttt{16FXlib} zu verwenden.
+Die Dokumentation dazu findest du unter \url{http://echtzeitsysteme.github.io/tud-cpp-16FXlib/documentation/index.html}.
 
 \section*{Vorschlag: Pong}
 Zwei Gegner sollen je einen Balken (Rechteck) am linken oder rechten Rand des Spielfeldes mit den Schiebereglern steuern können, um einen Ball (ein Quadrat) im Spiel zu halten.
@@ -44,7 +45,6 @@ Durch festgelegte Regeln wird die nachfolgende Generation ermittelt:
 \end{itemize}
 
 Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgenden Figuren:
-
 \begin{center}
 	\includegraphics[scale=1]{figures/gol_init1}
 	\hspace{5mm}
