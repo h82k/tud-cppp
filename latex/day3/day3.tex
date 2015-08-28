@@ -47,7 +47,7 @@ private:
 
 \hints{
 	\item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \texttt{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \texttt{@Override} in Java). Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht.
-	\item Du kannst bei Bedarf die \texttt{getInfo()}-Implementierung der Elternklasse \texttt{Person} von \texttt{Student} aus mittels \texttt{Person::getInfo()} aufrufen.
+	\item Du kannst bei Bedarf die \texttt{getInfo()}-Implementation der Elternklasse \texttt{Person} von \texttt{Student} aus mittels \texttt{Person::getInfo()} aufrufen.
 }
 
 \subsection{Test}
@@ -71,7 +71,7 @@ Du merkst, dass \texttt{printPersonInfo()} unabhängig von übergebenem Personen
 Der Grund dafür ist, dass \texttt{getInfo()} nicht als \texttt{virtual} deklariert wurde und deshalb auch kein dynamischer Dispatch der Methode stattfindet.
 Deklariere daher \texttt{getInfo()} in beiden Klassen als \texttt{virtual}.
 
-Teste deine Implementierung erneut und vergewissere dich, dass nun immer die richtige Methode aufgerufen wird.
+Teste deine Implementation erneut und vergewissere dich, dass nun immer die richtige Methode aufgerufen wird.
 
 \hints{
 	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \texttt{virtual} in der Basisklasse gesetzt werden. In den abgeleiteten Klassen kann \texttt{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
@@ -135,7 +135,7 @@ Schreibe die Klassen \texttt{PlusExpression} und \texttt{MinusExpression}, die v
 Implementiere die Kon- und Destruktoren sowie die \texttt{compute()} Methode.
 
 \item \textbf{Test}
-Teste deine Implementierung.
+Teste deine Implementation.
 Ein gutes Beispiel findest du in Abbildung weiter oben.
 Schaue dir die Ausgabe genau an und versuche anhand der gegebenen Klassenhierarchie die Reihenfolge der Erzeugung und Zerstörung von Objekten  nachzuvollziehen.
 
@@ -150,7 +150,7 @@ Unser bisheriger Aufzugsimulator hat eine feste Strategie, nach der die einzelne
 
 \subsection{Vorbereitung}
 Lagere die bereits existierende Simulation des Aufzugs aus der \texttt{main}-Funktion in eine eigene Funktion \texttt{runSimulation()} aus. Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\texttt{std::list<int>}) der angefahrenen Stockwerke zurückgeben. Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
-Teste deine Implementierung.
+Teste deine Implementation.
 
 \subsection{Klasse \texttt{ElevatorStrategy}}
 Implementiere die Klasse \texttt{ElevatorStrategy}.
