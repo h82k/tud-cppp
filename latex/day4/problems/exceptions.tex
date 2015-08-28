@@ -1,0 +1,59 @@
+\section{Exceptions}
+Ähnlich wie in Java können Fehler in C++ mittels Exceptions signalisiert werden.
+
+\begin{lstlisting}
+try {
+	...
+	throw <Type>;
+} catch(<Type1> <param name>) {
+	...
+} catch(<Type2> <param name>) {
+	...
+}
+...
+\end{lstlisting}
+
+Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java.
+Das aus Java bekannte \texttt{finally}-Konstrukt existiert in C++ nicht.
+Außerdem kann jede Art von Wert geworfen werden -- sowohl Objekte als auch primitive Werte wie z.B. \texttt{int}.
+In der Praxis wird es jedoch empfohlen, den geworfenen Wert von \texttt{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzen.
+
+Im Gegensatz zu Java kann man Objekte nicht nur \emph{by-Reference} sondern auch \emph{by-Value} werfen und fangen. In diesem Fall wird das geworfene Objekt nach der Behandlung im \texttt{catch}-Block automatisch zerstört. Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf. Beispiel:
+
+\begin{lstlisting}
+// 1. Catch by value
+try {
+	throw C();		// create new object of class C and throw it
+} catch(C c) {		// catch c by value => a copy of c is created when catching
+	...
+}
+
+// 2. Catch by reference
+try {
+	throw C();				// create new object of class C and throw it
+} catch(const C &c) {	// catch c by reference, no copy is created
+	...
+}
+\end{lstlisting}
+
+In der Praxis hat es sich durchgesetzt, \emph{by-Value} zu werfen und \emph{by-const-Reference} zu fangen.
+
+\subsection{}
+Erstelle eine Klasse \texttt{C} und implementiere einen Konstruktor, einen Copy-Konstruktor und einen Destruktor.
+Versehe diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während der Ausführung ersichtlich wird.
+
+\subsection{}
+Experimentiere mit Exceptions.
+Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe.
+Wann wird ein Objekt erstellt/kopiert/gelöscht?
+Teste auch, was passiert, wenn du mehrere \texttt{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen?
+Spielt die Reihenfolge eine Rolle?
+
+\subsection{}
+Füge der Klasse \texttt{List} aus \ref{sec:list} (oder dem Array aus \ref{sec:array}) Bereichsprüfungen hinzu.
+Schreibe die Methoden \texttt{insertElementAt()}, \texttt{getNthElement()} und \texttt{deleteAt()} so um, dass eine Exception geworfen wird, falls der angegebene Index die Größe der Liste überschreitet.
+Nimm dafür die Klasse \texttt{std::out\_of\_range} aus dem \texttt{stdexcept} Header.
+
+\subsection{}
+Teste deine Implementation.
+Provoziere eine Exception, indem du falsche Indices angibst, und fange die Exception als \texttt{const} Referenz ab. Du kannst die Methode \texttt{what()} benutzen, um an den Nachrichtentext der Exception zu gelangen.

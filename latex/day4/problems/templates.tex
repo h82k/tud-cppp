@@ -1,0 +1,30 @@
+\section{Template Funktionen}
+\subsection{Templatefunktionen implementieren}
+Implementiere die folgende Funktion, die das Maximum von zwei Variablen liefert:
+
+\begin{lstlisting}
+template<class T>
+const T &maximum(const T &t1, const T &t2);
+\end{lstlisting}
+
+Durch die Verwendung von Templates soll die Funktion mit verschiedenen Datentypen funktionieren.
+Teste deine Implementation.
+
+In der Vorlesung haben wir gesehen, dass jede Verwendung von \texttt{t1} und \texttt{t2} in \texttt{maximum} eine Schnittstelle induziert, die der Typ \texttt{T} bereitstellen muss.
+Das bedeutet, dass \texttt{t1} und \texttt{t2} alle Konstruktoren, Methoden und Operatoren zur Verfügung stellen, die in \texttt{maximum} genutzt werden.
+
+Wie sieht diese Schnittstelle in diesem Fall aus?
+
+\subsection{Explizite Angabe der Typparameter}
+Lege nun zwei Variablen vom Typ \texttt{int} und \texttt{short} an, und versuche, mittels \texttt{maximum()} das Maximum zu bestimmen.
+Der Compiler wird mit der Fehlermeldung \textbf{no matching function for call...} abbrechen, da er nicht weiß, ob \texttt{int} oder \texttt{short} der Template-Parameter sein soll.
+Gib deshalb den Template-Parameter mittels \texttt{maximum<int>()} beim Aufruf von \texttt{maximum()} explizit an.
+Die übergebenen Parameter werden dabei vom Compiler automatisch in den gewünschten Typ umgewandelt.
+
+\subsection{Induzierte Schnittstelle implementieren}
+Erstelle eine Klasse \texttt{C}, die eine Zahl als Attribut beinhaltet. Implementiere einen passenden Konstruktor sowie einen Getter für diese Zahl. Nun wollen wir unsere Funktion  \texttt{maximum()} verwenden, um zu entscheiden, welches von zwei \texttt{C}-Objekten die größere Zahl beinhaltet.
+Überlege dir, was zu tun ist, und implementiere es.
+
+\hints{
+	\item Die Klasse \texttt{C} muss mindestens die durch \texttt{maximum} induzierte Schnittstelle implementieren.
+}

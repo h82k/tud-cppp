@@ -1,0 +1,118 @@
+\section{C Einführung}
+In den nächsten Tagen werden wir Programme für eine Embedded Plattform in C entwickeln.
+Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
+
+\begin{itemize}
+	\item Kein OO-Konzept, keine Klassen, nur Strukturen (\texttt{struct}).
+	\item Keine Templates
+	\item Keine Referenzen, nur Zeiger und Werte
+	\item Kein \texttt{new} und \texttt{delete}, sondern \texttt{malloc()} und \texttt{free()} (\verb|#include <stdlib.h>|)
+	\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
+	\item Parameterlose Funktionen müssen \texttt{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
+	\item Keine Streams, stattdessen \texttt{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
+	\item Kein \texttt{bool} Datentyp, stattdessen wird 0 als \texttt{false} und alle anderen Zahlen als \texttt{true} gewertet
+	\item Keine Default-Argumente
+	\item Keine \texttt{std::string} Klasse, nur \texttt{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
+	\item Keine Namespaces
+\end{itemize}
+
+Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail eingehen.
+
+\subsection{Kein OO-Konzept}
+In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
+Stattdessen gibt es Strukturen (\texttt{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.
+
+Die Syntax dafür lautet
+
+\begin{lstlisting}
+struct MyStruct {
+	<Type1> <Name11>, <Name12>, ...;
+	<Type2> <Name21>, <Name22>, ...;
+};
+\end{lstlisting}
+
+Zum Beispiel
+
+\begin{lstlisting}
+struct Point {
+	int x;
+	int y;
+};
+\end{lstlisting}
+
+Die Sichtbarkeit aller Attribute ist automatisch \texttt{public}.
+
+Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \texttt{struct} angeben:
+
+\begin{lstlisting}
+void foo(struct Point *p) {
+...
+}
+
+int main(void) {
+	struct Point point;
+	foo(&point);
+}
+\end{lstlisting}
+
+Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \texttt{typedef} auf den \texttt{struct} definiert:
+
+\begin{lstlisting}
+typedef struct Point Point_t;
+Point_t point;
+\end{lstlisting}
+
+Man kann die Deklaration eines \texttt{struct} auch direkt in den \texttt{typedef} einbauen:
+
+\begin{lstlisting}
+typedef struct {
+	int x;
+	int y;
+} Point;
+\end{lstlisting}
+
+\subsection{Kein \texttt{new} und \texttt{delete}}
+
+Anstelle von \texttt{new} und \texttt{delete} werden die Funktionen \texttt{malloc} und \texttt{free} verwendet, um Speicher auf dem Heap zu reservieren.
+Diese sind im Header \texttt{stdlib.h} deklariert.
+
+\begin{lstlisting}
+#include <stdlib.h>
+Point *points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
+// ...
+free(points);
+\end{lstlisting}
+
+\subsection{Ausgabe auf Konsole per \texttt{printf}}
+
+Um Daten auf der Konsole auszugeben, kann die Funktion \texttt{printf} verwendet werden.
+\texttt{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
+Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
+Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \texttt{printf()} zu nutzen, muss der Header \texttt{stdio.h} eingebunden werden.
+
+\begin{lstlisting}
+#include <stdio.h>
+printf("Hallo Welt\n"); // Hallo Welt + neue Zeile ausgeben
+
+int i;
+printf("i = %d\n", i);  // Integer ausgeben
+printf("i = %3d\n", i); // Integer ausgeben, auf drei Stellen auffüllen
+
+int i;
+char c;
+printf("c = %c, i = %d\n", c, i); // Zeichen und Integer ausgeben
+\end{lstlisting}
+
+Weitere Möglichkeiten von \texttt{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
+
+\subsection{}
+Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt.
+Die Formatierung soll entsprechend dem Beispiel erfolgen:
+
+\begin{lstlisting}
+2   4   6   8  10
+12  14  16  ...
+\end{lstlisting}
+
+\subsection{}
+Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).

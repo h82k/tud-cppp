@@ -1,0 +1,52 @@
+\section{Eigene Arrays (optional)}
+\label{sec:array}
+
+Nachdem du bei unseren Übungen zu Arrays gesehen hast, dass es störend ist, wenn man die Größe eines Arrays immer getrennt zu den gespeicherten Daten verwalten muss, ist ein sinnvoller Schritt, eine eigene Array-Klasse zu implementieren, die Daten und Größe des Arrays zusammen speichert.
+
+Eine möglicher Anwendungsfall sieht so aus:
+
+\begin{lstlisting}
+#include "Array.h"
+#include <iostream>
+#include <string>
+
+template<class T>
+void printFirst(const Array<T> &array) {
+    std::cout << array[0] << std::endl;
+}
+
+int main() {
+    Array<std::string> stringArray(10);
+    stringArray[0] = "Hello World";
+    printFirst(stringArray);
+}
+\end{lstlisting}
+
+\emph{Hinweise}:
+\begin{itemize}
+\item
+Überlege dir, welche Operatoren/Methoden das obige Code-Beispiel von Array verlangt.
+Unter anderem musst du jeweils einen \texttt{const} und einen nicht-\texttt{const} \texttt{operator[]} implementieren.
+
+\item
+Du kannst auch Exceptions (z.B. \texttt{std::out\_of\_range} aus \texttt{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
+
+\item
+Eine fortgeschrittene Übung ist es, Iteratoren oder \texttt{operator+} für das Array bereitszustellen, sodass du z.B. die Funktion \texttt{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
+\begin{lstlisting}
+#include <algorithm> // copy
+#include <iterator> // back_inserter
+#include <vector>
+// ...
+Array<int> array(10);
+std::vector<int> vector;
+std::copy(array, array + 4, std::back_inserter(vector));
+\end{lstlisting}
+
+\item
+Diese Idee ist natürlich nicht neu.
+Seit C++11 gibt es eine Array-Implementation in der C++-Standardbibliothek (\texttt{std::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}).
+Du findest die gleiche Klasse auch als \texttt{boost::array} in Boost.
+Wenn du damit experimentieren willst, mussst du die Compiler-Unterstützung für C++11 einschalten.
+Gehe dazu in die Projekteigenschaften (\emph{Rechtsklick} $\to$ Properties) und setzte unter \emph{C/C++-Build/Settings/GCC C++ Compiler/Dialect} das Feld \emph{Language Standard} auf \emph{ISO C++11}.
+\end{itemize}

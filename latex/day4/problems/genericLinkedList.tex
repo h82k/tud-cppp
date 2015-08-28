@@ -1,0 +1,34 @@
+\section{Generische Verkettete Liste}
+\label{sec:list}
+\subsection{}
+Schreibe die Klassen \texttt{List}, \texttt{ListItem} und \texttt{ListIterator} aus dem zweiten Praktikumstag so um, dass man den Inhaltstyp der Liste über ein Template-Parameter angeben kann.
+
+Dazu müssen einige Änderungen gemacht werden.
+Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern als \texttt{const} Referenz übergeben werden.
+Zum anderen sollten die Methoden zum Löschen von Elementen \texttt{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann.
+Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.
+
+\emph{Tipp}: Arbeite die Klassen nacheinander ab, beginnend bei \texttt{ListItem}.
+Stelle sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor du zur nächsten übergehst.
+Vergiss nicht, dass du auch hier die Implementation in die Header verschieben musst.
+Da Header an sich nicht kompiliert werden, müssen wir diese zum Kompilieren in eine (leere) Quellcodedatei einbinden.
+
+\subsection{}
+Überlade den Operator $<<$, sodass Listen direkt über ein \texttt{ostream} wie z.B. \texttt{cout} ausgegeben werden können.
+
+\subsection{}
+Teste deine Implementation. Probiere auch folgendes aus und beobachte die Ausgabe.
+
+\begin{lstlisting}
+	List<List<int> > list; //  ">>" is an operator, so use "> >" for nested templates
+	list.appendElement(List<int>());
+	list.getFirst().appendElement(1);
+	list.getFirst().appendElement(2);
+	list.appendElement(List<int>());
+	list.getLast().appendElement(3);
+	list.appendElement(List<int>());
+	list.getLast().appendElement(4);
+	list.getLast().appendElement(5);
+	
+	std::cout << list << std::endl;
+\end{lstlisting}
