@@ -1,0 +1,120 @@
+\section{Smart Pointers}
+In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \texttt{boost::shared\_ptr} und \texttt{boost::weak\_ptr} der Boost-Bibliothek verwenden.
+
+\subsection{}
+Erstellen eine Klasse \texttt{TreeNode}, die einen Knoten eines Binärbaums darstellt.
+Jeder Knoten hat einen Inhalt vom Typ \texttt{int} sowie einen Zeiger auf seine beiden Kindknoten.
+Statt \glqq roher\grqq{} Zeiger verwenden wir Smart Pointers, die das Speichermanagement übernehmen.
+Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen.
+Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
+
+\begin{lstlisting}
+#include <boost/shared_ptr.hpp>
+class TreeNode;
+
+typedef boost::shared_ptr<TreeNode> TreeNodePtr;	// typedef for better reading
+
+class TreeNode {
+public:
+	/** create a new tree node and makes it shared */
+	static TreeNodePtr createNode(int content, TreeNodePtr left = TreeNodePtr(), TreeNodePtr right = TreeNodePtr());
+	~TreeNode();
+private:
+	TreeNode(int content, TreeNodePtr left, TreeNodePtr right);	// create a tree node
+	TreeNodePtr leftChild, rightChild;									// left and right child
+	int content;																// node content
+};
+\end{lstlisting}
+
+Der Konstruktor von \texttt{TreeNode} privat, weil nur die Smart Pointer die Verantwortung für die Lebenszeit eines Objektes übernehmen sollen und bestimmen, wann es gelöscht wird.
+Würde man \texttt{TreeNode}-Objekte direkt auf dem Stack anlegen, kann es passieren, dass der Objektdestruktor mehrmals aufgerufen wird -- einmal vom Smart Pointer und einmal beim Verlassen der Funktion.
+Ebenso sollten wir keine Rohzeiger auf das Objekt erzeugen, da diese das Speichermanagement der Smart Pointer umgehen.
+Stattdessen stellen wir eine statische Methode bereit, um \texttt{TreeNode}-Objekte auf dem Heap zu erzeugen und diese direkt einem Smart Pointer zu übergeben.
+
+Implementiere den Konstruktor, Destruktor sowie \texttt{createNode}.
+Der Konstruktor sollte die Attribute entsprechend initialisieren.
+Schreibe auch eine Textausgabe, die den Zeitpunkt der Erzeugung eines \texttt{TreeNode}s deutlich macht.
+Der Destruktor braucht die Kindknoten nicht zu löschen, da dies bei der Zerstörung des Elternknotens automatisch geschieht.
+Füge auch hier eine Textausgabe ein, die die Zerstörung des Objekts sichtbar macht.
+
+Das Schlüsselwort \textbf{static} sowie die Default-Parameter müssen bei der Implementation der Methode ausgelassen werden.
+Der Smart Pointer für die Rückgabe wird mit einem Zeiger auf ein \texttt{TreeNode}-Objekt initialisiert. Somit lautet der Methodenrumpf
+
+\begin{lstlisting}
+TreeNodePtr TreeNode::createNode(int content, TreeNodePtr left, TreeNodePtr right) {
+	return TreeNodePtr(new TreeNode(...));
+}
+\end{lstlisting}
+
+\subsection{}
+Teste, ob die einzelnen Knoten tatsächlich gelöscht werden, sobald kein Zeiger mehr auf den Elternknoten zeigt.
+Erstelle dafür einen kleinen Baum:
+
+\begin{lstlisting}
+TreeNodePtr node = TreeNode::createNode(1, TreeNode::createNode(2), TreeNode::createNode(3));
+\end{lstlisting}
+
+Führe das Programm aus und beobachte die Ausgabe.
+Sobald \texttt{main} verlassen wird, wird der Zeiger \texttt{node} gelöscht, und somit auch das dahinterliegende \texttt{TreeNode}-Objekt mit all seinen Kindknoten.
+
+Um ganz sicher zu gehen, dass der Baum tatsächlich beim Löschen des letzten Zeigers zerstört wurde und nicht etwa durch das Beenden des Programms, kannst du \texttt{node} mit einem anderen Baum überschreiben.
+Füge in diesem Fall am Ende des Programms eine Textausgabe hinzu, damit ersichtlich wird, dass der erste Baum noch vor Verlassen der \texttt{main} gelöscht wurde.
+
+\subsection{}
+Nun wollen wir \texttt{TreeNode} so erweitern, dass jeder Knoten Kenntnisse über seinen Elternknoten besitzt.
+Füge das Attribut
+
+\begin{lstlisting}
+	TreeNodePtr parent;		// parent node
+\end{lstlisting}
+
+hinzu.
+Da der Elternknoten beim Erzeugen eines \texttt{TreeNode}s undefiniert ist, brauchst du den Konstruktor nicht zu ändern. \texttt{parent} wird dann automatisch mit NULL initialisiert.
+
+Implementiere die folgende Methode, die einem Knoten seinen Elternknoten zuweist:
+
+\begin{lstlisting}
+	void setParent(const TreeNodePtr &p);		// set parent of this node
+\end{lstlisting}
+
+\emph{Hinweis}:
+\texttt{p} wird in diesem Fall nur deshalb als \texttt{const} Referenz übergeben, da es verhältnismäßig aufwändig ist, einen Smart Pointer zu kopieren.
+Beachte, dass im obigen Fall der Smart Pointer selbst const ist, und nicht das Objekt, worauf er zeigt.
+
+Jetzt muss noch \texttt{createNode()} modifiziert werden, sodass \texttt{setParent()} auf den Kindknoten aufgerufen wird. Da ein Smart Pointer die Operatoren $*$ und $->$ überladen hat, lässt er sich syntaktisch wie ein normaler Zeiger benutzen. Um zu überprüfen, ob ein Smart Pointer auf ein Objekt zeigt, kann dieser implizit nach \texttt{bool} gecastet werden. Somit lautet die neue Implementation von \texttt{createNode()}:
+
+\begin{lstlisting}
+TreeNodePtr TreeNode::createNode(int content, TreeNodePtr left, TreeNodePtr right) {
+	TreeNodePtr node(new TreeNode(content, left, right));
+	if (left) {
+		left-> ... ; // set parent node
+	}
+	if (right) {
+		right-> ... ; // set parent node
+	}
+	return node;
+}
+\end{lstlisting}
+
+\subsection{}
+Teste deine Implementation.
+Du brauchst dazu in \texttt{main} nichts zu ändern.
+
+Erschreckenderweise siehst du nun, dass überhaupt keine \texttt{TreeNode}-Objekte mehr gelöscht werden.
+Die Ursache dafür ist die zirkuläre Abhängigkeit zwischen Kind- und Elternknoten.
+Denn selbst wenn sie keine Zeiger auf den Wurzelknoten eines Baumes haben, verweisen die Kindknoten noch immer darauf.
+
+Um dieses Problem zu lösen, müssen die Verweise zum Elternknoten \emph{schwach} (weak) sein.
+Ein Knoten darf gelöscht werden, wenn nur noch schwache Zeiger (oder keine) auf ihn verweisen.
+Binde dazu den Header \texttt{boost/weak\_ptr.hpp} ein und erstelle ein neues \texttt{typedef} für einen schwachen \texttt{TreeNode} Smart Pointer:
+
+\begin{lstlisting}
+typedef boost::weak_ptr<TreeNode> TreeNodeWeakPtr;
+\end{lstlisting}
+
+Ändere nun den Typ von \texttt{parent} auf \texttt{TreeNodeWeakPtr}.
+Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\texttt{shared\_ptr}) implizit in schwache Zeiger (\texttt{weak\_ptr}) umgewandelt werden können.
+
+\subsection{}
+Teste deine Implementation.
+Nun sollte sich \texttt{TreeNode} wie gewünscht verhalten.

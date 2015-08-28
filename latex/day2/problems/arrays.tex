@@ -1,0 +1,171 @@
+\section{Arrays und Zeigerarithmetik}
+Arrays sind zusammenhängende Speicherbereiche, die mehrere Variablen von gleichem Typ speichern können.
+Arrays werden in C++ folgendermaßen angelegt: \texttt{<Typ> <name>[<Größe>];}, zum Beispiel:
+
+\begin{lstlisting}
+	int arr[10];	// array of 10 integers
+\end{lstlisting}
+
+Falls das Array global ist, muss die Größe eine konstante Zahl sein, falls das Array in einer Funktion auf dem Stack angelegt wurde, kann die Größe auch durch eine Variable vorgegeben werden.
+Auf jeden Fall bleibt diese während der Existenz des Arrays konstant und kann sich nach dem Anlegen nicht mehr ändern.
+
+Ein Array kann direkt bei der Deklaration initialisiert werden:
+
+\begin{lstlisting}
+	int arr[5] = {1, 2, 3, 4, 5};
+\end{lstlisting}
+
+Man kann die Größe optional auch weglassen, in diesem Fall wird sie der Compiler anhand der angegebenen Elemente selbst ermitteln.
+
+Man kann auf die einzelnen Elemente des Arrays wie gewohnt über \textbf{arr[i]} zugreifen.
+
+Arrays und Zeiger sind in C++ stark miteinander verwandt.
+So ist der \textbf{Bezeichner} des Arrays gleichzeitig die \textbf{Adresse des ersten Elements}.
+Somit kann man sowohl durch \textbf{*arr} als auch durch \textbf{arr[0]} auf das erste Element zugreifen.
+Analog dazu kann man auch einen Zeiger auf das erste Element anlegen:
+
+\begin{lstlisting}
+	int *pArr = arr;
+\end{lstlisting}
+
+Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen.
+Beispiel:
+
+\begin{lstlisting}
+	int *pArr = arr;
+	std::cout << "Address of first element: "  << pArr << std::endl;
+	std::cout << "Address of second element: " << pArr+1 << std::endl;
+	std::cout << "Address of third element: "  << pArr+2 << std::endl;
+\end{lstlisting}
+
+Somit kann man auf beliebige Elemente des Array über den Zeiger zugreifen:
+
+\begin{lstlisting}
+	*(pArr + 0);	// first element
+	*(pArr + 1);	// second element
+	*(pArr + 2);	// third element
+	*(pArr + i);	// ith element
+	++pArr;			// increment pointer by 1
+	*(pArr + 0);	// second(!!) element of arr
+	*(pArr + 2);	// fourth(!!) element of arr
+\end{lstlisting}
+
+Tatsächlich ist \textbf{*(p+i)} in \textbf{jeder Hinsicht äquivalent} zu \textbf{p[i]}.
+Das bedeutet, dass man sowohl auf das i-te Element eines Arrays über \textbf{*(arr + i)} zugreifen kann als auch über \textbf{pointer[i]} auf das Element, auf welches der Zeiger \texttt{pointer+i} zeigt!
+
+In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt.
+Du bist als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird.
+Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie  Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
+Bevorzuge deshalb Container-Klassen wie \texttt{std::vector} (oder \texttt{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
+Beachte außerdem, dass der Operator \textbf{delete[]} zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \emph{NULL} setzt.
+Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind.
+Setze deshalb Zeiger nach einem \textbf{delete/delete[]} sofort auf \texttt{NULL}, um Speicherfehler zu vermeiden.
+
+Um die Größe eines Arrays zu ermitteln, kannst du den \texttt{sizeof()}-Operator benutzen. Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht. Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgröße des Arrays durch die Größe eines Elements geteilt werden, um auf die Anzahl der Elemente zu kommen.
+
+\begin{lstlisting}
+	int arr[10];
+	std::cout << sizeof(arr) << std::endl; // 40 on 32-bit machine, 80 on 64-bit
+	int len = sizeof(arr) / sizeof(arr[0]);
+	std::cout << len << std::endl; // always 10
+\end{lstlisting}
+
+Beachte, dass \texttt{sizeof()} \textbf{nicht} dazu verwendet werden kann, um die Größe des Arrays herauszufinden, auf die ein Zeiger zeigt.
+In diesem Fall wird \texttt{sizeof()} nämlich die \textbf{Größe des Zeigers} und nicht die Größe des Arrays liefern!
+
+\begin{lstlisting}
+	int arr[10];
+	int *pArr = arr;
+	std::cout << sizeof(pArr) << std::endl; // 4 on 32-bit machine, 8 on 64-bit
+\end{lstlisting}
+
+\subsection{}
+Lege in der \texttt{main}-Funktion ein \texttt{int}-Array mit 10 Elementen an, und initialisiere es mit den Zahlen 1 bis 10.
+Iteriere in einer Schleife über das Array und gib alle Elemente nacheinander aus.
+
+\subsection{}
+In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
+Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
+
+Schreibe eine Funktion, die einen \texttt{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
+Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \texttt{unsigned int} wird oft der Standard-Typ \texttt{size\_t} genutzt (z.B. in \texttt{std::vector}).}:
+
+\begin{lstlisting}
+	void printElements(const int *const array, const unsigned int size);
+\end{lstlisting}
+
+\subsection{}
+Wie wir vorher gesehen haben, kann man mit Zeigern auch rechnen und diese nachträglich ändern.
+Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder Iteration den Zeiger selbst inkrementieren!
+
+\begin{lstlisting}
+	for(const int *p = array; p != array + 10; ++p) {
+		// *p contains current element
+		// ...
+	}
+\end{lstlisting}
+
+Schreibe die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden Zeiger anstatt eines Indexes verwendet.
+
+\subsection{}
+Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man die Adresse des Elements nach dem letzten Element angibt.
+Dadurch werden Schleifen der Form
+
+\begin{lstlisting}
+	for(const int *p = begin; p != end; ++p) {
+		// *p contains current element
+		// ...
+	}
+\end{lstlisting}
+
+möglich.
+Schreibe die Funktion aus der vorherigen Aufgabe entsprechend um.
+Vergiss nicht, den Zeiger als \texttt{const} zu definieren, da Elemente nur gelesen werden.
+Du kannst hier \texttt{const} doppelt verwenden, um auch sicherzustellen, dass der \texttt{end}-Zeiger nicht verändert wird.
+
+\subsection{}
+Die obige Methode, über Elemente eines Arrays zu iterieren, mag dir zunächst etwas ungewöhnlich erscheinen.
+Sie hat jedoch den Vorteil, dass man anstatt des ganzen Arrays auch kleinere zusammenhängende Teile davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente setzt.
+Beispiel:
+
+\begin{lstlisting}
+	int arr[10];
+	printElements(arr+5, arr+8); // Print elements with index 5, 6, 7
+\end{lstlisting}
+
+Experimentiere etwas mit dieser Übergabemethode in deiner eigenen Funktion!
+
+\subsection{}
+Bisher haben wir das Array auf dem Stack angelegt
+Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen.
+Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.
+Mittels \textbf{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
+Beispiel:
+
+\begin{lstlisting}
+	int *pArr = new int[10]; // size can be a variable
+	doSomethingWith(pArr, 10);
+	delete[] pArr; // <-- notice the [] !
+\end{lstlisting}
+
+Beachte die \textbf{[]} nach delete.
+Diese bewirken, dass das gesamte Array und nicht bloß das erste Element gelöscht wird.
+
+Ein Anwendungsfall von dynamischen Arrays sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben.
+Schreibe eine Funktion, die beliebig viele Zahlen von der Konsole mittels \texttt{std::cin} einliest.
+Der Benutzer soll dabei zuvor gefragt werden, wie viele Zahlen er eingeben möchte.
+Speichere die Zahlen in einem dynamisch angelegten Array ab und lasse die Funktion einen Zeiger darauf zurückgeben.
+Hier ist ein Beispiel wie \texttt{std::cin} zu verwenden ist:
+
+\begin{lstlisting}
+unsigned int size;
+std::cout << "Größe: ";
+std::cin >> size;
+std::cout << "Gewählte Größe: " << size << std::endl;
+\end{lstlisting}
+
+Zusätzlich zum Zeiger muss die Funktion auch die Möglichkeit haben, ihrem Aufrufer die Größe des angelegten Arrays mitzuteilen.
+Füge der Funktion deshalb einen weiteren Parameter hinzu, in dem entweder per Referenz oder per Zeiger eine Variable übergeben wird, um dort die Größe abzulegen\footnote{Du merkst sicherlich schon jetzt, dass es umständlich/fehleranfällig ist, wenn man die Größe eines Arrays separat speichern und übergeben muss.}.
+
+Gib die eingelesenen Werte auf der Konsole aus.
+Vergiss nicht, am Ende den Speicher freizugeben.
