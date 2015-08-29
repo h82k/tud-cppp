@@ -21,7 +21,13 @@
 \lstset{tabsize=3}
 \lstset{breaklines=true}
 \lstset{basicstyle=\ttfamily}
-\lstset{columns=space-flexible,keywordstyle=\color{purple},stringstyle=\color{blue},commentstyle=\color{commentgreen}}
+\lstset{columns=flexible}
+\lstset{keywordstyle=\color{purple}}
+\lstset{stringstyle=\color{blue}}
+\lstset{commentstyle=\color{commentgreen}}
+\lstset{otherkeywords=\#include}
+\lstset{showstringspaces=false}
+\lstset{keepspaces=true}
 \lstset{literate=%
 	{Ö}{{\"O}}1
 	{Ä}{{\"A}}1
@@ -32,8 +38,6 @@
 	{ö}{{\"o}}1
 	{'}{{\textquotesingle}}1
 }
-\lstset{otherkeywords=\#include}
-\lstset{showstringspaces=false}
 
 \lstnewenvironment{lstmake} %
 {\lstset{language=[gnu]make}} %
