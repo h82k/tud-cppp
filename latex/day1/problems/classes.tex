@@ -1,5 +1,6 @@
 \section{Klassen}
-Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Hierfür werden wir nun eine Klasse schreiben, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
+Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
+Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{New $\rightarrow$ Class} im Kontext-Menü des Projekts) von Eclipse!
 
 \subsection{Definition}
 Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration (Headerdatei) und Implementation (Sourcedatei) aufgeteilt.
@@ -83,8 +84,7 @@ public:
 };
 \end{lstlisting}
 
-Wir wollen nun angeben können, mit welchem Zeichen unser \texttt{CharGenerator} beginnen soll.
-Erweitere dazu den Konstruktor um einen Parameter \texttt{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
+Erweitere den Konstruktor um einen Parameter \texttt{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
 
 Teste deine Implementation sowohl mit als auch ohne Angabe des Startzeichens.
 Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:

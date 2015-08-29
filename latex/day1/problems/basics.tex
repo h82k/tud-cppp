@@ -1,6 +1,23 @@
 \section{C++ Grundlagen, Funktionen und Strukturierung}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
+\subsection*{Exkurs Primitive Datentypen}
+Die primitiven Datentypen in C++ sind ähnlich denen in Java.
+Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
+Standardmäßig sind Zahlen vorzeichenbehaftet.
+Mittels \texttt{unsigned} kann man vorzeichenlose Variablen deklarieren.
+Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
+
+\begin{lstlisting}
+int i;						// signed int, -2147483648 to +2147483647 on a 32-bit machine
+unsigned int ui;			// unsigned int, 0 to 4294967295 on a 32-bit machine
+// unsigned double d;	// not possible
+\end{lstlisting}
+
+Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \texttt{bool}) umgewandelt werden.
+Alles ungleich 0 wird als \texttt{true} gewertet, 0 als \texttt{false}.
+Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
+
 \subsection{Sterne}
 Schreibe eine Funktion \texttt{printStars(int n)}, die \texttt{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
@@ -31,7 +48,9 @@ Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wir
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}. Beachte hierbei, dass Eclipse automatisch Include-Guards erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}.
+Klicke hierzu mit der rechten Maustate auf das Projekt und wähle \textbf{New $\rightarrow$ Source File}, bzw. wähle \textbf{New $\rightarrow$ Header File} und bestätige beide Dialoge mit \textbf{Finish}.
+Beachte hierbei, dass Eclipse automatisch Include-Guards in der Headerdatei erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
 
 \begin{lstlisting}
 #ifndef FUNCTIONS_HPP_
@@ -57,6 +76,7 @@ Der Prototyp von \texttt{printStars(int n)} lautet \texttt{void printStars(int n
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \hints{
+	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
 	\item Denke daran, auch in \texttt{functions.cpp} \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
 	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \texttt{\#include <Bibliotheksname>} sowie per \texttt{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
 	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \texttt{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
@@ -66,7 +86,7 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
 Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
 Gib gegebenenfalls eine Fehlermeldung aus.
-Verwende zum Einlesen \texttt{std::cin} und den \emph{extraction operator}:
+Verwende zum Einlesen \texttt{std::cin} und den $>>$ Operator.
 
 \begin{lstlisting}
 int zahl;

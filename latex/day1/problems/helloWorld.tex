@@ -2,13 +2,13 @@
 Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
 Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
 Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
-Füge anschließend folgendes Programm ein, kompiliere und führe es aus.
+Füge folgendes Programm ein, kompiliere es mit Hilfe des Build-Symbols (,,Hammer``) und führe es aus.
 
 \begin{lstlisting}
-	#include <iostream>
-	int main() {
-		std::cout << "Hello World" << std::endl;
-	}
+#include <iostream>
+int main() {
+	std::cout << "Hello World" << std::endl;	// prints "Hello World"
+}
 \end{lstlisting}
 
 Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \texttt{main} und Rückgabetyp \texttt{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
@@ -23,7 +23,40 @@ Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibli
 In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout} eingefügt, gefolgt von \texttt{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
 
 \hints{
+	\item Einzeilige Kommentare können durch \texttt{//}, mehrzeilige durch \texttt{/* ... */} eingeschlossen werden.
 	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
 	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
-	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
 }
+
+\subsection*{Häufige Compiler-Fehlermeldungen des gcc}
+
+\begin{verbatim}
+error: expected ';' before ...
+\end{verbatim}
+
+Dies bedeutet, dass in der Zeile davor ein \textbf{;} vergessen wurde.
+Allgemein beziehen sich Fehlermeldungen \textbf{expected ... before ...} häufig auf die Zeile \textbf{vor} dem markierten Statement.
+Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen Header-Datei sein kann. Beispiel:
+
+\begin{lstlisting}
+#include "main.h"
+int main() {
+	...
+}
+\end{lstlisting}
+
+Falls im Header \texttt{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \texttt{int main() \{} beziehen!!
+
+\begin{verbatim}
+error: invalid conversion from <A> to <B>.
+\end{verbatim}
+
+Dies bedeutet, dass der Compiler an der entsprechenden Stelle einen Ausdruck vom Typ \emph{B} erwartet, im Code jedoch ein Ausdruck vom Typ \emph{A} angegeben wurde. Insbesondere bei verschachtelten Typen sowie (später vorgestellten) Zeigern und Templates kann die Fehlermeldung sehr lang werden. In so einem Fall lohnt es sich, den Ausdruck in mehrere Teilausdrücke aufzubrechen und die Teilergebnisse durch temporäre Variablen weiterzureichen.
+
+\begin{verbatim}
+undefined reference to ...
+\end{verbatim}
+
+Dies bedeutet, dass das Programm zwar korrekt kompiliert wurde, der Linker aber die Definition des entsprechenden Bezeichners nicht finden kann.
+Das kann passieren, wenn man dem Compiler durch einen Prototypen mitteilt, dass eine bestimmte Funktion existiert (\textbf{deklariert}), diese aber nirgendwo tatsächlich \textbf{definiert}.
+Überprüfe in diesem Fall, ob der Bezeichner tatsächlich definiert wurde und ob die Signatur der Definition mit dem Prototypen übereinstimmt.

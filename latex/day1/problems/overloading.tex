@@ -2,10 +2,10 @@
 In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\texttt{operator+}), \textbf{*} (\texttt{operator*}),\dots zu überladen.
 Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
 Du hast bereits das Objekt \texttt{std::cout} der Klasse \texttt{ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \texttt{std::string}, \texttt{int},\dots komfortabel zu tätigen.
-In dieser Aufgabe wollen wir eine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
+In dieser Aufgabe sollst dueine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
 
 \hints{
-	\item Wir werden am Tag 4 auf dieser Aufgabe aufbauen und den Vektor um weitere Funktionen erweitern.
+	\item Am Tag 4 soll dieser Vektor um weitere Funktionen erweitern werden.
 	Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
 }
 
@@ -45,7 +45,7 @@ ClassName::~ClassName() {/* destructor implementation ... */}
 \hints{
 	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
 	\item Der Compiler wird automatisch einen \texttt{public} Destruktor und \texttt{public} Copy-Konstruktor erzeugen, falls sie nicht definiert wurden. Ebenso wird ein \texttt{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren definiert wurden.
-	\item Würden wir beim Copy-Konstruktor \texttt{other} by-Value übergeben, müsste eine Kopie von \texttt{other} angelegt werden.
+	\item Würden beim Copy-Konstruktor \texttt{other} by-Value übergeben werden, müsste eine Kopie von \texttt{other} angelegt werden.
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.
 }
 
@@ -95,7 +95,7 @@ error: 'double Vector3::a' is private within this context
 
 \hints{
 	\item Denke daran, den \texttt{iostream} Header einzubinden.
-	\item Diesmal mussten wir die Überladung \textbf{außerhalb} der \texttt{Vektor3}-Klasse definieren, weil auf unser \texttt{Vektor3}-Objekt auf der rechten Seite der Operation steht.
+	\item Diesmal musste die Überladung \textbf{außerhalb} der \texttt{Vektor3}-Klasse definiert werden, weil das \texttt{Vektor3}-Objekt auf der rechten Seite der Operation steht.
 	Als linke Seite wird hierbei ein \texttt{ostream}-Objekt (wie z.B. \texttt{std::cout}) erwartet, um Ausgabeketten \texttt{std::cout} $<<$ \dots $<<$ \dots zu ermöglichen.
 	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden, damit das \texttt{ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \textbf{\&} durchgereicht.
 	\item Anstatt Getter und Setter für \texttt{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \texttt{friend} erlauben.
@@ -108,4 +108,4 @@ Probiere auch Kombinationen von verschiedenen Operatoren aus und beobachte das E
 Schreibe auch eine einfache Funktion, die Vektoren als Parameter nimmt.
 Wie du siehst, werden sehr viele \texttt{Vector3}-Objekte erstellt, kopiert und gelöscht.
 Dies liegt daran, dass die Objekte immer per Call-By-Value übergeben und dabei kopiert werden.
-Wie dies vermieden werden kann, sehen wir im nächsten Teil des Praktikums.
+Wie dies vermieden werden kann, siehst du im nächsten Teil des Praktikums.

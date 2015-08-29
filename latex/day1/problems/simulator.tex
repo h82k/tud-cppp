@@ -1,18 +1,10 @@
 \section{Aufzugssimulation}
-In dieser Aufgabe soll ein Grundgerüst für den in der Vorlesung vorgestellten Aufzug-Simulator geschaffen werden.
+In dieser Aufgabe soll ein Grundgerüst für den in der Vorlesung vorgestellten Aufzugsimulator geschaffen werden.
 Diese Aufgabe wird in den folgenden Übungen erweitert.
 Falls du feststellst, dass dir im Moment die Zeit dafür fehlt, kannst du diese Aufgaben auch nach hinten verschieben und als ausführliche Klausurvorbereitung nutzen.
 
-%Folgendes Klassendiagramm veranschaulicht die Klassenstruktur.
-%\includegraphics{figures/Aufzug.png} %TODO replace with header file
-
-\textbf{Hinweis:}
-In den folgenden Übungsblättern werden wir den Aufzugsimulator verbessern und erweitern.
-Generell gilt, dass diese Aufgaben eher länger sind und das bisher Gelernte festigen sollen.
-
-
 \subsection{Klasse Person}
-Implementiere Klasse \texttt{Person}, die eine Person mit einem gewünschten Ziel Stockwerk darstellt.
+Implementiere die Klasse \texttt{Person}, die eine Person mit einem gewünschten Zielstockwerk darstellt.
 Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
 \begin{lstlisting}
@@ -21,7 +13,7 @@ public:
 	Person(int destinationFloor);		// create a person with given destination
 	Person(const Person& other);		// copy constructor
 	~Person();								// destructor
-	int getDestinationFloor();			// get destination floor of this person
+	int getDestinationFloor();			// get the destination floor of this person
 private:
 	int destinationFloor;				// destination floor of this person
 };
