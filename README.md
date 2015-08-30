@@ -1,21 +1,31 @@
 # tud-cpp-exercises
 
 ## Files
-* Eclipse Tutorial
-* C/C++ Cheat Sheet
 * Exercise Sheets
 * Documentation
 
 ## Folder
 * latex: latex source of the exercises
-* project: Eclipse template projects to get started
+* project: Eclipse template projects to get started (only day 5 and day 6)
 * solutions: solution to every exercise (Eclipse projects)
-* doc: documentation of the board, cpu, lcd and more?
+* doc: documentation of the board, cpu, lcd and more
+
+## Eclipse (CDT) Tutorial
+1. Create a new project using **File --> New --> C++ Project**, choose a name and confirm it with **Finish**.
+2. Add files to the project:
+  * right click on the project
+  * choose **New --> Source File** to create a source file (e.g. **main.cpp**)
+  * choose **New --> Header File** to create a header file
+  * **Hint**: Source files usually end with **.cpp**, header files with **.h** or **.hpp**.
+  * **Hint**: You may use **New --> Class** to generate the source and header file for a class.
+3. Compile and run/debug the project:
+  * compile the program before starting it using the **Build** symbol (the hammer symbol) in the toolbar
+  * view compiler messages in the **console** to fix possible errors
+  * run the program using the **Run** symbol (*green play button*) or debug it using the **Debug** button (*green bug button*)
 
 ## Git with Eclipse Tutorial (EGit)
- 1. create a Git repository (do not check bare)
- 2. add an existing project to the repository (team --> share project) - choose the Git repository created before
- 3. team --> commit(select files to be commited and commit message) and select commit to add files
+ 1. Create a Git repository using **File --> New --> Other --> Git --> Git Repository** (do not check bare).
+ 2. To add a project to the repository right click on it, choose **Team --> Share Project**, choose the previously created Git repository and confirm with **Finish**.
+ 3. To add a file to the repository right click on it, choose **Team --> Add to Index** and commit it via right click on the project and **Team --> Commit**.
+ 4. Use **Team --> Ignore** on files to ignore them (i.e. they are ignored by Git).s
 
-## Eclipse Tutorial
-TODO
