@@ -1,14 +1,14 @@
 # tud-cpp-exercises
 
-## Files
-* Exercise Sheets
-* Documentation
-
-## Folder
-* latex: latex source of the exercises
-* project: Eclipse template projects to get started (only day 5 and day 6)
-* solutions: solution to every exercise (Eclipse projects)
-* doc: documentation of the board, cpu, lcd and more
+## Content
+* Folders:
+  * **latex**: latex source of the exercises
+  * **project**: Eclipse template projects to get started (only day 5 and day 6)
+  * **solutions**: solution to every exercise (Eclipse projects)
+  * **doc**: documentation of the board, cpu, lcd and more
+* Files:
+  * Exercise Sheets (day1.pdf ... day6.pdf)
+  * Readme and .gitmodules
 
 ## Eclipse (CDT) Tutorial
 1. Create a new project using **File --> New --> C++ Project**, choose a name and confirm it with **Finish**.
