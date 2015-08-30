@@ -15,8 +15,7 @@
 2. Add files to the project:
   * right click on the project
   * choose **New --> Source File** to create a source file (e.g. **main.cpp**)
-  * choose **New --> Header File** to create a header file
-  * **Hint**: Source files usually end with **.cpp**, header files with **.h** or **.hpp**.
+  * choose **New --> Header File** to create a header file (e.g. **library.hpp**)
   * **Hint**: You may use **New --> Class** to generate the source and header file for a class.
 3. Compile and run/debug the project:
   * compile the program before starting it using the **Build** symbol (the hammer symbol) in the toolbar
