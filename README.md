@@ -2,7 +2,7 @@
 
 ## Content
 * Folders:
-  * **latex**: latex source of the exercises
+  * **latex**: latex source of the exercise sheets
   * **project**: Eclipse template projects to get started (only day 5 and day 6)
   * **solutions**: solution to every exercise (Eclipse projects)
   * **doc**: documentation of the board, cpu, lcd and more
