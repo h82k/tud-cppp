@@ -1,7 +1,7 @@
 #ifndef PERSON_HPP_
 #define PERSON_HPP_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 class Person {
 public:
@@ -14,6 +14,6 @@ private:
 	int destinationFloor;
 };
 
-typedef boost::shared_ptr<Person> PersonPtr;
+typedef std::shared_ptr<Person> PersonPtr;
 
 #endif /* PERSON_HPP_ */

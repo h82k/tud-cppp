@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Building.hpp"
 #include "Simulation.hpp"
 #include "SimpleElevatorStrategy.hpp"
@@ -14,7 +13,7 @@ int main() {
 	
 	// randomly add some people
 	for (int i = 0; i < numPeople; ++i) {
-		b.addWaitingPerson(rand() % numFloors, boost::make_shared<Person>(rand() % numFloors));
+		b.addWaitingPerson(rand() % numFloors, std::make_shared<Person>(rand() % numFloors));
 	}
 	Building b2(b);
 	EnergySavingStrategy strat;
