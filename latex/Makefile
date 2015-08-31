@@ -1,14 +1,14 @@
 .PHONY: all publish
 
-all: day1.pdf day2.pdf day3.pdf day4.pdf day5.pdf day6.pdf
-publish: publish_1 publish_2 publish_3 publish_4 publish_5 publish_6
+all: pdf1 pdf2 pdf3 pdf4 pdf5 pdf6
+publish: cp1 cp2 cp3 cp4 cp5 cp6
 
-publish_%: day%.pdf
-	cp day$*/$< ..
+cp%: pdf%
+	cp day$*/day$*.pdf ..
 
-%.pdf:
-	cd $* && latexmk -pdf
+pdf%:
+	cd day$* && latexmk -pdf
 
-pvc_%:
+pvc%:
 	cd day$* && latexmk -pdf -pvc
 
