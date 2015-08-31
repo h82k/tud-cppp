@@ -12,7 +12,7 @@ int main() {
 \end{lstlisting}
 
 Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \texttt{main} und Rückgabetyp \texttt{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
-Dieser wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
+Der Rückgabetyp wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
 Typischerweise wird im Erfolgsfall 0 zurückgegeben.
 
 Die erste Zeile des obigen Programms bindet den Header der \texttt{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
@@ -48,13 +48,13 @@ int main() {
 Falls im Header \texttt{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \texttt{int main() \{} beziehen!!
 
 \begin{verbatim}
-error: invalid conversion from <A> to <B>.
+  error: invalid conversion from <A> to <B>.
 \end{verbatim}
 
 Dies bedeutet, dass der Compiler an der entsprechenden Stelle einen Ausdruck vom Typ \emph{B} erwartet, im Code jedoch ein Ausdruck vom Typ \emph{A} angegeben wurde. Insbesondere bei verschachtelten Typen sowie (später vorgestellten) Zeigern und Templates kann die Fehlermeldung sehr lang werden. In so einem Fall lohnt es sich, den Ausdruck in mehrere Teilausdrücke aufzubrechen und die Teilergebnisse durch temporäre Variablen weiterzureichen.
 
 \begin{verbatim}
-undefined reference to ...
+  undefined reference to ...
 \end{verbatim}
 
 Dies bedeutet, dass das Programm zwar korrekt kompiliert wurde, der Linker aber die Definition des entsprechenden Bezeichners nicht finden kann.

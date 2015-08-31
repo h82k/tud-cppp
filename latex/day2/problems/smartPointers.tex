@@ -1,5 +1,6 @@
 \section{Smart Pointers}
-In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \texttt{boost::shared\_ptr} und \texttt{boost::weak\_ptr} der Boost-Bibliothek verwenden.
+In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \texttt{std::shared\_ptr} und \texttt{std::weak\_ptr} verwenden. Binde hierfür den Systemheader \texttt{memory} ein.
+Stelle zudem dein Projekt auf C++11 ein, indem du mit der rechten Maustaste auf das Projekt klickst, \textbf{Properties --> C/C++ Build --> Settings --> GCC C++ Compiler -> Dialect} wählst und \textbf{Language Standard} auf ISO C++11 stellst.
 
 \subsection{}
 Erstellen eine Klasse \texttt{TreeNode}, die einen Knoten eines Binärbaums darstellt.
@@ -9,10 +10,10 @@ Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen.
 Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
 
 \begin{lstlisting}
-#include <boost/shared_ptr.hpp>
+#include <memory>
 class TreeNode;
 
-typedef boost::shared_ptr<TreeNode> TreeNodePtr;	// typedef for better reading
+typedef std::shared_ptr<TreeNode> TreeNodePtr;	// typedef for better reading
 
 class TreeNode {
 public:
@@ -106,10 +107,10 @@ Denn selbst wenn sie keine Zeiger auf den Wurzelknoten eines Baumes haben, verwe
 
 Um dieses Problem zu lösen, müssen die Verweise zum Elternknoten \emph{schwach} (weak) sein.
 Ein Knoten darf gelöscht werden, wenn nur noch schwache Zeiger (oder keine) auf ihn verweisen.
-Binde dazu den Header \texttt{boost/weak\_ptr.hpp} ein und erstelle ein neues \texttt{typedef} für einen schwachen \texttt{TreeNode} Smart Pointer:
+Verwende dazu \texttt{std::weak\_ptr} und erstelle ein neues \texttt{typedef} für einen schwachen \texttt{TreeNode} Smart Pointer:
 
 \begin{lstlisting}
-typedef boost::weak_ptr<TreeNode> TreeNodeWeakPtr;
+typedef std::weak_ptr<TreeNode> TreeNodeWeakPtr;
 \end{lstlisting}
 
 Ändere nun den Typ von \texttt{parent} auf \texttt{TreeNodeWeakPtr}.

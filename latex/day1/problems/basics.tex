@@ -86,7 +86,7 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
 Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
 Gib gegebenenfalls eine Fehlermeldung aus.
-Verwende zum Einlesen \texttt{std::cin} und den $>>$ Operator.
+Verwende zum Einlesen \texttt{std::cin} und den \texttt{operator>>}.
 
 \begin{lstlisting}
 int zahl;
@@ -121,6 +121,10 @@ static char c = 'a';
 deklariert.
 In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit \emph{a} initialisiert und kann später beliebig verändert werden.
 
+\hints{
+	\item Der Datentyp \texttt{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \% verwenden.
+}
+
 \subsection{Namensräume}
 Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie folgt in einen \texttt{namespace} setzt.
@@ -141,3 +145,7 @@ void fun::print_star(int n) {
 
 Vergisst man den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
 Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\texttt{print\_star(int n)} und \texttt{fun::print\_star(int n)} sind unterschiedliche Funktionen!).
+
+\hints{
+	\item Du kannst \texttt{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \texttt{static import} in Java). Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
+}

@@ -8,6 +8,7 @@ Möchten wir beispielsweise den Namen einer Person ändern, ist dies überall, w
 Nutzt man überall Kopien von Personen, haben wir keine Kontrolle darüber und wären gezwungen die Klasse \texttt{Person} immutabel zu machen.
 
 \hints{
+	\item Stelle auch hier das Projekt auf C++11 ein.
 	\item In der nächsten Aufgabe hast du die Möglichkeit, die Performanz der alten und der neuen Implementation zu vergleichen.
 	Dazu ist es nötig, dass du jetzt eine Kopie von deinem aktuellen Code machst.
 	In Eclipse kannst du ganze Projekte per Copy \& Paste kopieren.
@@ -25,14 +26,11 @@ Passe außerdem die Methode \texttt{Elevator::addPeople()} so an, dass die Liste
 }
 
 \subsection{}
-Binde in deinem Projekt den Boost-Ordner in den Include-Pfad des Compilers ein (siehe vorige Aufgabe).
-
-\subsection{}
-Um nicht immer wieder \texttt{boost::shared\_ptr<Person>} schreiben zu müssen, definiere ein \texttt{typedef PersonPtr} für diesen Typen.
-Binde den Header \texttt{boost/shared\_ptr.hpp} in \texttt{Person.h} ein und definiere den neuen Typen \texttt{PersonPtr} hinter der Klassendefinition von \texttt{Person}:
+Um nicht immer wieder \texttt{std::shared\_ptr<Person>} schreiben zu müssen, definiere ein \texttt{typedef PersonPtr} für diesen Typen.
+Binde den Header \texttt{memory} in \texttt{Person.h} ein und definiere den neuen Typen \texttt{PersonPtr} hinter der Klassendefinition von \texttt{Person}:
 
 \begin{lstlisting}
-typedef boost::shared_ptr<Person> PersonPtr;
+typedef std::shared_ptr<Person> PersonPtr;
 \end{lstlisting}
 
 \subsection{Effizientere Listen}

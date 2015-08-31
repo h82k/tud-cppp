@@ -18,8 +18,8 @@ class Vector3 {
 public:
 	Vector3();											// initialize vector with zero
 	Vector3(double a, double b, double c);		// initialize vector with a, b, c
-	Vector3(const Vector3& other);				// copy a vector
-	~Vector3();											// destroy a vector
+	Vector3(const Vector3& other);				// copy constructor: copy a vector
+	~Vector3();											// destructor: destroy a vector
 private:
 	double a, b, c;									// vector components
 };
@@ -98,7 +98,7 @@ error: 'double Vector3::a' is private within this context
 	\item Diesmal musste die Überladung \textbf{außerhalb} der \texttt{Vektor3}-Klasse definiert werden, weil das \texttt{Vektor3}-Objekt auf der rechten Seite der Operation steht.
 	Als linke Seite wird hierbei ein \texttt{ostream}-Objekt (wie z.B. \texttt{std::cout}) erwartet, um Ausgabeketten \texttt{std::cout} $<<$ \dots $<<$ \dots zu ermöglichen.
 	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden, damit das \texttt{ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \textbf{\&} durchgereicht.
-	\item Anstatt Getter und Setter für \texttt{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \texttt{friend} erlauben.
+	\item Anstatt Getter und Setter für \texttt{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \texttt{friend} erlauben. In der nächsten Übung wird hierauf noch einmal eingegangen.
 }
 
 

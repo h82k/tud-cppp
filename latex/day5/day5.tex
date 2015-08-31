@@ -53,7 +53,7 @@ Beispiel: Ein \glqq{}E\grqq{} kann durch das Setzen der Pins 0, 3, 4, 5 und 6 (B
 
 Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \texttt{\_\_wait\_nop()} aufruft.
 Eine Konstante \texttt{DELAY} steht dir für die Anzahl der Schleifendurchläufe zur Verfügung.
-Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datentyp \texttt{long} verwendst:
+Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datentyp \texttt{long} verwendst.
 
 
 
@@ -107,7 +107,7 @@ int getADCValue(int channel)	// read the value from channel 1 or 2
 \end{lstlisting}
 
 \hints{
-	\item Einige Funktionen aus \ref{exercise7SegmentUtil} kannst du hier wieder verwenden.
+	\item Einige Funktionen aus \ref{exercise7SegmentUtil} kannst du hier wiederverwenden.
 	\item Der Wert für \texttt{ADSR} besteht aus 16 Bits (0110 11xx xxxy yyyy\textsubscript{b}), wobei xxxxx für den Startkanal der Konvertierung und yyyyy für den Endkanal steht.
 	Für unsere Zwecke nehmen diese beiden 5\,Bit Blöcke immer entweder 00001\textsubscript{b} = 1 (AN1) oder 00010\textsubscript{b} = 2 (AN2) an.
 	Daher lässt sich der \texttt{ADSR} auch wie folgt über einen binären Shift und zwei Addition bestimmen:
@@ -171,7 +171,7 @@ Es empfiehlt sich, für dieses Signal eine eigene Funtkion zu schreiben (\texttt
 
 Das Vorgehen zum Zeichnen sieht in etwa wie folgt aus:
 \begin{enumerate}
-	\item Setzen der x-Adresse (\emph{page})
+	\item Setzen der x-Adresse (Zeile)
 	\item Setzen der y-Adresse (Spalte)
 	\item Senden von 8 Bit Daten (eine \glqq{}Zelle\grqq{} von 8 Pixeln Höhe)
 \end{enumerate}
