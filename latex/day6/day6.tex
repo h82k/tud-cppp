@@ -9,8 +9,8 @@
 
 % problems
 \section{Implementation eines beliebigen Programms}
-Nach Kennenlernen aller Ein- und Ausgabemöglichkeiten des Boards besteht die Aufgabe darin ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
-Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anreiz dienen.
+Nachdem du alle Ein- und Ausgabemöglichkeiten des Boards kennengelernt hast, besteht die Aufgabe in diesem Teil darin, ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
+Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anregung dienen.
 Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \texttt{16FXlib} zu verwenden.
 Die Dokumentation dazu findest du unter \url{http://echtzeitsysteme.github.io/tud-cpp-16FXlib/documentation/index.html}.
 
@@ -54,10 +54,12 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
 \end{center}
 
 \hints{
-	\item Da das Spielfeld begrenzt ist soll es torusförmig aufgebaut werden (alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand). 
+	\item Da das Spielfeld begrenzt ist, soll es torusförmig aufgebaut werden.
+    Das heißt: Alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand. 
 	\item Verwende als Spielfeld ein mehrdimensionales Array
 	\item Ein weiteres mehrdimensionales Array bietet sich an, um die zukünftige Generation erzeugen zu können.
 	\item Achte beim torusförmigen Feld unbedingt darauf, dass du nicht über die Grenzen des Spielfelds hinaus zugreifst!
+    Das kann zu unvorhersehbarem und schwer zu debuggenen Verhalten des ganzen Displays führen!
 }
 
 
