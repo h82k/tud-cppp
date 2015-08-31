@@ -8,13 +8,12 @@
 #ifndef TREENODE_HPP_
 #define TREENODE_HPP_
 
-#include <boost/shared_ptr.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
 class TreeNode;
 
 // typedef for better reading
-typedef boost::shared_ptr<TreeNode> TreeNodePtr;
-typedef boost::weak_ptr<TreeNode> TreeNodeWeakPtr;
+typedef std::shared_ptr<TreeNode> TreeNodePtr;
+typedef std::weak_ptr<TreeNode> TreeNodeWeakPtr;
 
 class TreeNode {
 public:
