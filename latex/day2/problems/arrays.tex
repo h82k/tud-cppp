@@ -28,7 +28,7 @@ Analog dazu kann man auch einen Zeiger auf das erste Element anlegen:
 	int *pArr = arr;
 \end{lstlisting}
 
-Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen.
+Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen (sogennante Pointerarithmetik).
 Beispiel:
 
 \begin{lstlisting}
@@ -44,7 +44,6 @@ Somit kann man auf beliebige Elemente des Array über den Zeiger zugreifen:
 	*(pArr + 0);	// first element
 	*(pArr + 1);	// second element
 	*(pArr + 2);	// third element
-	*(pArr + i);	// ith element
 	++pArr;			// increment pointer by 1
 	*(pArr + 0);	// second(!!) element of arr
 	*(pArr + 2);	// fourth(!!) element of arr
@@ -57,11 +56,13 @@ In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt.
 Du bist als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird.
 Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie  Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
 Bevorzuge deshalb Container-Klassen wie \texttt{std::vector} (oder \texttt{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
-Beachte außerdem, dass der Operator \textbf{delete[]} zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \emph{NULL} setzt.
+Beachte außerdem, dass der \texttt{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \texttt{NULL} setzt.
 Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind.
-Setze deshalb Zeiger nach einem \textbf{delete/delete[]} sofort auf \texttt{NULL}, um Speicherfehler zu vermeiden.
+Setze deshalb Zeiger nach einem \texttt{delete}/\texttt{delete[]} sofort auf \texttt{NULL}, um Speicherfehler zu vermeiden.
 
-Um die Größe eines Arrays zu ermitteln, kannst du den \texttt{sizeof()}-Operator benutzen. Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht. Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgröße des Arrays durch die Größe eines Elements geteilt werden, um auf die Anzahl der Elemente zu kommen.
+Um die Größe eines Arrays zu ermitteln, kannst du den \texttt{sizeof()}-Operator benutzen.
+Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht.
+Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgröße des Arrays durch die Größe eines Elements geteilt werden, um auf die Anzahl der Elemente zu kommen.
 
 \begin{lstlisting}
 	int arr[10];
@@ -100,7 +101,7 @@ Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder
 
 \begin{lstlisting}
 	for(const int *p = array; p != array + 10; ++p) {
-		// *p contains current element
+		int i = *p;		// *p contains current element
 		// ...
 	}
 \end{lstlisting}
@@ -109,11 +110,11 @@ Schreibe die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden
 
 \subsection{}
 Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man die Adresse des Elements nach dem letzten Element angibt.
-Dadurch werden Schleifen der Form
+Dadurch werden Schleifen der folgenden Form möglich.
 
 \begin{lstlisting}
 	for(const int *p = begin; p != end; ++p) {
-		// *p contains current element
+		int i = *p;		// *p contains current element
 		// ...
 	}
 \end{lstlisting}
@@ -139,7 +140,7 @@ Experimentiere etwas mit dieser Übergabemethode in deiner eigenen Funktion!
 Bisher haben wir das Array auf dem Stack angelegt
 Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen.
 Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.
-Mittels \textbf{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
+Mittels \texttt{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
 Beispiel:
 
 \begin{lstlisting}
@@ -148,10 +149,11 @@ Beispiel:
 	delete[] pArr; // <-- notice the [] !
 \end{lstlisting}
 
-Beachte die \textbf{[]} nach delete.
+Beachte die \textbf{[]} nach \texttt{delete}.
 Diese bewirken, dass das gesamte Array und nicht bloß das erste Element gelöscht wird.
 
 Ein Anwendungsfall von dynamischen Arrays sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben.
+
 Schreibe eine Funktion, die beliebig viele Zahlen von der Konsole mittels \texttt{std::cin} einliest.
 Der Benutzer soll dabei zuvor gefragt werden, wie viele Zahlen er eingeben möchte.
 Speichere die Zahlen in einem dynamisch angelegten Array ab und lasse die Funktion einen Zeiger darauf zurückgeben.

@@ -14,7 +14,7 @@ Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du nat�
 \subsection{Klasse \texttt{ListItem}}
 Implementiere die Klasse \texttt{ListItem}, welche die zu speichernde Zahl sowie Verweise auf das vorherige und nächste \texttt{ListItem} als Attribute hat.
 Verwende dazu Zeiger und keine Referenzen, da Referenzen nachträglich nicht mehr geändert werden können.
-Auch können Referenzen nicht \emph{NULL} sein, was in unserem Fall nötig ist, um zu markieren, dass ein Element keine Vorgänger oder Nachfolger hat.
+Auch können Referenzen nicht \texttt{NULL} sein, was in unserem Fall nötig ist, um zu markieren, dass ein Element keine Vorgänger oder Nachfolger hat.
 
 Der Konstruktor sollte sowohl seine eigenen \texttt{next} und \texttt{previous} Zeiger initialisieren, als auch die seiner Vorgänger- und Nachfolgerelemente.
 Die Methode \texttt{getContent()} soll eine Referenz auf den Inhalt zurückgeben, damit dieser durch eine Zuweisung modifiziert werden kann.
@@ -32,7 +32,7 @@ public:
 	 * to not point to this item anymore)
 	 */
 	~ListItem();				
-	int& getContent();			// get a reference to the contained data
+	int & getContent();			// get a reference to the contained data
 	ListItem* getNext();			// get the next list item or NULL
 	ListItem* getPrevious();	// get the previous list item or NULL
 private:
@@ -45,19 +45,24 @@ private:
 \subsection{Privater Copy-Konstruktor}
 Unsere \texttt{ListItem} Klasse hat einen kleinen Design-Fehler:
 Da wir keinen Copy-Konstruktor definiert haben, generiert der Compiler automatisch einen.
-Dieser kopiert einfach die einzelnen Attribute des Ursprungsobjekts (Shallow Copy).
-In unserem Fall ergibt das Kopieren eines Items jedoch semantisch keinen Sinn, weil dabei ein hängendes \texttt{ListItem} entstehen würde, welches nicht mit der Liste verknüpft ist, aber dennoch auf andere Items der Liste zeigt.
+Dieser kopiert einfach die einzelnen Attribute des Ursprungsobjekts (sogenannte ,,flache'' Kopie/Shallow Copy).
+In unserem Fall ergibt das Kopieren eines \texttt{ListItems} jedoch semantisch keinen Sinn, weil dabei ein hängendes \texttt{ListItem} entstehen würde, welches nicht mit der Liste verknüpft ist, aber dennoch auf andere Items der Liste zeigt.
 
 Deshalb werden wir das Kopieren von \texttt{ListItem}-Objekten verbieten, indem wir einen privaten Copy-Konstruktor deklarieren, ohne ihn zu implementieren.
 Dadurch kann der Copy-Konstruktor nie aufgerufen werden und der Compiler kann dies zur Compilezeit überprüfen.
+Außerdem muss der \texttt{operator=} 
 
-Implementiere einen leeren privaten Copy-Konstruktor.
+Implementiere einen leeren privaten Copy-Konstruktor und einen leeren \texttt{operator=}.
 
 \begin{lstlisting}
 private:
-	/** Private copy constructor (without implementation)*/
-	ListItem(const ListItem& other);
+	ListItem(const ListItem& other);		// private copy constructor (without implementation)
+	ListItem& operator=(const ListItem& other);	// private assignment operator (w/o implementation)
 \end{lstlisting}
+
+\hints{
+	\item Alternativ kann man ab C++11 Funktionen explizit löschen: \texttt{ListItem(const ListItem \&other) = delete;}
+}
 
 \subsection{Klasse \texttt{List}}
 Implementiere nun die Klasse \texttt{List}.
@@ -70,14 +75,14 @@ class List {
 public:
 	List();								// create an empty list
 	~List();								// delete the list and all of its elements
-	List(const List& other);		// create a copy of another list
+	List(const List & other);		// create a copy of another list
 	void appendElement(int i);		// append an element to the end of the list
 	void prependElement(int i);	// prepend an element to the beginning of the list
 	void insertElementAt(int i, int pos);	// insert an element i at position pos
 	int getSize() const;				// get the number of elements in list
-	int& getNthElement(int n);		// get the n-th element.
-	int& getFirst();					// get the first element
-	int& getLast();					// get the last element
+	int & getNthElement(int n);		// get the n-th element.
+	int & getFirst();					// get the first element
+	int & getLast();					// get the last element
 	int deleteFirst();			// delete first element and return it (return 0 if empty)
 	int deleteLast();				// delete last element and return it (return 0 if empty)
 	int deleteAt(int pos);		// delete element at position pos
@@ -99,7 +104,7 @@ Deshalb werden wir einen Iterator schreiben, über den man auf die Listenelement
 Der Iterator soll dabei einen Zeiger auf das aktuell betrachtete Element der Liste halten.
 
 Um den Zugriff möglichst komfortabel zu gestalten, werden wir den Iterator als eine Art Zeiger implementieren, den man über \textbf{$++$} und \textbf{$--$} in der Liste verschieben kann.
-Um auf ein Element zuzugreifen, überladen wir den Dereferenzierungsoperator $*$.
+Um auf ein Element zuzugreifen, überladen wir den Dereferenzierungsoperator \texttt{operator*}.
 Somit können wir unsere Liste ähnlich zu \texttt{std::vector} verwenden:
 \begin{lstlisting}
 	for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
@@ -109,17 +114,17 @@ Somit können wir unsere Liste ähnlich zu \texttt{std::vector} verwenden:
 
 Beginne mit einer Grundversion des Iterators.
 Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und Zeiger auf die Liste) entsprechend initialisiert.
-Implementiere den Vergleichsoperator \textbf{!=} sowie den Dereferenzierungsoperator \textbf{*}.
+Implementiere Vergleichsoperator \texttt{operator!=} sowie den Dereferenzierungsoperator \texttt{operator*}.
 Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben.
 Du brauchst nicht zu prüfen, ob \texttt{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können Standardbibliotheksiteratoren übrigens auch nicht!).
 Zum Vergleichen zweier Iteratoren prüfen Sie, ob die \texttt{item} und \texttt{list} Zeiger identisch sind.
-Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \texttt{item} NULL ist, der Iterator also auf kein Element zeigt.
+Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \texttt{item} \texttt{NULL} ist, der Iterator also auf kein Element zeigt.
 
 \begin{lstlisting}
 class ListIterator {
 public:
 	// create a new list iterator pointing to an item in a list
-	ListIterator(List* list, ListItem* item);
+	ListIterator(List *list, ListItem *item);
 	// get the content of the current element
 	int& operator*();
 	// check whether this iterator is not equal to another one
@@ -131,18 +136,16 @@ private:
 \end{lstlisting}
 
 
-Implementiere nun den \textbf{$++$} Operator zum Inkrementieren des Iterators.
+Implementiere den \texttt{operator++} zum Inkrementieren des Iterators.
 Falls der Iterator zuvor auf kein Item zeigte (\texttt{item == NULL}), soll er nun auf das erste Element der Liste gesetzt werden.
 Die Prototypen dazu lauten:
 \begin{lstlisting}
-// Increment this iterator and return itself (prefix ++)
-ListIterator& operator++();
-// Increment this iterator but return the previous iterator (copy) (postfix ++)
-ListIterator operator++(int);
+ListIterator& operator++();		// increment this iterator and return itself (prefix ++)
+ListIterator operator++(int);		// increment this iterator and return the previous (postfix ++)
 \end{lstlisting}
 
-Bei der Überladung des \textbf{$++$} Operators muss eine Sonderregel beachtet werden.
-Dieser Operator kann sowohl als Postfix (z.B. iter$++$) als auch Präfix (z.B. $++$iter) verwendet werden.
+Bei der Überladung des \texttt{operator++} muss eine Sonderregel beachtet werden.
+Dieser Operator kann sowohl als Postfix (z.B. \texttt{iter++}) als auch Präfix (z.B. \texttt{++iter}) verwendet werden.
 Um den Compiler darüber zu informieren, welche Variante wir überladen, wird beim Postfix-Operator ein Dummy-Parameter vom Typ \texttt{int} definiert.
 Dieser dient nur der syntaktischen Unterscheidung und hat keine weitere Bedeutung.
 Beachte außerdem, dass bei Präfix-Operationen der Iterator sich selbst zurückgeben sollte, während der Postfix-Operationen eine Kopie des Iterators zurückgibt, die auf das vorherige Element zeigt.
@@ -183,15 +186,13 @@ Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klas
 friend class ListIterator;
 \end{lstlisting}
 
-Überlade auf die gleiche Weise auch den \textbf{$--$} Operator sowohl in Postfix als auch Präfix-Form.
+Überlade auf die gleiche Weise auch den \texttt{operator-{}-} sowohl in Postfix als auch Präfix-Form.
 
 Nun ist unsere Implementation fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
 Implementiere dazu die folgenden Methoden innerhalb der \texttt{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen.
 \begin{lstlisting}
-// return an iterator pointing to the first element
-ListIterator begin();
-// return an iterator pointing to the element after the last one
-ListIterator end();
+ListIterator begin();		// return an iterator pointing to the first element
+ListIterator end();			// return an iterator pointing to the element after the last one
 \end{lstlisting}
 
 Höchstwahrscheinlich wirst du Probleme bei der Kompilierung haben.
@@ -216,5 +217,9 @@ for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
 }
 \end{lstlisting}
 
-Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \texttt{list.begin()} und \texttt{list.end()} tauscht und \texttt{iter$--$} statt \texttt{iter$++$} verwendet?
+Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \texttt{list.begin()} und \texttt{list.end()} tauscht und \texttt{iter-{}-} statt \texttt{iter++} verwendet?
 Denke daran, worauf die von \texttt{begin())} und \texttt{end()} zurückgegebenen Iteratoren zeigen.
+
+\hints{
+	\item In der Standardbibliothek gibt es hierfür \texttt{rbegin()} und \texttt{rend()}
+}
