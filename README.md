@@ -9,7 +9,10 @@
 * Files:
   * Exercise Sheets (day1.pdf ... day6.pdf)
   * Readme and .gitmodules
-
+  
+## VM FAQs
+* Problem: When importing the VM image, the guest OS is hanging while loading the 'initial ramdisk'
+ * Solution: Make sure that virtualization (VX-T) is switched on in your BIOS.
 ## Eclipse (CDT) Tutorial
 1. Create a new project using **File --> New --> C++ Project**, choose a name and confirm it with **Finish**.
 2. Add files to the project:
