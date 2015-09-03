@@ -6,10 +6,10 @@
 class PatternPrinter {
 public:
 	PatternPrinter();
-	void printNChars(int n);
-	int readWidth();
 	void printPattern();
 private:
+	void printNChars(int n);
+	int readWidth();
 	CharGenerator charGenerator;
 };
 
