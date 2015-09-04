@@ -48,11 +48,8 @@ Da wir keinen Copy-Konstruktor definiert haben, generiert der Compiler automatis
 Dieser kopiert einfach die einzelnen Attribute des Ursprungsobjekts (sogenannte ,,flache'' Kopie/Shallow Copy).
 In unserem Fall ergibt das Kopieren eines \texttt{ListItems} jedoch semantisch keinen Sinn, weil dabei ein hängendes \texttt{ListItem} entstehen würde, welches nicht mit der Liste verknüpft ist, aber dennoch auf andere Items der Liste zeigt.
 
-Deshalb werden wir das Kopieren von \texttt{ListItem}-Objekten verbieten, indem wir einen privaten Copy-Konstruktor deklarieren, ohne ihn zu implementieren.
-Dadurch kann der Copy-Konstruktor nie aufgerufen werden und der Compiler kann dies zur Compilezeit überprüfen.
-Außerdem muss der \texttt{operator=} 
-
-Implementiere einen leeren privaten Copy-Konstruktor und einen leeren \texttt{operator=}.
+Deklariere in der Headerdatei einen \texttt{private} Copy-Konstruktor und einen \texttt{private} \texttt{operator=}.
+Dadurch können beide nie aufgerufen werden und der Compiler kann dies zur Compilezeit überprüfen.
 
 \begin{lstlisting}
 private:
