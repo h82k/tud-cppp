@@ -1,6 +1,8 @@
 #include "List.hpp"
 #include <iostream>
 
+// TODO remove template from List.hpp
+
 int main() {
 	List<int> list;
 	list.appendElement(0);
