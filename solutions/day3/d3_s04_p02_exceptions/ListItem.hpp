@@ -1,14 +1,13 @@
 #ifndef LISTITEM_HPP_
 #define LISTITEM_HPP_
 
-template<class T>
 class ListItem {
 public:
 	/** 
 	 * Create a list item between two elements with given content 
 	 * Also modify the corresponding previous and next pointers of prev and next item
 	 **/
-	ListItem(ListItem<T> *prev, ListItem<T> *next, const T& content);
+	ListItem(ListItem *prev, ListItem *next, const int& content);
 
 	/** 
 	 * Delete a list item. Change also the pointers of previous and next elements to not
@@ -17,7 +16,7 @@ public:
 	~ListItem();
 
 	/** return element content as reference */
-	T& getContent();
+	int& getContent();
 
 	/** next list item, NULL if there is no next */
 	ListItem* getNext();
@@ -27,55 +26,13 @@ public:
 
 private:
 	/** previous and next items in list */
-	ListItem<T> *previous, *next;
+	ListItem *previous, *next;
 
 	/** content of the list item */
-	T content;
+	int content;
 	
 	/** Copy constructor in private area to forbid copying */
-	ListItem<T>(const ListItem<T>& other);
+	ListItem(const ListItem& other);
 };
-
-template<class T>
-ListItem<T>::ListItem(ListItem<T> *prev, ListItem<T> *next, const T& content):
-	previous(prev), next(next), content(content)
-{
-	if (previous) {
-		previous->next = this;
-	}
-	if (next) {
-		next->previous = this;
-	}
-}
-
-template<class T>
-ListItem<T>::~ListItem() {
-	if (previous) {
-		previous->next = next;
-	}
-	if (next) {
-		next->previous = previous;
-	}
-}
-
-template<class T>
-ListItem<T>::ListItem(const ListItem& other) {
-	// nothing here since never called
-}
-
-template<class T>
-T& ListItem<T>::getContent() {
-	return content;
-}
-
-template<class T>
-ListItem<T>* ListItem<T>::getNext() {
-	return next;
-}
-
-template<class T>
-ListItem<T>* ListItem<T>::getPrevious() {
-	return previous;
-}
 
 #endif /* LISTITEM_HPP_ */
