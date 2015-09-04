@@ -1,4 +1,6 @@
-\section{Vererbung und Polymorphie}
+\section{Vererbung und Polymorphie}\label{sec:inheritance}
+In dieser Aufgabe sollst du Konzepte der Vererbung und Polymorphie unter Verwendung abstraker Funktionen erlernen.
+
 \subsection{Klasse \texttt{Person}}
 Implementiere eine Klasse \texttt{Person}, die eine Person mit einem Namen darstellt.
 Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
@@ -6,7 +8,7 @@ Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um
 \begin{lstlisting}
 class Person {
 public:
-	Person(const std::string& name);		// initialize the name of the person
+	Person(const std::string &name);		// initialize the name of the person
 	~Person();									// destructor
 	std::string getInfo() const;			// get the name of the person
 protected:
@@ -27,7 +29,7 @@ Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um
 \begin{lstlisting}
 class Student: public Person {	// public inheritance
 public:
-	Student(const std::string& name, const std::string& studentID); // init name and ID
+	Student(const std::string &name, const std::string &studentID); // init name and ID
 	~Student();							// destructor
 	std::string getInfo() const;	// override Person::getInfo() - get name and studentID
 private:
@@ -64,7 +66,9 @@ Deklariere daher \texttt{getInfo()} in beiden Klassen als \texttt{virtual}.
 Teste deine Implementation erneut und vergewissere dich, dass nun immer die richtige Methode aufgerufen wird.
 
 \hints{
-	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \texttt{virtual} in der Basisklasse gesetzt werden. In den abgeleiteten Klassen kann \texttt{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
+	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \texttt{virtual} in der Basisklasse gesetzt werden.
+	In den abgeleiteten Klassen kann \texttt{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
+	Es ist aber hilfreich, auch dort der Lesbarkeit halber das Schlüsselwort zu verwenden.
 }
 
 \subsection{Virtueller Destruktor}
