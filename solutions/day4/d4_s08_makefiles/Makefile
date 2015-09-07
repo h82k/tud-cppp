@@ -10,6 +10,9 @@
 
 # compiler options
 CC		= g++
+# -Wall : show all warnings
+# -MMD -MP : generate dependencies to header files so that make recognizes changes to header files,
+#            which otherwise do not appear explicitly in any rule
 CFLAGS	= -Wall -std=c++11 -MMD -MP
 
 # source code
