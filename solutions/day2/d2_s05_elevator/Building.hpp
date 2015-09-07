@@ -20,7 +20,7 @@ public:
 		return floors.size();
 	}
 
-	/** get a certain floor */
+	/** Get a certain floor */
 	const Floor& getFloor(int floor) const;
 
 	/** get the elevator of this building */
@@ -49,7 +49,7 @@ private:
 	/** the Elevator */
 	Elevator elevator;
 
-	/** returns the floor with the given number. This non-const variant of the getter is
+	/** Return the floor with the given number. This non-const variant of the getter is
 	 * for 'private' purposes only. */
 	Floor& getFloor(int floor);
 };
