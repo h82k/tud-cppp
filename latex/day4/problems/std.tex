@@ -1,0 +1,35 @@
+\section{Standard Container} 
+In dieser Aufgabe werden wir den Umgang mit den Containern \texttt{std::vector} und \texttt{std::list} aus der Standard Template Library üben.
+Es ist sinnvoll, wenn du während der Übung eine C++-Referenz zum Nachschlagen bereithältst, z.B. \url{http://www.cplusplus.com/}.
+Schaue dir auch die Vorlesungsfolien genau an, da diese nützliche Codebeispiele enthalten.
+
+Die Klasse \texttt{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann. \texttt{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, wenn seine aktuelle Kapazität überschritten wird.
+Auch müssen viele Elemente verschoben werden, wenn der Vektor in der Mitte oder am Anfang modifiziert wird.
+Der große Vorteil von \texttt{std::vector} ist der \emph{wahlfreie Zugriff}, d.h. man kann auf beliebige Elemente mit konstantem Aufwand zugreifen.
+
+
+\begin{enumerate}
+\item 
+Schreibe zunächst eine Funktion \texttt{template<class T> void print(const T \&t)}, die beliebige Standardcontainer auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
+Nutze dazu die Funktion \texttt{copy()} sowie die Klasse \texttt{std::ostream\_iterator<int>}, um den entsprechenden \texttt{OutputIterator} zu erzeugen.
+
+\item
+Lege ein \texttt{int}-Array an und initialisiere es mit den Zahlen 1 bis 5.
+Lege nun einen \texttt{std::vector<int>} an und initialisiere ihn mit den Zahlen aus dem Array.
+
+\item
+Lege eine Liste \texttt{std::list<int>} an und initialisiere diese mit dem zweiten bis vierten Element des Vektors.
+\textbf{Tipp}: Du kannst auf Iteratoren eines Vektors (genauso wie auf Zeiger) Zahlen addieren, um diese zu verschieben.
+
+\item
+Füge mittels \texttt{std::list<T>::insert()} das letzte Element des Vektors an den Anfang der Liste hinzu.
+
+\item
+Lösche alle Elemente des Vektors mit einem einzigen Methodenaufruf.
+
+\item
+Mittels \texttt{remove\_copy\_if()} kann man Elemente aus einem Container in einen anderen kopieren und dabei bestimmte Elemente löschen lassen.
+Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachte, dass \texttt{remove\_copy\_if()} keine neuen Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \texttt{OutputIterator} kopiert.
+
+Deshalb kannst du \texttt{vec.end()} \textbf{nicht} als \texttt{OutputIterator} nehmen, da dieser "{}hinter"{} das letzte Element zeigt und weder dereferenziert noch inkrementiert werden darf. Nutze stattdessen die Methode \texttt{back\_inserter()}, um einen Iterator zu erzeugen, der neue Elemente an den Vektor anhängen kann.
+\end{enumerate}
