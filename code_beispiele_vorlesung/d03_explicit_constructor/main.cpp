@@ -1,8 +1,13 @@
 #include <iostream>
 
+/**
+ * This example shows that C++ may perform implicit type conversion (in this case: int --> C).
+ *
+ * To disallow implicit conversion, place 'explicit' in front of the respective constructor.
+ */
 class C {
 public:
-	explicit C(int i) :myInt(i) {}
+	C(int i) :myInt(i) {}
 
 	const int myInt;
 };
