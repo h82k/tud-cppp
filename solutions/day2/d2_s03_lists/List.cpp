@@ -1,9 +1,8 @@
 #include "List.hpp"
 #include "ListItem.hpp"
-#include <cstddef>
 
 List::List():
-	first(NULL), last(NULL), currentSize(0)
+	first(nullptr), last(nullptr), currentSize(0)
 {}
 
 List::~List() {
@@ -14,27 +13,27 @@ List::~List() {
 }
 
 List::List(const List& other):
-	first(NULL), last(NULL), currentSize(0)
+	first(nullptr), last(nullptr), currentSize(0)
 {
 	// Copy list item-wise to avoid having two lists pointing at the same list items
-	for (ListItem *item = other.first; item != NULL; item = item->getNext()) {
+	for (ListItem *item = other.first; item != nullptr; item = item->getNext()) {
 		appendElement(item->getContent());
 	}
 }
 
 void List::appendElement(int i) {
-	ListItem *item = new ListItem(last, NULL, i);
+	ListItem *item = new ListItem(last, nullptr, i);
 	last = item;
-	if (first == NULL) {
+	if (first == nullptr) {
 		first = item;
 	}
 	++currentSize;
 }
 
 void List::prependElement(int i) {
-	ListItem *item = new ListItem(NULL, first, i);
+	ListItem *item = new ListItem(nullptr, first, i);
 	first = item;
-	if (last == NULL) {
+	if (last == nullptr) {
 		last = item;
 	}
 	++currentSize;
@@ -86,8 +85,8 @@ int List::deleteFirst() {
 		ListItem *next = first->getNext();
 		delete first; // delete first element
 		first = next; // and the current first element to next of first element before
-		if (next == NULL) {// do not forget to reset last element if list is empty
-			last = NULL;
+		if (next == nullptr) {// do not forget to reset last element if list is empty
+			last = nullptr;
 		}
 		--currentSize;
 		return content;
@@ -101,8 +100,8 @@ int List::deleteLast() {
 		ListItem *prev = last->getPrevious();
 		delete last; // delete last element
 		last = prev; // and the current last element to previous of last element before
-		if (last == NULL) {// do not forget to reset first element if list is empty
-			first = NULL;
+		if (last == nullptr) {// do not forget to reset first element if list is empty
+			first = nullptr;
 		}
 		--currentSize;
 		return content;
@@ -135,5 +134,5 @@ ListIterator List::begin() {
 	return ListIterator(this, first);
 }
 ListIterator List::end() {
-	return ListIterator(this, NULL);
+	return ListIterator(this, nullptr);
 }

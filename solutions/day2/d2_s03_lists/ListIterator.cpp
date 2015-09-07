@@ -1,14 +1,13 @@
 #include "ListItem.hpp"
 #include "List.hpp"
 #include "ListIterator.hpp"
-#include <cstddef>
 
 ListIterator::ListIterator(List* list, ListItem* item):
 	list(list), item(item)
 {}
 
 ListIterator& ListIterator::operator++() {
-	if (item == NULL) {
+	if (item == nullptr) {
 		item = list->first;
 	}
 	else {
@@ -19,7 +18,7 @@ ListIterator& ListIterator::operator++() {
 
 ListIterator ListIterator::operator++(int) {
 	ListIterator iter(list, item);
-	if (item == NULL) {
+	if (item == nullptr) {
 		item = list->first;
 	}
 	else {
@@ -29,7 +28,7 @@ ListIterator ListIterator::operator++(int) {
 }
 
 ListIterator& ListIterator::operator--() {
-	if (item == NULL) {
+	if (item == nullptr) {
 		item = list->last;
 	}
 	else {
@@ -40,7 +39,7 @@ ListIterator& ListIterator::operator--() {
 
 ListIterator ListIterator::operator--(int) {
 	ListIterator iter(list, item);
-	if (item == NULL) {
+	if (item == nullptr) {
 		item = list->last;
 	}
 	else {
