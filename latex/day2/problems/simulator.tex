@@ -21,6 +21,27 @@ Es ist sinnvoll, dass du die Änderungen stückweise im Code durchführst und zw
 Deklariere dafür sämtliche Getter in \texttt{Building}, \texttt{Elevator}, \texttt{Floor} und \texttt{Person} als \texttt{const}, z.B. \texttt{Building::getFloor()} und \texttt{Elevator::getEnergyConsumed()}.
 Passe außerdem die Methode \texttt{Elevator::addPeople()} so an, dass die Liste \texttt{people} nicht mehr als Wert sondern als \texttt{const} Referenz übergeben wird.
 
+Es kann sein, dass du für bestimmte Zwecke weiterhin einen Getter brauchst, der dir ein nicht-\texttt{const} Objekt zurückgibt.
+Solche Getter sollten typischerweise \texttt{private} deklariert werden.
+Beispielsweise wird deine \texttt{Building}-Klasse zwei Getter für \texttt{Floor}s enthalten:
+\begin{lstlisting}
+class Building {
+public:
+    // ...
+
+    /** Gets a certain, const floor */
+    const Floor& getFloor(int floor) const;
+
+private:
+    /** Returns the floor with the given number. 
+     *  This non-const variant of the getter is for 'private' purposes only. 
+     */
+    Floor& getFloor(int floor);
+
+    // ...
+};
+\end{lstlisting}
+
 \hints{
 	\item Um über eine \texttt{const} Liste zu iterieren, verwende \texttt{vector<T>::const\_iterator} anstatt \texttt{vector<T>::iterator} als Iterator-Typ.
 }
