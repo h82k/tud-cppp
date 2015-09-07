@@ -1,19 +1,36 @@
-programName=main.exe
-sourceFiles=$(wildcard ./*.cpp)
-objFiles=$(sourceFiles:.cpp=.o)
-dFiles=$(sourceFiles:.cpp=.d)
+# $<	the first dependency
+# $@	name of the target
+# $+	list of all dependencies
+# $^	list of all dependencies (unique elements)
 
-all: $(programName)
+# delete the default suffixes (disable implicit rules)
+.SUFFIXES:
+# PHONY targets (targets that do not represent a file)
+.PHONY: clean all
 
-$(programName): $(objFiles)
-	g++ -o $(programName) $(objFiles)
+# compiler options
+CC		= g++
+CFLAGS	= -Wall -std=c++11 -MMD -MP
 
+# source code
+BINARY	= main.exe
+SOURCES	= $(wildcard ./*.cpp)
+OBJECTS	= $(patsubst %.cpp, %.o, $(SOURCES))
+DEPEND	= $(patsubst %.cpp, %.d, $(SOURCES))
+
+# default target (create the binary)
+all: $(BINARY)
+
+# include dependencies to detect header file changes (make creates targets)
+-include $(DEPEND)
+
+# create the binary
+$(BINARY): $(OBJECTS)
+	$(CC) -o $(BINARY) $^
+
+# create an object file from a source file
 %.o: %.cpp
-	g++ -MMD -MP -c $< -o $@
-	
--include $(dFiles)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(objFiles) $(dFiles) $(programName)
-	
-.PHONY: clean
+	rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
