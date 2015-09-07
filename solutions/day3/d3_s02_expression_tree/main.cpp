@@ -3,6 +3,10 @@
 #include "MinusExpression.hpp"
 #include <iostream>
 
+/**
+ * General note:
+ * You could also implement the tree using either references, copy-by-value (not recommended), or std::shared_ptr
+ */
 int main() {
 	NumberExpression* num42 = new NumberExpression(42);
 	NumberExpression* num12 = new NumberExpression(12);
