@@ -13,16 +13,15 @@
 #include <stdlib.h>
 
 struct ListElement {
-	struct ListElement* next;
-	struct ListElement* prev;
+	struct ListElement *next;
+	struct ListElement *prev;
 
 	void* content;
 };
 
 struct List {
- struct ListElement* firstElement;
+	struct ListElement *firstElement;
 };
-
 
 int main(int argc, char **argv) {
 	// Initialize first list element
@@ -43,13 +42,15 @@ int main(int argc, char **argv) {
 
 	// Fetch list elements
 	printf("First element's address: 0x%p\n", list.firstElement);
-	printf("First element's content: '%s'\n", (const char*)list.firstElement->content);
+	printf("First element's content: '%s'\n",
+			(const char*) list.firstElement->content);
 	printf("First element's successor: 0x%p\n", list.firstElement->next);
 
 	printf("--- \n");
 
 	printf("Second element's address: 0x%p\n", list.firstElement->next);
-	printf("Second element's content: '%d'\n", *((unsigned int*)list.firstElement->next->content));
+	printf("Second element's content: '%d'\n",
+			*((unsigned int*) list.firstElement->next->content));
 	printf("Second element's successor: 0x%p\n", list.firstElement->next->next);
 
 	return 0;
