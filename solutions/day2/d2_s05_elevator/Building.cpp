@@ -7,8 +7,26 @@ Building::Building(int numberOfFloors) {
 	}
 }
 
+const Floor& Building::getFloor(int floor) const {
+	std::list<Floor>::const_iterator iter = floors.begin();
+
+	for (int i = 0; i < floor; ++i) {
+		++iter;
+	}
+	return *iter;
+}
+
+Floor& Building::getFloor(int floor) {
+	std::list<Floor>::iterator iter = floors.begin();
+
+	for (int i = 0; i < floor; ++i) {
+		++iter;
+	}
+	return *iter;
+}
+
 void Building::letPeopleIn() {
-	elevator.addPeople(floors.at(elevator.getFloor()).removeAllPeople());
+	elevator.addPeople(getFloor(elevator.getFloor()).removeAllPeople());
 }
 
 std::list<PersonPtr> Building::removeArrivedPeople() {
@@ -20,6 +38,6 @@ void Building::moveElevatorToFloor(int i) {
 }
 
 void Building::addWaitingPerson(int floor, PersonPtr p) {
-	floors.at(floor).addWaitingPerson(p);
+	getFloor(floor).addWaitingPerson(p);
 }
 
