@@ -1,20 +1,22 @@
 #ifndef VECTOR3_HPP_
 #define VECTOR3_HPP_
 
+#include <memory>
+
 template<class T>
 class Vector3 {
 public:
-	Vector3():
-		a(0), b(0), c(0)
-	{}
+	Vector3() :
+			a(0), b(0), c(0) {
+	}
 
-	Vector3(T a, T b, T c):
-		a(a), b(b), c(c)
-	{}
+	Vector3(T a, T b, T c) :
+			a(a), b(b), c(c) {
+	}
 
-	Vector3(const Vector3& other):
-		a(other.a), b(other.b), c(other.c)
-	{}
+	Vector3(const Vector3& other) :
+			a(other.a), b(other.b), c(other.c) {
+	}
 
 	Vector3<T> operator+(const Vector3<T>& rhs) const {
 		return Vector3(a + rhs.a, b + rhs.b, c + rhs.c);
@@ -50,6 +52,17 @@ public:
 private:
 	T a, b, c;
 };
+
+// C++ does not support templates for typedefs
+//template<class T>
+//typedef std::shared_ptr<Vector3<T>> VectorPtr;
+
+// C++11 introduces the following syntax:
+template<class T>
+using Vector3Ptr = std::shared_ptr<Vector3<T>>;
+
+// Alternative:
+typedef std::shared_ptr<Vector3<double>> DoubleVectorPtr;
 
 #include <iostream>
 
