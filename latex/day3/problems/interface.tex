@@ -12,28 +12,27 @@ Einzelne Knotentypen wie Addition und Subtraktion werden von \texttt{Expression}
 
 \begin{enumerate}
 
-\item \textbf{Klasse \texttt{Expression}}
+\item \textbf{Klasse \texttt{Expression}:}
 Schreibe die abstrakte Klasse \texttt{Expression}.
 Diese soll als Basisklasse für alle Ausdrücke dienen.
 Implementiere einen parameterlosen Konstruktor und einen virtuellen Destruktor, die je eine Meldung auf der Konsole ausgeben, sodass es bei der Ausführung ersichtlich wird, wann eine \texttt{Expression} erzeugt und wann zerstört wird.
 Deklariere außerdem eine abstrakte (pure \texttt{virtual}) Methode \texttt{virtual double compute() = 0;}, die das Ergebnis des Ausdrucks berechnen und zurückgeben soll. 
 
-\item \textbf{Klasse \texttt{NumberExpression}}
+\item \textbf{Klasse \texttt{NumberExpression}:}
 Schreibe die Klasse \texttt{NumberExpression}, die ein (Baum-)Blatt mit einer Zahl darstellt.
 Dementsprechend soll \texttt{NumberExpression} von \texttt{Expression} erben und ein Attribut zum Speichern einer Zahl besitzen, das im Konstruktor initialisiert wird.
 Implementiere den Konstruktor und virtuellen Destruktor und versehe auch diese mit einer Konsolenausgabe.
 Die Methode \texttt{compute()} gibt die gespeicherte Zahl zurück.
 
-\item \textbf{Klasse \texttt{BinaryExpression}}
+\item \textbf{Klasse \texttt{BinaryExpression}:}
 Schreibe die abstrakte Klasse \texttt{BinaryExpression} mit den \texttt{protected} Attributen \texttt{Expression *left, *right}.
 Implementiere den Konstruktor und virtuellen Destruktor mit entsprechender Ausgabe.
-Vergiss nicht, im Destruktor die beiden Zweige zu löschen. 
 
-\item \textbf{Klassen \texttt{Plus-} und \texttt{MinusExpression}}
+\item \textbf{Klassen \texttt{PlusExpression} und \texttt{MinusExpression}:}
 Schreibe die Klassen \texttt{PlusExpression} und \texttt{MinusExpression}, die von \texttt{BinaryExpression} erben und eine Addition bzw. Subtraktion realisieren. 
 Implementiere die Kon- und Destruktoren sowie die \texttt{compute()} Methode.
 
-\item \textbf{Test}
+\item \textbf{Testlauf:}
 Teste deine Implementation.
 Ein gutes Beispiel findest du in Abbildung weiter oben.
 Schaue dir die Ausgabe genau an und versuche anhand der gegebenen Klassenhierarchie die Reihenfolge der Erzeugung und Zerstörung von Objekten  nachzuvollziehen.
