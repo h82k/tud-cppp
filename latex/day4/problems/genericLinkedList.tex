@@ -8,13 +8,14 @@ Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern
 Zum anderen sollten die Methoden zum Löschen von Elementen \texttt{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann.
 Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.
 
-\emph{Tipp}: Arbeite die Klassen nacheinander ab, beginnend bei \texttt{ListItem}.
-Stelle sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor du zur nächsten übergehst.
-Vergiss nicht, dass du auch hier die Implementation in die Header verschieben musst.
-Da Header an sich nicht kompiliert werden, müssen wir diese zum Kompilieren in eine (leere) Quellcodedatei einbinden.
+\hints{
+	\item Arbeite die Klassen nacheinander ab, beginnend bei \texttt{ListItem}.
+	\item Stelle sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor du zur nächsten übergehst.
+	\item Denke daran, dass du auch hier die Implementation in die Header verschieben musst.
+}
 
 \subsection{}
-Überlade den Operator $<<$, sodass Listen direkt über ein \texttt{ostream} wie z.B. \texttt{cout} ausgegeben werden können.
+Überlade den \texttt{operator<<}, sodass Listen direkt über ein \texttt{std::ostream} wie z.B. \texttt{std::cout} ausgegeben werden können.
 
 \subsection{}
 Teste deine Implementation. Probiere auch folgendes aus und beobachte die Ausgabe.
