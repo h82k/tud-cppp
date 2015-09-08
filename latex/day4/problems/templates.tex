@@ -11,9 +11,13 @@ Durch die Verwendung von Templates soll die Funktion mit verschiedenen Datentype
 Teste deine Implementation.
 
 In der Vorlesung haben wir gesehen, dass jede Verwendung von \texttt{t1} und \texttt{t2} in \texttt{maximum} eine Schnittstelle induziert, die der Typ \texttt{T} bereitstellen muss.
-Das bedeutet, dass \texttt{t1} und \texttt{t2} alle Konstruktoren, Methoden und Operatoren zur Verfügung stellen, die in \texttt{maximum} genutzt werden.
+Das bedeutet, dass \texttt{T} alle Konstruktoren, Methoden und Operatoren zur Verfügung stellen muss, die in \texttt{maximum} genutzt werden.
 
 Wie sieht diese Schnittstelle in diesem Fall aus?
+
+\hints{
+    \item Es macht keinen Unterschied, ob du \texttt{class} oder \texttt{typename} in der Template-Deklaration nutzt.    
+}
 
 \subsection{Explizite Angabe der Typparameter}
 Lege nun zwei Variablen vom Typ \texttt{int} und \texttt{short} an, und versuche, mittels \texttt{maximum()} das Maximum zu bestimmen.
