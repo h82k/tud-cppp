@@ -4,3 +4,21 @@ Füge dafür der Klasse \texttt{Vector3} einen Template-Parameter hinzu und erse
 Vergiss nicht, die Implementation in den Header zu verschieben, da der Compiler die Definition einer Klasse kennen muss, um beim Einsetzen des Template-Parameters den richtigen Code zu generieren.
 
 Verbessere außerdem die Effizienz und Sauberkeit der \texttt{Vector3}-Klasse, in dem du die Parameterübergabe in den entsprechenden Methoden auf \texttt{const} Referenzen umstellst und alle Getter als \texttt{const} deklarierst.
+
+Du weißt bereits, dass alle \texttt{template}-Funktionen und -Methoden im Header enthalten sein müssen.
+Um den Code trotzdem zu strukturieren, hat es sich eingebürgert, dass man die Klassendefinition in der \texttt{hpp}-Datei hält, ohne die Methoden zu implementieren.
+Im Anschluss wird eine \texttt{tpp}-Datei inkludiert, die die Implementierung der Methoden und Funktionen enthält.
+    
+Der Aufbau wäre also in etwas wie folgt:
+\begin{lstlisting}
+#pragma once
+
+template<typename T>
+class Vector3 {
+  // method declarations only
+};
+
+// function declarations only
+
+#include "Vector3.tpp" // contains method and function definitions
+\end{lstlisting}
