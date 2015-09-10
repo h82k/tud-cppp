@@ -47,7 +47,7 @@ void lcd_write(int data) {
 	int y;
 	// reduce input to one byte (more cannot be written in one step)
 	data = data % 256;
-	for (x = 0; x < 8; ++x) {
+	for (y = 0; y < 8; ++y) {
 		// set input to receive instructions
 		LCD_PIN_DI = 0;
 		// set y address
@@ -56,7 +56,7 @@ void lcd_write(int data) {
 		// set x address;
 		LCD_PORT_DB = 0x40;
 		lcd_sendEnable();
-		for (y = 0; y < 64; ++y) {
+		for (x = 0; x < 64; ++x) {
 			// send 8 Bit (set input to receive data)
 			LCD_PIN_DI = 1;
 			LCD_PORT_DB = data;
