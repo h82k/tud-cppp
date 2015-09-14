@@ -21,6 +21,7 @@ Unfortunately, some computers set the baud rate wrongly (most often to the value
 Additionally, it seems that it is not possible to change it permanently via `stty -F /dev/ttyUSBx 115200` or directly with FLASHly.
 
 Different solutions exist to circumvent this problem:
+
 1. Reconfigure the VM:
   * Disable the USB filter of the SK-FX16 Board.
   * Enable a serial device (port number: COM1, port mode: host device, path: e.g. /dev/ttyUSB0 or COM12 depending on your operating system).
