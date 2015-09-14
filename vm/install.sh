@@ -23,13 +23,18 @@ echo "waiting for the wineserver to terminate ..."
 wineserver -d -w
 
 # disable Wine MIME types aka remove 'open with ...' with Wine programs
-rm -f ~/.local/share/mime/packages/x-wine*
-rm -f ~/.local/share/applications/wine-extension*
-rm -f ~/.local/share/icons/hicolor/*/*/application-x-wine-extension*
-rm -f ~/.local/share/mime/application/x-wine-extension*
+read -p "Do you want to remove all Wine MIME types? [y/N]" -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo "removing WINE MIME types ..."
+	rm -f ~/.local/share/mime/packages/x-wine*
+	rm -f ~/.local/share/applications/wine-extension*
+	rm -f ~/.local/share/icons/hicolor/*/*/application-x-wine-extension*
+	rm -f ~/.local/share/mime/application/x-wine-extension*
+fi
 
 # copy Softune and FLASHly files to the prefix
-cp -r ${SOFTUNE} ${PREFIX}/drive_c
-cp -r ${FLASHLY} ${PREFIX}/drive_c
+cp -r -L ${SOFTUNE} ${PREFIX}/drive_c
+cp -r -L ${FLASHLY} ${PREFIX}/drive_c
 
 echo "Renew your session to allow access to serial devices"
