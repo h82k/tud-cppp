@@ -1,4 +1,5 @@
 *.iso
-vm/
+Softune/
+FLASHly/
 *SUMS
 *.sign
