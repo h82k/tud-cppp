@@ -10,14 +10,10 @@
 class Floor {
 public:
 	/** Return number of people on this floor */
-	inline int getNumPeople() {
-		return containedPeople.size();
-	}
+	int getNumPeople();
 	
 	/** return i-th person on this floor */
-	inline Person getPerson(int i) {
-		return containedPeople.at(i);
-	}
+	Person getPerson(int i);
 	
 	/** Add a person to this floor */
 	void addWaitingPerson(Person h);

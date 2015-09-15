@@ -1,5 +1,17 @@
 #include "Building.hpp"
 
+int getNumOfFloors() {
+	return floors.size();
+}
+
+Floor& getFloor(int floor) {
+	return floors.at(floor);
+}
+
+Elevator& getElevator() {
+	return elevator;
+}
+
 Building::Building(int numberOfFloors) {
 	// add given number of floors
 	for(int i = 0; i < numberOfFloors; ++i) {

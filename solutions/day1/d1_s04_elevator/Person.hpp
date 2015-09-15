@@ -20,7 +20,7 @@ public:
 	~Person();
 	
 	/** Get destination floor of this person */
-	inline int getDestinationFloor() const {
+	int getDestinationFloor() const {
 		return destinationFloor;
 	}
 	

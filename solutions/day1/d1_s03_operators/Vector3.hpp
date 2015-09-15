@@ -14,15 +14,9 @@ public:
 	Vector3 operator-(Vector3 rhs);
 	double operator*(Vector3 rhs);
 	
-	inline double getA() {
-		return a;
-	}
-	inline double getB() {
-		return b;
-	}
-	inline double getC() {
-		return c;
-	}
+	double getA();
+	double getB();
+	double getC();
 private:
 	double a, b, c;
 };

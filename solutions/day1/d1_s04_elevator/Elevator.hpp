@@ -14,28 +14,19 @@ public:
 	 */
 	Elevator();
 	
-	/** get number of floor the elevator is currently at. */
-	inline int getFloor() {
-		return currentFloor;
-	}
+	int getFloor();
 	
 	/** get consumed energy */
-	inline double getEnergyConsumed() {
-		return energyConsumed;
-	}
+	double getEnergyConsumed();
 	
 	/** Moves the elevator to given floor */
 	void moveToFloor(int floor);
 	
 	/** Returns number of people in Elevator */
-	inline int getNumPeople() {
-		return containedPeople.size();
-	}
+	int getNumPeople();
 	
 	/** returns i-th person in Elevator */
-	inline Person getPerson(int i) {
-		return containedPeople.at(i);
-	}
+	Person getPerson(int i);
 	
 	/** add people to Elevator */
 	void addPeople(std::vector<Person> people);

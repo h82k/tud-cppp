@@ -16,19 +16,13 @@ public:
 	Building(int numberOfFloors);
 	
 	/** get number of floors */
-	inline int getNumOfFloors() {
-		return floors.size();
-	}
+	int getNumOfFloors();
 	
 	/** get a certain floor */
-	inline Floor& getFloor(int floor) {
-		return floors.at(floor);
-	}
+	Floor& getFloor(int floor);
 	
 	/** get the elevator */
-	inline Elevator& getElevator() {
-		return elevator;
-	}
+	Elevator& getElevator();
 	
 	/** 
 	 * Let people on current floor go into the elevator.
