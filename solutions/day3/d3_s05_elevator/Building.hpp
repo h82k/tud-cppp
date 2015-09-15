@@ -18,19 +18,13 @@ public:
 	Building(int numberOfFloors);
 	
 	/** get number of floors */
-	inline int getNumberOfFLoors() const {
-		return floors.size();
-	}
+	int getNumberOfFLoors() const;
 	
 	/** get a certain floor */
-	inline const Floor& getFloor(int floor) const {
-		return floors.at(floor);
-	}
+	const Floor& getFloor(int floor) const;
 	
 	/** get the elevator of this building */
-	inline const Elevator& getElevator() const {
-		return elevator;
-	}
+	const Elevator& getElevator() const;
 	
 	/** 
 	 * Let people on current floor go into the elevator.

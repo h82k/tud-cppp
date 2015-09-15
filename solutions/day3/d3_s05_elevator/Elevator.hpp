@@ -15,27 +15,19 @@ public:
 	Elevator();
 	
 	/** get number of floor the elevator is currently at. */
-	inline int getFloor() const {
-		return currentFloor;
-	}
+	int getFloor() const;
 	
 	/** get consumed energy */
-	inline double getEnergyConsumed() const {
-		return energyConsumed;
-	}
+	double getEnergyConsumed() const;
 	
 	/** Moves the elevator to given floor */
 	void moveToFloor(int floor);
 	
 	/** get a const reference to list of contained people */
-	const std::list<PersonPtr>& getContainedPeople() const {
-		return containedPeople;
-	}
+	const std::list<PersonPtr>& getContainedPeople() const;
 	
 	/** get number of people in Elevator */
-	inline int getNumPeople() const {
-		return containedPeople.size();
-	}
+	int getNumPeople() const;
 	
 	/** add people to Elevator */
 	void addPeople(const std::list<PersonPtr>& people);

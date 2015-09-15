@@ -8,13 +8,9 @@ class Floor {
 public:
 	Floor();
 	/** Return number of people on this floor */
-	inline int getNumPeople() const {
-		return containedPeople.size();
-	}
+	int getNumPeople() const;
 	/** return a const reference to list of contained people */
-	const std::list<PersonPtr>& getContainedPeople() const {
-		return containedPeople;
-	}
+	const std::list<PersonPtr>& getContainedPeople() const;
 	/** Add a human to this floor */
 	void addWaitingPerson(PersonPtr h);
 	/** remove all humans from this floor */

@@ -6,10 +6,26 @@ Elevator::Elevator():
 	currentFloor(0), energyConsumed(0)
 {}
 
+int Elevator::getFloor() const {
+	return currentFloor;
+}
+
+double Elevator::getEnergyConsumed() const {
+	return energyConsumed;
+}
+
 void Elevator::moveToFloor(int floor) {
 	energyConsumed += std::abs(currentFloor - floor);
 	currentFloor = floor;
 	// std::cout << "Moving to floor " << floor << std::endl;
+}
+
+const std::list<PersonPtr>& Elevator::getContainedPeople() const {
+	return containedPeople;
+}
+
+int Elevator::getNumPeople() const {
+	return containedPeople.size();
 }
 
 void Elevator::addPeople(const std::list<PersonPtr>& people) {

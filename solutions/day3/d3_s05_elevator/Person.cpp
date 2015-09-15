@@ -11,3 +11,6 @@ Person::~Person() {
 	// std::cout << "Deleting Person with destination " << destinationFloor << std::endl;
 }
 
+int Person::getDestinationFloor() const {
+	return destinationFloor;
+}

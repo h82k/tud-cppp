@@ -7,6 +7,19 @@ Building::Building(int numberOfFloors) {
 	}
 }
 
+int Building::getNumberOfFLoors() const {
+	return floors.size();
+}
+
+const Floor& Building::getFloor(int floor) const {
+	return floors.at(floor);
+}
+
+
+const Elevator& Building::getElevator() const {
+	return elevator;
+}
+
 void Building::letPeopleIn() {
 	elevator.addPeople(floors.at(elevator.getFloor()).removeAllPeople());
 }
