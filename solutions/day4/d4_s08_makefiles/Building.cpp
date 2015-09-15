@@ -1,5 +1,5 @@
 #include "Building.hpp"
-#include <string>
+#include <sstream>
 
 Building::Building(unsigned int numFloors):
 	numFloors(numFloors)
@@ -7,6 +7,7 @@ Building::Building(unsigned int numFloors):
 
 const std::string Building::toString() const{
 	std::stringstream output;
-	output << "A building with " << this->numFloors << " floors \n";
+	output << "A building with " << numFloors;
+	output << " floors" << std::endl;
 	return output.str();
 }

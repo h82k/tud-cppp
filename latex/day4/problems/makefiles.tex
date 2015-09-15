@@ -47,9 +47,6 @@ Jetzt fügen wir die Klasse \texttt{Building} zu unserem Projekt hinzu, die alle
 
 \begin{minipage}[t]{.45\textwidth}
 \begin{lstlisting}
-/*
-* File: Building.hpp
-*/
 #pragma once
 
 #include <string>
@@ -63,27 +60,19 @@ private:
 };
 \end{lstlisting}
 \end{minipage}
-\begin{minipage}[t]{.45\textwidth}
+\begin{minipage}[t]{.5\textwidth}
 \begin{lstlisting}
-/*
-* File: Building.cpp
-*/
 #include "Building.h"
-
-#include <string>
 #include <sstream>
 
-using namespace std;
-
-Building::Building(unsigned int numFloors) :
-    numFloors(numFloors) {}
+Building::Building(unsigned int numFloors):
+	numFloors(numFloors) {}
 
 const std::string Building::toString() const{
-    stringstream output;
-    output << "A building with "
-           << this->numFloors
-           << " floors\n";
-    return output.str();
+	std::stringstream output;
+	output << "A building with " << numFloors;
+	output << " floors" << std::endl;
+	return output.str();
 }
 \end{lstlisting}
 \end{minipage}
@@ -164,10 +153,10 @@ Bewege \texttt{toString} nun nach \texttt{Buidling.h}:
 \begin{lstlisting}
 #include <sstream>
 // ...
-inline const std::string toString() const{
+const std::string toString() const{
 
     std::stringstream output;
-    output << "A building with " << this->numFloors << " floors\n";
+    output << "A building with " << this->numFloors << " floors" << std::endl;
     return output.str();
 }
 \end{lstlisting}

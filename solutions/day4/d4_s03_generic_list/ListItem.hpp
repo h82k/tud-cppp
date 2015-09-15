@@ -5,34 +5,25 @@ template<class T>
 class ListItem {
 public:
 	/** 
-	 * Create a list item between two elements with given content 
-	 * Also modify the corresponding previous and next pointers of prev and next item
-	 **/
+	 * create a list item between two elements with a given given content
+	 * (also modify previous->next and next->previous)
+	 */
 	ListItem(ListItem<T> *prev, ListItem<T> *next, const T& content);
-
 	/** 
-	 * Delete a list item. Change also the pointers of previous and next elements to not
-	 * show on this item anymore.
-	**/
+	 * delete this list item (also change previous->next and next->previous
+	 * to not point to this item anymore)
+	 */
 	~ListItem();
-
-	/** return element content as reference */
-	T& getContent();
-
-	/** next list item, NULL if there is no next */
-	ListItem* getNext();
-
-	/** previous list item, NULL if there is no previous */
-	ListItem* getPrevious();
-private:
-	/** previous and next items in list */
-	ListItem<T> *previous, *next;
-
-	/** content of the list item */
-	T content;
+	T& getContent();			// get a reference to the contained data
+	ListItem* getNext();		// get the next list item or NULL
+	ListItem* getPrevious();	// get the previous list item or NULL
 	
-	/** Copy constructor in private area to forbid copying. No implementation! */
-	ListItem<T>(const ListItem<T>& other);
+	ListItem<T>(const ListItem<T>& other) = delete;
+	ListItem<T>& operator=(const ListItem<T>& other) = delete;
+private:
+	ListItem<T> *previous;		// previous item in list
+	ListItem<T> *next;			// next item in list
+	T content;					// content of this list item
 };
 
 #include "ListItem.tpp"

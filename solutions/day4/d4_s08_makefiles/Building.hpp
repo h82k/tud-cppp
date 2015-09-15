@@ -1,8 +1,6 @@
-#ifndef BUILDING_HPP_
-#define BUILDING_HPP_
+# pragma once
 
 #include <string>
-#include <sstream>
 
 class Building {
 public:
@@ -11,5 +9,3 @@ public:
 private:
 	unsigned int numFloors;
 };
-
-#endif

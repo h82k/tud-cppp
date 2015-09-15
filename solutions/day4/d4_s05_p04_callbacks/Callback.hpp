@@ -1,7 +1,3 @@
-/*
- * Callback.hpp
- */
-
 #ifndef CALLBACK_HPP_
 #define CALLBACK_HPP_
 
