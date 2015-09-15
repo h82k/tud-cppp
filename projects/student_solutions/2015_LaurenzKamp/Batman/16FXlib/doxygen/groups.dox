@@ -1,0 +1,7 @@
+/** \defgroup can CAN
+ * Libraries for the use of the Controller-Area-Network engine.
+ */
+
+/** \defgroup std Standard
+ * Libraries which provide common standard routines.
+ */

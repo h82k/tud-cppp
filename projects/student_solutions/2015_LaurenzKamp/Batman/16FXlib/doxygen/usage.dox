@@ -1,0 +1,88 @@
+/** \page usage Introduction on how to use the library
+
+This page covers the different ways how to use the library in your own projects under
+Eclipse. Other IDEs probably provide similar methods for doing so.
+There are basically three options to choose from:
+-# \ref opt1 "Linked source directories"
+-# \ref opt2 "Library as static library"
+-# \ref opt3 "Copying the library's code to the project"
+
+<br>
+
+\section opt1 Option 1: Linked source directories
+This is the preferred choice since on one hand the library is kept separately and can be
+used by all projects and on the other hand the library code is compiled with the project
+so the settings of the project will be applied to the library code too.
+-# Create a project for the processor includes
+	-# "File" -> "New" -> "Project" -> "General" -> "Project"
+		-# Select a project name (e.g. "mb96348includes")
+		-# Select the path where the processor includes are located
+		-# Press "Finish"
+-# Create a project for the library
+	-# "File" -> "New" -> "C Project"
+		-# Select a project name (e.g. "library")
+		-# Select the path where the library code is located
+		-# "Project type" is not important. "Static Library" with the appropriate
+			controller is suggested so you can also compile the library on its own to find
+			errors.
+		-# Press "Finish"
+	-# If you want to be able to compile the library on its own:
+		-# Open the properties of the new project (right click on the project name in the
+			project explorer -> "Properties")
+		-# Go to "C/C++ Build" -> "Settings"
+			-# In the inner tree navigate to "Fujitsu C Compiler" -> "Include Path"
+			-# Add the "mb96348includes" project from the workspace
+			-# Press "Apply" and close the dialog
+-# Create your own project
+	-# "File" -> "New" -> "C Project"
+		-# Select a project name (e.g. "demo")
+		-# Select a path where you want your project to be stored or leave
+			"Default Location" enabled
+		-# Select "Fujitsu LX Executable" as "Project type" and the appropriate controller
+			from the "Toolchain" list.
+		-# Press "Finish"
+	-# Setup the project
+		-# Open the properties of the project (right click on the project name in the
+			project explorer -> "Properties")
+		-# Go to "C/C++ Build" -> "Settings"
+			-# In the inner tree navigate to "Fujitsu C Compiler" -> "Include Path"
+			-# Add the "mb96348includes" project from the workspace
+			-# Add the "library" project from the workspace
+			-# Press "Apply"
+		-# Go to "C/C++ General" -> "Paths and Symbols"
+			-# Switch to the tab "Source Location"
+			-# Press "Link Folder..."
+				-# Select a folder name (e.g. "mb96348")
+				-# Open the "Advanced" area and enable "Link to folder in the file system"
+				-# Browse to the path where the processor include files are stored
+				-# Press "OK"
+			-# Repeat the steps for the library folder
+			-# "Apply" and close the dialog
+
+<br>
+
+\section opt2 Option 2: Library as static library
+In this setup the library is packed as a static library. It is the more "professional" way
+but has the disadvantage that changes to the compiler/linker settings of the project will
+not be reflected in the library.
+-# Follow the steps of Option 1 up to 3.b.iii.B (do not execute 3.b.iii.C). Steps from
+	2.b are important this time!
+-# Go to "C/C++ Build" -> "Settings" => "Fujitsu C Linker" -> "Libraries"
+	-# Add "library" (adapt it to the name you gave the library project) to the upper box
+		"Libraries -l"
+	-# Add the "Release" folder from the "library" project to the lower box
+		"Library search path"
+.
+Hint: If you do any changes to the library code you have to recompile the library before
+the changes will be propagated to new compiler runs on the main project.
+
+<br>
+
+\section opt3 Option 3: Copying the library's code to the project
+This is the easiest and fastest way to set up but can get quite confusing because of all
+the files in the project. It also is harder to maintain if you got multiple projects and
+each of them contains a copy of the library code.
+-# Copy all .c/.h files from the library folder to the source root of your project
+-# Copy the processor include files to your source root
+
+*/
