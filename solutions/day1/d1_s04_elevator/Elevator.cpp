@@ -6,19 +6,19 @@ Elevator::Elevator():
 	currentFloor(0), energyConsumed(0)
 {}
 
-int getFloor() {
+int Elevator::getFloor() {
 	return currentFloor;
 }
 
-double getEnergyConsumed() {
+double Elevator::getEnergyConsumed() {
 	return energyConsumed;
 }
 
-int getNumPeople() {
+int Elevator::getNumPeople() {
 	return containedPeople.size();
 }
 
-Person getPerson(int i) {
+Person Elevator::getPerson(int i) {
 	return containedPeople.at(i);
 }
 

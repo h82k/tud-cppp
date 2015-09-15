@@ -1,10 +1,10 @@
 #include "Floor.hpp"
 
-int getNumPeople() {
+int Floor::getNumPeople() {
 	return containedPeople.size();
 }
 
-Person getPerson(int i) {
+Person Floor::getPerson(int i) {
 	return containedPeople.at(i);
 }
 

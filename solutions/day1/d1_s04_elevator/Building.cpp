@@ -1,14 +1,14 @@
 #include "Building.hpp"
 
-int getNumOfFloors() {
+int Building::getNumOfFloors() {
 	return floors.size();
 }
 
-Floor& getFloor(int floor) {
+Floor& Building::getFloor(int floor) {
 	return floors.at(floor);
 }
 
-Elevator& getElevator() {
+Elevator& Building::getElevator() {
 	return elevator;
 }
 

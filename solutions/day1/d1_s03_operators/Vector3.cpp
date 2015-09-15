@@ -35,15 +35,15 @@ double Vector3::operator*(Vector3 rhs) {
 	return a * rhs.a + b * rhs.b + c * rhs.c;
 }
 
-double getA() {
+double Vector3::getA() {
 	return a;
 }
 
-double getB() {
+double Vector3::getB() {
 	return b;
 }
 
-double getC() {
+double Vector3::getC() {
 	return c;
 }
 
