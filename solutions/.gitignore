@@ -5,3 +5,4 @@
 *.mhx
 Release/
 Debug/
+build/
