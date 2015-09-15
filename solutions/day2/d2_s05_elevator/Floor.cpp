@@ -2,6 +2,10 @@
 
 Floor::Floor() {}
 
+int Floor::getNumPeople() const {
+	return containedPeople.size();
+}
+
 void Floor::addWaitingPerson(PersonPtr h) {
 	containedPeople.push_back(h);
 }

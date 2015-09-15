@@ -16,6 +16,10 @@ const Floor& Building::getFloor(int floor) const {
 	return *iter;
 }
 
+int Building::getNumberOfFLoors() const {
+	return floors.size();
+}
+
 Floor& Building::getFloor(int floor) {
 	std::list<Floor>::iterator iter = floors.begin();
 
@@ -23,6 +27,10 @@ Floor& Building::getFloor(int floor) {
 		++iter;
 	}
 	return *iter;
+}
+
+const Elevator& Building::getElevator() const {
+	return elevator;
 }
 
 void Building::letPeopleIn() {

@@ -8,9 +8,7 @@ public:
 	Person(int destinationFloor);
 	~Person();
 
-	inline int getDestinationFloor() const {
-		return destinationFloor;
-	}
+	int getDestinationFloor() const;
 	
 private:
 	int destinationFloor;
