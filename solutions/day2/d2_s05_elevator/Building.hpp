@@ -7,7 +7,7 @@
 
 class Building {
 public:
-	Building(int numberOfFloors);	// create a Building with given number of floors
+	Building(int numberOfFloors);				// create a Building with given number of floors
 	int getNumberOfFLoors() const;				// get number of floors
 	const Floor& getFloor(int floor) const;		// get a certain floor
 	const Elevator& getElevator() const;		// get the elevator (constant reference)

@@ -7,47 +7,21 @@
 #include "Floor.hpp"
 #include "Elevator.hpp"
 
-/**
- * Represents a Building with floors and an Elevator
- */
 class Building {
 public:
-	/**
-	 * Create a Building with given number of floors.
-	 */
-	Building(int numberOfFloors);
+	Building(int numberOfFloors);				// create a Building with given number of floors
+	int getNumberOfFLoors() const;				// get number of floors
+	const Floor& getFloor(int floor) const;		// get a certain floor
+	const Elevator& getElevator() const;		// get the elevator (constant reference)
 	
-	/** get number of floors */
-	int getNumberOfFLoors() const;
-	
-	/** get a certain floor */
-	const Floor& getFloor(int floor) const;
-	
-	/** get the elevator of this building */
-	const Elevator& getElevator() const;
-	
-	/** 
-	 * Let people on current floor go into the elevator.
-	 */
-	void letPeopleIn();
-	
-	/** remove people from elevator on current floor which arrived at their destination */
-	std::list<PersonPtr> removeArrivedPeople();
-	
-	/** moves the building's elevator to given floor */
-	void moveElevatorToFloor(int i);
-	
-	/** Add a person to given floor */
-	void addWaitingPerson(int floor, PersonPtr p);
-	
-	/** true if some people are in the building (on floors or in elevator) */
+	void letPeopleIn();								// let people on current floor into elevator
+	std::list<PersonPtr> removeArrivedPeople();		// move the elevator to a given floor
+	void moveElevatorToFloor(int i);				// add a person to a given floor
+	void addWaitingPerson(int floor, PersonPtr p);	// remove people which arrived at their destination from the elevator on the current floor
 	bool containsPeople() const;
 private:
-	/** Floors of this building */
-	std::vector<Floor> floors;
-	
-	/** the Elevator */
-	Elevator elevator;
+	std::vector<Floor> floors;				// floors of this building
+	Elevator elevator;						// the elevator
 };
 
 #endif /* BUILDING_HPP_ */

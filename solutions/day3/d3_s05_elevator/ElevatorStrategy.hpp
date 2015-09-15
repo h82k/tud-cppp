@@ -3,24 +3,14 @@
 
 #include "Building.hpp"
 
-/**
- * Elevator strategy base class. Used to determine at which floor the elevator should move next.
- */
+// Elevator strategy class: Determines to which floor the elevator should move next.
 class ElevatorStrategy {
 public:
 	virtual ~ElevatorStrategy();
-	/**
-	 * Creates a plan for the simulation. 
-	 * Default implementation does nothing but saving the building pointer.
-	 */
-	virtual void createPlan(const Building*);
-	/** 
-	 * get next floor to visit.
-	 */
-	virtual int nextFloor() = 0;
+	virtual void createPlan(const Building*);	// create a plan for the simulation - the default implementation does nothing but saving the building pointer
+	virtual int nextFloor() = 0;				// get the next floor to visit
 protected:
-	/** Pointer to current building, set by createPlan() */
-	const Building* building;
+	const Building* building;					// pointer to current building, set by createPlan()
 };
 
 #endif /* ELEVATORSTRATEGY_HPP_ */

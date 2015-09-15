@@ -4,35 +4,25 @@
 class ListItem {
 public:
 	/** 
-	 * Create a list item between two elements with given content 
-	 * Also modify the corresponding previous and next pointers of prev and next item
-	 **/
+	 * create a list item between two elements with a given given content
+	 * (also modify previous->next and next->previous)
+	 */
 	ListItem(ListItem *prev, ListItem *next, const int& content);
-
 	/** 
-	 * Delete a list item. Change also the pointers of previous and next elements to not
-	 * show on this item anymore.
-	**/
+	 * delete this list item (also change previous->next and next->previous
+	 * to not point to this item anymore)
+	 */
 	~ListItem();
-
-	/** return element content as reference */
-	int& getContent();
-
-	/** next list item, NULL if there is no next */
-	ListItem* getNext();
-
-	/** previous list item, NULL if there is no previous */
-	ListItem* getPrevious();
-
-private:
-	/** previous and next items in list */
-	ListItem *previous, *next;
-
-	/** content of the list item */
-	int content;
+	int& getContent();			// get a reference to the contained data
+	ListItem* getNext();		// get the next list item or NULL
+	ListItem* getPrevious();	// get the previous list item or NULL
 	
-	/** Copy constructor in private area to forbid copying */
-	ListItem(const ListItem& other);
+	ListItem(const ListItem& other) = delete;
+	ListItem& operator=(const ListItem& other) = delete;
+private:
+	ListItem *previous;			// previous item in list
+	ListItem *next;				// next item in list
+	int content;				// content of this list item
 };
 
 #endif /* LISTITEM_HPP_ */
