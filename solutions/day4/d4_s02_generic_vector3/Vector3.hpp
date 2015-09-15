@@ -9,44 +9,44 @@ public:
 	Vector3() :
 			a(0), b(0), c(0) {
 	}
-
+	
 	Vector3(T a, T b, T c) :
 			a(a), b(b), c(c) {
 	}
-
+	
 	Vector3(const Vector3& other) :
 			a(other.a), b(other.b), c(other.c) {
 	}
-
+	
 	Vector3<T> operator+(const Vector3<T>& rhs) const {
 		return Vector3(a + rhs.a, b + rhs.b, c + rhs.c);
 	}
-
+	
 	Vector3<T> operator-(const Vector3<T>& rhs) const {
 		return Vector3(a - rhs.a, b - rhs.b, c - rhs.c);
 	}
-
+	
 	T operator*(const Vector3<T>& rhs) const {
 		return a * rhs.a + b * rhs.b + c * rhs.c;
 	}
-
+	
 	Vector3<T> operator*(const T& rhs) const {
 		return Vector3(a * rhs, b * rhs, c * rhs);
 	}
-
+	
 	Vector3<T> operator/(const T& rhs) const {
 		return Vector3(a / rhs, b / rhs, c / rhs);
 	}
-
-	inline T getA() const {
+	
+	T getA() const {
 		return a;
 	}
-
-	inline T getB() const {
+	
+	T getB() const {
 		return b;
 	}
-
-	inline T getC() const {
+	
+	T getC() const {
 		return c;
 	}
 private:
