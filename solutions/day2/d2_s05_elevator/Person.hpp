@@ -5,13 +5,11 @@
 
 class Person {
 public:
-	Person(int destinationFloor);
-	~Person();
-
-	int getDestinationFloor() const;
-	
+	Person(int destinationFloor);		// create a person with given destination
+	~Person();							// destructor
+	int getDestinationFloor() const;	// get the destination floor of this person
 private:
-	int destinationFloor;
+	int destinationFloor;				// destination floor of this person
 };
 
 typedef std::shared_ptr<Person> PersonPtr;

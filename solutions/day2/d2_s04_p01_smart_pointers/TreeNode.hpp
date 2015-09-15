@@ -1,9 +1,4 @@
-/*
- * TreeNode.hpp
- *
- *  Created on: Aug 15, 2013
- *      Author: jgdo
- */
+// Author: jgdo, created on: Aug 15, 2013
 
 #ifndef TREENODE_HPP_
 #define TREENODE_HPP_
@@ -11,26 +6,18 @@
 #include <memory>
 class TreeNode;
 
-// typedef for better reading
+// typedef for better readability
 typedef std::shared_ptr<TreeNode> TreeNodePtr;
 
 class TreeNode {
 public:
-	/** Creates a new tree node and makes it shared */
+	/** create a new tree node and make it shared */
 	static TreeNodePtr createNode(int content, TreeNodePtr left = TreeNodePtr(), TreeNodePtr right = TreeNodePtr());
-
-	/** Tree node destructor **/
 	~TreeNode();
-
 private:
-	/** Creates a tree node */
-	TreeNode(int content, TreeNodePtr left, TreeNodePtr right);
-
-	/** left and right child */
-	TreeNodePtr leftChild, rightChild;
-
-	/** node content */
-	int content;
+	TreeNode(int content, TreeNodePtr left, TreeNodePtr right);	// create a tree node
+	TreeNodePtr leftChild, rightChild;							// left and right child
+	int content;												// node content
 };
 
 #endif /* TREENODE_HPP_ */
