@@ -16,7 +16,11 @@
    * deactivate Semantic Errors: Window -> Preferences -> C/C++ -> Code Analysis -> Syntax and Semantic Errors
   * install Qt Creator
   * add symlinks to directories and programs
-  * change ~/.gitconfig and ~/.bashrc
+  * override `~/.gitconfig` with the supplied one
+  * add aliases to `~/.bashrc`
+   * `alias ll="ls -la"`
+   * `alias ..="cd .."`
+   * `alias ...="cd ../.."`
 6. Clone exercise and lecture git repository and import the projects in Eclipse (and close them).
 7. Export the VM as an appliance.
 
