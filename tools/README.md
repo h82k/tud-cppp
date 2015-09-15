@@ -8,7 +8,15 @@
 4. Install and configure the required tools:
   * If an Arch Linux derivate was chosen: Execute `install.sh` with the future development user inside the VM.
   * Otherwise: Adapt the installation script to the chosen distribution and execute it then.
-5. Configure stuff (e.g. deactivate automatic updates notification and screen locking).
+5. Configure stuff:
+  * deactivate automatic updates notification
+  * deactivate screen locking
+  * Eclipse
+   * enable automatic save on build: Window -> Preferences -> General -> Workspace -> Save automatically before build
+   * deactivate Semantic Errors: Window -> Preferences -> C/C++ -> Code Analysis -> Syntax and Semantic Errors
+  * install Qt Creator
+  * add symlinks to directories and programs
+  * change ~/.gitconfig and ~/.bashrc
 6. Clone exercise and lecture git repository and import the projects in Eclipse (and close them).
 7. Export the VM as an appliance.
 
