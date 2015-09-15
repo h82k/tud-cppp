@@ -10,9 +10,10 @@
 
 # compiler options
 CC		= g++
-# -Wall : show all warnings
-# -MMD -MP : generate dependencies to header files so that make recognizes changes to header files,
-#            which otherwise do not appear explicitly in any rule
+# -Wall 		show all warnings
+# -MMD -MP		generate dependencies to header files so that make recognizes changes to header files,
+#				which otherwise do not appear explicitly in any rule
+# -std=c++11	enable C++11
 CFLAGS	= -Wall -std=c++11 -MMD -MP
 
 # source code
@@ -24,7 +25,7 @@ DEPEND	= $(patsubst %.cpp, %.d, $(SOURCES))
 # default target (create the binary)
 all: $(BINARY)
 
-# include dependencies to detect header file changes (make creates targets)
+# include dependencies to detect header file changes (this creates new targets!)
 -include $(DEPEND)
 
 # create the binary
