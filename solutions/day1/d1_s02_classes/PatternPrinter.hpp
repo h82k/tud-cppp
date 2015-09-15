@@ -6,10 +6,10 @@
 class PatternPrinter {
 public:
 	PatternPrinter();
-	void printPattern();
+	void printPattern();			// read width and print chars in a pattern
 private:
-	void printNChars(int n);
-	int readWidth();
+	void printNChars(int n);		// print n characters to the console
+	int readWidth();				// read width (user input)
 	CharGenerator charGenerator;
 };
 

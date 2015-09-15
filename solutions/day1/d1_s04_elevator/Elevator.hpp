@@ -4,44 +4,20 @@
 #include <vector>
 #include "Person.hpp"
 
-/**
- * Represents an Elevator which can contain people and move to a floor.
- */
 class Elevator {
 public:
-	/**
-	 * Create an empty Elevator.
-	 */
-	Elevator();
-	
-	int getFloor();
-	
-	/** get consumed energy */
-	double getEnergyConsumed();
-	
-	/** Moves the elevator to given floor */
-	void moveToFloor(int floor);
-	
-	/** Returns number of people in Elevator */
-	int getNumPeople();
-	
-	/** returns i-th person in Elevator */
-	Person getPerson(int i);
-	
-	/** add people to Elevator */
-	void addPeople(std::vector<Person> people);
-	
-	/** remove people which arrived at their destination */
-	std::vector<Person> removeArrivedPeople();
+	Elevator();						// create an elevator at floor 0, no people inside and 0 energy consumed
+	int getFloor();					// get number of floor the elevator is currently at
+	double getEnergyConsumed();		// get consumed energy
+	void moveToFloor(int floor);	// move the elevator to given floor (consumes energy)
+	int getNumPeople();				// get number of people in Elevator
+	Person getPerson(int i);		// get i-th person in Elevator
+	void addPeople(std::vector<Person> people);		// add people to Elevator
+	std::vector<Person> removeArrivedPeople();		// remove people which arrived
 private:
-	/** current floor number */
-	int currentFloor;
-	
-	/** people in elevator */
-	std::vector<Person> containedPeople;
-	
-	/** energy consumed */
-	double energyConsumed;
+	int currentFloor;								// current floor number
+	std::vector<Person> containedPeople;			// people currently in elevator
+	double energyConsumed;							// energy consumed
 };
 
 #endif /* ELEVATOR_HPP_ */

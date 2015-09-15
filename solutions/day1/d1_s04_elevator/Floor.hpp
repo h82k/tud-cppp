@@ -4,24 +4,14 @@
 #include <vector>
 #include "Person.hpp"
 
-/**
- * Represents a building floor with waiting people.
- */
 class Floor {
 public:
-	/** Return number of people on this floor */
-	int getNumPeople();
-	
-	/** return i-th person on this floor */
-	Person getPerson(int i);
-	
-	/** Add a person to this floor */
-	void addWaitingPerson(Person h);
-	
-	/** remove all humans from this floor */
-	std::vector<Person> removeAllPeople();
+	int getNumPeople();						// get the number of people on this floor
+	Person getPerson(int i);				// get the i-th person on this floor
+	void addWaitingPerson(Person h);		// add a person to this floor
+	std::vector<Person> removeAllPeople();	// remove all persons from this floor
 private:
-	std::vector<Person> containedPeople;
+	std::vector<Person> containedPeople;	// persons on this floor
 };
 
 #endif /* FLOOR_HPP_ */
