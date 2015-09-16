@@ -67,6 +67,9 @@ Achte bei den Methoden zum Einfügen und Entfernen von Elementen darauf, dass be
 Vergiss nicht, \texttt{currentSize} bei jeder Operation entsprechend anzupassen.
 Falls die Liste leer ist, sollten \texttt{deleteFirst()} und \texttt{deleteLast()} einfach nichts ändern\footnote{Lieber würde man hier einen Fehler werfen, aber Exceptions haben wir an dieser Stelle noch nicht behandelt.}.
 
+Implementieren Sie außerdem den \texttt{operator<<}, um bequem Listen auf der Kommandozeile auszugeben.
+Die übergebene Referenz ist nicht \texttt{const}, da wir ansonsten entsprechend eine \texttt{const}-Version des  \texttt{ListIterator} benötigen würden.
+
 \begin{lstlisting}
 class List {
 public:
@@ -87,6 +90,11 @@ private:
 	ListItem *first, *last;		// first and last item pointers (NULL if list is empty)
 	int currentSize;				// current size of the list
 };
+
+#include <iostream>
+
+/** Print the given list to the stream. N.B. list should actually be const but then we would need const ListIterators */
+std::ostream &operator<<(std::ostream &stream, List &list);
 \end{lstlisting}
 
 \subsection{}

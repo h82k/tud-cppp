@@ -29,6 +29,7 @@ private:
 
 #include <iostream>
 
+/** Print the given list to the stream. N.B. list should actually be const but then we would need const ListIterators */
 std::ostream &operator<<(std::ostream &stream, List &list);
 
 #endif /* LIST_HPP_ */
