@@ -28,7 +28,23 @@ In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout
 	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
 }
 
-\subsection*{Häufige Compiler-Fehlermeldungen des gcc}
+\subsection*{Häufige (Compiler-)Fehlermeldungen}
+
+Im Folgenden sind einige Fehlermeldungen des \texttt{gcc} zusammen mit möglichen Lösungsstrategien aufgelistet.
+Die generelle Faustregel lautet: 
+\textbf{Compilerfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
+Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
+
+% Indents all of the following paragraphs by 1cm
+\setlength{\leftskip}{1cm}
+
+\begin{verbatim}
+Launching failed: Binary not found
+\end{verbatim}
+
+Dieser Fehler wird von Eclipse geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
+Hier sollte man sicherstellen, dass der \texttt{PE Windows Parser} aktiv ist:
+\texttt{Window -> Preferences -> C/C++Build / Settings -> Tab: Binary Parsers -> PE Windows Parser}. 
 
 \begin{verbatim}
 error: expected ';' before ...
@@ -37,8 +53,7 @@ error: expected ';' before ...
 Dies bedeutet, dass in der Zeile davor ein \textbf{;} vergessen wurde.
 Allgemein beziehen sich Fehlermeldungen \textbf{expected ... before ...} häufig auf die Zeile \textbf{vor} dem markierten Statement.
 Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen Header-Datei sein kann. Beispiel:
-
-\begin{lstlisting}
+\begin{lstlisting}[xleftmargin=1cm]
 #include "main.h"
 int main() {
 	...
@@ -60,3 +75,7 @@ Dies bedeutet, dass der Compiler an der entsprechenden Stelle einen Ausdruck vom
 Dies bedeutet, dass das Programm zwar korrekt kompiliert wurde, der Linker aber die Definition des entsprechenden Bezeichners nicht finden kann.
 Das kann passieren, wenn man dem Compiler durch einen Prototypen mitteilt, dass eine bestimmte Funktion existiert (\textbf{deklariert}), diese aber nirgendwo tatsächlich \textbf{definiert}.
 Überprüfe in diesem Fall, ob der Bezeichner tatsächlich definiert wurde und ob die Signatur der Definition mit dem Prototypen übereinstimmt.
+
+
+% Reset indention
+\setlength{\leftskip}{0pt}
