@@ -10,10 +10,13 @@
 
 # compiler options
 CC		= gcc
-# -Wall 		show all warnings
+# -g			add debugging symbols to the binary
+# -O0			deactivate optimizations
+# -Wall			show reasonable warnings
+# -Wextra		show more warnings
 # -MMD -MP		generate dependencies to header files so that make recognizes changes to header files,
 #				which otherwise do not appear explicitly in any rule
-CFLAGS	= -Wall -MMD -MP
+CFLAGS	= -g -O0 -Wall -Wextra -MMD -MP
 BUILD	= build
 
 # source code
