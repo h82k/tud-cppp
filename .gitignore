@@ -1,0 +1,37 @@
+# C/C++ build files
+*.o
+*.d
+*.exe
+*.abs
+*.mhx
+build/
+
+# Eclipse project and configuration files
+Release/
+Debug/
+.settings
+.cproject
+.project
+
+# LaTeX build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# LaTeX generated pdf files
+latex/**/day*.pdf
+latex/**/cheatsheet.pdf
+
+# ISO and signatures/hashums
+*.iso
+*SUMS
+*.sign
+
+# Tools and VM
+*.ova
+Softune
+FLASHly
+tools/vm

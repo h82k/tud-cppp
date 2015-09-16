@@ -1,8 +1,0 @@
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-day*.pdf
-cheatsheet.pdf
-*.out
-*.synctex.gz
