@@ -27,4 +27,8 @@ private:
 	friend class ListIterator;
 };
 
+#include <iostream>
+
+std::ostream &operator<<(std::ostream &stream, List &list);
+
 #endif /* LIST_HPP_ */

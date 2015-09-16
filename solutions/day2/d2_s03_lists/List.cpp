@@ -136,3 +136,11 @@ ListIterator List::begin() {
 ListIterator List::end() {
 	return ListIterator(this, nullptr);
 }
+
+std::ostream &operator<<(std::ostream &stream,  List &list){
+	for (ListIterator iter = list.begin(); iter != list.end(); ++iter)
+	{
+		stream << *iter << ", ";
+	}
+	return stream;
+}

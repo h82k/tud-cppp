@@ -29,4 +29,6 @@ int main() {
 	for (ListIterator iter = list2.begin(); iter != list2.end(); ++iter) {
 		std::cout << *iter << std::endl;
 	}
+
+	std::cout << list2 << std::endl;
 }
