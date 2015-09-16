@@ -54,11 +54,12 @@ Dadurch können beide nie aufgerufen werden und der Compiler kann dies zur Compi
 \begin{lstlisting}
 private:
 	ListItem(const ListItem& other);		// private copy constructor (without implementation)
-	ListItem& operator=(const ListItem& other);	// private assignment operator (w/o implementation)
+	ListItem& operator=(const ListItem &other);	// private assignment operator (w/o implementation)
 \end{lstlisting}
 
 \hints{
-	\item Alternativ kann man ab C++11 Funktionen explizit löschen: \texttt{ListItem(const ListItem \&other) = delete;}
+	\item Alternativ kann man ab C++11 Funktionen explizit löschen:\\ \texttt{ListItem(const ListItem \&other) = delete;}\\
+    \texttt{ListItem\& operator=(const ListItem \&other) = delete;}
 }
 
 \subsection{Klasse \texttt{List}}

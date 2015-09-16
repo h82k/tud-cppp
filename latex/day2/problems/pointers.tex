@@ -36,7 +36,7 @@ Welche Regelmäßigkeiten stellst du fest?
 \end{lstlisting}
 
 \hints{
-	\item Gehe dabei von innen nach außen vor.
+	\item Gehe dabei von rechts nach links vor.
 }
 
 
@@ -91,3 +91,26 @@ int main() {
 Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
 Führe das Programm aus.
 Hast du diese Ausgabe erwartet?
+
+\subsection{Const Correctness und Pointer}
+
+Versuche für jede der Variablen im folgenden Code je eine Verwendung zu finden, die (i) gültig ist (= fehlerfrei kompiliert) und
+(ii) nicht gültig ist (= einen Compiler-Fehler wirft).
+
+Was ist jeweils der Grund?
+Welche Pointer verhalten sich gleich?
+
+\begin{lstlisting}
+    int i = 1;    
+    int *iP = &i;
+    const int *ciP = &i;
+    int const *ciP2 = &i;
+    int * const icP = &i;    
+    const int * const cicP = &i;
+
+    // Advanced const correctness
+    
+    int **iPP = &iP;
+    const int * const *cicPP = &iP; // Error
+    int ** const iPcP = &iP;
+\end{lstlisting}
