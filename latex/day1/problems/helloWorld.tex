@@ -28,7 +28,7 @@ In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout
 	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
 }
 
-\subsection*{Häufige Compiler-Fehlermeldungen des gcc}
+\subsection*{Häufige (Compiler-)Fehlermeldungen}
 
 Im Folgenden sind einige Fehlermeldungen des \texttt{gcc} zusammen mit möglichen Lösungsstrategien aufgelistet.
 Die generelle Faustregel lautet: 
@@ -37,6 +37,14 @@ Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern komm
 
 % Indents all of the following paragraphs by 1cm
 \setlength{\leftskip}{1cm}
+
+\begin{verbatim}
+Launching failed: Binary not found
+\end{verbatim}
+
+Dieser Fehler wird von Eclipse geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
+Hier sollte man sicherstellen, dass der \texttt{PE Windows Parser} aktiv ist:
+\texttt{Window -> Preferences -> C/C++Build / Settings -> Tab: Binary Parsers -> PE Windows Parser}. 
 
 \begin{verbatim}
 error: expected ';' before ...
