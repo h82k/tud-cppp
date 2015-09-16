@@ -10,28 +10,29 @@
 
 # compiler options
 CC		= gcc
-# -g			add debugging symbols to the binary
+# -g			add debugging symbols to the binary executable file
 # -O0			deactivate optimizations
 # -Wall			show reasonable warnings
 # -Wextra		show more warnings
 # -MMD -MP		generate dependencies to header files so that make recognizes changes to header files,
 #				which otherwise do not appear explicitly in any rule
 CFLAGS	= -g -O0 -Wall -Wextra -MMD -MP
+# build directory (to store the executable the .o and .d files)
 BUILD	= build
 
 # source code
-BINARY	= main.exe
+BINARY	= $(BUILD)/main.exe
 SOURCES	= $(wildcard *.c)
 OBJECTS	= $(patsubst %.c, $(BUILD)/%.o, $(SOURCES))
 DEPEND	= $(patsubst %.c, $(BUILD)/%.d, $(SOURCES))
 
-# default target (create the binary)
+# default target (create the binary executable file)
 all: $(BINARY)
 
 # include dependencies to detect header file changes (this creates new targets!)
 -include $(DEPEND)
 
-# create the binary
+# create the binary executable file
 $(BINARY): $(OBJECTS)
 	$(CC) -o $(BINARY) $^
 
@@ -41,4 +42,4 @@ $(BUILD)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(BUILD) $(BINARY)
+	rm -rf $(BUILD)
