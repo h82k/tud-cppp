@@ -1,25 +1,25 @@
 #include <iostream>
 
 /**
-*****************************************
-Aufgabe 1 Teil b) 
-*****************************************
-*&intVal	Wert von intVal
-*&pIntVal	Wert von pIntVal (Adresse von intVal)
-&*pIntVal	Wert von pIntVal (Adresse von intVal)
-**&pIntVal	Wert von intVal
-*&*&intVal	Wert von intVal
-&*&pIntVal	Adresse von pIntVal (Adresse von intVal)
-*&*pIntVal	Wert von intVal
-*****************************************
-Aufgabe 1 Teil c)
-*****************************************
-*intVal		intVal ist kein Zeiger, kann also auch nicht dereferenziert werden
-**pIntVal	*pIntVal ist ein int, also kein Zeiger und kann somit auch nicht weiter dereferenziert werden
-**&*pIntVal	*pIntVal ist ein int, &*pIntVal ist ein Zeiger auf einen int, *&*pIntVal ist wieder ein int, 
-			also kann er nicht weiter derefernziert werden
-&*intVal	intVal ist ein int, kann also nicht dereferenziert werden.
-&42			42 ist ein Literal vom Typ int und keine Variable. Nur Variablen haben Adressen im Speicher.
+ *****************************************
+ Aufgabe 1 Teil b)
+ *****************************************
+ *&intVal	Wert von intVal
+ *&pIntVal	Wert von pIntVal (Adresse von intVal)
+ &*pIntVal	Wert von pIntVal (Adresse von intVal)
+ **&pIntVal	Wert von intVal
+ *&*&intVal	Wert von intVal
+ &*&pIntVal	Adresse von pIntVal (Adresse von intVal)
+ *&*pIntVal	Wert von intVal
+ *****************************************
+ Aufgabe 1 Teil c)
+ *****************************************
+ *intVal		intVal ist kein Zeiger, kann also auch nicht dereferenziert werden
+ **pIntVal	*pIntVal ist ein int, also kein Zeiger und kann somit auch nicht weiter dereferenziert werden
+ **&*pIntVal	*pIntVal ist ein int, &*pIntVal ist ein Zeiger auf einen int, *&*pIntVal ist wieder ein int,
+ also kann er nicht weiter derefernziert werden
+ &*intVal	intVal ist ein int, kann also nicht dereferenziert werden.
+ &42			42 ist ein Literal vom Typ int und keine Variable. Nur Variablen haben Adressen im Speicher.
  */
 
 void swapPointer(int *i1, int *i2) {
@@ -45,15 +45,54 @@ void foo(int& i) {
 	std::cout << "&i3 = " << &i3 << std::endl;
 }
 
+void constCorrectnessWithVariables() {
+	int i = 1;
+	int j = 2;
+
+	int *iP = &i;
+
+	const int *ciP = &i;
+	ciP = &j;
+//	*ciP = -1; // Error
+
+	int const *ciP2 = &i; // Equivalent to ciP ("to-the-right" style)
+	ciP2 = &j;
+//	*ciP2 = -1; // Error
+
+	int * const icP = &i;
+	*icP = -2;
+//	icP = ciP; // Error
+
+	const int * const cicP = &i;
+//	*cicP = -3; // Error
+//	cicP = ciP; // Error
+
+// Advanced const correctness
+
+	int **iPP = &iP;
+//	const int **ciPP = &iP; // Error
+
+	const int * const *cicPP = &iP;
+//	**cicPP = 3; // Error
+//	*cicPP = &iP; // Error
+	cicPP = iPP;
+
+	int ** const iPcP = &iP;
+	**iPcP = 3;
+//	*iPcP = &iP; //Error
+//	iPcP = iPP; //Error
+
+}
+
 int main() {
-	// Teil d)
+// Teil d)
 	int i1 = 3, i2 = 5;
 	std::cout << i1 << " " << i2 << std::endl;
 	swapPointer(&i1, &i2);
 	std::cout << i1 << " " << i2 << std::endl;
 	swapReference(i1, i2);
 	std::cout << i1 << " " << i2 << std::endl;
-	// Teil f)
+// Teil f)
 	int var = 42;
 	std::cout << "&var = " << &var << std::endl;
 	foo(var);
