@@ -14,6 +14,7 @@
   * Eclipse
    * enable automatic save on build: Window -> Preferences -> General -> Workspace -> Save automatically before build
    * deactivate Semantic Errors: Window -> Preferences -> C/C++ -> Code Analysis -> Syntax and Semantic Errors
+   * enable binary parser (Makefile projects): Window -> Preferences -> C/C++ -> New C/C++ Project -> Makefile Projects -> Binary Parsers -> Elf Parser
   * install Qt Creator
   * add symlinks to directories and programs
   * override `~/.gitconfig` with the supplied one
