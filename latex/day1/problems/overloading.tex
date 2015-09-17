@@ -44,7 +44,7 @@ ClassName::~ClassName() {/* destructor implementation ... */}
 
 \hints{
 	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
-	\item Der Compiler wird automatisch einen \texttt{public} Destruktor und \texttt{public} Copy-Konstruktor erzeugen, falls sie nicht definiert wurden. Ebenso wird ein \texttt{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren definiert wurden.
+	\item Der Compiler wird automatisch einen \texttt{public} Destruktor und \texttt{public} Copy-Konstruktor erzeugen, falls sie nicht \textbf{deklariert} wurden. Ebenso wird ein \texttt{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren deklariert wurden.
 	\item Würden beim Copy-Konstruktor \texttt{other} by-Value übergeben werden, müsste eine Kopie von \texttt{other} angelegt werden.
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.
 }
