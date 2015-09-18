@@ -43,9 +43,15 @@ Launching failed: Binary not found
 \end{verbatim}
 
 Dieser Fehler wird von Eclipse geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
-Hier sollte man sicherstellen, dass der \texttt{Elf Parser} (oder \texttt{PE Windows Parser} unter Windows) aktiv ist:
+Das kann zwei Gründe haben:
+\begin{itemize}
+\item Der Kompiliervorgang ist gescheitert. Prüfe die \texttt{Console} auf Fehler.
+\item Die Binary existiert, wird aber nicht von Eclipse erkannt.
+Hier solltest du sicherstellen, dass der \texttt{Elf Parser} (oder \texttt{PE Windows Parser} unter Windows) aktiv ist:
 \texttt{Window -> Preferences -> C/C++Build / Settings -> Tab: Binary Parsers -> Elf Parser}. 
 Alternativ kann man in der \texttt{Run Configuration} die auszuführende Datei manuell eintragen.
+\end{itemize}
+
 
 \begin{verbatim}
 error: expected ';' before ...
