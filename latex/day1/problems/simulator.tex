@@ -99,16 +99,16 @@ private:
 
 
 \subsection{Komfortfunktionen}
-Implementiere nachfolgende \texttt{public} Funktionen, um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufketten wie
+Erweitre die Klasse \texttt{Building} um folgende \texttt{public} Funktionen, um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufketten wie
 \begin{lstlisting}
 	b.getElevator().addPeople(b.getFloor(b.getElevator().getFloor()).removeAllPeople());
 \end{lstlisting}
 
-zu vermeiden (\emph{Law of Demeter}).
+zu vermeiden (\emph{Law of Demeter}\footnote{\url{https://en.wikipedia.org/wiki/Law_of_Demeter}}).
 Der Simulator sollte nur mit Methoden der Klasse \texttt{Building} kommunizieren.
 
 \begin{lstlisting}
-void letPeopleIn();								// let people on current floor into elevator
+void letPeopleIn();									// let people on current floor into elevator
 void moveElevatorToFloor(int i);					// move the elevator to a given floor
 void addWaitingPerson(int floor, Person p);	// add a person to a given floor
 std::vector<Person> removeArrivedPeople();	// remove people which arrived at their destination from the elevator on the current floor

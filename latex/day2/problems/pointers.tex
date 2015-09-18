@@ -92,10 +92,16 @@ Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
 Führe das Programm aus.
 Hast du diese Ausgabe erwartet?
 
-\subsection{Const Correctness und Pointer}
+\subsection{Const Correctness}
 
-Versuche für jede der Variablen im folgenden Code je eine Verwendung zu finden, die (i) gültig ist (= fehlerfrei kompiliert) und
-(ii) nicht gültig ist (= einen Compiler-Fehler wirft).
+In dieser Aufgabe setzt du dich mit der Bedeutung des Schlüsselworts \texttt{const} im Kontext von Pointern auseinander.
+
+Versuche für jede der Variablen im folgenden Code je eine \emph{Verwendung} zu finden, die  
+\begin{itemize}
+\item gültig ist (= fehlerfrei kompiliert) und
+\item nicht gültig ist (= einen Compiler-Fehler wirft).
+\end{itemize}
+
 
 Was ist jeweils der Grund?
 Welche Pointer verhalten sich gleich?
@@ -107,10 +113,14 @@ Welche Pointer verhalten sich gleich?
     int const *ciP2 = &i;
     int * const icP = &i;    
     const int * const cicP = &i;
+\end{lstlisting}
 
-    // Advanced const correctness
-    
+\paragraph{Mehrstufige Pointer}
+
+Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
+
+\begin{lstlisting}
     int **iPP = &iP;
-    const int * const *cicPP = &iP; // Error
+    const int * const *cicPP = &iP;
     int ** const iPcP = &iP;
 \end{lstlisting}

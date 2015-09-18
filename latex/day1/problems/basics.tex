@@ -77,7 +77,7 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \hints{
 	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
-	\item Denke daran, auch in \texttt{functions.cpp} \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
+	\item Denke daran, auch in \texttt{functions.cpp} den Header \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
 	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \texttt{\#include <Bibliotheksname>} sowie per \texttt{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
 	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \texttt{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
 }
