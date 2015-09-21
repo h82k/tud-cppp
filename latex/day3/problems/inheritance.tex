@@ -31,15 +31,13 @@ class Student: public Person {	// public inheritance
 public:
 	Student(const std::string &name, const std::string &studentID); // init name and ID
 	~Student();											// destructor
-	std::string getInfo() const;					// override Person::getInfo() - get name and studentID
-	//std::string getInfo() override const;	// variant in C++11, which ensures that a superclass declares this method
+	std::string getInfo() const;					// Person::getInfo() - get name and studentID
 private:
 	std::string studentID;							// the student ID of the student
 };
 \end{lstlisting}
 
 \hints{
-	\item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \texttt{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \texttt{@Override} in Java). Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht.
 	\item Du kannst bei Bedarf die \texttt{getInfo()}-Implementation der Elternklasse \texttt{Person} von \texttt{Student} aus mittels \texttt{Person::getInfo()} aufrufen.
 }
 
@@ -70,6 +68,8 @@ Teste deine Implementation erneut und vergewissere dich, dass nun immer die rich
 	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \texttt{virtual} in der Basisklasse gesetzt werden.
 	In den abgeleiteten Klassen kann \texttt{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
 	Es ist aber hilfreich, auch dort der Lesbarkeit halber das Schlüsselwort zu verwenden.
+	\item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \texttt{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \texttt{@Override} in Java).
+	Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht.
 }
 
 \subsection{Virtueller Destruktor}
