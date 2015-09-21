@@ -80,11 +80,11 @@ In diesem Fall wird \texttt{sizeof()} nämlich die \textbf{Größe des Zeigers} 
 	std::cout << sizeof(pArr) << std::endl; // 4 on 32-bit machine, 8 on 64-bit
 \end{lstlisting}
 
-\subsection{}
+\subsection{Arrays anlegen}
 Lege in der \texttt{main}-Funktion ein \texttt{int}-Array mit 10 Elementen an, und initialisiere es mit den Zahlen 1 bis 10.
 Iteriere in einer Schleife über das Array und gib alle Elemente nacheinander aus.
 
-\subsection{}
+\subsection{printElements implementieren}
 In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
 Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
@@ -95,7 +95,7 @@ Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie gro
 	void printElements(const int *const array, const unsigned int size);
 \end{lstlisting}
 
-\subsection{}
+\subsection{Offset-basierte Ausgabe}
 Wie wir vorher gesehen haben, kann man mit Zeigern auch rechnen und diese nachträglich ändern.
 Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder Iteration den Zeiger selbst inkrementieren!
 
@@ -108,7 +108,7 @@ Anstatt mit einem Index das Array zu durchlaufen, kann man stattdessen bei jeder
 
 Schreibe die Funktion aus der vorherigen Aufgabe so um, dass sie einen laufenden Zeiger anstatt eines Indexes verwendet.
 
-\subsection{}
+\subsection{Iterator-basierte Ausgabe}
 Ebenso kann man auch die Arraygröße auf eine andere Weise übergeben, indem man die Adresse des Elements nach dem letzten Element angibt.
 Dadurch werden Schleifen der folgenden Form möglich.
 
@@ -124,7 +124,7 @@ Schreibe die Funktion aus der vorherigen Aufgabe entsprechend um.
 Vergiss nicht, den Zeiger als \texttt{const} zu definieren, da Elemente nur gelesen werden.
 Du kannst hier \texttt{const} doppelt verwenden, um auch sicherzustellen, dass der \texttt{end}-Zeiger nicht verändert wird.
 
-\subsection{}
+\subsection{Subarrays ausgeben}
 Die obige Methode, über Elemente eines Arrays zu iterieren, mag dir zunächst etwas ungewöhnlich erscheinen.
 Sie hat jedoch den Vorteil, dass man anstatt des ganzen Arrays auch kleinere zusammenhängende Teile davon an Funktionen übergeben kann, indem man Zeiger auf die entsprechenden Anfangs-und Endelemente setzt.
 Beispiel:
@@ -136,7 +136,7 @@ Beispiel:
 
 Experimentiere etwas mit dieser Übergabemethode in deiner eigenen Funktion!
 
-\subsection{}
+\subsection{Arrays auf dem Heap}
 Bisher haben wir das Array auf dem Stack angelegt
 Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen.
 Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.

@@ -7,6 +7,8 @@ In dieser Aufgabe sollst dueine eigene Vektor-Klasse schreiben und einige Operat
 \hints{
 	\item Am Tag 4 soll dieser Vektor um weitere Funktionen erweitern werden.
 	Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
+    
+    \item Ausführliche Hinweise zum Überladen von Operatoren findest du hier: \url{http://en.cppreference.com/w/cpp/language/operators}.
 }
 
 \subsection{Konstruktor und Destruktor}
@@ -75,7 +77,7 @@ double Vector3::operator*(Vector3 rhs)  {/* function implementation ...*/}
 }
 
 \subsection{Ausgabe}
-Überlade den $<<$ Operator zur Ausgabe eines Vektors mit der gewohnten \texttt{std::cout $<<$ ...} Syntax, indem du den folgenden Funktionsprototypen \textbf{außerhalb} der Klassendefinition setzt
+Überlade den \texttt{operator<<} zur Ausgabe eines Vektors mit der gewohnten \texttt{std::cout $<<$ ...} Syntax, indem du den folgenden Funktionsprototypen \textbf{außerhalb} der Klassendefinition setzt
 
 \begin{lstlisting}
 std::ostream& operator<<(std::ostream &out, Vector3 rhs);
@@ -90,10 +92,24 @@ std::ostream& operator<<(std::ostream &out, Vector3 rhs)  {
 }
 \end{lstlisting}
 
-Definiere zudem Funktionen die die Werte für die \texttt{private} Attribute \texttt{a}, \texttt{b} und \texttt{c} zurückgeben (Getterfunktionen), anderenfalls wird der Compiler beim Zugriff auf die Attribute folgende Fehlermeldung werfen.
-\begin{verbatim}
-error: 'double Vector3::a' is private within this context
-\end{verbatim}
+Da der \texttt{operator<<} außerhalb der Klasse \texttt{Vector} liegt, hat dieser keinen Zugriff auf die privaten Member der Klasse.
+
+Du hast zwei Möglichkeiten, Zugriff auf diese zu erlangen: per Getter und per \texttt{friend}-Deklaration.
+
+\paragraph{Getter}
+Definiere die folgenden Gettermethoden die die Werte für die \texttt{private} Attribute \texttt{a}, \texttt{b} und \texttt{c} zurückgeben:
+\begin{lstlisting}
+  double getA();	// get the first component
+  double getB();	// get the second component
+  double getC();	// get the third component
+\end{lstlisting}
+
+\paragraph{friend}
+Füge die folgende Zeile am Ende der Klasse \texttt{Vector} hinzu:
+\begin{lstlisting}
+    friend  std::ostream& operator<<(std::ostream&, Vector3);
+\end{lstlisting}
+Von nun an, kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
 
 \hints{
 	\item Denke daran, den \texttt{iostream} Header einzubinden.

@@ -68,8 +68,11 @@ Achte bei den Methoden zum Einfügen und Entfernen von Elementen darauf, dass be
 Vergiss nicht, \texttt{currentSize} bei jeder Operation entsprechend anzupassen.
 Falls die Liste leer ist, sollten \texttt{deleteFirst()} und \texttt{deleteLast()} einfach nichts ändern\footnote{Lieber würde man hier einen Fehler werfen, aber Exceptions haben wir an dieser Stelle noch nicht behandelt.}.
 
-Implementieren Sie außerdem den \texttt{operator<<}, um bequem Listen auf der Kommandozeile auszugeben.
-Die übergebene Referenz ist nicht \texttt{const}, da wir ansonsten entsprechend eine \texttt{const}-Version des  \texttt{ListIterator} benötigen würden.
+\paragraph{\texttt{operator<<} implementieren}
+Implementiere außerdem den \texttt{operator<<}, um bequem Listen auf der Kommandozeile auszugeben.
+Die übergebene Referenz ist -- entgegen der üblichen Konvention für \texttt{operator<<} -- nicht \texttt{const}, da wir ansonsten entsprechend eine \texttt{const}-Version des  \texttt{ListIterator} benötigen würden.
+
+Vergiss hier nicht, \texttt{operator<<} als \texttt{friend} von \texttt{List} zu deklarieren (wie zuvor bei \texttt{Vector}).
 
 \begin{lstlisting}
 class List {
@@ -88,7 +91,7 @@ public:
 	int deleteLast();				// delete last element and return it (return 0 if empty)
 	int deleteAt(int pos);		// delete element at position pos
 private:
-	ListItem *first, *last;		// first and last item pointers (NULL if list is empty)
+	ListItem *first, *last;		// first and last item pointers (nullptr if list is empty)
 	int currentSize;				// current size of the list
 };
 
@@ -98,12 +101,12 @@ private:
 std::ostream &operator<<(std::ostream &stream, List &list);
 \end{lstlisting}
 
-\subsection{}
+\subsection{Liste testen}
 Teste deine Implementation.
 Füge der Liste Elemente von beiden Seiten hinzu und lösche auch wieder welche.
 Kopiere die Liste und gib die Elemente nacheinander aus.
 
-\subsection{}
+\subsection{ListIterator}
 Bisher haben wir über \texttt{getNthElement()} auf die Elemente der Liste zugegriffen.
 Diese Methode kann insbesondere bei langen Listen sehr langsam sein.
 Deshalb werden wir einen Iterator schreiben, über den man auf die Listenelemente sequentiell zugreifen kann.
@@ -118,6 +121,7 @@ Somit können wir unsere Liste ähnlich zu \texttt{std::vector} verwenden:
 	}
 \end{lstlisting}
 
+\paragraph{Konstruktor und Operatoren} 
 Beginne mit einer Grundversion des Iterators.
 Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und Zeiger auf die Liste) entsprechend initialisiert.
 Implementiere Vergleichsoperator \texttt{operator!=} sowie den Dereferenzierungsoperator \texttt{operator*}.
@@ -183,7 +187,7 @@ ListIterator ListIterator::operator++(int) {
 }
 \end{lstlisting}
 
-Du wirst in den Methoden auf private Attribute der Liste zugreifen müssen. Um dies zu ermöglichen, könnte man öffentliche Getter für die Items der Liste schreiben.
+\paragraph{Zugriff von außen: ListIterator als friend-Klasse} Du wirst in den Methoden auf private Attribute der Liste zugreifen müssen. Um dies zu ermöglichen, könnte man öffentliche Getter für die Items der Liste schreiben.
 Dadurch würde jedoch jeder die Möglichkeit bekommen, direkt auf die Items der Liste zuzugreifen, was dem Geheimnisprinzip zuwiderläuft.
 Deshalb werden wir \texttt{ListIterator} stattdessen explizit erlauben, auf \texttt{private}-Attribute der Liste zuzugreifen.
 Dazu müssen wir \texttt{ListIterator} als \texttt{friend} von \texttt{List} deklarieren.
@@ -194,6 +198,7 @@ friend class ListIterator;
 
 Überlade auf die gleiche Weise auch den \texttt{operator-{}-} sowohl in Postfix als auch Präfix-Form.
 
+\paragraph{Iteratoren in List erzeugen} 
 Nun ist unsere Implementation fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
 Implementiere dazu die folgenden Methoden innerhalb der \texttt{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen.
 \begin{lstlisting}
@@ -213,7 +218,7 @@ class List;
 
 Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagen, dass die Klassen existieren, aber später definiert werden. Nun kannst problemlos \texttt{ListIterator.h} in \texttt{List.h} einbinden.
 
-\subsection{}
+\subsection{Liste mit ListIterator testen}
 Teste deine Implementation.
 Erstelle eine Liste, füge Elemente hinzu und iteriere über Listenelemente:
 
