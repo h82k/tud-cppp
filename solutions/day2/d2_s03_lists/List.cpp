@@ -137,6 +137,11 @@ ListIterator List::end() {
 	return ListIterator(this, nullptr);
 }
 
+/*
+ * This solution uses the begin and end iterators.
+ * Instead, we could also List::first and ListItem::next to navigate along
+ * the items of the list.
+ */
 std::ostream &operator<<(std::ostream &stream,  List &list){
 	for (ListIterator iter = list.begin(); iter != list.end(); ++iter)
 	{
