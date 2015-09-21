@@ -5,7 +5,7 @@ Einzelne Knotentypen wie Addition und Subtraktion werden von \texttt{Expression}
 \begin{figure}[h]
 \begin{center}
 	\includegraphics[width=.75\textwidth]{figures/ExpressionTree.png}\\
-	\caption{Abbildung: Beispielausdruck mit Ausdrucksbaum und Klassenhierarchie}
+	\caption{Beispielausdruck mit Ausdrucksbaum und Klassenhierarchie}
 \end{center}
 \end{figure}
 
@@ -16,7 +16,10 @@ Einzelne Knotentypen wie Addition und Subtraktion werden von \texttt{Expression}
 Schreibe die abstrakte Klasse \texttt{Expression}.
 Diese soll als Basisklasse für alle Ausdrücke dienen.
 Implementiere einen parameterlosen Konstruktor und einen virtuellen Destruktor, die je eine Meldung auf der Konsole ausgeben, sodass es bei der Ausführung ersichtlich wird, wann eine \texttt{Expression} erzeugt und wann zerstört wird.
-Deklariere außerdem eine abstrakte (pure \texttt{virtual}) Methode \texttt{virtual double compute() = 0;}, die das Ergebnis des Ausdrucks berechnen und zurückgeben soll. 
+Deklariere außerdem eine abstrakte (pure \texttt{virtual}) Methode \texttt{virtual double compute() = 0;}, die das Ergebnis des Ausdrucks berechnen und zurückgeben soll.
+\hints{
+    \item Anders als in Java muss die Klasse nicht explizit als \texttt{abstract} gekennzeichnet werden - es reicht, wenn sie mindestens eine \emph{pure virtual} Methode enthält.
+} 
 
 \item \textbf{Klasse \texttt{NumberExpression}:}
 Schreibe die Klasse \texttt{NumberExpression}, die ein (Baum-)Blatt mit einer Zahl darstellt.
