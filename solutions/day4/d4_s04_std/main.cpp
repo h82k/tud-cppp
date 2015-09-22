@@ -6,8 +6,20 @@
 
 template<typename T>
 void print(const T& t) {
-	std::cout << "[";
-	std::copy(t.begin(), t.end(), std::ostream_iterator<int>(std::cout, ", "));
+	// Solution 1: Delegate to std::copy (from <algorithm> header)
+	std::cout << "std::copy version [";
+	std::copy(t.begin(), t.end(), std::ostream_iterator<typename T::value_type>(std::cout, ", "));
+	std::cout << "]" << std::endl;
+
+	// Solution 2: Write you own iterator-based loop
+	// Here, you can even avoid the trailing ','
+	std::cout << "iterator-based version [";
+	for (typename T::const_iterator iter = t.begin(); iter != t.end(); ++iter) {
+		if (iter != t.begin())
+			std::cout << ", ";
+
+		std::cout << *iter;
+	}
 	std::cout << "]" << std::endl;
 }
 
