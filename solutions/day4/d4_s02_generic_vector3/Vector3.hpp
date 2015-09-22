@@ -53,8 +53,8 @@ private:
 	T a, b, c;
 };
 
-// C++ does not support templates for typedefs
-//template<typename T>
+// The following does not work! C++ does not support templates for typedefs
+//template<class T>
 //typedef std::shared_ptr<Vector3<T>> VectorPtr;
 
 // C++11 introduces the following syntax:
@@ -62,7 +62,7 @@ template<typename T>
 using Vector3Ptr = std::shared_ptr<Vector3<T>>;
 
 // Alternative:
-typedef std::shared_ptr<Vector3<double>> DoubleVectorPtr;
+//typedef std::shared_ptr<Vector3<double>> DoubleVectorPtr;
 
 #include <iostream>
 
