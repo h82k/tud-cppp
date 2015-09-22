@@ -6,7 +6,8 @@
 
 int main() {
 	std::cout << "Regular output..." << std::endl;
-	int i;
+	int i = 1;
 	LOG("Some debug output [i=" << i << "]")
+	i++;
 	std::cout << "Bye bye." << std::endl;
 }
