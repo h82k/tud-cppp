@@ -9,7 +9,7 @@
 .PHONY: clean all
 
 # compiler options
-CC		= clang++
+CC		= g++
 # -g			add debugging symbols to the binary executable file
 # -O0			deactivate optimizations
 # -Wall			show reasonable warnings
