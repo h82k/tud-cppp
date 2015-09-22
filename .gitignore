@@ -9,6 +9,7 @@ build/
 # Eclipse project and configuration files
 Release/
 Debug/
+Default/
 .settings
 .cproject
 .project
