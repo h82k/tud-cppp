@@ -3,7 +3,7 @@
 
 #include <memory>
 
-template<class T>
+template<typename T>
 class Vector3 {
 public:
 	Vector3() :
@@ -54,11 +54,11 @@ private:
 };
 
 // C++ does not support templates for typedefs
-//template<class T>
+//template<typename T>
 //typedef std::shared_ptr<Vector3<T>> VectorPtr;
 
 // C++11 introduces the following syntax:
-template<class T>
+template<typename T>
 using Vector3Ptr = std::shared_ptr<Vector3<T>>;
 
 // Alternative:
@@ -66,7 +66,7 @@ typedef std::shared_ptr<Vector3<double>> DoubleVectorPtr;
 
 #include <iostream>
 
-template<class T>
+template<typename T>
 std::ostream& operator<<(std::ostream& out, const Vector3<T> rhs) {
 	out << "(" << rhs.getA() << ", " << rhs.getB() << ", " << rhs.getC() << ")";
 	return out;

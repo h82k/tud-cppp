@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <iterator>
 
-template<class T>
+template<typename T>
 void print(const T& t) {
 	std::cout << "[";
 	std::copy(t.begin(), t.end(), std::ostream_iterator<int>(std::cout, ", "));

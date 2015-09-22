@@ -6,7 +6,7 @@
 #include "ListIterator.hpp"
 #include <iostream>
 
-template<class T>
+template<typename T>
 class List {
 public:
 	List();						// create an empty list

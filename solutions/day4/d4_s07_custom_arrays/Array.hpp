@@ -10,7 +10,7 @@
  * This class encapsulates a raw array together with its size.
  *
  */
-template<class T>
+template<typename T>
 class Array {
 	typedef boost::shared_ptr<T> TPtr;
 public:
@@ -68,7 +68,7 @@ private:
 	size_t offset;
 };
 
-template<class T>
+template<typename T>
 std::ostream &operator<<(std::ostream &stream, const Array<T> &array);
 
 #include "Array.tpp"

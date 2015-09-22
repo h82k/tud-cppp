@@ -1,5 +1,5 @@
 
-template<class T>
+template<typename T>
 ListItem<T>::ListItem(ListItem<T> *prev, ListItem<T> *next, const T &content):
 	previous(prev), next(next), content(content)
 {
@@ -11,7 +11,7 @@ ListItem<T>::ListItem(ListItem<T> *prev, ListItem<T> *next, const T &content):
 	}
 }
 
-template<class T>
+template<typename T>
 ListItem<T>::~ListItem() {
 	if (previous) {
 		previous->next = next;
@@ -22,17 +22,17 @@ ListItem<T>::~ListItem() {
 }
 
 
-template<class T>
+template<typename T>
 T& ListItem<T>::getContent() {
 	return content;
 }
 
-template<class T>
+template<typename T>
 ListItem<T>* ListItem<T>::getNext() {
 	return next;
 }
 
-template<class T>
+template<typename T>
 ListItem<T>* ListItem<T>::getPrevious() {
 	return previous;
 }

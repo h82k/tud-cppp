@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-template<class T>
+template<typename T>
 void printNthElement(const Array<T> &array, size_t position) {
 	std::cout << array[position] << std::endl;
 }

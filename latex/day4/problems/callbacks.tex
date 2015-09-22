@@ -60,7 +60,7 @@ Ein Nachteil der vorherigen Implementation ist, dass nur reine Funktionen als Ca
 Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates.
 Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
 \begin{lstlisting}
-template<class T>
+template<typename T>
 void hanoi(int i, int a, int b, int c, T callback) ...
 \end{lstlisting}
 
@@ -91,7 +91,7 @@ Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt.
 Immer wenn ein Button als Parameter an eine Funktion übergeben wird, müsste diese Funktion den Callbacktyp ebenfalls als Template-Parameter entgegennehmen:
 
 \begin{lstlisting}
-template<class T>
+template<typename T>
 void doSomethingWithButton(Button<T> &btn);
 \end{lstlisting}
 
@@ -127,7 +127,7 @@ Fange mit der Klasse \emph{CallbackBase} an.
 Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \emph{call()} einen Parameter vom Typ \emph{ParamT} hinzu, wobei \emph{ParamT} ein Template-Pameter von \emph{CallbackBase} sein soll. Der Klassenrumpf lautet also
 
 \begin{lstlisting}
-template<class ParamT>
+template<typename ParamT>
 class CallbackBase {
 public:
 	...
@@ -143,7 +143,7 @@ Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, w�
 
 \item
 \textbf{Klasse \emph{FunctionCallback}}:
-Implementiere nun die erste Unterklasse \emph{template<class ParamT> FunctionCallback}, die von \emph{CallbackBase<ParamT>} erbt.  \emph{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
+Implementiere nun die erste Unterklasse \emph{template<typename ParamT> FunctionCallback}, die von \emph{CallbackBase<ParamT>} erbt.  \emph{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
 Ebenso soll \emph{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
 
 Teste deine Implementation.
@@ -171,7 +171,7 @@ int main() {
 
 \item
 \textbf{Klasse \emph{FunctorCallback}}:
-Implementiere nun die Unterklasse \emph{template<class ParamT, class ClassT> FunctorCallback}.
+Implementiere nun die Unterklasse \emph{template<typename ParamT, typename ClassT> FunctorCallback}.
 Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden.
 Speichere das zu verwendende Functor-Objekt als Referenz ab, um Kopien zu vermeiden.
 Achte auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden.
@@ -181,7 +181,7 @@ Teste deine Implementation!
 
 \item
 \textbf{Klasse \emph{MethodCallback}}:
-Implementiere nun die letzte Unterklasse \emph{template<class ParamT, class ClassT> MethodCallback}.
+Implementiere nun die letzte Unterklasse \emph{template<typename ParamT, typename ClassT> MethodCallback}.
 Beachte, dass nun zwei Attribute nötig sind - ein Methodenzeiger und ein Zeiger auf das zu verwendende Objekt.
 Teste deine Implementation.
 
@@ -202,7 +202,7 @@ Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass da
 Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
 Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion die passende Unterklasse selbst aussucht.
 
-Schreibe eine Klasse \emph{template<class ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet. 
+Schreibe eine Klasse \emph{template<typename ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet.
 
 Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
 Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instanziieren.

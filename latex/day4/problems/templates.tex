@@ -3,7 +3,7 @@
 Implementiere die folgende Funktion, die das Maximum von zwei Variablen liefert:
 
 \begin{lstlisting}
-template<class T>
+template<typename T>
 const T &maximum(const T &t1, const T &t2);
 \end{lstlisting}
 
@@ -16,7 +16,7 @@ Das bedeutet, dass \texttt{T} alle Konstruktoren, Methoden und Operatoren zur Ve
 Wie sieht diese Schnittstelle in diesem Fall aus?
 
 \hints{
-    \item Es macht keinen Unterschied, ob du \texttt{class} oder \texttt{typename} in der Template-Deklaration nutzt.    
+    \item Anstelle von \texttt{typename} kann auch \texttt{class} in der Template-Deklaration verwendet werden.
 }
 
 \subsection{Explizite Angabe der Typparameter}

@@ -2,7 +2,7 @@
 #define CALLBACK_HPP_
 
 
-template<class ParamT>
+template<typename ParamT>
 class CallbackBase {
 public:
 	virtual ~CallbackBase() {
@@ -11,7 +11,7 @@ public:
 	virtual void call(ParamT t) = 0;
 };
 
-template<class ParamT>
+template<typename ParamT>
 class FunctionCallback: public CallbackBase<ParamT> {
 public:
 	FunctionCallback(void(*fp)(ParamT)) :
@@ -29,7 +29,7 @@ private:
 };
 
 
-template<class ParamT, class FunctorT>
+template<typename ParamT, typename FunctorT>
 class FunctorCallback: public CallbackBase<ParamT> {
 public:
 	FunctorCallback(FunctorT& fp) :
@@ -46,7 +46,7 @@ private:
 	FunctorT& fp;
 };
 
-template<class ParamT, class ClassT>
+template<typename ParamT, typename ClassT>
 class MethodCallback: public CallbackBase<ParamT> {
 public:
 	MethodCallback(void(ClassT::*mp)(ParamT), ClassT* obj) :

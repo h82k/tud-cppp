@@ -1,10 +1,10 @@
 
-template<class T>
+template<typename T>
 List<T>::List():
 	first(NULL), last(NULL), currentSize(0)
 {}
 
-template<class T>
+template<typename T>
 List<T>::~List() {
 	// just delete first element while list is not empty
 	while (currentSize > 0) {
@@ -12,7 +12,7 @@ List<T>::~List() {
 	}
 }
 
-template<class T>
+template<typename T>
 List<T>::List(const List<T>& other):
 	first(NULL), last(NULL), currentSize(0)
 {
@@ -21,7 +21,7 @@ List<T>::List(const List<T>& other):
 	}
 }
 
-template<class T>
+template<typename T>
 void List<T>::appendElement(const T& i) {
 	ListItem<T> *item = new ListItem<T>(last, NULL, i);
 	last = item;
@@ -31,7 +31,7 @@ void List<T>::appendElement(const T& i) {
 	}
 }
 
-template<class T>
+template<typename T>
 void List<T>::prependElement(const T& i) {
 	ListItem<T> *item = new ListItem<T>(NULL, first, i);
 	first = item;
@@ -41,7 +41,7 @@ void List<T>::prependElement(const T& i) {
 	}
 }
 
-template<class T>
+template<typename T>
 void List<T>::insertElementAt(const T& i, int pos) {
 	if (pos <= 0) {
 		prependElement(i);
@@ -60,12 +60,12 @@ void List<T>::insertElementAt(const T& i, int pos) {
 	}
 }
 
-template<class T>
+template<typename T>
 int List<T>::getSize() const {
 	return currentSize;
 }
 
-template<class T>
+template<typename T>
 T& List<T>::getNthElement(int n) {
 	ListItem<T>* p = first;
 	// iterate over elements
@@ -75,17 +75,17 @@ T& List<T>::getNthElement(int n) {
 	return p->getContent();
 }
 
-template<class T>
+template<typename T>
 T& List<T>::getFirst() {
 	return first->getContent();
 }
 
-template<class T>
+template<typename T>
 T& List<T>::getLast() {
 	return last->getContent();
 }
 
-template<class T>
+template<typename T>
 void List<T>::deleteFirst() {
 	if (first) {
 		ListItem<T> *next = first->getNext();
@@ -99,7 +99,7 @@ void List<T>::deleteFirst() {
 	}
 }
 
-template<class T>
+template<typename T>
 void List<T>::deleteLast() {
 	if (last) {
 		ListItem<T> *prev = last->getPrevious();
@@ -114,7 +114,7 @@ void List<T>::deleteLast() {
 }
 
 /** delete element at given position. delete first/last if pos outside of range */
-template<class T>
+template<typename T>
 void List<T>::deleteAt(int pos) {
 	if (pos <= 0) {
 		return deleteFirst();
@@ -133,17 +133,17 @@ void List<T>::deleteAt(int pos) {
 	}
 }
 
-template<class T>
+template<typename T>
 ListIterator<T> List<T>::begin() {
 	return ListIterator<T>(this, first);
 }
 
-template<class T>
+template<typename T>
 ListIterator<T> List<T>::end() {
 	return ListIterator<T>(this, NULL);
 }
 
-template<class T>
+template<typename T>
 std::ostream& operator<<(std::ostream& out, List<T>& list) {
 	out << "[";
 	ListIterator<T> iter = list.begin();

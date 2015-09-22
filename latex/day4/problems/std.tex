@@ -10,7 +10,7 @@ Der große Vorteil von \texttt{std::vector} ist der \emph{wahlfreie Zugriff}, d.
 
 \begin{enumerate}
 \item 
-Schreibe zunächst eine Funktion \texttt{template<class T> void print(const T \&t)}, die beliebige Standardcontainer auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
+Schreibe zunächst eine Funktion \texttt{template<typename T> void print(const T \&t)}, die beliebige Standardcontainer auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
 Nutze dazu die Funktion \texttt{copy()} sowie die Klasse \texttt{std::ostream\_iterator<int>}, um den entsprechenden \texttt{OutputIterator} zu erzeugen.
 
 \item

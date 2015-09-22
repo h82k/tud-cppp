@@ -9,27 +9,27 @@ struct array_deleter {
 	}
 };
 
-template<class T>
+template<typename T>
 Array<T>::Array(size_t size):
 	size(size), offset(0)
 {
 	data = TPtr(new T[size], array_deleter<T>());
 }
 
-template<class T>
+template<typename T>
 Array<T>::Array(const Array<T> &other, size_t offset):
 	size(other.size), data(other.data), offset(offset)
 {}
 
-template<class T>
+template<typename T>
 Array<T>::~Array() {}
 
-template<class T>
+template<typename T>
 size_t Array<T>::getSize() const {
 	return size - offset;
 }
 
-template<class T>
+template<typename T>
 T &Array<T>::operator [](size_t index) {
 	if (index >= getSize()) {
 		std::stringstream message;
@@ -39,7 +39,7 @@ T &Array<T>::operator [](size_t index) {
 	return (data.get())[index + offset];
 }
 
-template<class T>
+template<typename T>
 const T &Array<T>::operator [](size_t index) const {
 	if (index >= getSize()) {
 		std::stringstream message;
@@ -49,7 +49,7 @@ const T &Array<T>::operator [](size_t index) const {
 	return (data.get())[index + offset];
 }
 
-template<class T>
+template<typename T>
 Array<T> Array<T>::operator+(size_t delta) {
 	if (delta >= getSize()) {
 		std::stringstream message;
