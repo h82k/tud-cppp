@@ -300,7 +300,7 @@ OBJECTS=main.o Building.o
 
 all: main.exe
 
-main.exe: $(objFiles)
+main.exe: $(OBJECTS)
 	g++ -o main.exe $(OBJECTS)
 	
 # and so on...
@@ -316,10 +316,10 @@ BINARY=main.exe
 OBJECTS=main.o Building.o
 DEPEND=main.d Building.d
 
-all: $(programName)
+all: $(BINARY)
 
-$(BINARY): $(objFiles)
-	g++ -o $(BINARY) $(objFiles)
+$(BINARY): $(OBJECTS)
+	g++ -o $(BINARY) $(OBJECTS)
 
 %.o: %.cpp
 	g++ -MMD -MP -c $< -o $@
