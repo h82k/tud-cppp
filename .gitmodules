@@ -43,15 +43,24 @@
 [submodule "projects/day6/d6_e01_implementation/uc_includes"]
 	path = projects/day6/d6_e01_implementation/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
-[submodule "solutions/day6/d6_s01_maze/16FXlib"]
-	path = solutions/day6/d6_s01_maze/16FXlib
-	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
-[submodule "solutions/day6/d6_s01_maze/uc_includes"]
-	path = solutions/day6/d6_s01_maze/uc_includes
+[submodule "solutions/day6/d6_batman_lk_2015/uc_includes"]
+	path = solutions/day6/d6_batman_lk_2015/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
-[submodule "solutions/day6/d6_s01_pong/16FXlib"]
-	path = solutions/day6/d6_s01_pong/16FXlib
+[submodule "solutions/day6/d6_pong_lk_2015/16FXlib"]
+	path = solutions/day6/d6_pong_lk_2015/16FXlib
 	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
-[submodule "solutions/day6/d6_s01_pong/uc_includes"]
-	path = solutions/day6/d6_s01_pong/uc_includes
+[submodule "solutions/day6/d6_pong_lk_2015/uc_includes"]
+	path = solutions/day6/d6_pong_lk_2015/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day6/d6_maze/uc_includes"]
+	path = solutions/day6/d6_maze/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "solutions/day6/d6_maze/16FXlib"]
+	path = solutions/day6/d6_maze/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
+[submodule "solutions/day6/d6_pong_mg_2012/16FXlib"]
+	path = solutions/day6/d6_pong_mg_2012/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
+[submodule "solutions/day6/d6_pong_mg_2012/uc_includes"]
+	path = solutions/day6/d6_pong_mg_2012/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
