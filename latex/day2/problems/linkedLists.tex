@@ -127,8 +127,8 @@ Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelle
 Implementiere Vergleichsoperator \texttt{operator!=} sowie den Dereferenzierungsoperator \texttt{operator*}.
 Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben.
 Du brauchst nicht zu prüfen, ob \texttt{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können Standardbibliotheksiteratoren übrigens auch nicht!).
-Zum Vergleichen zweier Iteratoren prüfen Sie, ob die \texttt{item} und \texttt{list} Zeiger identisch sind.
-Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \texttt{item} \texttt{NULL} ist, der Iterator also auf kein Element zeigt.
+Zum Vergleichen zweier Iteratoren prüfe, ob die \texttt{item} und \texttt{list} Zeiger identisch sind.
+Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \texttt{item} \texttt{NULL} ist, wenn der Iterator also auf kein Element zeigt.
 
 \begin{lstlisting}
 class ListIterator {
@@ -145,6 +145,18 @@ private:
 };
 \end{lstlisting}
 
+
+\paragraph{Zugriff von außen: ListIterator als friend-Klasse} Du wirst in den folgenden Methoden auf private Attribute von \texttt{List} zugreifen müssen.
+Um dies zu ermöglichen, könnte man öffentliche Getter für die Items der Liste schreiben.
+Dadurch würde jedoch jeder die Möglichkeit bekommen, direkt auf die \texttt{ListItem}s der Liste zuzugreifen, was dem Geheimnisprinzip zuwiderläuft.
+Deshalb werden wir \texttt{ListIterator} stattdessen explizit erlauben, auf \texttt{private}-Attribute der Liste zuzugreifen.
+Dazu müssen wir \texttt{ListIterator} als \texttt{friend} von \texttt{List} deklarieren.
+Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klasse) zur Klassendefinition von \texttt{List} hinzu:
+\begin{lstlisting}
+friend class ListIterator;
+\end{lstlisting}
+
+\paragraph{Inkrementierung mittels \texttt{operator++}}
 
 Implementiere den \texttt{operator++} zum Inkrementieren des Iterators.
 Falls der Iterator zuvor auf kein Item zeigte (\texttt{item == NULL}), soll er nun auf das erste Element der Liste gesetzt werden.
@@ -187,14 +199,6 @@ ListIterator ListIterator::operator++(int) {
 }
 \end{lstlisting}
 
-\paragraph{Zugriff von außen: ListIterator als friend-Klasse} Du wirst in den Methoden auf private Attribute der Liste zugreifen müssen. Um dies zu ermöglichen, könnte man öffentliche Getter für die Items der Liste schreiben.
-Dadurch würde jedoch jeder die Möglichkeit bekommen, direkt auf die Items der Liste zuzugreifen, was dem Geheimnisprinzip zuwiderläuft.
-Deshalb werden wir \texttt{ListIterator} stattdessen explizit erlauben, auf \texttt{private}-Attribute der Liste zuzugreifen.
-Dazu müssen wir \texttt{ListIterator} als \texttt{friend} von \texttt{List} deklarieren.
-Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klasse) zur Klassendefinition von \texttt{List} hinzu:
-\begin{lstlisting}
-friend class ListIterator;
-\end{lstlisting}
 
 Überlade auf die gleiche Weise auch den \texttt{operator-{}-} sowohl in Postfix als auch Präfix-Form.
 
