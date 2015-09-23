@@ -138,7 +138,18 @@ Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorg
 	\end{tabular}
 \end{center}
 
-Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik).
+\paragraph{Display einschalten}
+
+Das Display muss vor der Benutzung eingeschaltet werden:
+\begin{lstlisting}
+// Display on
+LCD_PORT_DB = 0x3F; 
+// Display off
+LCD_PORT_DB = 0x3E; 
+\end{lstlisting}
+
+\paragraph{Displayhälften (Chip-Select Signal)}
+Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik, MSB/LSB = Most/Least Significant Bit).
 \begin{center}
 	\includegraphics[width=0.6\textwidth]{figures/display_aufbau}
 \end{center}

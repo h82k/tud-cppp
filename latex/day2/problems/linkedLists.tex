@@ -156,7 +156,7 @@ Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klas
 friend class ListIterator;
 \end{lstlisting}
 
-\paragraph{Inkrementierung mittels \texttt{operator++}}
+\paragraph{Iterator vorwärts bewegen mittels \texttt{operator++}}
 
 Implementiere den \texttt{operator++} zum Inkrementieren des Iterators.
 Falls der Iterator zuvor auf kein Item zeigte (\texttt{item == NULL}), soll er nun auf das erste Element der Liste gesetzt werden.
@@ -170,7 +170,10 @@ Bei der Überladung des \texttt{operator++} muss eine Sonderregel beachtet werde
 Dieser Operator kann sowohl als Postfix (z.B. \texttt{iter++}) als auch Präfix (z.B. \texttt{++iter}) verwendet werden.
 Um den Compiler darüber zu informieren, welche Variante wir überladen, wird beim Postfix-Operator ein Dummy-Parameter vom Typ \texttt{int} definiert.
 Dieser dient nur der syntaktischen Unterscheidung und hat keine weitere Bedeutung.
+
 Beachte außerdem, dass bei Präfix-Operationen der Iterator sich selbst zurückgeben sollte, während der Postfix-Operationen eine Kopie des Iterators zurückgibt, die auf das vorherige Element zeigt.
+Das ist auch der Grund, warum die Präfix-Form von \texttt{operator++} (und \texttt{operator-{}-}) effizienter ist als die Postfix-Form.
+Daher sollte die Präfix-Form dieser Operatoren die bevorzugte Variante sein, falls kein besonderer Grund für die Postfix-Form vorliegt.
 
 Zum besseren Verständnis ist ein Teil der Implementation gegeben:
 
@@ -200,6 +203,7 @@ ListIterator ListIterator::operator++(int) {
 \end{lstlisting}
 
 
+\paragraph{Iterator rückwärts bewegen mittels \texttt{operator--}}
 Überlade auf die gleiche Weise auch den \texttt{operator-{}-} sowohl in Postfix als auch Präfix-Form.
 
 \paragraph{Iteratoren in List erzeugen} 
