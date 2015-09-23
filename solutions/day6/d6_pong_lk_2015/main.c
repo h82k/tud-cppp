@@ -1,10 +1,13 @@
-#include "mb96348hs.h"
+/**
+ * Author: Laurenz Kamp
+ * Created: 10.09.2015
+ */
 
+#include "mb96348hs.h"
 
 #include "io.h"
 #include "display.h"
 #include "pong.h"
-
 
 void main(void) {
 	int i = 0;

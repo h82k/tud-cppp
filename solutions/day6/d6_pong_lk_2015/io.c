@@ -1,8 +1,6 @@
-/*
- * adc.c
- *
- *  Created on: 10.09.2015
- *      Author: insel
+/**
+ * Author: Laurenz Kamp
+ * Created: 10.09.2015
  */
 
 #include "io.h"

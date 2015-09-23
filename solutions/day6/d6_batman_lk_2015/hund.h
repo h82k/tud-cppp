@@ -1,6 +1,8 @@
-/*  GIMP header image file format (INDEXED): /home/laurenz/Desktop/praktikum/hund.h  */
-
-
+/**
+ * Author: Laurenz Kamp
+ * Created: 10.09.2015
+ * GIMP header image file format (INDEXED)
+ */
 
 static char header_data[] = {
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

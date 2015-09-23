@@ -1,4 +1,8 @@
-/*  GIMP header image file format (INDEXED): /home/laurenz/Desktop/praktikum/bat.h  */
+/**
+ * Author: Laurenz Kamp
+ * Created: 10.09.2015
+ * GIMP header image file format (INDEXED)
+ */
 
 static char header_data[] = {
 	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,

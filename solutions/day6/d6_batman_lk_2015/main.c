@@ -1,3 +1,8 @@
+/**
+ * Author: Laurenz Kamp
+ * Created: 10.09.2015
+ */
+
 #include "mb96348hs.h"
 
 #include "bat.h" // Batman
