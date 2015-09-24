@@ -102,8 +102,8 @@ void main(void) {
 	
 	// initialise variables
 	zoomLevel = 0;
-	xOffset = adc_getValue(1);
-	yOffset = adc_getValue(2);
+	xOffset = 128;
+	yOffset = 128;
 	dirtyBit = 1;
 	
 	while(1) {
@@ -131,12 +131,8 @@ void main(void) {
 		seg_num(zoomLevel);
 		
 		// change offset with the analog sliders
-		if (adc_getValue(1) < xOffset - 1 || adc_getValue(1) > xOffset + 1) {
-			dirtyBit = 1;
+		if (buttons_get(0) && buttons_get(1)) {
 			xOffset = adc_getValue(1);
-		}
-		if (adc_getValue(2) < yOffset - 1 || adc_getValue(2) > yOffset + 1) {
-			dirtyBit = 1;
 			yOffset = adc_getValue(2);
 		}
 		
