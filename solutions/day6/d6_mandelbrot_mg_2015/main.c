@@ -9,11 +9,6 @@
 #include "16FXlib/seg.h"
 #include "16FXlib/buttons.h"
 
-/// 1 = Use local framebuffer in RAM and copy to LCD on call to lcd_flush().
-/// 0 = Directly manipulate LCD ram contents.
-//#undef LCD_FRAMEBUFFER_MODE
-//#define LCD_FRAMEBUFFER_MODE	1
-
 /// number of different ADC values
 #define ADC_COUNT 256
 
@@ -100,53 +95,64 @@ void main(void) {
 	int xOffset, yOffset, zoomLevel, dirtyBit;
 	
 	// initialise lcd, adc and buttons
+	seg_init();
+	buttons_init();
 	lcd_init();
 	adc_init();
-	buttons_init();
 	
 	// initialise variables
 	zoomLevel = 0;
-	xOffset = adc_getValue(0);
-	yOffset = adc_getValue(1);
-	dirtyBit = 0;
+	xOffset = adc_getValue(1);
+	yOffset = adc_getValue(2);
+	dirtyBit = 1;
 	
 	while(1) {
 		// change zoom level with the buttons
-		if (buttons_event(0)) {
+		if (buttons_get(0)) {
 			dirtyBit = 1;
-			--zoomLevel;
-			zoomLevel %= 100;
+			if (zoomLevel > 0) {
+				--zoomLevel;
+			}
+			else {
+				zoomLevel = 99;
+			}
 		}
-		if (buttons_event(1)) {
+		if (buttons_get(1)) {
 			dirtyBit = 1;
-			++zoomLevel;
-			zoomLevel %= 100;
-		}
-		
-		// change offset with the analog sliders
-		if (adc_getValue(0) != xOffset) {
-			dirtyBit = 1;
-			xOffset = adc_getValue(0);
-		}
-		if (adc_getValue(1) != yOffset) {
-			dirtyBit = 1;
-			yOffset = adc_getValue(1);
+			if (zoomLevel < 99) {
+				++zoomLevel;
+			}
+			else {
+				zoomLevel = 0;
+			}
 		}
 		
 		// show the current zoom level on the seven segment display
 		seg_num(zoomLevel);
 		
+		// change offset with the analog sliders
+		if (adc_getValue(1) < xOffset - 1 || adc_getValue(1) > xOffset + 1) {
+			dirtyBit = 1;
+			xOffset = adc_getValue(1);
+		}
+		if (adc_getValue(2) < yOffset - 1 || adc_getValue(2) > yOffset + 1) {
+			dirtyBit = 1;
+			yOffset = adc_getValue(2);
+		}
+		
 		// draw the Mandelbrot set onto the lcd if the zoom level or offsets were changed
 		if (dirtyBit) {
+			lcd_clear(LCD_COLOR_BLACK);
 			drawMandelbrotSet(
 				zoomLevel + 1,							// scale
 				convert(xOffset, zoomLevel + 1, 1),		// xOffset
 				convert(yOffset, zoomLevel + 1, 0),		// yOffset
-				100,									// iterations (escape time)
-				90										// threshold (black or white pixel)
+				17,										// iterations (escape time)
+				17										// threshold (black or white pixel)
 			);
 			dirtyBit = 0;
 		}
+		delay_ms(100);
 	}
 	
 }
