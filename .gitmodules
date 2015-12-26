@@ -70,3 +70,9 @@
 [submodule "solutions/day6/d6_mandelbrot_mg_2015/uc_includes"]
 	path = solutions/day6/d6_mandelbrot_mg_2015/uc_includes
 	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "lib/uc_includes"]
+	path = lib/uc_includes
+	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
+[submodule "lib/16FXlib"]
+	path = lib/16FXlib
+	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib
