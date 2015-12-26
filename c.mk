@@ -32,11 +32,10 @@ FLASHLY		:= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
 #INCLUDE	= uc_includes 16FXlib
 #SOURCES	= main.c $(wildcard $(addsuffix /*.c, $(INCLUDE)))
 #ASM		= $(wildcard $(addsuffix /*.asm, $(INCLUDE))) $(patsubst %.c, %.asm, $(SOURCES))
-INCLUDE		= $(shell find . -type d)
 SOURCES		:= $(shell find . -name "*.c")
 ASM			:= $(shell find . -name "*.asm") $(patsubst %.c, %.asm, $(SOURCES))
 OBJECT		:= $(patsubst %.asm, %.o, $(ASM))
-INCLUDE		:= $(addprefix -I , $(INCLUDE))
+INCLUDE		:= $(addprefix -I , $(shell find . -type d))
 
 # flags
 CPU			:= MB96F348HSB
