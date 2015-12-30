@@ -1,7 +1,6 @@
 # delete the default suffixes (disable implicit rules)
 .SUFFIXES:
-.PRECIOUS:%.mhx
-.PHONY: all clean com
+.PHONY: all clean clean-all com
 
 # wine command
 PREFIX		:= ~/tools
@@ -29,17 +28,22 @@ F2MS		:= $(WINE) $(SOFTUNE_DIR)/F2MS.EXE
 FLASHLY		:= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
 
 # sources
-LIB_PATH	:= ../../../lib
-SOURCES		:= $(sort $(shell find . $(LIB_PATH) -name "*.c"))
-ASM			:= $(sort $(shell find . $(LIB_PATH) -name "*.asm") $(patsubst %.c, %.asm, $(SOURCES)))
+SOURCES		:= $(sort $(shell find . -name "*.c"))
+ASM			:= $(patsubst %.c, %.asm, $(SOURCES))
 OBJECT		:= $(patsubst %.asm, %.o, $(ASM))
-INCLUDE		:= $(addprefix -I , $(sort $(shell find . $(LIB_PATH) -type d)))
+
+# library sources
+LIBRARIES	:= ../../../lib/uc_includes ../../../lib/16FXlib
+LIB_SOURCES	:= $(shell find $(LIBRARIES) -name "*.c")
+LIB_ASM_PRE	:= $(shell find $(LIBRARIES) -name "*.asm")
+LIB_ASM		:= $(patsubst %.c, %.asm, $(LIB_SOURCES))
+LIB_OBJECTS	:= $(patsubst %.asm, %.o, $(LIB_ASM) $(LIB_ASM_PRE))
 
 # flags
 CPU			:= MB96F348HSB
 AFLAGS		:= -cpu $(CPU) -w 2 -pl 60 -pw 132 -linf OFF -lsrc OFF -lsec OFF -lcros OFF -linc OFF
-CFLAGS		:= -cpu $(CPU) -w 5 -INF srcin -T p,-B $(INCLUDE) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S
-LFLAGS		:= -cpu $(CPU) -w 2 -L $(LIB_PATH) -Xset_rora -pl 60 -pw 132 -a -AL 2 -ro _INROM01=0x00ff0000/0x00ffffff -ra _INRAM01=0x00002240/0x00007fff -rg 0 -Xm -NCI0302LIB
+CFLAGS		:= -cpu $(CPU) -w 5 -INF srcin -T p,-B $(addprefix -I , $(LIBRARIES)) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S
+LFLAGS		:= -cpu $(CPU) -w 2 $(addprefix -L , $(LIBRARIES)) -Xset_rora -pl 60 -pw 132 -a -AL 2 -ro _INROM01=0x00ff0000/0x00ffffff -ra _INRAM01=0x00002240/0x00007fff -rg 0 -Xm -NCI0302LIB
 FFLAGS		:= -cpu $(CPU) -c:$(WIN_PORT) -m:RTS- -r:DTR+ -Q:4 -E:DF0000 -E:FF0000 -nolog -newlog -msgok
 
 # default target
@@ -63,7 +67,7 @@ endif
 	$(FASM907S) $(AFLAGS) -o $@ $<
 
 # link object files
-%.abs: $(OBJECT)
+%.abs: $(OBJECT) $(LIB_OBJECTS)
 	$(FLNK907S) $(LFLAGS) -o $@ $^
 
 # create file to be flashed
@@ -75,7 +79,13 @@ flash_%: %.mhx com
 	$(FLASHLY) $(FFLAGS) -P: $<
 
 clean:
-	rm -rf *.asm
 	rm -rf $(OBJECT)
+	rm -rf $(ASM)
 	rm -rf *.mhx
 	rm -rf *.abs
+
+clean-all: clean
+	rm -rf $(LIB_OBJECTS)
+	rm -rf $(LIB_ASM)
+
+.PRECIOUS:%.mhx $(LIB_OBJECTS)
