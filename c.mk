@@ -29,19 +29,17 @@ F2MS		:= $(WINE) $(SOFTUNE_DIR)/F2MS.EXE
 FLASHLY		:= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
 
 # sources
-#INCLUDE	= uc_includes 16FXlib
-#SOURCES	= main.c $(wildcard $(addsuffix /*.c, $(INCLUDE)))
-#ASM		= $(wildcard $(addsuffix /*.asm, $(INCLUDE))) $(patsubst %.c, %.asm, $(SOURCES))
-SOURCES		:= $(shell find . -name "*.c")
-ASM			:= $(shell find . -name "*.asm") $(patsubst %.c, %.asm, $(SOURCES))
+LIB_PATH	:= ../../../lib
+SOURCES		:= $(sort $(shell find . $(LIB_PATH) -name "*.c"))
+ASM			:= $(sort $(shell find . $(LIB_PATH) -name "*.asm") $(patsubst %.c, %.asm, $(SOURCES)))
 OBJECT		:= $(patsubst %.asm, %.o, $(ASM))
-INCLUDE		:= $(addprefix -I , $(shell find . -type d))
+INCLUDE		:= $(addprefix -I , $(sort $(shell find . $(LIB_PATH) -type d)))
 
 # flags
 CPU			:= MB96F348HSB
 AFLAGS		:= -cpu $(CPU) -w 2 -pl 60 -pw 132 -linf OFF -lsrc OFF -lsec OFF -lcros OFF -linc OFF
 CFLAGS		:= -cpu $(CPU) -w 5 -INF srcin -T p,-B $(INCLUDE) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S
-LFLAGS		:= -cpu $(CPU) -w 2 -Xset_rora -pl 60 -pw 132 -a -AL 2 -ro _INROM01=0x00ff0000/0x00ffffff -ra _INRAM01=0x00002240/0x00007fff -rg 0 -Xm -NCI0302LIB
+LFLAGS		:= -cpu $(CPU) -w 2 -L $(LIB_PATH) -Xset_rora -pl 60 -pw 132 -a -AL 2 -ro _INROM01=0x00ff0000/0x00ffffff -ra _INRAM01=0x00002240/0x00007fff -rg 0 -Xm -NCI0302LIB
 FFLAGS		:= -cpu $(CPU) -c:$(WIN_PORT) -m:RTS- -r:DTR+ -Q:4 -E:DF0000 -E:FF0000 -nolog -newlog -msgok
 
 # default target
