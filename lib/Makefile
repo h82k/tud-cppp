@@ -10,15 +10,16 @@ FASM907S	:= WINEPREFIX=$(PREFIX) wine $(PREFIX)/drive_c/Softune/bin/FASM907S.EXE
 # sources
 INCLUDE		:= uc_includes
 SOURCES		:= $(shell find . -name "*.c")
-ASM			:= $(shell find . -name "*.asm") $(patsubst %.c, %.asm, $(SOURCES))
-OBJECT		:= $(patsubst %.asm, %.o, $(ASM))
+ASM_PRE		:= $(shell find . -name "*.asm")
+ASM			:= $(patsubst %.c, %.asm, $(SOURCES))
+OBJECTS		:= $(patsubst %.asm, %.o, $(ASM) $(ASM_PRE))
 
 # compiler flags
 AFLAGS		:= -cpu MB96F348HSB -w 2 -pl 60 -pw 132 -linf OFF -lsrc OFF -lsec OFF -lcros OFF -linc OFF
 CFLAGS		:= -cpu MB96F348HSB -w 5 -INF srcin -T p,-B -I $(INCLUDE) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S
 
 # default target
-all: $(OBJECT)
+all: $(OBJECTS)
 
 # generate assembly file
 %.asm: %.c
@@ -29,5 +30,5 @@ all: $(OBJECT)
 	$(FASM907S) $(AFLAGS) -o $@ $<
 
 clean:
-	rm -rf $(OBJECT)
+	rm -rf $(OBJECTS)
 	rm -rf $(ASM)
