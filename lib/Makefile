@@ -30,3 +30,4 @@ all: $(OBJECT)
 
 clean:
 	rm -rf $(OBJECT)
+	rm -rf $(ASM)
