@@ -33,7 +33,6 @@ ASM			:= $(patsubst %.c, %.asm, $(SOURCES))
 OBJECT		:= $(patsubst %.asm, %.o, $(ASM))
 
 # library sources
-LIBRARIES	:= ../../../lib/uc_includes ../../../lib/16FXlib
 LIB_SOURCES	:= $(shell find $(LIBRARIES) -name "*.c")
 LIB_ASM_PRE	:= $(shell find $(LIBRARIES) -name "*.asm")
 LIB_ASM		:= $(patsubst %.c, %.asm, $(LIB_SOURCES))
