@@ -5,11 +5,11 @@
  */
 
 #include "mb96348hs.h"
-#include "16FXlib/util.h"
-#include "16FXlib/lcd.h"
-#include "16FXlib/adc.h"
-#include "16FXlib/seg.h"
-#include "16FXlib/buttons.h"
+#include "util.h"
+#include "lcd.h"
+#include "adc.h"
+#include "seg.h"
+#include "buttons.h"
 #include "math.h"
 
 #define GAME_WIDTH 128

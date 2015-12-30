@@ -7,7 +7,7 @@
 #include "display.h"
 #include "io.h"
 
-#include "16FXlib/util.h"
+#include "util.h"
 
 #define MIN_X			1
 #define MAX_X			126

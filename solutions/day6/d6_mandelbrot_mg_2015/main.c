@@ -4,10 +4,10 @@
  */
 
 #include "mb96348hs.h"
-#include "16FXlib/lcd.h"
-#include "16FXlib/adc.h"
-#include "16FXlib/seg.h"
-#include "16FXlib/buttons.h"
+#include "lcd.h"
+#include "adc.h"
+#include "seg.h"
+#include "buttons.h"
 
 /// number of different ADC values
 #define ADC_COUNT 256
