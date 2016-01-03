@@ -41,7 +41,7 @@ LIB_OBJECTS	:= $(patsubst %.asm, %.o, $(LIB_ASM) $(LIB_ASM_PRE))
 # flags
 CPU			:= MB96F348HSB
 AFLAGS		:= -cpu $(CPU) -w 2 -pl 60 -pw 132 -linf OFF -lsrc OFF -lsec OFF -lcros OFF -linc OFF
-CFLAGS		:= -cpu $(CPU) -w 5 -INF srcin -T p,-B $(addprefix -I , $(LIBRARIES)) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S
+CFLAGS		:= -cpu $(CPU) -w 5 -INF srcin -T p,-B $(addprefix -I , $(LIBRARIES)) -O 4 -K SPEED -K NOUNROLL -K NOLIB -K NOEOPT -K NOADDSP -K NOALIAS -B -model MEDIUM -ramconst -S $(MACROS)
 LFLAGS		:= -cpu $(CPU) -w 2 $(addprefix -L , $(LIBRARIES)) -Xset_rora -pl 60 -pw 132 -a -AL 2 -ro _INROM01=0x00ff0000/0x00ffffff -ra _INRAM01=0x00002240/0x00007fff -rg 0 -Xm -NCI0302LIB
 FFLAGS		:= -cpu $(CPU) -c:$(WIN_PORT) -m:RTS- -r:DTR+ -Q:4 -E:DF0000 -E:FF0000 -nolog -newlog -msgok
 
