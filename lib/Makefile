@@ -1,6 +1,6 @@
 # delete the default suffixes (disable implicit rules)
 .SUFFIXES:
-.PHONY: all clean
+.PHONY: all framebuffer clean
 
 # wine/softune related
 PREFIX		:= ~/tools
@@ -20,6 +20,10 @@ CFLAGS		:= -cpu MB96F348HSB -w 5 -INF srcin -T p,-B -I $(INCLUDE) -O 4 -K SPEED 
 
 # default target
 all: $(OBJECTS)
+
+# build with framebuffer enabled
+framebuffer: CFLAGS+=-D ENABLE_FRAMEBUFFER
+framebuffer: all
 
 # generate assembly file
 %.asm: %.c
