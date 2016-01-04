@@ -31,3 +31,11 @@
  3. To add a file to the repository right click on it, choose **Team --> Add to Index** and commit it via right click on the project and **Team --> Commit**.
  4. Use **Team --> Ignore** on files to ignore them (i.e. they are ignored by Git).s
 
+## Working with submodules
+ - Initialize submodules: 			git submodule init
+ - Update submodule information: 	git submodule update --recursive
+ - Pull submodules: 				git submodule foreach git pull origin master
+
+
+
+

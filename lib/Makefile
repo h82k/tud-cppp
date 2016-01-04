@@ -20,6 +20,8 @@ CFLAGS		:= -cpu MB96F348HSB -w 5 -INF srcin -T p,-B -I $(INCLUDE) -O 4 -K SPEED 
 
 # default target
 all: $(OBJECTS)
+	# The following rule catches cases where the submodules have not been checked out properly
+	[ -z "$(OBJECTS)" ] && echo "OBJECTS is empty!"; exit -1
 
 # build with framebuffer enabled
 framebuffer: CFLAGS+=-D ENABLE_FRAMEBUFFER
