@@ -1,6 +1,11 @@
 # define paths to libraries in use
 LIBRARIES	:= ../../../lib/uc_includes ../../../lib/16FXlib
-# enable framebuffer in the 16FXlib (requires recompilation of the library!)
-#MACROS		:= -D ENABLE_FRAMEBUFFER
+# macros used during compilation targeting the board
+MACROS		:= -D BOARD
 # include main makefile
 include ../../../c.mk
+# compile with gcc without the macro targeting a standard pc (output via printf)
+gcc:
+	gcc main.c
+clean::
+	rm *.out

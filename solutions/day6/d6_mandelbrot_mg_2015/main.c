@@ -3,11 +3,20 @@
  * Created: 23.09.2015
  */
 
-#include "mb96348hs.h"
-#include "lcd.h"
-#include "adc.h"
-#include "seg.h"
-#include "buttons.h"
+#ifdef BOARD
+	#include "mb96348hs.h"
+	#include "lcd.h"
+	#include "adc.h"
+	#include "seg.h"
+	#include "buttons.h"
+#else
+	#define LCD_WIDTH 64
+	#define LCD_HEIGHT 128
+	#define LCD_COLOR_BLACK ' '
+	#define LCD_COLOR_WHITE '1'
+	#include <stdio.h>
+	void lcd_drawPixel(int i, int j, char symbol) {printf("%c", symbol);}
+#endif
 
 /// number of different ADC values
 #define ADC_COUNT 256
@@ -91,20 +100,20 @@ int convert(int value, int scale, int horizontal) {
  * Show current zoom level on the seven segment display.
  */
 void main(void) {
-	// variable declaration
+	// variable declaration and initialisation
 	int xOffset, yOffset, zoomLevel, dirtyBit;
+	zoomLevel = 0;
+	xOffset = 128;
+	yOffset = 128;
+	dirtyBit = 1;
+	
+#ifdef BOARD
 	
 	// initialise lcd, adc and buttons
 	seg_init();
 	buttons_init();
 	lcd_init();
 	adc_init();
-	
-	// initialise variables
-	zoomLevel = 0;
-	xOffset = 128;
-	yOffset = 128;
-	dirtyBit = 1;
 	
 	while(1) {
 		// change zoom level with the buttons
@@ -150,5 +159,13 @@ void main(void) {
 		}
 		delay_ms(100);
 	}
-	
+#else
+	drawMandelbrotSet(
+		zoomLevel + 1,							// scale
+		convert(xOffset, zoomLevel + 1, 1),		// xOffset
+		convert(yOffset, zoomLevel + 1, 0),		// yOffset
+		17,										// iterations (escape time)
+		17										// threshold (black or white pixel)
+	);
+#endif
 }

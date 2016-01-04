@@ -77,7 +77,8 @@ endif
 flash_%: %.mhx com
 	$(FLASHLY) $(FFLAGS) -P: $<
 
-clean:
+# double colon rule - allows the target to be extended
+clean::
 	rm -rf $(OBJECT)
 	rm -rf $(ASM)
 	rm -rf *.mhx
