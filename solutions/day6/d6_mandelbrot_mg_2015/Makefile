@@ -7,5 +7,6 @@ include ../../../c.mk
 # compile with gcc without the macro targeting a standard pc (output via printf)
 gcc:
 	gcc main.c
+# expand the clean rule to clear gcc's output
 clean::
 	rm *.out
