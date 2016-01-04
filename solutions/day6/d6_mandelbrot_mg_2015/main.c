@@ -1,6 +1,8 @@
 /**
  * Author: Matthias Gazzari
  * Created: 23.09.2015
+ * Revised: 04.01.2016
+ */
  */
 
 #ifdef BOARD
