@@ -38,8 +38,8 @@ Different solutions exist to circumvent this problem:
 1. Reconfigure the VM:
   * Disable the USB filter of the SK-FX16 Board.
   * Enable a serial device (port number: COM1, port mode: host device, path: e.g. /dev/ttyUSB0 or COM12 depending on your operating system).
-  * The Makefile provided with one of the projects or solutions of day 5 and 6 is able to choose between /dev/ttyUSBx or /dev/ttySx.
-2. Try to install the tools on your computer (Linux should be straightforward, Windows requires the alternative Makefile provided in the `Windows` folder)
+  * The provided Makefile is able to choose automatically between /dev/ttyUSBx or /dev/ttySx.
+2. Try to install the tools on your computer (Windows may require a different Makefile).
 3. Use the old development environment provided by the ES department (Windows only).
 4. Another (future) solution might be to write a new flash tool directly for Linux which sets the correct baud rate.
 
