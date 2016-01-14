@@ -16,4 +16,4 @@ gcc:
 
 # expand the clean rule to clear gcc's output
 clean::
-	rm *.out
+	rm -rf *.out
