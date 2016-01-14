@@ -1,7 +1,7 @@
 /**
  * Author: Matthias Gazzari
  * Created: 23.09.2015
- * Revised: 04.01.2016
+ * Revised: 14.01.2016
  */
 
 #ifdef BOARD
@@ -13,10 +13,7 @@
 #else
 	#define LCD_WIDTH 64
 	#define LCD_HEIGHT 128
-	#define LCD_COLOR_BLACK ' '
-	#define LCD_COLOR_WHITE '1'
 	#include <stdio.h>
-	void lcd_drawPixel(int i, int j, char symbol) {printf("%c", symbol);}
 #endif
 
 /// number of different ADC values
@@ -71,12 +68,23 @@ void drawMandelbrotSet(int scale, int xOffset, int yOffset, int iteration, int t
 			y0 = (j + yOffset) * (yMax - yMin) / LCD_HEIGHT + yMin;
 			// evaluate wheter the given complex number x0 + i * y0 is in the Mandelbrot set or not
 			if (threshold > mandelbrotSet(x0, y0, iteration)) {
-				lcd_drawPixel(i, j, LCD_COLOR_BLACK);
+				#ifdef BOARD
+					lcd_drawPixel(i, j, LCD_COLOR_BLACK);
+				#else
+					printf("1");
+				#endif
 			}
 			else {
-				lcd_drawPixel(i, j, LCD_COLOR_WHITE);
+				#ifdef BOARD
+					lcd_drawPixel(i, j, LCD_COLOR_WHITE);
+				#else
+					printf(" ");
+				#endif
 			}
 		}
+		#ifndef BOARD
+			printf("\n");
+		#endif
 	}
 }
 
