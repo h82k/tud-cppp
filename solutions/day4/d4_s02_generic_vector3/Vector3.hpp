@@ -7,29 +7,24 @@ template<typename T>
 class Vector3 {
 public:
 	Vector3();
-
 	Vector3(T a, T b, T c);
-
 	Vector3(const Vector3& other);
-
-	Vector3<T> operator+(const Vector3<T>& rhs) const;
-
-	Vector3<T> operator-(const Vector3<T>& rhs) const;
-
-	T operator*(const Vector3<T>& rhs) const;
-
-	Vector3<T> operator*(const T& rhs) const;
-
-	Vector3<T> operator/(const T& rhs) const;
-
+	
+	T operator*(const Vector3& rhs) const;
+	
+	Vector3 operator+(const Vector3& rhs) const;
+	Vector3 operator-(const Vector3& rhs) const;
+	Vector3 operator*(const T& rhs) const;
+	Vector3 operator/(const T& rhs) const;
+	
 	T getA() const {
 		return a;
 	}
-
+	
 	T getB() const {
 		return b;
 	}
-
+	
 	T getC() const {
 		return c;
 	}
