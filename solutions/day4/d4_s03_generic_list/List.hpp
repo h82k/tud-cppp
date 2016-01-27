@@ -11,7 +11,7 @@ class List {
 public:
 	List();						// create an empty list
 	~List();					// delete the list and all of its elements
-	List(const List<T>& other);	// create a copy of another list
+	List(const List& other);	// create a copy of another list
 	void appendElement(const T& i);				// append an element to the end of the list
 	void prependElement(const T& i);			// prepend an element to the beginning of the list
 	void insertElementAt(const T& i, int pos);	// insert an element i at position pos

@@ -13,7 +13,7 @@ List<T>::~List() {
 }
 
 template<typename T>
-List<T>::List(const List<T>& other):
+List<T>::List(const List& other):
 	first(NULL), last(NULL), currentSize(0)
 {
 	for (ListItem<T> *item = other.first; item != NULL; item = item->getNext()) {
