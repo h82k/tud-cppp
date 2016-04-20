@@ -3,7 +3,7 @@
 .PHONY: all clean clean-all com
 
 # wine command
-PREFIX		:= ~/tools
+PREFIX		:= ~/.wine
 DEBUG		:= -all
 WINE		:= WINEPREFIX=$(PREFIX) WINEDEBUG=$(DEBUG) wine
 
