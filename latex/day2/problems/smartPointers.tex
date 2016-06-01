@@ -1,4 +1,5 @@
 \section{Smart Pointers}
+\LKi{Eclipse-spezifisch}
 In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \texttt{std::shared\_ptr} und \texttt{std::weak\_ptr} verwenden. Binde hierfür den Systemheader \texttt{memory} ein.
 Stelle zudem dein Projekt auf C++11 ein, indem du mit der rechten Maustaste auf das Projekt klickst, \textbf{Properties --> C/C++ Build --> Settings --> GCC C++ Compiler -> Dialect} wählst und \textbf{Language Standard} auf ISO C++11 stellst.
 
@@ -123,7 +124,7 @@ typedef std::weak_ptr<TreeNode> TreeNodeWeakPtr;
 Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\texttt{shared\_ptr}) implizit in schwache Zeiger (\texttt{weak\_ptr}) umgewandelt werden können.
 
 \hints{
-	\item Faustregel: Wenn ein Objekt ein anderes kontrolliert oder enthält, verwende Shared Pointer vom Container/Besitzer zum anderen Objekt und einen Weak Pointer für die umgekehrte Richtung.
+	\item \textbf{Faustregel}: Wenn ein Objekt ein anderes kontrolliert oder enthält, verwende Shared Pointer vom Container/Besitzer zum anderen Objekt und einen Weak Pointer für die umgekehrte Richtung.
 }
 
 \subsection{}
