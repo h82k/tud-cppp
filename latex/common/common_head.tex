@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{algorithm2e}
 \usepackage{hyperref}
+\usepackage{xspace}
 
 \usepackage{todonotes}
 %\usepackage[disable]{todonotes} % Use this line to hide all todos
@@ -72,6 +73,12 @@
 	\end{itemize}
 }
 
+\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
+\newcommand{\filename}[1]{\texttt{#1}}
+
 \newcommand{\RK}[1]{\todo[]{\textbf{RK:} #1}}
+\newcommand{\RKi}[1]{\todo[inline]{\textbf{RK:} #1}}
 \newcommand{\PJ}[1]{\todo[]{\textbf{PJ:} #1}}
+\newcommand{\PJi}[1]{\todo[inline]{\textbf{PJ:} #1}}
 \newcommand{\LK}[1]{\todo[]{\textbf{LK:} #1}}
+\newcommand{\LKi}[1]{\todo[inline]{\textbf{LK:} #1}}
