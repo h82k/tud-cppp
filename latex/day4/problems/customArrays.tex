@@ -32,7 +32,7 @@ Unter anderem musst du jeweils einen \texttt{const} und einen nicht-\texttt{cons
 Du kannst auch Exceptions (z.B. \texttt{std::out\_of\_range} aus \texttt{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
 
 \item
-Eine fortgeschrittene Übung ist es, Iteratoren oder \texttt{operator+} für das Array bereitszustellen, sodass du z.B. die Funktion \texttt{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
+Eine fortgeschrittene Übung ist es, Iteratoren oder \texttt{operator+(unsigned int)} für \lstinline|Array| bereitszustellen, sodass du z.B. die Funktion \texttt{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
 \begin{lstlisting}
 #include <algorithm> // copy
 #include <iterator> // back_inserter
@@ -44,6 +44,7 @@ std::copy(array, array + 4, std::back_inserter(vector));
 \end{lstlisting}
 
 \item
+\LKi{Eclipse-spezifisch}
 Diese Idee ist natürlich nicht neu.
 Seit C++11 gibt es eine Array-Implementation in der C++-Standardbibliothek (\texttt{std::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}).
 Du findest die gleiche Klasse auch als \texttt{boost::array} in Boost.

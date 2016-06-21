@@ -1,7 +1,7 @@
 \section{C++ Grundlagen, Funktionen und Strukturierung}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
-\subsection*{Exkurs Primitive Datentypen}
+\subsection*{Primitive Datentypen}
 Die primitiven Datentypen in C++ sind ähnlich denen in Java.
 Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
 Standardmäßig sind Zahlen vorzeichenbehaftet.
@@ -18,7 +18,13 @@ Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche W
 Alles ungleich 0 wird als \texttt{true} gewertet, 0 als \texttt{false}.
 Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 
-\subsection{Sterne}
+\PJi{Verweis auf sizeof() und std::limits<TYPE>, um die Maximalwerte auszugeben.
+    Aufgabe: Studenten sollen überprüfen, wieviel Byte double braucht (sollte laut Standard immer 64bit sein und wie groß der größte unsigned short ist.)}
+
+\subsection{Sternmuster mit Funktionen malen}
+
+\PJi{Mir fällt auf, dass hier gar nicht auf std::cout und std::endl hingewiesen wird. Bitte checken und ergänzen.}
+
 Schreibe eine Funktion \texttt{printStars(int n)}, die \texttt{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
 
@@ -44,7 +50,7 @@ Verwende hierzu Schleifen.
 
 \hints{
 	\item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
-Für Klassen ist CamelCase wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
+Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
 }
 
 \subsection{Auslagern der Datei}
@@ -66,36 +72,42 @@ Binde danach \texttt{functions.hpp} in beide Sourcedateien ein indem du
 \end{lstlisting}
 
 verwendest.
-Verschiebe deine beiden Funktionen nach \texttt{functions.cpp}.
+\textbf{Verschiebe} deine beiden Funktionen nach \texttt{functions.cpp}.
 
 Schreibe nun in \texttt{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
 Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
 Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
-Der Prototyp von \texttt{printStars(int n)} lautet \texttt{void printStars(int n);}
+Der Prototyp von \texttt{printStars(int n)} lautet 
+\begin{lstlisting}
+void printStars(int n);
+\end{lstlisting}
 
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \hints{
-	\item Sourcedateien tragen in der Regel die Endung \emph{.cpp}, Headerdateien \emph{.h} oder \emph{.hpp}.
-	\item Denke daran, auch in \texttt{functions.cpp} den Header \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst.
-	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \texttt{\#include <Bibliotheksname>} sowie per \texttt{\#include "Dateiname"}. Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
-	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \texttt{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
+	\item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
+	\item Denke daran, auch in \texttt{functions.cpp} den Header \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
+	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
+    Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
+	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
 }
 
 \subsection{Eingabe}
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
 Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
 Gib gegebenenfalls eine Fehlermeldung aus.
-Verwende zum Einlesen \texttt{std::cin} und den \texttt{operator>>}.
+Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in folgendem Beispiel.
 
 \begin{lstlisting}
-int zahl;
-std::cin >> zahl;
+int x;
+std::cin >> x; // Type, e.g., 174 and press ENTER.
+// Now, x contains the entered number.
+std::cout << x << std::endl.
 \end{lstlisting}
 
-Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \texttt{functions.cpp} aus.
+Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \filename{functions.cpp} aus.
 
-\subsection{Fortlaufendes Alphabet}
+\subsection{Fortlaufendes Alphabet ausgeben}
 Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
 Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
 Beispiel:
@@ -119,10 +131,10 @@ static char c = 'a';
 \end{lstlisting}
 
 deklariert.
-In diesem Fall wird \texttt{c} \textbf{einmalig zu Beginn des Programms} mit \emph{a} initialisiert und kann später beliebig verändert werden.
+In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig zu Beginn des Programms} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
 
 \hints{
-	\item Der Datentyp \texttt{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \% verwenden.
+	\item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden.
 }
 
 \subsection{Namensräume}
@@ -143,9 +155,10 @@ void fun::print_star(int n) {
 }
 \end{lstlisting}
 
-Vergisst man den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
-Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\texttt{print\_star(int n)} und \texttt{fun::print\_star(int n)} sind unterschiedliche Funktionen!).
+Vergisst man, den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
+Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind unterschiedliche Funktionen!).
 
 \hints{
-	\item Du kannst \texttt{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \texttt{static import} in Java). Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
+	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \texttt{static import} in Java).
+    Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
 }

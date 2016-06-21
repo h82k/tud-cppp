@@ -2,7 +2,6 @@
 In dieser Aufgabe sollst du den Umgang mit Zeigern (\emph{Pointer}) und Referenzen erlernen.
 Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
 Anstelle dessen kann ein (vergleichsweise kleiner) Zeiger auf einen Speichbereich übergeben werden.
-
 Alternativ kann auch eine Referenz auf eine Variable übergeben werden, welche intern ähnlich wie ein Zeiger gehandhabt wird.
 
 \subsection{Experimente}
@@ -21,11 +20,12 @@ cout << "Wert von &pIntVal " << &pIntVal << endl;
 \end{lstlisting}
 
 \subsection{Bedeutung verstehen}
-Seien \texttt{intVal} und \texttt{pIntVal} wie oben gegeben.
 Versuche die Bedeutung folgender Ausdrücke zu verstehen.
 Welche Regelmäßigkeiten stellst du fest?
 
 \begin{lstlisting}
+int intVal = 42;
+int *pIntVal = &intVal;
 *&intVal;
 *&pIntVal;
 &*pIntVal;
@@ -126,3 +126,7 @@ Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
     const int * const *cicPP = &iP;
     int ** const iPcP = &iP;
 \end{lstlisting}
+
+
+\PJi{Aufgabe ergänzen / aufsplitten, um auch mit Referenzen auf structs etc. zu experimentieren.
+Außerdem Speicherbilder zum Ausfüllen einfügen.}

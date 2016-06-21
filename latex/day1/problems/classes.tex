@@ -1,6 +1,7 @@
 \section{Klassen}
 Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
 
+\LKi{Eclipse-spezifisch}
 \hints{
 	\item Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{New $\rightarrow$ Class} im Kontext-Menü des Projekts) von Eclipse!
 }
@@ -9,7 +10,7 @@ Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Sch
 Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration (Headerdatei) und Implementation (Sourcedatei) aufgeteilt.
 Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Header beschrieben, während die Sourcedatei nur die Implementation der Funktionen und Initialisierungen statischer Variablen enthält.
 Standardmäßig sind alle Elemente einer Klasse privat.
-Im Gegensatz zu Java werden in C++ die Access-Modifier \texttt{public}/\texttt{private}/\texttt{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
+Im Gegensatz zu Java werden in C++ die Access-Modifier \lstinline{public}/\lstinline{private}/\lstinline{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
 
 \begin{lstlisting}
 class ClassName {
@@ -20,9 +21,9 @@ private:
 };	// semicolon!
 \end{lstlisting}
 
-Erzeuge einen Header \texttt{CharGenerator.hpp} und erstelle den Klassenrumpf der \texttt{CharGenerator} Klasse.
-Füge der Klasse das \texttt{private} Attribut \texttt{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \texttt{public} Konstruktorprototypen \texttt{CharGenerator()}, der \texttt{nextChar} auf \emph{a} initialiseren soll.
-Füge noch eine \texttt{public} Funktionsprototypen \texttt{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
+Erzeuge einen Header \texttt{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
+Füge der Klasse das \lstinline{private} Attribut \lstinline{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \lstinline{public} Konstruktorprototypen \lstinline{CharGenerator()}, der \lstinline{nextChar} auf \lstinline{'a'} initialiseren soll.
+Füge noch eine \lstinline{public} Funktionsprototypen \lstinline{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
 
 
 \hints{
@@ -30,7 +31,7 @@ Füge noch eine \texttt{public} Funktionsprototypen \texttt{char generateNextCha
 }
 
 \subsection{Implementation}
-Wie bei der Verwendung von \texttt{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte getrennt angegeben werden.
+Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte getrennt angegeben werden.
 
 \begin{lstlisting}
 void ClassName::functionName() {
@@ -52,7 +53,7 @@ ClassName::ClassName():
 \end{lstlisting}
 
 Erzeuge eine Sourcedatei \texttt{CharGenerator.cpp} für die Implementation der Klasse und binde die \texttt{CharGenerator.hpp} ein.
-Implementiere den Konstruktor, indem du \texttt{nextChar} mit \emph{a} in der Initialisierungsliste initialisierst.
+Implementiere den Konstruktor, indem du \lstinline{nextChar} mit \lstinline{'a'} in der Initialisierungsliste initialisierst.
 Implementiere zudem \texttt{generateNextChar()}, indem du \texttt{nextChar} zurückgibst.
 
 \hints{
@@ -115,9 +116,9 @@ private:
 };
 \end{lstlisting}
 
-Teste deine Implementation, indem du ein \texttt{PatternPrinter}-Objekt anlegst und \texttt{printPattern()} darauf aufrufst.
+Teste deine Implementation, indem du ein \lstinline{PatternPrinter}-Objekt anlegst und \lstinline{printPattern()} darauf aufrufst.
 
 \hints{
-	\item Ohne eine Initialisierungsliste wird \texttt{charGenerator} mit dem Default-Parameter initialisiert.
-	Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \texttt{charGenerator} mit dem entsprechenden Argument initialisiert werden.
+	\item Ohne eine Initialisierungsliste wird \lstinline{charGenerator} mit dem Default-Parameter initialisiert.
+	Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \lstinline{charGenerator} mit dem entsprechenden Argument initialisiert werden.
 }

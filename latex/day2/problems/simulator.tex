@@ -1,4 +1,5 @@
 \section{Fortsetzung Aufzugsimulator}
+\PJi{Auf separates Übungsblatt}
 In dieser Aufgabe erweitern und verbessern wir unseren Aufzugsimulator, sodass das Kopieren von Personen wegfällt.
 Dies werden wir erreichen, indem wir nicht direkt mit \texttt{Person}-Objekten oder -rohzeigern sondern mit Smart Pointern arbeiten.
 Dadurch müssen wir beim Verschieben von Personen in den Aufzug nur die Smart Pointer kopieren, während die \texttt{Person}-Objekte selbst bestehen bleiben.
@@ -153,3 +154,5 @@ Das ist in unserem Fall allerdings weniger interessant, da die meisten kopierten
 Im Gegensatz zur Laufzeit gibt es leider keinen sehr einfachen Weg, den Speicherverbrauch des Programms direkt auszugeben.
 
 Du könntest hierfür kurz vor dem Ende von \texttt{main} die Ausführung pausieren (mittels \texttt{std::cin}) und dir im Task Manager ansehen, wie hoch der Speicherverbrauch des Programms ist -- das ist aber sicherlich nur eine Notlösung.
+
+\PJi{Ich hätte gerne an irgendeiner Stelle den Aufruf dazu einmal \lstinline|auto| zu verwenden.}
