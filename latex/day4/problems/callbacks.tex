@@ -9,8 +9,6 @@ Callbacks können als Alternative zum Observer Pattern\footnote{\url{http://de.w
 Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die aufgerufen werden soll, sobald der Button gedrückt wird.
 Wir werden Callbacks dazu verwenden, um den Benutzer bei jedem Schritt eines laufenden Algorithmus über den aktuellen Fortschritt zu informieren.
 
-\begin{enumerate}
-
 \subsection{Basisalgorithmus}
 Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.\footnote{\url{http://de.wikipedia.org/wiki/Turm_von_Hanoi}}
 \begin{algorithm}[H]
@@ -206,7 +204,6 @@ Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden s
 
 Teste deine Implementation in Zusammenhang mit der \lstinline{hanoi}-Funktion. Du kannst das \lstinline{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden.
 
-\end{enumerate}
 
 \textbf{Nachwort}:
 Für produktive C++-Programme bietet Boost fertige Funktionen und Klassen, um Callbacks zu realisieren, z.B. \lstinline{boost::function<...>} und \lstinline{boost::bind()}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/function.html}}. Diese können mit beliebiger Anzahl von Parametern umgehen und beinhalten viele weitere Features.
