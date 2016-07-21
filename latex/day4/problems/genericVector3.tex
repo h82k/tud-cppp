@@ -1,13 +1,13 @@
 \section{Generische Vektor-Implementation}
-Erinnere dich an die Klasse \texttt{Vector3} aus dem ersten Praktikumstag. Diese hat den Datentyp \texttt{double} für die einzelnen Komponenten verwendet. Schreibe die Klasse so um, dass der Datentyp der Komponenten durch einen Template-Parameter angegeben werden kann.
-Füge dafür der Klasse \texttt{Vector3} einen Template-Parameter hinzu und ersetze jedes Aufkommen von \texttt{double} mit dem Template-Parameter.
+Erinnere dich an die Klasse \lstinline{Vector3} aus dem ersten Praktikumstag. Diese hat den Datentyp \lstinline{double} für die einzelnen Komponenten verwendet. Schreibe die Klasse so um, dass der Datentyp der Komponenten durch einen Template-Parameter angegeben werden kann.
+Füge dafür der Klasse \lstinline{Vector3} einen Template-Parameter hinzu und ersetze jedes Aufkommen von \lstinline{double} mit dem Template-Parameter.
 Vergiss nicht, die Implementation in den Header zu verschieben, da der Compiler die Definition einer Klasse kennen muss, um beim Einsetzen des Template-Parameters den richtigen Code zu generieren.
 
-Verbessere außerdem die Effizienz und Sauberkeit der \texttt{Vector3}-Klasse, in dem du die Parameterübergabe in den entsprechenden Methoden auf \texttt{const} Referenzen umstellst und alle Getter als \texttt{const} deklarierst.
+Verbessere außerdem die Effizienz und Sauberkeit der \lstinline{Vector3}-Klasse, in dem du die Parameterübergabe in den entsprechenden Methoden auf \lstinline{const} Referenzen umstellst und alle Getter als \lstinline{const} deklarierst.
 
-Du weißt bereits, dass alle \texttt{template}-Funktionen und -Methoden im Header enthalten sein müssen.
-Um den Code trotzdem zu strukturieren, hat es sich eingebürgert, dass man die Klassendefinition in der \texttt{hpp}-Datei hält, ohne die Methoden zu implementieren.
-Im Anschluss wird eine \texttt{tpp}-Datei inkludiert, die die Implementierung der Methoden und Funktionen enthält.
+Du weißt bereits, dass alle \lstinline{template}-Funktionen und -Methoden im Header enthalten sein müssen.
+Um den Code trotzdem zu strukturieren, hat es sich eingebürgert, dass man die Klassendefinition in der \filename{hpp}-Datei hält, ohne die Methoden zu implementieren.
+Im Anschluss wird eine \filename{tpp}-Datei inkludiert, die die Implementierung der Methoden und Funktionen enthält.
     
 Der Aufbau wäre also in etwas wie folgt:
 \begin{lstlisting}
@@ -22,7 +22,7 @@ class Vector3 {
 \end{lstlisting}
 \LKi{Eclipse-spezifisch}
 \hints {
-\item Dateien mit der Endung \texttt{tpp} werden von Eclipse CDT eventuell nicht als C++-Code erkannt.
-Um das zu ändern, muss du die Endung \texttt{*.tpp} an folgender Stelle registrieren: \textbf{Window -> Preferences -> General / Content Types -> Text / C Source File / C++ Source File / C++ Header File}.
+\item Dateien mit der Endung \filename{tpp} werden von Eclipse CDT eventuell nicht als C++-Code erkannt.
+Um das zu ändern, muss du die Endung \filename{*.tpp} an folgender Stelle registrieren: \textbf{Window -> Preferences -> General / Content Types -> Text / C Source File / C++ Source File / C++ Header File}.
     
 }

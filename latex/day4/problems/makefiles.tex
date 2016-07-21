@@ -11,11 +11,11 @@ Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die H
 Wähle als \textbf{Toolchain} \textbf{\texttt{Linux GCC}} aus und suche dir einen Projektnamen aus.
 
 Das erzeugte Projekt ist ziemlich leer.
-Lege zunächst ein Makefile an über \textbf{File $\to$ New $\to$ Other\dots} und dann \textbf{File} mit Namen \texttt{Makefile}.
+Lege zunächst ein Makefile an über \textbf{File $\to$ New $\to$ Other\dots} und dann \textbf{File} mit Namen \filename{Makefile}.
 
-Eclipse erwartet, dass das Makefile ein Target mit dem Namen \texttt{all} hat.
+Eclipse erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
-Lege nun das Target \texttt{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
+Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
 \begin{lstmake}
 all:
 	@echo "Running all..."
@@ -33,19 +33,19 @@ Running all...
 \item\textbf{Erster Compilevorgang}
 
 Jetzt ist es an der Zeit, ein Programm mittels \texttt{make} zu kompilieren.
-Lege dazu eine C++-Sourcedatei \texttt{main.cpp} mit einer \texttt{main}-Funktion an, die etwas sinnvolles ausgibt.
+Lege dazu eine C++-Sourcedatei \filename{main.cpp} mit einer \lstinline{main}-Funktion an, die etwas sinnvolles ausgibt.
 
-Entgegen unserer bisherigen Erfahrung musst du nun manuell in \texttt{Makefile} eintragen, dass \texttt{main.cpp} gebaut werden soll.
+Entgegen unserer bisherigen Erfahrung musst du nun manuell in \filename{Makefile} eintragen, dass \filename{main.cpp} gebaut werden soll.
 Ersetze die Dummy-Ausgabe daher durch einen Compiler-Aufruf an \texttt{g++}:
 \begin{lstmake}
 all:
 	g++ -o main.exe main.cpp
 \end{lstmake}
 
-Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \texttt{main.exe} im Projekthauptverzeichnis abgelegt.
+Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
 
 \item\textbf{Klasse \emph{Building}:}
-Jetzt fügen wir die Klasse \texttt{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet:
+Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet:
 
 \begin{minipage}[t]{.45\textwidth}
 \begin{lstlisting}
@@ -79,9 +79,9 @@ const std::string Building::toString() const{
 \end{lstlisting}
 \end{minipage}
 
-Erzeuge in der \texttt{main}-Funktion eine zweistöckige Instanz von \texttt{Building} und gib diese mittels \texttt{Building::toString} auf der Konsole aus.
+Erzeuge in der \lstinline{main}-Funktion eine zweistöckige Instanz von \lstinline{Building} und gib diese mittels \lstinline{Building::toString} auf der Konsole aus.
 
-Damit das Projekt kompiliert, muss auch \texttt{Building} im Makefile eingetragen werden.
+Damit das Projekt kompiliert, muss auch \lstinline{Building} im Makefile eingetragen werden.
 Passe dazu den Compileraufruf an:
 \begin{lstmake}
 all:
@@ -93,10 +93,10 @@ Wenn du das Projekt gebaut hast und ausführst, sollte auf der Konsole eine Ausg
 \item\textbf{Compiler-Aufrufe auslagern:}
 In der Vorlesung haben wir gesehen, dass \emph{make} anhand der Zeitstempel von Dateien dazu in der Lage ist, zu erkennen, wann ein Programmteil neu gebaut werden muss.
 Aktuell nutzen wir diese Möglichkeit noch nicht:
-Egal ob wir \texttt{main.cpp}, \texttt{Building.cpp} oder \texttt{Building.h} verändert haben, immer wird das gesamte Projekt neu gebaut.
+Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building.h} verändert haben, immer wird das gesamte Projekt neu gebaut.
 In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
 
-Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \texttt{main.o} und \texttt{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
+Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \filename{main.o} und \filename{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
 \begin{lstmake}
 all: main.o Building.o
 	g++ -o main.exe main.o Building.o
@@ -123,7 +123,7 @@ g++ -o main.exe main.o Building.o
 
 \item\textbf{Linker-Aufruf auslagern}
 Wie können wir diesen an sich unnötigen Aufruf ebenfalls noch loswerden?
-Eine Lösung ist es, das Target \texttt{all} von \texttt{main.exe} abhängig zu machen und ein neues Ziel \texttt{main.exe} zu definieren:
+Eine Lösung ist es, das Target \texttt{all} von \filename{main.exe} abhängig zu machen und ein neues Ziel \filename{main.exe} zu definieren:
 \begin{lstmake}
 all: main.exe
 
@@ -141,9 +141,9 @@ make: Nothing to be done for `all'.
 
 \item\textbf{Inkrementelles Bauen:}
 Wir erproben jetzt, wie sich Veränderungen an einer der drei Dateien auf die Ausführung von \texttt{make} auswirken.
-Mache nacheinander kleine Änderungen -- das können auch Kommentare sein -- an den Dateien \texttt{main.cpp}, \texttt{Building.h} und \texttt{Building.cpp} und baue das Projekt nach jeder Änderung.
+Mache nacheinander kleine Änderungen -- das können auch Kommentare sein -- an den Dateien \filename{main.cpp}, \filename{Building.h} und \filename{Building.cpp} und baue das Projekt nach jeder Änderung.
 
-Dir fällt auf, dass Änderungen an \texttt{Building.h} von \texttt{make} nicht bemerkt werden; die Datei taucht ja nirgendwo explizit im Makefile auf.
+Dir fällt auf, dass Änderungen an \filename{Building.h} von \texttt{make} nicht bemerkt werden; die Datei taucht ja nirgendwo explizit im Makefile auf.
 
 Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
 
@@ -151,7 +151,7 @@ Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
 \item\textbf{Header als Abhängigkeiten}
 Du hast kennengelernt, dass man Implementationen auch \texttt{inline} in einem Header machen kann, zum Beispiel wenn diese klein sind.
 
-Bewege \texttt{toString} nun nach \texttt{Buidling.h}:
+Bewege \lstinline{toString} nun nach \filename{Buidling.h}:
 \begin{lstlisting}
 #include <sstream>
 // ...
@@ -164,13 +164,13 @@ const std::string toString() const{
 \end{lstlisting}
 
 Baue das Projekt; es kompiliert nicht! Warum? Genau aus dem Grund, dass \texttt{make} das Header-File nicht \glqq kennt\grqq{}.
-Jetzt gibt es im Projekt keine Definition von \texttt{toString} wie uns der Linker auch mitteilt:
+Jetzt gibt es im Projekt keine Definition von \lstinline{toString} wie uns der Linker auch mitteilt:
 \begin{verbatim}
 main.o:main.cpp:(.text+0x5c): undefined reference to `Building::toString() const'
 collect2: ld returned 1 exit status
 \end{verbatim}
 
-Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \texttt{main.o} nicht nur abhängig von \texttt{Building.cpp}, sondern auch von \texttt{Building.h} ist:
+Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \filename{main.o} nicht nur abhängig von \filename{Building.cpp}, sondern auch von \filename{Building.h} ist:
 \begin{lstmake}
 # ...
 main.o: main.cpp Building.h
@@ -179,16 +179,16 @@ main.o: main.cpp Building.h
 \end{lstmake}
 
 Ist das eine schöne Lösung?
-Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \texttt{\#include} in eine Sourcedatei einbinden.
-Schlimmer noch: Wir müssten über rekursive Includes Bescheid wissen, z.B. wenn \texttt{Building.h} einen anderen veränderlichen Header wie \texttt{Floor.h} einbindet.
+Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{\#include} in eine Sourcedatei einbinden.
+Schlimmer noch: Wir müssten über rekursive Includes Bescheid wissen, z.B. wenn \filename{Building.h} einen anderen veränderlichen Header wie \filename{Floor.h} einbindet.
 
 Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
 
 \item\textbf{Header automatisch als Abhängigkeiten deklarieren:}
 
 Wir automatisieren jetzt die Erkennung von Headern als Abhängigkeiten.
-Lösche dazu die Abhängigkeit \texttt{Building.h} des Targets \texttt{main.o} und füge in den Compiler-Aufrufen die Parameter \texttt{-MMD -MP} hinzu.
-Binde außerdem die Dateien \texttt{Building.d} und \texttt{main.d} ein wie unten dargestellt:
+Lösche dazu die Abhängigkeit \filename{Building.h} des Targets \filename{main.o} und füge in den Compiler-Aufrufen die Parameter \texttt{-MMD -MP} hinzu.
+Binde außerdem die Dateien \filename{Building.d} und \filename{main.d} ein wie unten dargestellt:
 \begin{lstmake}
 all: main.exe
 
@@ -204,12 +204,12 @@ Building.o: Building.cpp
 -include Building.d main.d
 \end{lstmake}
 
-Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\texttt{main.exe, Building.h, Building.cpp}).
+Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\filename{main.exe, Building.h, Building.cpp}).
 Das anschließende Bauen sollte nun funktionieren.
 
-Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Makefile generiert, das dessen eingebundene Header als Abhängigkeiten enthält (\texttt{main.d, Building.d}).
+Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Makefile generiert, das dessen eingebundene Header als Abhängigkeiten enthält (\filename{main.d, Building.d}).
 
-Wenn du jetzt Änderungen an der \texttt{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \texttt{Building.h} erkannt.
+Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \filename{Building.h} erkannt.
 
 
 
@@ -245,7 +245,7 @@ Lege dir nun auch ein ausführbares Target für \texttt{all} an.
 
 
 \item\textbf{Generisches Compiler-Target}
-Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder weniger identisch sind: \texttt{main.o} und \texttt{Building.o}.
+Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder weniger identisch sind: \filename{main.o} und \filename{Building.o}.
 
 \texttt{make} bietet für solche Situationen generische Regeln an, die mittels Wildcards beschrieben werden.
 
@@ -284,19 +284,19 @@ clean:
 
 Dir ist sicherlich eine andere Form der Redundanz aufgefallen:
 Noch immer haben wir die Tatsache, dass es im Moment zwei Sourcedateien gibt, an unterschiedlichen Stellen im Makefile festgelegt.
-Wenn wir nun als nächstes die \texttt{Floor}-Klasse entwerfen, müssten wir diese hinzufügen
+Wenn wir nun als nächstes die \lstinline{Floor}-Klasse entwerfen, müssten wir diese hinzufügen
 \begin{itemize}
-	\item als Abhängigkeit von \texttt{main.exe},
-	\item zum Linker-Aufruf in \texttt{main.exe},
-	\item in der \texttt{-include}-Direktive und
-	\item im Target \texttt{texttt}, und das gleich doppelt!
+	\item als Abhängigkeit von \filename{main.exe},
+	\item zum Linker-Aufruf in \filename{main.exe},
+	\item in der \lstinline{-include}-Direktive und
+	\item im Target \lstinline{texttt}, und das gleich doppelt!
 \end{itemize}
 Das ist natürlich immer noch ziemlich fehleranfällig.
 
 Wir würden also gerne nur an \emph{einer} Stelle definieren, welche Sourcedateien Teil unseres Projektes sind.
 
 Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Object-Dateien an.
-Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\texttt{main.o Building.o}' und ersetze das Auftreten der beiden Object-Dateien mit dieser Variablen:
+Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\lstinline{main.o Building.o}' und ersetze das Auftreten der beiden Object-Dateien mit dieser Variablen:
 \begin{lstmake}
 OBJECTS=main.o Building.o
 
@@ -309,7 +309,7 @@ main.exe: $(OBJECTS)
 \end{lstmake}
 \emph{Tipp}: Eclipse bietet für Variablennamen automatische Vervollständigung an (\emph{Ctrl+Space}).
 
-Wiederhole die Prozedur für die Dependency-Dateien ('\texttt{DEPEND=main.d Building.d}') und das ausführbare Programm ('\texttt{BINARY=main.exe}').
+Wiederhole die Prozedur für die Dependency-Dateien ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
 
 Am Ende sollte dein Makefile in etwa so aussehen:
@@ -339,7 +339,7 @@ Wie wir die verbliebene Redundanz auflösen, sehen wir in der nächsten Teilaufg
 
 \item\textbf{Wildcard-Ausdrücke}
 
-Die beiden Variablen \texttt{OBJECTS} und \texttt{DEPEND} sind strukturell ähnlich -- wieder etwas, das wir loswerden wollen.
+Die beiden Variablen \lstinline{OBJECTS} und \lstinline{DEPEND} sind strukturell ähnlich -- wieder etwas, das wir loswerden wollen.
 Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu definieren, oder?
 
 Lege dazu eine neue Variable \emph{SOURCES} mit den beiden Sourcedateien an.

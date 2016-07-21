@@ -1,21 +1,21 @@
 \section{Generische Verkettete Liste}
 \label{sec:list}
 \subsection{}
-Schreibe die Klassen \texttt{List}, \texttt{ListItem} und \texttt{ListIterator} aus dem zweiten Praktikumstag so um, dass man den Inhaltstyp der Liste über ein Template-Parameter angeben kann.
+Schreibe die Klassen \lstinline{List}, \lstinline{ListItem} und \lstinline{ListIterator} aus dem zweiten Praktikumstag so um, dass man den Inhaltstyp der Liste über ein Template-Parameter angeben kann.
 
 Dazu müssen einige Änderungen gemacht werden.
-Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern als \texttt{const} Referenz übergeben werden.
-Zum anderen sollten die Methoden zum Löschen von Elementen \texttt{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann.
+Zum einen sollte der Inhalt eines Elements beim Erstellen nicht als Wert sondern als \lstinline{const} Referenz übergeben werden.
+Zum anderen sollten die Methoden zum Löschen von Elementen \lstinline{void} zurückgeben, und nicht mehr das jeweilige gelöschte Element, weil in diesem Fall eine temporäre Kopie des Elements gemacht werden müsste, ohne dass es der Benutzer beeinflussen kann.
 Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.
 
 \hints{
-	\item Arbeite die Klassen nacheinander ab, beginnend bei \texttt{ListItem}.
+	\item Arbeite die Klassen nacheinander ab, beginnend bei \lstinline{ListItem}.
 	\item Stelle sicher, dass man eine Klasse fehlerfrei kompilieren kann, bevor du zur nächsten übergehst.
 	\item Denke daran, dass du auch hier die Implementation in die Header verschieben musst.
 }
 
 \subsection{}
-Überlade den \texttt{operator<<}, sodass Listen direkt über ein \texttt{std::ostream} wie z.B. \texttt{std::cout} ausgegeben werden können.
+Überlade den \lstinline{operator<<}, sodass Listen direkt über ein \lstinline{std::ostream} wie z.B. \lstinline{std::cout} ausgegeben werden können.
 
 \subsection{}
 Teste deine Implementation. Probiere auch folgendes aus und beobachte die Ausgabe.
