@@ -3,13 +3,13 @@
 Unser bisheriger Aufzugsimulator hat eine feste Strategie, nach der die einzelnen Stockwerke abgefahren werden. Mithilfe von Polymorphie können wir den Simulator so erweitern, dass die Strategie austauschbar wird.  
 
 \subsection{Vorbereitung}
-Lagere die bereits existierende Simulation des Aufzugs aus der \texttt{main}-Funktion in eine eigene Funktion \texttt{runSimulation()} aus. Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\texttt{std::list<int>}) der angefahrenen Stockwerke zurückgeben. Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
+Lagere die bereits existierende Simulation des Aufzugs aus der \lstinline{main}-Funktion in eine eigene Funktion \lstinline{runSimulation()} aus. Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\lstinline{std::list<int>}) der angefahrenen Stockwerke zurückgeben. Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
 Teste deine Implementation.
 
-\subsection{Klasse \texttt{ElevatorStrategy}}
-Implementiere die Klasse \texttt{ElevatorStrategy}.
+\subsection{Klasse \lstinline{ElevatorStrategy}}
+Implementiere die Klasse \lstinline{ElevatorStrategy}.
 Diese soll die Basisklasse für verschiedene Aufzugstrategien sein.
-Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \texttt{Building} per \texttt{const} Pointer übergeben.
+Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \lstinline{Building} per \lstinline{const} Pointer übergeben.
 
 \begin{lstlisting}
 // Elevator strategy class: Determines to which floor the elevator should move next.
@@ -26,13 +26,13 @@ protected:
 
 
 \subsection{Eine einfache Aufzusstrategie}
-Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \texttt{ElevatorStrategy} erbt.
+Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
 Diese soll folgendermaßen vorgehen: 
 Falls der Aufzug momentan leer ist, soll zum tiefsten Stockwerk gefahren werden, wo sich noch Personen befinden.
 Falls der Aufzug nicht leer ist, wird das Zielstockwerk einer der Personen im Aufzug ausgewählt.
 
-\subsection{Implementation von \texttt{runSimulation}}
-Ändere nun \texttt{runSimulation()} entsprechend um, sodass die Simulation anhand der gegebenen Strategie durchgeführt wird.
+\subsection{Implementation von \lstinline{runSimulation}}
+Ändere nun \lstinline{runSimulation()} entsprechend um, sodass die Simulation anhand der gegebenen Strategie durchgeführt wird.
 Folgender Pseudocode kann dir als Denkhilfe dienen:
 
 \begin{algorithm}[H]
@@ -49,6 +49,6 @@ Folgender Pseudocode kann dir als Denkhilfe dienen:
 Teste die einfache Aufzugstrategie
 
 \subsection{Neue Aufzugstrategien (optional)}
-Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \texttt{ElevatorStrategy} erbt.
+Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
 Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
 Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden. Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
