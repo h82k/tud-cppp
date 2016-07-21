@@ -172,7 +172,7 @@ Um den Compiler darüber zu informieren, welche Variante wir überladen, wird be
 Dieser dient nur der syntaktischen Unterscheidung und hat keine weitere Bedeutung.
 
 Beachte außerdem, dass bei Präfix-Operationen der Iterator sich selbst zurückgeben sollte, während der Postfix-Operationen eine Kopie des Iterators zurückgibt, die auf das vorherige Element zeigt.
-Das ist auch der Grund, warum die Präfix-Form von \lstinline{operator++} (und \lstinline{operator-{}-}) effizienter ist als die Postfix-Form.
+Das ist auch der Grund, warum die Präfix-Form von \lstinline{operator++} (und \lstinline{operator--}) effizienter ist als die Postfix-Form.
 Daher sollte die Präfix-Form dieser Operatoren die bevorzugte Variante sein, falls kein besonderer Grund für die Postfix-Form vorliegt.
 
 Zum besseren Verständnis ist ein Teil der Implementation gegeben:
@@ -204,7 +204,7 @@ ListIterator ListIterator::operator++(int) {
 
 
 \paragraph{Iterator rückwärts bewegen mittels \lstinline{operator--}}
-Überlade auf die gleiche Weise auch den \lstinline{operator-{}-} sowohl in Postfix als auch Präfix-Form.
+Überlade auf die gleiche Weise auch den \lstinline{operator--} sowohl in Postfix als auch Präfix-Form.
 
 \paragraph{Iteratoren in List erzeugen} 
 Nun ist unsere Implementation fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
@@ -236,7 +236,7 @@ for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
 }
 \end{lstlisting}
 
-Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \lstinline{list.begin()} und \lstinline{list.end()} tauscht und \lstinline{iter-{}-} statt \lstinline{iter++} verwendet?
+Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \lstinline{list.begin()} und \lstinline{list.end()} tauscht und \lstinline{iter--} statt \lstinline{iter++} verwendet?
 Denke daran, worauf die von \lstinline{begin())} und \lstinline{end()} zurückgegebenen Iteratoren zeigen.
 
 \hints{
