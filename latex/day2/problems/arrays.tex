@@ -1,6 +1,6 @@
 \section{Arrays und Zeigerarithmetik}
 Arrays sind zusammenhängende Speicherbereiche, die mehrere Variablen von gleichem Typ speichern können.
-Arrays werden in C++ folgendermaßen angelegt: \texttt{<Typ> <name>[<Größe>];}, zum Beispiel:
+Arrays werden in C++ folgendermaßen angelegt: \lstinline{<Typ> <name>[<Größe>];}, zum Beispiel:
 
 \begin{lstlisting}
 	int arr[10];	// array of 10 integers
@@ -50,17 +50,17 @@ Somit kann man auf beliebige Elemente des Array über den Zeiger zugreifen:
 \end{lstlisting}
 
 Tatsächlich ist \textbf{*(p+i)} in \textbf{jeder Hinsicht äquivalent} zu \textbf{p[i]}.
-Das bedeutet, dass man sowohl auf das i-te Element eines Arrays über \textbf{*(arr + i)} zugreifen kann als auch über \textbf{pointer[i]} auf das Element, auf welches der Zeiger \texttt{pointer+i} zeigt!
+Das bedeutet, dass man sowohl auf das i-te Element eines Arrays über \textbf{*(arr + i)} zugreifen kann als auch über \textbf{pointer[i]} auf das Element, auf welches der Zeiger \lstinline{pointer+i} zeigt!
 
 In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt.
 Du bist als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird.
 Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie  Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
-Bevorzuge deshalb Container-Klassen wie \texttt{std::vector} (oder \texttt{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
-Beachte außerdem, dass der \texttt{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \texttt{NULL} setzt.
+Bevorzuge deshalb Container-Klassen wie \lstinline{std::vector} (oder \lstinline{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
+Beachte außerdem, dass der \lstinline{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \lstinline{NULL} setzt.
 Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind.
-Setze deshalb Zeiger nach einem \texttt{delete}/\texttt{delete[]} sofort auf \texttt{NULL}, um Speicherfehler zu vermeiden.
+Setze deshalb Zeiger nach einem \lstinline{delete}/\lstinline{delete[]} sofort auf \lstinline{NULL}, um Speicherfehler zu vermeiden.
 
-Um die Größe eines Arrays zu ermitteln, kannst du den \texttt{sizeof()}-Operator benutzen.
+Um die Größe eines Arrays zu ermitteln, kannst du den \lstinline{sizeof()}-Operator benutzen.
 Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht.
 Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgröße des Arrays durch die Größe eines Elements geteilt werden, um auf die Anzahl der Elemente zu kommen.
 
@@ -71,8 +71,8 @@ Da einzelne Array-Elemente größer als ein Byte sein können, muss die Gesamtgr
 	std::cout << len << std::endl; // always 10
 \end{lstlisting}
 
-Beachte, dass \texttt{sizeof()} \textbf{nicht} dazu verwendet werden kann, um die Größe des Arrays herauszufinden, auf die ein Zeiger zeigt.
-In diesem Fall wird \texttt{sizeof()} nämlich die \textbf{Größe des Zeigers} und nicht die Größe des Arrays liefern!
+Beachte, dass \lstinline{sizeof()} \textbf{nicht} dazu verwendet werden kann, um die Größe des Arrays herauszufinden, auf die ein Zeiger zeigt.
+In diesem Fall wird \lstinline{sizeof()} nämlich die \textbf{Größe des Zeigers} und nicht die Größe des Arrays liefern!
 
 \begin{lstlisting}
 	int arr[10];
@@ -81,15 +81,15 @@ In diesem Fall wird \texttt{sizeof()} nämlich die \textbf{Größe des Zeigers} 
 \end{lstlisting}
 
 \subsection{Arrays anlegen}
-Lege in der \texttt{main}-Funktion ein \texttt{int}-Array mit 10 Elementen an, und initialisiere es mit den Zahlen 1 bis 10.
+Lege in der \lstinline{main}-Funktion ein \lstinline{int}-Array mit 10 Elementen an, und initialisiere es mit den Zahlen 1 bis 10.
 Iteriere in einer Schleife über das Array und gib alle Elemente nacheinander aus.
 
 \subsection{printElements implementieren}
 In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
 Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
-Schreibe eine Funktion, die einen \texttt{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
-Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \texttt{unsigned int} wird oft der Standard-Typ \texttt{size\_t} genutzt (z.B. in \texttt{std::vector}).}:
+Schreibe eine Funktion, die einen \lstinline{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
+Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \lstinline{unsigned int} wird oft der Standard-Typ \lstinline{size\_t} genutzt (z.B. in \lstinline{std::vector}).}:
 
 \begin{lstlisting}
 	void printElements(const int *const array, const unsigned int size);
@@ -121,8 +121,8 @@ Dadurch werden Schleifen der folgenden Form möglich.
 
 möglich.
 Schreibe die Funktion aus der vorherigen Aufgabe entsprechend um.
-Vergiss nicht, den Zeiger als \texttt{const} zu definieren, da Elemente nur gelesen werden.
-Du kannst hier \texttt{const} doppelt verwenden, um auch sicherzustellen, dass der \texttt{end}-Zeiger nicht verändert wird.
+Vergiss nicht, den Zeiger als \lstinline{const} zu definieren, da Elemente nur gelesen werden.
+Du kannst hier \lstinline{const} doppelt verwenden, um auch sicherzustellen, dass der \lstinline{end}-Zeiger nicht verändert wird.
 
 \subsection{Subarrays ausgeben}
 Die obige Methode, über Elemente eines Arrays zu iterieren, mag dir zunächst etwas ungewöhnlich erscheinen.
@@ -140,7 +140,7 @@ Experimentiere etwas mit dieser Übergabemethode in deiner eigenen Funktion!
 Bisher haben wir das Array auf dem Stack angelegt
 Mit \textbf{new[]} kann man ein Array auf dem Heap erzeugen.
 Dabei wird die Adresse des ersten Elements in einem Zeiger gespeichert.
-Mittels \texttt{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
+Mittels \lstinline{delete[]} \textbf{muss} man den belegten Speicher nach Benutzung freigeben.
 Beispiel:
 
 \begin{lstlisting}
@@ -149,15 +149,15 @@ Beispiel:
 	delete[] pArr; // <-- notice the [] !
 \end{lstlisting}
 
-Beachte die \textbf{[]} nach \texttt{delete}.
+Beachte die \textbf{[]} nach \lstinline{delete}.
 Diese bewirken, dass das gesamte Array und nicht bloß das erste Element gelöscht wird.
 
 Ein Anwendungsfall von dynamischen Arrays sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben.
 
-Schreibe eine Funktion, die beliebig viele Zahlen von der Konsole mittels \texttt{std::cin} einliest.
+Schreibe eine Funktion, die beliebig viele Zahlen von der Konsole mittels \lstinline{std::cin} einliest.
 Der Benutzer soll dabei zuvor gefragt werden, wie viele Zahlen er eingeben möchte.
 Speichere die Zahlen in einem dynamisch angelegten Array ab und lasse die Funktion einen Zeiger darauf zurückgeben.
-Hier ist ein Beispiel wie \texttt{std::cin} zu verwenden ist:
+Hier ist ein Beispiel wie \lstinline{std::cin} zu verwenden ist:
 
 \begin{lstlisting}
 unsigned int size;
