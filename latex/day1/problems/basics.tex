@@ -1,11 +1,10 @@
 \section{C++ Grundlagen, Funktionen und Strukturierung}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
-\subsection*{Primitive Datentypen}
-Die primitiven Datentypen in C++ sind ähnlich denen in Java.
+\subsection*{Primitive Datentypen} Die primitiven Datentypen in C++ sind ähnlich denen in Java.
 Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
 Standardmäßig sind Zahlen vorzeichenbehaftet.
-Mittels \texttt{unsigned} kann man vorzeichenlose Variablen deklarieren.
+Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
 Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
 
 \begin{lstlisting}
@@ -14,8 +13,8 @@ unsigned int ui;			// unsigned int, 0 to 4294967295 on a 32-bit machine
 // unsigned double d;	// not possible
 \end{lstlisting}
 
-Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \texttt{bool}) umgewandelt werden.
-Alles ungleich 0 wird als \texttt{true} gewertet, 0 als \texttt{false}.
+Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \lstinline{bool}) umgewandelt werden.
+Alles ungleich 0 wird als \lstinline{true} gewertet, 0 als \lstinline{false}.
 Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 
 \PJi{Verweis auf sizeof() und std::limits<TYPE>, um die Maximalwerte auszugeben.
@@ -23,17 +22,15 @@ Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 
 \subsection{Sternmuster mit Funktionen malen}
 
-\PJi{Mir fällt auf, dass hier gar nicht auf std::cout und std::endl hingewiesen wird. Bitte checken und ergänzen.}
-
-Schreibe eine Funktion \texttt{printStars(int n)}, die \texttt{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
-Ein Aufruf von \texttt{printStars(5)} sollte folgende Ausgabe generieren:
+Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
+Ein Aufruf von \lstinline{printStars(5)} sollte folgende Ausgabe generieren:
 
 \begin{lstlisting}
 *****
 \end{lstlisting}
 
-Platziere die Funktion \textbf{vor} der \texttt{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
-Benutze die erstellte Funktion \texttt{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
+Platziere die Funktion \textbf{vor} der \lstinline{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
+Benutze die erstellte Funktion \lstinline{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
 Verwende hierzu Schleifen.
 
 \begin{lstlisting}
@@ -49,12 +46,13 @@ Verwende hierzu Schleifen.
 \end{lstlisting}
 
 \hints{
-	\item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei.
-Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
+    \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
+    \item Um Strings auszugeben, stellt dir C++ \lstinline{std::cout} zur Verfügung, welches den String zu dem Standart Output Stream weitergibt. Diesen Output Stream kann man mit dem Manipulator \lstinline{std::endl} zu einem Zeilenumbruch zwingen.
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \texttt{functions.hpp} und eine neue Sourcedatei \texttt{functions.cpp}.
+Erstelle eine neue Header-Datei \filename{functions.hpp} und eine neue
+Sourcedatei \filename{functions.cpp}.
 Klicke hierzu mit der rechten Maustate auf das Projekt und wähle \textbf{New $\rightarrow$ Source File}, bzw. wähle \textbf{New $\rightarrow$ Header File} und bestätige beide Dialoge mit \textbf{Finish}.
 Beachte hierbei, dass Eclipse automatisch Include-Guards in der Headerdatei erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
 
@@ -65,19 +63,19 @@ Beachte hierbei, dass Eclipse automatisch Include-Guards in der Headerdatei erze
 #endif /* FUNCTIONS_HPP_ */
 \end{lstlisting}
 
-Binde danach \texttt{functions.hpp} in beide Sourcedateien ein indem du
+Binde danach \filename{functions.hpp} in beide Sourcedateien ein indem du
 
 \begin{lstlisting}
 #include "functions.hpp"
 \end{lstlisting}
 
 verwendest.
-\textbf{Verschiebe} deine beiden Funktionen nach \texttt{functions.cpp}.
+\textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
 
-Schreibe nun in \texttt{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
+Schreibe nun in \filename{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
 Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
 Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
-Der Prototyp von \texttt{printStars(int n)} lautet 
+Der Prototyp von \lstinline{printStars(int n)} lautet 
 \begin{lstlisting}
 void printStars(int n);
 \end{lstlisting}
@@ -86,7 +84,7 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \hints{
 	\item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
-	\item Denke daran, auch in \texttt{functions.cpp} den Header \texttt{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
+	\item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
 	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
     Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
 	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
@@ -120,11 +118,11 @@ gh
 ijk
 \end{lstlisting}
 
-Implementiere dazu eine Funktion \texttt{char nextChar()}.
-Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \texttt{char} zurückgeben, beginnend bei \emph{a}.
-Dazu muss sich \texttt{nextChar()} intern das aktuelle Zeichen merken.
+Implementiere dazu eine Funktion \lstinline{char nextChar()}.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \lstinline{char} zurückgeben, beginnend bei \emph{a}.
+Dazu muss sich \lstinline{nextChar()} intern das aktuelle Zeichen merken.
 Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren alten Wert beim Wiedereintritt in die Funktion.
-Ein statische Variable \texttt{c} wird mittels
+Ein statische Variable \lstinline{c} wird mittels
 
 \begin{lstlisting}
 static char c = 'a';
@@ -139,7 +137,8 @@ In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig zu Beginn des Pr
 
 \subsection{Namensräume}
 Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
-Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie folgt in einen \texttt{namespace} setzt.
+Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
+folgt in einen \lstinline{namespace} setzt.
 
 \begin{lstlisting}
 namespace fun {
@@ -147,7 +146,8 @@ namespace fun {
 };	// semicolon!
 \end{lstlisting}
 
-Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \texttt{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen
+musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
 
 \begin{lstlisting}
 void fun::print_star(int n) {
@@ -159,6 +159,7 @@ Vergisst man, den Namensraum in der Sourcedatei anzugeben, findet der Linker kei
 Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind unterschiedliche Funktionen!).
 
 \hints{
-	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \texttt{static import} in Java).
+	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen
+Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
     Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
 }

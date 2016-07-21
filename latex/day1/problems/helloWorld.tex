@@ -4,7 +4,7 @@
 \LKi{Eclipse-spezifisch. Anpassen auf neue IDE.}
 Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
 Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
-Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
+Gib als Dateinamen \filename{main.cpp} ein und bestätige mit \textbf{Finish}.
 Füge folgendes Programm ein, kompiliere es mit Hilfe des Build-Symbols (,,Hammer``) und führe es aus.
 
 % fix that avoids undesired page breaks
@@ -18,21 +18,21 @@ int main() {
 \end{minipage}
 
 
-Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \texttt{main} und Rückgabetyp \texttt{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
+Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetyp \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
 Der Rückgabetyp wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
 Typischerweise wird im Erfolgsfall 0 zurückgegeben.
 
-Die erste Zeile des obigen Programms bindet den Header der \texttt{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
+Die erste Zeile des obigen Programms bindet den Header der \lstinline{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
 Diese Bibliothek ist Teil der C++-Standardbibliothek, welche eine Sammlung an generischen Containern, Algorithmen und vielen häufig genutzten Funktionen ist.
-Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \texttt{namespace} (in diesem Fall \texttt{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \texttt{cout} und \texttt{endl}).
-Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \texttt{namespace} zu kapseln, welcher analog zu \texttt{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
+Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \lstinline{namespace} (in diesem Fall \lstinline{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \lstinline{cout} und \lstinline{endl}).
+Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \lstinline{namespace} zu kapseln, welcher analog zu \lstinline{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
 
-In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout} eingefügt, gefolgt von \texttt{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
+In der dritten Zeile wird der String \lstinline{"Hello World"} in \lstinline{std::cout} eingefügt, gefolgt von \lstinline{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
 
 \hints{
-	\item Einzeilige Kommentare können durch \texttt{//}, mehrzeilige durch \texttt{/* ... */} eingeschlossen werden.
+	\item Einzeilige Kommentare können durch \lstinline{//}, mehrzeilige durch \lstinline{/* ... */} eingeschlossen werden.
 	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
-	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
+	\item Die \lstinline{return} Anweisung darf in der \lstinline{main} Funktion weggelassen werden.
 }
 
 \subsection*{Häufige (Compiler-)Fehlermeldungen}
@@ -76,7 +76,7 @@ int main() {
 }
 \end{lstlisting}
 
-Falls im Header \texttt{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \texttt{int main() \{} beziehen!!
+Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \lstinline{int main() \{} beziehen!!
 
 \begin{verbatim}
   error: invalid conversion from <A> to <B>.

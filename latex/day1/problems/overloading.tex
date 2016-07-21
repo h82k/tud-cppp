@@ -1,7 +1,7 @@
 \section{Operatorüberladung}
 In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\lstinline{operator+}), \textbf{*} (\lstinline{operator*}),\dots zu überladen.
 Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
-Du hast bereits das Objekt \lstinline{std::cout} der Klasse \texttt{std::ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \lstinline{std::string}, \lstinline{int},\dots komfortabel zu tätigen.
+Du hast bereits das Objekt \lstinline{std::cout} der Klasse \lstinline{std::ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \lstinline{std::string}, \lstinline{int},\dots komfortabel zu tätigen.
 In dieser Aufgabe sollst du eine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
 
 \hints{
@@ -29,7 +29,7 @@ private:
 
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
 Jeder Copy-Konstruktor benötigt eine Referenz auf ein Objekt vom gleichen Typ wie die Klasse selbst als Parameter. 
-Sinnvollerweise wird noch \texttt{const} vor oder nach der Typbezeichnung eingefügt (aber vor \texttt{\&}), da typischerweise das Ursprungsobjekt nicht verändert wird.
+Sinnvollerweise wird noch \lstinline{const} vor oder nach der Typbezeichnung eingefügt (aber vor \lstinline{\&}), da typischerweise das Ursprungsobjekt nicht verändert wird.
 
 Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
 Die Syntax des Prototypen lautet

@@ -21,7 +21,7 @@ private:
 };	// semicolon!
 \end{lstlisting}
 
-Erzeuge einen Header \texttt{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
+Erzeuge einen Header \filename{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
 Füge der Klasse das \lstinline{private} Attribut \lstinline{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \lstinline{public} Konstruktorprototypen \lstinline{CharGenerator()}, der \lstinline{nextChar} auf \lstinline{'a'} initialiseren soll.
 Füge noch eine \lstinline{public} Funktionsprototypen \lstinline{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
 
@@ -52,9 +52,9 @@ ClassName::ClassName():
 }
 \end{lstlisting}
 
-Erzeuge eine Sourcedatei \texttt{CharGenerator.cpp} für die Implementation der Klasse und binde die \texttt{CharGenerator.hpp} ein.
+Erzeuge eine Sourcedatei \filename{CharGenerator.cpp} für die Implementation der Klasse und binde die \filename{CharGenerator.hpp} ein.
 Implementiere den Konstruktor, indem du \lstinline{nextChar} mit \lstinline{'a'} in der Initialisierungsliste initialisierst.
-Implementiere zudem \texttt{generateNextChar()}, indem du \texttt{nextChar} zurückgibst.
+Implementiere zudem \lstinline{generateNextChar()}, indem du \lstinline{nextChar} zurückgibst.
 
 \hints{
 	\item Die Reihenfolge der Initialisierungsliste sollte der Deklarationsreihenfolge entsprechen.
@@ -62,7 +62,7 @@ Implementiere zudem \texttt{generateNextChar()}, indem du \texttt{nextChar} zur�
 }
 
 \subsection{Instanziierung}
-Erzeuge wie aus den vorherigen Aufgaben bekannt eine \texttt{main.cpp} mit einer \texttt{main()} Funktion in der du ein \texttt{CharGenerator}-Objekt erzeugst und \texttt{generateNextChar()} mehrfach aufrufst und ausgibst.
+Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit einer \lstinline{main()} Funktion in der du ein \lstinline{CharGenerator}-Objekt erzeugst und \lstinline{generateNextChar()} mehrfach aufrufst und ausgibst.
 
 \begin{lstlisting}
 CharGenerator charGen;
@@ -73,7 +73,7 @@ std::cout << next << std::endl;
 Überprüfe das Ergebnis über die Konsole oder den Debugger.
 
 \hints{
-	\item Um ein Objekt zu erzeugen, muss in C++ kein \texttt{new} verwendet werden (siehe dazu nächste Vorlesung).
+	\item Um ein Objekt zu erzeugen, muss in C++ kein \lstinline{new} verwendet werden (siehe dazu nächste Vorlesung).
 }
 
 \subsection{Default-Parameter}
@@ -88,7 +88,7 @@ public:
 };
 \end{lstlisting}
 
-Erweitere den Konstruktor um einen Parameter \texttt{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \texttt{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
+Erweitere den Konstruktor um einen Parameter \lstinline{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \lstinline{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
 
 Teste deine Implementation sowohl mit als auch ohne Angabe des Startzeichens.
 Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
