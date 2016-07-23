@@ -36,3 +36,6 @@ latex/**/cheatsheet.pdf
 Softune
 FLASHly
 tools/vm
+
+# Vim files
+*.swp
