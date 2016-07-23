@@ -1,12 +1,10 @@
 \section{Makefiles}
 
 \LKi{Teilweise Eclipse-spezifisch}
-
 In dieser Übung erkunden wir, wie man Makefile-Projekte in Eclipse aufbaut.
 Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können.
 
-\begin{enumerate}
-\item\textbf{Projekt anlegen:}
+\subsection{Projekt anlegen:}
 Öffne \emph{File $\to$ New $\to$ C++ Project} und wähle \textbf{Project type: Makefile project/Empty Project}.
 Wähle als \textbf{Toolchain} \textbf{\texttt{Linux GCC}} aus und suche dir einen Projektnamen aus.
 
@@ -30,8 +28,7 @@ Running all...
 18:17:26 Build Finished (took 140ms)
 \end{verbatim}
 
-\item\textbf{Erster Compilevorgang}
-
+\subsection{Erster Compilevorgang}
 Jetzt ist es an der Zeit, ein Programm mittels \texttt{make} zu kompilieren.
 Lege dazu eine C++-Sourcedatei \filename{main.cpp} mit einer \lstinline{main}-Funktion an, die etwas sinnvolles ausgibt.
 
@@ -44,7 +41,7 @@ all:
 
 Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
 
-\item\textbf{Klasse \emph{Building}:}
+\subsection{Klasse \lstinline{Building}:}
 Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet:
 
 \begin{minipage}[t]{.45\textwidth}
@@ -90,7 +87,7 @@ all:
 
 Wenn du das Projekt gebaut hast und ausführst, sollte auf der Konsole eine Ausgabe deines Gebäudes erscheinen.
 
-\item\textbf{Compiler-Aufrufe auslagern:}
+\subsection{Compiler-Aufrufe auslagern:}
 In der Vorlesung haben wir gesehen, dass \emph{make} anhand der Zeitstempel von Dateien dazu in der Lage ist, zu erkennen, wann ein Programmteil neu gebaut werden muss.
 Aktuell nutzen wir diese Möglichkeit noch nicht:
 Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building.h} verändert haben, immer wird das gesamte Projekt neu gebaut.
@@ -121,7 +118,7 @@ make all
 g++ -o main.exe main.o Building.o
 \end{verbatim}
 
-\item\textbf{Linker-Aufruf auslagern}
+\subsection{Linker-Aufruf auslagern}
 Wie können wir diesen an sich unnötigen Aufruf ebenfalls noch loswerden?
 Eine Lösung ist es, das Target \texttt{all} von \filename{main.exe} abhängig zu machen und ein neues Ziel \filename{main.exe} zu definieren:
 \begin{lstmake}
@@ -139,7 +136,7 @@ make all
 make: Nothing to be done for `all'.
 \end{verbatim}
 
-\item\textbf{Inkrementelles Bauen:}
+\subsection{Inkrementelles Bauen:}
 Wir erproben jetzt, wie sich Veränderungen an einer der drei Dateien auf die Ausführung von \texttt{make} auswirken.
 Mache nacheinander kleine Änderungen -- das können auch Kommentare sein -- an den Dateien \filename{main.cpp}, \filename{Building.h} und \filename{Building.cpp} und baue das Projekt nach jeder Änderung.
 
@@ -147,8 +144,7 @@ Dir fällt auf, dass Änderungen an \filename{Building.h} von \texttt{make} nich
 
 Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
 
-
-\item\textbf{Header als Abhängigkeiten}
+\subsection{Header als Abhängigkeiten}
 Du hast kennengelernt, dass man Implementationen auch \texttt{inline} in einem Header machen kann, zum Beispiel wenn diese klein sind.
 
 Bewege \lstinline{toString} nun nach \filename{Buidling.h}:
@@ -184,7 +180,7 @@ Schlimmer noch: Wir müssten über rekursive Includes Bescheid wissen, z.B. wenn
 
 Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
 
-\item\textbf{Header automatisch als Abhängigkeiten deklarieren:}
+\subsection{Header automatisch als Abhängigkeiten deklarieren:}
 
 Wir automatisieren jetzt die Erkennung von Headern als Abhängigkeiten.
 Lösche dazu die Abhängigkeit \filename{Building.h} des Targets \filename{main.o} und füge in den Compiler-Aufrufen die Parameter \texttt{-MMD -MP} hinzu.
@@ -211,10 +207,7 @@ Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Make
 
 Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \filename{Building.h} erkannt.
 
-
-
-
-\item\textbf{Target \emph{clean}}
+\subsection{Target \emph{clean}}
 
 Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
 Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren.
@@ -240,11 +233,8 @@ Wenn du diesen doppelt anklickst, wird das Target \texttt{clean} ausgeführt.
 
 Lege dir nun auch ein ausführbares Target für \texttt{all} an.
 
+\subsection{Generisches Compiler-Target}
 
-
-
-
-\item\textbf{Generisches Compiler-Target}
 Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder weniger identisch sind: \filename{main.o} und \filename{Building.o}.
 
 \texttt{make} bietet für solche Situationen generische Regeln an, die mittels Wildcards beschrieben werden.
@@ -258,11 +248,7 @@ Die etwas kryptischen Ausdrücke \emph{\$<} und \emph{\$@} werden durch die aktu
 
 Lösche alle automatisch generierten Dateien (\texttt{make clean}) und baue das Projekt neu.
 
-
-
-
-
-\item\textbf{Variablen in make}
+\subsection{Variablen in make}
 
 Im Moment sieht unser Makefile in etwa so aus:
 \begin{lstmake}
@@ -307,7 +293,9 @@ main.exe: $(OBJECTS)
 	
 # and so on...
 \end{lstmake}
-\emph{Tipp}: Eclipse bietet für Variablennamen automatische Vervollständigung an (\emph{Ctrl+Space}).
+\hints{
+    \item Eclipse bietet für Variablennamen automatische Vervollständigung an (\emph{Ctrl+Space}).
+}
 
 Wiederhole die Prozedur für die Dependency-Dateien ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
@@ -337,7 +325,7 @@ clean:
 
 Wie wir die verbliebene Redundanz auflösen, sehen wir in der nächsten Teilaufgabe.
 
-\item\textbf{Wildcard-Ausdrücke}
+\subsection{Wildcard-Ausdrücke}
 
 Die beiden Variablen \lstinline{OBJECTS} und \lstinline{DEPEND} sind strukturell ähnlich -- wieder etwas, das wir loswerden wollen.
 Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu definieren, oder?
@@ -359,7 +347,7 @@ SOURCES=$(wildcard ./*.cpp)
 \end{lstmake}
 %$ for syntax highlighting
 
-\end{enumerate}
+\subsection{Zusammenfassung}
 
 Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhängig davon ist, wie viele Sourcedateien du im aktuellen Verzeichnis hältst und wie sie genau heißen -- wichtig ist nur die Endung \emph{cpp}.
 
@@ -387,7 +375,7 @@ clean:
 \end{lstmake}
 %$ for syntax highlighting
 
-\textbf{Nachwort}:
+\subsection{Nachwort}
 
 Dies hier sind nur äußerst wenige der Möglichkeiten, die \texttt{make} bietet\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}.
 
