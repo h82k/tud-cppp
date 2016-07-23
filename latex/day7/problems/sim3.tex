@@ -1,9 +1,11 @@
 \section{Fortsetzung Aufzugsimulator}
-\PJi{Auf separates Übungsblatt}
-Unser bisheriger Aufzugsimulator hat eine feste Strategie, nach der die einzelnen Stockwerke abgefahren werden. Mithilfe von Polymorphie können wir den Simulator so erweitern, dass die Strategie austauschbar wird.  
+Unser bisheriger Aufzugsimulator hat eine feste Strategie, nach der die einzelnen Stockwerke abgefahren werden.
+Mithilfe von Polymorphie können wir den Simulator so erweitern, dass die Strategie austauschbar wird.  
 
 \subsection{Vorbereitung}
-Lagere die bereits existierende Simulation des Aufzugs aus der \lstinline{main}-Funktion in eine eigene Funktion \lstinline{runSimulation()} aus. Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\lstinline{std::list<int>}) der angefahrenen Stockwerke zurückgeben. Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
+Lagere die bereits existierende Simulation des Aufzugs aus der \lstinline{main}-Funktion in eine eigene Funktion \lstinline{runSimulation()} aus.
+Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\lstinline{std::list<int>}) der angefahrenen Stockwerke zurückgeben.
+Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
 Teste deine Implementation.
 
 \subsection{Klasse \lstinline{ElevatorStrategy}}
@@ -22,8 +24,6 @@ protected:
 	const Building *building;		// pointer to current building, set by createPlan()
 };
 \end{lstlisting}
-
-
 
 \subsection{Eine einfache Aufzusstrategie}
 Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
@@ -51,4 +51,5 @@ Teste die einfache Aufzugstrategie
 \subsection{Neue Aufzugstrategien (optional)}
 Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
 Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
-Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden. Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
+Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden.
+Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
