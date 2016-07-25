@@ -1,11 +1,10 @@
 \PJi{Ich hätte auch noch gerne eine kleine Aufgabe zu Doxygen -- vorbildlicherweise sollten unsere Musterlösungen zumindest einigermaßen Doxygen-kompatibel sein. Bitte checken!}
 
 \section{Hello World}
-\LKi{Eclipse-spezifisch. Anpassen auf neue IDE.}
-Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
-Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
-Gib als Dateinamen \filename{main.cpp} ein und bestätige mit \textbf{Finish}.
-Füge folgendes Programm ein, kompiliere es mit Hilfe des Build-Symbols (,,Hammer``) und führe es aus.
+Lege ein neues C++ Projekt an, indem du \textbf{Workspace $\rightarrow$ New project} im CodeLite Menü wählst und als Projekttyp \textbf{CPPP/C++ Projekt} auswählst.
+Wähle einen passenden Projektnamen, z.b. \texttt{Tag1\_Aufgabe1}. Als Projektpfad sollte \texttt{/home/cppp/CPPP/Workspace} ausgewählt sein. Achte darauf, dass der Haken bei \texttt{Create the project under a separate directory} gesetzt ist.
+
+Das Projekt enthält bereits eine Datei \texttt{src/main.cpp}. Erweitere die \texttt{main}-Funktion wie gezeigt und kompiliere das Projekt mit einem Klick auf das Build-Symbol (grünes Rechteck mit weißem Pfeil). Führe dann das Programm mit einem Klick auf das Zahnrad-Symbol aus.
 
 % fix that avoids undesired page breaks
 \begin{minipage}{\textwidth} 
@@ -37,7 +36,7 @@ In der dritten Zeile wird der String \lstinline{"Hello World"} in \lstinline{std
 
 \subsection*{Häufige (Compiler-)Fehlermeldungen}
 
-Im Folgenden sind einige Fehlermeldungen des \texttt{gcc} zusammen mit möglichen Lösungsstrategien aufgelistet.
+Im Folgenden sind einige Fehlermeldungen von \texttt{clang} zusammen mit möglichen Lösungsstrategien aufgelistet.
 Die generelle Faustregel lautet: 
 \textbf{Compilerfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
 Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
@@ -45,20 +44,16 @@ Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern komm
 % Indents all of the following paragraphs by 1cm
 \setlength{\leftskip}{1cm}
 
-\LKi{Eclipse-spezifisch}
 \LKi{Gerne noch mehr klassische Fehlermeldungen.}
 \begin{verbatim}
-Launching failed: Binary not found
+main.exe: not found
 \end{verbatim}
 
-Dieser Fehler wird von Eclipse geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
+Dieser Fehler wird von CodeLite geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
 Das kann zwei Gründe haben:
 \begin{itemize}
 \item Der Kompiliervorgang ist gescheitert. Prüfe die \texttt{Console} auf Fehler.
-\item Die Binary existiert, wird aber nicht von Eclipse erkannt.
-Hier solltest du sicherstellen, dass der \texttt{Elf Parser} (oder \texttt{PE Windows Parser} unter Windows) aktiv ist:
-\texttt{Window -> Preferences -> C/C++Build / Settings -> Tab: Binary Parsers -> Elf Parser}. 
-Alternativ kann man in der \texttt{Run Configuration} die auszuführende Datei manuell eintragen.
+\item Der Kompiliervorgang wurde noch nicht ausgeführt. Kompiliere das Programm mit einem Klick auf das Build-Symbol.
 \end{itemize}
 
 
