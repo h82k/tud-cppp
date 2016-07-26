@@ -1,17 +1,14 @@
 \section{Makefiles}
 
-\LKi{Teilweise Eclipse-spezifisch}
-In dieser Übung erkunden wir, wie man Makefile-Projekte in Eclipse aufbaut.
+In dieser Übung erkunden wir, wie man Makefile-Projekte in CodeLite aufbaut.
 Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können.
 
 \subsection{Projekt anlegen:}
-Öffne \emph{File $\to$ New $\to$ C++ Project} und wähle \textbf{Project type: Makefile project/Empty Project}.
-Wähle als \textbf{Toolchain} \textbf{\texttt{Linux GCC}} aus und suche dir einen Projektnamen aus.
+Wähle \emph{Workspace $\to$ New project} und wähle als Projekttyp \textbf{CPPP/Empty Makefile}.
 
-Das erzeugte Projekt ist ziemlich leer.
-Lege zunächst ein Makefile an über \textbf{File $\to$ New $\to$ Other\dots} und dann \textbf{File} mit Namen \filename{Makefile}.
+Das erzeugte Projekt enthält bereits eine Datei \texttt{Makefile} (im Ordner \texttt{resources}), diese hat aber noch keinen Inhalt.
 
-Eclipse erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
+Make erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
 Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
 \begin{lstmake}
@@ -19,13 +16,12 @@ all:
 	@echo "Running all..."
 \end{lstmake}
 
-Wenn du jetzt \emph{Build} aufrufst, sollte in der \emph{Console View} in etwa Folgendes erscheinen:
+Wenn du jetzt \emph{Build} aufrufst, sollte in der Konsole in etwa Folgendes erscheinen:
 \begin{verbatim}
-18:17:25 **** Incremental Build of configuration Default for project ExerciseMakefileProject ****
-make all
-Running all...
+----------Building project:[ mktest - Debug ]----------
+making all...
+====0 errors, 0 warnings====
 
-18:17:26 Build Finished (took 140ms)
 \end{verbatim}
 
 \subsection{Erster Compilevorgang}
@@ -275,7 +271,7 @@ Wenn wir nun als nächstes die \lstinline{Floor}-Klasse entwerfen, müssten wir 
 	\item als Abhängigkeit von \filename{main.exe},
 	\item zum Linker-Aufruf in \filename{main.exe},
 	\item in der \lstinline{-include}-Direktive und
-	\item im Target \lstinline{texttt}, und das gleich doppelt!
+	\item im Target \lstinline{clean}, und das gleich doppelt!
 \end{itemize}
 Das ist natürlich immer noch ziemlich fehleranfällig.
 
@@ -293,9 +289,7 @@ main.exe: $(OBJECTS)
 	
 # and so on...
 \end{lstmake}
-\hints{
-    \item Eclipse bietet für Variablennamen automatische Vervollständigung an (\emph{Ctrl+Space}).
-}
+
 
 Wiederhole die Prozedur für die Dependency-Dateien ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
