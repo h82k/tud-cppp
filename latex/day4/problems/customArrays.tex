@@ -44,10 +44,7 @@ std::copy(array, array + 4, std::back_inserter(vector));
 \end{lstlisting}
 
 \item
-\LKi{Eclipse-spezifisch}
 Diese Idee ist natürlich nicht neu.
 Seit C++11 gibt es eine Array-Implementation in der C++-Standardbibliothek (\lstinline{std::array}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/array.html}}).
 Du findest die gleiche Klasse auch als \lstinline{boost::array} in Boost.
-Wenn du damit experimentieren willst, mussst du die Compiler-Unterstützung für C++11 einschalten.
-Gehe dazu in die Projekteigenschaften (\emph{Rechtsklick} $\to$ Properties) und setzte unter \emph{C/C++-Build/Settings/GCC C++ Compiler/Dialect} das Feld \emph{Language Standard} auf \emph{ISO C++11}.
 \end{itemize}
