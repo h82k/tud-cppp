@@ -1,7 +1,8 @@
 \section{C++ Grundlagen, Funktionen und Strukturierung}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
-\subsection*{Primitive Datentypen} Die primitiven Datentypen in C++ sind ähnlich denen in Java.
+\subsection*{Primitive Datentypen} 
+Die primitiven Datentypen in C++ sind ähnlich denen in Java.
 Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
 Standardmäßig sind Zahlen vorzeichenbehaftet.
 Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
@@ -17,8 +18,23 @@ Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche W
 Alles ungleich 0 wird als \lstinline{true} gewertet, 0 als \lstinline{false}.
 Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 
-\PJi{Verweis auf sizeof() und std::limits<TYPE>, um die Maximalwerte auszugeben.
-    Aufgabe: Studenten sollen überprüfen, wieviel Byte double braucht (sollte laut Standard immer 64bit sein und wie groß der größte unsigned short ist.)}
+\subsection{Größe von Datentypen}
+Die Größe von den verschiedenen Datentypen ist essentiell zu wissen, wenn man mit ihnen arbeiten möchte.
+Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in Bits, wie auch deren minimalen und maximalen Wert ausgeben lassen.
+
+\begin{lstlisting}
+    int
+    unsigned int
+    double
+    unsigned short
+    bool
+\end{lstlisting}
+
+\hints{
+    \item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
+    \item Die C++ Klasse \lstinline{std::numeric\_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
+Einbinden lässt sich diese über den Header \lstinline{limits}.
+}
 
 \subsection{Sternmuster mit Funktionen malen}
 
