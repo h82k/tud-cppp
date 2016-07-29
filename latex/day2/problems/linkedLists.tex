@@ -33,8 +33,8 @@ public:
 	 */
 	~ListItem();				
 	int & getContent();			// get a reference to the contained data
-	ListItem* getNext();			// get the next list item or NULL
-	ListItem* getPrevious();	// get the previous list item or NULL
+	ListItem * getNext();			// get the next list item or NULL
+	ListItem * getPrevious();	// get the previous list item or NULL
 private:
 	ListItem *previous;		// previous item in list
 	ListItem *next;			// next item in list
@@ -53,12 +53,13 @@ Dadurch können beide nie aufgerufen werden und der Compiler kann dies zur Compi
 
 \begin{lstlisting}
 private:
-	ListItem(const ListItem& other);		// private copy constructor (without implementation)
+	ListItem(const ListItem &other);		// private copy constructor (without implementation)
 	ListItem& operator=(const ListItem &other);	// private assignment operator (w/o implementation)
 \end{lstlisting}
 
 \hints{
-	\item Alternativ kann man ab C++11 Funktionen explizit löschen:\\ \lstinline{ListItem(const ListItem \&other) = delete;}\\
+	\item Alternativ kann man ab C++11 Funktionen explizit löschen:\\ 
+    \lstinline{ListItem(const ListItem \&other) = delete;}\\
     \lstinline{ListItem\& operator=(const ListItem \&other) = delete;}
 }
 
@@ -79,7 +80,7 @@ class List {
 public:
 	List();								// create an empty list
 	~List();								// delete the list and all of its elements
-	List(const List & other);		// create a copy of another list
+	List(const List &other);		// create a copy of another list
 	void appendElement(int i);		// append an element to the end of the list
 	void prependElement(int i);	// prepend an element to the beginning of the list
 	void insertElementAt(int i, int pos);	// insert an element i at position pos
@@ -138,7 +139,7 @@ public:
 	// get the content of the current element
 	int& operator*();
 	// check whether this iterator is not equal to another one
-	bool operator!=(const ListIterator& other) const;
+	bool operator!=(const ListIterator &other) const;
 private:
 	List *list;
 	ListItem *item;
