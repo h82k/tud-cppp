@@ -1,23 +1,23 @@
 .PHONY: all publish copy-only-all
 
 # Build PDF files (without copying)
-all: pdf1 pdf2 pdf3 pdf4 pdf5 pdf6 pdf7
+all: create-pdf-day1 create-pdf-day2 create-pdf-day3 create-pdf-day4 create-pdf-day5 create-pdf-day6 create-pdf-elevator 
 
 # Build and copy PDF files
-publish: cp1 cp2 cp3 cp4 cp5 cp6 pdf7
+publish: copy-pdf-day1 copy-pdf-day2 copy-pdf-day3 copy-pdf-day4 copy-pdf-day5 copy-pdf-day6 copy-pdf-elevator 
 
 # Copy all files to top-level directory without recompiling
-copy-only-all: cponly1 cponly2 cponly3 cponly4 cponly5 cponly6 cponly7
+copy-only-all: cponly-day1 cponly-day2 cponly-day3 cponly-day4 cponly-day1 cponly-day6 cponly-elevator
 
-cponly%: 
-	cp day$*/day$*.pdf ..
+# cponly%: 
+# 	cp day$*/day$*.pdf ..
+# 
+# cp%: pdf%
+# 	cp day$*/day$*.pdf ..
 
-cp%: pdf%
-	cp day$*/day$*.pdf ..
+create-pdf-%:
+	cd $* && latexmk -pdf
 
-pdf%:
-	cd day$* && latexmk -pdf
-
-pvc%:
-	cd day$* && latexmk -pdf -pvc
+# pvc%:
+# 	cd $* && latexmk -pdf -pvc
 
