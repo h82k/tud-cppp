@@ -1,24 +1,74 @@
 #include <iostream>
 #include <limits>
 
-template<typename T> void print_info(T a) {
+void print_easy() {
+    /**
+     * prints size in bytes of int, unsigned int, double, unsigned short, bool 
+     * to the standard output, as well as their minimum and maximum value.
+     *
+     * @return void
+     */
+
+    int a;
+    unsigned int b;
+    double c;
+    unsigned short d;
+    bool e;
+
+    std::cout   << sizeof(a) << "\t"
+                << std::numeric_limits<int>::min() << "\t"
+                << std::numeric_limits<int>::max() << "\t"
+                << std::endl;
+    
+    std::cout   << sizeof(b) << "\t"
+                << std::numeric_limits<unsigned int>::min() << "\t"
+                << std::numeric_limits<unsigned int>::max() << "\t"
+                << std::endl;
+    
+    std::cout   << sizeof(c) << "\t"
+                << std::numeric_limits<double>::min() << "\t"
+                << std::numeric_limits<double>::max() << "\t"
+                << std::endl;
+    
+    std::cout   << sizeof(d) << "\t"
+                << std::numeric_limits<unsigned short>::min() << "\t"
+                << std::numeric_limits<unsigned short>::max() << "\t"
+                << std::endl;
+    
+    std::cout   << sizeof(e) << "\t"
+                << std::numeric_limits<bool>::min() << "\t"
+                << std::numeric_limits<bool>::max() << "\t"
+                << std::endl;
+}
+
+template<typename T> void print_info_advanced(T a) {
+    /**
+     * Advanced solution using a template function
+     * Will be explained in detail on day 4
+     *
+     * @return void
+     */
     std::cout   << sizeof(a) << "\t"
                 << std::numeric_limits<T>::min() << "\t"
                 << std::numeric_limits<T>::max() << "\t"
                 << std::endl;
 }
 
-int main() {
+void print_advanced() {
     int a;
     unsigned int b;
     double c;
-    unsigned int d;
+    unsigned short d;
     bool e;
     
-    print_info(a);
-    print_info(b);
-    print_info(c);
-    print_info(d);
-    print_info(e);
+    print_info_advanced(a);
+    print_info_advanced(b);
+    print_info_advanced(c);
+    print_info_advanced(d);
+    print_info_advanced(e);
+}
+
+int main() {
+    print_easy();
 }
 
