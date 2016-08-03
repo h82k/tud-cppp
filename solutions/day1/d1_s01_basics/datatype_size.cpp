@@ -43,8 +43,8 @@ void print_easy() {
 
 template<typename T> void print_info_advanced(T a) {
     /**
-     * Advanced solution using a template function
-     * Will be explained in detail on day 4
+     * helper function for advanced solution
+     * will be explained in detail on day 4
      *
      * @return void
      */
@@ -55,6 +55,12 @@ template<typename T> void print_info_advanced(T a) {
 }
 
 void print_advanced() {
+    /**
+     * advances solution using the helper function print_info_advanced
+     * prints the same information as print_easy to the standard output
+     * 
+     * @retun: void
+     */
     int a;
     unsigned int b;
     double c;
@@ -70,5 +76,5 @@ void print_advanced() {
 
 int main() {
     print_easy();
+    return 0;
 }
-
