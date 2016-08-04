@@ -130,3 +130,24 @@ Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
 
 \PJi{Aufgabe ergänzen / aufsplitten, um auch mit Referenzen auf structs etc. zu experimentieren.
 Außerdem Speicherbilder zum Ausfüllen einfügen.}
+
+\subsection{Übergabewerte}
+In der letzten Aufgabe direkt zu pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.
+In Tabelle \ref{table:uebergabewerte} sind in der ersten Spalte Funktionen mit verschiedenen Parametern gegeben.
+In der ersten Zeile findet ihr verschiedene Variablentypen.
+Eure Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus dem Variablen herzustellen.
+Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\
+Als Beispiel dient hierfür die erste Zeile. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{@{}l *5{|>{\centering\arraybackslash}X}@{}}
+                    & \lstinline{int i} & \lstinline{int *j} & \lstinline{double k} & \lstinline{int **l} & \lstinline{const int *m} \\ \hline
+        \lstinline{op1(int *)}          & \lstinline{\&x} & \lstinline{j} & \xmark & \listinline{*l} & \xmark \\ \hline
+        \lstinline{op2(int)}            & & & & & \\ \hline
+        \lstinline{op3(int \&)}         & & & & & \\ \hline
+        \lstinline{op4(const int **)}   & & & & & \\ 
+    \end{tabularx}
+    \caption{Tabelle für \emph{Übergabewerte} Aufgabe}
+    \label{table:uebergabewerte}
+\end{table}
