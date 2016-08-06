@@ -1,5 +1,5 @@
 \section{Exceptions}
-Ähnlich wie in Java können Fehler in C++ mittels Exceptions signalisiert werden.
+Ähnlich wie in Java können Fehler während der Programmlaufzeit in C++ mittels Exceptions signalisiert werden.
 
 \begin{lstlisting}
 try {
@@ -18,7 +18,10 @@ Das aus Java bekannte \lstinline{finally}-Konstrukt existiert in C++ nicht.
 Außerdem kann jede Art von Wert geworfen werden -- sowohl Objekte als auch primitive Werte wie z.B. \lstinline{int}.
 In der Praxis wird es jedoch empfohlen, den geworfenen Wert von \lstinline{std::exception} abzuleiten oder eine der existierenden Klassen aus der Standardbibliothek zu nutzen.
 
-Im Gegensatz zu Java kann man Objekte nicht nur \emph{by-Reference} sondern auch \emph{by-Value} werfen und fangen. In diesem Fall wird das geworfene Objekt nach der Behandlung im \lstinline{catch}-Block automatisch zerstört. Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf. Beispiel:
+Im Gegensatz zu Java kann man Objekte nicht nur \emph{by-Reference} sondern auch \emph{by-Value} werfen und fangen.
+In diesem Fall wird das geworfene Objekt nach der Behandlung im \lstinline{catch}-Block automatisch zerstört.
+Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf.
+Beispiel:
 
 \begin{lstlisting}
 // 1. Catch by value
@@ -38,7 +41,7 @@ try {
 
 In der Praxis hat es sich durchgesetzt, \emph{by-Value} zu werfen und \emph{by-const-Reference} zu fangen.
 
-\subsection{}
+\subsection{Implementierung einer Dummy-Klasse}
 Erstelle eine Klasse \lstinline{C} und implementiere einen Konstruktor, einen Copy-Konstruktor und einen Destruktor.
 Versehe diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während der Ausführung ersichtlich wird.
 
@@ -46,14 +49,32 @@ Versehe diese mit Ausgaben auf der Konsole, so dass der Lebenszyklus während de
 Experimentiere mit Exceptions.
 Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe.
 Wann wird ein Objekt erstellt/kopiert/gelöscht?
-Teste auch, was passiert, wenn du mehrere \lstinline{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz). Welcher von ihnen wird aufgerufen?
+Teste auch, was passiert, wenn du mehrere \lstinline{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz).
+
+\begin{lstlisting}
+// multiple catch blocks
+try {
+    throw C();
+} catch(C c) {
+    ...
+} catch(const C &c) {
+    ...
+}
+\end{lstlisting}
+
+Welcher \lstinline{catch} Block wird aufgerufen?
 Spielt die Reihenfolge eine Rolle?
 
-\subsection{}
+\subsection{Erweitern der Klasse \lstinline{List}}
 Füge der Klasse \lstinline{List} vom Vortag Bereichsprüfungen hinzu.
 Schreibe die Methoden \lstinline{insertElementAt()}, \lstinline{getNthElement()} und \lstinline{deleteAt()} so um, dass eine Exception geworfen wird, falls der angegebene Index die Größe der Liste überschreitet.
-Nimm dafür die Klasse \lstinline{std::out\_of\_range} aus dem \lstinline{stdexcept} Header.
+Verwende als Exception die Klasse \lstinline{std::out_of_range}\footnote{\url{http://en.cppreference.com/w/cpp/error/out_of_range}} aus dem \lstinline{stdexcept} Header.
 
-\subsection{}
-Teste deine Implementation.
-Provoziere eine Exception, indem du falsche Indices angibst, und fange die Exception als \lstinline{const} Referenz ab. Du kannst die Methode \lstinline{what()} benutzen, um an den Nachrichtentext der Exception zu gelangen.
+\hints{
+    \item Du musst hierbei keinerlei \lstinline{catch} Block verwenden, da es rein um das werfen einer Exception geht.
+}
+
+\subsection{Testen der Implementierung}
+Teste die erweiterte Implementierung der Klasse List.
+Provoziere eine Exception, indem du falsche Indices angibst, und fange die Exception als \lstinline{const} Referenz mit einem \lstinline{catch} Block ab (s.o.).
+Du kannst die Methode \lstinline{what()}\footnote{\url{http://en.cppreference.com/w/cpp/error/exception/what}} benutzen, um an den Nachrichtentext der Exception zu gelangen.
