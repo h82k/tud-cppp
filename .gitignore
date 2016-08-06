@@ -24,6 +24,7 @@ Default/
 
 # LaTeX generated pdf files
 latex/**/day*.pdf
+latex/**/elevator.pdf
 latex/**/cheatsheet.pdf
 
 # ISO and signatures/hashums
