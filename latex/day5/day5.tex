@@ -113,7 +113,7 @@ int getADCValue(int channel)	// read the value from channel 1 or 2
 	\item Der Wert für \lstinline{ADSR} besteht aus 16 Bits (0110 11xx xxxy yyyy\textsubscript{b}), wobei xxxxx für den Startkanal der Konvertierung und yyyyy für den Endkanal steht.
 	Für unsere Zwecke nehmen diese beiden 5\,Bit Blöcke immer entweder 00001\textsubscript{b} = 1 (AN1) oder 00010\textsubscript{b} = 2 (AN2) an.
 	Daher lässt sich der \lstinline{ADSR} auch wie folgt über einen binären Shift und zwei Addition bestimmen:
-	$$\lstinline{ADSR} = 0110110000000000\textsubscript{b} + (xxxxx\textsubscript{b} << 5) + yyyyy\textsubscript{b} = 0x6c00 + (x << 5) + y$$
+	$$\text{\lstinline{ADSR}} = 0110110000000000\textsubscript{b} + (xxxxx\textsubscript{b} << 5) + yyyyy\textsubscript{b} = 0x6c00 + (x << 5) + y$$
 }
 
 
