@@ -136,17 +136,17 @@ In der letzten Aufgabe direkt zu pointern geht es darum, das gerade erlangte Ver
 In Tabelle \ref{table:uebergabewerte} sind in der ersten Spalte Funktionen mit verschiedenen Parametern gegeben.
 In der ersten Zeile findet ihr verschiedene Variablentypen.
 Eure Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus dem Variablen herzustellen.
-Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\
+Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\\\
 Als Beispiel dient hierfür die erste Zeile. 
 
 \begin{table}[h]
     \centering
 
     \newcolumntype{b}{X}
-    \newcolumntype{s}{>{\hsize=.5\hsize}X}
+    \newcolumntype{s}{>{\hsize=.6\hsize}X}
 
     \begin{tabularx}{\textwidth}{b *5{| >{\centering\arraybackslash}s}@{}} 
-                    & \lstinline{int i} & \lstinline{int *j} & \lstinline{double k} & \lstinline{int **l} & \lstinline{const int *m} \\ \hline
+                    & \lstinline{int i} & \lstinline{int *j} & \lstinline{int const *const k} & \lstinline{int **l} & \lstinline{const int *m} \\ \hline
         \lstinline{op1(int *)}          & \lstinline{x} & \lstinline{j} & \xmark & \lstinline{*l} & \xmark \\ \hline
         \lstinline{op2(int)}            & & & & & \\ \hline
         \lstinline{op3(int \&)}         & & & & & \\ \hline

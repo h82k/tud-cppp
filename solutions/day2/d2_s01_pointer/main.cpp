@@ -107,33 +107,33 @@ void op4(const int **param) {
 void ex_uebergabewerte() {
     int i = 0;
     int *j = &i;
-    double k = 1.0;
+    int const *const k = &i;
     int **l = &j;
     const int *m = &i;
     
     op1(&i);
     op1(j);
-    // op1(&k); // does not work because it creates an double *
+    // op1(k); // does not work because of const -> invalid conversion from 'const int*' to 'int*'
     op1(*l);
     // op1(m); // does not work because of const
 
     op2(i);
     op2(*j);
-    // op2(k); // does not work because of double
+    op2(*k); 
     op2(**l);
     op2(*m);
 
     op3(i);
     op3(*j);
-    // op3(k); // double
+    // op3(k); // cannot convert const int* to int* -> const correctness
     op3(**l);
     // op3(*m); // does not work because of const
 
     // op4(&&i);
     // op4(*j);
-    // op4(k); // double
+    // op4(&k); // invalid conversion from ‘const int* const*’ to ‘const int**’ -> const correctness
     // op4(l);
-    op4(&m); // does not work because of const
+    op4(&m);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
