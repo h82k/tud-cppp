@@ -107,7 +107,7 @@ void op4(const int **param) {
 void ex_uebergabewerte() {
     int i = 0;
     int *j = &i;
-    int const *const k = &i;
+    const int *const k = &i;
     int **l = &j;
     const int *m = &i;
     
