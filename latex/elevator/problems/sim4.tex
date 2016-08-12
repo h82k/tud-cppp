@@ -1,14 +1,19 @@
 \section{Makefiles}
 
 In dieser Übung erkunden wir, wie man Makefile-Projekte in CodeLite aufbaut.
-Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können.
+Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können. \\\\
+
+Das Programm \emph{make}\footnote{Dokumentation \url{https://www.gnu.org/software/make/manual/make.html}} wird in großen Softwareprojekten verwendet, um Programme zu kompilieren.
+\texttt{Makefiles} geben \texttt{make} dabei Informationen wie das Programm gelinkt und compiliert werden muss.
+Außerdem kann es verwendet werden, weitere Nebenaufgaben während der verschiedenen Compilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Compilationsdateien.
+All das werden wir in dieser Aufgabe ausprobieren.
 
 \subsection{Projekt anlegen:}
 Wähle \emph{Workspace $\to$ New project} und wähle als Projekttyp \textbf{CPPP/Empty Makefile}.
 
 Das erzeugte Projekt enthält bereits eine Datei \texttt{Makefile} (im Ordner \texttt{resources}), diese hat aber noch keinen Inhalt.
 
-Make erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
+\texttt{Make} erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
 Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
 \begin{lstmake}
@@ -55,6 +60,7 @@ private:
 };
 \end{lstlisting}
 \end{minipage}
+
 \begin{minipage}[t]{.5\textwidth}
 \begin{lstlisting}
 #include "Building.h"
@@ -203,7 +209,7 @@ Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Make
 
 Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \filename{Building.h} erkannt.
 
-\subsection{Target \emph{clean}}
+\subsection{Target \lstinline{clean}}
 
 Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
 Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren.
@@ -223,7 +229,7 @@ Probier' es ruhig aus!
 Um \texttt{clean} ausführen zu können, öffne die \textbf{Make Target} View über \textbf{Window $\to$ Show View $\to$ Other\dots $\to$ Make/Make Target}.
 
 Klicke rechts auf dein Projekt und wähle \textbf{New\dots}.
-Gib in das Feld \textbf{Make Target} \textbf{\emph{clean}} ein und lasse den Rest unverändert.
+Gib in das Feld \textbf{Make Target} \textbf{\lstinline{clean}} ein und lasse den Rest unverändert.
 Unter deinem Projekt wurde nun ein neuer Knoten mit dem Namen \texttt{clean} eingefügt.
 Wenn du diesen doppelt anklickst, wird das Target \texttt{clean} ausgeführt.
 
@@ -240,7 +246,7 @@ Ersetze die beiden spezifischen Targets durch folgendes generisches:
 %.o: %.cpp
 	g++ -MMD -MP -c $< -o $@
 \end{lstmake}
-Die etwas kryptischen Ausdrücke \emph{\$<} und \emph{\$@} werden durch die aktuelle Abhängigkeit und Target ersetzt.
+Die etwas kryptischen Ausdrücke \lstinline{\$<} und \lstinline{\$@} werden durch die aktuelle Abhängigkeit und Target ersetzt.
 
 Lösche alle automatisch generierten Dateien (\texttt{make clean}) und baue das Projekt neu.
 
@@ -290,7 +296,6 @@ main.exe: $(OBJECTS)
 # and so on...
 \end{lstmake}
 
-
 Wiederhole die Prozedur für die Dependency-Dateien ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
 
@@ -324,7 +329,7 @@ Wie wir die verbliebene Redundanz auflösen, sehen wir in der nächsten Teilaufg
 Die beiden Variablen \lstinline{OBJECTS} und \lstinline{DEPEND} sind strukturell ähnlich -- wieder etwas, das wir loswerden wollen.
 Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu definieren, oder?
 
-Lege dazu eine neue Variable \emph{SOURCES} mit den beiden Sourcedateien an.
+Lege dazu eine neue Variable \lstinline{SOURCES} mit den beiden Sourcedateien an.
 Der folgende Snippet zeigt, wie man nun mittels Suffix-Ausdrücken die anderen beiden Variablen erzeugt:
 \begin{lstmake}
 BINARY	= main.exe
@@ -334,7 +339,7 @@ DEPEND	= $(patsubst %.cpp, %.d, $(SOURCES))
 \end{lstmake}
 
 Es geht sogar noch allgemeiner:
-Du kannst per regulärem Ausdruck definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \emph{SOURCES} wie folgt definierst:
+Du kannst per regulärem Ausdruck definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \lstinline{SOURCES} wie folgt definierst:
 
 \begin{lstmake}
 SOURCES=$(wildcard ./*.cpp)
@@ -343,7 +348,7 @@ SOURCES=$(wildcard ./*.cpp)
 
 \subsection{Zusammenfassung}
 
-Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhängig davon ist, wie viele Sourcedateien du im aktuellen Verzeichnis hältst und wie sie genau heißen -- wichtig ist nur die Endung \emph{cpp}.
+Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhängig davon ist, wie viele Sourcedateien du im aktuellen Verzeichnis hältst und wie sie genau heißen -- wichtig ist nur die Endung \lstinline{cpp}.
 
 Hier nochmal das vollständige Makefile:
 \begin{lstmake}
