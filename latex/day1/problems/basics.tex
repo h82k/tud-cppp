@@ -152,7 +152,7 @@ In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig zu Beginn des Pr
 }
 
 \subsection{Namensräume}
-Sinnvollerweise werden Bibliotheken in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht zufällig mit selbstgeschriebenen Funktionen kollidieren.
+Bibliotheken werden in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht mit gleichnamigen Funktionen in anderen Bibliotheken kollidieren.
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
 folgt in einen \lstinline{namespace} setzt.
 
@@ -162,8 +162,8 @@ namespace fun {
 };	// semicolon!
 \end{lstlisting}
 
-Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen
-musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt. Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt.
+Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
 
 \begin{lstlisting}
 void fun::print_star(int n) {
@@ -172,10 +172,32 @@ void fun::print_star(int n) {
 \end{lstlisting}
 
 Vergisst man, den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
-Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind unterschiedliche Funktionen!).
+Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind unterschiedliche Funktionen!). \\ \smallskip
+
+Falls man seine Funktionen noch weiter unterteilen möchte, kann man Namensräume auch schachteln.
+Hierzu definiert man wie oben ein weiteren Namensraum mit \lstinline{namespace} in einer anderen Namensraum Instanz.
+
+\begin{lstlisting}
+namespace fun {
+    namespace ny{
+	// function prototypes ...
+    };	// semicolon!
+};	// semicolon!
+\end{lstlisting}
+
+In der Sourcedatei folgt dann nach dem initialen Namensraum, hier \lstinline{fun} gefolgt von dem Doppelpunktpaar, der geschachtelte Namensraum \lstinline{ny} wieder gefolgt von zwei Doppelpunkten.
+Erst dann können die Funktionen in dem Namensraum \lstinline{ny} verwendet werden.
+
+\begin{lstlisting}
+void fun::ny::print_star(int n) {
+	// ...
+}
+\end{lstlisting}
+
+In diesem Projekt wird dies nicht notwendig sein, da die Anzahl der definierten Funktionen überschaubar ist, aber trotzdem empfehlen wir dir es auszuprobieren.
 
 \hints{
-	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen
-Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
+	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
     Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
+    \item Bei dem geschachtelten Namensraum ist entsprechend \lstinline{using namespace fun::ny;} zu verwenden um den Namensraum zu importieren.
 }
