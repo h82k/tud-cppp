@@ -1,23 +1,33 @@
-.PHONY: all publish copy-only-all
+.PHONY: all publish copy-only-all clean
 
-# Build PDF files (without copying)
-all: create-pdf-day1 create-pdf-day2 create-pdf-day3 create-pdf-day4 create-pdf-day5 create-pdf-day6 create-pdf-elevator 
+DIRS		= $(wildcard [day,elevator]*)
 
+all: create-pdfs
+
+create-pdfs:
+	for d in $(DIRS); do (cd $$d; latexmk -pdf *.tex ); done
+	
 # Build and copy PDF files
-publish: copy-pdf-day1 copy-pdf-day2 copy-pdf-day3 copy-pdf-day4 copy-pdf-day5 copy-pdf-day6 copy-pdf-elevator 
+publish: create-pdfs cp-only-all
 
-# Copy all files to top-level directory without recompiling
-copy-only-all: cponly-day1 cponly-day2 cponly-day3 cponly-day4 cponly-day1 cponly-day6 cponly-elevator
+# Copying pdfs to upper directory
+cp-only-all: 
+	cp $(wildcard [day,elevator]*/*.pdf) ..
 
-# cponly%: 
-# 	cp day$*/day$*.pdf ..
-# 
-# cp%: pdf%
-# 	cp day$*/day$*.pdf ..
+# cleaning compiled data besides pdfs
+clean:
+	@echo "Removing unnecessary compilation data..."
+	find . -type f -name '*.aux' -delete
+	find . -type f -name '*.log' -delete
+	find . -type f -name '*.dvi' -delete
+	find . -type f -name '*.lof' -delete
+	find . -type f -name '*.lot' -delete
+	find . -type f -name '*.toc' -delete
+	find . -type f -name '*.out' -delete
+	find . -type f -name '*.fls' -delete
+	find . -type f -name '*.fdb_latexmk' -delete
 
-create-pdf-%:
-	cd $* && latexmk -pdf
-
-# pvc%:
-# 	cd $* && latexmk -pdf -pvc
+# clean all created data
+clean_all: clean
+	rm $(wildcard [day,elevator]*/*.pdf)
 
