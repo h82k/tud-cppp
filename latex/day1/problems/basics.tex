@@ -127,13 +127,51 @@ Diese Kommandos sind die folgenden
 \begin{itemize}
     \item \lstinline{@brief kurzeBeschreibung} einzeilige Beschreibung des Elements.
     \item \lstinline{@author AuthorenNamen} für den Namen des Autoren.
-    \item \lstinline{@fn Funktionsnamen} für den Namen der Funktion.
+    \item \lstinline{@name Funktionsnamen} für den Namen der Funktion.
     \item \lstinline{@param Parametername Beschreibung} um Parameterübergaben bei Funktionen zu erklären.
     \item \lstinline{@return Beschreibung} kurze Beschreibung der Rückgabe.
     \item \lstinline{@file Dateiname} damit Doxygen den kompletten File parst.
 \end{itemize}
 
-Eure Aufgabe ist es nun, den von euch erstellten Code sorgfältig zu dokumentieren. Die Dokumentation geschieht dabei nur in der \filename{.cpp} Datei, damit die \filename{.hpp} Datei möglichst kompakt bleibt.
+Da das Dokumentieren der Datei nicht vor der Datei passieren kann (wo sollte das sein?), geschieht es deshalb direkt nach den Präprozessor Direktiven.
+
+Eure Aufgabe ist es nun, den von euch erstellten Code sorgfältig zu dokumentieren.
+Die Dokumentation geschieht dabei in der \filename{.hpp} Datei.
+
+Hier ein kleines Beispiel dazu, damit ihr eine Vorstellung davon bekommt, wie das ganze am Ende auszusehen hat.
+
+\begin{lstlisting}
+#ifndef TESTING_HPP_
+#define TESTING_HPP_
+
+/**
+ * @file testing.hpp
+ * @author Your Name
+ * @brief Just a showcase hpp file to demonstrate doxygen comments
+ */
+
+/**
+ * @name first_func(int a);
+ * @author Your Name
+ * @brief A showcase function.
+ * @param a Used for important stuff.
+ * @return void
+ */
+void first_func(int a);
+
+/**
+ * @name second_(int a, char b, double d);
+ * @author Your Name
+ * @brief A showcase function.
+ * @param a Used for important stuff.
+ * @param b Used for important stuff.
+ * @param d Used for important stuff.
+ * @return void
+ */
+void second_func(int a, char b, double d);
+
+#endif /* TESTING_HPP_ */
+\end{lstlisting}
 
 \subsection{Eingabe}
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
