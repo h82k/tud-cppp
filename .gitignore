@@ -40,3 +40,8 @@ tools/vm
 
 # Vim files
 *.swp
+
+# Doxygen
+solutions/**/**/latex
+solutions/**/**/html
+Doxyfile
