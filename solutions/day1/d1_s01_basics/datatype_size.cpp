@@ -3,6 +3,7 @@
 
 void print_easy() {
     /**
+     * @brief easy version of solution of 1.1
      * prints size in bytes of int, unsigned int, double, unsigned short, bool 
      * to the standard output, as well as their minimum and maximum value.
      *
@@ -43,6 +44,7 @@ void print_easy() {
 
 template<typename T> void print_info_advanced(T a) {
     /**
+     * @brief advanced version of solution of 1.1
      * helper function for advanced solution
      * will be explained in detail on day 4
      *
