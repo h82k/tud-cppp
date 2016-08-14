@@ -106,6 +106,35 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
 }
 
+\subsection{Dokumentation}
+Für die Lesbarkeit eines Programms ist eine ausführliche Dokumentation des Programmcodes essentiell.
+Damit ihr schonmal einen Einblick darin bekommt, werden wir hier in dem Praktikum mit kommentieren und das Tool \emph{Doxygen}\footnote{Doxygen-Link als Referenz: \url{http://www.doxygen.nl/}} zur Erstellung von Dokumentationen verwenden.
+
+Damit Doxygen deine Kommentare erkennt, müssen sie ein spezielles Format einhalten.
+\begin{itemize}
+    \item Die Kommentare vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
+    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)
+        \begin{lstlisting}
+/**
+ * Content
+ */
+        \end{lstlisting}}
+\end{itemize}
+
+Außerdem müssen bestimmte Kommandos in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann.
+Diese Kommandos sind die folgenden
+
+\begin{itemize}
+    \item \lstinline{@brief kurzeBeschreibung} einzeilige Beschreibung des Elements.
+    \item \lstinline{@author AuthorenNamen} für den Namen des Autoren.
+    \item \lstinline{@fn Funktionsnamen} für den Namen der Funktion.
+    \item \lstinline{@param Parametername Beschreibung} um Parameterübergaben bei Funktionen zu erklären.
+    \item \lstinline{@return Beschreibung} kurze Beschreibung der Rückgabe.
+    \item \lstinline{@file Dateiname} damit Doxygen den kompletten File parst.
+\end{itemize}
+
+Eure Aufgabe ist es nun, den von euch erstellten Code sorgfältig zu dokumentieren. Die Dokumentation geschieht dabei nur in der \filename{.cpp} Datei, damit die \filename{.hpp} Datei möglichst kompakt bleibt.
+
 \subsection{Eingabe}
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
 Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
