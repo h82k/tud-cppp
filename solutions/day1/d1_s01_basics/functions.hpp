@@ -39,7 +39,7 @@ namespace fun {
 	char next_char();
     /**
      * @name print_char(int n);
-     * @see print_stars(int n);
+     * @sa print_stars(int n);
      * @author cppp
      * @brief prints a given number letters
      * @param n defines the number of printed letters
