@@ -54,7 +54,7 @@ public:
      * @name insertElementAt(int i, int pos);
      * @brief insert an element at a specific position in the list
      * @author cppp
-     * @param i the integer which will be prepended
+     * @param i the integer which will be inserted
      * @param pos the position
      */
 	void insertElementAt(int i, int pos);	// insert an element i at position pos

@@ -29,12 +29,16 @@ public:
      * @name Vector3(double a, double b, double c);
      * @brief constructs a (a, b, c)^t vector
      * @author cppp
+     * @param a first element of vector
+     * @param b first element of vector
+     * @param c first element of vector
      */
 	Vector3(double a, double b, double c);	// initialize vector with a, b, c
     /**
      * @name Vector3(const Vector3& other);
      * @brief copy constructor of Vector3
      * @author cppp
+     * @param other the copied vector
      */
 	Vector3(const Vector3& other);			// copy constructor: copy a vector
     /**
