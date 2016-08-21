@@ -3,6 +3,11 @@
 
 #include <memory>
 
+/**
+ * @name Vector
+ * @author cppp
+ * @brief Vector class using a template type T
+ */
 template<typename T>
 class Vector3 {
 public:

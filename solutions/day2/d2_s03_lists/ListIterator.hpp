@@ -57,9 +57,9 @@ public:
      */
 	ListIterator& operator--();		// decrement this iterator and return itself (prefix --)
     /**
-     * @name operator++(int);
+     * @name operator--(int);
      * @author cppp
-     * @brief operator ++ used to decrement the iterator and return itself (postfix --)
+     * @brief operator -- used to decrement the iterator and return itself (postfix --)
      * @return the increased listiterator
      */
 	ListIterator operator--(int);	// decrement this iterator and return the previous (postfix --)
