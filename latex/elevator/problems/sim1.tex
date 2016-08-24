@@ -1,0 +1,149 @@
+\section{Aufzugsimulator}
+In dieser Aufgabe soll ein Grundgerüst für den in der Vorlesung vorgestellten Aufzugsimulator geschaffen werden.
+Bei der Bearbeitung dieser Aufgaben geben wir die keinerlei zeitliche Vorgabe.
+Du kannst diese Aufgaben direkt an dem Tag lösen, an dem ihr die dafür benötigten Konzepte gelernt habt oder auch nach hinten verschieben und als ausführliche Klausurvorbereitung nutzen.
+
+\subsection{Klasse Person}
+Implementiere die Klasse \lstinline{Person}, die eine Person mit einem gewünschten Zielstockwerk darstellt.
+Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
+
+\begin{lstlisting}
+class Person {
+public:
+	Person(int destinationFloor);		// create a person with given destination
+	Person(const Person& other);		// copy constructor
+	~Person();								// destructor
+	int getDestinationFloor() const;	// get the destination floor of this person
+private:
+	int destinationFloor;				// destination floor of this person
+};
+\end{lstlisting}
+
+\subsection{Klasse Elevator}
+Implementiere die Klasse \lstinline{Elevator}, die einen Aufzug mit einer beliebigen Anzahl an Personen darstellt.
+
+Wenn sich der Aufzug bewegt, solltest du die verbrauchte Energie bei einer Bewegung sinnvoll anpassen.
+Addiere beispielsweise den Betrag der Differenz zwischen dem aktuellen und dem Zielstockwerk hinzu.
+
+\begin{lstlisting}
+class Elevator {
+public:
+	Elevator();	// create an elevator at floor 0, no people inside and 0 energy consumed
+	int getFloor();					// get number of floor the elevator is currently at
+	double getEnergyConsumed();	// get consumed energy
+	void moveToFloor(int floor);	// move the elevator to given floor (consumes energy)
+	int getNumPeople();				// get number of people in Elevator
+	Person getPerson(int i);		// get i-th person in Elevator
+	void addPeople(std::vector<Person> people);	// add people to Elevator
+	std::vector<Person> removeArrivedPeople();	// remove people which arrived
+private:
+	int currentFloor;								// current floor number
+	std::vector<Person> containedPeople;	// people currently in elevator
+	double energyConsumed;						// energy consumed
+};
+\end{lstlisting}
+
+Um die Klasse \lstinline{std::vector} aus der Standardbibliothek zu nutzen musst du noch den Systemheader \lstinline{vector} einbinden.
+Der Container \lstinline{std::vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \lstinline{Vector} Klasse bereit.
+Der Typ in spitzen Klammern (\lstinline{<Person>} in \lstinline{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \lstinline{Person}-Objekte gespeichert werden sollen.
+
+Folgende Funktion der Klasse \lstinline{std::vector} könnten dir von Nutzen sein. Weitere findest du z.B. unter \url{http://www.cplusplus.com/reference/vector/vector/}. Der Typ \lstinline{size\_type} ist der größtmöglichhe vorzeichenloser Integer, die die verwendete Plattform unterstützt.
+
+\begin{lstlisting}
+size_type size() const;						// get size of the vector
+reference at(size_type n);					// get the i-th element of the vector
+void push_back(const value_type& val);	// add an element to the vector
+void clear();									// remove all elements from the vector
+\end{lstlisting}
+
+\hints{
+	\item Da \lstinline{containedPeople} leer initialisiert werden soll, brauchst du dafür keinen expliziten Aufruf in der Initialisierung.
+	\item Um die Leute aussteigen zu lassen, die an ihrem Zielstockwerk angekommen sind, erstelle in der Methode zwei temporäre \lstinline{std::vector}-Container \lstinline{stay} und \lstinline{arrived}.
+	Iteriere nun über alle Leute im Aufzug und prüfe, ob das Zielstockwerk der Person mit dem aktuellen Stockwerk des Aufzugs übereinstimmt.
+	Wenn ja, lasse die Person aussteigen, indem du sie zu der \lstinline{arrived}-Liste mittels \lstinline{push\_back()} hinzufügst.
+	Andernfalls muss die Person im Aufzug verbleiben (\lstinline{stay}-Liste).
+	Gib am Ende die arrived-Liste zurück, und ersetze \lstinline{containedPeople} durch \lstinline{stay}.
+}
+
+\subsection{Klasse Floor}
+Implementiere die Klasse \lstinline{Floor}, die ein Stockwerk mit einer beliebigen Anzahl an wartenden Personen darstellt.
+
+\begin{lstlisting}
+class Floor {
+public:
+	int getNumPeople();							// get the number of people on this floor
+	Person getPerson(int i);					// get the i-th person on this floor
+	void addWaitingPerson(Person h);			// add a person to this floor
+	std::vector<Person> removeAllPeople();	// remove all persons from this floor
+private:
+	std::vector<Person> containedPeople;	// persons on this floor
+};
+\end{lstlisting}
+
+\subsection{Klasse Building}
+Schreibe eine Klasse \lstinline{Building}, die einen Aufzug besitzt der sich zwischen einer definierbaren Menge an Stockwerken bewegt und Personen befördert.
+
+\begin{lstlisting}
+class Building {
+public:
+	Building(int numberOfFloors);	// create a Building with given number of floors
+	int getNumOfFloors();			// get number of floors
+	Floor& getFloor(int floor);	// get a certain floor
+	Elevator& getElevator();		// get the elevator
+private:
+	std::vector<Floor> floors;		// floors of this building
+	Elevator elevator;				// the elevator
+};
+\end{lstlisting}
+
+
+\subsection{Komfortfunktionen}
+Erweitere die Klasse \lstinline{Building} um folgende \lstinline{public} Funktionen, um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufketten wie
+\begin{lstlisting}
+	b.getElevator().addPeople(b.getFloor(b.getElevator().getFloor()).removeAllPeople());
+\end{lstlisting}
+
+zu vermeiden (\emph{Law of Demeter}\footnote{\url{https://en.wikipedia.org/wiki/Law_of_Demeter}}).
+Der Simulator sollte nur mit Methoden der Klasse \lstinline{Building} kommunizieren.
+
+\begin{lstlisting}
+void letPeopleIn();									// let people on current floor into elevator
+void moveElevatorToFloor(int i);					// move the elevator to a given floor
+void addWaitingPerson(int floor, Person p);	// add a person to a given floor
+std::vector<Person> removeArrivedPeople();	// remove people which arrived at their destination from the elevator on the current floor
+\end{lstlisting}
+
+\subsection{Beförderungsstrategie}
+Teste deine Implementation.
+Erstelle dazu zunächst ein Gebäude und füge einige Personen hinzu.
+
+\begin{lstlisting}
+	Building b(3);
+	b.addWaitingPerson(0, Person(2)); // person in floor 0 wants to floor 2
+	b.addWaitingPerson(1, Person(0)); // person in floor 1 wants to floor 0
+	b.addWaitingPerson(2, Person(0)); // person in floor 2 wants to floor 0
+\end{lstlisting}
+
+Implementiere nun folgende Beförderungsstrategie.
+Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheinander ab, sammelt die Leute ein und befördert sie jeweils zu ihren Zielstockwerken.
+
+\begin{algorithm}[H]
+ \SetAlgoLined
+ \For{Floor floor \textbf{in} Building}{
+   Move \lstinline{elevator} to Floor \lstinline{floor};\\
+   Let all people on \lstinline{floor} into \lstinline{elevator};\\
+   
+  \While{elevator has people} {
+    Move Elevator to destination Floor of first Person in Elevator; \\
+    Remove arrived people; \\
+  }
+ }
+\end{algorithm}
+
+Gib am Ende auch die verbrauchte Energie aus.
+Schau dir die Ausgabe genau an und versuche nachzuvollziehen, warum Personen so oft kopiert werden.
+Denke daran, dass diese bei einer Übergabe als Argument kopiert werden.
+
+\hints {
+    \item Falls du wie vorgeschlagen als Modell für den Energieverbrauch den Betrag der Differenz der abgefahrenen Stockwerke verwendest, solltest du am Ende \lstinline{consumedEnergy = 8} erhalten.
+}

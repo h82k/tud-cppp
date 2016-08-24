@@ -84,6 +84,60 @@ void constCorrectnessWithVariables() {
 
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// exercise uebergabewerte
+////////////////////////////////////////////////////////////////////////////////
+
+int op1(int *param) {
+    std::cout << "works1" << std::endl;
+}
+
+int op2(int param) {
+    std::cout << "works2" << std::endl;
+}
+
+void op3(int &param) {
+    std::cout << "works3" << std::endl;
+}
+
+void op4(const int **param) {
+    std::cout << "works4" << std::endl;
+}
+
+void ex_uebergabewerte() {
+    int i = 0;
+    int *j = &i;
+    const int *const k = &i;
+    int **l = &j;
+    const int *m = &i;
+    
+    op1(&i);
+    op1(j);
+    // op1(k); // does not work because of const -> invalid conversion from 'const int*' to 'int*'
+    op1(*l);
+    // op1(m); // does not work because of const
+
+    op2(i);
+    op2(*j);
+    op2(*k); 
+    op2(**l);
+    op2(*m);
+
+    op3(i);
+    op3(*j);
+    // op3(k); // cannot convert const int* to int* -> const correctness
+    op3(**l);
+    // op3(*m); // does not work because of const
+
+    // op4(&&i);
+    // op4(*j);
+    // op4(&k); // invalid conversion from ‘const int* const*’ to ‘const int**’ -> const correctness
+    // op4(l);
+    op4(&m);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 int main() {
 // Teil d)
 	int i1 = 3, i2 = 5;
@@ -96,5 +150,7 @@ int main() {
 	int var = 42;
 	std::cout << "&var = " << &var << std::endl;
 	foo(var);
+
+    ex_uebergabewerte();
 }
 

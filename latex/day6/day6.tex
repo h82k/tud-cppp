@@ -13,7 +13,7 @@
 \section{Implementation eines beliebigen Programms}
 Nachdem du alle Ein- und Ausgabemöglichkeiten des Boards kennengelernt hast, besteht die Aufgabe in diesem Teil darin, ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
 Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anregung dienen.
-Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \texttt{16FXlib} zu verwenden.
+Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \lstinline{16FXlib} zu verwenden.
 Die Dokumentation dazu findest du unter \url{http://echtzeitsysteme.github.io/tud-cpp-16FXlib/documentation/index.html}.
 
 \section*{Vorschlag: Pong}
@@ -83,7 +83,7 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
 	\item Möchte man ein Bild auf dem Board anzeigen, so empfiehlt es sich die einzelnen Pixeldaten in einem Array zu speichern.
 	GIMP bietet hierfür die Möglichkeit eine Bilddatei als Header im \texttt{GIMP header image file format} zu exportieren.
 	Da das Board nur zwei Farbwerte ermöglicht, sollte das Bild vor dem Exportieren über den Menüpunkt \textbf{Bild --> Modus} auf \textbf{indiziert \ldots} (Schwarz/Weiß-Palette (1-Bit)) gestellt werden.
-	Anschließend kann man das \texttt{header\_data} Array verwenden, um auf die Bilddaten zuzugreifen.
+	Anschließend kann man das \lstinline{header\_data} Array verwenden, um auf die Bilddaten zuzugreifen.
 }
 
 \end{document}

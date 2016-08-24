@@ -13,6 +13,21 @@
 \usepackage{amsmath}
 \usepackage{algorithm2e}
 \usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}\xspace}%
+\newcommand{\xmark}{\ding{55}\xspace}%
+
+\usepackage{todonotes}
+%\usepackage[disable]{todonotes} % Use this line to hide all todos
 
 \definecolor{commentgreen}{RGB}{50,127,50}
 \lstloadlanguages{C++,[gnu]make}
@@ -49,14 +64,19 @@
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
 \newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
 
-\newcommand{\cppSetTitle}{
+\newcommand{\cppSetTitleGeneric}[1]{
 	\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-	\subtitle{Übungen für den \exday{}. Tag}
+	\subtitle{#1}
+    \newcommand{\examheadertitle}{#1}
+}
+
+\newcommand{\cppSetTitle}{
+    \cppSetTitleGeneric{Übungen für den \exday{}. Tag}
 }
 
 \newcommand{\cppSetHeaderAndMakeTitle}{
 	\begin{examheader}
-		\textmb{Übung zum C/C++-Praktikum - Tag \exday{}}
+        \examheadertitle
 	\end{examheader}
 	\maketitle
 }
@@ -68,3 +88,13 @@
 		#1
 	\end{itemize}
 }
+
+\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
+\newcommand{\filename}[1]{\texttt{#1}}
+
+\newcommand{\RK}[1]{\todo[]{\textbf{RK:} #1}}
+\newcommand{\RKi}[1]{\todo[inline]{\textbf{RK:} #1}}
+\newcommand{\PJ}[1]{\todo[]{\textbf{PJ:} #1}}
+\newcommand{\PJi}[1]{\todo[inline]{\textbf{PJ:} #1}}
+\newcommand{\LK}[1]{\todo[]{\textbf{LK:} #1}}
+\newcommand{\LKi}[1]{\todo[inline]{\textbf{LK:} #1}}
