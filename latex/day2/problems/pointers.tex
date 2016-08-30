@@ -143,11 +143,11 @@ Als Beispiel dient hierfür die erste Zeile.
     \newcolumntype{s}{>{\hsize=.6\hsize}X}
 
     \begin{tabularx}{\textwidth}{b *5{| >{\centering\arraybackslash}s}@{}} 
-                    & \lstinline{int i} & \lstinline{int *j} & \lstinline{int const *const k} & \lstinline{int **l} & \lstinline{const int *m} \\ \hline
-        \lstinline{op1(int *)}          & \lstinline{x} & \lstinline{j} & \xmark & \lstinline{*l} & \xmark \\ \hline
-        \lstinline{op2(int)}            & & & & & \\ \hline
-        \lstinline{op3(int \&)}         & & & & & \\ \hline
-        \lstinline{op4(const int **)}   & & & & & 
+                    & \lstinline|int i| & \lstinline|int *j| & \lstinline|int const *const k| & \lstinline|int **l| & \lstinline|const int *m| \\ \hline
+        \lstinline|op1(int *)|          & \lstinline|x| & \lstinline|j| & \xmark & \lstinline|*l| & \xmark \\ \hline
+        \lstinline|op2(int)|            & & & & & \\ \hline
+        \lstinline|op3(int \&)|         & & & & & \\ \hline
+        \lstinline|op4(const int **)|   & & & & & 
     \end{tabularx}
     \caption{Tabelle für \emph{Übergabewerte} Aufgabe}
     \label{table:uebergabewerte}
