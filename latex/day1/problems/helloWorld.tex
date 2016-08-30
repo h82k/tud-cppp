@@ -14,8 +14,8 @@ int main() {
 \end{lstlisting}
 \end{minipage}
 
-
-Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetyp \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
+Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetypen \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen.
+Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
 Der Rückgabetyp wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
 Typischerweise wird im Erfolgsfall 0 zurückgegeben.
 
@@ -36,7 +36,7 @@ In der dritten Zeile wird der String \lstinline{"Hello World"} in \lstinline{std
 
 Im Folgenden sind einige Fehlermeldungen von \texttt{clang} zusammen mit möglichen Lösungsstrategien aufgelistet.
 Die generelle Faustregel lautet: 
-\textbf{Compilerfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
+\textbf{Kompilierfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
 Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
 
 % Indents all of the following paragraphs by 1cm
@@ -69,7 +69,7 @@ int main() {
 }
 \end{lstlisting}
 
-Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \lstinline{int main() \{} beziehen!!
+Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
 
 \begin{verbatim}
   error: invalid conversion from <A> to <B>.

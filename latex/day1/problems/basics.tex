@@ -9,9 +9,9 @@ Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
 Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
 
 \begin{lstlisting}
-int i;						// signed int, -2147483648 to +2147483647 on a 32-bit machine
-unsigned int ui;			// unsigned int, 0 to 4294967295 on a 32-bit machine
-// unsigned double d;	// not possible
+int i;                      // signed int, -2147483648 to +2147483647 on a 32-bit machine
+unsigned int ui;            // unsigned int, 0 to 4294967295 on a 32-bit machine
+// unsigned double d;       // not possible
 \end{lstlisting}
 
 Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \lstinline{bool}) umgewandelt werden.
@@ -36,7 +36,7 @@ Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in 
 Einbinden lässt sich diese über den Header \lstinline{limits}.
 }
 
-\subsection{Sternmuster mit Funktionen malen}
+\subsection{Sternenmuster mit Funktionen malen}
 
 Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \lstinline{printStars(5)} sollte folgende Ausgabe generieren:
@@ -62,14 +62,14 @@ Verwende hierzu Schleifen.
 \end{lstlisting}
 
 \hints{
-    \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch Camel Case oder Kleinschreibung mit Unterstrichen verwendet.
-    \item Um Strings auszugeben, stellt dir C++ \lstinline{std::cout} zur Verfügung, welches den String zu dem Standart Output Stream weitergibt. Diesen Output Stream kann man mit dem Manipulator \lstinline{std::endl} zu einem Zeilenumbruch zwingen.
+    \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch CamelCase oder Kleinschreibung mit Unterstrichen verwendet.
+    \item Um Strings auszugeben, stellt dir C++ \lstinline{std::cout} zur Verfügung, welches den String zu dem Standard Output Stream weitergibt. Diesen Output Stream kann man mit dem Manipulator \lstinline{std::endl} zu einem Zeilenumbruch zwingen.
 }
 
 \subsection{Auslagern der Datei}
 Erstelle eine neue Header-Datei \filename{functions.hpp} und eine neue
 Sourcedatei \filename{functions.cpp}.
-Klicke hierzu mit der rechten Maustate auf das Projekt und wähle \textbf{New $\rightarrow$ Source File}, bzw. wähle \textbf{New $\rightarrow$ Header File} und bestätige beide Dialoge mit \textbf{Finish}.
+Klicke hierzu mit der rechten Maustaste auf das Projekt und wähle \textbf{New $\rightarrow$ Source File}, bzw. wähle \textbf{New $\rightarrow$ Header File} und bestätige beide Dialoge mit \textbf{Finish}.
 Beachte hierbei, dass Eclipse automatisch Include-Guards in der Headerdatei erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
 
 \begin{lstlisting}
@@ -99,38 +99,41 @@ void printStars(int n);
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
 \hints{
-	\item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
-	\item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
-	\item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
+    \item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
+    \item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
+    \item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
     Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
-	\item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
+    \item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
 }
 
 \subsection{Dokumentation} \label{basics:doc}
 Für die Lesbarkeit eines Programms ist eine ausführliche Dokumentation des Programmcodes essentiell.
-Damit ihr schonmal einen Einblick darin bekommt, werden wir hier in dem Praktikum mit kommentieren und das Tool \emph{Doxygen}\footnote{Doxygen-Link als Referenz: \url{http://www.doxygen.nl/}} zur Erstellung von Dokumentationen verwenden.
+Damit du einen Einblick darin bekommt, wird es deine Aufgabe sein, deinen geschriebenen Code durchgehend zu kommentieren. 
+Zum Erstellen der Dokumentation werden wir das Tool \emph{Doxygen}\footnote{Doxygen-Link als Referenz: \url{http://www.doxygen.nl/}} verwenden.
 
-Damit Doxygen deine Kommentare erkennt, müssen sie ein spezielles Format einhalten.
+Damit Doxygen deine Kommentare erkennt, muss ein spezielles Format eingehalten werden.
 \begin{itemize}
-    \item Die Kommentare vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
-    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)
+    \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
+    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)\footnote{Es gibt noch andere Formate, aber wir werden hier in dem Praktikum den sogenannten JavaDoc-Style verwenden.}
         \begin{lstlisting}
 /**
- * Content
+ * Comment content
  */
         \end{lstlisting}}
 \end{itemize}
 
-Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Kommandos \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann.
+Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Kommandos \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann sein Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
+Um aber so ausführlich wie möglich zu sein, werden wir diese Kommandos verwenden.
+Beispiele unter \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html\#docexamples}}.
 Diese Kommandos sind die folgenden
 
 \begin{itemize}
+    \item \lstinline{@file Dateiname} damit Doxygen den kompletten File parst.
+    \item \lstinline{@name Name} Name des zu dokumentierenden Elements.
     \item \lstinline{@brief kurzeBeschreibung} einzeilige Beschreibung des Elements.
     \item \lstinline{@author AuthorenNamen} für den Namen des Autoren.
-    \item \lstinline{@name Funktionsnamen} für den Namen der Funktion.
     \item \lstinline{@param Parametername Beschreibung} um Parameterübergaben bei Funktionen zu erklären.
     \item \lstinline{@return Beschreibung} kurze Beschreibung der Rückgabe.
-    \item \lstinline{@file Dateiname} damit Doxygen den kompletten File parst.
 \end{itemize}
 
 Da das Dokumentieren der Datei nicht vor der Datei passieren kann (wo sollte das sein?), geschieht es deshalb direkt nach den Präprozessor Direktiven.
@@ -148,6 +151,7 @@ Hier ein kleines Beispiel dazu, damit ihr eine Vorstellung davon bekommt, wie da
  * @file testing.hpp
  * @author Your Name
  * @brief Just a showcase hpp file to demonstrate doxygen comments
+ * This is a very long description of the given file holding all the information one need to get an overview of the importance of this file.
  */
 
 /**
@@ -160,7 +164,7 @@ Hier ein kleines Beispiel dazu, damit ihr eine Vorstellung davon bekommt, wie da
 void first_func(int a);
 
 /**
- * @name second_(int a, char b, double d);
+ * @name second_func(int a, char b, double d);
  * @author Your Name
  * @brief A showcase function.
  * @param a Used for important stuff.
@@ -174,10 +178,10 @@ void second_func(int a, char b, double d);
 \end{lstlisting}
 
 Erstellen könnt ihr die Dokumentation am Ende über die Kommandozeile.
-Dafür öffnet ihr euer Terminal mit \lstinline{STRG + ALT + t} und wechselt in das Verzeichnes in dem euer Projekt liegt (üblicherweise \lstinline{cd CPPP/Workspace/NameEuresProjektes}).
+Dafür öffnet ihr euer Terminal mit \lstinline{STRG + ALT + t} und wechselt in das Verzeichnis in dem euer Projekt liegt (üblicherweise \lstinline{cd CPPP/Workspace/NameEuresProjektes}).
 Dort gebt ihr \lstinline{doxygen -g} ein, welches euch eine vorgefertigte Konfigurationsdatei von \texttt{doxygen} erstellt, gefolgt von \lstinline{doxygen}, was letztendlich die Dokumentation erstellt.
 Diese findet ihr in dem Ordner \filename{html} unter der Datei \filename{index.html}.
-Ihr erreicht die Datei ganz einfach, wenn ihr in der Terminal das Kommando \lstinline{pcmanfm} eingebt, was euren Filemanager öffnet.
+Ihr erreicht die Datei ganz einfach, wenn ihr in der Terminal das Kommando \lstinline{pcmanfm} eingebt, was euren Dateimanager öffnet.
 Auf der Webseite, die sich dann öffnet, findet ihr unter Files die von euch dokumentierte \filename{functions.{h,hpp}}.
 
 \subsection{Eingabe}
@@ -222,7 +226,7 @@ deklariert.
 In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig zu Beginn des Programms} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
 
 \hints{
-	\item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden.
+    \item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden.
 }
 
 \subsection{Namensräume}
@@ -232,8 +236,8 @@ folgt in einen \lstinline{namespace} setzt.
 
 \begin{lstlisting}
 namespace fun {
-	// function prototypes ...
-};	// semicolon!
+    // function prototypes ...
+};  // semicolon!
 \end{lstlisting}
 
 Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt.
@@ -241,7 +245,7 @@ Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
 
 \begin{lstlisting}
 void fun::print_star(int n) {
-	// ...
+    // ...
 }
 \end{lstlisting}
 
@@ -254,9 +258,9 @@ Hierzu definiert man wie oben ein weiteren Namensraum mit \lstinline{namespace} 
 \begin{lstlisting}
 namespace fun {
     namespace ny{
-	// function prototypes ...
-    };	// semicolon!
-};	// semicolon!
+    // function prototypes ...
+    };  // semicolon!
+};  // semicolon!
 \end{lstlisting}
 
 In der Sourcedatei folgt dann nach dem initialen Namensraum, hier \lstinline{fun} gefolgt von dem Doppelpunktpaar, der geschachtelte Namensraum \lstinline{ny} wieder gefolgt von zwei Doppelpunkten.
@@ -264,14 +268,14 @@ Erst dann können die Funktionen in dem Namensraum \lstinline{ny} verwendet werd
 
 \begin{lstlisting}
 void fun::ny::print_star(int n) {
-	// ...
+    // ...
 }
 \end{lstlisting}
 
 In diesem Projekt wird dies nicht notwendig sein, da die Anzahl der definierten Funktionen überschaubar ist, aber trotzdem empfehlen wir dir es auszuprobieren.
 
 \hints{
-	\item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
+    \item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
     Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
     \item Bei dem geschachtelten Namensraum ist entsprechend \lstinline{using namespace fun::ny;} zu verwenden um den Namensraum zu importieren.
 }

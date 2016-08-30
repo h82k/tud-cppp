@@ -48,7 +48,7 @@ Beispiel: Ein \glqq{}E\grqq{} kann durch das Setzen der Pins 0, 3, 4, 5 und 6 (B
 
 Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \lstinline{\_\_wait\_nop()} aufruft.
 Eine Konstante \lstinline{DELAY} steht dir für die Anzahl der Schleifendurchläufe zur Verfügung.
-Achte insbesondere darauf, dass du für die Schleifenzählervariable den Datentyp \lstinline{long} verwendst.
+Achte insbesondere darauf, dass du für den Zähler den Datentyp \lstinline{long} verwendest.
 
 \begin{lstlisting}
 	long d;					// always define variables at the beginning of a block!
@@ -80,7 +80,7 @@ rightButton = PDR07_P1;
 	\item Ein Tastendruck ist durch den Übergang von \emph{high} auf \emph{low} definiert.
 	Da in jedem Zyklus nur der aktuelle Wert abgefragt werden kann, musst du den aktuellen Wert mit einem gespeicherten Wert aus dem vorigen Durchlauf vergleichen.
 	\item Die Moduloberechnung von negativen Zahlen kann problematisch sein.
-	Hier hilft es, wenn du vor der Modulo\-operation den Divisor hinzuaddierst.
+	Hier hilft es, wenn du vor der Berechnung den Divisor hinzuaddierst.
 }
 
 
@@ -176,7 +176,7 @@ Senden des \lstinline{enable}-Signals.
 Setze dazu den Enable-Pin auf 1, warte kurz, setze den Pin wieder auf 0 und warte erneut kurz.
 Verwende als Warteintervall die Konstante \lstinline{LCD\_T}.
 
-Es empfiehlt sich, für dieses Signal eine eigene Funtkion zu schreiben (\lstinline{void lcd\_sendEnable(void)}).
+Es empfiehlt sich, für dieses Signal eine eigene Funktion zu schreiben (\lstinline{void lcd\_sendEnable(void)}).
 \end{enumerate}
 
 \subsection*{Auf das Display zeichnen}
@@ -229,8 +229,8 @@ void lcd_flush();    // display the frame buffer on the LCD
 \hints{
 	\item Ein Testprogramm steht bereits zur Verfügung, welches ein Schachbrettmuster auf dem Display ausgibt -- wenn deine Funktionen komplett und korrekt implementiert sind.
 	\item Achte auch hier darauf, dass das Display zunächst per Befehl eingeschaltet werden muss (\emph{Display on}).
-	\item Für die Funktion \lstinline{lcd\_drawPixel} werden die Bitoperationen AND und OR sowie der Shift-Operator benötigt.
-	Eine Skizze kann hier sinnvoll sein, um sich vorzustellen, wie die Bitoperationen arbeiten.
+	\item Für die Funktion \lstinline{lcd\_drawPixel} werden die bitweisen Operationen AND und OR sowie der Shift-Operator benötigt.
+	Eine Skizze kann hier sinnvoll sein, um sich vorzustellen, wie die bitweisen Operationen arbeiten.
 	\item Wenn du später bewegte Dinge visualisierst, kann es sein, dass das Display flimmert.
 	Hier hilft es, entweder die Anzeige nur zu verändern, wenn sich tatsächlich etwas bewegt oder das Display vor dem Schreiben des Framebuffers aus- (\emph{Display off}) und danach wieder einzuschalten (\emph{Display on}).
 }

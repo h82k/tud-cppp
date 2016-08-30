@@ -12,10 +12,10 @@ Nutzt man überall Kopien von Personen, haben wir keine Kontrolle darüber und w
 	Dazu ist es nötig, dass du jetzt eine Kopie von deinem aktuellen Code machst.
 	Gehe dabei folgendermaßen vor:
 	\begin{itemize}
-	\item Lege eine Kopie deines Projektordners an.
-	\item Benenne dein Projekt um, z.B. in \texttt{Aufzug\_Alt} (\textbf{Rechtsklick auf das Projekt $\rightarrow$ Rename Project}).
-	\item Importiere den kopierten Projektordner in CodeLite (\textbf{Workspace $\rightarrow$ Add an existing project}).
-	\item In deinem Workspace sollten jetzt zwei Projekte sein, \texttt{Aufzug\_Alt} und \texttt{Aufzug}.
+	    \item Lege eine Kopie deines Projektordners an.
+	    \item Benenne dein Projekt um, z.B. in \texttt{Aufzug\_Alt} (\textbf{Rechtsklick auf das Projekt $\rightarrow$ Rename Project}).
+	    \item Importiere den kopierten Projektordner in CodeLite (\textbf{Workspace $\rightarrow$ Add an existing project}).
+	    \item In deinem Workspace sollten jetzt zwei Projekte sein, \texttt{Aufzug\_Alt} und \texttt{Aufzug}.
 	\end{itemize}
     \item Du wirst in den folgenden Aufgaben deinen Code stark verändern.
     Versuche, nicht alle Änderungen auf einmal zu machen, sondern gehe stückweise vor (also bspw. nur einen Getter umstellen und alle Folgefehler beheben).
@@ -76,7 +76,7 @@ Lösche dazu die Methode \lstinline{getPerson()} und füge die folgende Methode 
 \end{lstlisting}
 
 Dadurch kann von außen lesend auf die Leute im Aufzug zugegriffen werden.
-Ändere außerdem den Inhaltstyp des Containers von \lstinline{Person} auf \lstinline{PersonPtr}, da wir Smart Pointer auf Personen speichern werden und nicht die Personen direkt.
+Ändere außerdem den Typen des Containers von \lstinline{Person} auf \lstinline{PersonPtr}, da wir Smart Pointer auf Personen speichern werden und nicht die Personen direkt.
 Passe die Signaturen aller Methoden in \lstinline{Elevator} entsprechend an.
 
 \subsection{}
@@ -136,7 +136,7 @@ Nun werden Personen nicht mehr kopiert, sondern nur noch gelöscht, sobald sie t
 Es ist natürlich interessant zu erfahren, ob sich der ganze Aufwand des Refactorings gelohnt hat.
 
 \paragraph{Laufzeit}
-Eine relativ simple Art der Laufzeitmessung ist es, die verstrichtene Prozessorzeit zu messen.
+Eine relativ simple Art der Laufzeitmessung ist es, die verstrichene Prozessorzeit zu messen.
 Der Header \lstinline{ctime} stellt hierfür die Funktion \lstinline{clock()} zur Verfügung, die einen Zähler vom Typ \lstinline{clock\_t} zurückgibt.
 Mithilfe der Konstanten \lstinline{CLOCKS\_PER\_SEC} kann man aus der Anzahl von Prozessorzyklen die Laufzeit berechnen.
 

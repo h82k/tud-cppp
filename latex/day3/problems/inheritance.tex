@@ -1,44 +1,44 @@
 \section{Vererbung und Polymorphie}\label{sec:inheritance}
-In dieser Aufgabe sollst du Konzepte der Vererbung und Polymorphie unter Verwendung abstraker Funktionen erlernen.
+In dieser Aufgabe sollst du Konzepte der Vererbung und Polymorphie unter Verwendung abstrakter Funktionen erlernen.
 
 \subsection{Klasse \lstinline{Person}}
 Implementiere eine Klasse \lstinline{Person}, die eine Person mit einem Namen darstellt.
-Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
+Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
 \begin{lstlisting}
 class Person {
 public:
-	Person(const std::string &name);		// initialize the name of the person
-	~Person();									// destructor
-	std::string getInfo() const;			// get the name of the person
+    Person(const std::string &name);        // initialize the name of the person
+    ~Person();                              // destructor
+    std::string getInfo() const;            // get the name of the person
 protected:
-	std::string name;							// the name of the person
+    std::string name;                       // the name of the person
 };
 \end{lstlisting}
 
 \hints{
-	\item Verwende \lstinline{\#include <string>} um \lstinline{std::string} zu verwenden.
-	\item Um ein String-Literal an eine \lstinline{std::string} Variable anzuhängen, musst du aus dem String-Literal zuerst ein \lstinline{std::string}-Objekt machen: \lstinline{std::string text = std::string("Name: " ) + name;}.
+    \item Verwende \lstinline{\#include <string>} um \lstinline{std::string} zu verwenden.
+    \item Um ein String-Literal an eine \lstinline{std::string} Variable anzuhängen, musst du aus dem String-Literal zuerst ein \lstinline{std::string}-Objekt machen: \lstinline{std::string text = std::string("Name: " ) + name;}.
 }
 
 \subsection{Klasse \lstinline{Student}}
 Implementiere eine Klasse \lstinline{Student}, die von \lstinline{Person} erbt (\lstinline{public}) und einen Studenten mit einer Matrikelnummer (ebenfalls \lstinline{std::string}) modelliert.
 Rufe in der Initialisierungsliste den entsprechenden Konstruktor der Elternklasse \lstinline{Person} mittels \lstinline{Person(name)} auf.
-Füge allen Konstruktoren und Destrukoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
+Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
 \begin{lstlisting}
-class Student: public Person {	// public inheritance
+class Student: public Person {  // public inheritance
 public:
-	Student(const std::string &name, const std::string &studentID); // init name and ID
-	~Student();											// destructor
-	std::string getInfo() const;					// Person::getInfo() - get name and studentID
+    Student(const std::string &name, const std::string &studentID); // init name and ID
+    ~Student();                                         // destructor
+    std::string getInfo() const;                    // Person::getInfo() - get name and studentID
 private:
-	std::string studentID;							// the student ID of the student
+    std::string studentID;                          // the student ID of the student
 };
 \end{lstlisting}
 
 \hints{
-	\item Du kannst bei Bedarf die \lstinline{getInfo()}-Implementation der Elternklasse \lstinline{Person} von \lstinline{Student} aus mittels \lstinline{Person::getInfo()} aufrufen.
+    \item Du kannst bei Bedarf die \lstinline{getInfo()}-Implementation der Elternklasse \lstinline{Person} von \lstinline{Student} aus mittels \lstinline{Person::getInfo()} aufrufen.
 }
 
 \subsection{Test}
@@ -49,27 +49,28 @@ Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an, und versuche,
 Implementiere dann folgende Funktion und teste deine Implementation erneut, indem du \lstinline{printPersonInfo()} mit beiden Personentypen aufrufst.
 
 \begin{lstlisting}
-void printPersonInfo(const Person *person);		// print person information on console
+void printPersonInfo(const Person *person);     // print person information on console
 \end{lstlisting}
 
 \hints{
-	\item Dadurch dass \lstinline{Person} als \lstinline{const} Zeiger übergeben wird, können auch Unterklassen von \lstinline{Person}, wie z.B. \lstinline{Student}, übergeben werden. 
+    \item Dadurch dass \lstinline{Person} als \lstinline{const} Zeiger übergeben wird, können auch Unterklassen von \lstinline{Person}, wie z.B. \lstinline{Student}, übergeben werden. 
 }
 
 
 \subsection{Dynamic Dispatch bei \lstinline{printPersonInfo}}
-Du merkst, dass \lstinline{printPersonInfo()} unabhängig von übergebenem Personentyp immer nur den Namen der Person ausgibt, aber nicht die Matrikelnummer.
+Du merkst, dass \lstinline{printPersonInfo()} unabhängig von übergebenem Typ einer Person immer nur den Namen der Person ausgibt, aber nicht die Matrikelnummer.
 Der Grund dafür ist, dass \lstinline{getInfo()} nicht als \lstinline{virtual} deklariert wurde und deshalb auch kein dynamischer Dispatch der Methode stattfindet.
 Deklariere daher \lstinline{getInfo()} in beiden Klassen als \lstinline{virtual}.
 
 Teste deine Implementation erneut und vergewissere dich, dass nun immer die richtige Methode aufgerufen wird.
 
+\LKi{Hier ist auf Eclipse verwiesen}
 \hints{
-	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \lstinline{virtual} in der Basisklasse gesetzt werden.
-	In den abgeleiteten Klassen kann \lstinline{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
-	Es ist aber hilfreich, auch dort der Lesbarkeit halber das Schlüsselwort zu verwenden.
-	\item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \lstinline{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \lstinline{@Override} in Java).
-	Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht.
+    \item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \lstinline{virtual} in der Basisklasse gesetzt werden.
+    In den abgeleiteten Klassen kann \lstinline{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
+    Es ist aber hilfreich, auch dort der Lesbarkeit halber das Schlüsselwort zu verwenden.
+    \item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \lstinline{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \lstinline{@Override} in Java).
+    Trotzdem zeigt dir Eclipse mit einem kleinen aufwärts zeigenden Dreieck links neben den Zeilennummern an, ob du eine Methode überschreibst oder nicht.
 }
 
 \subsection{Virtueller Destruktor}
@@ -77,8 +78,8 @@ Lege einen Studenten mit \lstinline{new} dynamisch auf dem Heap an und speichere
 Lösche die Person anschließend mit \lstinline{delete}.
 
 \begin{lstlisting}
-	Person *pTim = new Student("Tim", "321654");
-	delete pTim;
+    Person *pTim = new Student("Tim", "321654");
+    delete pTim;
 \end{lstlisting}
 
 Analysiere die Konsolenausgabe.
@@ -87,5 +88,5 @@ Auch hier liegt es daran, dass kein dynamischer Dispatch bei der Zerstörung erf
 Deklariere deshalb in beiden Klassen den Destruktor als \textbf{virtual} und teste die Korrektheit der Destruktoraufrufe.
 
 \hints{
-	\item Faustregel: Besitzt eine Klasse mindestens eine virtuelle Funktion, so sollte auch der Destruktor virtuell sein.
+    \item Faustregel: Besitzt eine Klasse mindestens eine virtuelle Funktion, so sollte auch der Destruktor virtuell sein.
 }
