@@ -1,4 +1,4 @@
-\section{Fortsetzung Aufzugsimulator}
+\section{Fortsetzung Aufzugsimulator -- Tag 2}
 In dieser Aufgabe erweitern und verbessern wir unseren Aufzugsimulator, sodass das Kopieren von Personen wegfällt.
 Dies werden wir erreichen, indem wir nicht direkt mit \lstinline{Person}-Objekten oder -rohzeigern sondern mit Smart Pointern arbeiten.
 Dadurch müssen wir beim Verschieben von Personen in den Aufzug nur die Smart Pointer kopieren, während die \lstinline{Person}-Objekte selbst bestehen bleiben.
@@ -93,7 +93,7 @@ Um ein Element zu löschen, verwende \lstinline{containedPeople.erase(iter)}.
 
 \hints{
 	\item Der bisherige Iterator ist nach dem Löschen nicht mehr gültig.
-	Die Methode \lstinline{erase} gibt einen Iterator auf das Element hinter dem gelöschten zurück.
+	Die Methode \lstinline{std::vector<T>::erase} gibt einen Iterator auf das Element hinter dem gelöschten zurück.
 }
 
 Als Grundgerüst kann folgendes Codeschnipsel dienen:
@@ -138,7 +138,7 @@ Es ist natürlich interessant zu erfahren, ob sich der ganze Aufwand des Refacto
 \paragraph{Laufzeit}
 Eine relativ simple Art der Laufzeitmessung ist es, die verstrichene Prozessorzeit zu messen.
 Der Header \lstinline{ctime} stellt hierfür die Funktion \lstinline{clock()} zur Verfügung, die einen Zähler vom Typ \lstinline{clock\_t} zurückgibt.
-Mithilfe der Konstanten \lstinline{CLOCKS\_PER\_SEC} kann man aus der Anzahl von Prozessorzyklen die Laufzeit berechnen.
+Mithilfe der Konstanten \lstinline{CLOCKS_PER_SEC} kann man aus der Anzahl von Prozessorzyklen die Laufzeit berechnen.
 
 Erzeuge nun ein hinreichend großes Beispiel und teste dessen Laufzeit für die alte und neue Implementation.
 
@@ -156,5 +156,3 @@ Das ist in unserem Fall allerdings weniger interessant, da die meisten kopierten
 Im Gegensatz zur Laufzeit gibt es leider keinen sehr einfachen Weg, den Speicherverbrauch des Programms direkt auszugeben.
 
 Du könntest hierfür kurz vor dem Ende von \lstinline{main} die Ausführung pausieren (mittels \lstinline{std::cin}) und dir im Task Manager ansehen, wie hoch der Speicherverbrauch des Programms ist -- das ist aber sicherlich nur eine Notlösung.
-
-\PJi{Ich hätte gerne an irgendeiner Stelle den Aufruf dazu einmal \lstinline|auto| zu verwenden.}

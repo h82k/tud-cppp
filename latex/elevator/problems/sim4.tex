@@ -177,7 +177,7 @@ main.o: main.cpp Building.h
 \end{lstmake}
 
 Ist das eine schöne Lösung?
-Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{\#include} in eine Sourcedatei einbinden.
+Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{#include} in eine Sourcedatei einbinden.
 Schlimmer noch: Wir müssten über rekursive Inkludierungen Bescheid wissen, z.B. wenn \filename{Building.h} einen anderen veränderlichen Header wie \filename{Floor.h} einbindet.
 
 Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
@@ -376,7 +376,8 @@ clean:
 
 \subsection{Nachwort}
 
-Dies hier sind nur äußerst wenige der Möglichkeiten, die \texttt{make} bietet\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}.
-
+Dies hier sind nur äußerst wenige der Möglichkeiten, die \texttt{make} bietet.%
+\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}
+%
 In der Praxis existieren Build-Tools, die eine wesentlich besser zu verstehende Beschreibungssprache verwenden und daraus Makefiles generieren.
 Beispiele sind \texttt{cmake}\footnote{\url{http://www.cmake.org/cmake/help/cmake_tutorial.html}} oder \texttt{qmake}\footnote{\url{http://qt-project.org/doc/qt-4.8/qmake-tutorial.html}} (Bestandteil von Qt).
