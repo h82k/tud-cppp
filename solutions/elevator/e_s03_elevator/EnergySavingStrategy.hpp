@@ -4,11 +4,31 @@
 #include "ElevatorStrategy.hpp"
 #include <list>
 
-//Finds a strategy for minimizing the energy by performing backtracking
+/**
+ * @name ElevatorSavingStrategy
+ * @author cppp
+ * @brief finds a strategy for minimizing the energy by performing backtracking
+ */
 class EnergySavingStrategy: public ElevatorStrategy {
 public:
+    /**
+     * @name ~EnergySavingStrategy();
+     * @author cppp
+     * @brief destructor
+     */
 	virtual ~EnergySavingStrategy();
+    /**
+     * @name createPlan(const Building*);
+     * @author cppp
+     * @brief creating a plan, what to do in the given building
+     */
 	virtual void createPlan(const Building*);
+    /**
+     * @name nextFloor();
+     * @author cppp
+     * @brief calculates the next floor
+     * @return int the next floor
+     */
 	virtual int nextFloor();
 private: 
 	// get a list with potential floors to find next

@@ -1,7 +1,4 @@
-\section{Callbacks}
-
-\PJi{Das ist die Aufgabe, mit der ich am unglücklichsten bin: Viele Studenten verstehen den Sinn hinter der Einführung von Callbacks etc. gar nicht. Mit Matthias Gazzari hatte ich überlegt, eine ganz neue Aufgabe zu stellen, in der man bspw. Standardfunktionen aus funktionalen Sprachen wie map, filter, ... nachimplementiert.}
-\PJi{Ich hätte auch noch gerne eine optionale Teilaufgabe zu Lambdas.}
+\section{Callbacks (optional)}
 
 \paragraph*{Motivation für Callbacks}
 In dieser Aufgabe werden mehrere Methoden zur Realisierung von Callbacks in C++ vorgestellt und implementiert.
@@ -69,10 +66,10 @@ Dadurch kann an \lstinline{hanoi()} fast alles übergeben werden, was sich synta
 \begin{lstlisting}
 	callback(a, c);
 \end{lstlisting}
-aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Functors}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
+aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Funktoren}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
 Dabei müssen nicht einmal die Parametertypen (\lstinline{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist.
 
-Teste deine Implementation mit einem Functor.
+Teste deine Implementation mit einem Funktor.
 Schreibe dafür eine einfache Klasse und überlade deren \lstinline{operator()}:
 \begin{lstlisting}
 	void operator()(int from, int to);
@@ -85,7 +82,8 @@ Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ans
 
 Zum einen ist es dadurch immer noch nicht möglich, beliebige Methoden einer Klasse als Callback zu übergeben.
 Durch Methodencallbacks könnten Klassen mehrere unabhängige Callback-Methoden besitzen.
-Zum anderen ist \lstinline{hanoi} nun an den Callback-Typ \textbf{gekoppelt}. Wenn wir also \lstinline{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback.
+Zum anderen ist \lstinline{hanoi} nun an den Callback-Typ \textbf{gekoppelt}.
+Wenn wir also \lstinline{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback.
 Dies kann sich insbesondere bei komplexeren Anwendungen von Callbacks sehr negativ widerspiegeln.
 Stell dir vor, du hättest ein GUI-Framework mit verschiedenen Elementen, die Callbacks nutzen, z.B. Buttons.
 Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt.
@@ -97,11 +95,12 @@ void doSomethingWithButton(Button<T> &btn);
 \end{lstlisting}
 
 Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
-Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Compile-Zeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
+Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Kompilierzeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
 
 \paragraph*{Lösung mittels \lstinline{Callback}-Klasse}
 
-Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\lstinline{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist. Ziel ist es, folgendes zu ermöglichen:
+Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\lstinline{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist.
+Ziel ist es, folgendes zu ermöglichen:
 \begin{lstlisting}
 void hanoi(..., Callback callback) {
 	...
@@ -125,7 +124,8 @@ Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine 
 \paragraph*{\lstinline{CallbackBase}}
 
 Fange mit der Klasse \lstinline{CallbackBase} an.
-Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \lstinline{call()} einen Parameter vom Typ \lstinline{ParamT} hinzu, wobei \lstinline{ParamT} ein Template-Pameter von \lstinline{CallbackBase} sein soll. Der Klassenrumpf lautet also
+Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \lstinline{call()} einen Parameter vom Typ \lstinline{ParamT} hinzu, wobei \lstinline{ParamT} ein Template-Parameter von \lstinline{CallbackBase} sein soll.
+Der Klassenrumpf lautet also
 
 \begin{lstlisting}
 template<typename ParamT>
@@ -143,8 +143,9 @@ Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, w�
     \item Du kannst diese und alle nachfolgenden Klassen in einem einzigen Header implementieren, weil die Klassen sehr kurz sind und außerdem semantisch stark zusammenhängen.
 }
 
-\subsection{Klasse \lstinline{FunctionCallback}}:
-Implementiere nun die erste Unterklasse \lstinline{template<typename ParamT> FunctionCallback}, die von \lstinline{CallbackBase<ParamT>} erbt.  \lstinline{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
+\subsection{Klasse \lstinline{FunctionCallback}}
+Implementiere nun die erste Unterklasse \lstinline{template<typename ParamT> FunctionCallback}, die von \lstinline{CallbackBase<ParamT>} erbt.
+\lstinline{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
 Ebenso soll \lstinline{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
 
 Teste deine Implementation.
@@ -170,26 +171,26 @@ int main() {
 \end{lstlisting}
 
 
-\subsection{Klasse \lstinline{FunctorCallback}}:
+\subsection{Klasse \lstinline{FunctorCallback}}
 Implementiere nun die Unterklasse \lstinline{template<typename ParamT, typename ClassT> FunctorCallback}.
-Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden.
-Speichere das zu verwendende Functor-Objekt als Referenz ab, um Kopien zu vermeiden.
+Zusätzlich zum Parameter-Typ muss hier auch der Typ der Funktor-Klasse angegeben werden.
+Speichere das zu verwendende Funktor-Objekt als Referenz ab, um Kopien zu vermeiden.
 Achte auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden.
 Teste deine Implementation!
 
 
 
-\subsection{Klasse \lstinline{MethodCallback}}:
+\subsection{Klasse \lstinline{MethodCallback}}
 Implementiere nun die letzte Unterklasse \lstinline{template<typename ParamT, typename ClassT> MethodCallback}.
 Beachte, dass nun zwei Attribute nötig sind - ein Methodenzeiger und ein Zeiger auf das zu verwendende Objekt.
 Teste deine Implementation.
 
 \hints{
-    \item Verwende beispielsweise folgende Signatur für den Konstruktor von \lstinline{MethodCallback}: \lstinline{MethodCallCallback(void(ClassT::*method)(ParamT), ClassT *object)}
+    \item Verwende beispielsweise folgende Signatur für den Konstruktor von \lstinline{MethodCallback}: \lstinline{MethodCallback(void(ClassT::*method)(ParamT), ClassT *object)}
     \item Gegeben einen Zeiger \lstinline{object} auf ein Objekt, einen Zeiger \lstinline{method} auf eines seiner Methoden und einen Parameter \lstinline{p} für die Methode, sieht ein Aufruf von \lstinline{method} wie folgt aus: \lstinline{(object->*method)(p);}
 }
 
-\subsection{Klasse \lstinline{Callback}}:
+\subsection{Klasse \lstinline{Callback}}
 Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.
 Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das dir schon bekannte Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht.
 Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
@@ -198,8 +199,8 @@ Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um d
 Schreibe eine Klasse \lstinline{template<typename ParamT> Callback}, die einen Smart Pointer auf ein \lstinline{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \lstinline{operator()}, der den Aufruf einfach an das \lstinline{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet.
 
 Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
-Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \lstinline{FunctionCallback} instanziieren.
-Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \lstinline{FunctorCallback} instanziieren, und der dritte entsprechend ein \lstinline{MethodCallback}.
+Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \lstinline{FunctionCallback} instantiieren.
+Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \lstinline{FunctorCallback} instantiieren, und der dritte entsprechend ein \lstinline{MethodCallback}.
 Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \lstinline{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.
 
 Teste deine Implementation in Zusammenhang mit der \lstinline{hanoi}-Funktion. Du kannst das \lstinline{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden.
