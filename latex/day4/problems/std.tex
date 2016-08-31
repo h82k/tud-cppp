@@ -3,7 +3,8 @@ In dieser Aufgabe werden wir den Umgang mit den Containern \lstinline{std::vecto
 Es ist sinnvoll, wenn du während der Übung eine C++-Referenz zum Nachschlagen bereithältst, z.B. \url{http://www.cplusplus.com/}.
 Schaue dir auch die Vorlesungsfolien genau an, da diese nützliche Codebeispiele enthalten.
 
-Die Klasse \lstinline{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann. \lstinline{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, wenn seine aktuelle Kapazität überschritten wird.
+Die Klasse \lstinline{std::list} stellt eine verkettete Liste dar, bei der man an beliebiger Stelle Elemente effizient löschen und hinzufügen kann.
+\lstinline{std::vector} stellt ähnliche Funktionen bereit, allerdings liegen hier die Elemente in einem einzigen, zusammenhängenden Speicherbereich, der neu alloziert und kopiert werden muss, wenn seine aktuelle Kapazität überschritten wird.
 Auch müssen viele Elemente verschoben werden, wenn der Vektor in der Mitte oder am Anfang modifiziert wird.
 Der große Vorteil von \lstinline{std::vector} ist der \emph{wahlfreie Zugriff}, d.h. man kann auf beliebige Elemente mit konstantem Aufwand zugreifen.
 
@@ -29,7 +30,8 @@ Lösche alle Elemente des Vektors mit einem einzigen Methodenaufruf.
 
 \item
 Mittels \lstinline{remove\_copy\_if()} kann man Elemente aus einem Container in einen anderen kopieren und dabei bestimmte Elemente löschen lassen.
-Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren. Beachte, dass \lstinline{remove\_copy\_if()} keine neuen Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \lstinline{OutputIterator} kopiert.
+Nutze diese Funktion, um alle Elemente, die kleiner sind als 4, aus der Liste in den Vektor zu kopieren.
+Beachte, dass \lstinline{remove\_copy\_if()} keine neuen Elemente an den Container anhängt, sondern lediglich Elemente von der einen Stelle zur anderen elementweise durch Erhöhen des \lstinline{OutputIterator} kopiert.
 
 Deshalb kannst du \lstinline{vec.end()} \textbf{nicht} als \lstinline{OutputIterator} nehmen, da dieser "{}hinter"{} das letzte Element zeigt und weder dereferenziert noch inkrementiert werden darf. Nutze stattdessen die Methode \lstinline{back\_inserter()}, um einen Iterator zu erzeugen, der neue Elemente an den Vektor anhängen kann.
 \end{enumerate}

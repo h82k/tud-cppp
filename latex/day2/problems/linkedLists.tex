@@ -51,7 +51,7 @@ Dieser kopiert einfach die einzelnen Attribute des Ursprungsobjekts (sogenannte 
 In unserem Fall ergibt das Kopieren eines \lstinline{ListItems} jedoch semantisch keinen Sinn, weil dabei ein hängendes \lstinline{ListItem} entstehen würde, welches nicht mit der Liste verknüpft ist, aber dennoch auf andere Items der Liste zeigt.
 
 Deklariere in der Headerdatei einen \lstinline{private} Copy-Konstruktor und einen \lstinline{private} \lstinline{operator=}.
-Dadurch können beide nie aufgerufen werden und der Compiler kann dies zur Compilezeit überprüfen.
+Dadurch können beide nie aufgerufen werden und der Kompiler kann dies zur Kompilierzeit überprüfen.
 
 \begin{lstlisting}
 private:
@@ -129,7 +129,7 @@ Beginne mit einer Grundversion des Iterators.
 Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und Zeiger auf die Liste) entsprechend initialisiert.
 Implementiere Vergleichsoperator \lstinline{operator!=} sowie den Dereferenzierungsoperator \lstinline{operator*}.
 Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben.
-Du brauchst nicht zu prüfen, ob \lstinline{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können Standardbibliotheksiteratoren übrigens auch nicht!).
+Du brauchst nicht zu prüfen, ob \lstinline{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können Iteratoren aus der Standardbibliothek übrigens auch nicht!).
 Zum Vergleichen zweier Iteratoren prüfe, ob die \lstinline{item} und \lstinline{list} Zeiger identisch sind.
 Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \lstinline{item} \lstinline{NULL} ist, wenn der Iterator also auf kein Element zeigt.
 
@@ -169,7 +169,7 @@ ListIterator& operator++();		// increment this iterator and return itself (prefi
 ListIterator operator++(int);		// increment this iterator and return the previous (postfix ++)
 \end{lstlisting}
 
-Bei der Überladung des \lstinline{operator++} muss eine Sonderregel beachtet werden.
+Bei der Überladung des \lstinline{operator++} muss eine Sonderregelung beachtet werden.
 Dieser Operator kann sowohl als Postfix (z.B. \lstinline{iter++}) als auch Präfix (z.B. \lstinline{++iter}) verwendet werden.
 Um den Compiler darüber zu informieren, welche Variante wir überladen, wird beim Postfix-Operator ein Dummy-Parameter vom Typ \lstinline{int} definiert.
 Dieser dient nur der syntaktischen Unterscheidung und hat keine weitere Bedeutung.
@@ -240,7 +240,7 @@ for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
 \end{lstlisting}
 
 Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \lstinline{list.begin()} und \lstinline{list.end()} tauscht und \lstinline{iter--} statt \lstinline{iter++} verwendet?
-Denke daran, worauf die von \lstinline{begin())} und \lstinline{end()} zurückgegebenen Iteratoren zeigen.
+Denke daran, worauf die von \lstinline{begin()} und \lstinline{end()} zurückgegebenen Iteratoren zeigen.
 
 \hints{
 	\item In der Standardbibliothek gibt es hierfür \lstinline{rbegin()} und \lstinline{rend()}

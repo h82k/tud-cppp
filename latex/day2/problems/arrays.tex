@@ -28,7 +28,7 @@ Analog dazu kann man auch einen Zeiger auf das erste Element anlegen:
 	int *pArr = arr;
 \end{lstlisting}
 
-Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen (sogennante Pointerarithmetik).
+Da die Elemente eines Array direkt hintereinander stehen, kann man den Zeiger inkrementieren, um zum  nächsten Element zu gelangen (sogenannte Pointerarithmetik).
 Beispiel:
 
 \begin{lstlisting}
@@ -54,7 +54,7 @@ Das bedeutet, dass man sowohl auf das i-te Element eines Arrays über \textbf{*(
 
 In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt.
 Du bist als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird.
-Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie  Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
+Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
 Bevorzuge deshalb Container-Klassen wie \lstinline{std::vector} (oder \lstinline{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
 Beachte außerdem, dass der \lstinline{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \lstinline{NULL} setzt.
 Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind.

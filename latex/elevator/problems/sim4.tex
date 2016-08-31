@@ -5,7 +5,7 @@ Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die H
 
 Das Programm \emph{make}\footnote{Dokumentation \url{https://www.gnu.org/software/make/manual/make.html}} wird in großen Softwareprojekten verwendet, um Programme zu kompilieren.
 \texttt{Makefiles} geben \texttt{make} dabei Informationen wie das Programm gelinkt und compiliert werden muss.
-Außerdem kann es verwendet werden, weitere Nebenaufgaben während der verschiedenen Compilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Compilationsdateien.
+Außerdem kann es verwendet werden, weitere Nebenaufgaben während der verschiedenen Kompilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Kompilationsdateien.
 All das werden wir in dieser Aufgabe ausprobieren.
 
 \subsection{Projekt anlegen:}
@@ -18,7 +18,7 @@ Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Ko
 Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
 \begin{lstmake}
 all:
-	@echo "Running all..."
+    @echo "Running all..."
 \end{lstmake}
 
 Wenn du jetzt \emph{Build} aufrufst, sollte in der Konsole in etwa Folgendes erscheinen:
@@ -29,7 +29,7 @@ making all...
 
 \end{verbatim}
 
-\subsection{Erster Compilevorgang}
+\subsection{Erster Kompiliervorgang}
 Jetzt ist es an der Zeit, ein Programm mittels \texttt{make} zu kompilieren.
 Lege dazu eine C++-Sourcedatei \filename{main.cpp} mit einer \lstinline{main}-Funktion an, die etwas sinnvolles ausgibt.
 
@@ -37,7 +37,7 @@ Entgegen unserer bisherigen Erfahrung musst du nun manuell in \filename{Makefile
 Ersetze die Dummy-Ausgabe daher durch einen Compiler-Aufruf an \texttt{g++}:
 \begin{lstmake}
 all:
-	g++ -o main.exe main.cpp
+    g++ -o main.exe main.cpp
 \end{lstmake}
 
 Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
@@ -67,13 +67,13 @@ private:
 #include <sstream>
 
 Building::Building(unsigned int numFloors):
-	numFloors(numFloors) {}
+    numFloors(numFloors) {}
 
 const std::string Building::toString() const{
-	std::stringstream output;
-	output << "A building with " << numFloors;
-	output << " floors" << std::endl;
-	return output.str();
+    std::stringstream output;
+    output << "A building with " << numFloors;
+    output << " floors" << std::endl;
+    return output.str();
 }
 \end{lstlisting}
 \end{minipage}
@@ -81,7 +81,7 @@ const std::string Building::toString() const{
 Erzeuge in der \lstinline{main}-Funktion eine zweistöckige Instanz von \lstinline{Building} und gib diese mittels \lstinline{Building::toString} auf der Konsole aus.
 
 Damit das Projekt kompiliert, muss auch \lstinline{Building} im Makefile eingetragen werden.
-Passe dazu den Compileraufruf an:
+Passe dazu den Kompileraufruf an:
 \begin{lstmake}
 all:
     g++ -o main.exe main.cpp Building.cpp
@@ -98,13 +98,13 @@ In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
 Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \filename{main.o} und \filename{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
 \begin{lstmake}
 all: main.o Building.o
-	g++ -o main.exe main.o Building.o
+    g++ -o main.exe main.o Building.o
 
 main.o: main.cpp
-	g++ -c -o main.o main.cpp
+    g++ -c -o main.o main.cpp
 
 Building.o: Building.cpp
-	g++ -c -o Building.o Building.cpp
+    g++ -c -o Building.o Building.cpp
 \end{lstmake}
 
 Baue das Projekt nun erneut, du solltest drei Aufrufe von \texttt{g++} sehen:
@@ -127,7 +127,7 @@ Eine Lösung ist es, das Target \texttt{all} von \filename{main.exe} abhängig z
 all: main.exe
 
 main.exe: main.o Building.o
-	g++ -o main.exe main.o Building.o
+    g++ -o main.exe main.o Building.o
 
 # ...
 \end{lstmake}
@@ -172,13 +172,13 @@ Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \filename{ma
 \begin{lstmake}
 # ...
 main.o: main.cpp Building.h
-	g++ -c -o main.o main.cpp
+    g++ -c -o main.o main.cpp
 # ...
 \end{lstmake}
 
 Ist das eine schöne Lösung?
-Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{\#include} in eine Sourcedatei einbinden.
-Schlimmer noch: Wir müssten über rekursive Includes Bescheid wissen, z.B. wenn \filename{Building.h} einen anderen veränderlichen Header wie \filename{Floor.h} einbindet.
+Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{#include} in eine Sourcedatei einbinden.
+Schlimmer noch: Wir müssten über rekursive Inkludierungen Bescheid wissen, z.B. wenn \filename{Building.h} einen anderen veränderlichen Header wie \filename{Floor.h} einbindet.
 
 Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
 
@@ -191,13 +191,13 @@ Binde außerdem die Dateien \filename{Building.d} und \filename{main.d} ein wie 
 all: main.exe
 
 main.exe: main.o Building.o
-	g++ -o main.exe main.o Building.o
+    g++ -o main.exe main.o Building.o
 
 main.o: main.cpp
-	g++ -c -MMD -MP -o main.o main.cpp
+    g++ -c -MMD -MP -o main.o main.cpp
 
 Building.o: Building.cpp
-	g++ -c -MMD -MP -o Building.o Building.cpp
+    g++ -c -MMD -MP -o Building.o Building.cpp
 
 -include Building.d main.d
 \end{lstmake}
@@ -214,19 +214,19 @@ Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werd
 Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
 Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren.
 
-Lege dazu ein neues Target \texttt{clean} ohne Abhängigkeiten an und füge einen entsprechenden Löschbefehl ein:
+Lege dazu ein neues Target \texttt{clean} ohne Abhängigkeiten an und füge einen entsprechenden Befehl zum Löschen ein:
 \begin{lstmake}
 clean:
-	rm -rf main.o Building.o main.d Building.d main.exe
+    rm -rf main.o Building.o main.d Building.d main.exe
 
 .PHONY: clean
 \end{lstmake}
 Das Spezial-Target \texttt{.PHONY} dient dazu, \texttt{make} zu signalisieren, dass \texttt{clean} keine Datei ist, die gebaut werden soll.
 Würden wir dieses Target auslassen und eine Datei mit Namen \texttt{clean} erzeugen, würde \texttt{make} die Regel nie ausführen, weil die Datei ja existiert und keine Abhängigkeiten besitzt.
 Du solltest \texttt{all} ebenfalls als \texttt{.PHONY} deklarieren.
-Probier' es ruhig aus!
+Probiere es ruhig aus!
 
-Um \texttt{clean} ausführen zu können, öffne die \textbf{Make Target} View über \textbf{Window $\to$ Show View $\to$ Other\dots $\to$ Make/Make Target}.
+Um \texttt{clean} ausführen zu können, öffne die \textbf{Make Target} Ansicht über \textbf{Window $\to$ Show View $\to$ Other\dots $\to$ Make/Make Target}.
 
 Klicke rechts auf dein Projekt und wähle \textbf{New\dots}.
 Gib in das Feld \textbf{Make Target} \textbf{\lstinline{clean}} ein und lasse den Rest unverändert.
@@ -244,7 +244,7 @@ Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder wenig
 Ersetze die beiden spezifischen Targets durch folgendes generisches:
 \begin{lstmake}
 %.o: %.cpp
-	g++ -MMD -MP -c $< -o $@
+    g++ -MMD -MP -c $< -o $@
 \end{lstmake}
 Die etwas kryptischen Ausdrücke \lstinline{\$<} und \lstinline{\$@} werden durch die aktuelle Abhängigkeit und Target ersetzt.
 
@@ -257,16 +257,16 @@ Im Moment sieht unser Makefile in etwa so aus:
 all: main.exe
 
 main.exe: main.o Building.o
-	g++ -o main.exe main.o Building.o
+    g++ -o main.exe main.o Building.o
 
 %.o: %.cpp
-	g++ -MMD -MP -c $< -o $@
+    g++ -MMD -MP -c $< -o $@
 
 -include Building.d main.d
 
 clean:
-	rm -rf main.o Building.o main.d Building.d main.exe
-	
+    rm -rf main.o Building.o main.d Building.d main.exe
+    
 .PHONY: clean all
 \end{lstmake}
 
@@ -274,29 +274,29 @@ Dir ist sicherlich eine andere Form der Redundanz aufgefallen:
 Noch immer haben wir die Tatsache, dass es im Moment zwei Sourcedateien gibt, an unterschiedlichen Stellen im Makefile festgelegt.
 Wenn wir nun als nächstes die \lstinline{Floor}-Klasse entwerfen, müssten wir diese hinzufügen
 \begin{itemize}
-	\item als Abhängigkeit von \filename{main.exe},
-	\item zum Linker-Aufruf in \filename{main.exe},
-	\item in der \lstinline{-include}-Direktive und
-	\item im Target \lstinline{clean}, und das gleich doppelt!
+    \item als Abhängigkeit von \filename{main.exe},
+    \item zum Linker-Aufruf in \filename{main.exe},
+    \item in der \lstinline{-include}-Direktive und
+    \item im Target \lstinline{clean}, und das gleich doppelt!
 \end{itemize}
 Das ist natürlich immer noch ziemlich fehleranfällig.
 
 Wir würden also gerne nur an \emph{einer} Stelle definieren, welche Sourcedateien Teil unseres Projektes sind.
 
-Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Object-Dateien an.
-Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\lstinline{main.o Building.o}' und ersetze das Auftreten der beiden Object-Dateien mit dieser Variablen:
+Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Objekt-Dateien an.
+Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\lstinline{main.o Building.o}' und ersetze das Auftreten der beiden Objekt-Dateien mit dieser Variablen:
 \begin{lstmake}
 OBJECTS=main.o Building.o
 
 all: main.exe
 
 main.exe: $(OBJECTS)
-	g++ -o main.exe $(OBJECTS)
-	
+    g++ -o main.exe $(OBJECTS)
+    
 # and so on...
 \end{lstmake}
 
-Wiederhole die Prozedur für die Dependency-Dateien ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
+Wiederhole die Prozedur für die Abhängigkeiten ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
 
 Am Ende sollte dein Makefile in etwa so aussehen:
@@ -308,16 +308,16 @@ DEPEND=main.d Building.d
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
-	g++ -o $(BINARY) $(OBJECTS)
+    g++ -o $(BINARY) $(OBJECTS)
 
 %.o: %.cpp
-	g++ -MMD -MP -c $< -o $@
+    g++ -MMD -MP -c $< -o $@
 
 -include $(DEPEND)
 
 clean:
-	rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
-	
+    rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
+    
 .PHONY: clean all
 \end{lstmake}
 %$ for syntax highlighting
@@ -332,10 +332,10 @@ Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu defi
 Lege dazu eine neue Variable \lstinline{SOURCES} mit den beiden Sourcedateien an.
 Der folgende Snippet zeigt, wie man nun mittels Suffix-Ausdrücken die anderen beiden Variablen erzeugt:
 \begin{lstmake}
-BINARY	= main.exe
-SOURCES	= main.cpp Building.cpp
-OBJECTS	= $(patsubst %.cpp, %.o, $(SOURCES))
-DEPEND	= $(patsubst %.cpp, %.d, $(SOURCES))
+BINARY  = main.exe
+SOURCES = main.cpp Building.cpp
+OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
+DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
 \end{lstmake}
 
 Es geht sogar noch allgemeiner:
@@ -352,23 +352,23 @@ Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhän
 
 Hier nochmal das vollständige Makefile:
 \begin{lstmake}
-BINARY	= main.exe
-SOURCES	= main.cpp Building.cpp
-OBJECTS	= $(patsubst %.cpp, %.o, $(SOURCES))
-DEPEND	= $(patsubst %.cpp, %.d, $(SOURCES))
+BINARY  = main.exe
+SOURCES = main.cpp Building.cpp
+OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
+DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
 
 all: $(BINARY)
 
 $(BINARY): $(OBJECTS)
-	g++ -o $(BINARY) $(OBJECTS)
+    g++ -o $(BINARY) $(OBJECTS)
 
 %.o: %.cpp
-	g++ -MMD -MP -c $< -o $@
+    g++ -MMD -MP -c $< -o $@
 
 -include $(DEPEND)
 
 clean:
-	rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
+    rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
 
 .PHONY: clean
 \end{lstmake}
@@ -376,7 +376,8 @@ clean:
 
 \subsection{Nachwort}
 
-Dies hier sind nur äußerst wenige der Möglichkeiten, die \texttt{make} bietet\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}.
-
+Dies hier sind nur äußerst wenige der Möglichkeiten, die \texttt{make} bietet.%
+\footnote{Für einen besseren Eindruck, sieh dir die Doku an: \url{https://www.gnu.org/software/make/manual/html_node/index.html}}
+%
 In der Praxis existieren Build-Tools, die eine wesentlich besser zu verstehende Beschreibungssprache verwenden und daraus Makefiles generieren.
 Beispiele sind \texttt{cmake}\footnote{\url{http://www.cmake.org/cmake/help/cmake_tutorial.html}} oder \texttt{qmake}\footnote{\url{http://qt-project.org/doc/qt-4.8/qmake-tutorial.html}} (Bestandteil von Qt).
