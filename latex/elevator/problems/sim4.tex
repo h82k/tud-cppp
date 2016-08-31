@@ -226,14 +226,9 @@ Würden wir dieses Target auslassen und eine Datei mit Namen \texttt{clean} erze
 Du solltest \texttt{all} ebenfalls als \texttt{.PHONY} deklarieren.
 Probiere es ruhig aus!
 
-Um \texttt{clean} ausführen zu können, öffne die \textbf{Make Target} Ansicht über \textbf{Window $\to$ Show View $\to$ Other\dots $\to$ Make/Make Target}.
+Um \texttt{clean} auszuführen klicke neben dem Build-Symbol auf den Auswahlpfeil und wähle \textbf{Project only - Clean} aus. In der Konsole siehst du die Ausgabe von \texttt{make clean}.
 
-Klicke rechts auf dein Projekt und wähle \textbf{New\dots}.
-Gib in das Feld \textbf{Make Target} \textbf{\lstinline{clean}} ein und lasse den Rest unverändert.
-Unter deinem Projekt wurde nun ein neuer Knoten mit dem Namen \texttt{clean} eingefügt.
-Wenn du diesen doppelt anklickst, wird das Target \texttt{clean} ausgeführt.
-
-Lege dir nun auch ein ausführbares Target für \texttt{all} an.
+Es ist auch möglich, andere Targets als \texttt{all} oder \texttt{clean} auszuführen. Diese müssen in CodeLite allerdings erst eingerichtet werden: \textbf{Rechtsklick auf das Projekt} $\to$ \textbf{Settings...} $\to$ \textbf{Customize}. Klicke hier auf New... und gib einen Namen für den Target ein und den auszuführenden Befehl (z.B. \texttt{make main.o} um nur die Datei \texttt{main.cpp} zu kompilieren aber nicht zu linken).
 
 \subsection{Generisches Compiler-Target}
 

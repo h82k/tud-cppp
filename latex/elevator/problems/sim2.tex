@@ -54,7 +54,7 @@ private:
 }
 
 \subsection{}
-Um nicht immer wieder \lstinline{std::shared\_ptr<Person>} schreiben zu müssen, definiere ein \lstinline{typedef PersonPtr} für diesen Typen.
+Um nicht immer wieder \lstinline{std::shared_ptr<Person>} schreiben zu müssen, definiere ein \lstinline{typedef PersonPtr} für diesen Typen.
 Binde den Header \lstinline{memory} in \filename{Person.h} ein und definiere den neuen Typen \lstinline{PersonPtr} hinter der Klassendefinition von \lstinline{Person}:
 
 \begin{lstlisting}
@@ -137,7 +137,7 @@ Es ist natürlich interessant zu erfahren, ob sich der ganze Aufwand des Refacto
 
 \paragraph{Laufzeit}
 Eine relativ simple Art der Laufzeitmessung ist es, die verstrichene Prozessorzeit zu messen.
-Der Header \lstinline{ctime} stellt hierfür die Funktion \lstinline{clock()} zur Verfügung, die einen Zähler vom Typ \lstinline{clock\_t} zurückgibt.
+Der Header \lstinline{ctime} stellt hierfür die Funktion \lstinline{clock()} zur Verfügung, die einen Zähler vom Typ \lstinline{clock_t} zurückgibt.
 Mithilfe der Konstanten \lstinline{CLOCKS_PER_SEC} kann man aus der Anzahl von Prozessorzyklen die Laufzeit berechnen.
 
 Erzeuge nun ein hinreichend großes Beispiel und teste dessen Laufzeit für die alte und neue Implementation.
