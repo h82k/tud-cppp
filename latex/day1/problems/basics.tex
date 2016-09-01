@@ -67,10 +67,12 @@ Verwende hierzu Schleifen.
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \filename{functions.hpp} und eine neue
+Erstelle eine neue Header-Datei \filename{functions.h} und eine neue
 Sourcedatei \filename{functions.cpp}.
-Klicke hierzu mit der rechten Maustaste auf den Ordner \textbf{src} und wähle \textbf{New class}, gib einen Klassenname ein und bestätige den Dialog mit \textbf{OK}. Alle anderen Felder werden automatisch ausgefüllt oder können leer bleiben.
-Beachte hierbei, dass CodeLite automatisch Include-Guards in der Headerdatei erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+Klicke hierzu mit der rechten Maustaste auf den Ordner \textbf{src} und wähle \textbf{Add a New File}, wähle den Dateitypen \texttt{Header File} und gebe der Datei den Namen \filename{functions}. 
+Bestätige den Dialog mit \textbf{OK}.
+Das ganze Wiederholst du mit dem Dateitypen \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
+Füge in der Headerdatei die folgenden Includeguards hinzu.
 
 \begin{lstlisting}
 #ifndef FUNCTIONS_HPP_
@@ -79,16 +81,16 @@ Beachte hierbei, dass CodeLite automatisch Include-Guards in der Headerdatei erz
 #endif /* FUNCTIONS_HPP_ */
 \end{lstlisting}
 
-Binde danach \filename{functions.hpp} in beide Sourcedateien ein indem du
+Binde danach \filename{functions.h} in beide Sourcedateien (\filename{functions.cpp} und \filename{main.cpp}) ein indem du
 
 \begin{lstlisting}
-#include "functions.hpp"
+#include "functions.h"
 \end{lstlisting}
 
 verwendest.
 \textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
 
-Schreibe nun in \filename{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
+Schreibe nun in \filename{functions.h} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
 Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
 Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
 Der Prototyp von \lstinline{printStars(int n)} lautet 
