@@ -67,10 +67,12 @@ Verwende hierzu Schleifen.
 }
 
 \subsection{Auslagern der Datei}
-Erstelle eine neue Header-Datei \filename{functions.hpp} und eine neue
-Sourcedatei \filename{functions.cpp}.
-Klicke hierzu mit der rechten Maustaste auf den Ordner \textbf{src} und wähle \textbf{New class}, gib einen Klassenname ein und bestätige den Dialog mit \textbf{OK}. Alle anderen Felder werden automatisch ausgefüllt oder können leer bleiben.
-Beachte hierbei, dass CodeLite automatisch Include-Guards in der Headerdatei erzeugt, die das mehrfache Einbinden desselben Headers verhindern:
+Erstelle eine neue Header-Datei \textbf{\filename{functions.h}} und eine neue
+Sourcedatei \textbf{\filename{functions.cpp}}.
+Klicke hierzu mit der \textbf{rechten Maustaste} auf den Ordner \textbf{\filename{src}} und wähle \textbf{Add a New File}, wähle den Dateitypen \texttt{Header File} und gebe der Datei den Namen \filename{functions}. 
+Bestätige den Dialog mit \textbf{OK}.
+Das ganze wiederholst du mit dem Dateitypen \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
+Füge in der Headerdatei die folgenden Include Guards hinzu.
 
 \begin{lstlisting}
 #ifndef FUNCTIONS_HPP_
@@ -79,18 +81,18 @@ Beachte hierbei, dass CodeLite automatisch Include-Guards in der Headerdatei erz
 #endif /* FUNCTIONS_HPP_ */
 \end{lstlisting}
 
-Binde danach \filename{functions.hpp} in beide Sourcedateien ein indem du
+Binde danach \filename{functions.h} in beide Sourcedateien (\filename{functions.cpp} und \filename{main.cpp}) ein, indem du
 
 \begin{lstlisting}
-#include "functions.hpp"
+#include "functions.h"
 \end{lstlisting}
 
 verwendest.
 \textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
 
-Schreibe nun in \filename{functions.hpp} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
+Schreibe nun in \filename{functions.h} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
 Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
-Ein Prototyp ist im wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
+Ein Prototyp ist im Wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
 Der Prototyp von \lstinline{printStars(int n)} lautet 
 \begin{lstlisting}
 void printStars(int n);
@@ -103,7 +105,8 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
     \item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
     \item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
     Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
-    \item Anstelle der Include-Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden. Dies wird von den meisten Compilern unterstützt.
+    \item Anstelle der Include Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden.
+    Diese ist zwar nicht standardisiert, wird aber von den meisten Compilern unterstützt.
 }
 
 \subsection{Dokumentation} \label{basics:doc}
@@ -177,9 +180,10 @@ void second_func(int a, char b, double d);
 #endif /* TESTING_HPP_ */
 \end{lstlisting}
 
+\paragraph{Letzendliches Erstellen der Dokumentation}
 Erstellen könnt ihr die Dokumentation am Ende über die Kommandozeile.
 Dafür öffnet ihr euer Terminal mit \lstinline{STRG + ALT + t} und wechselt in das Verzeichnis in dem euer Projekt liegt (üblicherweise \lstinline{cd CPPP/Workspace/NameEuresProjektes}).
-Dort gebt ihr \lstinline{doxygen -g} ein, welches euch eine vorgefertigte Konfigurationsdatei von \texttt{doxygen} erstellt, gefolgt von \lstinline{doxygen}, was letztendlich die Dokumentation erstellt.
+Dort gebt ihr \lstinline{doxygen -g} ein, welches euch eine vorgefertigte Konfigurationsdatei \filename{Doxygen} von \texttt{doxygen} erstellt, gefolgt von einem \lstinline{doxygen}, was letztendlich die Dokumentation erstellt.
 Diese findet ihr in dem Ordner \filename{html} unter der Datei \filename{index.html}.
 Ihr erreicht die Datei ganz einfach, wenn ihr in der Terminal das Kommando \lstinline{pcmanfm} eingebt, was euren Dateimanager öffnet.
 Auf der Webseite, die sich dann öffnet, findet ihr unter Files die von euch dokumentierte \filename{functions.{h,hpp}}.
