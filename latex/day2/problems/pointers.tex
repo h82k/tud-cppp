@@ -144,7 +144,7 @@ Als Beispiel dient hierfür die erste Zeile.
 
     \begin{tabularx}{\textwidth}{b *5{| >{\centering\arraybackslash}s}@{}} 
                     & \lstinline|int i| & \lstinline|int *j| & \lstinline|int const *const k| & \lstinline|int **l| & \lstinline|const int *m| \\ \hline
-        \lstinline|op1(int *)|          & \lstinline|x| & \lstinline|j| & \xmark & \lstinline|*l| & \xmark \\ \hline
+        \lstinline|op1(int *)|          & \lstinline|\&i| & \lstinline|j| & \xmark & \lstinline|*l| & \xmark \\ \hline
         \lstinline|op2(int)|            & & & & & \\ \hline
         \lstinline|op3(int \&)|         & & & & & \\ \hline
         \lstinline|op4(const int **)|   & & & & & 
