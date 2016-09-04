@@ -25,6 +25,8 @@ std::vector<int> numbers = { 1, 2, 3, 4, 5 };
 for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it) {
     *it = square(*it); // squaring element pointed to by it
 }
+
+// numbers now [ 1, 4, 9, 16, 25 ]
 \end{lstlisting}
 
 Die Idee von der Funktion \lstinline{map} ist es genau dies zu vereinfachen.
@@ -35,14 +37,33 @@ Außerdem bekommt sie einen Funktionspointer als Parameter und ruft diese Funkti
 std::vector<int> numbers = { 1, 2, 3, 4, 5 };
 
 map(numbers.begin(), numbers.end(), square);
+
+// numbers now [ 1, 4, 9, 16, 25 ]
 \end{lstlisting}
 
-\lstinline{filter} funktioniert analog, indem sie einen Funktionspointer auf eine Funktion erhält, die einen \lstinline{bool} zurück gibt.
-Auf alle Elemente wird diese Funktion aufgerufen und entfernt die Elemente, für die die Funktion \lstinline{true} zurückgibt. \\
+\lstinline{filter} funktioniert analog, indem sie einen Funktionspointer auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
+Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, bleiben in der Liste. Der Rest wird entfernt. \\
+
+\begin{lstlisting}
+std::vector<int> numbers = { 1, 2, 3, 4, 5 };
+
+filter(numbers.begin(), numbers.end(), isOdd);
+
+// numbers now [ 1, 3, 5 ]
+
+\end{lstlisting}
 
 Und auch \lstinline{reduce} hat eine ähnliche Verwendung.
 Es schrumpft eine Sequenze zu einem Element zusammen.
-Zum Beispiel bildet es die Summe eines Vektors.
+Hierbei wir aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
+Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} gebildet wird.
+
+\begin{lstlisting}
+std::vector<int> numbers = { 1, 2, 3, 4, 5 };
+
+std::cout << reduce(numbers.begin(), numbers.end(), 0, sum) << std::endl; // 15
+
+    \end{lstlisting}
 
 \subsection{Programmieren der Funktionen}
 
@@ -50,3 +71,23 @@ Nun werden wird es deine Aufgabe sein, die drei Funktionen nachzuprogrammieren.
 Hierbei geht es erstmal darum ein funktionierendes Gerüst der Methoden zu erstellen, anstatt perfekt generische Algorithmen zu erhalten.
 Darum wird sich im Laufe der Aufgabe gekümmert.
 
+\subsubsection{\lstinline{map}}
+
+Bitte schreibt eine Funktion \lstinline{map} die folgendermaßen aussieht.
+
+\begin{lstlisting}
+template<typename InIt>
+void map(InIt first, InIt last, int(*func)(int i));
+\end{lstlisting}
+
+Hierbei ist der letzte Parameter der Funktionspointer.
+Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionspointer einer Funktion mit Rückgabewert \lstinline{int} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{int *}\footnote{Welche folgende Signature hätte: \lstinline{int *(*func)(int i)}}.
+Diese Funktion hat zusätzlich noch einen Integer \lstinline{i} als Paramenter.
+
+\subsubsection{\lstinline{filter}}
+
+Die von dir zu schreibende Funktion \lstinline{filter} soll der folgenden Signatur folgen.
+
+\begin{lstlisting}
+template<typename InIt>
+void filter(InIt first, InIt last, bool(*func)(int i));
