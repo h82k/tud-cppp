@@ -1,5 +1,5 @@
 \section{Smart Pointers}
-In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \lstinline{std::shared\_ptr} und \lstinline{std::weak\_ptr} verwenden. Binde hierfür den Systemheader \lstinline{memory} ein.
+In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut machen. Dazu werden wir die Smart Pointer Klassen \lstinline{std::shared_ptr} und \lstinline{std::weak_ptr} verwenden. Binde hierfür den Systemheader \lstinline{memory} ein.
 
 
 \subsection{}
@@ -48,7 +48,7 @@ TreeNodePtr TreeNode::createNode(int content, TreeNodePtr left, TreeNodePtr righ
 \end{lstlisting}
 
 \hints{
-	\item Über \lstinline{std::make\_shared(<Konstruktorparameter>)} kann man auch einen Smart Pointer erhalten.
+	\item Über \lstinline{std::make_shared(<Konstruktorparameter>)} kann man auch einen Smart Pointer erhalten.
 	\item Zur Dokumentation von \lstinline{typedef} könnt ihr den Tag \lstinline{@typedef} verwenden.
           Sonst verhält es sich mit dem Dokumentieren so wie immer.
 }
@@ -115,14 +115,14 @@ Denn selbst wenn sie keine Zeiger auf den Wurzelknoten eines Baumes haben, verwe
 
 Um dieses Problem zu lösen, müssen die Verweise zum Elternknoten \emph{schwach} (weak) sein.
 Ein Knoten darf gelöscht werden, wenn nur noch schwache Zeiger (oder keine) auf ihn verweisen.
-Verwende dazu \lstinline{std::weak\_ptr} und erstelle ein neues \lstinline{typedef} für einen schwachen \lstinline{TreeNode} Smart Pointer:
+Verwende dazu \lstinline{std::weak_ptr} und erstelle ein neues \lstinline{typedef} für einen schwachen \lstinline{TreeNode} Smart Pointer:
 
 \begin{lstlisting}
 typedef std::weak_ptr<TreeNode> TreeNodeWeakPtr;
 \end{lstlisting}
 
 Ändere nun den Typ von \lstinline{parent} auf \lstinline{TreeNodeWeakPtr}.
-Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\lstinline{shared\_ptr}) implizit in schwache Zeiger (\lstinline{weak\_ptr}) umgewandelt werden können.
+Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\lstinline{shared_ptr}) implizit in schwache Zeiger (\lstinline{weak_ptr}) umgewandelt werden können.
 
 \hints{
 	\item \textbf{Faustregel}: Wenn ein Objekt ein anderes kontrolliert oder enthält, verwende Shared Pointer vom Container/Besitzer zum anderen Objekt und einen Weak Pointer für die umgekehrte Richtung.
