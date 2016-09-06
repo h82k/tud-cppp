@@ -60,7 +60,7 @@ void clear();                               // remove all elements from the vect
     \item Da \lstinline{containedPeople} leer initialisiert werden soll, brauchst du dafür keinen expliziten Aufruf in der Initialisierung.
     \item Um die Leute aussteigen zu lassen, die an ihrem Zielstockwerk angekommen sind, erstelle in der Methode zwei temporäre \lstinline{std::vector}-Container \lstinline{stay} und \lstinline{arrived}.
     Iteriere nun über alle Leute im Aufzug und prüfe, ob das Zielstockwerk der Person mit dem aktuellen Stockwerk des Aufzugs übereinstimmt.
-    Wenn ja, lasse die Person aussteigen, indem du sie zu der \lstinline{arrived}-Liste mittels \lstinline{push\_back()} hinzufügst.
+    Wenn ja, lasse die Person aussteigen, indem du sie zu der \lstinline{arrived}-Liste mittels \lstinline{push_back()} hinzufügst.
     Andernfalls muss die Person im Aufzug verbleiben (\lstinline{stay}-Liste).
     Gib am Ende die arrived-Liste zurück, und ersetze \lstinline{containedPeople} durch \lstinline{stay}.
 }
