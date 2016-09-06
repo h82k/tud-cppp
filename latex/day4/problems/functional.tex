@@ -60,17 +60,8 @@ Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} g
 \begin{lstlisting}
 std::vector<int> numbers = { 1, 2, 3, 4, 5 };
 
-filter(numbers, 0, sum);
-
-// numbers now [ 1, 3, 5 ]
+std::cout << reduce(numbers, 0, sum) << std::endl; // 15
 \end{lstlisting}
-
-\begin{lstlisting}
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
-
-std::cout << reduce(numbers.begin(), numbers.end(), 0, sum) << std::endl; // 15
-
-    \end{lstlisting}
 
 \subsection{Programmieren der Funktionen}
 
@@ -106,7 +97,12 @@ Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
 \begin{lstlisting}
 template<typename SeqT, typename RetT>
-RetT reduce(SeqT &seq, RetT initialVal, RetT(*func)(RetT &i, intj));
+RetT reduce(SeqT &seq, RetT initialVal, RetT(*func)(RetT &i, int j));
 \end{lstlisting}
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
+
+\subsection{Passende Funktionen}
+Implementiere in dieser Aufgabe drei Funktionen, die den Anforderunger der jeweiligen Signaturen in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
+
+Ihr könnt euch dabei an die Funktionen in den Beispielen halten oder euch eigene einfallen lassen.
