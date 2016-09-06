@@ -89,7 +89,7 @@ In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
 Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
 Schreibe eine Funktion, die einen \lstinline{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
-Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \lstinline{unsigned int} wird oft der Standard-Typ \lstinline{size\_t} genutzt (z.B. in \lstinline{std::vector}).}:
+Da die Funktion nur anhand des Zeigers keine Möglichkeit hat zu wissen, wie groß das Array ist, muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \lstinline{unsigned int} wird oft der Standard-Typ \lstinline{size_t} genutzt (z.B. in \lstinline{std::vector}).}:
 
 \begin{lstlisting}
 	void printElements(const int *const array, const unsigned int size);

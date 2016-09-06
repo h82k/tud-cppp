@@ -46,7 +46,7 @@ Die beiden Anzeigen sind an den Ports 09 und 00 angeschlossen.
 Die Ansteuerung erfolgt logisch invertiert, das bedeutet, dass ein Segment bei einer logischen 0 leuchtet und umgekehrt.
 Beispiel: Ein \glqq{}E\grqq{} kann durch das Setzen der Pins 0, 3, 4, 5 und 6 (Binär: 10000110, bzw. Hexadezimal: 0x86) auf low gezeichnet werden. \\ \smallskip
 
-Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \lstinline{\_\_wait\_nop()} aufruft.
+Die Pause kann durch eine Schleife produziert werden, die in jedem Zyklus den Befehl \lstinline{__wait_nop()} aufruft.
 Eine Konstante \lstinline{DELAY} steht dir für die Anzahl der Schleifendurchläufe zur Verfügung.
 Achte insbesondere darauf, dass du für den Zähler den Datentyp \lstinline{long} verwendest.
 
@@ -166,17 +166,15 @@ LCD_PIN_CS2 = 1;
 \subsection*{Befehle senden}
 Ein Befehl an das Display besteht grundsätzlich aus zwei Phasen:
 \begin{enumerate}
-\item
-Setzen der entsprechenden Pins (meist \lstinline{LCD\_PIN\_DI}, \lstinline{LCD\_PORT\_DB}).
-
-Eventuell selektieren der Displayhälfte über \lstinline{LCD\_PIN\_CS1, LCD\_PIN\_CS2}.
+\item Setzen der entsprechenden Pins (meist \lstinline{LCD_PIN_DI}, \lstinline{LCD_PORT_DB}).
+	Eventuell selektieren der Displayhälfte über \lstinline{LCD_PIN_CS1, LCD_PIN_CS2}.
 
 \item
 Senden des \lstinline{enable}-Signals.
 Setze dazu den Enable-Pin auf 1, warte kurz, setze den Pin wieder auf 0 und warte erneut kurz.
-Verwende als Warteintervall die Konstante \lstinline{LCD\_T}.
+Verwende als Warteintervall die Konstante \lstinline{LCD_T}.
 
-Es empfiehlt sich, für dieses Signal eine eigene Funktion zu schreiben (\lstinline{void lcd\_sendEnable(void)}).
+Es empfiehlt sich, für dieses Signal eine eigene Funktion zu schreiben (\lstinline{void lcd_sendEnable(void)}).
 \end{enumerate}
 
 \subsection*{Auf das Display zeichnen}
@@ -206,8 +204,8 @@ for (y = 0; y < 8; ++y) {
 \end{lstlisting}
 
 \hints{
-	\item Denke daran, \lstinline{LCD\_PIN\_E} zu Beginn des Programms mit 0 zu initialisieren.
-	\item Das Reset-Signal (\lstinline{LCD\_PIN\_RESET}) muss immer 1 (deaktiviert) sein.
+	\item Denke daran, \lstinline{LCD_PIN_E} zu Beginn des Programms mit 0 zu initialisieren.
+	\item Das Reset-Signal (\lstinline{LCD_PIN_RESET}) muss immer 1 (deaktiviert) sein.
 }
 
 
@@ -217,7 +215,7 @@ Nun soll das Display wie ein Bildschirm angesteuert werden können.
 Dazu wirst du einen Framebuffer verwenden, der den Bildschirminhalt repräsentiert.
 In jeder Iteration wird der Framebuffer zunächst vollständig vorbereitet und dann am Stück übertragen.
 
-Die Vorlage enthält bereits ein Array \lstinline{lcd\_buffer}, das als Framebuffer fungieren soll.
+Die Vorlage enthält bereits ein Array \lstinline{lcd_buffer}, das als Framebuffer fungieren soll.
 
 Implementiere folgende Funktionen:
 \begin{lstlisting}
@@ -229,7 +227,7 @@ void lcd_flush();    // display the frame buffer on the LCD
 \hints{
 	\item Ein Testprogramm steht bereits zur Verfügung, welches ein Schachbrettmuster auf dem Display ausgibt -- wenn deine Funktionen komplett und korrekt implementiert sind.
 	\item Achte auch hier darauf, dass das Display zunächst per Befehl eingeschaltet werden muss (\emph{Display on}).
-	\item Für die Funktion \lstinline{lcd\_drawPixel} werden die bitweisen Operationen AND und OR sowie der Shift-Operator benötigt.
+	\item Für die Funktion \lstinline{lcd_drawPixel} werden die bitweisen Operationen AND und OR sowie der Shift-Operator benötigt.
 	Eine Skizze kann hier sinnvoll sein, um sich vorzustellen, wie die bitweisen Operationen arbeiten.
 	\item Wenn du später bewegte Dinge visualisierst, kann es sein, dass das Display flimmert.
 	Hier hilft es, entweder die Anzeige nur zu verändern, wenn sich tatsächlich etwas bewegt oder das Display vor dem Schreiben des Framebuffers aus- (\emph{Display off}) und danach wieder einzuschalten (\emph{Display on}).
