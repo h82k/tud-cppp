@@ -1,0 +1,15 @@
+In der VM (Version 3 oder 4) müssen noch einige Konfigurationsschritte von Hand vorgenommen werden.
+
+Problem 1: Fehlender Header "mb96348hs.h"
+
+1. Navigiere zum exercises-Repository
+2. Terminal öffnen mit F4
+3. Eingabe 'git submodule init'
+4. Eingabe 'git submodule update --recursive'
+
+Problem 2: Fehlendes Makefile, nachdem man ein eigenes Projekt kopiert hat
+
+1. Beispielprojekt an den Ort deiner Wahl kopieren
+2. Enthaltenes Makefile öffnen
+3. Ersetze beide Auftreten von ../../../  mit dem Absoluten Pfad zum exercises-Repository (/home/cppp/CPPP/Repos/tud-cpp-exercises)
+
