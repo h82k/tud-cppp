@@ -11,7 +11,7 @@ Der große Vorteil von \lstinline{std::vector} ist der \emph{wahlfreie Zugriff},
 
 \begin{enumerate}
 \item 
-Schreibe zunächst eine Funktion \lstinline{template<typename T> void print(const T \&t)}, die beliebige Standardcontainer auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
+Schreibe zunächst eine Funktion \lstinline{template<typename T> void print(const T &t)}, die beliebige Standardcontainer auf die Konsole ausgeben kann, die Integer speichern und Iteratoren unterstützen.
 Nutze dazu die Funktion \lstinline{copy()} sowie die Klasse \lstinline{std::ostream_iterator<int>}, um den entsprechenden \lstinline{OutputIterator} zu erzeugen.
 
 \item
