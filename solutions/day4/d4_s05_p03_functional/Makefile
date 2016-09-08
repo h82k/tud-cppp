@@ -1,2 +1,1 @@
-all: 
-	g++ main.cpp
+include ../../../cpp.mk
