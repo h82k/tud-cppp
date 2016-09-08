@@ -71,10 +71,33 @@ Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
 
-\subsection{Passende Funktionen}
+\subsection{Passende Funktionen implementieren}
+\label{sec:functional_impl_func}
 Implementiere in dieser Aufgabe drei Funktionen, die den Anforderunger der jeweiligen Signaturen der Funktionspointer in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
 Ihr könnt euch dabei gerne eigene Funktionen ausdenken oder euch an die Funktionen in den Beispielen halten. \\
 
 Teste anschließend deine Implementierung, indem du die Funktionen nur anhand ihres Namens übergibst.
 
+\subsection{Funktoren}
+Es gibt noch die Möglichkeit Funktionen in einem Funktionsobjekt (\emph{Funktor}) zu schachteln.
+Dabei überlad man den Operator \lstinline{operator()}, welcher eine bestimmte Funktion hat. \\
 
+Schaut man sich in unserem Beispiel die Funktion \lstinline{square}, welche folgende Signatur hat \lstinline{int square(int i);} würde der Funktor wie folgt aussehen.
+
+\lstinputlisting{problems/listings/functional_functor_square}
+
+Die Funktion \lstinline{map} würde wie folgt umgeschrieben werden müssen.
+
+\lstinputlisting{problems/listings/functional_functor_map}
+
+Schreibt eure Funktionen aus \ref{sec:functional_impl_func} als Funktoren und passt eure Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} dementsprechend an.
+Anschließend stellt sicher, dass eure Implementierung noch funktioniert.
+
+\subsection{Verwendung von Templates}
+Die zurzeitige Implementierung funktioniert entweder mit Funktoren einer bestimmten Klasse oder mit Funktionszeigern, die einem bestimmten Typen angehören, der durch die Signatur der Funktion gebunden ist.
+Das ist nicht immer das gewünschte Ergebnis.
+Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, wodurch der Typ der Übergabe nicht mehr relevant ist.
+Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
+Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionspointer/Funktor die richtige Variable übergeben wird. \\
+
+Implementiert in euren Funktionen einen Templatetypen für die Funktionspointer/Funktoren und testet euren Code sowohl mit Funktoren und Funktionen.
