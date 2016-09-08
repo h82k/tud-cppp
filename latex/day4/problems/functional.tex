@@ -21,49 +21,25 @@ Hierzu ein Beispiel.
 
 Haben wir ein Vektor von Integern und wir wollen jedes Element quadrieren, endet dies meist in dem folgenden Programmcode:
 
-\begin{lstlisting}
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
-
-for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it) {
-    *it = square(*it); // squaring element pointed to by it
-}
-
-// numbers now [ 1, 4, 9, 16, 25 ]
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_intro_example}
 
 Die Idee von der Funktion \lstinline{map} ist es genau dies zu vereinfachen.
 Sie bekommt den Startiterator, der Sequenz und den Enditerator.
 Außerdem bekommt sie einen Funktionspointer als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
 
-\begin{lstlisting}
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
-
-map(numbers, square);
-
-// numbers now [ 1, 4, 9, 16, 25 ]
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_map_example}
 
 \lstinline{filter} funktioniert analog, indem sie einen Funktionspointer auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
 Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, bleiben in der Liste. Der Rest wird entfernt. \\
 
-\begin{lstlisting}
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
-
-filter(numbers, isOdd);
-
-// numbers now [ 1, 3, 5 ]
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_filter_example}
 
 Und auch \lstinline{reduce} hat eine ähnliche Verwendung.
 Es schrumpft eine Sequenze zu einem Element zusammen.
 Hierbei wir aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
 Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} gebildet wird.
 
-\begin{lstlisting}
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
-
-std::cout << reduce(numbers, 0, sum) << std::endl; // 15
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_reduce_example}
 
 \subsection{Programmieren der Funktionen}
 
@@ -75,10 +51,7 @@ Darum wird sich im Laufe der Aufgabe gekümmert.
 
 Bitte schreibt eine Funktion \lstinline{map} die folgendermaßen aussieht.
 
-\begin{lstlisting}
-template<typename SeqT>
-void map(SeqT &seq, int(*func)(int i));
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_map_sig}
 
 Hierbei ist der letzte Parameter der Funktionspointer.
 Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionspointer einer Funktion mit Rückgabewert \lstinline{int} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{int *}\footnote{Welche folgende Signature hätte: \lstinline{int *(*func)(int i)}}.
@@ -88,23 +61,20 @@ Diese Funktion hat zusätzlich noch einen Integer \lstinline{i} als Paramenter.
 
 Die von dir zu schreibende Funktion \lstinline{filter} soll der folgenden Signatur folgen.
 
-\begin{lstlisting}
-template<typename SeqT>
-void filter(SeqT seq, bool(*p)(int i));
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_filter_sig}
 
 \subsubsection{\lstinline{reduce}}
 
 Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
-\begin{lstlisting}
-template<typename SeqT, typename RetT>
-RetT reduce(SeqT &seq, RetT initialVal, RetT(*func)(RetT &i, int j));
-\end{lstlisting}
+\lstinputlisting{problems/listings/functional_reduce_sig}
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
 
 \subsection{Passende Funktionen}
 Implementiere in dieser Aufgabe drei Funktionen, die den Anforderunger der jeweiligen Signaturen der Funktionspointer in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
+Ihr könnt euch dabei gerne eigene Funktionen ausdenken oder euch an die Funktionen in den Beispielen halten. \\
 
-Ihr könnt euch dabei gerne eigene Funktionen ausdenken oder euch an die Funktionen in den Beispielen halten.
+Teste anschließend deine Implementierung, indem du die Funktionen nur anhand ihres Namens übergibst.
+
+
