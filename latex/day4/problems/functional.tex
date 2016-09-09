@@ -5,27 +5,25 @@ Diese sind \lstinline{map}, \lstinline{filter} und \lstinline{reduce}. \\
 
 Der Ablauf ist wie folgt:
 \begin{itemize}
-    \item Wir werden im folgenden erst einmal einzeln auf die Funktionen eingehen.
-    \item Danach wird es eure Aufgabe sein, diese Funktionen nachzuprogrammieren.
-    \item Da wir diese Funktionen danach verwenden wollen, werden wir dafür passende Funktionen programmieren.
+    \item In \Cref{sec:map-filter-reduce-intro} werden wir erst einmal auf die Arbeitsweise der zu implementierenden Funktionen eingehen.
+    \item In \Cref{sec:map-filter-reduce-basic-impl} wirst du diese Funktionen nachprogrammieren.
+    \item In \Cref{sec:functional_impl_func} wir diese Funktionen danach verwenden wollen, werden wir dafür passende Funktionen programmieren.
 	\item Im Folgenden werden wir diese Funktionen als \emph{Funktoren} implementieren.
 	\item Dann werden wir noch Templates mit einbauen, damit Funktionen und Funktoren verwendet werden können.
 			Aber dazu später mehr.
 \end{itemize}
 
-\subsection{Erklärung \lstinline{map}, \lstinline{filter} und \lstinline{reduce}}
+\subsection{Erklärung \lstinline{map}, \lstinline{filter} und \lstinline{reduce}}\label{sec:map-filter-reduce-intro}
 
 Arbeitet man auf iterierbaren Sequenzen, ist dies fast immer mit Schleifen über die Sequenz verbunden.
-Die drei genannten Funktionen vereinfachen uns hierbei dir Arbeit.
+Die drei Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} vereinfachen uns hierbei dir Arbeit.
 Hierzu ein Beispiel.
-
 Haben wir ein Vektor von Integern und wir wollen jedes Element quadrieren, endet dies meist in dem folgenden Programmcode:
 
 \lstinputlisting{problems/listings/functional_intro_example.cpp}
 
-Die Idee von der Funktion \lstinline{map} ist es genau dies zu vereinfachen.
-Sie bekommt den Startiterator, der Sequenz und den Enditerator.
-Außerdem bekommt sie einen Funktionspointer als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
+Die Idee von der Funktion \lstinline{map} ist es, genau dies zu vereinfachen.
+Sie erhält die Start- und Enditeratoren der Sequenz und einen Funktionszeiger als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
 
 \lstinputlisting{problems/listings/functional_map_example.cpp}
 
@@ -42,6 +40,7 @@ Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} g
 \lstinputlisting{problems/listings/functional_reduce_example.cpp}
 
 \subsection{Programmieren der Funktionen}
+\label{sec:map-filter-reduce-basic-impl}
 
 Nun werden wird es deine Aufgabe sein, die drei Funktionen nachzuprogrammieren.
 Hierbei geht es erstmal darum ein funktionierendes Gerüst der Methoden zu erstellen, anstatt perfekt generische Algorithmen zu erhalten.
