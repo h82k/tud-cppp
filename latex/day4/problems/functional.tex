@@ -21,25 +21,25 @@ Hierzu ein Beispiel.
 
 Haben wir ein Vektor von Integern und wir wollen jedes Element quadrieren, endet dies meist in dem folgenden Programmcode:
 
-\lstinputlisting{problems/listings/functional_intro_example}
+\lstinputlisting{problems/listings/functional_intro_example.cpp}
 
 Die Idee von der Funktion \lstinline{map} ist es genau dies zu vereinfachen.
 Sie bekommt den Startiterator, der Sequenz und den Enditerator.
 Außerdem bekommt sie einen Funktionspointer als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
 
-\lstinputlisting{problems/listings/functional_map_example}
+\lstinputlisting{problems/listings/functional_map_example.cpp}
 
 \lstinline{filter} funktioniert analog, indem sie einen Funktionspointer auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
 Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, bleiben in der Liste. Der Rest wird entfernt. \\
 
-\lstinputlisting{problems/listings/functional_filter_example}
+\lstinputlisting{problems/listings/functional_filter_example.cpp}
 
 Und auch \lstinline{reduce} hat eine ähnliche Verwendung.
 Es schrumpft eine Sequenze zu einem Element zusammen.
 Hierbei wir aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
 Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} gebildet wird.
 
-\lstinputlisting{problems/listings/functional_reduce_example}
+\lstinputlisting{problems/listings/functional_reduce_example.cpp}
 
 \subsection{Programmieren der Funktionen}
 
@@ -51,7 +51,7 @@ Darum wird sich im Laufe der Aufgabe gekümmert.
 
 Bitte schreibt eine Funktion \lstinline{map} die folgendermaßen aussieht.
 
-\lstinputlisting{problems/listings/functional_map_sig}
+\lstinputlisting{problems/listings/functional_map_sig.cpp}
 
 Hierbei ist der letzte Parameter der Funktionspointer.
 Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionspointer einer Funktion mit Rückgabewert \lstinline{int} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{int *}\footnote{Welche folgende Signature hätte: \lstinline{int *(*func)(int i)}}.
@@ -61,13 +61,13 @@ Diese Funktion hat zusätzlich noch einen Integer \lstinline{i} als Paramenter.
 
 Die von dir zu schreibende Funktion \lstinline{filter} soll der folgenden Signatur folgen.
 
-\lstinputlisting{problems/listings/functional_filter_sig}
+\lstinputlisting{problems/listings/functional_filter_sig.cpp}
 
 \subsubsection{\lstinline{reduce}}
 
 Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
-\lstinputlisting{problems/listings/functional_reduce_sig}
+\lstinputlisting{problems/listings/functional_reduce_sig.cpp}
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
 
@@ -84,11 +84,11 @@ Dabei überlad man den Operator \lstinline{operator()}, welcher eine bestimmte F
 
 Schaut man sich in unserem Beispiel die Funktion \lstinline{square}, welche folgende Signatur hat \lstinline{int square(int i);} würde der Funktor wie folgt aussehen.
 
-\lstinputlisting{problems/listings/functional_functor_square}
+\lstinputlisting{problems/listings/functional_functor_square.cpp}
 
 Die Funktion \lstinline{map} würde wie folgt umgeschrieben werden müssen.
 
-\lstinputlisting{problems/listings/functional_functor_map}
+\lstinputlisting{problems/listings/functional_functor_map.cpp}
 
 Schreibt eure Funktionen aus \ref{sec:functional_impl_func} als Funktoren und passt eure Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} dementsprechend an.
 Anschließend stellt sicher, dass eure Implementierung noch funktioniert.
