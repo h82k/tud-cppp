@@ -26,7 +26,7 @@ FASM907S	:= $(WINE) $(SOFTUNE_DIR)/FASM907S.EXE
 FLNK907S	:= $(WINE) $(SOFTUNE_DIR)/FLNK907S.EXE
 F2MS		:= $(WINE) $(SOFTUNE_DIR)/F2MS.EXE
 FLASHLY		:= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
-ERRCONV		= /home/cppp/CPPP/Repos/tud-cpp-exercises/tools/errconv
+ERRCONV		= $(EXERCISES_ROOT)/tools/errconv
 
 # sources
 SOURCES		:= $(sort $(shell find . -name "*.c"))
