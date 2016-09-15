@@ -18,21 +18,21 @@ std::string to_string(std::string &str, int j) {
 class Square {
 	public:
 		Square() {}
-		int operator() (int &i) { return i*i; }
+		int operator() (int i) { return i*i; }
 };
 
 // for filter
 class Odd {
 	public:
 		Odd() {}
-		bool operator() (int &i) { return i%2 == 1 ? true : false ; } 
+		bool operator() (int i) { return i%2 == 1 ? true : false ; } 
 };
 
 // for reduce
 class Sum {
 	public:
 		Sum() {}
-		int operator() ( int &i, int j ) { return i + j; }
+		int operator() ( int i, int j ) { return i + j; }
 };
 
 template<typename InIt, typename OutIt, typename FuncType>
@@ -87,7 +87,7 @@ void functionpointer() {
 
 void functors() {
 	std::cout	<< "Functors:" << std::endl;
-    std::vector<int> numbers = {1, 2, 3, 4, 5};
+  std::vector<int> numbers = {1, 2, 3, 4, 5};
 
 	std::cout 	<< "Init:\t[ "
 				<< reduce(numbers.begin(), numbers.end(), std::string {}, to_string)
