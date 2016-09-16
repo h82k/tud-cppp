@@ -134,6 +134,22 @@ void ex_uebergabewerte() {
     // op4(&k); // invalid conversion from ‘const int* const*’ to ‘const int**’ -> const correctness
     // op4(l);
     op4(&m);
+
+    /*
+     * Clarification on op4(l):
+     * Source: http://stackoverflow.com/a/3438177/4999000
+     *
+     * Have a look at the example below to see why it is not possible to pass int **l to op4(const int **param).
+     *
+		const int constant = 10;
+		int *modifier = 0;
+		const int ** const_breaker = &modifier; // [*] this is equivalent to your code
+
+		*const_breaker = & constant;   // no problem, const_breaker points to
+									// pointer to a constant integer, but...
+									// we are actually doing: modifer = &constant!!!
+		*modifier = 5;                 // ouch!! we are modifying a constant!!!
+	*/
 }
 
 ////////////////////////////////////////////////////////////////////////////////
