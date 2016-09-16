@@ -143,7 +143,7 @@ void ex_uebergabewerte() {
      *
 		const int constant = 10;
 		int *modifier = 0;
-		const int ** const_breaker = &modifier; // [*] this is equivalent to your code
+		const int ** const_breaker = &modifier; // [*] this operation is illegal
 
 		*const_breaker = & constant;   // no problem, const_breaker points to
 									// pointer to a constant integer, but...
