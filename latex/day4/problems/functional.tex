@@ -90,8 +90,8 @@ Die Funktion \lstinline{map} würde wie folgt umgeschrieben werden müssen.
 
 \lstinputlisting{problems/listings/functional_functor_map.cpp}
 
-Schreibt eure Funktionen aus \ref{sec:functional_impl_func} als Funktoren und passt eure Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} dementsprechend an.
-Anschließend stellt sicher, dass eure Implementierung noch funktioniert.
+Schreibe dein Funktionen aus \ref{sec:functional_impl_func} als Funktoren und passe deine Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} dementsprechend an.
+Anschließend stelle sicher, dass deine Implementierung noch funktioniert.
 
 \subsection{Verwendung von Templates}
 Die zurzeitige Implementierung funktioniert entweder mit Funktoren einer bestimmten Klasse oder mit Funktionszeigern, die einem bestimmten Typen angehören, der durch die Signatur der Funktion gebunden ist.
@@ -100,4 +100,20 @@ Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, 
 Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
 Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionspointer/Funktor die richtige Variable übergeben wird. \\
 
-Implementiert in euren Funktionen einen Templatetypen für die Funktionspointer/Funktoren und testet euren Code sowohl mit Funktoren und Funktionen.
+Implementiere in deinen Funktionen einen Templatetypen für die Funktionspointer/Funktoren und teste deinen Code sowohl mit Funktoren und Funktionen.
+
+\subsection{Methodenzeiger}
+Es gibt auch die Möglichkeit Methoden\footnote{Hier ist eine einfache Erklärung zu dem Unterschied von Funktion und Methode zu finden \url{http://stackoverflow.com/a/155655}} via Zeigern auszuführen.
+Hierzu muss man zusätzlich zu der Funktion noch ein Objekt übergeben, auf welches die Funktion ausgeführt wird. \\
+
+In unserem Beispiel von \lstinline{Square} fügen wir noch eine weitere Methode \lstinline{inverse} hinzu, welche das Inverse der Quadrierung, die Wurzeloperation, ausführt. \\
+
+Unsere Klasse Square verändern wir dementsprechend zu
+
+\lstinputlisting{problems/listings/functional_method_square.cpp}
+
+und unser \lstinline{map} zu 
+
+\lstinputlisting{problems/listings/functional_method_map.cpp}
+
+Deine Aufgabe ist es nun eine neue Implementierung von \lstinline{map} hinzuzufügen, deinen für Map geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementierung zu testen.

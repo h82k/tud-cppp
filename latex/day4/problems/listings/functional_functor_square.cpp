@@ -1,4 +1,4 @@
 class Square {
 public:
-	int operator() (int i) { return i*i; }
+	double operator() (double i) { return i*i; }
 };
