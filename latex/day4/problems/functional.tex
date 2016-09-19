@@ -24,18 +24,18 @@ Haben wir ein Vektor von Doubles und wollen jedes Element quadrieren, endet dies
 \lstinputlisting{problems/listings/functional_intro_example.cpp}
 
 Die Idee von der Funktion \lstinline{map} ist es, genau dies zu vereinfachen.
-Sie erhält die Start- und Enditeratoren der Sequenz und einen Funktionszeiger als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
+Sie erhält die Start- und Enditeratoren der Sequenz, einen Iterator, der auf eine Sequenz zeigt in dem die veränderten Elemente gespeichert werden und einen Funktionszeiger als Parameter und ruft diese Funktion auf jedes Element der iterierbaren Sequenz auf.
 
 \lstinputlisting{problems/listings/functional_map_example.cpp}
 
 \lstinline{filter} funktioniert analog, indem sie einen Funktionszeiger auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
-Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, bleiben in der Liste. Der Rest wird entfernt. \\
+Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, werden in die Ausgabesequenz kopiert. Der Rest wird entfernt. \\
 
 \lstinputlisting{problems/listings/functional_filter_example.cpp}
 
 Und auch \lstinline{reduce} hat eine ähnliche Verwendung.
 Es schrumpft eine Sequenze zu einem Element zusammen.
-Hierbei wird aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
+Hierbei wird der Ausgabeiterator gegen einen Startwert ausgetauscht.
 Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} gebildet wird.
 
 \lstinputlisting{problems/listings/functional_reduce_example.cpp}
@@ -54,7 +54,7 @@ Schreibe eine Funktion \lstinline{map} die folgende Signature besitzt.
 \lstinputlisting{problems/listings/functional_map_sig.cpp}
 
 Hierbei ist der letzte Parameter der Funktionszeiger.
-Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionszeiger einer Funktion mit Rückgabewert \lstinline{double} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{double *}\footnote{Welche folgende Signature hätte: \lstinline{double *(*func)(double i)}}.
+Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionszeiger einer Funktion mit Rückgabewert \lstinline{double} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{double *}\footnote{Welche folgende Signature hätte: \lstinline{double *(*func)(double d)}}.
 Diese Funktion hat zusätzlich noch einen Double \lstinline{d} als Paramenter.
 
 \subsubsection{\lstinline{filter}}
@@ -71,18 +71,18 @@ Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
 
-\subsubsection{Passende Funktionen implementieren}
+\subsubsection{Passende Hilfsfunktionen implementieren}
 Implementiere in dieser Aufgabe drei Hilfsfunktionen, die den Anforderunger der jeweiligen Signaturen der Funktionszeiger in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
-Ihr könnt euch dabei gerne eigene Funktionen ausdenken oder euch an die Funktionen in den Beispielen halten. \\
+Du kannst dir dabei gerne eigene Funktionen ausdenken oder dich an die Funktionen in den Beispielen halten. \\
 
 Teste anschließend deine Implementierung, indem du die Funktionen nur anhand ihres Namens übergibst.
 
 \subsection{Funktoren}
 \label{sec:functional_functor}
 Es gibt noch die Möglichkeit Funktionen in einem Funktionsobjekt (\emph{Funktor}) zu schachteln.
-Dabei überläd man den Operator \lstinline{operator()}, welcher eine bestimmte Funktion hat. \\
+Dabei überläd man den Operator \lstinline{operator()}, welcher eine bestimmte Funktion ausführt. \\
 
-Schaut man sich in unserem Beispiel die Funktion \lstinline{square}, welche folgende Signatur hat \lstinline{int square(int i);} würde der Funktor wie folgt aussehen.
+Schaut man sich in unserem Beispiel die Funktion \lstinline{square} an, welche folgende Signatur hat \lstinline{double square(double i);} würde der Funktor wie folgt aussehen.
 
 \lstinputlisting{problems/listings/functional_functor_square.cpp}
 
@@ -90,7 +90,7 @@ Die Funktion \lstinline{map} würde wie folgt umgeschrieben werden müssen.
 
 \lstinputlisting{problems/listings/functional_functor_map.cpp}
 
-Schreibe dein Funktionen aus \ref{sec:functional_impl_func} als Funktoren und passe deine Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} dementsprechend an.
+Schreibe dein Hilfsfunktionen als Funktoren und füge eine neue Implementierung für deine Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} hinzu, die mit den Funktoren kompatibel ist.
 Anschließend stelle sicher, dass deine Implementierung noch funktioniert.
 
 \subsection{Verwendung von Templates}
@@ -101,7 +101,8 @@ Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, 
 Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
 Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionszeiger/Funktor die richtige Variable übergeben wird. \\
 
-Implementiere in deinen Funktionen einen Templatetypen für die Funktionszeiger/Funktoren und teste deinen Code sowohl mit Funktoren und Funktionen.
+Implementiere in deinen Funktionen einen weiteren Templatetypen \lstinline{template <typename InIt, typename OutIt, typename ...>} und verwende diesen statt der zur Zeit hardgecodeten Signatur für die übergebene Funktion/den übergebenen Funktor.
+Teste deine Implementierung anschließend sowohl mit Funktoren, als auch mit Funktionen.
 
 \subsection{Methodenzeiger}
 \label{sec:functional_method}
@@ -118,4 +119,4 @@ und unser \lstinline{map} zu
 
 \lstinputlisting{problems/listings/functional_method_map.cpp}
 
-Deine Aufgabe ist es nun eine neue Implementierung von \lstinline{map} hinzuzufügen, deinen für Map geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementierung zu testen.
+Deine Aufgabe ist es nun eine neue Implementierung von \lstinline{map} hinzuzufügen, deinen für Map geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementierung mit allen implementierten Methoden zu testen.

@@ -1,2 +1,2 @@
-template<typename SeqT>
-void map(SeqT &seq, Square s);
+template<typename, InIt, typename OutIt>
+void map(InIt first, InIt last, OutIt out_first, Square s);
