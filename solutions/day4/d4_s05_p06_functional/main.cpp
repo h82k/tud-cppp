@@ -17,8 +17,8 @@ OutIt map_funcpointer(InIt first, InIt last,
 	return out_first;
 }
 
-template<typename ItType, typename OutIt>
-ItType filter_funcpointer(ItType first, ItType last, 
+template<typename InIt, typename OutIt>
+OutIt filter_funcpointer(InIt first, InIt last, 
 		OutIt out_first, bool(*pred)(int i)) {
 	while(first != last) {
         if(pred(*first)) {
@@ -30,17 +30,13 @@ ItType filter_funcpointer(ItType first, ItType last,
 	return out_first; 
 }
 
-template<typename ItType, typename T>
-T reduce_funcpointer(ItType first, ItType last, T init, T(*func)(T i, double j)) {
+template<typename InIt, typename T>
+T reduce_funcpointer(InIt first, InIt last, T init, T(*func)(T i, double j)) {
 	while(first != last) {
         init = func(init, *first++);
     }
     return init;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.3 Functions used as functionpointers
-////////////////////////////////////////////////////////////////////////////////
 
 // for map
 double square(double i) { return i * i; }
@@ -88,7 +84,7 @@ void functionpointer() {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.4 Functors
+// Exercise 5.3 Functors
 ////////////////////////////////////////////////////////////////////////////////
 
 // for map
@@ -131,8 +127,8 @@ OutIt map_functor(InIt first, InIt last, OutIt out_first, Square s) {
 	return out_first;
 }
 
-template<typename ItType, typename OutIt>
-ItType filter_functor(ItType first, ItType last, OutIt out_first, Odd pred) {
+template<typename InIt, typename OutIt>
+OutIt filter_functor(InIt first, InIt last, OutIt out_first, Odd pred) {
 	while(first != last) {
         if(pred(*first)) {
 			*out_first++ = *first++;
@@ -143,8 +139,8 @@ ItType filter_functor(ItType first, ItType last, OutIt out_first, Odd pred) {
 	return out_first; 
 }
 
-template<typename ItType, typename T>
-T reduce_functor(ItType first, ItType last, T init, Sum s) {
+template<typename InIt, typename T>
+T reduce_functor(InIt first, InIt last, T init, Sum s) {
 	while(first != last) {
         init = s(init, *first++);
     }
@@ -173,7 +169,7 @@ void functors() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.5 Templates
+// Exercise 5.4 Templates
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename InIt, typename OutIt, typename FuncType>
@@ -184,8 +180,8 @@ OutIt map_template(InIt first, InIt last, OutIt out_first, FuncType func) {
 	return out_first;
 }
 
-template <typename ItType, typename OutIt, typename FuncType>
-ItType filter_template(ItType first, ItType last, OutIt out_first, FuncType pred) {
+template <typename InIt, typename OutIt, typename FuncType>
+OutIt filter_template(InIt first, InIt last, OutIt out_first, FuncType pred) {
 	while(first != last) {
 		if(pred(*first)) {
 			*out_first++ = *first++;
@@ -196,8 +192,8 @@ ItType filter_template(ItType first, ItType last, OutIt out_first, FuncType pred
 	return out_first;
 }
 
-template <typename ItType, typename T, typename FuncType> 
-T reduce_template(ItType first, ItType last, T init, FuncType func) {
+template <typename InIt, typename T, typename FuncType> 
+T reduce_template(InIt first, InIt last, T init, FuncType func) {
 	while(first != last) {
 		init = func(init, *first++);
 	}
@@ -206,7 +202,7 @@ T reduce_template(ItType first, ItType last, T init, FuncType func) {
  
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.6 Methodpointers
+// Exercise 5.5 Methodpointers
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename InIt, typename OutIt, typename ObjType>
