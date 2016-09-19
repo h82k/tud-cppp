@@ -2,16 +2,16 @@
 
 \experimentaltextbox
 
-In dieser Aufgabe werden wir uns mit Funktionen aus der funktionalen Programmierung beschäftigen.
+In dieser Aufgabe werden Funktionen aus der funktionalen Programmierung vorgestellt.
 Diese sind \lstinline{map}, \lstinline{filter} und \lstinline{reduce}. \\
 
 Der Ablauf ist wie folgt:
 \begin{itemize}
-    \item In \ref{sec:map-filter-reduce-intro} werden wir erst einmal auf die Arbeitsweise der zu implementierenden Funktionen eingehen.
-    \item In \ref{sec:map-filter-reduce-basic-impl} wirst du diese Funktionen deklarieren und in \Cref{sec:functional_impl_func} ausprogrammieren.
-	\item Im Folgenden werden wir diese Funktionen als \emph{Funktoren} implementieren.
-	\item Dann werden wir noch Templates mit einbauen, damit Funktionen und Funktoren verwendet werden können.
-			Aber dazu später mehr.
+    \item In Teilaufgabe \ref{sec:map-filter-reduce-intro} werden erst einmal die Funktionsweisen der zu implementierenden Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} vorgestellt.
+	\item In Teilaufgabe \ref{sec:map-filter-reduce-basic-impl} wirst du diese Funktionen implementieren und Hilfsfunktionen, welche dann verwendet werden können, implementieren.
+	\item In Teilaufgabe \ref{sec:functional_functor} wirst du deine Hilfsfunktionen als \emph{Funktoren} implementieren und \lstinline{map}, \lstinline{filter} und \lstinline{reduce} entsprechend anpassen.
+	\item Daraufhin werden Templates einbauen, damit Funktionen und Funktoren verwendet werden können. Dies wird in Teilaufgabe \ref{sec:functional_template} passieren.
+	\item In Teilaufgabe \ref{sec:functional_method} werden außerdem noch Methodenzeiger vorgestellt.
 \end{itemize}
 
 \subsection{Erklärung \lstinline{map}, \lstinline{filter} und \lstinline{reduce}}\label{sec:map-filter-reduce-intro}
@@ -19,7 +19,7 @@ Der Ablauf ist wie folgt:
 Arbeitet man auf iterierbaren Sequenzen, ist dies fast immer mit Schleifen über die Sequenz verbunden.
 Die drei Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} vereinfachen uns hierbei dir Arbeit.
 Hierzu ein Beispiel.
-Haben wir ein Vektor von Integern und wir wollen jedes Element quadrieren, endet dies meist in dem folgenden Programmcode:
+Haben wir ein Vektor von Doubles und wollen jedes Element quadrieren, endet dies meist in dem folgenden Programmcode:
 
 \lstinputlisting{problems/listings/functional_intro_example.cpp}
 
@@ -28,14 +28,14 @@ Sie erhält die Start- und Enditeratoren der Sequenz und einen Funktionszeiger a
 
 \lstinputlisting{problems/listings/functional_map_example.cpp}
 
-\lstinline{filter} funktioniert analog, indem sie einen Funktionspointer auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
+\lstinline{filter} funktioniert analog, indem sie einen Funktionszeiger auf eine Funktion erhält, die ein Listenelementtyp erhält und ein \lstinline{bool} zurück gibt.
 Auf alle Elemente wird diese Funktion aufgerufen und alle Elemente, für die die Funktion \lstinline{true} zurückgibt, bleiben in der Liste. Der Rest wird entfernt. \\
 
 \lstinputlisting{problems/listings/functional_filter_example.cpp}
 
 Und auch \lstinline{reduce} hat eine ähnliche Verwendung.
 Es schrumpft eine Sequenze zu einem Element zusammen.
-Hierbei wir aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
+Hierbei wird aber ein zusätzlicher Parameter, nämlich einen Startwert mitgegeben.
 Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} gebildet wird.
 
 \lstinputlisting{problems/listings/functional_reduce_example.cpp}
@@ -43,19 +43,19 @@ Hier ein Beispiel, bei dem die Summe über die Elemente in \lstinline{numbers} g
 \subsection{Programmieren der Funktionen}
 \label{sec:map-filter-reduce-basic-impl}
 
-Nun werden wird es deine Aufgabe sein, die drei Funktionen nachzuprogrammieren.
+Du wirst die drei Funktionen nachprogrammieren.
 Hierbei geht es erstmal darum ein funktionierendes Gerüst der Methoden zu erstellen, anstatt perfekt generische Algorithmen zu erhalten.
 Darum wird sich im Laufe der Aufgabe gekümmert.
 
 \subsubsection{\lstinline{map}}
 
-Bitte schreibt eine Funktion \lstinline{map} die folgendermaßen aussieht.
+Schreibe eine Funktion \lstinline{map} die folgende Signature besitzt.
 
 \lstinputlisting{problems/listings/functional_map_sig.cpp}
 
-Hierbei ist der letzte Parameter der Funktionspointer.
-Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionspointer einer Funktion mit Rückgabewert \lstinline{int} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{int *}\footnote{Welche folgende Signature hätte: \lstinline{int *(*func)(int i)}}.
-Diese Funktion hat zusätzlich noch einen Integer \lstinline{i} als Paramenter.
+Hierbei ist der letzte Parameter der Funktionszeiger.
+Die Klammern um \lstinline{*func} sind deshalb notwendig, damit die Sichtbarkeit sichergestellt ist und der Kompiler den übergebenen Parameter als Funktionszeiger einer Funktion mit Rückgabewert \lstinline{double} interpretiert und nicht als Funktion mit Rückgabewert \lstinline{double *}\footnote{Welche folgende Signature hätte: \lstinline{double *(*func)(double i)}}.
+Diese Funktion hat zusätzlich noch einen Double \lstinline{d} als Paramenter.
 
 \subsubsection{\lstinline{filter}}
 
@@ -71,16 +71,16 @@ Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 
 Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
 
-\subsection{Passende Funktionen implementieren}
-\label{sec:functional_impl_func}
-Implementiere in dieser Aufgabe drei Funktionen, die den Anforderunger der jeweiligen Signaturen der Funktionspointer in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
+\subsubsection{Passende Funktionen implementieren}
+Implementiere in dieser Aufgabe drei Hilfsfunktionen, die den Anforderunger der jeweiligen Signaturen der Funktionszeiger in den Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} folgt.
 Ihr könnt euch dabei gerne eigene Funktionen ausdenken oder euch an die Funktionen in den Beispielen halten. \\
 
 Teste anschließend deine Implementierung, indem du die Funktionen nur anhand ihres Namens übergibst.
 
 \subsection{Funktoren}
+\label{sec:functional_functor}
 Es gibt noch die Möglichkeit Funktionen in einem Funktionsobjekt (\emph{Funktor}) zu schachteln.
-Dabei überlad man den Operator \lstinline{operator()}, welcher eine bestimmte Funktion hat. \\
+Dabei überläd man den Operator \lstinline{operator()}, welcher eine bestimmte Funktion hat. \\
 
 Schaut man sich in unserem Beispiel die Funktion \lstinline{square}, welche folgende Signatur hat \lstinline{int square(int i);} würde der Funktor wie folgt aussehen.
 
@@ -94,21 +94,23 @@ Schreibe dein Funktionen aus \ref{sec:functional_impl_func} als Funktoren und pa
 Anschließend stelle sicher, dass deine Implementierung noch funktioniert.
 
 \subsection{Verwendung von Templates}
+\label{sec:functional_template}
 Die zurzeitige Implementierung funktioniert entweder mit Funktoren einer bestimmten Klasse oder mit Funktionszeigern, die einem bestimmten Typen angehören, der durch die Signatur der Funktion gebunden ist.
 Das ist nicht immer das gewünschte Ergebnis.
 Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, wodurch der Typ der Übergabe nicht mehr relevant ist.
 Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
-Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionspointer/Funktor die richtige Variable übergeben wird. \\
+Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionszeiger/Funktor die richtige Variable übergeben wird. \\
 
-Implementiere in deinen Funktionen einen Templatetypen für die Funktionspointer/Funktoren und teste deinen Code sowohl mit Funktoren und Funktionen.
+Implementiere in deinen Funktionen einen Templatetypen für die Funktionszeiger/Funktoren und teste deinen Code sowohl mit Funktoren und Funktionen.
 
 \subsection{Methodenzeiger}
+\label{sec:functional_method}
 Es gibt auch die Möglichkeit Methoden\footnote{Hier ist eine einfache Erklärung zu dem Unterschied von Funktion und Methode zu finden \url{http://stackoverflow.com/a/155655}} via Zeigern auszuführen.
 Hierzu muss man zusätzlich zu der Funktion noch ein Objekt übergeben, auf welches die Funktion ausgeführt wird. \\
 
 In unserem Beispiel von \lstinline{Square} fügen wir noch eine weitere Methode \lstinline{inverse} hinzu, welche das Inverse der Quadrierung, die Wurzeloperation, ausführt. \\
 
-Unsere Klasse Square verändern wir dementsprechend zu
+Unsere Klasse Square verändert sich dementsprechend zu
 
 \lstinputlisting{problems/listings/functional_method_square.cpp}
 

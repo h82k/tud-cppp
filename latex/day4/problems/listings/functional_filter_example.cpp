@@ -1,4 +1,4 @@
-std::vector<int> numbers = { 1, 2, 3, 4, 5 };
+std::vector<double> numbers = { 1, 2, 3, 4, 5 };
 
 filter(numbers, isOdd);
 
