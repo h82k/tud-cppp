@@ -92,6 +92,23 @@
 	\end{itemize}
 }
 
+\newcommand{\optional}{\xspace(optional)}
+\newcommand{\experimental}{\xspace(experimentell)}
+
+\usepackage{fancybox}
+\newcommand{\optionaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Die Klausur kann ohne diese Aufgabe bestanden werden. Wir empfehlen aber sie trotzdem zu bearbeiten.}}
+	\end{center}
+}
+\newcommand{\experimentaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/issues}}}
+	\end{center}
+}
+
 \newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
 \newcommand{\filename}[1]{\texttt{#1}}
 
