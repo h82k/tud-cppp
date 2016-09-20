@@ -18,7 +18,7 @@ public:
      */
 	Vector3();
     /**
-     * @name Vector3(double a, double b, double c);
+     * @name Vector3(T a, T b, T c);
      * @brief constructs a (a, b, c)^t vector
      * @author cppp
      * @param a of type T

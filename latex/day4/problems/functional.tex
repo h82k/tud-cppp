@@ -101,7 +101,11 @@ Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, 
 Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
 Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionszeiger/Funktor die richtige Variable übergeben wird. \\
 
-Implementiere in deinen Funktionen einen weiteren Templatetypen \lstinline{template <typename InIt, typename OutIt, typename ...>} und verwende diesen statt der zur Zeit hardgecodeten Signatur für die übergebene Funktion/den übergebenen Funktor.
+Implementiere in deinen Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} einen weiteren Templatetypen indem du die Liste der Templatetypen erweiterst zu 
+
+\lstinputlisting{problems/listings/functional_template_typename.cpp}
+
+und verwende diesen statt der zur Zeit hardgecodeten Signatur für die übergebene Funktion/den übergebenen Funktor.
 Teste deine Implementierung anschließend sowohl mit Funktoren, als auch mit Funktionen.
 
 \subsection{Methodenzeiger}
@@ -120,3 +124,7 @@ und unser \lstinline{map} zu
 \lstinputlisting{problems/listings/functional_method_map.cpp}
 
 Deine Aufgabe ist es nun eine neue Implementierung von \lstinline{map} hinzuzufügen, deinen für Map geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementierung mit allen implementierten Methoden zu testen.
+
+\subsection*{Nachwort}
+Für produktive C++-Programme bietet die Standardbibliothek fertige Funktionen und Klassen, um das in dieser Aufgabe beschriebene zu realisieren, z.B. \lstinline{std::function<...>}\footnote{\url{http://en.cppreference.com/w/cpp/utility/functional/function}} und \lstinline{std::bind()}\footnote{\url{http://en.cppreference.com/w/cpp/utility/functional/bind}}.
+Diese können mit beliebiger Anzahl von Parametern umgehen und beinhalten viele weitere Features.
