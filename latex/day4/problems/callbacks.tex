@@ -204,8 +204,3 @@ Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \
 Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \lstinline{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.
 
 Teste deine Implementation in Zusammenhang mit der \lstinline{hanoi}-Funktion. Du kannst das \lstinline{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden.
-
-
-\textbf{Nachwort}:
-Für produktive C++-Programme bietet Boost fertige Funktionen und Klassen, um Callbacks zu realisieren, z.B. \lstinline{boost::function<...>} und \lstinline{boost::bind()}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/function.html}}.
-Diese können mit beliebiger Anzahl von Parametern umgehen und beinhalten viele weitere Features.
