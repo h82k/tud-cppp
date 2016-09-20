@@ -26,26 +26,26 @@ T Vector3<T>::operator*(const Vector3& rhs) const {
 // In general, the parameter T may be ommitted inside the parameter list and the function body.
 
 template<typename T>
-//Vector3<T> Vector3<T>::operator+(const Vector3& rhs) const {
-auto Vector3<T>::operator+(const Vector3& rhs) const -> Vector3 {
+//auto Vector3<T>::operator+(const Vector3& rhs) const -> Vector3 {
+Vector3<T> Vector3<T>::operator+(const Vector3& rhs) const {
 	return Vector3(a + rhs.a, b + rhs.b, c + rhs.c);
 }
 
 template<typename T>
-//Vector3<T> Vector3<T>::operator-(const Vector3& rhs) const {
-auto Vector3<T>::operator-(const Vector3& rhs) const -> Vector3 {
+//auto Vector3<T>::operator-(const Vector3& rhs) const -> Vector3 {
+Vector3<T> Vector3<T>::operator-(const Vector3& rhs) const {
 	return Vector3(a - rhs.a, b - rhs.b, c - rhs.c);
 }
 
 template<typename T>
-//Vector3<T> Vector3<T>::operator*(const T& rhs) const {
-auto Vector3<T>::operator*(const T& rhs) const -> Vector3 {
+//auto Vector3<T>::operator*(const T& rhs) const -> Vector3 {
+Vector3<T> Vector3<T>::operator*(const T& rhs) const {
 	return Vector3(a * rhs, b * rhs, c * rhs);
 }
 
 template<typename T>
-//Vector3<T> Vector3<T>::operator/(const T& rhs) const {
-auto Vector3<T>::operator/(const T& rhs) const -> Vector3 {
+//auto Vector3<T>::operator/(const T& rhs) const -> Vector3 {
+Vector3<T> Vector3<T>::operator/(const T& rhs) const {
 	return Vector3(a / rhs, b / rhs, c / rhs);
 }
 
