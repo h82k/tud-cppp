@@ -2,7 +2,7 @@
 #define ARRAY_HPP_
 
 #include <iostream>
-#include <boost/smart_ptr.hpp>
+#include <memory>
 
 /**
  * Custom implementation of an array.
@@ -12,7 +12,7 @@
  */
 template<typename T>
 class Array {
-	typedef boost::shared_ptr<T> TPtr;
+	typedef std::shared_ptr<T> TPtr;
 public:
 	/**
 	 * Creates an array that can hold 'size'

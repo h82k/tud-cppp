@@ -1,2 +1,2 @@
-template<typename SeqT>
-void filter(SeqT seq, bool(*p)(int i));
+template<typename InIt, typename OutIt>
+OutIt filter(InIt first, InIt last, OutIt out_first, bool(*pred)(int i));

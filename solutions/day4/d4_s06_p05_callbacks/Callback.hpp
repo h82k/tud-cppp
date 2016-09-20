@@ -5,7 +5,7 @@
 #ifndef CALLBACK_HPP_
 #define CALLBACK_HPP_
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 /**
  * Base class for all types of callbacks.
@@ -105,7 +105,7 @@ public:
 		callbackPtr->call(t);
 	}
 private:
-	boost::shared_ptr<CallbackBase<ParamT> > callbackPtr;
+	std::shared_ptr<CallbackBase<ParamT> > callbackPtr;
 };
 
 #endif /* CALLBACK_HPP_ */
