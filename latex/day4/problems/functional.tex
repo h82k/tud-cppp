@@ -101,7 +101,11 @@ Um das Problem zu lösen kann man den Übergabetypen durch ein Template setzen, 
 Dadurch ist die Parameteranzahl und die Typen der Parameter losgelöst und jede beliebige Funktion kann übergeben werden.
 Innerhalb der Funktion muss nur darauf geachtet werden, dass dem Funktionszeiger/Funktor die richtige Variable übergeben wird. \\
 
-Implementiere in deinen Funktionen einen weiteren Templatetypen \lstinline{template <typename InIt, typename OutIt, typename ...>} und verwende diesen statt der zur Zeit hardgecodeten Signatur für die übergebene Funktion/den übergebenen Funktor.
+Implementiere in deinen Funktionen \lstinline{map}, \lstinline{filter} und \lstinline{reduce} einen weiteren Templatetypen indem du die Liste der Templatetypen erweiterst zu 
+
+\lstinputlisting{problems/listings/functional_template_typename.cpp}
+
+und verwende diesen statt der zur Zeit hardgecodeten Signatur für die übergebene Funktion/den übergebenen Funktor.
 Teste deine Implementierung anschließend sowohl mit Funktoren, als auch mit Funktionen.
 
 \subsection{Methodenzeiger}
