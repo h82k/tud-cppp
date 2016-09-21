@@ -9,53 +9,28 @@ Experimentiere mit Zeigern, Adressen und Referenzen.
 Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder zusammenhängen.
 Als Ausgangsbasis kann folgendes Programmfragment dienen.
 
-\begin{lstlisting}
-int intVal = 42;
-int *pIntVal = &intVal;
-cout << "Wert von IntVal " << intVal << endl;
-cout << "Wert von &IntVal " << &intVal << endl;
-cout << "Wert von pIntVal " << pIntVal << endl;
-cout << "Wert von *pIntVal " << *pIntVal << endl;
-cout << "Wert von &pIntVal " << &pIntVal << endl;
-\end{lstlisting}
+\lstinputlisting{problems/listings/pointers_intro.cpp}
 
 \subsection{Bedeutung verstehen}
 Versuche die Bedeutung folgender Ausdrücke zu verstehen.
 Welche Regelmäßigkeiten stellst du fest?
 
-\begin{lstlisting}
-int intVal = 42;
-int *pIntVal = &intVal;
-*&intVal;
-*&pIntVal;
-&*pIntVal;
-**&pIntVal;
-*&*&intVal;
-&*&pIntVal;
-*&*pIntVal;
-\end{lstlisting}
+\lstinputlisting{problems/listings/pointers_intro_advanced.cpp}
 
 \hints{
 	\item Gehe dabei von rechts nach links vor.
 }
 
-
 \subsection{Gültigkeit}
 Warum sind folgende Ausdrücke ungültig, sinnlos oder sogar gefährlich?
 
-\begin{minipage}{\textwidth}
-\begin{lstlisting}
-*intVal;
-**pIntVal;
-**&*pIntVal;
-&*intVal;
-&42;
-\end{lstlisting}
-\end{minipage}
+\vbox{ %fixes empty page
+\lstinputlisting{problems/listings/pointers_intro_validity.cpp}
+}
 
 \hints{
 	\item Finde heraus, welchen Typ der Ausdruck hätte haben müssen.
-	\item Nur tatsächlich angelegte Variablen haben Adressen. Ausdrücke wie a + b oder direkt kodierte Zahlenliterale wie 42 haben keine Adresse-
+	\item Nur tatsächlich angelegte Variablen haben Adressen. Ausdrücke wie a + b oder direkt kodierte Zahlenliterale wie 42 haben keine Adresse.
 }
 
 \subsection{Variablentausch}
@@ -66,28 +41,8 @@ Was würde passieren, wenn man die Variablen stattdessen per Wert übergeben wü
 \subsection{Programmanalyse}
 Sieh dir folgendes Programm an.
 
-\vbox{%fixes empty page
-\begin{lstlisting}
-#include <iostream>
-
-void foo(int &i) {
-	int i2 = i;
-	int &i3 = i;
-	
-	std::cout << "i = " << i << std::endl;
-	std::cout << "i2 = " << i2 << std::endl;
-	std::cout << "i3 = " << i3 << std::endl;
-	std::cout << "&i = " << &i << std::endl;
-	std::cout << "&i2 = " << &i2 << std::endl;
-	std::cout << "&i3 = " << &i3 << std::endl;
-}
-
-int main() {
-	int var = 42;
-	std::cout << "&var = " << &var << std::endl;
-	foo(var);
-}
-\end{lstlisting}
+\vbox{ %fixes empty page
+\lstinputlisting{problems/listings/pointers_programm.cpp}
 }
 
 Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
@@ -108,25 +63,13 @@ Versuche für jede der Variablen im folgenden Code je eine \emph{Verwendung} zu 
 Was ist jeweils der Grund?
 Welche Pointer verhalten sich gleich?
 
-\begin{lstlisting}
-    int i = 1;    
-    int *iP = &i;
-    const int *ciP = &i;
-    int const *ciP2 = &i;
-    int * const icP = &i;    
-    const int * const cicP = &i;
-\end{lstlisting}
+\lstinputlisting{problems/listings/pointers_behavior.cpp}
 
 \paragraph{Mehrstufige Pointer}
 
 Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
 
-\begin{lstlisting}
-    int **iPP = &iP;
-    const int * const *cicPP = &iP;
-    int ** const iPcP = &iP;
-\end{lstlisting}
-
+\lstinputlisting{problems/listings/pointers_multi.cpp}
 
 \subsection{Übergabewerte}
 In der letzten Aufgabe direkt zu Pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.
