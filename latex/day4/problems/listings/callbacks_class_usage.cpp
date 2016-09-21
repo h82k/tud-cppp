@@ -1,0 +1,9 @@
+void hanoi(..., Callback callback) {
+	...
+	callback(a, c);
+	...
+}
+...
+hanoi(..., Callback(print)); // function callback
+hanoi(..., Callback(c)); // functor callback
+hanoi(..., Callback(&C::print, &c)); // method callback

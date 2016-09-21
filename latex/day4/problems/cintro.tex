@@ -1,4 +1,6 @@
-\section{C Einführung}
+\section{C Einführung \optional}
+
+\optionaltextbox
 In den nächsten Tagen werden wir Programme für eine Embedded-Plattform in C entwickeln.
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
 
@@ -24,64 +26,32 @@ Stattdessen gibt es Strukturen (\lstinline{struct}), die mehrere Variablen zu ei
 
 Die Syntax dafür lautet
 
-\begin{lstlisting}
-struct MyStruct {
-	<Type1> <Name11>, <Name12>, ...;
-	<Type2> <Name21>, <Name22>, ...;
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_structs.c}
 
 Zum Beispiel
 
-\begin{lstlisting}
-struct Point {
-	int x;
-	int y;
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_structs_ex.c}
 
 Die Sichtbarkeit aller Attribute ist automatisch \lstinline{public}.
 
 Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \lstinline{struct} angeben:
 
-\begin{lstlisting}
-void foo(struct Point *p) {
-...
-}
-
-int main(void) {
-	struct Point point;
-	foo(&point);
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_structs_func.c}
 
 Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \lstinline{typedef} auf den \lstinline{struct} definiert:
 
-\begin{lstlisting}
-typedef struct Point Point_t;
-Point_t point;
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_structs_typedef.c}
 
 Man kann die Deklaration eines \lstinline{struct} auch direkt in den \lstinline{typedef} einbauen:
 
-\begin{lstlisting}
-typedef struct {
-	int x;
-	int y;
-} Point;
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_structs_short.c}
 
 \subsection{Kein \lstinline{new} und \lstinline{delete}}
 
 Anstelle von \lstinline{new} und \lstinline{delete} werden die Funktionen \lstinline{malloc} und \lstinline{free} verwendet, um Speicher auf dem Heap zu reservieren.
 Diese sind im Header \filename{stdlib.h} deklariert.
 
-\begin{lstlisting}
-#include <stdlib.h>
-Point *points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
-// ...
-free(points);
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_mallocfree.c}
 
 \subsection{Ausgabe auf Konsole per \lstinline{printf}}
 
@@ -90,18 +60,7 @@ Um Daten auf der Konsole auszugeben, kann die Funktion \lstinline{printf} verwen
 Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
 Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \lstinline{printf()} zu nutzen, muss der Header \filename{stdio.h} eingebunden werden.
 
-\begin{lstlisting}
-#include <stdio.h>
-printf("Hallo Welt\n"); // Hallo Welt + neue Zeile ausgeben
-
-int i;
-printf("i = %d\n", i);  // Integer ausgeben
-printf("i = %3d\n", i); // Integer ausgeben, auf drei Stellen auffüllen
-
-int i;
-char c;
-printf("c = %c, i = %d\n", c, i); // Zeichen und Integer ausgeben
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_printf.c}
 
 Weitere Möglichkeiten von \lstinline{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
 
@@ -109,10 +68,7 @@ Weitere Möglichkeiten von \lstinline{printf()} findest du unter \url{http://www
 Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt.
 Die Formatierung soll entsprechend dem Beispiel erfolgen:
 
-\begin{lstlisting}
-2   4   6   8  10
-12  14  16  ...
-\end{lstlisting}
+\lstinputlisting{problems/listings/cintro_format.c}
 
 \subsection{}
 Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).

@@ -12,14 +12,4 @@ Um den Code trotzdem zu strukturieren, hat es sich eingebürgert, dass man die K
 Im Anschluss wird eine \filename{tpp}-Datei inkludiert, die die Implementierung der Methoden und Funktionen enthält.
     
 Der Aufbau wäre also in etwas wie folgt:
-\begin{lstlisting}
-template<typename T>
-class Vector3 {
-  // method declarations only
-};
-
-// function declarations only
-
-#include "Vector3.tpp" // contains method and function definitions
-\end{lstlisting}
-
+\lstinputlisting{problems/listings/genericVector3_tpp_include.hpp}
