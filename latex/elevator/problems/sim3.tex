@@ -13,17 +13,7 @@ Implementiere die Klasse \lstinline{ElevatorStrategy}.
 Diese soll die Basisklasse für verschiedene Aufzugstrategien sein.
 Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \lstinline{Building} per \lstinline{const} Pointer übergeben.
 
-\begin{lstlisting}
-// Elevator strategy class: Determines to which floor the elevator should move next.
-class ElevatorStrategy {
-public:
-	virtual ~ElevatorStrategy();
-	virtual void createPlan(const Building*);		// create a plan for the simulation - the default implementation does nothing but saving the building pointer
-	virtual int nextFloor() = 0;	// get the next floor to visit
-protected:
-	const Building *building;		// pointer to current building, set by createPlan()
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/sim3_elev_strat.hpp}
 
 \subsection{Eine einfache Aufzugstrategie}
 Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
