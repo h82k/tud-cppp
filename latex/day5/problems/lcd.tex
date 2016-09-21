@@ -1,11 +1,15 @@
 \section{LCD}
 In dieser Aufgabe wirst du dich mit dem LCD beschäftigen.
-Zu allererst bekommst du eine kleine Einführung in die Funktionsweise.
+Zu allererst bekommst du eine kleine Einführung in die Funktionsweise des LCD.
 Darauffolgend wirst du ein paar kleine Aufgaben gestellt bekommen, um dich mit der Programmierung des Displays zurecht zu finden.
 
 \subsection*{Einführung LCD}
-Die Ansteuerung des LCD erfolgt über Pins mit festgelegten Funktionen.
-Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorgegeben, sodass die Pins über einfache Namen angesteuert werden können. Die Namen entsprechen den Pins, wie sie im Datenblatt (\url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/blob/master/doc/Display_AV128641YFBY-WSV.pdf}) ab Seite 10 zu finden sind.
+Die Ansteuerung des LCD erfolgt über Pins mit festgelegten Instruktionen.
+Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorgegeben, sodass die Pins über einfache Namen angesteuert werden können. Die Namen entsprechen den Pins, wie sie im Datenblatt
+\begin{quote}
+	\url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/blob/master/doc/Display_AV128641YFBY-WSV.pdf}
+\end{quote}
+ab Seite 10 zu finden sind.
 
 \begin{center}
 	\begin{tabular}{l|l|l}
@@ -23,41 +27,47 @@ Zur Vereinfachung wurden bereits im Projekt für diese Aufgabe Definitionen vorg
 	\end{tabular}
 \end{center}
 
-\paragraph{Display einschalten}
+\paragraph{Data vs. Instruction}
+Bei dem Ansprechen des Displays ist zu unterscheiden zwischen Datenbefehlen und Instruktionsbefehlen.
+Unterscheiden kann man diese an dem Wert, der an dem \lstinline{LCD_PIN_DI} Pin anliegt.
+Ist der Pin auf $0$ gesetzt, handelt es sich um einen Instruktionsbefehl, bei einer $1$, um einen Datenbefehl.
+Intern unterscheiden sie sich darin, ob man einen Befehl an das LCD sendet oder Daten (wenn man auf dem Display zeichnen möchte).
+Jedes mal, wenn man eine Instruktion oder Daten angelegt hat, muss man den Befehl senden (siehe den nächsten Paragraphen).
 
-Das Display muss vor der Benutzung eingeschaltet werden:
-\lstinputlisting{problems/listings/display_onoff.c}
-
-\paragraph{Displayhälften (Chip-Select Signal)}
-Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik, MSB/LSB = Most/Least Significant Bit).
-\begin{center}
-	\includegraphics[width=0.6\textwidth]{figures/display_aufbau}
-\end{center}
-
-Welche Hälfte einen Befehl verarbeiten soll, wird ausgewählt, indem deren Chip-Select-Signal auf 1 gesetzt wird, das andere auf 0:
-\lstinputlisting{problems/listings/display_parts.c}
-
-\subsubsection*{Befehle senden}
+\paragraph{Befehle senden}
 Ein Befehl an das Display besteht grundsätzlich aus zwei Phasen:
 \begin{enumerate}
 \item Setzen der entsprechenden Pins (meist \lstinline{LCD_PIN_DI}, \lstinline{LCD_PORT_DB}).
 	Eventuell selektieren der Displayhälfte über \lstinline{LCD_PIN_CS1, LCD_PIN_CS2}.
 
-\item
-Senden des \lstinline{enable}-Signals.
-Setze dazu den Enable-Pin auf 1, warte kurz, setze den Pin wieder auf 0 und warte erneut kurz.
-Verwende als Warteintervall die Konstante \lstinline{LCD_T}.
+\item Senden des \lstinline{enable}-Signals.
+	Setze dazu den Enable-Pin auf 1, warte kurz, setze den Pin wieder auf 0 und warte erneut kurz.
+	Verwende als Warteintervall die Konstante \lstinline{LCD_T}.
 
-Es empfiehlt sich, für dieses Signal eine eigene Funktion zu schreiben (\lstinline{void lcd_sendEnable(void)}).
+	Es empfiehlt sich, für dieses Signal eine eigene Funktion zu schreiben (\lstinline{void lcd_sendEnable(void)}).
 \end{enumerate}
 
-\subsubsection*{Auf das Display zeichnen}
+\paragraph{Display einschalten}
+Das Display muss vor der Benutzung eingeschaltet werden:
+\lstinputlisting{problems/listings/display_onoff.c}
+
+\paragraph{Displayhälften (Chip-Select Signal)}
+Das Display ist logisch aufgeteilt in zwei Hälften zu je 64 x 64 Pixel (siehe untenstehende Grafik, MSB/LSB = Most/Least Significant Bit).
+
+Welche Hälfte einen Befehl verarbeiten soll, wird ausgewählt, indem deren Chip-Select-Signal auf 1 gesetzt wird, das andere auf 0:
+\lstinputlisting{problems/listings/display_parts.c}
+
+\paragraph{Auf das Display zeichnen}
 Das Vorgehen zum Zeichnen sieht in etwa wie folgt aus:
 \begin{enumerate}
 	\item Setzen der x-Adresse (Zeile)
 	\item Setzen der y-Adresse (Spalte)
 	\item Senden von 8 Bit Daten (eine \glqq{}Zelle\grqq{} von 8 Pixeln Höhe)
 \end{enumerate}
+
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{figures/display_aufbau}
+\end{center}
 
 \subsection{LCD manuell ansteuern}
 
