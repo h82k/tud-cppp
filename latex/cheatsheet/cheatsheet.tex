@@ -130,14 +130,7 @@ Folgendes Programm bleibt unendlich lange in der \lstinline|for|-Schleife und f√
 Die \lstinline|#include|-Anweisung ist notwendig, um das Programm auf dem Mikrocontroller zu verwenden.
 Es bietet Zugang zur Hardware, als auch Systemfunktionen wie zum Beispiel die Warteoperation.
 % TODO wozu NOP?
-\begin{lstlisting}
-#include "mb96348hs.h"
-void main(void) {
-	for (;;) {
-		__wait_nop();
-	}
-}
-\end{lstlisting}
+\lstinputlisting{listings/wait.c}
 % - generisches Programm: main loop, Variablen m√ºssen am Anfang des Scopes deklariert werden
 % - Ansteuerung 7-Segment-Anzeige
 % - Auslesen Taster
