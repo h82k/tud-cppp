@@ -1,17 +1,7 @@
 \section{Exceptions}
 Ähnlich wie in Java können Fehler während der Programmlaufzeit in C++ mittels Exceptions signalisiert werden.
 
-\begin{lstlisting}
-try {
-	...
-	throw <Type>;
-} catch(<Type1> <param name>) {
-	...
-} catch(<Type2> <param name>) {
-	...
-}
-...
-\end{lstlisting}
+\lstinputlisting{problems/listings/exceptions_intro.cpp}
 
 Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java.
 Das aus Java bekannte \lstinline{finally}-Konstrukt existiert in C++ nicht.
@@ -23,21 +13,7 @@ In diesem Fall wird das geworfene Objekt nach der Behandlung im \lstinline{catch
 Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf.
 Beispiel:
 
-\begin{lstlisting}
-// 1. Catch by value
-try {
-	throw C();		// create new object of class C and throw it
-} catch(C c) {		// catch c by value => a copy of c is created when catching
-	...
-}
-
-// 2. Catch by reference
-try {
-	throw C();				// create new object of class C and throw it
-} catch(const C &c) {	// catch c by reference, no copy is created
-	...
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/exceptions_by_what.cpp}
 
 In der Praxis hat es sich durchgesetzt, \emph{by-Value} zu werfen und \emph{by-const-Reference} zu fangen.
 
@@ -51,16 +27,7 @@ Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe.
 Wann wird ein Objekt erstellt/kopiert/gelöscht?
 Teste auch, was passiert, wenn du mehrere \lstinline{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz).
 
-\begin{lstlisting}
-// multiple catch blocks
-try {
-    throw C();
-} catch(C c) {
-    ...
-} catch(const C &c) {
-    ...
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/exceptions_multiple_catch.cpp}
 
 Welcher \lstinline{catch} Block wird aufgerufen?
 Spielt die Reihenfolge eine Rolle?

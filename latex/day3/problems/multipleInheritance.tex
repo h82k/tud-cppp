@@ -15,11 +15,8 @@ Weitere Attribute sind nicht nötig.
 Ändere dazu die Sichtbarkeit der Attribute sowohl von \lstinline{Student} als auch von \lstinline{Employee} von \lstinline{private} auf \lstinline{protected}.
 
 Du wirst feststellen, dass sich die Klasse nicht kompilieren lässt, falls du das Attribut \lstinline{name} direkt verwendest, da in einer \lstinline{StudentAssistant}-Instanz zwei Instanzen von \lstinline{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb müsse mittels dem Scope-Operator $::$ angeben, welche Basis du genau meinst.
-\begin{lstlisting}
-Employee::name
-// or
-Student::name
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/multiInheritance_scope.cpp}
 
 Teste deine Implementation, indem du das Ergebnis von \lstinline{getInfo()} direkt in der \lstinline{main} ausgibst.
 
