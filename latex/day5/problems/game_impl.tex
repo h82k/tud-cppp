@@ -1,22 +1,10 @@
-\input{../common/common_head.tex}
-\newcommand{\exday}{6}
-\cppSetTitle
-
-\begin{document}
-
-% header and title
-\cppSetHeaderAndMakeTitle
-
-\input{../common/how_to_import_solution_projects.text}
-
-% problems
-\section{Implementation eines beliebigen Programms}
+\section{Eigenes Projekt}
 Nachdem du alle Ein- und Ausgabemöglichkeiten des Boards kennengelernt hast, besteht die Aufgabe in diesem Teil darin, ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
 Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anregung dienen.
 Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \lstinline{16FXlib} zu verwenden.
 Die Dokumentation dazu findest du unter \url{http://echtzeitsysteme.github.io/tud-cpp-16FXlib/documentation/index.html}.
 
-\section*{Vorschlag: Pong}
+\subsection*{Vorschlag: Pong}
 Zwei Gegner sollen je einen Balken (Rechteck) am linken oder rechten Rand des Spielfeldes mit den Schiebereglern steuern können, um einen Ball (ein Quadrat) im Spiel zu halten.
 Erreicht der Ball den linken oder rechten Rand des Spielfelds, so bekommt der Spieler auf der anderen Seite einen Punkt und der Ball wird an seine Anfangsposition (die Mitte des Spielfelds) zurückversetzt.
 Erreicht der Ball den oberen oder unteren Rand sowie einen der Balken der Spieler, so wird der Ball reflektiert - verlässt also niemals das Spielfeld.
@@ -29,7 +17,7 @@ Die aktuelle Punktzahl beider Spieler könnte auf der Siebensegmentanzeige ausge
 
 
 
-\section*{Vorschlag: Game of Life}
+\subsection*{Vorschlag: Game of Life}
 \glqq{}Game of Life\grqq{}\footnote{siehe auch \url{http://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens}} besteht aus einem zweidimensionalen Spielfeld.
 Jedes Feld steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist.
 Jede Zelle hat acht Nachbarzellen, die ebenso tot oder lebendig sein können.
@@ -66,7 +54,7 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
 
 
 
-\section*{Weitere Vorschläge}
+\subsection*{Weitere Vorschläge}
 \begin{minipage}{.45\textwidth}
     \begin{center}Asteroids\\\vspace{4ex} \includegraphics[width=.5\textwidth]{figures/img_asteroids.png}\end{center}
     \begin{center}Pacman\\\vspace{4ex}\includegraphics[width=.3\textwidth]{figures/img_pacman.png}\end{center}
@@ -85,5 +73,3 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
 	Da das Board nur zwei Farbwerte ermöglicht, sollte das Bild vor dem Exportieren über den Menüpunkt \textbf{Bild --> Modus} auf \textbf{indiziert \ldots} (Schwarz/Weiß-Palette (1-Bit)) gestellt werden.
 	Anschließend kann man das \lstinline{header_data} Array verwenden, um auf die Bilddaten zuzugreifen.
 }
-
-\end{document}
