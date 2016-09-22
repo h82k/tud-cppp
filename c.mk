@@ -14,6 +14,7 @@ FLASHLY_DIR	:= $(PREFIX)/drive_c/FLASHly
 # wine com port (e.g. use "make WIN_PORT=2" to use the second port)
 WIN_PORT	:= 1
 COM			:= $(PREFIX)/dosdevices/com$(WIN_PORT)
+DISPLAY		?= :0
 
 # linux serial port (either via USB or directly forwarded)
 LIN_PORT	= $(shell echo $$(($(WIN_PORT)-1)))
@@ -76,7 +77,7 @@ endif
 
 # flash the program
 flash_%: %.mhx com
-	$(FLASHLY) $(FFLAGS) -P: $<
+	DISPLAY=$(DISPLAY) $(FLASHLY) $(FFLAGS) -P: $<
 
 # double colon rule - allows the target to be extended
 clean::
