@@ -1,0 +1,38 @@
+What to teach in the C++ part?
+* Project structure
+* Memory layout
+* Pointers and references, arrays, structs, shard_ptr, weak_ptr
+* Basic object orientation, classes, virtual,
+* Templates (pragmatic!)
+* Functions as paramters
+
+NO mixins, std::priority_queue, std::copy,...
+NO functors, method pointers
+NO make
+
+What to teach in the C part?
+* Bitmask operations: Display pixel addresses
+* Macros? <-> constants
+* Eternal loops: polling vs. interrupts
+* How does A/D conversion work?
+* How to address the display?
+* How to read from the touch screen
+* How to read from the temperature/humidity sensor?
+
+http://www.cprogramming.com/tutorial/c-vs-c++.html
+* Memory allocation (<- avoid dynamic memory in Embedded C!)
+* Declare before use not necessary in C
+* (declaration of structs) <- not so important
+* no bool
+* no automtatic "return 0;" at end of main()
+
+http://durofy.com/10-major-differences-between-c-and-c/
+* C is procedural (only functions), C++ is multi-paradigm
+* No data hiding in C (TODO: What about static functions?)
+* Top-down (C) vs. bottom-up (C++)
+* No function overloading
+* No functions in structs
+* No namespaces
+* Standard I/O is different scanf/printf (C) vs. std::cin/std::cout (C++)
+* No references
+* No explicit exception handling
