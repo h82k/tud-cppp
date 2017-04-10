@@ -1,3 +1,6 @@
+#include "lcd.h"
+#include "gfx.h"
+
 void testFillScreen(){
   fillScreen(BLACK);
   fillScreen(RED);
@@ -257,7 +260,7 @@ void testGraphics(void) {
 void rotateAText(void) {
   uint8_t rotation;
   for( rotation=0; rotation<4; rotation++) {
-    setRotation(rotation);
+    //setRotation(rotation);
     testText();
     delay(2000);
   }
