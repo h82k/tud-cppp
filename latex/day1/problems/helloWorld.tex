@@ -1,10 +1,10 @@
 \section{Hello World}
-Lege ein neues C++ Projekt an, indem du \textbf{File $\rightarrow$ New $\rightarrow$ C++ Project} im Eclipse Menü wählst und als Projekttyp \textbf{Empty Project} auswählst.
-Füge eine neue Sourcedatei zum Projekt hinzu, indem du mit der rechten Maustaste auf das Projekt klickst und \textbf{New $\rightarrow$ Source File} auswählst.
-Gib als Dateinamen \texttt{main.cpp} ein und bestätige mit \textbf{Finish}.
-Füge folgendes Programm ein, kompiliere es mit Hilfe des Build-Symbols (,,Hammer``) und führe es aus.
+Lege ein neues C++ Projekt an, indem du \textbf{Workspace $\rightarrow$ New project} im CodeLite Menü wählst und als Projekttyp \textbf{CPPP/C++ Projekt} auswählst.
+Wähle einen passenden Projektnamen, z.b. \texttt{Tag1\_Aufgabe1}. Als Projektpfad sollte \texttt{/home/cppp/CPPP/Workspace} ausgewählt sein. Achte darauf, dass der Haken bei \texttt{Create the project under a separate directory} gesetzt ist.
 
-% FIX that avoids undesired page breaks
+Das Projekt enthält bereits eine Datei \texttt{src/main.cpp}. Erweitere die \texttt{main}-Funktion wie gezeigt und kompiliere das Projekt mit einem Klick auf das Build-Symbol (grünes Rechteck mit weißem Pfeil). Führe dann das Programm mit einem Klick auf das Zahnrad-Symbol aus.
+
+% fix that avoids undesired page breaks
 \begin{minipage}{\textwidth} 
 \begin{lstlisting}
 #include <iostream>
@@ -14,46 +14,43 @@ int main() {
 \end{lstlisting}
 \end{minipage}
 
-
-Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \texttt{main} und Rückgabetyp \texttt{int} außerhalb von Klassen im globalen Namensraum besitzen. Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
+Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetypen \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen.
+Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
 Der Rückgabetyp wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
 Typischerweise wird im Erfolgsfall 0 zurückgegeben.
 
-Die erste Zeile des obigen Programms bindet den Header der \texttt{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
+Die erste Zeile des obigen Programms bindet den Header der \lstinline{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
 Diese Bibliothek ist Teil der C++-Standardbibliothek, welche eine Sammlung an generischen Containern, Algorithmen und vielen häufig genutzten Funktionen ist.
-Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \texttt{namespace} (in diesem Fall \texttt{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \texttt{cout} und \texttt{endl}).
-Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \texttt{namespace} zu kapseln, welcher analog zu \texttt{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
+Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \lstinline{namespace} (in diesem Fall \lstinline{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \lstinline{cout} und \lstinline{endl}).
+Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \lstinline{namespace} zu kapseln, welcher analog zu \lstinline{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
 
-In der dritten Zeile wird der String \texttt{"Hello World"} in \texttt{std::cout} eingefügt, gefolgt von \texttt{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
+In der dritten Zeile wird der String \lstinline{"Hello World"} in \lstinline{std::cout} eingefügt, gefolgt von \lstinline{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
 
 \hints{
-	\item Einzeilige Kommentare können durch \texttt{//}, mehrzeilige durch \texttt{/* ... */} eingeschlossen werden.
+	\item Einzeilige Kommentare können durch \lstinline{//}, mehrzeilige durch \lstinline{/* ... */} eingeschlossen werden.
 	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
-	\item Die \texttt{return} Anweisung darf in der \texttt{main} Funktion weggelassen werden.
+	\item Die \lstinline{return} Anweisung darf in der \lstinline{main} Funktion weggelassen werden.
 }
 
 \subsection*{Häufige (Compiler-)Fehlermeldungen}
 
-Im Folgenden sind einige Fehlermeldungen des \texttt{gcc} zusammen mit möglichen Lösungsstrategien aufgelistet.
+Im Folgenden sind einige Fehlermeldungen von \texttt{clang} zusammen mit möglichen Lösungsstrategien aufgelistet.
 Die generelle Faustregel lautet: 
-\textbf{Compilerfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
+\textbf{Kompilierfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
 Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
 
 % Indents all of the following paragraphs by 1cm
 \setlength{\leftskip}{1cm}
 
 \begin{verbatim}
-Launching failed: Binary not found
+main.exe: not found
 \end{verbatim}
 
-Dieser Fehler wird von Eclipse geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
+Dieser Fehler wird von CodeLite geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
 Das kann zwei Gründe haben:
 \begin{itemize}
 \item Der Kompiliervorgang ist gescheitert. Prüfe die \texttt{Console} auf Fehler.
-\item Die Binary existiert, wird aber nicht von Eclipse erkannt.
-Hier solltest du sicherstellen, dass der \texttt{Elf Parser} (oder \texttt{PE Windows Parser} unter Windows) aktiv ist:
-\texttt{Window -> Preferences -> C/C++Build / Settings -> Tab: Binary Parsers -> Elf Parser}. 
-Alternativ kann man in der \texttt{Run Configuration} die auszuführende Datei manuell eintragen.
+\item Der Kompiliervorgang wurde noch nicht ausgeführt. Kompiliere das Programm mit einem Klick auf das Build-Symbol.
 \end{itemize}
 
 
@@ -71,7 +68,7 @@ int main() {
 }
 \end{lstlisting}
 
-Falls im Header \texttt{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \texttt{int main() \{} beziehen!!
+Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
 
 \begin{verbatim}
   error: invalid conversion from <A> to <B>.

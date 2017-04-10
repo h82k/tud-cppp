@@ -6,10 +6,8 @@ Callbacks können als Alternative zum Observer Pattern\footnote{\url{http://de.w
 Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die aufgerufen werden soll, sobald der Button gedrückt wird.
 Wir werden Callbacks dazu verwenden, um den Benutzer bei jedem Schritt eines laufenden Algorithmus über den aktuellen Fortschritt zu informieren.
 
-\begin{enumerate}
-
-\item \textbf{Basisalgorithmus}
-Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.\footnote{\url{http://de.wikipedia.org/wiki/Turm_von_Hanoi}}
+\subsection{Basisalgorithmus}
+Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.\footnote{\url{http://de.wikipedia.org/wiki/Turm_von_Hanoi}}\\
 \begin{algorithm}[H]
  \SetAlgoLined
  \textbf{funktion} hanoi (\textbf{Number} i, \textbf{Pile} a, \textbf{Pile} b, \textbf{Pile} c) { \\
@@ -32,7 +30,7 @@ Du brauchst keine Türme zu modellieren und zu verschieben, es reicht, lediglich
 1 -> 3
 \end{lstlisting}
 
-\item \textbf{Callbacks mit Funktionszeigern}
+\subsection{Callbacks mit Funktionszeigern}
 Nun wollen wir die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
 
 Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet.
@@ -46,7 +44,7 @@ void hanoi(int i, int a, int b, int c, void(*callback)(int from, int to)) {
 }
 \end{lstlisting}
 
-Nun können wir eine Funktion mit zwei Parametern an \emph{hanoi()} übergeben.
+Nun können wir eine Funktion mit zwei Parametern an \lstinline{hanoi()} übergeben.
 \begin{lstlisting}
 void print(int from, int to) {
 	cout << from << " -> " << to << endl;
@@ -55,7 +53,7 @@ void print(int from, int to) {
 hanoi(3, 1, 2, 3, print);
 \end{lstlisting}
 
-\item \textbf{Callbacks mit Funktoren}
+\subsection{Callbacks mit Funktoren}
 Ein Nachteil der vorherigen Implementation ist, dass nur reine Funktionen als Callback übergeben werden können.
 Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates.
 Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
@@ -64,27 +62,28 @@ template<typename T>
 void hanoi(int i, int a, int b, int c, T callback) ...
 \end{lstlisting}
 
-Dadurch kann an \emph{hanoi()} fast alles übergeben werden, was sich syntaktisch mittels
+Dadurch kann an \lstinline{hanoi()} fast alles übergeben werden, was sich syntaktisch mittels
 \begin{lstlisting}
 	callback(a, c);
 \end{lstlisting}
-aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Functors}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
-Dabei müssen nicht einmal die Parametertypen (\emph{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist.
+aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Funktoren}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
+Dabei müssen nicht einmal die Parametertypen (\lstinline{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist.
 
-Teste deine Implementation mit einem Functor.
-Schreibe dafür eine einfache Klasse und überlade deren \emph{operator()}:
+Teste deine Implementation mit einem Funktor.
+Schreibe dafür eine einfache Klasse und überlade deren \lstinline{operator()}:
 \begin{lstlisting}
 	void operator()(int from, int to);
 \end{lstlisting}
 
-\item \textbf{Callbacks mit \emph{Callback}-Klasse}
+\subsection{Callbacks mit \lstinline{Callback}-Klasse}
 
 \paragraph*{Probleme der bisherigen Implementation}
 Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ansprechende Möglichkeit für Callbacks geliefert, beherbergt jedoch mehrere, teils gravierende, Schattenseiten.
 
 Zum einen ist es dadurch immer noch nicht möglich, beliebige Methoden einer Klasse als Callback zu übergeben.
 Durch Methodencallbacks könnten Klassen mehrere unabhängige Callback-Methoden besitzen.
-Zum anderen ist \emph{hanoi} nun an den Callback-Typ \textbf{gekoppelt}. Wenn wir also \emph{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback.
+Zum anderen ist \lstinline{hanoi} nun an den Callback-Typ \textbf{gekoppelt}.
+Wenn wir also \lstinline{hanoi} selbst an eine Funktion/Methode übergeben wollen, muss der Callback-Typ bei der Übergabe mit angegeben werden und zerstört somit die Unabhängigkeit der Funktion von ihrem Callback.
 Dies kann sich insbesondere bei komplexeren Anwendungen von Callbacks sehr negativ widerspiegeln.
 Stell dir vor, du hättest ein GUI-Framework mit verschiedenen Elementen, die Callbacks nutzen, z.B. Buttons.
 Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt.
@@ -96,11 +95,12 @@ void doSomethingWithButton(Button<T> &btn);
 \end{lstlisting}
 
 Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
-Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Compile-Zeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
+Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Kompilierzeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
 
-\paragraph*{Lösung mittels \emph{Callback}-Klasse}
+\paragraph*{Lösung mittels \lstinline{Callback}-Klasse}
 
-Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\emph{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist. Ziel ist es, folgendes zu ermöglichen:
+Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\lstinline{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist.
+Ziel ist es, folgendes zu ermöglichen:
 \begin{lstlisting}
 void hanoi(..., Callback callback) {
 	...
@@ -114,17 +114,18 @@ hanoi(..., Callback(&C::print, &c)); // method callback
 \end{lstlisting}
 
 Die Idee dahinter ist Folgendes:
-Wir definieren eine abstrakte Klasse \emph{CallbackBase}, die eine abstrakte Methode \emph{void call() = 0} enthält.
-Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \emph{call()} entsprechend reimplementiert.
+Wir definieren eine abstrakte Klasse \lstinline{CallbackBase}, die eine abstrakte Methode \lstinline{void call() = 0} enthält.
+Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \lstinline{call()} entsprechend reimplementiert.
 
 \begin{center}
 \includegraphics[width=.7\textwidth]{figures/callback_metamodel.png}
 \end{center}
 
-\paragraph*{\emph{CallbackBase}}
+\paragraph*{\lstinline{CallbackBase}}
 
-Fange mit der Klasse \emph{CallbackBase} an.
-Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \emph{call()} einen Parameter vom Typ \emph{ParamT} hinzu, wobei \emph{ParamT} ein Template-Pameter von \emph{CallbackBase} sein soll. Der Klassenrumpf lautet also
+Fange mit der Klasse \lstinline{CallbackBase} an.
+Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \lstinline{call()} einen Parameter vom Typ \lstinline{ParamT} hinzu, wobei \lstinline{ParamT} ein Template-Parameter von \lstinline{CallbackBase} sein soll.
+Der Klassenrumpf lautet also
 
 \begin{lstlisting}
 template<typename ParamT>
@@ -138,16 +139,17 @@ public:
 Falls ein Callback eigentlich mehrere Parameter erfordert, müssen diese entsprechend in ein Containerobjekt gepackt werden.
 Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, würden aber den Rahmen dieses Praktikums sprengen.
 
-\emph{Tipp}: Du kannst diese und alle nachfolgenden Klassen in einem einzigen Header implementieren, weil die Klassen sehr kurz sind und außerdem semantisch stark zusammenhängen.
+\hints{
+    \item Du kannst diese und alle nachfolgenden Klassen in einem einzigen Header implementieren, weil die Klassen sehr kurz sind und außerdem semantisch stark zusammenhängen.
+}
 
-
-\item
-\textbf{Klasse \emph{FunctionCallback}}:
-Implementiere nun die erste Unterklasse \emph{template<typename ParamT> FunctionCallback}, die von \emph{CallbackBase<ParamT>} erbt.  \emph{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
-Ebenso soll \emph{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
+\subsection{Klasse \lstinline{FunctionCallback}}
+Implementiere nun die erste Unterklasse \lstinline{template<typename ParamT> FunctionCallback}, die von \lstinline{CallbackBase<ParamT>} erbt.
+\lstinline{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
+Ebenso soll \lstinline{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
 
 Teste deine Implementation.
-Lasse \emph{hanoi()} einen Zeiger auf \emph{CallbackBase} nehmen, übergebe aber die Adresse eines \emph{FunctionCallback} Objektes.
+Lasse \lstinline{hanoi()} einen Zeiger auf \lstinline{CallbackBase} nehmen, übergebe aber die Adresse eines \lstinline{FunctionCallback} Objektes.
 Du kannst folgende Vorlage verwenden:
 \begin{lstlisting}
 #include<utility>
@@ -169,49 +171,36 @@ int main() {
 \end{lstlisting}
 
 
-\item
-\textbf{Klasse \emph{FunctorCallback}}:
-Implementiere nun die Unterklasse \emph{template<typename ParamT, typename ClassT> FunctorCallback}.
-Zusätzlich zum Parameter-Typ muss hier auch der Typ der Functor-Klasse angegeben werden.
-Speichere das zu verwendende Functor-Objekt als Referenz ab, um Kopien zu vermeiden.
+\subsection{Klasse \lstinline{FunctorCallback}}
+Implementiere nun die Unterklasse \lstinline{template<typename ParamT, typename ClassT> FunctorCallback}.
+Zusätzlich zum Parameter-Typ muss hier auch der Typ der Funktor-Klasse angegeben werden.
+Speichere das zu verwendende Funktor-Objekt als Referenz ab, um Kopien zu vermeiden.
 Achte auch im Konstruktor darauf, dass keine Kopien des Funktors gemacht werden.
 Teste deine Implementation!
 
 
 
-\item
-\textbf{Klasse \emph{MethodCallback}}:
-Implementiere nun die letzte Unterklasse \emph{template<typename ParamT, typename ClassT> MethodCallback}.
+\subsection{Klasse \lstinline{MethodCallback}}
+Implementiere nun die letzte Unterklasse \lstinline{template<typename ParamT, typename ClassT> MethodCallback}.
 Beachte, dass nun zwei Attribute nötig sind - ein Methodenzeiger und ein Zeiger auf das zu verwendende Objekt.
 Teste deine Implementation.
 
-\emph{Tipp}: Verwende beispielsweise folgende Signatur für den Konstruktor von \emph{MethodCallback}:
-\begin{lstlisting}
-MethodCallCallback(void(ClassT::*method)(ParamT), ClassT *object)
-\end{lstlisting}
+\hints{
+    \item Verwende beispielsweise folgende Signatur für den Konstruktor von \lstinline{MethodCallback}: \lstinline{MethodCallback(void(ClassT::*method)(ParamT), ClassT *object)}
+    \item Gegeben einen Zeiger \lstinline{object} auf ein Objekt, einen Zeiger \lstinline{method} auf eines seiner Methoden und einen Parameter \lstinline{p} für die Methode, sieht ein Aufruf von \lstinline{method} wie folgt aus: \lstinline{(object->*method)(p);}
+}
 
-\emph{Tipp 2}: Gegeben einen Zeiger \emph{object} auf ein Objekt, einen Zeiger \emph{method} auf eines seiner Methoden und einen Parameter \emph{p} für die Methode, sieht ein Aufruf von \emph{method} wie folgt aus:
-\begin{lstlisting}
-	(object->*method)(p);
-\end{lstlisting}
-
-\item
-\textbf{Klasse \emph{Callback}}:
+\subsection{Klasse \lstinline{Callback}}
 Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.
 Jedoch muss ein Callback-Objekt per Zeiger/Referenz übergeben werden, sodass das dir schon bekannte Problem der Zuständigkeit für die Zerstörung eines Objekts entsteht.
 Außerdem muss man beim Erstellen eines Callbacks explizit den Typ der Unterklasse angeben.
 Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um die Speicherverwaltung von Callbacks kümmert und bei der Konstruktion die passende Unterklasse selbst aussucht.
 
-Schreibe eine Klasse \emph{template<typename ParamT> Callback}, die einen Smart Pointer auf ein \emph{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \emph{operator()}, der den Aufruf einfach an das \emph{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet.
+Schreibe eine Klasse \lstinline{template<typename ParamT> Callback}, die einen Smart Pointer auf ein \lstinline{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \lstinline{operator()}, der den Aufruf einfach an das \lstinline{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet.
 
 Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
-Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \emph{FunctionCallback} instanziieren.
-Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \emph{FunctorCallback} instanziieren, und der dritte entsprechend ein \emph{MethodCallback}.
-Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \emph{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.
+Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \lstinline{FunctionCallback} instantiieren.
+Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \lstinline{FunctorCallback} instantiieren, und der dritte entsprechend ein \lstinline{MethodCallback}.
+Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \lstinline{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.
 
-Teste deine Implementation in Zusammenhang mit der \emph{hanoi}-Funktion. Du kannst das \emph{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden.
-
-\end{enumerate}
-
-\textbf{Nachwort}:
-Für produktive C++-Programme bietet Boost fertige Funktionen und Klassen, um Callbacks zu realisieren, z.B. \emph{boost::function<...>} und \emph{boost::bind()}\footnote{\url{http://www.boost.org/doc/libs/1_55_0/doc/html/function.html}}. Diese können mit beliebiger Anzahl von Parametern umgehen und beinhalten viele weitere Features.
+Teste deine Implementation in Zusammenhang mit der \lstinline{hanoi}-Funktion. Du kannst das \lstinline{Callback}-Objekt auch per Wert übergeben, da intern nur Zeiger kopiert werden.

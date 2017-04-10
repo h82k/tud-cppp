@@ -6,7 +6,7 @@
 # delete the default suffixes (disable implicit rules)
 .SUFFIXES:
 # PHONY targets (targets that do not represent a file)
-.PHONY: clean all
+.PHONY: clean all doxygen clean_doxygen clean_all
 
 # compiler options
 CC		:= clang++
@@ -44,3 +44,12 @@ $(BUILD)/%.o: %.cpp
 
 clean:
 	rm -rf $(BUILD)
+
+doxygen:
+	if [ ! -e Doxyfile ]; then ( doxygen -g ) fi
+	doxygen
+
+clean_doxygen:
+	rm -rf html latex Doxyfile
+
+clean_all: clean clean_doxygen

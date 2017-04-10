@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+    \def\blockdist{2}
+    \def\captiondist{0.35}
+    \tikzstyle{triple}=[rectangle split, rectangle split part fill={white, white, yellow}, thick, rectangle split parts=3, draw, align=center, text width=1.7cm]
+    \tikzstyle{arrow}=[->, thick]
+
+    % nodes
+    \node (0) [triple] {next \nodepart{second}previous \nodepart{third} content};
+    \path (0.east)+(\blockdist,0) node (1) [triple] {next \nodepart{second}previous \nodepart{third} content};
+    \path (1.east)+(\blockdist,0) node (2) [triple] {next \nodepart{second}previous \nodepart{third} content};
+    \path (2.east)+(\blockdist,0) node (3) [triple] {next \nodepart{second}previous \nodepart{third} content};
+    \path (2.east)+(\blockdist,0) node (3) [triple] {next \nodepart{second}previous \nodepart{third} content};
+
+    \coordinate (mid) at ($(1)!0.5!(2)$);
+    \path (mid.south)+(0,-3) node (root) [triple, rectangle split part fill={white, white, white}] {first \nodepart{second}last \nodepart{third}currentSize};
+
+    \path (0.west)+(-1.5,0) node (n1) {\textbf{NULL}};
+    \path (3.25)+(1.5,0) node (n2) {\textbf{NULL}};
+
+    % arrows
+    \path[arrow] (0.25) edge (1.155);
+    \path[arrow] (1.25) edge (2.155);
+    \path[arrow] (2.25) edge (3.155);
+    \path[arrow] (3.25) edge (n2.west);
+
+    \path[arrow] (3) edge (2);
+    \path[arrow] (2) edge (1);
+    \path[arrow] (1) edge (0);
+    \path[arrow] (0) edge (n1.east);
+
+    \draw[arrow] (root.0) -| (3.south);
+    \draw[arrow] (root.155) -| (0.south);
+
+    % captions
+    \path (0.north)+(0,\captiondist) node (c0) [] {\textbf{ListItem}};
+    \path (1.north)+(0,\captiondist) node (c1) [] {\textbf{ListItem}};
+    \path (2.north)+(0,\captiondist) node (c2) [] {\textbf{ListItem}};
+    \path (3.north)+(0,\captiondist) node (c3) [] {\textbf{ListItem}};
+    \path (root.north)+(0,\captiondist) node (croot) [] {\textbf{List}};
+\end{tikzpicture}

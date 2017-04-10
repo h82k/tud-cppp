@@ -43,7 +43,7 @@ void List::insertElementAt(int i, int pos) {
 	if (pos <= 0) {
 		prependElement(i);
 	}
-	if (pos >= getSize()) {
+	else if (pos >= getSize()) {
 		appendElement(i);
 	}
 	else {

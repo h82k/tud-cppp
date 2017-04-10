@@ -1,10 +1,3 @@
-/*
- * TreeNode.cpp
- *
- *  Created on: Aug 15, 2013
- *      Author: jgdo
- */
-
 #include "TreeNode.hpp"
 #include <iostream>
 

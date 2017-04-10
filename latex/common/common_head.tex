@@ -1,7 +1,9 @@
+\providecommand{\additionalOptionsForClass}{}
 \documentclass[
   accentcolor=tud1c,	% Color theme for TUD corporate design
   colorbacktitle,		% Titlepage has colored background for title area
   inverttitle,			% Font color of title on titlepage is inverted
+  \additionalOptionsForClass
   %german%,
   %twoside
 ]{tudexercise}
@@ -13,6 +15,22 @@
 \usepackage{amsmath}
 \usepackage{algorithm2e}
 \usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{cleveref}
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}\xspace}%
+\newcommand{\xmark}{\ding{55}\xspace}%
+
+\usepackage{todonotes}
+%\usepackage[disable]{todonotes} % Use this line to hide all todos
 
 \definecolor{commentgreen}{RGB}{50,127,50}
 \lstloadlanguages{C++,[gnu]make}
@@ -49,14 +67,19 @@
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
 \newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
 
-\newcommand{\cppSetTitle}{
+\newcommand{\cppSetTitleGeneric}[1]{
 	\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
-	\subtitle{Übungen für den \exday{}. Tag}
+	\subtitle{#1}
+    \newcommand{\examheadertitle}{#1}
+}
+
+\newcommand{\cppSetTitle}{
+    \cppSetTitleGeneric{Übungen für den \exday{}. Tag}
 }
 
 \newcommand{\cppSetHeaderAndMakeTitle}{
 	\begin{examheader}
-		\textmb{Übung zum C/C++-Praktikum - Tag \exday{}}
+        \examheadertitle
 	\end{examheader}
 	\maketitle
 }
@@ -68,3 +91,30 @@
 		#1
 	\end{itemize}
 }
+
+\newcommand{\optional}{\xspace(optional)}
+\newcommand{\experimental}{\xspace(experimentell)}
+
+\usepackage{fancybox}
+\newcommand{\optionaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Die Klausur kann ohne diese Aufgabe bestanden werden. Wir empfehlen aber sie trotzdem zu bearbeiten.}}
+	\end{center}
+}
+\newcommand{\experimentaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/issues}}}
+	\end{center}
+}
+
+\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
+\newcommand{\filename}[1]{\texttt{#1}}
+
+\newcommand{\RK}[1]{\todo[]{\textbf{RK:} #1}}
+\newcommand{\RKi}[1]{\todo[inline]{\textbf{RK:} #1}}
+\newcommand{\PJ}[1]{\todo[]{\textbf{PJ:} #1}}
+\newcommand{\PJi}[1]{\todo[inline]{\textbf{PJ:} #1}}
+\newcommand{\LK}[1]{\todo[]{\textbf{LK:} #1}}
+\newcommand{\LKi}[1]{\todo[inline]{\textbf{LK:} #1}}

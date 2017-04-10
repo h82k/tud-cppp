@@ -1,5 +1,10 @@
+
+ifndef EXERCISES_ROOT
+$(error EXERCISES_ROOT not defined!)
+endif
+
 # define paths to libraries in use
-LIBRARIES	:= ../../../lib/uc_includes
+LIBRARIES := $(EXERCISES_ROOT)/lib/uc_includes $(EXERCISES_ROOT)/lib/16FXlib
 
 # Set multiple macros appending "-D MACRO_NAME" (only definition) or
 # "-D MACRO_NAME=VALUE" to the MACROS variable below.
@@ -8,4 +13,4 @@ LIBRARIES	:= ../../../lib/uc_includes
 #MACROS		:= -D ENABLE_FRAMEBUFFER
 
 # include main makefile
-include ../../../c.mk
+include $(EXERCISES_ROOT)/c.mk

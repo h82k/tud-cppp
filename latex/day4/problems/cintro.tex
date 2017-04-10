@@ -1,18 +1,18 @@
 \section{C Einführung}
-In den nächsten Tagen werden wir Programme für eine Embedded Plattform in C entwickeln.
+In den nächsten Tagen werden wir Programme für eine Embedded-Plattform in C entwickeln.
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
 
 \begin{itemize}
-	\item Kein OO-Konzept, keine Klassen, nur Strukturen (\texttt{struct}).
+	\item Kein OO-Konzept, keine Klassen, nur Strukturen (\lstinline{struct}).
 	\item Keine Templates
 	\item Keine Referenzen, nur Zeiger und Werte
-	\item Kein \texttt{new} und \texttt{delete}, sondern \texttt{malloc()} und \texttt{free()} (\verb|#include <stdlib.h>|)
+	\item Kein \lstinline{new} und \lstinline{delete}, sondern \lstinline{malloc()} und \lstinline{free()} (\verb|#include <stdlib.h>|)
 	\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
-	\item Parameterlose Funktionen müssen \texttt{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
-	\item Keine Streams, stattdessen \texttt{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
-	\item Kein \texttt{bool} Datentyp, stattdessen wird 0 als \texttt{false} und alle anderen Zahlen als \texttt{true} gewertet
+	\item Parameterlose Funktionen müssen \lstinline{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
+	\item Keine Streams, stattdessen \lstinline{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
+	\item Kein \lstinline{bool} Datentyp, stattdessen wird 0 als \lstinline{false} und alle anderen Zahlen als \lstinline{true} gewertet
 	\item Keine Default-Argumente
-	\item Keine \texttt{std::string} Klasse, nur \texttt{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
+	\item Keine \lstinline{std::string} Klasse, nur \lstinline{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
 	\item Keine Namespaces
 \end{itemize}
 
@@ -20,7 +20,7 @@ Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail e
 
 \subsection{Kein OO-Konzept}
 In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
-Stattdessen gibt es Strukturen (\texttt{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.
+Stattdessen gibt es Strukturen (\lstinline{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.
 
 Die Syntax dafür lautet
 
@@ -40,9 +40,9 @@ struct Point {
 };
 \end{lstlisting}
 
-Die Sichtbarkeit aller Attribute ist automatisch \texttt{public}.
+Die Sichtbarkeit aller Attribute ist automatisch \lstinline{public}.
 
-Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \texttt{struct} angeben:
+Um den definierten \textbf{struct} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \lstinline{struct} angeben:
 
 \begin{lstlisting}
 void foo(struct Point *p) {
@@ -55,14 +55,14 @@ int main(void) {
 }
 \end{lstlisting}
 
-Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \texttt{typedef} auf den \texttt{struct} definiert:
+Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \lstinline{typedef} auf den \lstinline{struct} definiert:
 
 \begin{lstlisting}
 typedef struct Point Point_t;
 Point_t point;
 \end{lstlisting}
 
-Man kann die Deklaration eines \texttt{struct} auch direkt in den \texttt{typedef} einbauen:
+Man kann die Deklaration eines \lstinline{struct} auch direkt in den \lstinline{typedef} einbauen:
 
 \begin{lstlisting}
 typedef struct {
@@ -71,10 +71,10 @@ typedef struct {
 } Point;
 \end{lstlisting}
 
-\subsection{Kein \texttt{new} und \texttt{delete}}
+\subsection{Kein \lstinline{new} und \lstinline{delete}}
 
-Anstelle von \texttt{new} und \texttt{delete} werden die Funktionen \texttt{malloc} und \texttt{free} verwendet, um Speicher auf dem Heap zu reservieren.
-Diese sind im Header \texttt{stdlib.h} deklariert.
+Anstelle von \lstinline{new} und \lstinline{delete} werden die Funktionen \lstinline{malloc} und \lstinline{free} verwendet, um Speicher auf dem Heap zu reservieren.
+Diese sind im Header \filename{stdlib.h} deklariert.
 
 \begin{lstlisting}
 #include <stdlib.h>
@@ -83,12 +83,12 @@ Point *points = malloc(10 * sizeof(Point)); // reserve memory for 10 points
 free(points);
 \end{lstlisting}
 
-\subsection{Ausgabe auf Konsole per \texttt{printf}}
+\subsection{Ausgabe auf Konsole per \lstinline{printf}}
 
-Um Daten auf der Konsole auszugeben, kann die Funktion \texttt{printf} verwendet werden.
-\texttt{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
+Um Daten auf der Konsole auszugeben, kann die Funktion \lstinline{printf} verwendet werden.
+\lstinline{printf()} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
 Der Format-String legt fest, wie die nachfolgenden Argumente ausgegeben werden.
-Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \texttt{printf()} zu nutzen, muss der Header \texttt{stdio.h} eingebunden werden.
+Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \lstinline{printf()} zu nutzen, muss der Header \filename{stdio.h} eingebunden werden.
 
 \begin{lstlisting}
 #include <stdio.h>
@@ -103,7 +103,7 @@ char c;
 printf("c = %c, i = %d\n", c, i); // Zeichen und Integer ausgeben
 \end{lstlisting}
 
-Weitere Möglichkeiten von \texttt{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
+Weitere Möglichkeiten von \lstinline{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
 
 \subsection{}
 Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt.

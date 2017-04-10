@@ -3,7 +3,7 @@
 .PHONY: all clean clean-all com
 
 # wine command
-PREFIX		:= ~/tools
+PREFIX		:= ~/.wine
 DEBUG		:= -all
 WINE		:= WINEPREFIX=$(PREFIX) WINEDEBUG=$(DEBUG) wine
 
@@ -26,6 +26,7 @@ FASM907S	:= $(WINE) $(SOFTUNE_DIR)/FASM907S.EXE
 FLNK907S	:= $(WINE) $(SOFTUNE_DIR)/FLNK907S.EXE
 F2MS		:= $(WINE) $(SOFTUNE_DIR)/F2MS.EXE
 FLASHLY		:= $(WINE) $(FLASHLY_DIR)/FLASHly.exe
+ERRCONV		= $(EXERCISES_ROOT)/tools/errconv
 
 # sources
 SOURCES		:= $(sort $(shell find . -name "*.c"))
@@ -59,7 +60,7 @@ endif
 # generate assembly file
 %.asm: %.c
 %.asm: %.c
-	-$(FCC907S) $(CFLAGS) -o $@ $<
+	$(FCC907S) $(CFLAGS) -o $@ $< | $(ERRCONV)
 
 # generate object file
 %.o: %.asm
