@@ -2,7 +2,7 @@
  * Debug.c is used for the verification of a new development plattform
  */
 
-#include "debug.h"
+#include "IntegrityCheck.h"
 
 void debugPeripherie(){
       setCursor(480,320);
