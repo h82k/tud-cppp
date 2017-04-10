@@ -1,0 +1,74 @@
+\section{Hello World}
+Lege ein neues C++ Projekt an, indem du \textbf{Workspace $\rightarrow$ New project} im CodeLite Menü wählst und als Projekttyp \textbf{CPPP/C++ Projekt} auswählst.
+Wähle einen passenden Projektnamen, z.b. \texttt{Tag1\_Aufgabe1}. Als Projektpfad sollte \texttt{/home/cppp/CPPP/Workspace} ausgewählt sein. Achte darauf, dass der Haken bei \texttt{Create the project under a separate directory} gesetzt ist.
+
+Das Projekt enthält bereits eine Datei \texttt{src/main.cpp}. Erweitere die \texttt{main}-Funktion wie gezeigt und kompiliere das Projekt mit einem Klick auf das Build-Symbol (grünes Rechteck mit weißem Pfeil). Führe dann das Programm mit einem Klick auf das Zahnrad-Symbol aus.
+
+% fix that avoids undesired page breaks
+\begin{minipage}{\textwidth} 
+	\lstinputlisting{problems/listings/helloworld.cpp}
+\end{minipage}
+
+Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetypen \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen.
+Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
+Der Rückgabetyp wird verwendet um dem Aufrufer (Betriebssystem, Shell, \dots) den Erfolg oder Misserfolg der Ausführung zu signalisieren.
+Typischerweise wird im Erfolgsfall 0 zurückgegeben.
+
+Die erste Zeile des obigen Programms bindet den Header der \lstinline{iostream} Bibliothek ein, welche unter anderem Klassen und Funktionen zur Ein- und Ausgabe mit Hilfe von $<<$ (\emph{insertion operator}) und $>>$ (\emph{extraction operator}) anbietet.
+Diese Bibliothek ist Teil der C++-Standardbibliothek, welche eine Sammlung an generischen Containern, Algorithmen und vielen häufig genutzten Funktionen ist.
+Um auf die Elemente dieser Bibliothek zuzugreifen, muss man ihren \lstinline{namespace} (in diesem Fall \lstinline{std}) voranstellen, gefolgt von zwei Doppelpunkten und dem gewünschten Element (in diesem Fall \lstinline{cout} und \lstinline{endl}).
+Um Überschneidungen mit eigenen Definitionen zu vermeiden, ist es üblich Bibliotheken in einem \lstinline{namespace} zu kapseln, welcher analog zu \lstinline{package} in Java funktioniert, jedoch nicht an Ordnerstrukturen gebunden ist.
+
+In der dritten Zeile wird der String \lstinline{"Hello World"} in \lstinline{std::cout} eingefügt, gefolgt von \lstinline{std::endl}, das einen Zeilenumbruch erzeugt und die Ausgabepuffer leert. Für weitere Informationen zur Kommandozeilenausgabe siehe \url{http://www.cplusplus.com/doc/tutorial/basic_io/} und \url{http://www.cplusplus.com/reference/iomanip/}.
+
+\hints{
+	\item Einzeilige Kommentare können durch \lstinline{//}, mehrzeilige durch \lstinline{/* ... */} eingeschlossen werden.
+	\item Anders als in Java können Funktionen auch außerhalb von Klassen definiert und verwendet werden.
+	\item Die \lstinline{return} Anweisung darf in der \lstinline{main} Funktion weggelassen werden.
+}
+
+\subsection*{Häufige (Compiler-)Fehlermeldungen}
+
+Im Folgenden sind einige Fehlermeldungen von \texttt{clang} zusammen mit möglichen Lösungsstrategien aufgelistet.
+Die generelle Faustregel lautet: 
+\textbf{Kompilierfehler sollten immer von oben nach unten abgearbeitet werden, so wie sie in der Konsole erscheinen.}
+Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
+
+% Indents all of the following paragraphs by 1cm
+
+\begin{verbatim}
+  main.exe: not found
+\end{verbatim}
+
+Dieser Fehler wird von CodeLite geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
+Das kann zwei Gründe haben:
+\begin{itemize}
+\item Der Kompiliervorgang ist gescheitert. Prüfe die \texttt{Console} auf Fehler.
+\item Der Kompiliervorgang wurde noch nicht ausgeführt. Kompiliere das Programm mit einem Klick auf das Build-Symbol.
+\end{itemize}
+
+\begin{verbatim}
+  error: expected ';' before ...
+\end{verbatim}
+
+Dies bedeutet, dass in der Zeile davor ein \textbf{;} vergessen wurde.
+Allgemein beziehen sich Fehlermeldungen \textbf{expected ... before ...} häufig auf die Zeile \textbf{vor} dem markierten Statement.
+Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen Header-Datei sein kann. Beispiel:
+
+\lstinputlisting{problems/listings/helloworld_error_main.cpp}
+
+Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
+
+\begin{verbatim}
+  error: invalid conversion from <A> to <B>.
+\end{verbatim}
+
+Dies bedeutet, dass der Compiler an der entsprechenden Stelle einen Ausdruck vom Typ \emph{B} erwartet, im Code jedoch ein Ausdruck vom Typ \emph{A} angegeben wurde. Insbesondere bei verschachtelten Typen sowie (später vorgestellten) Zeigern und Templates kann die Fehlermeldung sehr lang werden. In so einem Fall lohnt es sich, den Ausdruck in mehrere Teilausdrücke aufzubrechen und die Teilergebnisse durch temporäre Variablen weiterzureichen.
+
+\begin{verbatim}
+  undefined reference to ...
+\end{verbatim}
+
+Dies bedeutet, dass das Programm zwar korrekt kompiliert wurde, der Linker aber die Definition des entsprechenden Bezeichners nicht finden kann.
+Das kann passieren, wenn man dem Compiler durch einen Prototypen mitteilt, dass eine bestimmte Funktion existiert (\textbf{deklariert}), diese aber nirgendwo tatsächlich \textbf{definiert}.
+Überprüfe in diesem Fall, ob der Bezeichner tatsächlich definiert wurde und ob die Signatur der Definition mit dem Prototypen übereinstimmt.

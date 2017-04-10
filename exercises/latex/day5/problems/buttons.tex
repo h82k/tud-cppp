@@ -1,0 +1,20 @@
+\section{Buttons}
+Implementiere einen Counter der bei 00 startet und bis 99 zählen kann.
+Bei Druck auf die rechte Taste soll der Wert erhöht, bei Druck auf die linke Taste verringert werden.
+Nutze die Siebensegmentanzeige aus der vorherigen Aufgabe zur Anzeige des aktuellen Wertes.
+
+Wird 99 angezeigt und die rechte Taste gedrückt, soll der Counter auf 00 gesetzt werden.
+Umgekehrt gilt: Falls der Counter 00 anzeigt und die linke Taste gedrückt wird, soll er auf 99 umspringen.
+
+Der linke Taster ist an Port 07 Pin 0, der rechte an Port 07 Pin 1 angeschlossen.
+Bei gedrücktem Taster liegt ein Low-Pegel am Eingang, sonst ein High-Pegel.
+Du kannst den Zustand eines Pins wie folgt abfragen:
+\lstinputlisting{problems/listings/buttons.c}
+
+\hints{
+	\item Ein Button ist üblicherweise für mehrere tausend CPU-Zyklen gedrückt.
+	\item Ein Tastendruck ist durch den Übergang von \emph{high} auf \emph{low} definiert.
+	Da in jedem Zyklus nur der aktuelle Wert abgefragt werden kann, musst du den aktuellen Wert mit einem gespeicherten Wert aus dem vorigen Durchlauf vergleichen.
+	\item Die Moduloberechnung von negativen Zahlen kann problematisch sein.
+	Hier hilft es, wenn du vor der Berechnung den Divisor hinzuaddierst.
+}
