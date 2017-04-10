@@ -15,17 +15,7 @@ In dieser Aufgabe sollst du eine eigene Vektor-Klasse schreiben und einige Opera
 Implementiere die folgende Klasse.
 Füge jedem Konstruktor und Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können.
 
-\begin{lstlisting}
-class Vector3 {
-public:
-	Vector3();											// initialize vector with zero
-	Vector3(double a, double b, double c);		// initialize vector with a, b, c
-	Vector3(const Vector3 &other);				// copy constructor: copy a vector
-	~Vector3();											// destructor: destroy the vector
-private:
-	double a, b, c;									// vector components
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_vector.hpp}
 
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
 Jeder Copy-Konstruktor benötigt eine Referenz auf ein Objekt vom gleichen Typ wie die Klasse selbst als Parameter. 
@@ -34,15 +24,11 @@ Sinnvollerweise wird noch \lstinline{const} vor oder nach der Typbezeichnung ein
 Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
 Die Syntax des Prototypen lautet
 
-\begin{lstlisting}
-~ClassName();
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_destructor.hpp}
 
 und die Implementation entsprechend
 
-\begin{lstlisting}
-ClassName::~ClassName() { /* destructor implementation ... */}
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_destructor_impl.cpp}
 
 \hints{
 	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
@@ -57,20 +43,12 @@ ClassName::~ClassName() { /* destructor implementation ... */}
 \subsection{Vektoraddition, -subtraktion und Skalarprodukt}
 Erweitere die Klasse um folgende \lstinline{public} Funktionen, um Vektoren durch \lstinline{v1 + v2}, \lstinline{v1 - v2} und \lstinline{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden zu können, indem die Operatoren $+$, $-$ und $*$ überladen werden.
 
-\begin{lstlisting}
-Vector3 operator+(Vector3 rhs);		// add two vectors component-by-component
-Vector3 operator-(Vector3 rhs);		// subtract two vectors component-by-component
-double operator*(Vector3 rhs);		// determine the dot product of two vectors
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_operators.hpp}
 
 Innerhalb der Methode kannst du durch \lstinline{a}, \lstinline{b} und \lstinline{c} auf eigene Attribute und über  \lstinline{rhs.a}, \lstinline{rhs.b} und \lstinline{rhs.c} auf Attribute der rechten Seite zugreifen.
 Denke daran, bei der Implementation den Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt anzugeben.
 
-\begin{lstlisting}
-Vector3 Vector3::operator+(Vector3 rhs) {/* function implementation ...*/}
-Vector3 Vector3::operator-(Vector3 rhs) {/* function implementation ...*/}
-double Vector3::operator*(Vector3 rhs)  {/* function implementation ...*/}
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_operators_impl.cpp}
 
 \hints{
 	\item Der Parameter \lstinline{rhs} steht für die rechte Seite ( \enquote{right-hand-side}) des jeweiligen Operators.
@@ -81,18 +59,11 @@ double Vector3::operator*(Vector3 rhs)  {/* function implementation ...*/}
 \subsection{Ausgabe}
 Überlade den \lstinline{operator<<} zur Ausgabe eines Vektors mit der gewohnten \lstinline{std::cout << ...} Syntax, indem du den folgenden Funktionsprototypen \textbf{außerhalb} der Klassendefinition setzt
 
-\begin{lstlisting}
-std::ostream& operator<<(std::ostream &out, Vector3 rhs);
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_stdout.hpp}
 
 und innerhalb der Sourcedatei wie folgt implementierst.
 
-\begin{lstlisting}
-std::ostream& operator<<(std::ostream &out, Vector3 rhs)  {
-	out << ... ;
-	return out;
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_stdout_impl.cpp}
 
 Da der \lstinline{operator<<} außerhalb der Klasse \lstinline{Vector3} liegt, hat dieser keinen Zugriff auf die privaten Member der Klasse.
 
@@ -100,17 +71,11 @@ Du hast zwei Möglichkeiten, Zugriff auf diese zu erlangen: per Getter und per \
 
 \paragraph{Getter}
 Definiere die folgenden Gettermethoden die die Werte für die \lstinline{private} Attribute \lstinline{a}, \lstinline{b} und \lstinline{c} zurückgeben:
-\begin{lstlisting}
-  double getA();	// get the first component
-  double getB();	// get the second component
-  double getC();	// get the third component
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_getter.hpp}
 
 \paragraph{friend}
 Füge die folgende Zeile am Ende der Klasse \texttt{Vector} hinzu:
-\begin{lstlisting}
-    friend  std::ostream& operator<<(std::ostream&, Vector3);
-\end{lstlisting}
+\lstinputlisting{problems/listings/overloading_friend.hpp}
 Von nun an, kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
 
 \hints{

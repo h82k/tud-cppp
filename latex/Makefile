@@ -1,6 +1,6 @@
 .PHONY: all publish copy-only-all clean
 
-DIRS		= cheatsheet day1 day2 day3 day4 day5 day6 elevator
+DIRS		= cheatsheet day1 day2 day3 day4 day5 elevator
 
 all: create-pdfs
 

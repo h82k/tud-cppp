@@ -6,12 +6,7 @@ Das Projekt enthält bereits eine Datei \texttt{src/main.cpp}. Erweitere die \te
 
 % fix that avoids undesired page breaks
 \begin{minipage}{\textwidth} 
-\begin{lstlisting}
-#include <iostream>
-int main() {
-	std::cout << "Hello World" << std::endl;	// prints "Hello World"
-}
-\end{lstlisting}
+	\lstinputlisting{problems/listings/helloworld.cpp}
 \end{minipage}
 
 Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetypen \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen.
@@ -40,10 +35,9 @@ Die generelle Faustregel lautet:
 Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern kommen kann.
 
 % Indents all of the following paragraphs by 1cm
-\setlength{\leftskip}{1cm}
 
 \begin{verbatim}
-main.exe: not found
+  main.exe: not found
 \end{verbatim}
 
 Dieser Fehler wird von CodeLite geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
@@ -53,20 +47,15 @@ Das kann zwei Gründe haben:
 \item Der Kompiliervorgang wurde noch nicht ausgeführt. Kompiliere das Programm mit einem Klick auf das Build-Symbol.
 \end{itemize}
 
-
 \begin{verbatim}
-error: expected ';' before ...
+  error: expected ';' before ...
 \end{verbatim}
 
 Dies bedeutet, dass in der Zeile davor ein \textbf{;} vergessen wurde.
 Allgemein beziehen sich Fehlermeldungen \textbf{expected ... before ...} häufig auf die Zeile \textbf{vor} dem markierten Statement.
 Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen Header-Datei sein kann. Beispiel:
-\begin{lstlisting}[xleftmargin=1cm]
-#include "main.h"
-int main() {
-	...
-}
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/helloworld_error_main.cpp}
 
 Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
 
@@ -83,7 +72,3 @@ Dies bedeutet, dass der Compiler an der entsprechenden Stelle einen Ausdruck vom
 Dies bedeutet, dass das Programm zwar korrekt kompiliert wurde, der Linker aber die Definition des entsprechenden Bezeichners nicht finden kann.
 Das kann passieren, wenn man dem Compiler durch einen Prototypen mitteilt, dass eine bestimmte Funktion existiert (\textbf{deklariert}), diese aber nirgendwo tatsächlich \textbf{definiert}.
 Überprüfe in diesem Fall, ob der Bezeichner tatsächlich definiert wurde und ob die Signatur der Definition mit dem Prototypen übereinstimmt.
-
-
-% Reset indention
-\setlength{\leftskip}{0pt}

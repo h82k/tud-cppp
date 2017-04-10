@@ -31,23 +31,7 @@ Passe außerdem die Methode \lstinline{Elevator::addPeople()} so an, dass die Li
 Es kann sein, dass du für bestimmte Zwecke weiterhin einen Getter brauchst, der dir ein nicht-\lstinline{const} Objekt zurückgibt.
 Solche Getter sollten typischerweise \lstinline{private} deklariert werden.
 Beispielsweise wird deine \lstinline{Building}-Klasse zwei Getter für \lstinline{Floor} enthalten:
-\begin{lstlisting}
-class Building {
-public:
-    // ...
-
-    /** Gets a certain, const floor */
-    const Floor& getFloor(int floor) const;
-
-private:
-    /** Returns the floor with the given number. 
-     *  This non-const variant of the getter is for 'private' purposes only. 
-     */
-    Floor& getFloor(int floor);
-
-    // ...
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/sim2_building.hpp}
 
 \hints{
 	\item Um über eine \lstinline{const} Liste zu iterieren, verwende \lstinline{vector<T>::const_iterator} anstatt \lstinline{vector<T>::iterator} als Iterator-Typ.
@@ -57,9 +41,7 @@ private:
 Um nicht immer wieder \lstinline{std::shared_ptr<Person>} schreiben zu müssen, definiere ein \lstinline{typedef PersonPtr} für diesen Typen.
 Binde den Header \lstinline{memory} in \filename{Person.h} ein und definiere den neuen Typen \lstinline{PersonPtr} hinter der Klassendefinition von \lstinline{Person}:
 
-\begin{lstlisting}
-typedef std::shared_ptr<Person> PersonPtr;
-\end{lstlisting}
+\lstinputlisting{problems/listings/sim2_smart_ptr.hpp}
 
 \subsection{Effizientere Listen}
 Ändere in der Klasse \lstinline{Elevator} alle Vorkommen von \lstinline{vector} nach \lstinline{list} um, da wir nun eine verkettete Liste verwenden werden, um Personen zu speichern.
@@ -70,10 +52,7 @@ Diese ist auch gar nicht nötig:
 Wir traversieren die Liste stattdessen mit einem Iterator.
 Lösche dazu die Methode \lstinline{getPerson()} und füge die folgende Methode hinzu, die eine \lstinline{const} Referenz auf die enthaltenen Personen zurückgibt:
 
-\begin{lstlisting}
-	/** return a const reference to the list of contained people */
-	const std::list<PersonPtr>& getContainedPeople() const;
-\end{lstlisting}
+\lstinputlisting{problems/listings/sim2_contained_people.hpp}
 
 Dadurch kann von außen lesend auf die Leute im Aufzug zugegriffen werden.
 Ändere außerdem den Typen des Containers von \lstinline{Person} auf \lstinline{PersonPtr}, da wir Smart Pointer auf Personen speichern werden und nicht die Personen direkt.
@@ -98,24 +77,7 @@ Um ein Element zu löschen, verwende \lstinline{containedPeople.erase(iter)}.
 
 Als Grundgerüst kann folgendes Codeschnipsel dienen:
 
-\begin{lstlisting}
-	... iter = containedPeople. ...;		// create iterator for containedPeople
-	// iterate through all elements
-	while (iter != ...) {
-		PersonPtr person = ... iter; 		// get person smart pointer at current position
-		// check whether person has reached it's destination Floor
-		if (...) {
-			// erase person pointer from containedPeople
-			// no need for ++iter since iter will already point to next item
-			... = containedPeople.erase(iter);
-			// remember arrived person
-			...
-		}
-		else {
-			++iter; // check next person
-		}
-	}
-\end{lstlisting}
+\lstinputlisting{problems/listings/sim2_snippet.cpp}
 
 \subsection{}
 Passe auch die Klassen \lstinline{Floor} und \lstinline{Building} entsprechend an, sodass nur noch Listen und Smart Pointer auf Personen verwendet werden.

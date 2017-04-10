@@ -1,0 +1,1 @@
+CharGenerator charGen('x');

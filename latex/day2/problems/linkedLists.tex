@@ -21,28 +21,7 @@ Auch können Referenzen nicht \lstinline{NULL} sein, was in unserem Fall nötig 
 Der Konstruktor sollte sowohl seine eigenen \lstinline{next} und \lstinline{previous} Zeiger initialisieren, als auch die seiner Vorgänger- und Nachfolgerelemente.
 Die Methode \lstinline{getContent()} soll eine Referenz auf den Inhalt zurückgeben, damit dieser durch eine Zuweisung modifiziert werden kann.
 
-\begin{lstlisting}
-class ListItem {
-public:
-	/**
-	 * create a list item between two elements with a given given content
-	 * (also modify previous->next and next->previous)
-	 */
-	ListItem(ListItem *prev, ListItem *next, int content);
-	/**
-	 * delete this list item (also change previous->next and next->previous
-	 * to not point to this item anymore)
-	 */
-	~ListItem();				
-	int & getContent();			// get a reference to the contained data
-	ListItem * getNext();			// get the next list item or NULL
-	ListItem * getPrevious();	// get the previous list item or NULL
-private:
-	ListItem *previous;		// previous item in list
-	ListItem *next;			// next item in list
-	int content;				// content of this list item
-};
-\end{lstlisting}
+\lstinputlisting{problems/listings/linkedLists_listitem.hpp}
 
 \subsection{Privater Copy-Konstruktor}
 Unsere \lstinline{ListItem} Klasse hat einen kleinen Design-Fehler:
@@ -53,11 +32,7 @@ In unserem Fall ergibt das Kopieren eines \lstinline{ListItems} jedoch semantisc
 Deklariere in der Headerdatei einen \lstinline{private} Copy-Konstruktor und einen \lstinline{private} \lstinline{operator=}.
 Dadurch können beide nie aufgerufen werden und der Kompiler kann dies zur Kompilierzeit überprüfen.
 
-\begin{lstlisting}
-private:
-	ListItem(const ListItem &other);		// private copy constructor (without implementation)
-	ListItem& operator=(const ListItem &other);	// private assignment operator (w/o implementation)
-\end{lstlisting}
+\lstinputlisting{problems/listings/linkedLists_listitem_private.hpp}
 
 \hints{
 	\item Alternativ kann man ab C++11 Funktionen explizit löschen:\\ 
@@ -77,32 +52,7 @@ Die übergebene Referenz ist -- entgegen der üblichen Konvention für \lstinlin
 
 Vergiss hier nicht, \lstinline{operator<<} als \lstinline{friend} von \lstinline{List} zu deklarieren (wie zuvor bei \lstinline{Vector}).
 
-\begin{lstlisting}
-class List {
-public:
-	List();								// create an empty list
-	~List();								// delete the list and all of its elements
-	List(const List &other);		// create a copy of another list
-	void appendElement(int i);		// append an element to the end of the list
-	void prependElement(int i);	// prepend an element to the beginning of the list
-	void insertElementAt(int i, int pos);	// insert an element i at position pos
-	int getSize() const;				// get the number of elements in list
-	int & getNthElement(int n);		// get content of the n-th element.
-	int & getFirst();					// get content of the first element
-	int & getLast();					// get content of the last element
-	int deleteFirst();			// delete first element and return it (return 0 if empty)
-	int deleteLast();				// delete last element and return it (return 0 if empty)
-	int deleteAt(int pos);		// delete element at position pos
-private:
-	ListItem *first, *last;		// first and last item pointers (nullptr if list is empty)
-	int currentSize;				// current size of the list
-};
-
-#include <iostream>
-
-/** Print the given list to the stream. N.B. list should actually be const but then we would need const ListIterators */
-std::ostream &operator<<(std::ostream &stream, List &list);
-\end{lstlisting}
+\lstinputlisting{problems/listings/linkedLists_list.hpp}
 
 \subsection{Liste testen}
 Teste deine Implementation.
@@ -118,11 +68,8 @@ Der Iterator soll dabei einen Zeiger auf das aktuell betrachtete Element der Lis
 Um den Zugriff möglichst komfortabel zu gestalten, werden wir den Iterator als eine Art Zeiger implementieren, den man über \textbf{$++$} und \textbf{$--$} in der Liste verschieben kann.
 Um auf ein Element zuzugreifen, überladen wir den Dereferenzierungsoperator \lstinline{operator*}.
 Somit können wir unsere Liste ähnlich zu \lstinline{std::vector} verwenden:
-\begin{lstlisting}
-	for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
-		cout << *iter << endl;
-	}
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/linkedLists_listiterator_intro.cpp}
 
 \paragraph{Konstruktor und Operatoren} 
 Beginne mit einer Grundversion des Iterators.
@@ -133,21 +80,7 @@ Du brauchst nicht zu prüfen, ob \lstinline{item} tatsächlich auf ein gültiges
 Zum Vergleichen zweier Iteratoren prüfe, ob die \lstinline{item} und \lstinline{list} Zeiger identisch sind.
 Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \lstinline{item} \lstinline{NULL} ist, wenn der Iterator also auf kein Element zeigt.
 
-\begin{lstlisting}
-class ListIterator {
-public:
-	// create a new list iterator pointing to an item in a list
-	ListIterator(List *list, ListItem *item);
-	// get the content of the current element
-	int& operator*();
-	// check whether this iterator is not equal to another one
-	bool operator!=(const ListIterator &other) const;
-private:
-	List *list;
-	ListItem *item;
-};
-\end{lstlisting}
-
+\lstinputlisting{problems/listings/linkedLists_listiterator.hpp}
 
 \paragraph{Zugriff von außen: ListIterator als friend-Klasse} Du wirst in den folgenden Methoden auf private Attribute von \lstinline{List} zugreifen müssen.
 Um dies zu ermöglichen, könnte man öffentliche Getter für die Items der Liste schreiben.
@@ -155,19 +88,16 @@ Dadurch würde jedoch jeder die Möglichkeit bekommen, direkt auf die \lstinline
 Deshalb werden wir \lstinline{ListIterator} stattdessen explizit erlauben, auf \lstinline{private}-Attribute der Liste zuzugreifen.
 Dazu müssen wir \lstinline{ListIterator} als \lstinline{friend} von \lstinline{List} deklarieren.
 Füge dazu folgende Zeile (an beliebiger Stelle, üblich ist der Anfang der Klasse) zur Klassendefinition von \lstinline{List} hinzu:
-\begin{lstlisting}
-friend class ListIterator;
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/linkedLists_listiterator_friend.hpp}
 
 \paragraph{Iterator vorwärts bewegen mittels \lstinline{operator++}}
 
 Implementiere den \lstinline{operator++} zum Inkrementieren des Iterators.
 Falls der Iterator zuvor auf kein Item zeigte (\lstinline{item == NULL}), soll er nun auf das erste Element der Liste gesetzt werden.
 Die Prototypen dazu lauten:
-\begin{lstlisting}
-ListIterator& operator++();		// increment this iterator and return itself (prefix ++)
-ListIterator operator++(int);		// increment this iterator and return the previous (postfix ++)
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/linkedLists_listiterator_inc.hpp}
 
 Bei der Überladung des \lstinline{operator++} muss eine Sonderregelung beachtet werden.
 Dieser Operator kann sowohl als Postfix (z.B. \lstinline{iter++}) als auch Präfix (z.B. \lstinline{++iter}) verwendet werden.
@@ -180,31 +110,7 @@ Daher sollte die Präfix-Form dieser Operatoren die bevorzugte Variante sein, fa
 
 Zum besseren Verständnis ist ein Teil der Implementation gegeben:
 
-\begin{lstlisting}
-// Prefix ++  ->  increment iterator and return it
-ListIterator& ListIterator::operator++() {
-	if (item == NULL) {
-		item = ...	 // set item to first item of list
-	}
-	else {
-		item = ...	 // set item to next item of current item
-	}
-	return *this;	 // return itself
-}
-
-// Postfix ++  -> return iterator to current item and increment this iterator
-ListIterator ListIterator::operator++(int) {
-	ListIterator iter(list, item); // Store current iterator
-	if (item == NULL) {
-		item = ...	 // set item to first item of list
-	}
-	else {
-		item = ...	 // set item to next item of current item
-	}
-	return iter; 	// return iterator to previous item
-}
-\end{lstlisting}
-
+\lstinputlisting{problems/listings/linkedLists_listiterator_inc.cpp}
 
 \paragraph{Iterator rückwärts bewegen mittels \lstinline{operator--}}
 Überlade auf die gleiche Weise auch den \lstinline{operator--} sowohl in Postfix als auch Präfix-Form.
@@ -212,20 +118,15 @@ ListIterator ListIterator::operator++(int) {
 \paragraph{Iteratoren in List erzeugen} 
 Nun ist unsere Implementation fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
 Implementiere dazu die folgenden Methoden innerhalb der \lstinline{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen.
-\begin{lstlisting}
-ListIterator begin();		// return an iterator pointing to the first element
-ListIterator end();			// return an iterator pointing to the element after the last one
-\end{lstlisting}
+
+\lstinputlisting{problems/listings/linkedLists_listiterator_methods.hpp}
 
 Höchstwahrscheinlich wirst du Probleme bei der Kompilierung haben.
 Dies liegt an der zirkulären Abhängigkeit zwischen \lstinline{List} und \lstinline{ListIterator}.
 Gehe dazu folgendermaßen vor:
 Verschieben die \lstinline{\#include} Anweisungen für die Header von \lstinline{List} und \lstinline{ListItem} aus \filename{ListIterator.h} nach \filename{ListIterator.cpp} und füge in \filename{ListIterator.h} folgendes hinzu
 
-\begin{lstlisting}
-class ListItem;
-class List;
-\end{lstlisting}
+\lstinputlisting{problems/listings/linkedLists_listiterator_forward.hpp}
 
 Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagen, dass die Klassen existieren, aber später definiert werden. Nun kannst problemlos \filename{ListIterator.h} in \filename{List.h} einbinden.
 
@@ -233,11 +134,7 @@ Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compile
 Teste deine Implementation.
 Erstelle eine Liste, füge Elemente hinzu und iteriere über Listenelemente:
 
-\begin{lstlisting}
-for (ListIterator iter = list.begin(); iter != list.end(); iter++) {
-	cout << *iter << endl;
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/linkedLists_listiterator_iter.cpp}
 
 Warum kann man \textbf{nicht} rückwärts durch die Liste iterieren, indem man einfach die Aufrufe \lstinline{list.begin()} und \lstinline{list.end()} tauscht und \lstinline{iter--} statt \lstinline{iter++} verwendet?
 Denke daran, worauf die von \lstinline{begin()} und \lstinline{end()} zurückgegebenen Iteratoren zeigen.

@@ -6,22 +6,7 @@ Nachdem du bei unseren Übungen zu Arrays gesehen hast, dass es störend ist, we
 
 Eine möglicher Anwendungsfall sieht so aus:
 
-\begin{lstlisting}
-#include "Array.h"
-#include <iostream>
-#include <string>
-
-template<typename T>
-void printFirst(const Array<T> &array) {
-    std::cout << array[0] << std::endl;
-}
-
-int main() {
-    Array<std::string> stringArray(10);
-    stringArray[0] = "Hello World";
-    printFirst(stringArray);
-}
-\end{lstlisting}
+\lstinputlisting{problems/listings/customArrays_example.cpp}
 
 \emph{Hinweise}:
 \begin{itemize}
@@ -29,20 +14,11 @@ int main() {
 Überlege dir, welche Operatoren/Methoden das obige Code-Beispiel von Array verlangt.
 Unter anderem musst du jeweils einen \lstinline{const} und einen nicht-\lstinline{const} \lstinline{operator[]} implementieren.
 
-\item
-Du kannst auch Exceptions (z.B. \lstinline{std::out_of_range} aus \lstinline{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
+\item Du kannst auch Exceptions (z.B. \lstinline{std::out_of_range} aus \lstinline{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
 
-\item
-Eine fortgeschrittene Übung ist es, Iteratoren oder \lstinline{operator+(unsigned int)} für \lstinline|Array| bereitszustellen, sodass du z.B. die Funktion \lstinline{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
-\begin{lstlisting}
-#include <algorithm> // copy
-#include <iterator> // back_inserter
-#include <vector>
-// ...
-Array<int> array(10);
-std::vector<int> vector;
-std::copy(array, array + 4, std::back_inserter(vector));
-\end{lstlisting}
+\item Eine fortgeschrittene Übung ist es, Iteratoren oder \lstinline{operator+(unsigned int)} für \lstinline{Array} bereitszustellen, sodass du z.B. die Funktion \lstinline{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
+
+\lstinputlisting{problems/listings/customArrays_vector.cpp}
 
 \item
 Diese Idee ist natürlich nicht neu.

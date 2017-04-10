@@ -1,0 +1,1 @@
+ClassName::~ClassName() { /* destructor implementation ... */}
