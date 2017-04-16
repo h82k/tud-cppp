@@ -1,0 +1,27 @@
+# Originally from https://github.com/scottclowe/latex-continuous-integration
+#
+# Allow for automatic deployment to GitHub:
+# https://github.com/quantum/shippable-utils/blob/master/github-release.sh
+
+build_image: harshjv/texlive-2015
+
+# The following directive instructs Shippable to cache the container.
+# To invalidate the cache, you need to add '[reset_minion]' to a commit message.
+# See: http://blog.shippable.com/faster-builds-by-caching-containers
+cache: true
+
+install:
+  # Check texlive version
+  - tlmgr version -v
+  # Update texlive
+  #- tlmgr update --all
+
+before_script:
+  # Check texlive version
+  - tlmgr version -v
+  # Check which tex packages we have available
+  - tlmgr info --only-installed || echo "Couldn't retrieve the texlive package list!"
+
+script:
+  - cd exercises/latex
+  - make all
