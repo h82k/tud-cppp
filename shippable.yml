@@ -20,7 +20,7 @@ install:
   # Update texlive
   #- tlmgr update --all
   # Install make
-  - sudo apt-get install build-essential
+  - sudo apt-get install --yes build-essential
 
 before_script:
   # Check texlive version
