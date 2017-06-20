@@ -69,12 +69,12 @@ Dieses Element ist selbst ein Smart Pointer.
 Deshalb muss der Iterator für den Zugriff auf die Person \textbf{doppelt} dereferenziert werden.
 Wenn die Person in ihrem Zielstockwerk angekommen ist, wird sie aus \lstinline{containedPeople} gelöscht und zu \lstinline{arrived} hinzugefügt.
 Um ein Element zu löschen, verwende \lstinline{containedPeople.erase(iter)}.
-
+%
 \hints{
 	\item Der bisherige Iterator ist nach dem Löschen nicht mehr gültig.
 	Die Methode \lstinline{std::vector<T>::erase} gibt einen Iterator auf das Element hinter dem gelöschten zurück.
 }
-
+%
 Als Grundgerüst kann folgendes Codeschnipsel dienen:
 
 \lstinputlisting{problems/listings/sim2_snippet.cpp}

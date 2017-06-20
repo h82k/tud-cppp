@@ -1,4 +1,4 @@
-List<List<int> > list; //  ">>" is an operator, so use "> >" for nested templates
+List<List<int> > list;
 list.appendElement(List<int>());
 list.getFirst().appendElement(1);
 list.getFirst().appendElement(2);

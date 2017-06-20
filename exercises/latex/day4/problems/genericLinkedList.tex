@@ -18,6 +18,14 @@ Je nach Elementtyp können solche Kopien problematisch und unerwünscht sein.
 Überlade den \lstinline{operator<<}, sodass Listen direkt über ein \lstinline{std::ostream} wie z.B. \lstinline{std::cout} ausgegeben werden können.
 
 \subsection{}
-Teste deine Implementation. Probiere auch folgendes aus und beobachte die Ausgabe.
+Teste deine Implementierung.
+Probiere auch Folgendes aus und beobachte die Ausgabe.
 
 \lstinputlisting{problems/listings/genericLinkedList.cpp}
+
+\hints{
+\item
+In der ersten Zeile ist absichtlich ein Leerzeichen zwischen den beiden schließenden spitzen Klammern.
+Bis hin zu C++11 konnte der C++-Compiler nicht erkennen, ob es sich bei \lstinline{>>} um den Operator oder um geschachtelte Templates handelt.
+Seit C++11 ist es nicht mehr nötig, ein Leerzeichen zwischen die beiden schließenden spitzen Klammern einzufügen.
+}

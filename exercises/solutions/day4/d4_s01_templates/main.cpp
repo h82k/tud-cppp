@@ -1,5 +1,14 @@
 #include <iostream>
 
+/**
+ * Reasons for returning by const reference:
+ *  * If T is a 'complex type' (e.g., a fat class), that returning by value would incur extra cost
+ *    in terms of memory and time for copying either t1 or t2. 
+ *    Additionally, some classes may not even support copying (see lecture slides).
+ *  * It would also be possible to return by pointer-to-const here, but using a reference 
+ *    (i) is more convenient for the caller, (ii) asserts that the return value is non-null
+ *  * The return value cannot be non-const because the parameters are both const.
+ */
 template<typename T>
 const T& maximum(const T& t1, const T& t2) {
 	return t1 > t2 ? t1 : t2;

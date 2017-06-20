@@ -11,7 +11,7 @@ Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, u
 
 \subsection{Klasse Elevator}
 Implementiere die Klasse \lstinline{Elevator}, die einen Aufzug mit einer beliebigen Anzahl an Personen darstellt.
-
+%
 Wenn sich der Aufzug bewegt, solltest du die verbrauchte Energie bei einer Bewegung sinnvoll anpassen.
 Addiere beispielsweise den Betrag der Differenz zwischen dem aktuellen und dem Zielstockwerk hinzu.
 
@@ -56,12 +56,12 @@ Der Simulator sollte nur mit Methoden der Klasse \lstinline{Building} kommunizie
 \subsection{Beförderungsstrategie}
 Teste deine Implementation.
 Erstelle dazu zunächst ein Gebäude und füge einige Personen hinzu.
-
+%
 \lstinputlisting{problems/listings/sim1_main.cpp}
-
+%
 Implementiere nun folgende Beförderungsstrategie.
 Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheinander ab, sammelt die Leute ein und befördert sie jeweils zu ihren Zielstockwerken.
-
+%
 \begin{algorithm}[H]
  \SetAlgoLined
  \For{Floor floor \textbf{in} Building}{
@@ -74,8 +74,8 @@ Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheina
   }
  }
 \end{algorithm}
-
-Gib am Ende auch die verbrauchte Energie aus.
+%
+\noindent Gib am Ende auch die verbrauchte Energie aus.
 Schau dir die Ausgabe genau an und versuche nachzuvollziehen, warum Personen so oft kopiert werden.
 Denke daran, dass diese bei einer Übergabe als Argument kopiert werden.
 

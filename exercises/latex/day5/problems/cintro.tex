@@ -1,24 +1,28 @@
-\section{C Einführung \optional}
+\section{C Einführung}
 
-\optionaltextbox
 In den nächsten Tagen werden wir Programme für eine Embedded-Plattform in C entwickeln.
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
-
+%
 \begin{itemize}
-	\item Kein OO-Konzept, keine Klassen, nur Strukturen (\lstinline{struct}).
+	\item Keine OO-Konzepte (Vererbung, \dots)
+    \item Strukturen (\lstinline{struct}) statt Klassen (\lstinline{class})
 	\item Keine Templates
 	\item Keine Referenzen, nur Zeiger und Werte
-	\item Kein \lstinline{new} und \lstinline{delete}, sondern \lstinline{malloc()} und \lstinline{free()} (\verb|#include <stdlib.h>|)
-	\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen $<$ C99)
-	\item Parameterlose Funktionen müssen \lstinline{void} als Parametertyp haben, leere Klammern () bedeuten, dass beliebige Argumente erlaubt sind.
+	\item Kein \lstinline{new} und \lstinline{delete}, sondern \lstinline{malloc()} und \lstinline{free()} (\lstinline|#include <stdlib.h>|)
+	\item Je nach Sprachstandard müssen Variablen am Anfang der Funktion deklariert werden (Standard-Versionen bis einschießlich C99)
+	\item Parameterlose Funktionen müssen \lstinline{void} als Parametertyp haben, leere Klammern (bspw. \lstinline{int foo();}) bedeuten, dass beliebige Argumente erlaubt sind.
 	\item Keine Streams, stattdessen \lstinline{(f)printf} zur Ausgabe auf Konsole und in Dateien (\verb|#include <stdio.h>|)
-	\item Kein \lstinline{bool} Datentyp, stattdessen wird 0 als \lstinline{false} und alle anderen Zahlen als \lstinline{true} gewertet
+	\item Kein \lstinline{bool}-Datentyp, stattdessen wird 0 als \lstinline{false} und alle anderen Zahlen als \lstinline{true} gewertet
 	\item Keine Default-Argumente
-	\item Keine \lstinline{std::string} Klasse, nur \lstinline{char}-Arrays, die mit dem Nullbyte (\verb|'\0'|) abgeschlossen werden.
+	\item Keine \lstinline{std::string} Klasse, nur \lstinline{char}-Arrays, die mit dem Nullbyte (\lstinline{'\0'}) abgeschlossen werden.
 	\item Keine Namespaces
 \end{itemize}
-
+%
 Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail eingehen.
+Wichtig ist hierbei, dass alle im Folgenden vorgestellten Konzepte auch in C++ zur Verfügung stehen.
+Die Header der C-Bibliothek sind alle auch in C++ verfügbar.
+Möchte man bspw. \lstinline{malloc} nutzen, kann man dies in C++ über \lstinline|#include <stdlib.h>| oder über \lstinline{#include <cstdlib>} (Allgemeines Muster: vorangestelltes 'c' und fehlendes '.h').
+Im zweiten Fall sind alle Funktionen im Namensraum \lstinline{std} eingebettet, man muss als \lstinline{std::malloc} nutzen.
 
 \subsection{Kein OO-Konzept}
 In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
@@ -64,11 +68,25 @@ Mittels \textbackslash n kann man einen Zeilenvorschub erzeugen. Um \lstinline{p
 
 Weitere Möglichkeiten von \lstinline{printf()} findest du unter \url{http://www.cplusplus.com/reference/cstdio/printf/}.
 
-\subsection{}
+\RKi{Zeigen, wie man einen String ganz leicht einkürzen kann und wie man durch Elimination des schließenden Nullbytes unabsichtlich den Speicher ausgeben kann.}
+
+\subsection{Strings zusammenbauen}
+
+Die Funktion \lstinline{sprintf} dient dazu, formatierte Strings zusammenzusetzen und ist \lstinline{printf} sehr ähnlich.
+
+\RKi{Minimales Codebeispiel erzeugen (analog zur vorigen Aufgabem kleinen Puffer anlegen, dann bspw. den letzten String der vorigen Zeile hineinschreiben und ausgeben)}
+
+\subsection{In Dateien schreiben}
+
+Die Funktion \lstinline{fprintf} dient dazu, formatierte Strings zusammenzusetzen und in einer Datei abzulegen.
+
+\RKi{Minimales Codebeispiel erzeugen (analog zur vorigen Aufgabem kleinen Puffer anlegen, dann bspw. den letzten String der vorigen Zeile hineinschreiben und ausgeben)}
+
+\subsection{Zahlen formatiert ausgeben}
 Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt.
 Die Formatierung soll entsprechend dem Beispiel erfolgen:
 
 \lstinputlisting{problems/listings/cintro_format.c}
 
-\subsection{}
+\subsection{C++-Aufgaben nachprogrammieren}
 Versuche, beliebige (einfache) Programme der vergangenen Tage in reinem C auszudrücken (Schwierigkeitsgrad sehr unterschiedlich!).

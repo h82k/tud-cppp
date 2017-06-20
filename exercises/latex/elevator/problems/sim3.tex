@@ -44,3 +44,11 @@ Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugs
 Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
 Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden.
 Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
+
+\subsection{Schlüsselwort auto \optional}
+\optionaltextbox
+In der Vorlesung wurde das in C++11 neu hinzugekommene Schlüsselwort \lstinline{auto} angesprochen.
+Dieses Schlüsselwort kann überall dort anstelle eines Typbezeichners eingesetzt werden, wo der Compiler den Typ automatisch ableiten kann.
+Das ist besonders dann sinnvoll, wenn die Typbezeichnung aufgrund geschachtelter Templates oder geschachtelter Namensräume besonders lang und unleserlich wird, bspw. \lstinline{const std::vector<std::pair<const Person*, boolean (Floor, int)>>::const_iterator x;}.
+
+Versuche möglichst an möglichst vielen Stellen im Aufzugsimulator das Schlüsselwort \lstinline{auto} zu verwenden.
