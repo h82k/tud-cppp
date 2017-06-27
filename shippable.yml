@@ -1,9 +1,7 @@
 # LaTeX is currently not supported
-# See: http://docs.shippable.com/ci/languages/customImages/
-language: c
-
-compiler:
- - clang
+# See: http://docs.shippable.com/ci/languages/customImages/#
+# !! language: c is not compatible with choosing a custom build imgage
+language: none
 
 build:
   pre_ci_boot:
@@ -13,12 +11,29 @@ build:
    pull: true
    
   ci:
+    # ---
+    # Update/install TexLive
     # Check texlive version
     - tlmgr version -v
     # Update texlive
     #- tlmgr update --all
-    # Install make
+    # ---
+    # Install TUDesign
+    # See http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
+    # ---
+    - sudo add-apt-repository "deb http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
+    - sudo add-apt-repository "deb-src http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
+    - apt-get update
+    - apt-get install debian-tuddesign-keyring
+    - apt-get update 
+    - apt-get install latex-tuddesign 
+    # ---
+    # Install C build tools
+    # make, gcc,...
     - sudo apt-get install --yes build-essential
+    # clang,...
+    - sudo apt-get install --yes llvm
+    # ---
     # Check texlive version
     - tlmgr version -v
     # Check which tex packages we have available
