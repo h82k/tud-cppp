@@ -24,7 +24,6 @@ build:
     # 'Install' add-apt-repository
     - sudo apt-get install --yes software-properties-common python-software-properties
     - sudo add-apt-repository "deb http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
-    - sudo add-apt-repository "deb-src http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
     - sudo apt-get update
     - sudo apt-get install --yes debian-tuddesign-keyring
     - sudo apt-get update 
