@@ -1,0 +1,48 @@
+# LaTeX is currently not supported
+# See: http://docs.shippable.com/ci/languages/customImages/
+language: c
+
+compiler:
+ - clang
+
+build:
+  pre_ci_boot:
+   # Originally from https://github.com/scottclowe/latex-continuous-integration
+   image_name: harshjv/texlive-2015
+   image_tag: latest
+   pull: true
+   
+  ci:
+    # Check texlive version
+    - tlmgr version -v
+    # Update texlive
+    #- tlmgr update --all
+    # Install make
+    - sudo apt-get install --yes build-essential
+    # Check texlive version
+    - tlmgr version -v
+    # Check which tex packages we have available
+    - tlmgr info --only-installed || echo "Couldn't retrieve the texlive package list!"
+    # Build C++ solutions
+    - cd exercises/solutions
+    - bash ./make_cpp_projects.sh
+    # Build exercise sheets
+    - cd exercises/latex
+    - make all
+   
+  # TODO
+  # The following directive instructs Shippable to cache particular files in the container
+  # To invalidate the cache, you need to add '[reset_minion]' to a commit message.
+  # See: http://docs.shippable.com/ci/caching/
+  # cache: true
+
+  
+integrations:
+  # See http://docs.shippable.com/ci/email-notifications/
+  notifications:
+    - integrationName: email
+      type: email
+      sendConsoleLogs: true
+      recipients:
+        --last_committer
+        - roland.kluge@es.tu-darmstadt.de
