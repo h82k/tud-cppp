@@ -22,7 +22,7 @@ build:
     - sudo apt-get install --yes --force-yes debian-tuddesign-keyring
     - sudo apt-get update 
     # Install utilities (7z: encrypted archive, build-essential: make, gcc,... ; llvm: clang; texlive: prerequisiste for tudesign)
-    - sudo apt-get install --yes p7zip-full build-essential llvm texlive-base-bin tex-common xfonts-utils latexmk
+    - sudo apt-get install --yes p7zip-full build-essential llvm texlive-base-bin texlive-science tex-common xfonts-utils latexmk
     - 7z x 'admin/tudfontsEncrypted.zip' -p"$TUFONTS_DECRYPT_PASSWORD" # The contained files are decompressed into to the repo's root
     - sudo dpkg -i 't1-tudfonts_0.0.20090806_all.deb'
     - sudo dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
