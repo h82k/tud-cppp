@@ -24,9 +24,9 @@ build:
     # Install TUDesign
     # See http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
     # ---
-    echo $TUFONTS_DECRYPT_PASSWORD
-    dpkg --help
-    gzip --help
+    - echo $TUFONTS_DECRYPT_PASSWORD
+    - dpkg --help
+    - gzip --help
     # 'Install' add-apt-repository
     - sudo apt-get install --yes software-properties-common python-software-properties
     - sudo add-apt-repository "deb http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
