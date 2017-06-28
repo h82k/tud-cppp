@@ -34,9 +34,9 @@ build:
     - sudo apt-get install p7zip-full # Required for up-to-date encryption
     - 7z x 'admin/tudfontsEncrypted.zip' -p"$TUFONTS_DECRYPT_PASSWORD" # The contained files are decompressed into to the repo's root
     - sudo dpkg -i 't1-tudfonts_0.0.20090806_all.deb' || true
-    - sudo apt-get -f install # Fix missing dependencies
+    - sudo apt-get --yes -f install # Fix missing dependencies
     - dpkg -i 'tex-tudfonts_0.0.20090806_all.deb' || true
-    - sudo apt-get -f install # Fix missing dependencies
+    - sudo apt-get --yes -f install # Fix missing dependencies
     - sudo apt-get install --yes --force-yes latex-tuddesign 
     # ---
     # Install C build tools
