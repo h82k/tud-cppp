@@ -49,11 +49,8 @@ build:
     # Check which tex packages we have available
     - tlmgr info --only-installed || echo "Couldn't retrieve the texlive package list!"
     # Build C++ solutions
-    - cd exercises/solutions
-    - bash ./make_cpp_projects.sh
-    # Build exercise sheets
-    - cd exercises/latex
-    - make all
+    - EXERCISES_ROOT="$(pwd)/exercises" bash exercises/solutions/make_cpp_projects.sh
+    - make -C 'exercises/latex' all
    
   # TODO
   # The following directive instructs Shippable to cache particular files in the container
