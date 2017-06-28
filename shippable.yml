@@ -3,6 +3,9 @@
 # !! language: c is not compatible with choosing a custom build imgage
 language: none
 
+env:
+  - secure: tc6Y6GXGjNuU2FxcrzI/EFa+7v+jB3xD/7cDtE+1PFZvT9U6fdnVDY8s/z4xN4IgXLnCYSHUDeW33eSCcz7EnNWW4bJDH7PWHDee/sFaFUevbMcKVdS+MKYOxF/bdAZIjJ10sUoEdAIdXLCEEpAHBHMfeaSeAzHa0vsebDhwmhJvuwujJ9A89EQW1Tf+vwxC6gO+dm0yJyT9f2Oi481tmlAjr3x5Kaoe0UVa48EMdqGdSg4SPQ6QkivG9AQ8uhnCy9QTlMYpCJ3ZcqpVorq6CMRb7qIBvKF3Wv4k+ZRaYpP8Htn7ikD0rGOqeKgSa7eiSknsDwV4F4ShHCUWR0Kxfg==
+
 build:
   pre_ci_boot:
    # Originally from https://github.com/scottclowe/latex-continuous-integration
@@ -21,6 +24,9 @@ build:
     # Install TUDesign
     # See http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/
     # ---
+    echo $TUFONTS_DECRYPT_PASSWORD
+    dpkg --help
+    gzip --help
     # 'Install' add-apt-repository
     - sudo apt-get install --yes software-properties-common python-software-properties
     - sudo add-apt-repository "deb http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
