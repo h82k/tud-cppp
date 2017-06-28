@@ -31,10 +31,10 @@ build:
     # --force-yes is necessary due to authentication problems
     - sudo apt-get install --yes --force-yes debian-tuddesign-keyring
     - sudo apt-get update     
-    - sudo apt-get --only-upgrade install unzip
-    - unzip -P '$TUFONTS_DECRYPT_PASSWORD' admin/tudfontsEncrypted.zip
-    - dpkg -i admin/t1-tudfonts_0.0.20090806_all.deb
-    - dpkg -i admin/tex-tudfonts_0.0.20090806_all.deb
+    - sudo apt-get install p7zip-full # Required for up-to-date encryption
+    - 7z x 'admin/tudfontsEncrypted.zip' -p'$TUFONTS_DECRYPT_PASSWORD'
+    - dpkg -i 'admin/t1-tudfonts_0.0.20090806_all.deb'
+    - dpkg -i 'admin/tex-tudfonts_0.0.20090806_all.deb'
     - sudo apt-get install --yes --force-yes latex-tuddesign 
     # ---
     # Install C build tools
