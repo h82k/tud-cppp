@@ -1,6 +1,3 @@
-# LaTeX is currently not supported
-# See: http://docs.shippable.com/ci/languages/customImages/#
-# !! language: c is not compatible with choosing a custom build imgage
 language: none
 
 env:
@@ -8,8 +5,7 @@ env:
 
 build:
   pre_ci_boot:
-   # Originally from https://github.com/scottclowe/latex-continuous-integration
-   image_name: ubuntu #harshjv/texlive-2015
+   image_name: ubuntu
    image_tag: latest
    pull: true
    
