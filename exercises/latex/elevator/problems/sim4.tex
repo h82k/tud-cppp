@@ -1,7 +1,7 @@
 \section{Makefiles}
 
 In dieser Übung erkunden wir, wie man Makefile-Projekte in CodeLite aufbaut.
-Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können. \\\\
+Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die Herausforderungen in echten Projekten mit Makefiles gelöst werden können.
 
 Das Programm \emph{make}\footnote{Dokumentation \url{https://www.gnu.org/software/make/manual/make.html}} wird in großen Softwareprojekten verwendet, um Programme zu kompilieren.
 \texttt{Makefiles} geben \texttt{make} dabei Informationen wie das Programm gelinkt und compiliert werden muss.
@@ -43,12 +43,14 @@ all:
 Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
 
 \subsection{Klasse \lstinline{Building}:}
-Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet:
+Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet.
 
+Building.hpp:
 \begin{minipage}[t]{.45\textwidth}
 \lstinputlisting{problems/listings/sim4_building.hpp}
 \end{minipage}
 
+Building.cpp:
 \begin{minipage}[t]{.5\textwidth}
 \lstinputlisting{problems/listings/sim4_building.cpp}
 \end{minipage}

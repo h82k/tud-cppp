@@ -10,6 +10,13 @@ Verbessere außerdem die Effizienz und Sauberkeit der \lstinline{Vector3}-Klasse
 Du weißt bereits, dass alle \lstinline{template}-Funktionen und -Methoden im Header enthalten sein müssen.
 Um den Code trotzdem zu strukturieren, hat es sich eingebürgert, dass man die Klassendefinition in der \filename{hpp}-Datei hält, ohne die Methoden zu implementieren.
 Im Anschluss wird eine \filename{tpp}-Datei inkludiert, die die Implementierung der Methoden und Funktionen enthält.
-    
-Der Aufbau wäre also in etwas wie folgt:
+%
+Der Aufbau der Datei \filename{Vector3.hpp} wäre also wie folgt:
 \lstinputlisting{problems/listings/genericVector3_tpp_include.hpp}
+
+\hints{
+    \item
+    Auch wenn bei reinen Template-Klassen die \filename{cpp}-Datei leer bleibt, ist es sinnvoll, eine solche anzulegen.
+    Dadurch wird das Template garantiert auf Syntaxfehler überprüft.
+    Der Inhalt der \filename{cpp}-Datei ist in dieser Aufgabe schlicht \lstinline{#include "Vector3.hpp"}.
+}

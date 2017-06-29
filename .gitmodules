@@ -1,6 +1,0 @@
-[submodule "exercises/lib/uc_includes"]
-	path = exercises/lib/uc_includes
-	url = https://github.com/Echtzeitsysteme/tud-cpp-ucincludes
-[submodule "exercises/lib/16FXlib"]
-	path = exercises/lib/16FXlib
-	url = https://github.com/Echtzeitsysteme/tud-cpp-16FXlib

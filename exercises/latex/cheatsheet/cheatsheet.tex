@@ -118,23 +118,4 @@ Setzt ein Häkchen bei \textbf{Automatisch einbinden}.
 \item Starte jetzt die VM neu. Im Dateimanager ist der Shared Folder in der linken Leiste zu sehen.
 \end{itemize}
 
-\section{Mikrocontroller}
-
-\begin{center}
-	\includegraphics[width=0.6\textwidth]{figures/starterkit.png}
-\end{center}
-
-
-\subsection{Minimalprogramm}
-Folgendes Programm bleibt unendlich lange in der \lstinline|for|-Schleife und führt bei jedem Durchgang eine Warteoperation durch.
-Die \lstinline|#include|-Anweisung ist notwendig, um das Programm auf dem Mikrocontroller zu verwenden.
-Es bietet Zugang zur Hardware, als auch Systemfunktionen wie zum Beispiel die Warteoperation.
-% TODO wozu NOP?
-\lstinputlisting{listings/wait.c}
-% - generisches Programm: main loop, Variablen müssen am Anfang des Scopes deklariert werden
-% - Ansteuerung 7-Segment-Anzeige
-% - Auslesen Taster
-% - Auslesen Poti
-% - Ansteuerung LCD
-
 \end{document}

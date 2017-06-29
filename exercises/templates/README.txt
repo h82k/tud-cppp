@@ -1,0 +1,1 @@
+This folder contains templates that shall simplify getting started with the lab exercises.

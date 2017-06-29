@@ -11,11 +11,13 @@ In der Vorlesung haben wir gesehen, dass jede Verwendung von \lstinline{t1} und 
 Das bedeutet, dass \lstinline{T} alle Konstruktoren, Methoden und Operatoren zur Verfügung stellen muss, die in \lstinline{maximum} genutzt werden.
 
 Wie sieht diese Schnittstelle in diesem Fall aus?
+Welche Gründe gibt es, den Rückgabewert der Funktion \lstinline{maximum} als konstante Referenz festzulegen?
 
 \hints{
     \item In den meisten Fällen kann anstelle von \lstinline{typename} auch \lstinline{class} in der Template-Deklaration verwendet werden.
+    
     \item In der Regel muss die Definition von Template-Funktionen und -Methoden im Header erfolgen.
-    Allgemeiner: zur Compilezeit in der gleichen \filename{cpp}-Datei wie ihre Verwendung). 
+    Allgemeiner: zur Compilezeit in der gleichen \filename{cpp}-Datei wie ihre Verwendung. 
     Das hängt damit zusammen, dass Templates sprichwörtlich nur Vorlagen sind, deren Typparameter zur Compilezeit mit den konkret verwendeten Typen ersetzt werden.
     Würde man Templates in separaten \filename{cpp}-Dateien implementieren, dann könnte die Verbindung zwischen der Verwendungsstelle und der Definition erst zur Linkzeit hergestellt werden -- also zu spät.
 }

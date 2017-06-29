@@ -71,47 +71,67 @@
       <__></__>
      </Env.1>
      <IncludePath.0>
-      <Path>$(IRFDIR)..\source\TFTPaint</Path>
+      <Path>$(IRFDIR)..\source\Debug</Path>
       <SubDir>0</SubDir>
      </IncludePath.0>
      <IncludePath.1>
-      <Path>$(IRFDIR)..\source\Pong</Path>
+      <Path>$(IRFDIR)..\source\RTC</Path>
       <SubDir>0</SubDir>
      </IncludePath.1>
      <IncludePath.10>
-      <Path>$(IRFDIR)..\..\common</Path>
+      <Path>\Cypress\PDL\2.1.0\drivers\mfs\</Path>
       <SubDir>0</SubDir>
      </IncludePath.10>
+     <IncludePath.11>
+      <Path>\Cypress\PDL\2.1.0\drivers\gpio\</Path>
+      <SubDir>0</SubDir>
+     </IncludePath.11>
+     <IncludePath.12>
+      <Path>\Cypress\PDL\2.1.0\drivers\adc\</Path>
+      <SubDir>0</SubDir>
+     </IncludePath.12>
+     <IncludePath.13>
+      <Path>\Cypress\PDL\2.1.0\utilities\</Path>
+      <SubDir>0</SubDir>
+     </IncludePath.13>
+     <IncludePath.14>
+      <Path>\Cypress\PDL\2.1.0\drivers\</Path>
+      <SubDir>0</SubDir>
+     </IncludePath.14>
+     <IncludePath.15>
+      <Path>\Cypress\PDL\2.1.0\cmsis\include\</Path>
+      <SubDir>0</SubDir>
+     </IncludePath.15>
      <IncludePath.2>
-      <Path>$(IRFDIR)..\source\Analog</Path>
+      <Path>$(IRFDIR)..\source\DHT11</Path>
       <SubDir>0</SubDir>
      </IncludePath.2>
      <IncludePath.3>
-      <Path>$(IRFDIR)..\source\LCD</Path>
+      <Path>$(IRFDIR)..\source\TFTPaint</Path>
       <SubDir>0</SubDir>
      </IncludePath.3>
      <IncludePath.4>
-      <Path>\Cypress\PDL\2.1.0\utilities\</Path>
+      <Path>$(IRFDIR)..\source\Pong</Path>
       <SubDir>0</SubDir>
      </IncludePath.4>
      <IncludePath.5>
-      <Path>\Cypress\PDL\2.1.0\drivers\</Path>
+      <Path>$(IRFDIR)..\source\LCD</Path>
       <SubDir>0</SubDir>
      </IncludePath.5>
      <IncludePath.6>
-      <Path>\Cypress\PDL\2.1.0\drivers\mfs\</Path>
+      <Path>$(IRFDIR)..\source\Analog</Path>
       <SubDir>0</SubDir>
      </IncludePath.6>
      <IncludePath.7>
-      <Path>\Cypress\PDL\2.1.0\cmsis\include\</Path>
+      <Path>$(IRFDIR)..\</Path>
       <SubDir>0</SubDir>
      </IncludePath.7>
      <IncludePath.8>
-      <Path>\Cypress\PDL\2.1.0\drivers\gpio\</Path>
-      <SubDir>0</SubDir>
+      <Path>$(IRFDIR)..\source</Path>
+      <SubDir>1</SubDir>
      </IncludePath.8>
      <IncludePath.9>
-      <Path>$(IRFDIR)..\..\projects</Path>
+      <Path>$(IRFDIR)..\..\common</Path>
       <SubDir>0</SubDir>
      </IncludePath.9>
      <mbBuild>
@@ -126,7 +146,7 @@
      </mbMake>
     </GlobalOptions>
     <Project.0>
-     <DefaultTargetName>S6E2CCA_release</DefaultTargetName>
+     <DefaultTargetName>S6E2CC8_release</DefaultTargetName>
      <FilterName>GCC</FilterName>
      <ProjectName></ProjectName>
      <AdvancedLinkerOptions>
@@ -172,8 +192,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -194,51 +289,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
@@ -289,8 +393,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -311,51 +490,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
@@ -406,8 +594,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -428,51 +691,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
@@ -523,8 +795,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -545,51 +892,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
@@ -640,8 +996,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -662,51 +1093,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
@@ -757,8 +1197,83 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\pdl_user.h</FileName>
+       </File.2>
       </LinkGroup.1>
       <LinkGroup.2>
+       <LinkGroupName>LCD</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\source\LCD\lcd.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.h</FileName>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\source\LCD\gfx.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\source\LCD\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.2>
+      <LinkGroup.3>
+       <LinkGroupName>Analog</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Analog\analog.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.3>
+      <LinkGroup.4>
+       <LinkGroupName>Pong</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Pong\pong.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.4>
+      <LinkGroup.5>
+       <LinkGroupName>TFTPaint</LinkGroupName>
+       <File.0>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.5>
+      <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
         <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
@@ -779,51 +1294,60 @@
         <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.5>
-      </LinkGroup.2>
-      <LinkGroup.3>
-       <LinkGroupName>LCD</LinkGroupName>
+       <File.6>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.7>
+      </LinkGroup.6>
+      <LinkGroup.7>
+       <LinkGroupName>DHT11</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\LCD\glcdfont.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.h</FileName>
        </File.0>
        <File.1>
-        <FileName>$(IRFDIR)..\source\LCD\lcd.h</FileName>
+        <FileName>$(IRFDIR)..\source\DHT11\DHT11.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.1>
-       <File.2>
-        <FileName>$(IRFDIR)..\source\LCD\pins.h</FileName>
-       </File.2>
-       <File.3>
-        <FileName>$(IRFDIR)..\source\LCD\registers.h</FileName>
-       </File.3>
-       <File.4>
-        <FileName>$(IRFDIR)..\source\LCD\graphicstest.h</FileName>
-       </File.4>
-      </LinkGroup.3>
-      <LinkGroup.4>
-       <LinkGroupName>Analog</LinkGroupName>
+      </LinkGroup.7>
+      <LinkGroup.8>
+       <LinkGroupName>RTC</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Analog\analog.h</FileName>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.h</FileName>
        </File.0>
-      </LinkGroup.4>
-      <LinkGroup.5>
-       <LinkGroupName>Pong</LinkGroupName>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\RTC\delay_rtc.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.1>
+      </LinkGroup.8>
+      <LinkGroup.9>
+       <LinkGroupName>Debug</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Pong\pong.h</FileName>
+        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.0>
-      </LinkGroup.5>
-      <LinkGroup.6>
-       <LinkGroupName>TFTPaint</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\source\TFTPaint\tftpaint.h</FileName>
-       </File.0>
-      </LinkGroup.6>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
+       </File.1>
+      </LinkGroup.9>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
        <BuildOptions></BuildOptions>
