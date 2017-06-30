@@ -10,6 +10,7 @@ build:
    pull: true
    
   ci:
+    - apt-get update
     - 7z x 'admin/tudfontsEncrypted.zip' -p"$TUFONTS_DECRYPT_PASSWORD" # The contained files are decompressed into to the repo's root
     - dpkg -i 't1-tudfonts_0.0.20090806_all.deb'
     - dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
