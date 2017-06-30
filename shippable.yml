@@ -5,8 +5,8 @@ env:
 
 build:
   pre_ci_boot:
-   image_name: ubuntu
-   image_tag: 16.04
+   image_name: echtzeitsysteme/tud_cppp
+   image_tag: latest
    pull: true
    
   ci:
