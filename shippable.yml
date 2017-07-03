@@ -5,34 +5,18 @@ env:
 
 build:
   pre_ci_boot:
-   image_name: ubuntu
-   image_tag: 16.04
+   image_name: echtzeitsysteme/tud_cppp
+   image_tag: latest
    pull: true
    
   ci:
-    # --
-    # 'Install' add-apt-repository for TU Design ( http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/)
-    - sudo apt-get install --yes software-properties-common python-software-properties
-    - sudo add-apt-repository "deb http://exp1.fkp.physik.tu-darmstadt.de/tuddesign/ lenny tud-design"
-    - sudo apt-get update
-    - sudo apt-get install --yes --force-yes debian-tuddesign-keyring
-    - sudo apt-get update 
-    # Install utilities (7z: encrypted archive, build-essential: make, gcc,... ; llvm: clang; texlive: prerequisiste for tudesign)
-    - sudo apt-get install --yes p7zip-full build-essential llvm texlive-base-bin texlive-science tex-common xfonts-utils latexmk
     - 7z x 'admin/tudfontsEncrypted.zip' -p"$TUFONTS_DECRYPT_PASSWORD" # The contained files are decompressed into to the repo's root
-    - sudo dpkg -i 't1-tudfonts_0.0.20090806_all.deb'
-    - sudo dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
-    - sudo apt-get install --yes --force-yes latex-tuddesign 
+    - dpkg -i 't1-tudfonts_0.0.20090806_all.deb'
+    - dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
+    - apt-get install --yes --force-yes latex-tuddesign 
     # ---
     - EXERCISES_ROOT="$(pwd)/exercises" bash exercises/solutions/make_cpp_projects.sh
     - make -C 'exercises/latex' all
-   
-  # TODO
-  # The following directive instructs Shippable to cache particular files in the container
-  # To invalidate the cache, you need to add '[reset_minion]' to a commit message.
-  # See: http://docs.shippable.com/ci/caching/
-  # cache: true
-
   
 integrations:
   # See http://docs.shippable.com/ci/email-notifications/
