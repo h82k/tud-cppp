@@ -10,6 +10,13 @@ docker tag tud_cppp echtzeitsysteme/tud_cppp
 docker push echtzeitsysteme/tud_cppp
 ```
 
+# How to test your image
+
+After executing the Dockerfile, you may log into the image as follows:
+```
+docker run -i -t tud_cppp:latest /bin/bash
+```
+
 # How to start over
 (cf. here: https://stackoverflow.com/questions/31909979/docker-machine-no-space-left-on-device)
 Sometime you may get a "no space left on device" error.
