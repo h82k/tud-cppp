@@ -27,7 +27,7 @@ docker system prune
 
 ```
 docker-machine rm default
-docker-machine create --driver virtualbox --virtualbox-disk-size "100100" default # 100GB of space
+docker-machine create --driver virtualbox --virtualbox-disk-size "40000" default # 40GB of space
 docker-machine env default
 ```
 
