@@ -1,4 +1,4 @@
-\section{Eigenes Projekt}
+\section{Eigenes Microcontroller-Projekt umsetzen \optional}
 Nachdem du alle Ein- und Ausgabemöglichkeiten des Boards kennengelernt hast, besteht die Aufgabe in diesem Teil darin, ein beliebiges Programm, zum Beispiel ein Spiel, zu implementieren.
 Du hast hierbei die freie Wahl, die folgenden Vorschläge sollen nur als Anregung dienen.
 Um die Aufgabe leichter zu gestalten, empfiehlt es sich die beiliegende \lstinline{16FXlib} zu verwenden.
@@ -22,7 +22,7 @@ Die aktuelle Punktzahl beider Spieler könnte auf der Siebensegmentanzeige ausge
 Jedes Feld steht für eine Zelle, die \textit{tot} (grün) oder \textit{lebendig} (schwarz) ist.
 Jede Zelle hat acht Nachbarzellen, die ebenso tot oder lebendig sein können.
 Zu Beginn gibt es eine vordefinierte Anfangsgeneration.
-
+%
 Durch festgelegte Regeln wird die nachfolgende Generation ermittelt:
 \begin{itemize}
 	\item Eine \textbf{lebende Zelle} \dots
@@ -33,7 +33,7 @@ Durch festgelegte Regeln wird die nachfolgende Generation ermittelt:
 	\end{itemize}
 	\item Eine \textbf{tote Zelle} mit genau 3 lebenden Nachbarn wird in der nächsten Generation geboren werden, andernfalls bleibt sie tot.
 \end{itemize}
-
+%
 Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgenden Figuren:
 \begin{center}
 	\includegraphics[scale=1]{figures/gol_init1}
@@ -42,7 +42,7 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
 	\hspace{5mm}
 	\includegraphics[scale=1]{figures/gol_init3}
 \end{center}
-
+%
 \hints{
 	\item Da das Spielfeld begrenzt ist, soll es torusförmig aufgebaut werden.
     Das heißt: Alles, was am unteren Rand des Spielfelds verschwindet, kommt oben wieder heraus -- das Gleiche gilt für den linken und rechten Rand. 
@@ -52,6 +52,11 @@ Als Anfangsgeneration eignen sich zufällige Populationen oder eine der folgende
     Das kann zu unvorhersehbarem und schwer zu debuggenen Verhalten des ganzen Displays führen!
 }
 
+\subsection*{Vorschlag: Regentropfen}
+
+Das Touch-Display ist ein kleiner Teich;
+wenn du eine Stelle mit dem Finger berührst, breitet sich von dort eine konzentrische Welle aus.
+Die Geschwindigkeit der Welle kannst du zusätzlich abhängig machen vom ausgeübten Druck.
 
 
 \subsection*{Weitere Vorschläge}

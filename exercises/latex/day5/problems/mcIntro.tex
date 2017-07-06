@@ -1,0 +1,32 @@
+\section{Testprogramm auf den Microcontroller laden \optional}
+
+\subsection{Überblick}
+Für die Arbeit mit dem Evaluationsboard nutzen wir die Entwicklungsumgebung \emph{WinIDEA Open}\footnote{\url{http://www.isystem.com/download/winideaopen}}.
+
+Im Vergleich zu CodeLite ist diese Umgebung speziell auf die Entwicklung von Embedded C zugeschnitten.
+Der Bauprozess für Embedded-C-Programme sieht teilweise anders aus als bei C++-Programmen:
+\begin{itemize}
+\item 
+Das Ergebnis der \textbf{Link-Phase} ist kein auf dem PC ausführbares Programm, sondern ein sogenanntes \emph{Image}
+Dieses Image wird in den statischen Speicher des Microcontrollers geladen.
+\item
+Nach der Link-Phase folgt die \textbf{Flash-Phase}.
+Während dieser Phase wird das Image auf den Microcontroller übertragen.
+\item 
+Anschließend beginnt die \textbf{Ausführung} direkt oder man muss den \emph{Reset}-Knopf des Boards drücken, um den Programmzähler zurückzusetzen.
+\item
+WinIDEA geht hierbei direkt in den \textbf{Debug-Modus}.
+Das bedeutet, dass die Ausführung des Programms bei der ersten Instruktion angehalten wird.
+\RKi{Screenshot?}
+\end{itemize}
+
+\subsection{Testprogramm}
+Für diese und alle weiteren Aufgaben stellen wir dir ein Codetemplate zur Verfügung, das von dir ergänzt wird.
+Wir beginnen mit einem kleinen fertigen Programm, das die RGB-LED des Evaluationsboards periodisch blinken lässt.
+Dies ist das \enquote{Hello World}-Programm der Embedded-C-Welt.
+
+\RKi{Schritte bis zum Laufenden Programm mit Icons/Beschreibung unterstützen}
+\RKi{Quellcode des Programms einfügen und erklären}
+
+Von der Toolseite aus unterscheidet sich die Entwicklung für den Mikrocontroller kaum von den bisherigen Übungen.
+Der Aufruf der Toolchain (Compiler, Linker und Flashprogramm) für die Embedded-Entwicklung ist in einem Makefile integriert, das in CodeLite durch den Buildprozess automatisch aufgerufen wird.
