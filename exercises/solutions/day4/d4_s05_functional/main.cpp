@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <cmath> // for std::sin, std::asin
 #include <iomanip> // for advanced output formatting, e.g., std::setw, std::left
 
@@ -49,7 +50,12 @@ double sum(double i, double j) { return i + j; }
 
 template <class T> 
 std::string to_string(std::string str, const T j) {
-	return str.empty() ? std::to_string(j) : str + " - " + std::to_string(j);
+  std::ostringstream stm ;
+  if (!str.empty()) {
+    stm << " - ";
+  }
+  stm << j;
+  return stm.str();
 }
 
 ////////// Function for testing function pointers //////////

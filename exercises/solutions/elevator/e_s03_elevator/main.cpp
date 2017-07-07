@@ -1,19 +1,21 @@
+#include <ctime>
+#include <iostream>
+#include <cstdlib>
+
 #include "Building.hpp"
 #include "Simulation.hpp"
 #include "SimpleElevatorStrategy.hpp"
 #include "EnergySavingStrategy.hpp"
-#include <ctime>
-#include <iostream>
 
 int main() {
-	srand(time(NULL));
+	std::srand(time(NULL));
 	const int numFloors = 8;
 	const int numPeople = 20;
 	Building b(numFloors);
 	
 	// randomly add some people
 	for (int i = 0; i < numPeople; ++i) {
-		b.addWaitingPerson(rand() % numFloors, std::make_shared<Person>(rand() % numFloors));
+		b.addWaitingPerson(std::rand() % numFloors, std::make_shared<Person>(rand() % numFloors));
 	}
 	Building b2(b);
 	EnergySavingStrategy strat;

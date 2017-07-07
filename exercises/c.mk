@@ -6,7 +6,7 @@
 # delete the default suffixes (disable implicit rules)
 .SUFFIXES:
 # PHONY targets (targets that do not represent a file)
-.PHONY: clean all
+.PHONY: clean all doxygen clean_doxygen clean_all
 
 # compiler options
 CC		= gcc
@@ -16,7 +16,8 @@ CC		= gcc
 # -Wextra		show more warnings
 # -MMD -MP		generate dependencies to header files so that make recognizes changes to header files,
 #				which otherwise do not appear explicitly in any rule
-CFLAGS	= -g -O0 -Wall -Wextra -MMD -MP
+# -std=c99 Allows, for instance, to have variable declarations everywhere
+CFLAGS	= -g -O0 -Wall -Wextra -MMD -MP -std=c99
 # build directory (to store the executable the .o and .d files)
 BUILD	= build
 
@@ -43,3 +44,12 @@ $(BUILD)/%.o: %.c
 
 clean:
 	rm -rf $(BUILD)
+
+doxygen:
+	if [ ! -e Doxyfile ]; then ( doxygen -g ) fi
+	doxygen
+
+clean_doxygen:
+	rm -rf html latex Doxyfile
+  
+clean_all: clean clean_doxygen
