@@ -43,7 +43,7 @@ int main()
   createBuffer();
   
   // Change the values of a, b, and s and observe the effect!
-  char a = 255; // the left-hand side operand 
+  char a = 23; // the left-hand side operand 
   char b = 3; // the right-hand side operand
   char s = 2; // the number of bits to shift 'a' (left or right)
   
