@@ -3,15 +3,19 @@
 
 \setcounter{section}{0}
 
+%optional parameters to speed up build (increases pdf file size)
+%\pdfcompresslevel=0
+%\pdfobjcompresslevel=0
 \begin{document}
 
 % header and title
 \maketitle
-
+\RKi{Einheitliche Präfixe für die Aufgabentitel: Grundlagen, Speicher, OO, Fortgeschritten, C, Aufzug, Info}
 \setcounter{tocdepth}{1}
+%\setlength\cftsectionnumwidth{10em}
+\setlength\cftsecnumwidth{10em}
+\setlength\cftbeforesecskip{.5em} % line skip between sections ("sec")
 \tableofcontents
-\RKi{Adjust indentation}
-\RKi{Adjust lineskip}
 
 \setHeader{Aufgaben zu C/C++-Grundlagen}
 \input{01_basics/problems/intro}
