@@ -1,0 +1,97 @@
+\section{Zeiger und Referenzen Grundlagen}
+In dieser Aufgabe sollst du den Umgang mit Zeigern (\emph{Pointer}) und Referenzen erlernen.
+Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
+Anstelle dessen kann ein (vergleichsweise kleiner) Zeiger auf einen Speicherbereich übergeben werden.
+Alternativ kann auch eine Referenz auf eine Variable übergeben werden, welche intern ähnlich wie ein Zeiger gehandhabt wird.
+
+\subsection{Experimente}
+Experimentiere mit Zeigern, Adressen und Referenzen.
+Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder zusammenhängen.
+Als Ausgangsbasis kann folgendes Programmfragment dienen.
+
+\lstinputlisting{02_memory/problems/listings/pointers_intro.cpp}
+
+\subsection{Bedeutung verstehen}
+Versuche die Bedeutung folgender Ausdrücke zu verstehen.
+Welche Regelmäßigkeiten stellst du fest?
+
+\lstinputlisting{02_memory/problems/listings/pointers_intro_advanced.cpp}
+
+\hints{
+	\item Gehe dabei von rechts nach links vor.
+}
+
+\subsection{Gültigkeit}
+Warum sind folgende Ausdrücke ungültig, sinnlos oder sogar gefährlich?
+
+\vbox{ %fixes empty page
+\lstinputlisting{02_memory/problems/listings/pointers_intro_validity.cpp}
+}
+
+\hints{
+	\item Finde heraus, welchen Typ der Ausdruck hätte haben müssen.
+	\item Nur tatsächlich angelegte Variablen haben Adressen. Ausdrücke wie a + b oder direkt kodierte Zahlenliterale wie 42 haben keine Adresse.
+}
+
+\subsection{Variablentausch}
+Schreibe eine Funktion \lstinline{swap}, die zwei \lstinline{int}-Variablen miteinander vertauscht.
+Probiere dabei beide möglichen Übergabevarianten (per Referenz, per Pointer) aus.
+Was würde passieren, wenn man die Variablen stattdessen per Wert übergeben würde?
+
+\subsection{Programmanalyse}
+Sieh dir folgendes Programm an.
+
+\vbox{ %fixes empty page
+\lstinputlisting{02_memory/problems/listings/pointers_programm.cpp}
+}
+
+Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
+Führe das Programm aus.
+Hast du diese Ausgabe erwartet?
+
+\subsection{Const Correctness}
+
+In dieser Aufgabe setzt du dich mit der Bedeutung des Schlüsselworts \lstinline{const} im Kontext von Pointern auseinander.
+
+Versuche für jede der Variablen im folgenden Code je eine \emph{Verwendung} zu finden, die  
+\begin{itemize}
+\item gültig ist (= fehlerfrei kompiliert) und
+\item nicht gültig ist (= einen Compiler-Fehler wirft).
+\end{itemize}
+
+
+Was ist jeweils der Grund?
+Welche Pointer verhalten sich gleich?
+
+\lstinputlisting{02_memory/problems/listings/pointers_behavior.cpp}
+
+\paragraph{Mehrstufige Pointer}
+
+Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
+
+\lstinputlisting{02_memory/problems/listings/pointers_multi.cpp}
+
+\subsection{Übergabewerte}
+In der letzten Aufgabe direkt zu Pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.
+In Tabelle \ref{table:uebergabewerte} sind in der ersten Spalte Funktionen mit verschiedenen Parametern gegeben.
+In der ersten Zeile findet ihr verschiedene Variablentypen.
+Eure Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus dem Variablen herzustellen.
+Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\\\
+Als Beispiel dient hierfür die erste Zeile. 
+
+\begin{table}[h]
+    \centering
+
+    \newcolumntype{b}{X}
+    \newcolumntype{s}{>{\hsize=.6\hsize}X}
+
+    \begin{tabularx}{\textwidth}{b *5{| >{\centering\arraybackslash}s}@{}} 
+		& \mbox{\lstinline!int i!} & \mbox{\lstinline!int *j!} & \mbox{\lstinline!int const *const k!} & \mbox{\lstinline!int **l!} & \mbox{\lstinline!const int *m!} \\ \hline
+		\mbox{\lstinline!op1(int *)!}          & \mbox{\lstinline!&i!} & \mbox{\lstinline!j!} & \xmark & \mbox{\lstinline!*l!} & \xmark \\ \hline
+		\mbox{\lstinline!op2(int)!}            & & & & & \\ \hline
+		\mbox{\lstinline!op3(int &)!}         & & & & & \\ \hline
+		\mbox{\lstinline!op4(const int **)!}   & & & & & 
+    \end{tabularx}
+    \caption{Tabelle für \emph{Übergabewerte} Aufgabe}
+    \label{table:uebergabewerte}
+\end{table}

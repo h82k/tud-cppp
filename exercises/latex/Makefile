@@ -1,6 +1,6 @@
 .PHONY: all publish copy-only-all clean
 
-DIRS		= cheatsheet day1 day2 day3 day4 day5 elevator
+DIRS		= 01_basics 02_memory 03_oo 04_advanced 05_c 06_elevator 07_cheatsheet
 
 all: create-pdfs
 
@@ -29,5 +29,5 @@ clean:
 
 # clean all created data
 clean_all: clean
-	rm $(wildcard [cheatsheet,day,elevator]*/*.pdf)
+	rm $(wildcard [0]*/*.pdf)
 

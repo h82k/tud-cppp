@@ -13,10 +13,9 @@ then
 fi
 
 for file in \
-  $(find ${solutionsDirectory}/day{1,2,3,4} -name "Makefile") \
-  $(find ${solutionsDirectory}/day5/*_C_* -name "Makefile") \
-  $(find ${solutionsDirectory}/elevator -name "Makefile") \
-  $(find ${templatesDirectory}/day{5} -name "Makefile");
+  $(find ${solutionsDirectory}/{01,02,03,04,06}* -name "Makefile") \
+  $(find ${solutionsDirectory}/05_c/*_C_* -name "Makefile") \
+  $(find ${templatesDirectory}/05 -name "Makefile");
 do
   echo "---"
   echo "----------- $file ----------"
