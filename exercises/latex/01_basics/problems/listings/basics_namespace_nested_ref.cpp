@@ -1,0 +1,3 @@
+void fun::ny::print_star(int n) {
+    // ...
+}

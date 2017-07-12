@@ -1,0 +1,1 @@
+void printStars(int n);

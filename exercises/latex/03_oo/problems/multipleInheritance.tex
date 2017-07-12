@@ -1,0 +1,48 @@
+\section{Mehrfachvererbung}
+Verwende den Code der Aufgabe \ref{sec:inheritance} als Basis.
+
+\subsection{Klasse \lstinline{Employee}}
+Schreibe die Klasse \lstinline{Employee}, die einen Mitarbeiter darstellt.
+\lstinline{Employee} soll von \lstinline{Person} erben und den Namen seines Vorgesetzten als Attribut beinhalten.
+Erweitere auch entsprechend die Methode \lstinline{getInfo()}.
+
+\subsection{Klasse \lstinline{StudentAssistant}}
+Schreibe nun eine Klasse \lstinline{StudentAssistant}, die eine wissenschaftliche Hilfskraft modelliert.
+Eine wissenschaftliche Hilfskraft ist ein Student und gleichzeitig auch ein Mitarbeiter.
+Dementsprechend soll \lstinline{StudentAssistant} sowohl von \lstinline{Student} als auch von \lstinline{Employee} erben. Das heißt es werden je ein Student- und ein Employee-Objekt im Konstruktor initialisiert.
+Weitere Attribute sind nicht nötig.
+Überschreibe \lstinline{getInfo()}, um alle Daten auszugeben.
+Ändere dazu die Sichtbarkeit der Attribute sowohl von \lstinline{Student} als auch von \lstinline{Employee} von \lstinline{private} auf \lstinline{protected}.
+
+Du wirst feststellen, dass sich die Klasse nicht kompilieren lässt, falls du das Attribut \lstinline{name} direkt verwendest, da in einer \lstinline{StudentAssistant}-Instanz zwei Instanzen von \lstinline{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb müsse mittels dem Scope-Operator $::$ angeben, welche Basis du genau meinst.
+
+\lstinputlisting{03_oo/problems/listings/multiInheritance_scope.cpp}
+
+Teste deine Implementation, indem du das Ergebnis von \lstinline{getInfo()} direkt in der \lstinline{main} ausgibst.
+
+\subsection{Virtuelle Vererbung}
+Versuche nun, \lstinline{printPersonInfo()} mit einer Instanz von \lstinline{StudentAssistant} aufzurufen. Auch hier wird der Compiler mit einer Fehlermeldung abbrechen, da er nicht weiß, welche der beiden Basisklassen er nehmen soll.
+Diesmal ist es in C++ allerdings nicht mehr möglich, die Basisklasse zu spezifizieren, weshalb wir anders vorgehen werden.
+Wir sorgen mittels virtueller Vererbung dafür, dass \lstinline{Person} nur ein Mal in \lstinline{StudentAssistant} vorhanden ist.
+
+Lasse dazu \lstinline{Student} und \lstinline{Employee} virtuell von \lstinline{Person} erben.
+Noch lässt sich das Programm nicht kompilieren, denn sowohl \lstinline{Student} als auch \lstinline{Employee} versuchen, einen Konstruktor von \lstinline{Person} aufzurufen.
+Da \lstinline{Person} aber nur ein einziges mal in \lstinline{StudentAssistant} vorhanden ist, müsste der Konstruktor demnach zwei mal aufgerufen werden -- einmal von \lstinline{Student} und einmal von \lstinline{Employee}.
+Dies würde jedoch grob gegen die Sprachprinzipien verstoßen.
+Deshalb wird der Konstruktor von \lstinline{Person} weder von \lstinline{Student} noch von \lstinline{Employee} aufgerufen!
+Stattdessen müssen wir in der Initialisierungsliste von \lstinline{StudentAssistant} angeben, welcher Konstruktor von \lstinline{Person} aufgerufen werden soll.
+Die Konstruktoraufrufe innerhalb von \lstinline{Student} und \lstinline{Employee} laufen stattdessen ins Leere, auch wenn sie syntaktisch vorhanden sind! Füge deshalb ein \lstinline{Person(name)} in die Initialisierungsliste von \lstinline{StudentAssistant} hinzu.
+
+Teste deine Implementation.
+Versuche auch Folgendes: Ändere die Namen in den Konstruktoraufrufen von \lstinline{Student} und \lstinline{Employee} in der Initialisierungsliste von \lstinline{StudentAssistant} und beobachte die Ausgabe.
+Mache dir dadurch klar, welche Probleme Mehrfachvererbung von implementierten Klassen verursachen kann!
+
+\subsection{Erklärung}
+
+Eine Alternative zur Implementationsvererbung stellt \textbf{Schnittstellenvererbung} dar, wie es in Java üblich ist. Dabei werden Schnittstellen (Klassen mit ausschließlich abstrakten Methoden und ohne Attribute) definiert und nur diese vererbt.
+Zusätzlich gibt es Implementationen von diesen Schnittstellen.
+Man würde also \lstinline{Person}, \lstinline{Student}, \lstinline{Employee} und \lstinline{StudentAssistant} in jeweils zwei Klassen aufteilen, eine Schnittstelle und eine Implementation.
+Die Schnittstellen würden voneinander erben, z.B. \lstinline{StudentBase} von \lstinline{PersonBase}, und entsprechende pur virtuelle/abstrakte Methoden wie \lstinline{virtual std::string StudentBase::GetStudentID() = 0} bereitstellen.
+Die Implementation würde ausschließlich von der jeweiligen Schnittstelle erben (\lstinline{Student} von \lstinline{StudentBase}).
+Diese Variante erscheint zwar aufwändiger als Implementationsvererbung, vermeidet aber viele der dabei entstehenden Probleme.
+Schnittstellenvererbung kann in Java eingesetzt werden, um Mehrfachvererbung zu realisieren.

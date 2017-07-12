@@ -1,3 +1,0 @@
-void fun::print_star(int n) {
-    // ...
-}

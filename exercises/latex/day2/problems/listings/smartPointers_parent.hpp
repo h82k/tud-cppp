@@ -1,1 +1,0 @@
-TreeNodePtr parent;		// parent node

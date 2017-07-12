@@ -1,0 +1,188 @@
+\section{C++ Grundlagen, Funktionen und Strukturierung}
+Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
+
+\subsection*{Primitive Datentypen} 
+Die primitiven Datentypen in C++ sind ähnlich denen in Java.
+Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
+Standardmäßig sind Zahlen vorzeichenbehaftet.
+Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
+Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
+
+\lstinputlisting{01_basics/problems/listings/basics_types_intro.cpp}
+
+Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \lstinline{bool}) umgewandelt werden.
+Alles ungleich 0 wird als \lstinline{true} gewertet, 0 als \lstinline{false}.
+Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
+
+\subsection{Größe von Datentypen}
+Die Größe von den verschiedenen Datentypen ist essentiell zu wissen, wenn man mit ihnen arbeiten möchte.
+Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in Bits, wie auch deren minimalen und maximalen Wert ausgeben lassen.
+
+\lstinputlisting{01_basics/problems/listings/basics_types_ex.cpp}
+
+\hints{
+    \item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
+    \item Die C++ Klasse \lstinline{std::numeric_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
+Einbinden lässt sich diese über den Header \lstinline{limits}.
+}
+
+\subsection{Sternenmuster mit Funktionen malen}
+
+Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
+Ein Aufruf von \lstinline{printStars(5)} sollte folgende Ausgabe generieren:
+
+\lstinputlisting{01_basics/problems/listings/basics_stars.cpp}
+
+Platziere die Funktion \textbf{vor} der \lstinline{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
+Benutze die erstellte Funktion \lstinline{printStars(int n)}, um eine weitere Funktion zu schreiben, die eine Figur wie unten dargestellt ausgibt.
+Verwende hierzu Schleifen.
+
+\lstinputlisting{01_basics/problems/listings/basics_starpattern.cpp}
+
+\hints{
+    \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch CamelCase oder Kleinschreibung mit Unterstrichen verwendet.
+    \item Um Strings auszugeben, stellt dir C++ \lstinline{std::cout} zur Verfügung, welches den String zu dem Standard Output Stream weitergibt. Diesen Output Stream kann man mit dem Manipulator \lstinline{std::endl} zu einem Zeilenumbruch zwingen.
+}
+
+\subsection{Auslagern der Datei}
+Erstelle eine neue Header-Datei \textbf{\filename{functions.h}} und eine neue
+Sourcedatei \textbf{\filename{functions.cpp}}.
+Klicke hierzu mit der \textbf{rechten Maustaste} auf den Ordner \textbf{\filename{src}} und wähle \textbf{Add a New File}, wähle den Dateitypen \texttt{Header File} und gebe der Datei den Namen \filename{functions}. 
+Bestätige den Dialog mit \textbf{OK}.
+Das ganze wiederholst du mit dem Dateitypen \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
+Füge in der Headerdatei die folgenden Include Guards hinzu.
+
+\lstinputlisting{01_basics/problems/listings/basics_hpp_guards.hpp}
+
+Binde danach \filename{functions.h} in beide Sourcedateien (\filename{functions.cpp} und \filename{main.cpp}) ein, indem du
+
+\lstinputlisting{01_basics/problems/listings/basics_hpp_include.hpp}
+
+verwendest.
+\textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
+
+Schreibe nun in \filename{functions.h} \textbf{Funktionsprototypen} für die beiden Funktionen aus der vorherigen Aufgabe.
+Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
+Ein Prototyp ist im Wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
+Der Prototyp von \lstinline{printStars(int n)} lautet 
+
+\lstinputlisting{01_basics/problems/listings/basics_printstars_sig.hpp}
+
+Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
+
+\hints{
+    \item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
+    \item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
+    \item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
+    Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
+    \item Anstelle der Include Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden.
+    Diese ist zwar nicht standardisiert, wird aber von den meisten Compilern unterstützt.
+}
+
+\subsection{Dokumentation} \label{basics:doc}
+Für die Lesbarkeit eines Programms ist eine ausführliche Dokumentation des Programmcodes essentiell.
+Damit du einen Einblick darin bekommt, wird es deine Aufgabe sein, deinen geschriebenen Code durchgehend zu kommentieren. 
+Zum Erstellen der Dokumentation werden wir das Tool \emph{Doxygen}\footnote{Doxygen-Link als Referenz: \url{http://www.doxygen.nl/}} verwenden.
+
+Damit Doxygen deine Kommentare erkennt, muss ein spezielles Format eingehalten werden.
+\begin{itemize}
+    \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
+    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)\footnote{Es gibt noch andere Formate, aber wir werden hier in dem Praktikum den sogenannten JavaDoc-Style verwenden.}
+		\lstinputlisting{01_basics/problems/listings/basics_doxygen_comment.cpp}}
+\end{itemize}
+
+Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Kommandos \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann sein Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
+Um aber so ausführlich wie möglich zu sein, werden wir diese Kommandos verwenden.
+Beispiele unter \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html\#docexamples}}.
+Diese Kommandos sind die folgenden
+
+\begin{itemize}
+    \item \lstinline{@file Dateiname} damit Doxygen den kompletten File parst.
+    \item \lstinline{@name Name} Name des zu dokumentierenden Elements.
+    \item \lstinline{@brief kurzeBeschreibung} einzeilige Beschreibung des Elements.
+    \item \lstinline{@author AuthorenNamen} für den Namen des Autoren.
+    \item \lstinline{@param Parametername Beschreibung} um Parameterübergaben bei Funktionen zu erklären.
+    \item \lstinline{@return Beschreibung} kurze Beschreibung der Rückgabe.
+\end{itemize}
+
+Da das Dokumentieren der Datei nicht vor der Datei passieren kann (wo sollte das sein?), geschieht es deshalb direkt nach den Präprozessor Direktiven.
+
+Eure Aufgabe ist es nun, den von euch erstellten Code sorgfältig zu dokumentieren.
+Die Dokumentation geschieht dabei in der \filename{.h} oder \filename{.hpp} Datei.
+
+Hier ein kleines Beispiel dazu, damit ihr eine Vorstellung davon bekommt, wie das ganze am Ende auszusehen hat.
+
+\lstinputlisting{01_basics/problems/listings/basics_doxygen_example.hpp}
+
+\paragraph{Letzendliches Erstellen der Dokumentation}
+Erstellen könnt ihr die Dokumentation am Ende über die Kommandozeile.
+Dafür öffnet ihr euer Terminal mit \lstinline{STRG + ALT + t} und wechselt in das Verzeichnis in dem euer Projekt liegt (üblicherweise \lstinline{cd CPPP/Workspace/NameEuresProjektes}).
+Dort gebt ihr \lstinline{doxygen -g} ein, welches euch eine vorgefertigte Konfigurationsdatei \filename{Doxygen} von \texttt{doxygen} erstellt, gefolgt von einem \lstinline{doxygen}, was letztendlich die Dokumentation erstellt.
+Diese findet ihr in dem Ordner \filename{html} unter der Datei \filename{index.html}.
+Ihr erreicht die Datei ganz einfach, wenn ihr in der Terminal das Kommando \lstinline{pcmanfm} eingebt, was euren Dateimanager öffnet.
+Auf der Webseite, die sich dann öffnet, findet ihr unter Files die von euch dokumentierte \filename{functions.{h,hpp}}.
+
+\subsection{Eingabe}
+Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
+Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen.
+Gib gegebenenfalls eine Fehlermeldung aus.
+Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in folgendem Beispiel.
+
+  \lstinputlisting{01_basics/problems/listings/basics_cin.cpp}
+
+Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \filename{functions.cpp} aus.
+
+\subsection{Fortlaufendes Alphabet ausgeben}
+Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
+Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
+Beispiel:
+
+  \lstinputlisting{01_basics/problems/listings/basics_charpattern.cpp}
+
+Implementiere dazu eine Funktion \lstinline{char nextChar()}.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen von Typ \lstinline{char} zurückgeben, beginnend bei \emph{a}.
+Dazu muss sich \lstinline{nextChar()} intern das aktuelle Zeichen merken.
+Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren alten Wert beim Wiedereintritt in die Funktion.
+Ein statische Variable \lstinline{c} wird mittels
+
+  \lstinputlisting{01_basics/problems/listings/basics_staticchar.cpp}
+
+deklariert.
+In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig zu Beginn des Programms} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
+
+\hints{
+    \item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden.
+}
+
+\subsection{Namensräume}
+Bibliotheken werden in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht mit gleichnamigen Funktionen in anderen Bibliotheken kollidieren.
+Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
+folgt in einen \lstinline{namespace} setzt.
+
+  \lstinputlisting{01_basics/problems/listings/basics_namespace_fun.cpp}
+
+Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt.
+Genauso muss der Namensraum vor jedem Aufruf der Funktion gesetzt werden.
+
+  \lstinputlisting{01_basics/problems/listings/basics_namespace_ref.cpp}
+
+Vergisst man, den Namensraum in der Sourcedatei anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
+Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind unterschiedliche Funktionen!). \\ \smallskip
+
+Falls man seine Funktionen noch weiter unterteilen möchte, kann man Namensräume auch schachteln.
+Hierzu definiert man wie oben ein weiteren Namensraum mit \lstinline{namespace} in einer anderen Namensraum Instanz.
+
+  \lstinputlisting{01_basics/problems/listings/basics_namespace_nested.cpp}
+
+In der Sourcedatei folgt dann nach dem initialen Namensraum, hier \lstinline{fun} gefolgt von dem Doppelpunktpaar, der geschachtelte Namensraum \lstinline{ny} wieder gefolgt von zwei Doppelpunkten.
+Erst dann können die Funktionen in dem Namensraum \lstinline{ny} verwendet werden.
+
+\lstinputlisting{01_basics/problems/listings/basics_namespace_nested_ref.cpp}
+
+In diesem Projekt wird dies nicht notwendig sein, da die Anzahl der definierten Funktionen überschaubar ist, aber trotzdem empfehlen wir dir es auszuprobieren.
+
+\hints{
+    \item Du kannst \lstinline{using namespace fun;} verwenden, um diesen Namensraum zu importieren (vergleichbar mit \lstinline{static import} in Java).
+    Genauso wie in Java kann es hierdurch leichter zu Namenskollisionen kommen und sollte daher eher nicht verwendet werden.
+    \item Bei dem geschachtelten Namensraum ist entsprechend \lstinline{using namespace fun::ny;} zu verwenden um den Namensraum zu importieren.
+}

@@ -1,0 +1,121 @@
+\section{Fortsetzung Aufzugsimulator -- Tag 2}
+In dieser Aufgabe erweitern und verbessern wir unseren Aufzugsimulator, sodass das Kopieren von Personen wegfällt.
+Dies werden wir erreichen, indem wir nicht direkt mit \lstinline{Person}-Objekten oder -rohzeigern sondern mit Smart Pointern arbeiten.
+Dadurch müssen wir beim Verschieben von Personen in den Aufzug nur die Smart Pointer kopieren, während die \lstinline{Person}-Objekte selbst bestehen bleiben.
+
+Ein weiterer Vorteil ist, dass wir von jeder Person genau ein Exemplar im Speicher halten.
+Möchten wir beispielsweise den Namen einer Person ändern, ist dies überall, wo die Person auftaucht sofort und konsistent sichtbar.
+Nutzt man überall Kopien von Personen, haben wir keine Kontrolle darüber und wären gezwungen die Klasse \lstinline{Person} immutabel zu machen. \\
+
+\hints{
+    \item Am Ende dieser Aufgabe hast du die Möglichkeit, die Performanz der alten und der neuen Implementation zu vergleichen.
+	Dazu ist es nötig, dass du jetzt eine Kopie von deinem aktuellen Code machst.
+	Gehe dabei folgendermaßen vor:
+	\begin{itemize}
+	    \item Lege eine Kopie deines Projektordners an.
+	    \item Benenne dein Projekt um, z.B. in \texttt{Aufzug\_Alt} (\textbf{Rechtsklick auf das Projekt $\rightarrow$ Rename Project}).
+	    \item Importiere den kopierten Projektordner in CodeLite (\textbf{Workspace $\rightarrow$ Add an existing project}).
+	    \item In deinem Workspace sollten jetzt zwei Projekte sein, \texttt{Aufzug\_Alt} und \texttt{Aufzug}.
+	\end{itemize}
+    \item Du wirst in den folgenden Aufgaben deinen Code stark verändern.
+    Versuche, nicht alle Änderungen auf einmal zu machen, sondern gehe stückweise vor (also bspw. nur einen Getter umstellen und alle Folgefehler beheben).
+}
+
+\subsection{Refactoring mit Referenzen und \lstinline{const}}
+Als Erstes verbessern wir die Sauberkeit des vorhandenen Codes mithilfe der bisher kennengelernten Mittel wie Referenzen und \lstinline{const}.
+Es ist sinnvoll, dass du die Änderungen stückweise im Code durchführst und zwischendurch testest, ob alles noch korrekt funktioniert.
+
+Deklariere dafür sämtliche Getter in \lstinline{Building}, \lstinline{Elevator}, \lstinline{Floor} und \lstinline{Person} als \lstinline{const}, z.B. \lstinline{Building::getFloor()} und \lstinline{Elevator::getEnergyConsumed()}.
+Passe außerdem die Methode \lstinline{Elevator::addPeople()} so an, dass die Liste \lstinline{people} nicht mehr als Wert sondern als \lstinline{const} Referenz übergeben wird.
+
+Es kann sein, dass du für bestimmte Zwecke weiterhin einen Getter brauchst, der dir ein nicht-\lstinline{const} Objekt zurückgibt.
+Solche Getter sollten typischerweise \lstinline{private} deklariert werden.
+Beispielsweise wird deine \lstinline{Building}-Klasse zwei Getter für \lstinline{Floor} enthalten:
+\lstinputlisting{06_elevator/problems/listings/sim2_building.hpp}
+
+\hints{
+	\item Um über eine \lstinline{const} Liste zu iterieren, verwende \lstinline{vector<T>::const_iterator} anstatt \lstinline{vector<T>::iterator} als Iterator-Typ.
+}
+
+\subsection{}
+Um nicht immer wieder \lstinline{std::shared_ptr<Person>} schreiben zu müssen, definiere ein \lstinline{typedef PersonPtr} für diesen Typen.
+Binde den Header \lstinline{memory} in \filename{Person.h} ein und definiere den neuen Typen \lstinline{PersonPtr} hinter der Klassendefinition von \lstinline{Person}:
+
+\lstinputlisting{06_elevator/problems/listings/sim2_smart_ptr.hpp}
+
+\subsection{Effizientere Listen}
+Ändere in der Klasse \lstinline{Elevator} alle Vorkommen von \lstinline{vector} nach \lstinline{list} um, da wir nun eine verkettete Liste verwenden werden, um Personen zu speichern.
+Dadurch kann man Personen auch in der Mitte der Liste effizient löschen.
+
+Die \lstinline{list}-Klasse enthält keine Methode \lstinline{at()}.
+Diese ist auch gar nicht nötig:
+Wir traversieren die Liste stattdessen mit einem Iterator.
+Lösche dazu die Methode \lstinline{getPerson()} und füge die folgende Methode hinzu, die eine \lstinline{const} Referenz auf die enthaltenen Personen zurückgibt:
+
+\lstinputlisting{06_elevator/problems/listings/sim2_contained_people.hpp}
+
+Dadurch kann von außen lesend auf die Leute im Aufzug zugegriffen werden.
+Ändere außerdem den Typen des Containers von \lstinline{Person} auf \lstinline{PersonPtr}, da wir Smart Pointer auf Personen speichern werden und nicht die Personen direkt.
+Passe die Signaturen aller Methoden in \lstinline{Elevator} entsprechend an.
+
+\subsection{}
+Jetzt müssen wir die Methode \lstinline{removeArrivedPeople()} anpassen.
+Da wir beliebige Elemente aus \lstinline{containedPeople} löschen können, brauchen wir den Umweg über die temporäre Liste \lstinline{stay} nicht mehr.
+
+Gehe dazu folgendermaßen vor:
+Iteriere mit einen Listeniterator vom Typ \lstinline{std::list<PersonPtr>::iterator} über die Personen im Aufzug und prüfe für jede, ob sie an ihrem Zielstockwerk angekommen ist.
+Du kannst auf das Element, auf den der Iterator zeigt, durch den Dereferenzierungsoperator (\lstinline{*iter}) zugreifen.
+Dieses Element ist selbst ein Smart Pointer.
+Deshalb muss der Iterator für den Zugriff auf die Person \textbf{doppelt} dereferenziert werden.
+Wenn die Person in ihrem Zielstockwerk angekommen ist, wird sie aus \lstinline{containedPeople} gelöscht und zu \lstinline{arrived} hinzugefügt.
+Um ein Element zu löschen, verwende \lstinline{containedPeople.erase(iter)}.
+%
+\hints{
+	\item Der bisherige Iterator ist nach dem Löschen nicht mehr gültig.
+	Die Methode \lstinline{std::vector<T>::erase} gibt einen Iterator auf das Element hinter dem gelöschten zurück.
+}
+%
+Als Grundgerüst kann folgendes Codeschnipsel dienen:
+
+\lstinputlisting{06_elevator/problems/listings/sim2_snippet.cpp}
+
+\subsection{}
+Passe auch die Klassen \lstinline{Floor} und \lstinline{Building} entsprechend an, sodass nur noch Listen und Smart Pointer auf Personen verwendet werden.
+
+\subsection{}
+Passe die Simulation des Aufzugs entsprechend an.
+Du wirst auf die erste Person im Aufzug nun auf eine andere Art und Weise zugreifen müssen als vorher.
+Benutze die Methode \lstinline{getContainedPeople()} des Aufzugs, um an die Liste der Personen zu kommen.
+Nun kannst du auf den Inhalt des ersten Elements mittels \lstinline{front()} zugreifen.
+Vergiss nicht, dass dieser Inhalt ein PersonPtr und nicht die Person direkt ist.
+Entweder du dereferenzierst das Element doppelt und verwendest den Operator \lstinline{.} oder du nutzt wie üblich bei Pointern den Operator \lstinline{->}.
+
+Schau dir die Ausgabe an.
+Nun werden Personen nicht mehr kopiert, sondern nur noch gelöscht, sobald sie tatsächlich den Aufzug verlassen haben und kein Zeiger mehr auf sie zeigt.
+
+\subsection{Vergleich der alten und neuen Implementation \optional}
+\optionaltextbox
+
+Es ist natürlich interessant zu erfahren, ob sich der ganze Aufwand des Refactorings gelohnt hat.
+
+\paragraph{Laufzeit}
+Eine relativ simple Art der Laufzeitmessung ist es, die verstrichene Prozessorzeit zu messen.
+Der Header \lstinline{ctime} stellt hierfür die Funktion \lstinline{clock()} zur Verfügung, die einen Zähler vom Typ \lstinline{clock_t} zurückgibt.
+Mithilfe der Konstanten \lstinline{CLOCKS_PER_SEC} kann man aus der Anzahl von Prozessorzyklen die Laufzeit berechnen.
+
+Erzeuge nun ein hinreichend großes Beispiel und teste dessen Laufzeit für die alte und neue Implementation.
+
+\hints{
+	\item Es gibt auch ausgefeiltere Möglichkeiten, die Laufzeit zu messen.
+	Dazu stellt Boost unter anderem den Header \filename{boost/chrono.hpp} zur Verfügung.
+	Für nähere Informationen siehe \url{http://www.boost.org/doc/libs/1_48_0/doc/html/chrono/users_guide.html}.
+}
+
+
+\paragraph{Speicherverbrauch}
+Ein weiteres Argument gegen das Kopieren von Objekten kann der Speicherverbrauch sein.
+Das ist in unserem Fall allerdings weniger interessant, da die meisten kopierten Objekte relativ kurz leben und dann wieder gelöscht werden.
+
+Im Gegensatz zur Laufzeit gibt es leider keinen sehr einfachen Weg, den Speicherverbrauch des Programms direkt auszugeben.
+
+Du könntest hierfür kurz vor dem Ende von \lstinline{main} die Ausführung pausieren (mittels \lstinline{std::cin}) und dir im Task Manager ansehen, wie hoch der Speicherverbrauch des Programms ist -- das ist aber sicherlich nur eine Notlösung.

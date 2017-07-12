@@ -1,2 +1,0 @@
-ListIterator begin();
-ListIterator end();

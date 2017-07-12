@@ -20,7 +20,7 @@ build:
     - dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
     - apt-get install --yes --force-yes latex-tuddesign 
     # ---
-    - EXERCISES_ROOT="$(pwd)/exercises" bash exercises/solutions/make_cpp_projects.sh
+    - bash ./exercises/make_all.sh
     - make -C 'exercises/latex' all
   
 integrations:

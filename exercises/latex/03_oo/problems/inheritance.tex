@@ -1,0 +1,67 @@
+\section{Vererbung und Polymorphie}\label{sec:inheritance}
+In dieser Aufgabe sollst du Konzepte der Vererbung und Polymorphie unter Verwendung abstrakter Funktionen erlernen.
+
+\subsection{Klasse \lstinline{Person}}
+Implementiere eine Klasse \lstinline{Person}, die eine Person mit einem Namen darstellt.
+Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
+
+\lstinputlisting{03_oo/problems/listings/inheritance_person.hpp}
+
+\hints{
+    \item Verwende \lstinline{\#include <string>} um \lstinline{std::string} zu verwenden.
+    \item Um ein String-Literal an eine \lstinline{std::string} Variable anzuhängen, musst du aus dem String-Literal zuerst ein \lstinline{std::string}-Objekt machen: \lstinline{std::string text = std::string("Name: " ) + name;}.
+}
+
+\subsection{Klasse \lstinline{Student}}
+Implementiere eine Klasse \lstinline{Student}, die von \lstinline{Person} erbt (\lstinline{public}) und einen Studenten mit einer Matrikelnummer (ebenfalls \lstinline{std::string}) modelliert.
+Rufe in der Initialisierungsliste den entsprechenden Konstruktor der Elternklasse \lstinline{Person} mittels \lstinline{Person(name)} auf.
+Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
+
+\lstinputlisting{03_oo/problems/listings/inheritance_student.hpp}
+
+\hints{
+    \item Du kannst bei Bedarf die \lstinline{getInfo()}-Implementation der Elternklasse \lstinline{Person} von \lstinline{Student} aus mittels \lstinline{Person::getInfo()} aufrufen.
+}
+
+\subsection{Test}
+Erstelle nun in \lstinline{main()} je eine Person und einen Studenten und gib deren Daten auf der Konsole aus.
+Vergewissere dich, dass bei \lstinline{Student} auch die Matrikelnummer ausgegeben wird.
+Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an, und versuche, diese nachzuvollziehen.
+
+Implementiere dann folgende Funktion und teste deine Implementation erneut, indem du \lstinline{printPersonInfo()} mit beiden Personentypen aufrufst.
+
+\lstinputlisting{03_oo/problems/listings/inheritance_person_info.hpp}
+
+\hints{
+    \item Dadurch dass \lstinline{Person} als \lstinline{const} Zeiger übergeben wird, können auch Unterklassen von \lstinline{Person}, wie z.B. \lstinline{Student}, übergeben werden. 
+}
+
+
+\subsection{Dynamic Dispatch bei \lstinline{printPersonInfo}}
+Du merkst, dass \lstinline{printPersonInfo()} unabhängig von übergebenem Typ einer Person immer nur den Namen der Person ausgibt, aber nicht die Matrikelnummer.
+Der Grund dafür ist, dass \lstinline{getInfo()} nicht als \lstinline{virtual} deklariert wurde und deshalb auch kein dynamischer Dispatch der Methode stattfindet.
+Deklariere daher \lstinline{getInfo()} in beiden Klassen als \lstinline{virtual}.
+
+Teste deine Implementation erneut und vergewissere dich, dass nun immer die richtige Methode aufgerufen wird.
+
+\hints{
+	\item Möchte man Methoden einer Basisklasse überschreiben, \textbf{muss} \lstinline{virtual} in der Basisklasse gesetzt werden.
+	In den abgeleiteten Klassen kann \lstinline{virtual} weggelassen werden, es wird dann vom Compiler ergänzt.
+	Es ist aber hilfreich, auch dort der Lesbarkeit halber das Schlüsselwort zu verwenden.
+	\item Erst ab C++11 gibt es die Möglichkeit mit dem Schlüsselwort \lstinline{override} zu deklarieren, dass eine Funktion eine andere (virtuelle) überschreibt (vergleichbar mit der Annotation \lstinline{@Override} in Java).
+}
+
+\subsection{Virtueller Destruktor}
+Lege einen Studenten mit \lstinline{new} dynamisch auf dem Heap an und speichere die Adresse in einem Zeiger auf eine \lstinline{Person}.
+Lösche die Person anschließend mit \lstinline{delete}.
+
+\lstinputlisting{03_oo/problems/listings/inheritance_main.cpp}
+
+Analysiere die Konsolenausgabe.
+Es wird nur der Destruktor von \lstinline{Person} aufgerufen, obwohl es sich um ein Objekt vom Typ \lstinline{Student} handelt.
+Auch hier liegt es daran, dass kein dynamischer Dispatch bei der Zerstörung erfolgt.
+Deklariere deshalb in beiden Klassen den Destruktor als \textbf{virtual} und teste die Korrektheit der Destruktoraufrufe.
+
+\hints{
+    \item Faustregel: Besitzt eine Klasse mindestens eine virtuelle Funktion, so sollte auch der Destruktor virtuell sein.
+}

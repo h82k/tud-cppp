@@ -1,1 +1,0 @@
-static char c = 'a';

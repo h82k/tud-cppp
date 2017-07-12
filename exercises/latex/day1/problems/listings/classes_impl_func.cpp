@@ -1,3 +1,0 @@
-void ClassName::functionName() {
-	// function implementation ...
-}

@@ -1,3 +1,0 @@
-namespace fun {
-    // function prototypes ...
-};  // semicolon!

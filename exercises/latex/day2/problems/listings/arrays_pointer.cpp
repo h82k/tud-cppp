@@ -1,1 +1,0 @@
-int *pArr = arr;
