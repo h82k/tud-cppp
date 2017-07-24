@@ -10,12 +10,23 @@
 
 % header and title
 \maketitle
-\RKi{Einheitliche Präfixe für die Aufgabentitel: Grundlagen, Speicher, OO, Fortgeschritten, C, Aufzug, Info}
+
+\noindent\emph{Hinweis:} Die Präfixe der Aufgaben beziehen sich auf die Themengebiete der Vorlesung. (
+\ExercisePrefixBasics{}: Grundlagen; 
+\ExercisePrefixMemory{}: Speicherverwaltung/Memory;
+\ExercisePrefixObjectOrientation{}: Objektorientierung;
+\ExercisePrefixAdvanced{}: Fortgeschrittene Themen;
+\ExercisePrefixEmbeddedC{}: (Embedded) C;
+\ExercisePrefixElevator{}: Zusatzaufgaben zum Aufzugsimulator
+\ExercisePrefixAdditionalInformation{}: Zusatzmaterial
+)
 \setcounter{tocdepth}{1}
 %\setlength\cftsectionnumwidth{10em}
 \setlength\cftsecnumwidth{10em}
-\setlength\cftbeforesecskip{.5em} % line skip between sections ("sec")
+\setlength\cftbeforesecskip{.1em} % line skip between sections ("sec")
 \tableofcontents
+
+\newpage
 
 \setHeader{Aufgaben zu C/C++-Grundlagen}
 \input{01_basics/problems/intro}
@@ -65,6 +76,8 @@
 \input{04_advanced/problems/callbacks}
 \newpage
 \input{04_advanced/problems/customArrays}
+\newpage
+\input{06_elevator/problems/sim4.tex}
 
 \newpage
 \setHeader{Aufgaben zu Embedded C}
@@ -72,7 +85,6 @@
 \input{05_c/problems/cIntro}
 \input{05_c/problems/mcIntro}
 \input{05_c/problems/mcButton}
-\input{05_c/problems/mcGyro}
 \input{05_c/problems/mcJoysticks}
 \input{05_c/problems/mcDisplay}
 \input{05_c/problems/mcGame}
@@ -84,8 +96,6 @@
 \input{06_elevator/problems/sim2.tex}
 \newpage
 \input{06_elevator/problems/sim3.tex}
-\newpage
-\input{06_elevator/problems/sim4.tex}
 
 \newpage
 \setHeader{Zusatzmaterial}
