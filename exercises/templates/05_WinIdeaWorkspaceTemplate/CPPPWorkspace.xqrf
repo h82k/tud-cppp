@@ -37,7 +37,7 @@
      <DF_Start></DF_Start>
      <DF_Valid>False</DF_Valid>
      <DisplayParameters>0</DisplayParameters>
-     <ExecutableFileName>s6e2ccxj_template.elf</ExecutableFileName>
+     <ExecutableFileName>cppp.elf</ExecutableFileName>
      <ExternalMake>0</ExternalMake>
      <ExternalMakeFile></ExternalMakeFile>
      <ExternalMakeFileParameters></ExternalMakeFileParameters>
@@ -169,6 +169,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -241,6 +250,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -313,6 +331,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -385,6 +412,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -457,6 +493,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -529,6 +574,15 @@
        <File.2>
         <FileName>$(IRFDIR)src\blink.h</FileName>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)src\button.h</FileName>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)src\button.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.4>
       </LinkGroup.1>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
