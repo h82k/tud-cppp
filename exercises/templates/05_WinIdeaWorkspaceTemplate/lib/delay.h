@@ -3,7 +3,9 @@
 
 #include <stdint.h>
 
-void InitBtRLT_Reg(uint32_t u32us);
-void BtRLT_Delay();
+/**
+ * \brief Synchronous function that blocks for the given amount of micro seconds
+ */
+void microDelay(uint32_t timeInMicroseconds);
 
 #endif

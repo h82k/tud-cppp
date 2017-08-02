@@ -1,10 +1,9 @@
-#include "blink.h"
+#include "button.h"
 
 #include <stdint.h>
-#include "delay.h"
 #include "s6e2ccxj.h"
 
-int BlinkMain() {
+int ButtonMain() {
   volatile uint32_t* blueLEDValuePort = &(FM4_GPIO->PDOR1);
   volatile uint32_t* blueLEDDirectionPort = &(FM4_GPIO->DDR1);
   
@@ -26,4 +25,3 @@ int BlinkMain() {
 		
   }
 }
-
