@@ -1,1 +1,4 @@
-/*.jrf
+/release
+/debug
+/$i$FNetTopology.json
+/*.xjrf
