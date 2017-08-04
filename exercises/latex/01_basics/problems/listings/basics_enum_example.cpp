@@ -1,0 +1,1 @@
+enum Fruit { apple, banana, cherry };
