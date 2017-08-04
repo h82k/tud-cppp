@@ -21,7 +21,7 @@ Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. 
 Jeder Copy-Konstruktor benötigt eine Referenz auf ein Objekt vom gleichen Typ wie die Klasse selbst als Parameter. 
 Sinnvollerweise wird noch \lstinline{const} vor oder nach der Typbezeichnung eingefügt (aber vor \lstinline{&}), da typischerweise das Ursprungsobjekt nicht verändert wird.
 
-Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
+Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen, die das Objekt besitzt, freizugeben.
 Die Syntax des Prototypen lautet
 
   \lstinputlisting{01_basics/problems/listings/overloading_destructor.hpp}
@@ -31,11 +31,11 @@ und die Implementation entsprechend
   \lstinputlisting{01_basics/problems/listings/overloading_destructor_impl.cpp}
 
 \hints{
-	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
+	\item Es darf eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
 	\item Der Compiler wird automatisch einen \lstinline{public} Destruktor und \lstinline{public} Copy-Konstruktor erzeugen, falls sie nicht \emph{deklariert} wurden.
     Ebenso wird ein \lstinline{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren deklariert wurden.
     
-    Falls sie jedoch \emph{deklariert} wurden, musst du auch eine Implementierung angeben.
+    Falls du sie jedoch \emph{deklarierst}, musst du auch eine Implementierung angeben.
 	\item Würden beim Copy-Konstruktor \lstinline{other} by-Value übergeben werden, müsste eine Kopie von \lstinline{other} angelegt werden.
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.
 }

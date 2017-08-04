@@ -1,5 +1,5 @@
 \section{\ExercisePrefixBasics Klassen}
-Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
+Ziel dieser Aufgabe ist es, die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
 
 \hints{
 	\item Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{Rechtsklick auf den Ordner src/ $\rightarrow$ New class...}) von CodeLite!
@@ -9,13 +9,13 @@ Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Sch
 Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration (Headerdatei) und Implementation (Sourcedatei) aufgeteilt.
 Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Header beschrieben, während die Sourcedatei nur die Implementation der Funktionen und Initialisierungen statischer Variablen enthält.
 Standardmäßig sind alle Elemente einer Klasse privat.
-Im Gegensatz zu Java werden in C++ die Access-Modifier \lstinline{public}/\lstinline{private}/\lstinline{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
+Im Gegensatz zu Java werden in C++ die Access-Modifier \lstinline{public}/\lstinline{private}/\lstinline{protected} nicht bei jedem Element einzeln, sondern blockweise angegeben.
 
   \lstinputlisting{01_basics/problems/listings/classes_intro.hpp}
 
 Erzeuge einen Header \filename{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
 Füge der Klasse das \lstinline{private} Attribut \lstinline{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \lstinline{public} Konstruktorprototypen \lstinline{CharGenerator()}, der \lstinline{nextChar} auf \lstinline{'a'} initialisieren soll.
-Füge noch eine \lstinline{public} Funktionsprototypen \lstinline{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
+Füge noch einen \lstinline{public} Funktionsprototypen \lstinline{char generateNextChar()} hinzu, welcher das nächste auszugebende Zeichen zurückgeben soll.
 
 
 \hints{
@@ -23,18 +23,18 @@ Füge noch eine \lstinline{public} Funktionsprototypen \lstinline{char generateN
 }
 
 \subsection{Dokumentation von Klassen}
-Auch in dieser Aufgabe geht es wieder darum, euren Programmcode zu dokumentieren.
-Das funktioniert wieder sehr ähnlich wie in Aufgabe \ref{basics:doc}, nur tauscht ihr den Tag \lstinline{@file} gegen \lstinline{@class} aus und platziert eine dementsprechende Dokumentation vor der Definition der Klasse.
-Dies könnt ihr fortlaufend in der Aufgabe erfüllen und muss nicht direkt jetzt geschehen.
-Am Ende erstellt ihr euch wieder eine Dokumentation eurer Klassen und könnt so entdecken, wie \texttt{doxygen} eure Kommentare in Dokumentation umsetzt.
+Auch in dieser Aufgabe geht es wieder darum, deinen Programmcode zu dokumentieren.
+Das funktioniert wieder sehr ähnlich wie in Aufgabe \ref{basics:doc}, nur tauschst du den Tag \lstinline{@file} gegen \lstinline{@class} aus und platzierst die Dokumentation vor der Definition der Klasse.
+Dies kannst du fortlaufend in der Aufgabe erfüllen, es muss nicht direkt jetzt geschehen.
+Am Ende erstellst du dir wieder eine Dokumentation der Klassen und kannst so entdecken, wie \texttt{doxygen} deine Kommentare in eine fertige Dokumentation umsetzt.
 
 \subsection{Implementation}
-Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte getrennt angegeben werden.
+Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte (den Scope-Resolution-Operator) getrennt angegeben werden.
 
   \lstinputlisting{01_basics/problems/listings/classes_impl_func.cpp}
 
 Um Attribute zu initialisieren, wird üblicherweise eine sogenannte Initialisierungsliste im Konstruktor verwendet, da diese vor dem Eintritt in den Konstruktorrumpf aufgerufen wird.
-Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributnamen und ihren Initialisierungsargumenten in Klammern.
+Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der öffnenden geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributnamen und ihren Initialisierungsargumenten in Klammern.
 
   \lstinputlisting{01_basics/problems/listings/classes_impl_list.cpp}
 
@@ -48,7 +48,7 @@ Implementiere zudem \lstinline{generateNextChar()}, indem du \lstinline{nextChar
 }
 
 \subsection{Instantiierung}
-Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit einer \lstinline{main()} Funktion in der du ein \lstinline{CharGenerator}-Objekt erzeugst und \lstinline{generateNextChar()} mehrfach aufrufst und ausgibst.
+Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit einer \lstinline{main()}-Funktion in der du ein \lstinline{CharGenerator}-Objekt erzeugst und \lstinline{generateNextChar()} mehrfach aufrufst und ausgibst.
 
   \lstinputlisting{01_basics/problems/listings/classes_obj.cpp}
 
@@ -59,8 +59,8 @@ Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit ein
 }
 
 \subsection{Default-Parameter}
-Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte Default-Parameter angeben, der beim Aufruf weggelassen werden kann.
-Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen ohne die Implementation zu ändern.
+Damit man nicht immer das Startzeichen angeben muss, kann man einen Default-Wert für einen Parameter angeben. Beim Aufruf kann dieser Parameter dann weggelassen werden kann.
+Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen, ohne die Implementation zu ändern.
 
   \lstinputlisting{01_basics/problems/listings/classes_default_value.cpp}
 
@@ -72,7 +72,7 @@ Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
   \lstinputlisting{01_basics/problems/listings/classes_obj_par.cpp}
 
 \hints{
-	\item Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls Default-Werte angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
+	\item Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls mit Default-Werten angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
 }
 
 \subsection{PatternPrinter}
