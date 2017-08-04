@@ -53,6 +53,6 @@ void main(){
       //pong_loop();
       //rauminformationen();
       debugPeripherie(); 
-      doBlink();
+      //doBlink();
     }
 }
