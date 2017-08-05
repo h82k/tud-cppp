@@ -5,7 +5,7 @@ Dazu brauchen wir zwei Klassen:
 
 \begin{figure}[h]
 \centering
-\include{03_oo/figures/linkedlist}
+\include{02_memory/figures/linkedlist}
 \caption{Linked List}
 \end{figure}
 
@@ -75,7 +75,7 @@ Somit können wir unsere Liste ähnlich zu \lstinline{std::vector} verwenden:
 Beginne mit einer Grundversion des Iterators.
 Erstelle einen Konstruktor, der die Attribute des Iterators (Zeiger auf aktuelles Element und Zeiger auf die Liste) entsprechend initialisiert.
 Implementiere Vergleichsoperator \lstinline{operator!=} sowie den Dereferenzierungsoperator \lstinline{operator*}.
-Der Dereferenzierungsoperator solle den Inhalt des aktuellen Items zurückgeben.
+Der Dereferenzierungsoperator sollte den Inhalt des aktuellen Items zurückgeben.
 Du brauchst nicht zu prüfen, ob \lstinline{item} tatsächlich auf ein gültiges Element zeigt (Das machen/können Iteratoren aus der Standardbibliothek übrigens auch nicht!).
 Zum Vergleichen zweier Iteratoren prüfe, ob die \lstinline{item} und \lstinline{list} Zeiger identisch sind.
 Vergleiche nicht den Inhalt der Items, da der Vergleich auch dann funktionieren soll, wenn \lstinline{item} \lstinline{NULL} ist, wenn der Iterator also auf kein Element zeigt.
@@ -104,7 +104,7 @@ Dieser Operator kann sowohl als Postfix (z.B. \lstinline{iter++}) als auch Präf
 Um den Compiler darüber zu informieren, welche Variante wir überladen, wird beim Postfix-Operator ein Dummy-Parameter vom Typ \lstinline{int} definiert.
 Dieser dient nur der syntaktischen Unterscheidung und hat keine weitere Bedeutung.
 
-Beachte außerdem, dass bei Präfix-Operationen der Iterator sich selbst zurückgeben sollte, während der Postfix-Operationen eine Kopie des Iterators zurückgibt, die auf das vorherige Element zeigt.
+Beachte außerdem, dass bei Präfix-Operationen der Iterator sich selbst zurückgeben sollte, während bei Postfix-Operationen eine Kopie des Iterators zurückgegeben wird, die auf das vorherige Element zeigt.
 Das ist auch der Grund, warum die Präfix-Form von \lstinline{operator++} (und \lstinline{operator--}) effizienter ist als die Postfix-Form.
 Daher sollte die Präfix-Form dieser Operatoren die bevorzugte Variante sein, falls kein besonderer Grund für die Postfix-Form vorliegt.
 
@@ -124,11 +124,11 @@ Implementiere dazu die folgenden Methoden innerhalb der \lstinline{List} Klasse,
 Höchstwahrscheinlich wirst du Probleme bei der Kompilierung haben.
 Dies liegt an der zirkulären Abhängigkeit zwischen \lstinline{List} und \lstinline{ListIterator}.
 Gehe dazu folgendermaßen vor:
-Verschieben die \lstinline{\#include} Anweisungen für die Header von \lstinline{List} und \lstinline{ListItem} aus \filename{ListIterator.h} nach \filename{ListIterator.cpp} und füge in \filename{ListIterator.h} folgendes hinzu
+Verschieben die \lstinline{#include}-Anweisungen für die Header von \lstinline{List} und \lstinline{ListItem} aus \filename{ListIterator.h} nach \filename{ListIterator.cpp} und füge in \filename{ListIterator.h} folgendes hinzu
 
 \lstinputlisting{02_memory/problems/listings/linkedLists_listiterator_forward.hpp}
 
-Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagen, dass die Klassen existieren, aber später definiert werden. Nun kannst problemlos \filename{ListIterator.h} in \filename{List.h} einbinden.
+Dies sind Vorwärtsdeklarationen (\textbf{Forward Declaration}), die dem Compiler sagen, dass die Klassen existieren, aber später definiert werden. Nun kannst du problemlos \filename{ListIterator.h} in \filename{List.h} einbinden.
 
 \subsection{Liste mit ListIterator testen}
 Teste deine Implementation.

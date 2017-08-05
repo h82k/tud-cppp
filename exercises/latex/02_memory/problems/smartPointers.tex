@@ -3,7 +3,7 @@ In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut m
 
 
 \subsection{}
-Erstellen eine Klasse \lstinline{TreeNode}, die einen Knoten eines Binärbaums darstellt.
+Erstelle eine Klasse \lstinline{TreeNode}, die einen Knoten eines Binärbaums darstellt.
 Jeder Knoten hat einen Inhalt vom Typ \lstinline{int} sowie einen Zeiger auf seine beiden Kindknoten.
 Statt \glqq roher\grqq{} Zeiger verwenden wir Smart Pointers, die das Speichermanagement übernehmen.
 Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen.
@@ -11,7 +11,7 @@ Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine
 
 \lstinputlisting{02_memory/problems/listings/smartPointers_treenode.hpp}
 
-Der Konstruktor von \lstinline{TreeNode} privat, weil nur die Smart Pointer die Verantwortung für die Lebenszeit eines Objektes übernehmen sollen und bestimmen, wann es gelöscht wird.
+Der Konstruktor von \lstinline{TreeNode} ist privat, weil nur die Smart Pointer die Verantwortung für die Lebenszeit eines Objektes übernehmen sollen und bestimmen, wann es gelöscht wird.
 Würde man \lstinline{TreeNode}-Objekte direkt auf dem Stack anlegen, kann es passieren, dass der Objektdestruktor mehrmals aufgerufen wird -- einmal vom Smart Pointer und einmal beim Verlassen der Funktion.
 Ebenso sollten wir keine Rohzeiger auf das Objekt erzeugen, da diese das Speichermanagement der Smart Pointer umgehen.
 Stattdessen stellen wir eine statische Methode bereit, um \lstinline{TreeNode}-Objekte auf dem Heap zu erzeugen und diese direkt einem Smart Pointer zu übergeben.

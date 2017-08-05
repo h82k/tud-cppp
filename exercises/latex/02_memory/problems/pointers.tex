@@ -1,21 +1,39 @@
 \section{\ExercisePrefixMemory Zeiger und Referenzen Grundlagen}
 In dieser Aufgabe sollst du den Umgang mit Zeigern (\emph{Pointer}) und Referenzen erlernen.
-Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
+Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen, ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
 Anstelle dessen kann ein (vergleichsweise kleiner) Zeiger auf einen Speicherbereich übergeben werden.
 Alternativ kann auch eine Referenz auf eine Variable übergeben werden, welche intern ähnlich wie ein Zeiger gehandhabt wird.
 
 \subsection{Experimente}
-Experimentiere mit Zeigern, Adressen und Referenzen.
-Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder zusammenhängen.
-Als Ausgangsbasis kann folgendes Programmfragment dienen.
+Experimentiere mit Zeigern, Adressen und Referenzen. Als Ausgangsbasis kann folgendes Programmfragment dienen.
+Fülle danach die untenstehende Skizze aus, um dir klarzumachen, wie Variablen und ihre Speicherabbilder zusammenhängen.
 
 \lstinputlisting{02_memory/problems/listings/pointers_intro.cpp}
+
+\paragraph{Speicherabbild}
+Wir nehmen an, dass Speicheradressen immer 4 Byte (= 32 Bit) breit sind. 
+Trage nun die auftretenden Variablen \lstinline{intVal} und \lstinline{pIntVal} in das folgende Speicherabbild ein. Orientiere dich dabei an der Vorlesung (Folien 69 und 70) und trage folgende Dinge ein:
+\begin{itemize}
+	\item Typ, Name und Wert jeder Variablen
+	\item Speicheradressen in Bytes
+	\item Der Wert, der an der jeweiligen Speicheradresse steht.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{02_memory/figures/memory_image.png}
+\end{center}
+
+\hints{
+	\item Die Speicheradressen kannst du frei wählen, der Pointer sollte aber natürlich auf die entsprechend gewählte Adresse zeigen.
+}
 
 \subsection{Bedeutung verstehen}
 Versuche die Bedeutung folgender Ausdrücke zu verstehen.
 Welche Regelmäßigkeiten stellst du fest?
 
+\begin{minipage}{\linewidth}
 \lstinputlisting{02_memory/problems/listings/pointers_intro_advanced.cpp}
+\end{minipage}
 
 \hints{
 	\item Gehe dabei von rechts nach links vor.
@@ -74,9 +92,9 @@ Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
 \subsection{Übergabewerte}
 In der letzten Aufgabe direkt zu Pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.
 In Tabelle \ref{table:uebergabewerte} sind in der ersten Spalte Funktionen mit verschiedenen Parametern gegeben.
-In der ersten Zeile findet ihr verschiedene Variablentypen.
-Eure Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus dem Variablen herzustellen.
-Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\\\
+In der ersten Zeile findest du verschiedene Variablentypen.
+Deine Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus den Variablen herzustellen.
+Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann trage bitte ein \xmark ein. \\\\
 Als Beispiel dient hierfür die erste Zeile. 
 
 \begin{table}[h]

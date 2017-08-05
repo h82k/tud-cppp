@@ -46,7 +46,7 @@ Erweitere die Klasse um folgende \lstinline{public} Funktionen, um Vektoren durc
   \lstinputlisting{01_basics/problems/listings/overloading_operators.hpp}
 
 Innerhalb der Methode kannst du durch \lstinline{a}, \lstinline{b} und \lstinline{c} auf eigene Attribute und über  \lstinline{rhs.a}, \lstinline{rhs.b} und \lstinline{rhs.c} auf Attribute der rechten Seite zugreifen.
-Denke daran, bei der Implementation den Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt anzugeben.
+Denke daran, bei der Implementation der Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt (den bereits bekannten Scope-Resolution-Operator) anzugeben.
 
   \lstinputlisting{01_basics/problems/listings/overloading_operators_impl.cpp}
 
@@ -70,19 +70,19 @@ Da der \lstinline{operator<<} außerhalb der Klasse \lstinline{Vector3} liegt, h
 Du hast zwei Möglichkeiten, Zugriff auf diese zu erlangen: per Getter und per \lstinline{friend}-Deklaration.
 
 \paragraph{Getter}
-Definiere die folgenden Gettermethoden die die Werte für die \lstinline{private} Attribute \lstinline{a}, \lstinline{b} und \lstinline{c} zurückgeben:
+Definiere die folgenden Gettermethoden, die die Werte für die \lstinline{private} Attribute \lstinline{a}, \lstinline{b} und \lstinline{c} zurückgeben:
   \lstinputlisting{01_basics/problems/listings/overloading_getter.hpp}
 
 \paragraph{friend}
 Füge die folgende Zeile am Ende der Klasse \texttt{Vector} hinzu:
   \lstinputlisting{01_basics/problems/listings/overloading_friend.hpp}
-Von nun an, kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
+Von nun an kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
 
 \hints{
 	\item Denke daran, den Header \lstinline{iostream} einzubinden.
 	\item Diesmal musste die Überladung \textbf{außerhalb} der \lstinline{Vektor3}-Klasse definiert werden, weil das \lstinline{Vektor3}-Objekt auf der rechten Seite der Operation steht.
 	Als linke Seite wird hierbei ein \lstinline{std::ostream}-Objekt (wie z.B. \lstinline{std::cout}) erwartet, um Ausgabeketten \lstinline{std::cout << ... << ...} zu ermöglichen.
-	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden, damit das \lstinline{std::ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \lstinline{&} durchgereicht.
+	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden. Damit das \lstinline{std::ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \lstinline{&} durchgereicht.
 	\item Anstatt Getter und Setter für \lstinline{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \lstinline{friend} erlauben. In der nächsten Übung wird hierauf noch einmal eingegangen.
 }
 
