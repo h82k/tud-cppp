@@ -4,7 +4,7 @@
 /**
  * @file functions.hpp
  * @author C++ Praktikums Teilnehmer
- * @brief Contains necessary functions of ex d1_01_basics
+ * @brief Contains necessary functions of ex02_basics
  */
 
 namespace fun {
