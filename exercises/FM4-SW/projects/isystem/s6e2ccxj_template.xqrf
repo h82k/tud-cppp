@@ -5,7 +5,7 @@
    <VersionLow>1</VersionLow>
   </REG_HEADER>
   <REG_ROOT>
-   <RegVer>1259470848</RegVer>
+   <RegVer>1279262720</RegVer>
    <Project>
     <CompilerType>0</CompilerType>
     <GlobalOptions>
@@ -45,7 +45,7 @@
      <LinkerRelPath>$(CMPDIR)bin\arm-none-eabi-gcc.exe</LinkerRelPath>
      <LInpExtensions>o;a</LInpExtensions>
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
-     <NewInvoke>0</NewInvoke>
+     <ParallelBuild>0</ParallelBuild>
      <PathSeparator>\</PathSeparator>
      <RootDir></RootDir>
      <RunAfterAsm></RunAfterAsm>
@@ -79,60 +79,52 @@
       <SubDir>0</SubDir>
      </IncludePath.1>
      <IncludePath.10>
-      <Path>\Cypress\PDL\2.1.0\drivers\mfs\</Path>
+      <Path>C:\PortableApps\Cypress\PDL\2.1.0\cmsis\include</Path>
       <SubDir>0</SubDir>
      </IncludePath.10>
      <IncludePath.11>
-      <Path>\Cypress\PDL\2.1.0\drivers\gpio\</Path>
+      <Path>C:\PortableApps\Cypress\PDL\2.1.0\utilities</Path>
       <SubDir>0</SubDir>
      </IncludePath.11>
      <IncludePath.12>
-      <Path>\Cypress\PDL\2.1.0\drivers\adc\</Path>
+      <Path>C:\PortableApps\Cypress\PDL\2.1.0\drivers</Path>
       <SubDir>0</SubDir>
      </IncludePath.12>
      <IncludePath.13>
-      <Path>\Cypress\PDL\2.1.0\utilities\</Path>
+      <Path>$(IRFDIR)..\..\common</Path>
       <SubDir>0</SubDir>
      </IncludePath.13>
-     <IncludePath.14>
-      <Path>\Cypress\PDL\2.1.0\drivers\</Path>
-      <SubDir>0</SubDir>
-     </IncludePath.14>
-     <IncludePath.15>
-      <Path>\Cypress\PDL\2.1.0\cmsis\include\</Path>
-      <SubDir>0</SubDir>
-     </IncludePath.15>
      <IncludePath.2>
       <Path>$(IRFDIR)..\source\DHT11</Path>
       <SubDir>0</SubDir>
      </IncludePath.2>
      <IncludePath.3>
-      <Path>$(IRFDIR)..\source\TFTPaint</Path>
+      <Path>$(IRFDIR)..\source\IntegrityCheck</Path>
       <SubDir>0</SubDir>
      </IncludePath.3>
      <IncludePath.4>
-      <Path>$(IRFDIR)..\source\Pong</Path>
+      <Path>$(IRFDIR)..\source\TFTPaint</Path>
       <SubDir>0</SubDir>
      </IncludePath.4>
      <IncludePath.5>
-      <Path>$(IRFDIR)..\source\LCD</Path>
+      <Path>$(IRFDIR)..\source\Pong</Path>
       <SubDir>0</SubDir>
      </IncludePath.5>
      <IncludePath.6>
-      <Path>$(IRFDIR)..\source\Analog</Path>
+      <Path>$(IRFDIR)..\source\LCD</Path>
       <SubDir>0</SubDir>
      </IncludePath.6>
      <IncludePath.7>
-      <Path>$(IRFDIR)..\</Path>
+      <Path>$(IRFDIR)..\source\Analog</Path>
       <SubDir>0</SubDir>
      </IncludePath.7>
      <IncludePath.8>
-      <Path>$(IRFDIR)..\source</Path>
-      <SubDir>1</SubDir>
+      <Path>$(IRFDIR)..\</Path>
+      <SubDir>0</SubDir>
      </IncludePath.8>
      <IncludePath.9>
-      <Path>$(IRFDIR)..\..\common</Path>
-      <SubDir>0</SubDir>
+      <Path>$(IRFDIR)..\source</Path>
+      <SubDir>1</SubDir>
      </IncludePath.9>
      <mbBuild>
       <Mode>0</Mode>
@@ -271,41 +263,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -332,15 +315,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
@@ -472,41 +455,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -533,15 +507,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
@@ -673,41 +647,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -734,15 +699,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
@@ -874,41 +839,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -935,15 +891,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
@@ -1075,41 +1031,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -1136,15 +1083,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
@@ -1276,41 +1223,32 @@
       <LinkGroup.6>
        <LinkGroupName>PDL</LinkGroupName>
        <File.0>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\adc\adc.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>\Cypress\PDL\2.1.0\drivers\adc\adc.h</FileName>
        </File.1>
        <File.2>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
        </File.3>
        <File.4>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
        </File.4>
        <File.5>
-        <FileName>\Cypress\PDL\2.1.0\drivers\dma\dma.h</FileName>
-       </File.5>
-       <File.6>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.h</FileName>
-       </File.6>
-       <File.7>
-        <FileName>\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
+        <FileName>$(CMPDIR)..\..\..\..\Cypress\PDL\2.1.0\drivers\pdl.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.7>
+       </File.5>
       </LinkGroup.6>
       <LinkGroup.7>
        <LinkGroupName>DHT11</LinkGroupName>
@@ -1337,15 +1275,15 @@
        </File.1>
       </LinkGroup.8>
       <LinkGroup.9>
-       <LinkGroupName>Debug</LinkGroupName>
+       <LinkGroupName>IntegrityCheck</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\source\Debug\debug.c</FileName>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.h</FileName>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\source\IntegrityCheck\IntegrityCheck.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\source\Debug\debug.h</FileName>
        </File.1>
       </LinkGroup.9>
       <TargetOptios>
