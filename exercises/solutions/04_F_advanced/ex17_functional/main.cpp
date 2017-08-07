@@ -6,7 +6,7 @@
 #include <iomanip> // for advanced output formatting, e.g., std::setw, std::left
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.2 map, filter, reduce
+// Exercise 17.2 map, filter, reduce
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename InIt, typename OutIt>
@@ -90,7 +90,7 @@ void functionpointer() {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.3 Functors
+// Exercise 17.3 Functors
 ////////////////////////////////////////////////////////////////////////////////
 
 // for map
@@ -102,9 +102,9 @@ class Square {
 		}
 
 		/*
-		 * used for 5.6
+		 * used for 17.6
 		 */
-		double invert (double i) {
+		double squareroot (double i) {
 			return std::sqrt(i);
 		}
 };
@@ -175,7 +175,7 @@ void functors() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.4 Templates
+// Exercise 17.4 Templates
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename InIt, typename OutIt, typename FuncType>
@@ -208,7 +208,7 @@ T reduce_template(InIt first, InIt last, T init, FuncType func) {
  
 
 ////////////////////////////////////////////////////////////////////////////////
-// Exercise 5.5 Methodpointers
+// Exercise 17.5 Methodpointers
 ////////////////////////////////////////////////////////////////////////////////
 
 template <typename InIt, typename OutIt, typename ObjType>
@@ -225,7 +225,7 @@ class Sine {
 		double operator()(double i) {
 			return std::sin(i); }
 
-		double invert(double i) {
+		double squareroot(double i) {
 			return std::asin(i);
 		}
 };
@@ -249,10 +249,10 @@ void methodpointers() {
 		<< " ]"
 		<< std::endl;
 
-	map_method(numbers.begin(), numbers.end(), numbers.begin(), new Square(), &Square::invert);
+	map_method(numbers.begin(), numbers.end(), numbers.begin(), new Square(), &Square::squareroot);
 
 	std::cout 	<< std::left << std::setw(18)
-		<< "Square::invert:" << "\t[ " 
+		<< "Square::squareroot:" << "\t[ "
 		<< reduce_template(numbers.begin(), numbers.end(), std::string{}, to_string<double>) 
 		<< " ]"
 		<< std::endl;
@@ -265,10 +265,10 @@ void methodpointers() {
 		<< " ]"
 		<< std::endl;
 
-	map_method(numbers.begin(), numbers.end(), numbers.begin(), new Sine(), &Sine::invert);
+	map_method(numbers.begin(), numbers.end(), numbers.begin(), new Sine(), &Sine::squareroot);
 
 	std::cout 	<< std::left << std::setw(18)
-		<< "Sine::invert:" << "\t[ " 
+		<< "Sine::squareroot:" << "\t[ "
 		<< reduce_template(numbers.begin(), numbers.end(), std::string{}, to_string<double>) 
 		<< " ]"
 		<< std::endl;

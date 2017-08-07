@@ -5,7 +5,7 @@ Wir bauen dafür einen Teil unseres Aufzugsimulators nach, um zu sehen, wo die H
 
 Das Programm \emph{make}\footnote{Dokumentation \url{https://www.gnu.org/software/make/manual/make.html}} wird in großen Softwareprojekten verwendet, um Programme zu kompilieren.
 \texttt{Makefiles} geben \texttt{make} dabei Informationen wie das Programm gelinkt und compiliert werden muss.
-Außerdem kann es verwendet werden, weitere Nebenaufgaben während der verschiedenen Kompilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Kompilationsdateien.
+Außerdem kann es verwendet werden, um weitere Nebenaufgaben während der verschiedenen Kompilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Kompilationsdateien.
 All das werden wir in dieser Aufgabe ausprobieren.
 
 \subsection{Projekt anlegen:}
@@ -24,7 +24,7 @@ all:
 Wenn du jetzt \emph{Build} aufrufst, sollte in der Konsole in etwa Folgendes erscheinen:
 \begin{verbatim}
 ----------Building project:[ mktest - Debug ]----------
-making all...
+Running all...
 ====0 errors, 0 warnings====
 
 \end{verbatim}
@@ -33,7 +33,7 @@ making all...
 Jetzt ist es an der Zeit, ein Programm mittels \texttt{make} zu kompilieren.
 Lege dazu eine C++-Sourcedatei \filename{main.cpp} mit einer \lstinline{main}-Funktion an, die etwas sinnvolles ausgibt.
 
-Entgegen unserer bisherigen Erfahrung musst du nun manuell in \filename{Makefile} eintragen, dass \filename{main.cpp} gebaut werden soll.
+Entgegen unserer bisherigen Erfahrung musst du nun manuell im \filename{Makefile} eintragen, dass \filename{main.cpp} gebaut werden soll.
 Ersetze die Dummy-Ausgabe daher durch einen Compiler-Aufruf an \texttt{g++}:
 \begin{lstmake}
 all:
@@ -41,6 +41,11 @@ all:
 \end{lstmake}
 
 Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
+
+\hints {
+    \item
+    Die Option $-o$ für g++ erwartet als ersten Parameter den Namen der gewünschten Zieldatei.
+}
 
 \subsection{Klasse \lstinline{Building}:}
 Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet.
@@ -56,7 +61,6 @@ Building.cpp:
 \end{minipage}
 
 Erzeuge in der \lstinline{main}-Funktion eine zweistöckige Instanz von \lstinline{Building} und gib diese mittels \lstinline{Building::toString} auf der Konsole aus.
-
 Damit das Projekt kompiliert, muss auch \lstinline{Building} im Makefile eingetragen werden.
 Passe dazu den Kompileraufruf an:
 \begin{lstmake}
@@ -91,7 +95,7 @@ g++ -c -o main.o main.cpp
 g++ -c -o Building.o Building.cpp
 g++ -o main.exe main.o Building.o
 \end{verbatim}
-Baust du das Projekt nun erneut, so wird nur noch der Linker aufgerufen:
+Baust du das Projekt nun ein weiteres Mal, so wird nur noch der Linker aufgerufen:
 \begin{verbatim}
 make all
 g++ -o main.exe main.o Building.o
@@ -172,7 +176,6 @@ Building.o: Building.cpp
 
 Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\filename{main.exe, Building.h, Building.cpp}).
 Das anschließende Bauen sollte nun funktionieren.
-
 Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Makefile generiert, das dessen eingebundene Header als Abhängigkeiten enthält (\filename{main.d, Building.d}).
 
 Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werden diese anhand des Zeitstempels von \filename{Building.h} erkannt.
@@ -180,9 +183,7 @@ Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werd
 \subsection{Target \lstinline{clean}}
 
 Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
-Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren.
-
-Lege dazu ein neues Target \texttt{clean} ohne Abhängigkeiten an und füge einen entsprechenden Befehl zum Löschen ein:
+Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren. Lege dazu ein neues Target \texttt{clean} ohne Abhängigkeiten an und füge einen entsprechenden Befehl zum Löschen ein:
 \begin{lstmake}
 clean:
     rm -rf main.o Building.o main.d Building.d main.exe
@@ -302,7 +303,7 @@ DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
 \end{lstmake}
 
 Es geht sogar noch allgemeiner:
-Du kannst per regulärem Ausdruck definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \lstinline{SOURCES} wie folgt definierst:
+Du kannst per regulärem Ausdruck\footnote{\url{https://de.wikipedia.org/wiki/Regul\%C3\%A4rer_Ausdruck}} definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \lstinline{SOURCES} wie folgt definierst:
 
 \begin{lstmake}
 SOURCES=$(wildcard ./*.cpp)

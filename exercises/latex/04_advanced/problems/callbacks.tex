@@ -19,7 +19,9 @@ Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.
  }
 \end{algorithm}
 
-Du brauchst keine Türme zu modellieren und zu verschieben, es reicht, lediglich eine Ausgabe auf die Konsole zu machen. Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
+Du brauchst keine Türme zu modellieren und zu verschieben.
+Es reicht, lediglich eine Ausgabe auf die Konsole zu machen. 
+Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
 
 \lstinputlisting{04_advanced/problems/listings/callbacks_output.cpp}
 
@@ -46,7 +48,7 @@ Dadurch kann an \lstinline{hanoi()} fast alles übergeben werden, was sich synta
 
 \lstinputlisting{04_advanced/problems/listings/callbacks_functor_func.hpp}
 
-aufrufen lässt, also auch Objekte, bei denen der $()$ Operator überladen ist (sog. \emph{Funktoren}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
+aufrufen lässt, also auch Objekte, bei denen der $()$-Operator überladen ist (sog. \emph{Funktoren}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
 Dabei müssen nicht einmal die Parametertypen (\lstinline{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist.
 
 Teste deine Implementation mit einem Funktor.
@@ -80,7 +82,7 @@ Ziel ist es, folgendes zu ermöglichen:
 
 \lstinputlisting{04_advanced/problems/listings/callbacks_class_usage.cpp}
 
-Die Idee dahinter ist Folgendes:
+Die Idee dahinter ist Folgende:
 Wir definieren eine abstrakte Klasse \lstinline{CallbackBase}, die eine abstrakte Methode \lstinline{void call() = 0} enthält.
 Für jeden Callback-Typ (Funktionszeiger, Funktor und Methodenzeiger) wird eine Unterklasse erstellt, die \lstinline{call()} entsprechend reimplementiert.
 
@@ -106,10 +108,10 @@ Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, w�
 \subsection{Klasse \lstinline{FunctionCallback}}
 Implementiere nun die erste Unterklasse \lstinline{template<typename ParamT> FunctionCallback}, die von \lstinline{CallbackBase<ParamT>} erbt.
 \lstinline{FunctionCallback} soll einen entsprechenden Funktionszeiger als Attribut besitzen, der bei der Konstruktion initialisiert wird.
-Ebenso soll \lstinline{call(ParamT t)} implementiert werden, wo der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
+Ebenso soll \lstinline{call(ParamT t)} implementiert werden, in der der gespeicherte Funktionszeiger mit dem gegebenen Argument aufgerufen wird.
 
 Teste deine Implementation.
-Lasse \lstinline{hanoi()} einen Zeiger auf \lstinline{CallbackBase} nehmen, übergebe aber die Adresse eines \lstinline{FunctionCallback} Objektes.
+Lasse \lstinline{hanoi()} einen Zeiger auf \lstinline{CallbackBase} erwarten, übergebe aber die Adresse eines \lstinline{FunctionCallback} Objektes.
 Du kannst folgende Vorlage verwenden:
 
 \lstinputlisting{04_advanced/problems/listings/callbacks_intpair.cpp}
@@ -142,7 +144,7 @@ Es wäre also sinnvoll, einen entsprechenden Wrapper zu schreiben, der sich um d
 
 Schreibe eine Klasse \lstinline{template<typename ParamT> Callback}, die einen Smart Pointer auf ein \lstinline{CallbackBase}-Objekt als Attribut hat. Der Smart Pointer soll die Speicherverwaltung übernehmen. Überlade den \lstinline{operator()}, der den Aufruf einfach an das \lstinline{CallbackBase}-Objekt hinter dem Smart Pointer weiterleitet.
 
-Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und in dem Smart Pointer speichert.
+Implementiere nun für jede Callback-Art je einen Konstruktor, der eine Instanz der entsprechenden Unterklasse erzeugt und im Smart Pointer speichert.
 Der erste Konstruktor soll also einen Funktionszeiger entgegennehmen und ein \lstinline{FunctionCallback} instantiieren.
 Der zweite Konstruktor soll eine Referenz auf ein Funktor-Objekt erwarten und  \lstinline{FunctorCallback} instantiieren, und der dritte entsprechend ein \lstinline{MethodCallback}.
 Beachte, dass die beiden letztgenannten Konstruktoren selbst Template-Methoden sind, da die \lstinline{Callback}-Klasse nur an den Parameter-Typ gekoppelt ist.

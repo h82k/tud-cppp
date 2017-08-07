@@ -1,5 +1,5 @@
 \section{\ExercisePrefixAdvanced Generische Vektor-Implementation}
-Erinnere dich an die Klasse \lstinline{Vector3} aus dem ersten Praktikumstag.
+Erinnere dich an die Klasse \lstinline{Vector3} aus dem ersten Praktikumstag (\ref{sec:overloading}).
 Diese hat den Datentyp \lstinline{double} für die einzelnen Komponenten verwendet.
 Schreibe die Klasse so um, dass der Datentyp der Komponenten durch einen Template-Parameter angegeben werden kann.
 Füge dafür der Klasse \lstinline{Vector3} einen Template-Parameter hinzu und ersetze jedes Aufkommen von \lstinline{double} mit dem Template-Parameter.
@@ -15,6 +15,8 @@ Der Aufbau der Datei \filename{Vector3.hpp} wäre also wie folgt:
 \lstinputlisting{04_advanced/problems/listings/genericVector3_tpp_include.hpp}
 
 \hints{
+    \item
+    Die Datei \filename{Vector3.tpp} ist nicht vorgegeben, du musst diese selbst erstellen!
     \item
     Auch wenn bei reinen Template-Klassen die \filename{cpp}-Datei leer bleibt, ist es sinnvoll, eine solche anzulegen.
     Dadurch wird das Template garantiert auf Syntaxfehler überprüft.
