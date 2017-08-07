@@ -51,7 +51,7 @@ Ein Aufzählungstyp (engl. enumerated type) ist ein Datentyp, dessen Wert auf ei
 
 \lstinputlisting{01_basics/problems/listings/basics_enum_example.cpp}
 
-Die Werte in den geschweiften Klammern sind Symbole, die intern als Zahlen gespeichert sind. Die Werte beginnen normalerweise bei 0, man kann sie aber auch selbst festlegen:
+Die Werte in den geschweiften Klammern sind Symbole, die intern als Zahlen (Integer) gespeichert sind. Die Werte beginnen normalerweise bei 0, man kann sie aber auch selbst festlegen:
 
 \lstinputlisting{01_basics/problems/listings/basics_enum_example_2.cpp}
 
@@ -139,14 +139,16 @@ Diese Kommandos sind die folgenden:
 Da das Dokumentieren der Datei nicht vor der Datei passieren kann (wo sollte das sein?), geschieht es deshalb direkt nach den Präprozessor-Direktiven.
 
 Deine Aufgabe ist es nun, den von dir erstellten Code sorgfältig zu dokumentieren.
-Die Dokumentation geschieht dabei in der \filename{.h} oder \filename{.hpp} Datei. Hier ein kleines Beispiel dazu, damit du eine Vorstellung davon bekommst, wie das ganze am Ende auszusehen hat.
+Die Dokumentation geschieht dabei in der \filename{.h} oder \filename{.hpp} Datei. 
+Hier ein kleines Beispiel dazu, damit du eine Vorstellung davon bekommst, wie das ganze am Ende auszusehen hat.
 
 \lstinputlisting{01_basics/problems/listings/basics_doxygen_example.hpp}
 
 \paragraph{Letzendliches Erstellen der Dokumentation}
 Erstellen kannst du die Dokumentation am Ende über die Kommandozeile.
 Dafür öffnest du das Terminal mit \lstinline{STRG + ALT + t} und wechselst in das Verzeichnis, in dem dein Projekt liegt (üblicherweise \lstinline{cd CPPP/Workspace/NameDeinesProjektes}).
-Dort gibst du \lstinline{doxygen -g} ein, was dir eine vorgefertigte Konfigurationsdatei für Doxygen generiert. Mit dem Befehl \lstinline{doxygen} kannst du dir jetzt die fertige Dokumentation generieren lassen.
+Dort gibst du \lstinline{doxygen -g} ein, was dir eine vorgefertigte Konfigurationsdatei für Doxygen generiert. 
+Mit dem Befehl \lstinline{doxygen} kannst du dir jetzt die fertige Dokumentation generieren lassen.
 Diese befindet sich nun im Verzeichnis \filename{html} in der Datei \filename{index.html}.
 Öffnest du diese Datei per Doppelklick, findest du unter dem Menüpunkt \lstinline{Files} die von dir dokumentierte \filename{functions.{h,hpp}}.
 
@@ -160,7 +162,9 @@ Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in fol
   \lstinputlisting{01_basics/problems/listings/basics_cin.cpp}
   
 \paragraph{Eingabe der Richtung}
-In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Pattern ausgegeben werden kann. Füge nun eine weitere Eingabeaufforderung hinzu, die die vom Nutzer gewünschte Richtung abfragt (beispielsweise 0 für left und 1 für right). Gibt der Nutzer eine ungültige Richtung ein, kannst du eine Fehlermeldung ausgeben oder erneut die Eingabe abfragen.\\
+In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Pattern ausgegeben werden kann. 
+Füge nun eine weitere Eingabeaufforderung hinzu, die die vom Nutzer gewünschte Richtung abfragt (beispielsweise 0 für left und 1 für right). 
+Gibt der Nutzer eine ungültige Richtung ein, kannst du eine Fehlermeldung ausgeben oder erneut die Eingabe abfragen.\\
 \\
 Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \filename{functions.cpp} aus.
 
@@ -174,7 +178,9 @@ Beispiel:
 Implementiere dazu eine Funktion \lstinline{char nextChar()}.
 Diese soll bei jedem Aufruf das nächste auszugebende Zeichen vom Typ \lstinline{char} zurückgeben, beginnend bei \emph{a}.
 Dazu muss sich \lstinline{nextChar()} intern das aktuelle Zeichen merken.
-Dies kann durch die Verwendung von statischen Variablen erreicht werden. Diese behalten ihren aktuellen Wert auch nach Verlassen der Funktion. Das heißt, wenn \lstinline{nextChar()} das nächste Mal aufgerufen wird, steht der Wert des vorherigen Zeichens noch zur Verfügung.
+Dies kann durch die Verwendung von statischen Variablen erreicht werden. 
+Diese behalten ihren aktuellen Wert auch nach Verlassen der Funktion. 
+Das heißt, wenn \lstinline{nextChar()} das nächste Mal aufgerufen wird, steht der Wert des vorherigen Zeichens noch zur Verfügung.
 Eine statische Variable \lstinline{c} wird mittels
 
   \lstinputlisting{01_basics/problems/listings/basics_staticchar.cpp}

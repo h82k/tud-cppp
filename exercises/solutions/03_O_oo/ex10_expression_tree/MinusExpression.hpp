@@ -29,7 +29,7 @@ public:
     /**
      * @name compute();
      * @author cppp
-     * @brief retuns the result of the righthand expression minus the lefthand one
+     * @brief returns the result of the righthand expression minus the lefthand one
      * @param the result of the substraction
      */
 	virtual double compute();

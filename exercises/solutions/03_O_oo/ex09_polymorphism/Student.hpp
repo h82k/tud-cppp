@@ -6,7 +6,7 @@
 /**
  * @name Student
  * @author cppp
- * @brief student class inherit the person class publicly
+ * @brief student class inherits the person class publicly
  * @sa Person
  */
 class Student: public Person {	// public inheritance

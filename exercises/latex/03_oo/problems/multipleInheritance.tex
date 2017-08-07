@@ -1,5 +1,5 @@
 \section{\ExercisePrefixObjectOrientation Mehrfachvererbung}
-Verwende den Code der Aufgabe \ref{sec:inheritance} als Basis.
+Verwende den Code der \ref{sec:inheritance} als Basis.
 
 \subsection{Klasse \lstinline{Employee}}
 Schreibe die Klasse \lstinline{Employee}, die einen Mitarbeiter darstellt.
@@ -9,12 +9,13 @@ Erweitere auch entsprechend die Methode \lstinline{getInfo()}.
 \subsection{Klasse \lstinline{StudentAssistant}}
 Schreibe nun eine Klasse \lstinline{StudentAssistant}, die eine wissenschaftliche Hilfskraft modelliert.
 Eine wissenschaftliche Hilfskraft ist ein Student und gleichzeitig auch ein Mitarbeiter.
-Dementsprechend soll \lstinline{StudentAssistant} sowohl von \lstinline{Student} als auch von \lstinline{Employee} erben. Das heißt es werden je ein Student- und ein Employee-Objekt im Konstruktor initialisiert.
+Dementsprechend soll \lstinline{StudentAssistant} sowohl von \lstinline{Student} als auch von \lstinline{Employee} erben. 
+Das heißt es werden je ein Student- und ein Employee-Objekt im Konstruktor initialisiert.
 Weitere Attribute sind nicht nötig.
 Überschreibe \lstinline{getInfo()}, um alle Daten auszugeben.
 Ändere dazu die Sichtbarkeit der Attribute sowohl von \lstinline{Student} als auch von \lstinline{Employee} von \lstinline{private} auf \lstinline{protected}.
 
-Du wirst feststellen, dass sich die Klasse nicht kompilieren lässt, falls du das Attribut \lstinline{name} direkt verwendest, da in einer \lstinline{StudentAssistant}-Instanz zwei Instanzen von \lstinline{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb müsse mittels dem Scope-Operator $::$ angeben, welche Basis du genau meinst.
+Du wirst feststellen, dass sich die Klasse nicht kompilieren lässt, falls du das Attribut \lstinline{name} direkt verwendest, da in einer \lstinline{StudentAssistant}-Instanz zwei Instanzen von \lstinline{Person} vorhanden sind - je eine von jeder Elternklasse. Deshalb musst du mittels dem Scope-Operator $::$ angeben, welche Klasse du genau meinst.
 
 \lstinputlisting{03_oo/problems/listings/multiInheritance_scope.cpp}
 
