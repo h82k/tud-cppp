@@ -11,7 +11,7 @@ Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Hea
 Standardmäßig sind alle Elemente einer Klasse privat.
 Im Gegensatz zu Java werden in C++ die Access-Modifier \lstinline{public}/\lstinline{private}/\lstinline{protected} nicht bei jedem Element einzeln, sondern blockweise angegeben.
 
-  \lstinputlisting{01_basics/problems/listings/classes_intro.hpp}
+  \cpppInputListing{01_basics/problems/listings/classes_intro.hpp}
 
 Erzeuge einen Header \filename{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
 Füge der Klasse das \lstinline{private} Attribut \lstinline{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \lstinline{public} Konstruktorprototypen \lstinline{CharGenerator()}, der \lstinline{nextChar} auf \lstinline{'a'} initialisieren soll.
@@ -31,12 +31,12 @@ Am Ende erstellst du dir wieder eine Dokumentation der Klassen und kannst so ent
 \subsection{Implementation}
 Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte (den Scope-Resolution-Operator) getrennt angegeben werden.
 
-  \lstinputlisting{01_basics/problems/listings/classes_impl_func.cpp}
+  \cpppInputListing{01_basics/problems/listings/classes_impl_func.cpp}
 
 Um Attribute zu initialisieren, wird üblicherweise eine sogenannte Initialisierungsliste im Konstruktor verwendet, da diese vor dem Eintritt in den Konstruktorrumpf aufgerufen wird.
 Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der öffnenden geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributnamen und ihren Initialisierungsargumenten in Klammern.
 
-  \lstinputlisting{01_basics/problems/listings/classes_impl_list.cpp}
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/classes_impl_list.cpp}
 
 Erzeuge eine Sourcedatei \filename{CharGenerator.cpp} für die Implementation der Klasse und binde die \filename{CharGenerator.hpp} ein.
 Implementiere den Konstruktor, indem du \lstinline{nextChar} mit \lstinline{'a'} in der Initialisierungsliste initialisierst.
@@ -50,7 +50,7 @@ Implementiere zudem \lstinline{generateNextChar()}, indem du \lstinline{nextChar
 \subsection{Instantiierung}
 Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit einer \lstinline{main()}-Funktion in der du ein \lstinline{CharGenerator}-Objekt erzeugst und \lstinline{generateNextChar()} mehrfach aufrufst und ausgibst.
 
-  \lstinputlisting{01_basics/problems/listings/classes_obj.cpp}
+  \cpppInputListing{01_basics/problems/listings/classes_obj.cpp}
 
 Überprüfe das Ergebnis über die Konsole oder den Debugger.
 
@@ -62,14 +62,14 @@ Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit ein
 Damit man nicht immer das Startzeichen angeben muss, kann man einen Default-Wert für einen Parameter angeben. Beim Aufruf kann dieser Parameter dann weggelassen werden kann.
 Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen, ohne die Implementation zu ändern.
 
-  \lstinputlisting{01_basics/problems/listings/classes_default_value.cpp}
+  \cpppInputListing{01_basics/problems/listings/classes_default_value.cpp}
 
 Erweitere den Konstruktor um einen Parameter \lstinline{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \lstinline{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
 
 Teste deine Implementation sowohl mit als auch ohne Angabe des Startzeichens.
 Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
 
-  \lstinputlisting{01_basics/problems/listings/classes_obj_par.cpp}
+  \cpppInputListing{01_basics/problems/listings/classes_obj_par.cpp}
 
 \hints{
 	\item Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls mit Default-Werten angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
@@ -78,7 +78,7 @@ Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
 \subsection{PatternPrinter}
 Implementiere folgende Klasse.
 
-  \lstinputlisting{01_basics/problems/listings/classes_pattern_printer.hpp}
+  \cpppInputListing{01_basics/problems/listings/classes_pattern_printer.hpp}
 
 Teste deine Implementation, indem du ein \lstinline{PatternPrinter}-Objekt anlegst und \lstinline{printPattern()} darauf aufrufst.
 

@@ -1,4 +1,5 @@
 \section{\ExercisePrefixAdvanced Callbacks}
+\label{sec:callbacks}
 
 \paragraph*{Motivation für Callbacks}
 In dieser Aufgabe werden mehrere Methoden zur Realisierung von Callbacks in C++ vorgestellt und implementiert.
@@ -23,7 +24,7 @@ Du brauchst keine Türme zu modellieren und zu verschieben.
 Es reicht, lediglich eine Ausgabe auf die Konsole zu machen. 
 Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_output.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_output.cpp}
 
 \subsection{Callbacks mit Funktionszeigern}
 Nun wollen wir die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
@@ -31,22 +32,22 @@ Nun wollen wir die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Da
 Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet.
 Ändere deine Implementation entsprechend um:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_intro.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_intro.cpp}
 
 Nun können wir eine Funktion mit zwei Parametern an \lstinline{hanoi()} übergeben.
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_print.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_print.cpp}
 
 \subsection{Callbacks mit Funktoren}
 Ein Nachteil der vorherigen Implementation ist, dass nur reine Funktionen als Callback übergeben werden können.
 Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates.
 Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_functor.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_functor.cpp}
 
 Dadurch kann an \lstinline{hanoi()} fast alles übergeben werden, was sich syntaktisch mittels
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_functor_func.hpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_functor_func.hpp}
 
 aufrufen lässt, also auch Objekte, bei denen der $()$-Operator überladen ist (sog. \emph{Funktoren}\footnote{\url{https://de.wikipedia.org/wiki/Funktionsobjekt}}).
 Dabei müssen nicht einmal die Parametertypen (\lstinline{int}) exakt übereinstimmen, solange eine implizite Umwandlung durch den Compiler möglich ist.
@@ -54,7 +55,7 @@ Dabei müssen nicht einmal die Parametertypen (\lstinline{int}) exakt übereinst
 Teste deine Implementation mit einem Funktor.
 Schreibe dafür eine einfache Klasse und überlade deren \lstinline{operator()}:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_functor_op.hpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_functor_op.hpp}
 
 \subsection{Callbacks mit \lstinline{Callback}-Klasse}
 
@@ -70,7 +71,7 @@ Stell dir vor, du hättest ein GUI-Framework mit verschiedenen Elementen, die Ca
 Dann wäre die Button-Klasse ebenfalls an den Callback-Typ gekoppelt.
 Immer wenn ein Button als Parameter an eine Funktion übergeben wird, müsste diese Funktion den Callbacktyp ebenfalls als Template-Parameter entgegennehmen:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_button.hpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_button.hpp}
 
 Dieser Stil würde sich durch das gesamte Framework ziehen, und sowohl den Entwicklungsaufwand als auch die Verständlichkeit beeinträchtigen.
 Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Kompilierzeit festgelegt werden müsste und es unmöglich wäre, diesen während der Laufzeit zu ändern.
@@ -80,7 +81,7 @@ Ein weiterer Nachteil wäre, dass der Callback-Typ bereits zur Kompilierzeit fes
 Deshalb werden wir eine Klasse schreiben, die beliebige Callbacks kapseln kann (\lstinline{Callback}), und nach außen hin allein von den Übergabeparametern des Callbacks abhängig ist.
 Ziel ist es, folgendes zu ermöglichen:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_class_usage.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_class_usage.cpp}
 
 Die Idee dahinter ist Folgende:
 Wir definieren eine abstrakte Klasse \lstinline{CallbackBase}, die eine abstrakte Methode \lstinline{void call() = 0} enthält.
@@ -96,7 +97,7 @@ Fange mit der Klasse \lstinline{CallbackBase} an.
 Damit man beim Aufrufen des Callbacks einen Parameter übergeben kann, füge \lstinline{call()} einen Parameter vom Typ \lstinline{ParamT} hinzu, wobei \lstinline{ParamT} ein Template-Parameter von \lstinline{CallbackBase} sein soll.
 Der Klassenrumpf lautet also
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_base.hpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_base.hpp}
 
 Falls ein Callback eigentlich mehrere Parameter erfordert, müssen diese entsprechend in ein Containerobjekt gepackt werden.
 Generische Callback-Wrapper mit variabler Parameteranzahl sind zwar möglich, würden aber den Rahmen dieses Praktikums sprengen.
@@ -114,7 +115,7 @@ Teste deine Implementation.
 Lasse \lstinline{hanoi()} einen Zeiger auf \lstinline{CallbackBase} erwarten, übergebe aber die Adresse eines \lstinline{FunctionCallback} Objektes.
 Du kannst folgende Vorlage verwenden:
 
-\lstinputlisting{04_advanced/problems/listings/callbacks_intpair.cpp}
+\cpppInputListing{04_advanced/problems/listings/callbacks_intpair.cpp}
 
 
 \subsection{Klasse \lstinline{FunctorCallback}}

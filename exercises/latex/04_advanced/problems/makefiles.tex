@@ -16,6 +16,7 @@ Das erzeugte Projekt enthält bereits eine Datei \texttt{Makefile} (im Ordner \t
 \texttt{Make} erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
 Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
+
 \begin{lstmake}
 all:
     @echo "Running all..."
@@ -52,12 +53,12 @@ Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die a
 
 Building.hpp:
 \begin{minipage}[t]{.45\textwidth}
-\lstinputlisting{06_elevator/problems/listings/sim4_building.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim4_building.hpp}
 \end{minipage}
 
 Building.cpp:
 \begin{minipage}[t]{.5\textwidth}
-\lstinputlisting{06_elevator/problems/listings/sim4_building.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim4_building.cpp}
 \end{minipage}
 
 Erzeuge in der \lstinline{main}-Funktion eine zweistöckige Instanz von \lstinline{Building} und gib diese mittels \lstinline{Building::toString} auf der Konsole aus.
@@ -77,6 +78,7 @@ Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building
 In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
 
 Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \filename{main.o} und \filename{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
+
 \begin{lstmake}
 all: main.o Building.o
     g++ -o main.exe main.o Building.o
@@ -89,12 +91,16 @@ Building.o: Building.cpp
 \end{lstmake}
 
 Baue das Projekt nun erneut, du solltest drei Aufrufe von \texttt{g++} sehen:
-\begin{verbatim}
+
+\begin{minipage}{\textwidth}
+\begin{lstmake}
 make all
 g++ -c -o main.o main.cpp
 g++ -c -o Building.o Building.cpp
 g++ -o main.exe main.o Building.o
-\end{verbatim}
+\end{lstmake}
+\end{minipage}
+
 Baust du das Projekt nun ein weiteres Mal, so wird nur noch der Linker aufgerufen:
 \begin{verbatim}
 make all
@@ -131,14 +137,17 @@ Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
 Du hast kennengelernt, dass man Implementationen auch \texttt{inline} in einem Header machen kann, zum Beispiel wenn diese klein sind.
 
 Bewege \lstinline{toString} nun nach \filename{Buidling.h}:
-\lstinputlisting{06_elevator/problems/listings/sim4_tostring.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim4_tostring.cpp}
 
 Baue das Projekt; es kompiliert nicht! Warum? Genau aus dem Grund, dass \texttt{make} das Header-File nicht \glqq kennt\grqq{}.
 Jetzt gibt es im Projekt keine Definition von \lstinline{toString} wie uns der Linker auch mitteilt:
+
+\begin{minipage}{\textwidth}
 \begin{verbatim}
 main.o:main.cpp:(.text+0x5c): undefined reference to `Building::toString() const'
 collect2: ld returned 1 exit status
 \end{verbatim}
+\end{minipage}
 
 Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \filename{main.o} nicht nur abhängig von \filename{Building.cpp}, sondern auch von \filename{Building.h} ist:
 \begin{lstmake}
@@ -249,6 +258,8 @@ Wir würden also gerne nur an \emph{einer} Stelle definieren, welche Sourcedatei
 
 Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Objekt-Dateien an.
 Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\lstinline{main.o Building.o}' und ersetze das Auftreten der beiden Objekt-Dateien mit dieser Variablen:
+
+\begin{minipage}{\textwidth}
 \begin{lstmake}
 OBJECTS=main.o Building.o
 
@@ -259,6 +270,7 @@ main.exe: $(OBJECTS)
     
 # and so on...
 \end{lstmake}
+\end{minipage}
 
 Wiederhole die Prozedur für die Abhängigkeiten ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.

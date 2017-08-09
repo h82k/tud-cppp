@@ -5,7 +5,7 @@ In dieser Aufgabe sollst du Konzepte der Vererbung und Polymorphie unter Verwend
 Implementiere eine Klasse \lstinline{Person}, die eine Person mit einem Namen darstellt.
 Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
-\lstinputlisting{03_oo/problems/listings/inheritance_person.hpp}
+\cpppInputListing{03_oo/problems/listings/inheritance_person.hpp}
 
 \hints{
     \item Verwende \lstinline{\#include <string>} um \lstinline{std::string} zu verwenden.
@@ -17,7 +17,7 @@ Implementiere eine Klasse \lstinline{Student}, die von \lstinline{Person} erbt (
 Rufe in der Initialisierungsliste den entsprechenden Konstruktor der Elternklasse \lstinline{Person} mittels \lstinline{Person(name)} auf.
 Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
-\lstinputlisting{03_oo/problems/listings/inheritance_student.hpp}
+\cpppInputListing{03_oo/problems/listings/inheritance_student.hpp}
 
 \hints{
     \item Du kannst bei Bedarf die \lstinline{getInfo()}-Implementation der Elternklasse \lstinline{Person} von \lstinline{Student} aus mittels \lstinline{Person::getInfo()} aufrufen.
@@ -30,7 +30,7 @@ Schau dir auch die Ausgaben der Konstruktoren und Destruktoren an, und versuche,
 
 Implementiere dann folgende Funktion und teste deine Implementation erneut, indem du \lstinline{printPersonInfo()} mit beiden Personentypen aufrufst.
 
-\lstinputlisting{03_oo/problems/listings/inheritance_person_info.hpp}
+\cpppInputListing{03_oo/problems/listings/inheritance_person_info.hpp}
 
 \hints{
     \item Dadurch dass \lstinline{Person} als \lstinline{const} Zeiger übergeben wird, können auch Unterklassen von \lstinline{Person}, wie z.B. \lstinline{Student}, übergeben werden. 
@@ -55,7 +55,7 @@ Teste deine Implementation erneut und vergewissere dich, dass nun immer die rich
 Lege einen Studenten mit \lstinline{new} dynamisch auf dem Heap an und speichere die Adresse in einem Zeiger auf eine \lstinline{Person}.
 Lösche die Person anschließend mit \lstinline{delete}.
 
-\lstinputlisting{03_oo/problems/listings/inheritance_main.cpp}
+\cpppInputListing{03_oo/problems/listings/inheritance_main.cpp}
 
 Analysiere die Konsolenausgabe.
 Es wird nur der Destruktor von \lstinline{Person} aufgerufen, obwohl es sich um ein Objekt vom Typ \lstinline{Student} handelt.

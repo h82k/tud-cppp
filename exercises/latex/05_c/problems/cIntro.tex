@@ -3,7 +3,7 @@
 
 In den nächsten Tagen werden wir Programme für eine Embedded-Plattform in C entwickeln.
 Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folgenden sollen die Hauptunterschiede verdeutlicht werden.
-%
+
 \begin{itemize}
 	\item Keine OO-Konzepte (Vererbung, \dots)
     \item Strukturen (\lstinline{struct}) statt Klassen (\lstinline{class})
@@ -18,7 +18,7 @@ Da C++ aus C entstand, sind viele Features von C++ nicht in C enthalten. Im Folg
 	\item Keine \lstinline{std::string} Klasse, nur \lstinline{char}-Arrays, die mit dem Nullbyte (\lstinline{'\0'}) abgeschlossen werden.
 	\item Keine Namespaces
 \end{itemize}
-%
+
 Da einige dieser Punkte sehr entscheidend sind, werden wir auf diese im Detail eingehen.
 Wichtig ist hierbei, dass alle im Folgenden vorgestellten Konzepte auch in C++ zur Verfügung stehen.
 Die Header der C-Bibliothek sind alle auch in C++ verfügbar.
@@ -28,35 +28,34 @@ Im zweiten Fall sind alle Funktionen im Namensraum \lstinline{std} eingebettet, 
 \subsection{Kein OO-Konzept}
 In C gibt es keine Klassen, weshalb die Programmierung in C eher Pascal statt C++ ähnelt.
 Stattdessen gibt es Strukturen (\lstinline{struct}), die mehrere Variablen zu einem Datentyp zusammenfassen, was vergleichbar mit Records in Pascal oder -- allgemein -- mit Klassen ohne Methoden und ohne Vererbung ist.
-%
+
 Die Syntax dafür lautet
-%
-  \lstinputlisting{05_c/problems/listings/cintro_structs.c}
-%
+
+  \cpppInputListing{05_c/problems/listings/cintro_structs.c}
+
 Zum Beispiel
-%
-  \lstinputlisting{05_c/problems/listings/cintro_structs_ex.c}
-%
+
+  \cpppInputListing{05_c/problems/listings/cintro_structs_ex.c}
+
 Die Sichtbarkeit aller Attribute ist automatisch \lstinline{public}.
-%
 Um den definierten \textbf{\lstinline|struct|} als Datentyp zu verwenden, muss man zusätzlich zum Namen das Schlüsselwort \lstinline{struct} angeben:
-%
-  \lstinputlisting{05_c/problems/listings/cintro_structs_func.c}
-%
+
+  \cpppInputListing{05_c/problems/listings/cintro_structs_func.c}
+
 Um den zusätzlichen Schreibaufwand zu vermeiden, wird in der Praxis oft ein \lstinline{typedef} auf den \lstinline{struct} definiert:
-%
-  \lstinputlisting{05_c/problems/listings/cintro_structs_typedef.c}
-%
+
+  \cpppInputListing{05_c/problems/listings/cintro_structs_typedef.c}
+
 Man kann die Deklaration eines \lstinline{struct} auch direkt in den \lstinline{typedef} einbauen:
-%
-  \lstinputlisting{05_c/problems/listings/cintro_structs_short.c}
+
+  \cpppInputListing{05_c/problems/listings/cintro_structs_short.c}
 
 \subsection{Kein \lstinline{new} und \lstinline{delete}}
 
 Anstelle von \lstinline{new} und \lstinline{delete} werden die Funktionen \lstinline{malloc} und \lstinline{free} verwendet, um Speicher auf dem Heap zu reservieren.
 Diese sind im Header \filename{stdlib.h} deklariert.
 
-  \lstinputlisting{05_c/problems/listings/cintro_mallocfree.c}
+  \cpppInputListing{05_c/problems/listings/cintro_mallocfree.c}
 
 \subsection{Ausgabe auf Konsole per \lstinline{printf}}
 
@@ -68,7 +67,7 @@ Der folgende Codeausschnitt zeigt, wie man Zahlen und Zeichen mit \lstinline|pri
 Wenn die Variablen \lstinline|i| und \lstinline|c| nicht definiert werden, ist die Aufgabe undefiniert.
 Zu beachten ist auch, dass \lstinline|printf| nicht automatisch einen Zeilenumbruch einfügt.
 %
-  \lstinputlisting{05_c/problems/listings/cintro_printf.c}
+  \cpppInputListing{05_c/problems/listings/cintro_printf.c}
 
 Im Folgenden werden wir untersuchen, welche Folgen es hat, wenn man das \enquote{per Konvention} erwartete Null-Byte (\lstinline|'\0'|) entfernt.
 In diesem Fall wird der Speicher Byte-weise solange ausgegeben, bis ein Null-Byte angetroffen wird.
@@ -128,19 +127,31 @@ Die Funktion \lstinline{sprintf} dient dazu, formatierte Strings zusammenzusetze
 Beginne mit einer leeren \lstinline|main|-Funktion.
 \item 
 Lege erneut einen Puffer auf dem Heap an:
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
 char *buffer = malloc(100 * sizeof(char));
 \end{lstlisting}
+\end{minipage}
+
 \item 
 Gib den Puffer direkt mittels \lstinline|printf| aus:
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
 printf(buffer);
 \end{lstlisting}
+\end{minipage}
+
 Dies zeigt, dass es sehr gefährlich ist, mit uninitialisierten C-Strings zu hantieren.
 Sicherer wäre es, direkt nach der Allokation ein Null-Byte an Index 0 des Puffers zu platzieren:
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
 buffer[0] = '\0';
 \end{lstlisting}
+\end{minipage}
+
 Wenn du anschließend erneut \lstinline|printf| aufrufst, sollte die Ausgabe leer bleiben.
 \item 
 Verwende den folgenden Aufruf, um einen Gruß mittels \lstinline|sprintf| zusammenzusetzen.
@@ -167,7 +178,7 @@ Andernfalls erhältst du einen Segmentation Fault.
 Schreibe ein C-Programm, welches alle geraden Zahlen von 0 bis 200 formatiert ausgibt.
 Die Formatierung soll entsprechend dem Beispiel erfolgen:
 %
-  \lstinputlisting{05_c/problems/listings/cintro_format.c}
+  \cpppInputListing{05_c/problems/listings/cintro_format.c}
 %
 Mache die Spaltenzahl und Spaltenbreite mithilfe von Variablen konfigurierbar, sodass es auch leicht möglich ist, 15 Spalten und/oder Zahlen bis \numprint{10 000} auszugeben.
 
@@ -249,33 +260,34 @@ Der Schwierigkeitsgrad ist dabei sehr unterschiedlich!
 \paragraph{Niedrigerer Schwierigkeitsgrad}
 \begin{itemize}
 \item
-\textbf{Sternen- oder Buchstabenmuster} ausgeben (Blatt 1):
-Diese Aufgabe ist sehr ähnlich zu \cref{sec:CFormatNumbers}.
+\textbf{Sternen- oder Buchstabenmuster} ausgeben (\ref{sec:basics}):
+Diese Aufgabe ist sehr ähnlich zu \ref{sec:CFormatNumbers}.
 
 \item
-\textbf{Werte analysieren} und mit \textbf{Arrays} arbeiten (Blatt 2):
+\textbf{Werte analysieren} und mit \textbf{Arrays} arbeiten (\ref{sec:pointers} und \ref{sec:arrays}):
 Abgesehen von der fehlenden Unterstützung für Referenzen sollten die Ergebnisse sich nicht unterscheiden.
 
 \item
-\textbf{Funktionszeiger} (Blatt 4):
+\textbf{Funktionszeiger} (\ref{sec:functional} und \ref{sec:callbacks}):
 Funktionszeiger in C arbeiten genauso wie Funktionszeiger in C++.
 Du kannst dies testen, indem du die Programmlogik der vorigen Aufgabe in eine separate Funktion auslagerst, die neben der Spaltenbreite und Obergrenze der anzuzeigenden Zahlen zusätzlich einen Funktionszeiger-Parameter hat, der festlegt, was mit der jeweiligen Zahl vor der Ausgabe geschehen soll (bspw. verdoppeln, quadrieren).
 \end{itemize}
+
 \paragraph{Höherer Schwierigkeitsgrad}
 \begin{itemize}
 \item
-\textbf{\lstinline|Vector|} (Blatt 1): C bietet keine Objektorientierung, aber du kannst eine \lstinline|struct| zur Datenhaltung anlegen und die Methoden der Klasse als Funktionen realisieren, deren Namen bspw. immer mit dem Präfix \lstinline|Vector_| beginnen und die als zusätzlichen Parameter einen Pointer auf eine \lstinline|Vector|-\lstinline|struct| erhalten.
+\textbf{\lstinline|Vector|} (\ref{sec:overloading}): C bietet keine Objektorientierung, aber du kannst eine \lstinline|struct| zur Datenhaltung anlegen und die Methoden der Klasse als Funktionen realisieren, deren Namen bspw. immer mit dem Präfix \lstinline|Vector_| beginnen und die als zusätzlichen Parameter einen Pointer auf eine \lstinline|Vector|-\lstinline|struct| erhalten.
 
 \item 
-\textbf{Verkettete Listen} (Blatt 2):
+\textbf{Verkettete Listen} (\ref{sec:linkedList}):
 Die reinen Datenstrukturen für die Liste (\lstinline|List|) und für Listenelemente (\lstinline|ListItem|) lassen sich als \lstinline|struct| abbilden.
 Methoden kannst du wieder auf Funktionen mit Namenskonvention und zusätzlichem Pointer-Parameter abbilden.
 
 \item
-\textbf{Generischer Vektor und Liste} (Blatt 4):
+\textbf{Generischer Vektor und Liste} (\ref{sec:genericVector} und \ref{sec:genericLinkedList}):
 Auch wenn es in C keinen eingebauten Mechanismus wie die C++-Templates gibt, kannst du die \lstinline|Vector| und \lstinline|List|-Klasse generisch machen, indem du die Einträge des Vektors bzw. den \lstinline|content| der \lstinline|ListItems| als \lstinline|void*| deklarierst.
 
 \item
-\textbf{Eigene \lstinline|Array|-Klasse} (Blatt 4):
+\textbf{Eigene \lstinline|Array|-Klasse} (\ref{sec:customArrays}):
 Ebenso wie bei generischem Vektor und Liste kannst du natürlich auch deine eigene \lstinline|Array|-Klasse schreiben.
 \end{itemize}

@@ -4,10 +4,7 @@ Wähle einen passenden Projektnamen, z.b. \texttt{Tag1\_Aufgabe1}. Als Projektpf
 
 Das Projekt enthält bereits eine Datei \texttt{src/main.cpp}. Erweitere die \texttt{main}-Funktion wie gezeigt und kompiliere das Projekt mit einem Klick auf das Build-Symbol (grünes Rechteck mit weißem Pfeil). Führe dann das Programm mit einem Klick auf das Zahnrad-Symbol aus.
 
-% fix that avoids undesired page breaks
-\begin{minipage}{\textwidth} 
-	\lstinputlisting{01_basics/problems/listings/helloworld.cpp}
-\end{minipage}
+\cpppInputListing{01_basics/problems/listings/helloworld.cpp}
 
 Jedes vollständige C++ Programm muss \textbf{genau eine} Funktion mit Namen \lstinline{main} und Rückgabetypen \lstinline{int} außerhalb von Klassen im globalen Namensraum besitzen.
 Andernfalls wird der Linker mit der Fehlermeldung \emph{undefined reference to 'main'} abbrechen.
@@ -55,7 +52,7 @@ Dies bedeutet, dass in der Zeile davor ein \textbf{;} vergessen wurde.
 Allgemein beziehen sich Fehlermeldungen \textbf{expected ... before ...} häufig auf die Zeile \textbf{vor} dem markierten Statement.
 Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen Header-Datei sein kann. Beispiel:
 
-\lstinputlisting{01_basics/problems/listings/helloworld_error_main.cpp}
+\cpppInputListing{01_basics/problems/listings/helloworld_error_main.cpp}
 
 Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
 

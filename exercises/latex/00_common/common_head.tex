@@ -9,7 +9,8 @@
 ]{tudexercise}
 
 \parindent1em
-%\parskip2ex
+\setlength{\parskip}{2ex plus0.3ex minus0.3ex}
+\raggedbottom
 
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -40,7 +41,7 @@
 %\usepackage[disable]{todonotes} % Use this line to hide all todos
 
 \definecolor{commentgreen}{RGB}{50,127,50}
-\lstloadlanguages{C++,[gnu]make}
+\lstloadlanguages{C++,[gnu]make,bash}
 \lstset{language=C++}
 \lstset{captionpos=b}
 \lstset{tabsize=3}
@@ -63,11 +64,15 @@
 	{ä}{{\"a}}1
 	{ö}{{\"o}}1
 	{'}{{\textquotesingle}}1
+	{~}{$\sim$}1
 }
 
-\lstnewenvironment{lstmake} %
-{\lstset{language=[gnu]make}} %
-{}
+\lstnewenvironment{lstmake}
+    % Commands/Text at the beginning of the environment
+    {
+        \lstset{language=[gnu]make}
+    } 
+    { }
 
 
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
@@ -129,3 +134,12 @@
 \newcommand{\ExercisePrefixEmbeddedC}{\ExercisePrefix{C}}
 \newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
 \newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}
+
+% The cpppInputNoPageBreakListing command prevents that Latex inserts a page break in between of the listing.  
+% If the listing does not fit onto the page anymore, it will be put onto the next page as a whole.
+\newcommand{\cpppInputNoPageBreakListing}[1] { \begin{minipage}{\textwidth} \lstinputlisting{#1} \end{minipage} }
+
+% The cpppInputListing command allows a listing to continue on the next page.
+\newcommand{\cpppInputListing}[1] { \vspace{1.5ex} \setbox0\vbox{ \lstinputlisting{#1} } \unvbox0 }
+
+

@@ -1,4 +1,5 @@
 \section{\ExercisePrefixMemory Zeiger und Referenzen Grundlagen}
+\label{sec:pointers}
 In dieser Aufgabe sollst du den Umgang mit Zeigern (\emph{Pointer}) und Referenzen erlernen.
 Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen, ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
 Anstelle dessen kann ein (vergleichsweise kleiner) Zeiger auf einen Speicherbereich übergeben werden.
@@ -8,7 +9,7 @@ Alternativ kann auch eine Referenz auf eine Variable übergeben werden, welche i
 Experimentiere mit Zeigern, Adressen und Referenzen. Als Ausgangsbasis kann folgendes Programmfragment dienen.
 Fülle danach die untenstehende Skizze aus, um dir klarzumachen, wie Variablen und ihre Speicherabbilder zusammenhängen.
 
-\lstinputlisting{02_memory/problems/listings/pointers_intro.cpp}
+\cpppInputListing{02_memory/problems/listings/pointers_intro.cpp}
 
 \paragraph{Speicherabbild}
 Wir nehmen an, dass Speicheradressen immer 4 Byte (= 32 Bit) breit sind. 
@@ -31,9 +32,7 @@ Trage nun die auftretenden Variablen \lstinline{intVal} und \lstinline{pIntVal} 
 Versuche die Bedeutung folgender Ausdrücke zu verstehen.
 Welche Regelmäßigkeiten stellst du fest?
 
-\begin{minipage}{\linewidth}
-\lstinputlisting{02_memory/problems/listings/pointers_intro_advanced.cpp}
-\end{minipage}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_intro_advanced.cpp}
 
 \hints{
 	\item Gehe dabei von rechts nach links vor.
@@ -42,9 +41,7 @@ Welche Regelmäßigkeiten stellst du fest?
 \subsection{Gültigkeit}
 Warum sind folgende Ausdrücke ungültig, sinnlos oder sogar gefährlich?
 
-\vbox{ %fixes empty page
-\lstinputlisting{02_memory/problems/listings/pointers_intro_validity.cpp}
-}
+\cpppInputListing{02_memory/problems/listings/pointers_intro_validity.cpp}
 
 \hints{
 	\item Finde heraus, welchen Typ der Ausdruck hätte haben müssen.
@@ -59,9 +56,7 @@ Was würde passieren, wenn man die Variablen stattdessen per Wert übergeben wü
 \subsection{Programmanalyse}
 Sieh dir folgendes Programm an.
 
-\vbox{ %fixes empty page
-\lstinputlisting{02_memory/problems/listings/pointers_programm.cpp}
-}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_programm.cpp}
 
 Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
 Führe das Programm aus.
@@ -81,13 +76,13 @@ Versuche für jede der Variablen im folgenden Code je eine \emph{Verwendung} zu 
 Was ist jeweils der Grund?
 Welche Pointer verhalten sich gleich?
 
-\lstinputlisting{02_memory/problems/listings/pointers_behavior.cpp}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_behavior.cpp}
 
 \paragraph{Mehrstufige Pointer}
 
 Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
 
-\lstinputlisting{02_memory/problems/listings/pointers_multi.cpp}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_multi.cpp}
 
 \subsection{Übergabewerte}
 In der letzten Aufgabe direkt zu Pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.

@@ -1,4 +1,5 @@
 \section{\ExercisePrefixBasics C++ Grundlagen, Funktionen und Strukturierung}
+\label{sec:basics}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
 \subsection*{Primitive Datentypen} 
@@ -8,7 +9,7 @@ Standardmäßig sind Zahlen vorzeichenbehaftet.
 Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
 Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargestellt werden.
 
-\lstinputlisting{01_basics/problems/listings/basics_types_intro.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_types_intro.cpp}
 
 Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \lstinline{bool}) umgewandelt werden.
 Alles ungleich 0 wird als \lstinline{true} gewertet, 0 als \lstinline{false}.
@@ -18,7 +19,7 @@ Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 Die Größe von den verschiedenen Datentypen ist essentiell zu wissen, wenn man mit ihnen arbeiten möchte.
 Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in Bits, wie auch deren minimalen und maximalen Wert ausgeben lassen.
 
-\lstinputlisting{01_basics/problems/listings/basics_types_ex.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_types_ex.cpp}
 
 \hints{
     \item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
@@ -31,13 +32,13 @@ Einbinden lässt sich diese über den Header \lstinline{limits}.
 Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \lstinline{printStars(5)} sollte folgende Ausgabe generieren:
 
-\lstinputlisting{01_basics/problems/listings/basics_stars.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_stars.cpp}
 
 Platziere die Funktion \textbf{vor} der \lstinline{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
 Benutze die erstellte Funktion \lstinline{printStars(int n)}, um eine weitere Funktion \lstinline{printFigure(Direction d)} zu schreiben, die eine Figur wie unten dargestellt ausgibt.
 Verwende hierzu Schleifen.
 
-\lstinputlisting{01_basics/problems/listings/basics_starpattern.cpp}
+\cpppInputNoPageBreakListing{01_basics/problems/listings/basics_starpattern.cpp}
 
 \hints{
     \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch CamelCase oder Kleinschreibung mit Unterstrichen verwendet.
@@ -49,27 +50,20 @@ Verwende hierzu Schleifen.
 \label{sec:basics_enumtype}
 Ein Aufzählungstyp (engl. enumerated type) ist ein Datentyp, dessen Wert auf eine definierte Menge begrenzt ist. Alle möglichen Werte werden bereits bei der Deklaration des Typs mit einem eindeutigen Namen angegeben. Um einen solchen Datentyp zu definieren, benutzt man das Schlüsselwort \lstinline{enum}: 
 
-\lstinputlisting{01_basics/problems/listings/basics_enum_example.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_enum_example.cpp}
 
 Die Werte in den geschweiften Klammern sind Symbole, die intern als Zahlen (Integer) gespeichert sind. Die Werte beginnen normalerweise bei 0, man kann sie aber auch selbst festlegen:
 
-\lstinputlisting{01_basics/problems/listings/basics_enum_example_2.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_enum_example_2.cpp}
 
 Nutzen kann man den Enum-Typ nun, indem man eine Variable von diesem Typ deklariert und diese wie gewohnt verwendet:
 
-\lstinputlisting{01_basics/problems/listings/basics_enum_example_3.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_enum_example_3.cpp}
 
 Deine Aufgabe ist es jetzt, das Programm um einen enum-Typen \lstinline{Direction} zu erweitern, der die Richtung (left oder right) angibt, in die das Pattern ausgegeben werden soll. Erweitere dazu, falls nötig, die Funktionen \lstinline{printStars} bzw. \lstinline{printFigure}. Es könnte außerdem nützlich sein, eine Funktion \lstinline{printSpaces} einzuführen.
 Das ganze soll am Ende jeweils folgendermaßen aussehen:
 
-\medskip
-\begin{center}
-\begin{tabular}{c@{\hskip 1in}c}
-Bei linksbündiger Ausgabe: & Bei rechtsbündiger Ausgabe: \\
-\lstinputlisting{01_basics/problems/listings/basics_starpattern.cpp} & \lstinputlisting{01_basics/problems/listings/basics_starpattern_right.cpp} \\
-\end{tabular}
-\end{center}
-\medskip
+\cpppInputNoPageBreakListing{01_basics/problems/listings/basics_starpattern_alignment.cpp} 
 
 \subsection{Auslagern der Datei}
 Erstelle eine neue Header-Datei \textbf{\filename{functions.h}} und eine neue
@@ -79,11 +73,11 @@ Bestätige den Dialog mit \textbf{OK}.
 Das ganze wiederholst du mit dem Dateitypen \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
 Füge in der Headerdatei die folgenden Include Guards hinzu.
 
-\lstinputlisting{01_basics/problems/listings/basics_hpp_guards.hpp}
+\cpppInputListing{01_basics/problems/listings/basics_hpp_guards.hpp}
 
 Binde danach \filename{functions.h} in beide Sourcedateien (\filename{functions.cpp} und \filename{main.cpp}) ein, indem du
 
-\lstinputlisting{01_basics/problems/listings/basics_hpp_include.hpp}
+\cpppInputListing{01_basics/problems/listings/basics_hpp_include.hpp}
 
 verwendest.
 \textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
@@ -93,7 +87,7 @@ Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mi
 Ein Prototyp ist im Wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
 Der Prototyp von \lstinline{printStars(int n)} lautet 
 
-\lstinputlisting{01_basics/problems/listings/basics_printstars_sig.hpp}
+\cpppInputListing{01_basics/problems/listings/basics_printstars_sig.hpp}
 
 Auch der in der vorherigen Aufgabe erstellte enum-Typ sollte in der Header-Datei platziert werden.
 
@@ -117,7 +111,8 @@ Damit Doxygen deine Kommentare erkennt, muss ein spezielles Format eingehalten w
 \begin{itemize}
     \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
     \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)\footnote{Es gibt noch andere Formate, aber wir werden hier in dem Praktikum den sogenannten JavaDoc-Style verwenden.}
-		\lstinputlisting{01_basics/problems/listings/basics_doxygen_comment.cpp}}
+    
+		\cpppInputListing{01_basics/problems/listings/basics_doxygen_comment.cpp}}
 \end{itemize}
 
 Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Kommandos \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann seinen Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
@@ -126,14 +121,14 @@ Beispiele unter \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html\
 Diese Kommandos sind die folgenden:
 
 \medskip
-\begin{tabular}{ll}
-{\lstinline!@file Dateiname!} & Damit Doxygen das komplette File parst. \\
-{\lstinline!@name Name!} & Name des zu dokumentierenden Elements. \\
-{\lstinline!@brief KurzeBeschreibung!} & Einzeilige Beschreibung des zu dokumentierenden Elements. \\
-{\lstinline!@author AutorenName!} & Name des Autors des zu dokumentierenden Elements. \\
-{\lstinline!@param Parametername Beschreibung!} & Je Funktionsparameter eine Zeile, die seinen Zweck erläutert. \\
-{\lstinline!@return Beschreibung!} & Kurze Beschreibung der Rückgabe. \\
-\end{tabular}
+    \begin{tabular}{ll}
+        {\lstinline!@file Dateiname!} & Damit Doxygen das komplette File parst. \\
+        {\lstinline!@name Name!} & Name des zu dokumentierenden Elements. \\
+        {\lstinline!@brief KurzeBeschreibung!} & Einzeilige Beschreibung des zu dokumentierenden Elements. \\
+        {\lstinline!@author AutorenName!} & Name des Autors des zu dokumentierenden Elements. \\
+        {\lstinline!@param Parametername Beschreibung!} & Je Funktionsparameter eine Zeile, die seinen Zweck erläutert. \\
+        {\lstinline!@return Beschreibung!} & Kurze Beschreibung der Rückgabe. \\
+    \end{tabular}
 \medskip
 
 Da das Dokumentieren der Datei nicht vor der Datei passieren kann (wo sollte das sein?), geschieht es deshalb direkt nach den Präprozessor-Direktiven.
@@ -142,7 +137,7 @@ Deine Aufgabe ist es nun, den von dir erstellten Code sorgfältig zu dokumentier
 Die Dokumentation geschieht dabei in der \filename{.h} oder \filename{.hpp} Datei. 
 Hier ein kleines Beispiel dazu, damit du eine Vorstellung davon bekommst, wie das ganze am Ende auszusehen hat.
 
-\lstinputlisting{01_basics/problems/listings/basics_doxygen_example.hpp}
+\cpppInputListing{01_basics/problems/listings/basics_doxygen_example.hpp}
 
 \paragraph{Letzendliches Erstellen der Dokumentation}
 Erstellen kannst du die Dokumentation am Ende über die Kommandozeile.
@@ -159,7 +154,7 @@ Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreit
 Gib gegebenenfalls eine Fehlermeldung aus.
 Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in folgendem Beispiel.
 
-  \lstinputlisting{01_basics/problems/listings/basics_cin.cpp}
+  \cpppInputListing{01_basics/problems/listings/basics_cin.cpp}
   
 \paragraph{Eingabe der Richtung}
 In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Pattern ausgegeben werden kann. 
@@ -173,7 +168,7 @@ Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben wer
 Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
 Beispiel:
 
-  \lstinputlisting{01_basics/problems/listings/basics_charpattern.cpp}
+  \cpppInputListing{01_basics/problems/listings/basics_charpattern.cpp}
 
 Implementiere dazu eine Funktion \lstinline{char nextChar()}.
 Diese soll bei jedem Aufruf das nächste auszugebende Zeichen vom Typ \lstinline{char} zurückgeben, beginnend bei \emph{a}.
@@ -183,7 +178,7 @@ Diese behalten ihren aktuellen Wert auch nach Verlassen der Funktion.
 Das heißt, wenn \lstinline{nextChar()} das nächste Mal aufgerufen wird, steht der Wert des vorherigen Zeichens noch zur Verfügung.
 Eine statische Variable \lstinline{c} wird mittels
 
-  \lstinputlisting{01_basics/problems/listings/basics_staticchar.cpp}
+  \cpppInputListing{01_basics/problems/listings/basics_staticchar.cpp}
 
 deklariert.
 In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig beim ersten Aufruf} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
@@ -197,12 +192,12 @@ Bibliotheken werden in einen eigenen Namensraum gekapselt, damit ihre Funktionen
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
 folgt in einen \lstinline{namespace} setzt. Achte auch auf das Semikolon nach der schließenden Klammer.
 
-  \lstinputlisting{01_basics/problems/listings/basics_namespace_fun.cpp}
+  \cpppInputListing{01_basics/problems/listings/basics_namespace_fun.cpp}
 
 Denke daran, dass du die Namen der Funktionen in der Sourcedatei noch anpassen musst, indem du vor jede Funktion den gewählten \lstinline{namespace}-Namen gefolgt von zwei Doppelpunkten setzt.
 Genauso muss der Namensraum auch vor jeden Aufruf der Funktion gesetzt werden.
 
-  \lstinputlisting{01_basics/problems/listings/basics_namespace_ref.cpp}
+  \cpppInputListing{01_basics/problems/listings/basics_namespace_ref.cpp}
 
 Vergisst man, den Namensraum in der Sourcedatei vor den Funktionsaufrufen anzugeben, findet der Linker keine Implementation zu der im Header definierten Funktion.
 Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur noch lokal verwendet werden (\lstinline{print_star(int n)} und \lstinline{fun::print_star(int n)} sind zwei unterschiedliche Funktionen!). \\
@@ -210,12 +205,12 @@ Weiterhin stünde diese Funktion nicht mehr im Bezug zum Header und könnte nur 
 Falls man seine Funktionen noch weiter unterteilen möchte, kann man Namensräume auch schachteln.
 Hierzu definiert man wie oben einen weiteren Namensraum mit \lstinline{namespace} in einer bereits vorhandenen Namensraum-Instanz. Wichtig ist auch hier wieder das Semikolon nach jeder schließenden Klammer der Namespace-Definition.
 
-  \lstinputlisting{01_basics/problems/listings/basics_namespace_nested.cpp}
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/basics_namespace_nested.cpp}
 
 In der Sourcedatei folgt dann nach dem ersten Namensraum (hier \lstinline{fun}) der geschachtelte Namensraum \lstinline{ny}. Die verschiedenen Ebenen der Namensräume werden durch zwei Doppelpunkte (den sogenannten Scope-Resolution-Operator) voneinander getrennt.
 Danach können die Funktionen in dem Namensraum \lstinline{ny} verwendet werden, indem man diese ebenfalls mit dem Scope-Resolution-Operator an die Namensraum-Hierarchie anhängt.
 
-\lstinputlisting{01_basics/problems/listings/basics_namespace_nested_ref.cpp}
+\cpppInputListing{01_basics/problems/listings/basics_namespace_nested_ref.cpp}
 
 In diesem Projekt wird dies nicht notwendig sein, da die Anzahl der definierten Funktionen überschaubar ist, aber trotzdem empfehlen wir dir, es auszuprobieren.
 

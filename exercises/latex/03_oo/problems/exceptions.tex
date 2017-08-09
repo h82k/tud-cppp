@@ -1,7 +1,7 @@
 \section{\ExercisePrefixObjectOrientation Exceptions}
 Ähnlich wie in Java können Fehler während der Programmlaufzeit in C++ mittels Exceptions signalisiert werden.
 
-\lstinputlisting{03_oo/problems/listings/exceptions_intro.cpp}
+\cpppInputListing{03_oo/problems/listings/exceptions_intro.cpp}
 
 Es gibt jedoch einige Unterschiede zur Fehlerbehandlung in Java.
 Das aus Java bekannte \lstinline{finally}-Konstrukt existiert in C++ nicht.
@@ -13,7 +13,7 @@ In diesem Fall wird das geworfene Objekt nach der Behandlung im \lstinline{catch
 Wenn es \emph{by-Value} gefangen wird, wird das geworfene Objekt kopiert, ähnlich wie bei einem Funktionsaufruf.
 Beispiel:
 
-\lstinputlisting{03_oo/problems/listings/exceptions_by_what.cpp}
+\cpppInputListing{03_oo/problems/listings/exceptions_by_what.cpp}
 
 In der Praxis hat es sich durchgesetzt, \emph{by-Value} zu werfen und \emph{by-const-Reference} zu fangen.
 
@@ -27,7 +27,7 @@ Probiere insbesondere die beiden o.g. Fälle aus und beobachte die Ausgabe.
 Wann wird ein Objekt erstellt/kopiert/gelöscht?
 Teste auch, was passiert, wenn du mehrere \lstinline{catch}-Blöcke erstellst und sich diese nur in der Übergabe unterscheiden (Wert/Referenz).
 
-\lstinputlisting{03_oo/problems/listings/exceptions_multiple_catch.cpp}
+\cpppInputListing{03_oo/problems/listings/exceptions_multiple_catch.cpp}
 
 Welcher \lstinline{catch} Block wird aufgerufen?
 Spielt die Reihenfolge eine Rolle?

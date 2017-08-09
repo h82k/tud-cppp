@@ -1,12 +1,13 @@
 \section{\ExercisePrefixAdvanced Eigene Arrays \optional}
 \optionaltextbox
 \label{sec:array}
+\label{sec:customArrays}
 
 Nachdem du bei unseren Übungen zu Arrays gesehen hast, dass es störend ist, wenn man die Größe eines Arrays immer getrennt zu den gespeicherten Daten verwalten muss, ist ein sinnvoller Schritt, eine eigene Array-Klasse zu implementieren, die Daten und Größe des Arrays zusammen speichert.
 
 Eine möglicher Anwendungsfall sieht so aus:
 
-\lstinputlisting{04_advanced/problems/listings/customArrays_example.cpp}
+\cpppInputListing{04_advanced/problems/listings/customArrays_example.cpp}
 
 \emph{Hinweise}:
 \begin{itemize}
@@ -18,7 +19,7 @@ Unter anderem musst du jeweils einen \lstinline{const} und einen nicht-\lstinlin
 
 \item Eine fortgeschrittene Übung ist es, Iteratoren oder \lstinline{operator+(unsigned int)} für \lstinline{Array} bereitzustellen, sodass du z.B. die Funktion \lstinline{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
 
-\lstinputlisting{04_advanced/problems/listings/customArrays_vector.cpp}
+\cpppInputListing{04_advanced/problems/listings/customArrays_vector.cpp}
 
 \item
 Diese Idee ist natürlich nicht neu.
