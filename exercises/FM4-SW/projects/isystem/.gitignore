@@ -1,0 +1,4 @@
+/$STDERR.txt
+/$STDOUT.txt
+/*.txt
+/*.json

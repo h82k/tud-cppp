@@ -1,0 +1,1 @@
+This folder contains documentation of the hardware platform of the C/C++ lab.

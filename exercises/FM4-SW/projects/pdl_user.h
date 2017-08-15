@@ -42,9 +42,9 @@
 #define PDL_PERIPHERAL_ENABLE_AES               PDL_OFF
 
 // Base Timers
-#define PDL_PERIPHERAL_ENABLE_BT0               PDL_OFF
-#define PDL_PERIPHERAL_ENABLE_BT1               PDL_OFF
-#define PDL_PERIPHERAL_ENABLE_BT2               PDL_OFF
+#define PDL_PERIPHERAL_ENABLE_BT0               PDL_ON
+#define PDL_PERIPHERAL_ENABLE_BT1               PDL_ON
+#define PDL_PERIPHERAL_ENABLE_BT2               PDL_ON
 #define PDL_PERIPHERAL_ENABLE_BT3               PDL_OFF
 #define PDL_PERIPHERAL_ENABLE_BT4               PDL_OFF
 #define PDL_PERIPHERAL_ENABLE_BT5               PDL_OFF
@@ -308,9 +308,9 @@
 #define PDL_INTERRUPT_ENABLE_ADC2              PDL_OFF
 
 // Base Timers
-#define PDL_INTERRUPT_ENABLE_BT0               PDL_OFF
-#define PDL_INTERRUPT_ENABLE_BT1               PDL_OFF
-#define PDL_INTERRUPT_ENABLE_BT2               PDL_OFF
+#define PDL_INTERRUPT_ENABLE_BT0               PDL_ON
+#define PDL_INTERRUPT_ENABLE_BT1               PDL_ON
+#define PDL_INTERRUPT_ENABLE_BT2               PDL_ON
 #define PDL_INTERRUPT_ENABLE_BT3               PDL_OFF
 #define PDL_INTERRUPT_ENABLE_BT4               PDL_OFF
 #define PDL_INTERRUPT_ENABLE_BT5               PDL_OFF
@@ -1598,7 +1598,7 @@
  ** \brief PDL utility enable setting
  ******************************************************************************/
 // Printf/Scanf via UART function
-#define PDL_UTILITY_ENABLE_UART_PRINTF              PDL_OFF
+#define PDL_UTILITY_ENABLE_UART_PRINTF              PDL_ON
 #define PDL_UTILITY_ENABLE_UART_SCANF               PDL_OFF
 
 // AT24CXX(EEPROM) driver

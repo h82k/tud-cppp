@@ -1,0 +1,131 @@
+\providecommand{\additionalOptionsForClass}{}
+\documentclass[
+  accentcolor=tud1c,	% Color theme for TUD corporate design
+  colorbacktitle,		% Titlepage has colored background for title area
+  inverttitle,			% Font color of title on titlepage is inverted
+  \additionalOptionsForClass
+  %german%,
+  %twoside
+]{tudexercise}
+
+\parindent1em
+%\parskip2ex
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{cleveref}
+\usepackage{numprint}
+\usepackage{paralist}
+\usepackage{verbatim}
+\usepackage{tocloft} % for manipulating the table of contents
+
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}\xspace}%
+\newcommand{\xmark}{\ding{55}\xspace}%
+
+\usepackage{todonotes}
+%\usepackage[disable]{todonotes} % Use this line to hide all todos
+
+\definecolor{commentgreen}{RGB}{50,127,50}
+\lstloadlanguages{C++,[gnu]make}
+\lstset{language=C++}
+\lstset{captionpos=b}
+\lstset{tabsize=3}
+\lstset{breaklines=true}
+\lstset{basicstyle=\ttfamily}
+\lstset{columns=flexible}
+\lstset{keywordstyle=\color{purple}}
+\lstset{stringstyle=\color{blue}}
+\lstset{commentstyle=\color{commentgreen}}
+\lstset{otherkeywords=\#include}
+\lstset{showstringspaces=false}
+\lstset{keepspaces=true}
+\lstset{xleftmargin=1cm}
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+	{'}{{\textquotesingle}}1
+}
+
+\lstnewenvironment{lstmake} %
+{\lstset{language=[gnu]make}} %
+{}
+
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+
+\newcommand{\setHeader}[1]{
+\providecommand{\examheadertitle}{TODO: Titel einbinden}
+\renewcommand{\examheadertitle}{#1}
+\begin{examheader}
+    \examheadertitle
+\end{examheader}
+}
+
+\newcommand{\hints}[1]{
+\paragraph*{Hinweise}
+	\begin{itemize}
+		\setlength{\itemsep}{0pt}
+		#1
+	\end{itemize}
+}
+
+\newcommand{\optional}{\xspace(optional)}
+\newcommand{\experimental}{\xspace(experimentell)}
+
+\usepackage{fancybox}
+\newcommand{\optionaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Die Klausur kann ohne diese Aufgabe bestanden werden. Wir empfehlen aber sie trotzdem zu bearbeiten.}}
+	\end{center}
+}
+\newcommand{\experimentaltextbox}{
+	\bigskip
+	\begin{center}
+		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/issues}}}
+	\end{center}
+}
+
+\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
+\newcommand{\filename}[1]{\texttt{#1}\xspace}
+\newcommand{\bspw}{bspw.\xspace}
+\newcommand{\dasheisst}{d.\;h.\xspace}
+\newcommand{\zB}{z.\;B.\xspace}
+\newcommand{\unteranderem}{u.\;a.\xspace}
+
+\newcommand{\winIdeaGroupName}[1]{\textsf{#1}\xspace}
+\newcommand{\menuPath}[1]{\emph{#1}\xspace}
+\newcommand{\menuSep}[0]{\ensuremath{\to}\;}
+\newcommand{\shortcut}[1]{\texttt{#1}\xspace}
+
+\newcommand{\RK}[1]{\todo[]{\textbf{RK:} #1}}
+\newcommand{\RKi}[1]{\todo[inline]{\textbf{RK:} #1}}
+
+\newcommand{\ExercisePrefix}[1]{$[$#1$]$ \xspace}
+\newcommand{\ExercisePrefixBasics}{\ExercisePrefix{G}}
+\newcommand{\ExercisePrefixMemory}{\ExercisePrefix{S}}
+\newcommand{\ExercisePrefixObjectOrientation}{\ExercisePrefix{O}}
+\newcommand{\ExercisePrefixAdvanced}{\ExercisePrefix{F}}
+\newcommand{\ExercisePrefixEmbeddedC}{\ExercisePrefix{C}}
+\newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
+\newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}

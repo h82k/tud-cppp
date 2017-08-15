@@ -1,0 +1,88 @@
+\section{\ExercisePrefixBasics Klassen}
+Ziel dieser Aufgabe ist es die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
+
+\hints{
+	\item Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{Rechtsklick auf den Ordner src/ $\rightarrow$ New class...}) von CodeLite!
+}
+
+\subsection{Definition}
+Eine Klasse wird üblicherweise analog zu der vorherigen Aufgabe in Deklaration (Headerdatei) und Implementation (Sourcedatei) aufgeteilt.
+Die Struktur der Klasse mit allen Attributen und Funktionsprototypen wird im Header beschrieben, während die Sourcedatei nur die Implementation der Funktionen und Initialisierungen statischer Variablen enthält.
+Standardmäßig sind alle Elemente einer Klasse privat.
+Im Gegensatz zu Java werden in C++ die Access-Modifier \lstinline{public}/\lstinline{private}/\lstinline{protected} nicht bei jedem Element einzeln sondern blockweise angegeben.
+
+  \lstinputlisting{01_basics/problems/listings/classes_intro.hpp}
+
+Erzeuge einen Header \filename{CharGenerator.hpp} und erstelle den Klassenrumpf der Klasse \lstinline{CharGenerator}.
+Füge der Klasse das \lstinline{private} Attribut \lstinline{char nextChar} hinzu, in dem das als nächstes auszugebende Zeichen gespeichert wird und einen \lstinline{public} Konstruktorprototypen \lstinline{CharGenerator()}, der \lstinline{nextChar} auf \lstinline{'a'} initialisieren soll.
+Füge noch eine \lstinline{public} Funktionsprototypen \lstinline{char generateNextChar()} hinzu, welche das nächste auszugebende Zeichen zurückgeben soll.
+
+
+\hints{
+	\item Ein Konstruktor wird als eine Funktion ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann.
+}
+
+\subsection{Dokumentation von Klassen}
+Auch in dieser Aufgabe geht es wieder darum, euren Programmcode zu dokumentieren.
+Das funktioniert wieder sehr ähnlich wie in Aufgabe \ref{basics:doc}, nur tauscht ihr den Tag \lstinline{@file} gegen \lstinline{@class} aus und platziert eine dementsprechende Dokumentation vor der Definition der Klasse.
+Dies könnt ihr fortlaufend in der Aufgabe erfüllen und muss nicht direkt jetzt geschehen.
+Am Ende erstellt ihr euch wieder eine Dokumentation eurer Klassen und könnt so entdecken, wie \texttt{doxygen} eure Kommentare in Dokumentation umsetzt.
+
+\subsection{Implementation}
+Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte getrennt angegeben werden.
+
+  \lstinputlisting{01_basics/problems/listings/classes_impl_func.cpp}
+
+Um Attribute zu initialisieren, wird üblicherweise eine sogenannte Initialisierungsliste im Konstruktor verwendet, da diese vor dem Eintritt in den Konstruktorrumpf aufgerufen wird.
+Die Initialisierungsliste wird durch einen Doppelpunkt zwischen der schließenden Klammer der Parameterliste und der geschweiften Klammer des Rumpfes eingeleitet, und bildet eine mit Komma separierte Liste von Attributnamen und ihren Initialisierungsargumenten in Klammern.
+
+  \lstinputlisting{01_basics/problems/listings/classes_impl_list.cpp}
+
+Erzeuge eine Sourcedatei \filename{CharGenerator.cpp} für die Implementation der Klasse und binde die \filename{CharGenerator.hpp} ein.
+Implementiere den Konstruktor, indem du \lstinline{nextChar} mit \lstinline{'a'} in der Initialisierungsliste initialisierst.
+Implementiere zudem \lstinline{generateNextChar()}, indem du \lstinline{nextChar} zurückgibst.
+
+\hints{
+	\item Die Reihenfolge der Initialisierungsliste sollte der Deklarationsreihenfolge entsprechen.
+	\item Konstanten \textbf{müssen} in der Initialisierungsliste zugewiesen werden, damit diese zur Laufzeit bekannt sind.
+}
+
+\subsection{Instantiierung}
+Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit einer \lstinline{main()} Funktion in der du ein \lstinline{CharGenerator}-Objekt erzeugst und \lstinline{generateNextChar()} mehrfach aufrufst und ausgibst.
+
+  \lstinputlisting{01_basics/problems/listings/classes_obj.cpp}
+
+Überprüfe das Ergebnis über die Konsole oder den Debugger.
+
+\hints{
+	\item Um ein Objekt zu erzeugen, muss in C++ kein \lstinline{new} verwendet werden (siehe dazu nächste Vorlesung).
+}
+
+\subsection{Default-Parameter}
+Damit man nicht immer das Startzeichen angeben muss, kann man sogenannte Default-Parameter angeben, der beim Aufruf weggelassen werden kann.
+Hierzu wird dem Parameter im Prototypen (im Header) ein Wert zugewiesen ohne die Implementation zu ändern.
+
+  \lstinputlisting{01_basics/problems/listings/classes_default_value.cpp}
+
+Erweitere den Konstruktor um einen Parameter \lstinline{char initialChar}, welcher defaultmäßig \emph{a} ist und ändere die Initialisierung von \lstinline{nextChar}, damit dieser mit dem übergebenen Parameter gestartet wird.
+
+Teste deine Implementation sowohl mit als auch ohne Angabe des Startzeichens.
+Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
+
+  \lstinputlisting{01_basics/problems/listings/classes_obj_par.cpp}
+
+\hints{
+	\item Bei der Definition eines Default-Parameters müssen für alle nachfolgenden Parameter ebenfalls Default-Werte angegeben werden, um Mehrdeutigkeiten beim Aufruf zu vermeiden.
+}
+
+\subsection{PatternPrinter}
+Implementiere folgende Klasse.
+
+  \lstinputlisting{01_basics/problems/listings/classes_pattern_printer.hpp}
+
+Teste deine Implementation, indem du ein \lstinline{PatternPrinter}-Objekt anlegst und \lstinline{printPattern()} darauf aufrufst.
+
+\hints{
+	\item Ohne eine Initialisierungsliste wird \lstinline{charGenerator} mit dem Default-Parameter initialisiert.
+	Um ein eigenes Startzeichen anzugeben, muss eine Initialisierungsliste erstellt und \lstinline{charGenerator} mit dem entsprechenden Argument initialisiert werden.
+}

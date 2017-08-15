@@ -1,0 +1,104 @@
+\input{00_common/common_head.tex}
+\title{Übung zum\linebreak[1]C/C++-Praktikum\linebreak[1] Fachgebiet Echtzeitsysteme}
+
+\setcounter{section}{0}
+
+%optional parameters to speed up build (increases pdf file size)
+%\pdfcompresslevel=0
+%\pdfobjcompresslevel=0
+\begin{document}
+
+% header and title
+\maketitle
+
+\noindent\emph{Hinweis:} Die Präfixe der Aufgaben beziehen sich auf die Themengebiete der Vorlesung. (
+\ExercisePrefixBasics{}: Grundlagen; 
+\ExercisePrefixMemory{}: Speicherverwaltung/Memory;
+\ExercisePrefixObjectOrientation{}: Objektorientierung;
+\ExercisePrefixAdvanced{}: Fortgeschrittene Themen;
+\ExercisePrefixEmbeddedC{}: (Embedded) C;
+\ExercisePrefixElevator{}: Zusatzaufgaben zum Aufzugsimulator
+\ExercisePrefixAdditionalInformation{}: Zusatzmaterial
+)
+\setcounter{tocdepth}{1}
+%\setlength\cftsectionnumwidth{10em}
+\setlength\cftsecnumwidth{10em}
+\setlength\cftbeforesecskip{.1em} % line skip between sections ("sec")
+\tableofcontents
+
+\newpage
+
+\setHeader{Aufgaben zu C/C++-Grundlagen}
+\input{01_basics/problems/intro}
+
+\input{00_common/how_to_import_solution_projects.text}
+
+\input{01_basics/problems/helloWorld}
+\newpage
+\input{01_basics/problems/basics}
+\newpage
+\input{01_basics/problems/classes}
+\newpage
+\input{01_basics/problems/overloading}
+
+\newpage
+\setHeader{Aufgaben zur Speicherverwaltung in C++}
+\input{02_memory/problems/pointers}
+\newpage
+\input{02_memory/problems/arrays}
+\newpage
+\input{02_memory/problems/linkedLists}
+\newpage
+\input{02_memory/problems/smartPointers}
+
+\newpage
+\setHeader{Aufgaben zur Objektorientierung in C++}
+\input{03_oo/problems/inheritance}
+\newpage
+\input{03_oo/problems/interface}
+\newpage
+\input{03_oo/problems/multipleInheritance}
+\newpage
+\input{03_oo/problems/exceptions}
+
+\newpage
+\setHeader{Aufgaben zu fortgeschrittenen Themen in C++}
+\input{04_advanced/problems/templates}
+\newpage
+\input{04_advanced/problems/genericVector3}
+\newpage
+\input{04_advanced/problems/genericLinkedList}
+\newpage
+\input{04_advanced/problems/std}
+\newpage
+\input{04_advanced/problems/functional}
+\newpage
+\input{04_advanced/problems/callbacks}
+\newpage
+\input{04_advanced/problems/customArrays}
+\newpage
+\input{06_elevator/problems/sim4.tex}
+
+\newpage
+\setHeader{Aufgaben zu Embedded C}
+\input{05_c/problems/cPrelude}
+\input{05_c/problems/cIntro}
+\input{05_c/problems/mcIntro}
+\input{05_c/problems/mcButton}
+\input{05_c/problems/mcDisplay}
+\input{05_c/problems/mcJoysticks}
+\input{05_c/problems/mcGame}
+
+\newpage
+\setHeader{Zusatzaufgaben zum Aufzugsimulator}
+\input{06_elevator/problems/sim1.tex}
+\newpage
+\input{06_elevator/problems/sim2.tex}
+\newpage
+\input{06_elevator/problems/sim3.tex}
+
+\newpage
+\setHeader{Zusatzmaterial}
+\input{07_cheatsheet/codelite}
+
+\end{document}

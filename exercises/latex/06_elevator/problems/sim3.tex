@@ -1,0 +1,57 @@
+\section{\ExercisePrefixElevator Aufzugsimulator -- Teil 3 \optional}
+
+\optionaltextbox
+
+Unser bisheriger Aufzugsimulator hat eine feste Strategie, nach der die einzelnen Stockwerke abgefahren werden.
+Mithilfe von Polymorphie können wir den Simulator so erweitern, dass die Strategie austauschbar wird.  
+
+\subsection{Vorbereitung}
+Lagere die bereits existierende Simulation des Aufzugs aus der \lstinline{main}-Funktion in eine eigene Funktion \lstinline{runSimulation()} aus.
+Die Funktion sollte das volle Gebäude als Parameter entgegennehmen und eine Liste (\lstinline{std::list<int>}) der angefahrenen Stockwerke zurückgeben.
+Überlege dir, auf welche Art das Gebäude idealerweise übergeben werden sollte.
+Teste deine Implementation.
+
+\subsection{Klasse \lstinline{ElevatorStrategy}}
+Implementiere die Klasse \lstinline{ElevatorStrategy}.
+Diese soll die Basisklasse für verschiedene Aufzugstrategien sein.
+Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \lstinline{Building} per \lstinline{const} Pointer übergeben.
+
+\lstinputlisting{06_elevator/problems/listings/sim3_elev_strat.hpp}
+
+\subsection{Eine einfache Aufzugstrategie}
+Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
+Diese soll folgendermaßen vorgehen: 
+Falls der Aufzug momentan leer ist, soll zum tiefsten Stockwerk gefahren werden, wo sich noch Personen befinden.
+Falls der Aufzug nicht leer ist, wird das Zielstockwerk einer der Personen im Aufzug ausgewählt.
+
+\subsection{Implementation von \lstinline{runSimulation}}
+Ändere nun \lstinline{runSimulation()} entsprechend um, sodass die Simulation anhand der gegebenen Strategie durchgeführt wird.
+Folgender Pseudocode kann dir als Denkhilfe dienen:
+
+\begin{algorithm}[H]
+ \SetAlgoLined
+ \While{People in Building or Elevator}{
+   Calculate next floor;\\
+   
+   Move Elevator to next floor; \\
+   Let all arrived people off; \\
+   Let all people on floor into Elevator;\\
+ }
+\end{algorithm}
+
+Teste die einfache Aufzugstrategie
+
+\subsection{Neue Aufzugstrategien \optional}
+\optionaltextbox
+Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
+Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
+Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden.
+Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
+
+\subsection{Schlüsselwort auto \optional}
+\optionaltextbox
+In der Vorlesung wurde das in C++11 neu hinzugekommene Schlüsselwort \lstinline{auto} angesprochen.
+Dieses Schlüsselwort kann überall dort anstelle eines Typbezeichners eingesetzt werden, wo der Compiler den Typ automatisch ableiten kann.
+Das ist besonders dann sinnvoll, wenn die Typbezeichnung aufgrund geschachtelter Templates oder geschachtelter Namensräume besonders lang und unleserlich wird, bspw. \lstinline{const std::vector<std::pair<const Person*, boolean (Floor, int)>>::const_iterator x;}.
+
+Versuche möglichst an möglichst vielen Stellen im Aufzugsimulator das Schlüsselwort \lstinline{auto} zu verwenden.

@@ -1,0 +1,34 @@
+language: none
+
+env:
+  # Avoid matrix builds if more env. vars. were to be added
+  # IMPORTANT: Encrypted env. vars. are not being decrypted on Pull Requests for security reasons
+  global:
+    - secure: tc6Y6GXGjNuU2FxcrzI/EFa+7v+jB3xD/7cDtE+1PFZvT9U6fdnVDY8s/z4xN4IgXLnCYSHUDeW33eSCcz7EnNWW4bJDH7PWHDee/sFaFUevbMcKVdS+MKYOxF/bdAZIjJ10sUoEdAIdXLCEEpAHBHMfeaSeAzHa0vsebDhwmhJvuwujJ9A89EQW1Tf+vwxC6gO+dm0yJyT9f2Oi481tmlAjr3x5Kaoe0UVa48EMdqGdSg4SPQ6QkivG9AQ8uhnCy9QTlMYpCJ3ZcqpVorq6CMRb7qIBvKF3Wv4k+ZRaYpP8Htn7ikD0rGOqeKgSa7eiSknsDwV4F4ShHCUWR0Kxfg==
+    
+
+    
+build:
+  pre_ci_boot:
+   image_name: echtzeitsysteme/tud_cppp
+   image_tag: latest
+   pull: true
+   
+  ci:
+    - 7z x 'admin/tudfontsEncrypted.zip' -p"$TUFONTS_DECRYPT_PASSWORD" # The contained files are decompressed into to the repo's root
+    - dpkg -i 't1-tudfonts_0.0.20090806_all.deb'
+    - dpkg -i 'tex-tudfonts_0.0.20090806_all.deb'
+    - apt-get install --yes --force-yes latex-tuddesign 
+    # ---
+    - bash ./exercises/make_all.sh
+    - make -C 'exercises/latex' all
+  
+integrations:
+  # See http://docs.shippable.com/ci/email-notifications/
+  notifications:
+    - integrationName: email
+      type: email
+      sendConsoleLogs: true
+      recipients:
+        --last_committer
+        - roland.kluge@es.tu-darmstadt.de

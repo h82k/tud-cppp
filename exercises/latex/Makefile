@@ -1,20 +1,18 @@
 .PHONY: all publish copy-only-all clean
 
-DIRS		= cheatsheet day1 day2 day3 day4 day5 elevator
-
 all: create-pdfs
 
 create-pdfs:
-	for d in $(DIRS); do (cd $$d; latexmk -pdf *.tex ); done
-	
+	latexmk -pdf cppp_exercises.tex
+  
 # Build and copy PDF files
 publish: create-pdfs cp-only-all
 
 # Copying pdfs to upper directory
 cp-only-all: 
-	cp $(wildcard [day,elevator]*/*.pdf) ..
+	cp cppp_exercises.pdf ..
 
-# cleaning compiled data besides pdfs
+# cleaning compiled data except for PDF file
 clean:
 	@echo "Removing unnecessary compilation data..."
 	find . -type f -name '*.aux' -delete
@@ -27,7 +25,7 @@ clean:
 	find . -type f -name '*.fls' -delete
 	find . -type f -name '*.fdb_latexmk' -delete
 
-# clean all created data
+# clean all created data (incl. PDF file)
 clean_all: clean
-	rm $(wildcard [cheatsheet,day,elevator]*/*.pdf)
+	rm cppp_exercises.pdf
 
