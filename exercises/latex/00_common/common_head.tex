@@ -9,7 +9,12 @@
 ]{tudexercise}
 
 \parindent0em
+
+% Vertical space of 2ex between paragraphs.
+% Allow LaTeX to increase or decrease this by 0.3ex. This enables
+% more dynamic typesetting.
 \setlength{\parskip}{2ex plus0.3ex minus0.3ex}
+
 \raggedbottom
 
 \usepackage[ngerman]{babel}
@@ -27,6 +32,7 @@
 \usepackage{paralist}
 \usepackage{verbatim}
 \usepackage{tocloft} % for manipulating the table of contents
+\usepackage{graphics}
 
 \usetikzlibrary{shapes}
 \usetikzlibrary{calc}
@@ -134,6 +140,27 @@
 \newcommand{\ExercisePrefixEmbeddedC}{\ExercisePrefix{C}}
 \newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
 \newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}
+
+\newcommand{\cclicense}{
+\begin{center}
+    \ovalbox{
+        \parbox{0.98\textwidth}
+        {
+            \begin{minipage}{0.15\textwidth}
+                \includegraphics[width=1.0\textwidth]{00_common/cc_license.png}
+            \end{minipage}
+            \hfill
+            \begin{minipage}{0.80\textwidth}
+                \begin{small}
+                Dieses Werk ist unter einer Creative Commons Lizenz vom Typ Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International zugänglich. 
+                Um eine Kopie dieser Lizenz einzusehen, konsultieren Sie \url{http://creativecommons.org/licenses/by-nc-nd/4.0/} oder 
+                wenden Sie sich brieflich an Creative Commons, Postfach 1866, Mountain View, California, 94042 USA.
+                \end{small}
+            \end{minipage}
+        }
+    }
+\end{center}
+}
 
 %% Custom commands for including a listing, based on \lstinputlisting
 
