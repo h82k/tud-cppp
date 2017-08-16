@@ -8,7 +8,7 @@
   %twoside
 ]{tudexercise}
 
-\parindent1em
+\parindent0em
 \setlength{\parskip}{2ex plus0.3ex minus0.3ex}
 \raggedbottom
 
@@ -107,7 +107,7 @@
 \newcommand{\experimentaltextbox}{
 	\bigskip
 	\begin{center}
-		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/issues}}}
+		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cppp/issues}}}
 	\end{center}
 }
 
@@ -135,11 +135,17 @@
 \newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
 \newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}
 
+%% Custom commands for including a listing, based on \lstinputlisting
+
 % The cpppInputNoPageBreakListing command prevents that Latex inserts a page break in between of the listing.  
 % If the listing does not fit onto the page anymore, it will be put onto the next page as a whole.
-\newcommand{\cpppInputNoPageBreakListing}[1] { \begin{minipage}{\textwidth} \lstinputlisting{#1} \end{minipage} }
+% The first paramer is optional and arguments from lstinputlisting can be provided here.
+% The second parameter is the path to the listing.
+\newcommand{\cpppInputNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \lstinputlisting[#1]{#2} \end{minipage} }
 
 % The cpppInputListing command allows a listing to continue on the next page.
-\newcommand{\cpppInputListing}[1] { \vspace{1.5ex} \setbox0\vbox{ \lstinputlisting{#1} } \unvbox0 }
+% The first paramer is optional and arguments from lstinputlisting can be provided here.
+% The second parameter is the path to the listing.
+\newcommand{\cpppInputListing}[2][] { \vspace{1.5ex} \setbox0\vbox{ \lstinputlisting[#1]{#2} } \unvbox0 }
 
 

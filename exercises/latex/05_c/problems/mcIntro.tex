@@ -12,7 +12,7 @@ Im Vergleich zu CodeLite ist diese Umgebung speziell auf die Entwicklung von Emb
 Der Bauprozess für Embedded-C-Programme sieht teilweise anders aus als bei C++-Programmen:
 \begin{enumerate}
 \item 
-Das Ergebnis der \textbf{Link-Phase} ist kein auf dem PC ausführbares Programm, sondern ein sogenanntes \emph{Image}
+Das Ergebnis der \textbf{Link-Phase} ist kein auf dem PC ausführbares Programm, sondern ein sogenanntes \emph{Image}.
 Dieses Image wird in den statischen Speicher des Microcontrollers geladen.
 \item
 Nach der Link-Phase folgt die \textbf{Flash-Phase} (in WinIDEA auch \enquote{Download} genannt).
@@ -42,7 +42,7 @@ Das Programm liegt unter \filename{C:\textbackslash{}PortableApps\textbackslash{
 Bei Bedarf kannst du dir eine Desktop-Verknüpfung erstellen.
 
 \item 
-\textbf{Wähle} in dem erscheinenden Dialogfenster den soeben \textbf{kopierten WinIDEA-Workspace} aus wie in \Cref{fig:WinIdeaSelectWorkspace} gezeigt (roter Rahmen).
+\textbf{Wähle} in dem erscheinenden Dialogfenster den soeben \textbf{kopierten WinIDEA-Workspace} aus wie in Abbildung \ref{fig:WinIdeaSelectWorkspace} gezeigt (roter Rahmen).
 \begin{figure}
 \begin{centering}
 \includegraphics[width=.5\textwidth]{./05_c/figures/WinIDEASelectWorkspace.png}
@@ -72,11 +72,11 @@ Diese ist in der Datei \filename{blink.h} deklariert und in \filename{blink.c} d
 
 \item 
 Du findest den folgenden Quelltext (\Cref{lst:Blink}) vor:
-\lstinputlisting[frame=tb,caption={\filename{blink.c}},label={lst:Blink},numbers=left]{./05_c/listings/blink.c}
+\cpppInputListing[frame=tb,caption={\filename{blink.c}},label={lst:Blink},numbers=left]{./05_c/listings/blink.c}
 %
 \begin{itemize}
 \item 
-Zu Beginn werden zwei Pointer auf das \emph{Data Direction Register (DDR)} und das \emph{Port Data Output Register (PDOR)} angelegt, die einen einfachen Zugriff auf Datenübertragungsrichtung und die Pin-Belegung der blauen LED ermöglichen.
+Zu Beginn werden zwei Pointer auf das \emph{Data Direction Register (DDR)} und das \emph{Port Data Output Register (PDOR)} angelegt, die einen einfachen Zugriff auf die Datenübertragungsrichtung und die Pin-Belegung der blauen LED ermöglichen.
 
 \item 
 Anschließend wird der zur LED gehörige Kanal (AN08) auf den digitalen (statt analogen) Modus geschaltet.
