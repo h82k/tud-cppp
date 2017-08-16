@@ -34,7 +34,7 @@ WHITE   0xFFFF
 }
 
 Das Display verwendet eine 565-Hexadezimal-Codierung für Farben. Bei der 565-Codierung werden 5 Bits für Rot, 6 Bits für Gelb und 5 Bits für Blau verwendet.
-Zunächst implementierst du die Funktion 888To565(uint8\_t r, uint8\_t g, uint8\_t b), um 888-RGB-Farben in 565-RGB-Farben umzuwandeln. Zur Validierung deiner Implementation kannst du folgende 888-RGB-Farben verwenden, und deine 565-Werte mit den vorgegebenen vergleichen.
+Zunächst implementierst du die Funktion color565(uint8\_t r, uint8\_t g, uint8\_t b), um 888-RGB-Farben in 565-RGB-Farben umzuwandeln. Zur Validierung deiner Implementation kannst du folgende 888-RGB-Farben verwenden, und deine 565-Werte mit den vorgegebenen vergleichen.
 
 \begin{table}[]
 	\centering
@@ -78,6 +78,6 @@ In display.h ist die Schriftart, welche in der Datei glcdfont.h im Array font ab
 
 (3.) Um die Textausgabe auf dem Display für strings zu ermöglichen, müssen weitere Funktionen implementiert werden, die einen automatisierten Cursor verwenden, der die Position des letzten geschriebenen Buchstaben speichert. Die Funktion writeAuto(char c) soll die Aufgabe übernehmen einen Buchstaben c auf dem Display mit hilfe von drawChar zu schreiben und die Position der Cursor cursorX und cursorY zu verändern. Hierbei sind Display-Grenzen und Zeilenumbrüche zu beachten.
 
-(4.) Implementiere die Funktion writeText, welche einen char Array als Parameter erhält und diesen mithilfe von writeAuto auf dem Display schreiben soll. Außerdem soll noch eine Abwandlung writeTextln implementiert werden, welche am Ende des Strings noch einen Zeilenumsprung einfügen soll.
+(4.) Implementiere die Funktion writeText(char *text), welche einen char Array als Parameter erhält und diesen mithilfe von writeAuto auf dem Display schreiben soll. Außerdem soll noch eine Abwandlung writeTextln(char *text) implementiert werden, welche am Ende des Strings noch einen Zeilenumsprung einfügen soll.
 
-(5.) Zur Ausgabe von Zahlen soll eine Funktion implementiert werden, welche Integer in ein char-Array umwandelt und diesen mithilfe von writeText auf dem Display ausgibt. Die Funktion itoa aus der stdlib.h kann zur Lösung dieser Aufgabe hilfreich sein.
+(5.) Zur Ausgabe von Zahlen soll die Funktion writeNumberOnDisplay(uint16\_t *value) implementiert werden, welche Integer in ein char-Array umwandelt und diesen mithilfe von writeText auf dem Display ausgibt. Die Funktion itoa aus der stdlib.h kann zur Lösung dieser Aufgabe hilfreich sein.
