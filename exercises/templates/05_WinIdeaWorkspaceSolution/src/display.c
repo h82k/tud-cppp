@@ -11,7 +11,12 @@ uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
 }
 
 void printPattern(){
-    // missing
+  uint16_t x,y;
+  for(x=0; x<480;x=x+8){
+    for(y=0;y<320;y=y+8){
+      fillRect(x,y,4,4,WHITE);
+    }
+  }
 }
 
 void initCursor(){

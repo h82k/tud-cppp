@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include "delay.h"
 #include "s6e2ccxj.h"
+#include "mcu.h"
+
 
 int BlinkRainbowMain() {
   volatile uint32_t *redLEDDirectionPort = &(FM4_GPIO->DDR1);
