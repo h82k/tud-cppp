@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include "s6e2ccxj.h"
 
+#include "delay.h"
+
 int ButtonMain() {
   volatile uint32_t* blueLEDValuePort = &(FM4_GPIO->PDOR1);
   volatile uint32_t* blueLEDDirectionPort = &(FM4_GPIO->DDR1);

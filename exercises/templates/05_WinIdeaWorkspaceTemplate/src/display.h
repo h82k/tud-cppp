@@ -24,7 +24,7 @@ uint16_t color565(uint8_t r, uint8_t g, uint8_t b);
 /**
  * Prints a chess pattern on the display.
  */
-void printPattern();
+void printPattern(uint16_t color);
 
 /**
  * Initializes cursor properties.

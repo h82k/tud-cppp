@@ -82,14 +82,63 @@ Gehe dazu wie folgt vor:
 \item 
 Lege dir eine leere \lstinline|main|-Funktion an und binde den Header \filename{display.h} ein.
 \item 
-Füge die folgende Zeile ein, um deinen Code für die Farbe Cyan zu testen.
+Füge die folgenden Zeile ein, um deinen Code für die Farbe Cyan zu testen:
+\begin{lstlisting}
+color565(0x00, 0xEA, 0xFF);
+\end{lstlisting}
+\item 
+Nun erstelle das Projekt wie gewohnt, \emph{aber}, bevor du das Programm auf den Micronctroller lädst, setze einen \emph{Breakpoint} in \lstinline|color565|.
+Öffne dazu die Datei \filename{display.c}.
+Rechtsklicke in die Zeile, in der die Variable \lstinline|result| zurückgegeben wird.
+Wähle \menuPath{Set Breakpoint} (oder drücke \shortcut{F9}).
+Links neben der Zeile erscheint ein rotes Rechteck.
+\item 
+Lade nun den Code auf den Microcontroller.
+Die Ausführung sollte an dem eingestellten Breakpoint anhalten (gelber Pfeil).
+\item 
+Bewege nun den Mauszeiger über die Variable \lstinline|result|.
+Es erscheint ein kleiner Tooltip mit dem Inhalt \lstinline|result=1887|.
+Dies ist das richtige Ergebnis, aber leider in einer nicht-hexadezimalen Darstellung.
+\item 
+Um dies zu ändern, öffne die \menuPath{Watch View} mittels \menuPath{View \menuSep Watch} (oder \shortcut{Alt + 3}).
+\item 
+Betätige die dritte Schaltfläche von links (\enquote{Toggle Hex Mode}) am oberen Rand des \menuPath{Watch}-Fensters.
+\item 
+Wenn du mit dem Mauszeiger nun erneut auf \lstinline|result| zeigst, erfährst du, dass \lstinline|result=0x075F|.
+\item 
+Um das Programm weiterlaufen zu lassen, wähle \menuPath{Debug \menuSep Run Control \menuSep Run} (oder \shortcut{F5}).
 \end{enumerate}
-\RKi{Beschreiben, wie man das mithilfe Debuggers macht.}
-Die Datei \filename{display.h} enthält außerdem einige vordefinierten Farben, die du ebenfalls bei den folgenden Aufgaben nutzen kannst: \lstinline|BLACK| (\lstinline|0x0000|), \lstinline|BLUE| (\lstinline|0x001F|), \lstinline|RED| (\lstinline|0xF800|), \lstinline|GREEN| (\lstinline|0x07E0|), \lstinline|YELLOW| (\lstinline|0xFFE0|), \lstinline|WHITE| (\lstinline|0xFFFF|).
+%
+Die Datei \filename{display.h} enthält einige vordefinierten Farben, die du ebenfalls bei den folgenden Aufgaben nutzen kannst: \lstinline|BLACK| (\lstinline|0x0000|), \lstinline|BLUE| (\lstinline|0x001F|), \lstinline|RED| (\lstinline|0xF800|), \lstinline|GREEN| (\lstinline|0x07E0|), \lstinline|YELLOW| (\lstinline|0xFFE0|), \lstinline|WHITE| (\lstinline|0xFFFF|).
+
+Im letzten Teil dieser Aufgabe färbst du den Bildschirm meiner Farbe deiner Wahl.
+\begin{enumerate}
+\item 
+Beginne wieder mit einer leeren \lstinline|main|-Funktion.
+\item 
+Binde die Header \filename{lcd.h} (aus \winIdeaGroupName{lib}) und \filename{display.h} ein und füge den folgenden Initialisierungscode für das Display in \lstinline|main| ein:
+\begin{lstlisting}
+init();
+reset();
+setupLCD();
+\end{lstlisting}
+\item 
+Um das Display in Cyan einzufärben, füge folgende Zeile an:
+\begin{lstlisting}
+fillScreen(color565(0x00, 0xEA, 0xFF));
+\end{lstlisting}
+\end{enumerate}
+
 
 
 \subsection{Regelmäßiges Muster ausgeben}
-In diesem Abschnitt implementierst du die Funktion void printPattern(), welche fillRect verwendet um 4 x 4 große Rechtecke im schwarz-weißen Schachbrett-Muster auf dem Display anzuzeigen.
+In diesem Abschnitt implementierst du die Funktion void \lstinline|printPattern|.
+Diese Funktion ordnet auf dem Display Quadrate (4 x 4 Pixel) als schwarz-weißes Schachbrettmuster an.
+Verwende die gegebene Funktion \lstinline|fillRect|, um die einzelnen Quadrate zu erzeugen.
+
+\RKi{Continue here.}
+
+
 \subsection{Text ausgeben}
 \begin{figure}
 	\begin{centering}

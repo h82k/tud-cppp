@@ -1,10 +1,10 @@
 #include "display.h"
 
 #include <stdint.h>
+#include <stdlib.h>
 #include "s6e2ccxj.h"
 #include "gfx.h"
 #include "glcdfont.h"
-
 
 uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
   const uint8_t hiR = (r & 0xF8) >> 3; 
@@ -16,8 +16,25 @@ uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
   // return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
 }
 
-void printPattern(){
-    // missing
+int isEven(uint8_t x) {
+  return (x % 2) == 0;
+}
+
+void printPattern(uint16_t color) {
+  const uint8_t blockSize = 4;
+  uint16_t x;
+  for (x = 0; x < 480 - blockSize; x += blockSize)
+  {
+    const uint8_t xBlock = x / 4;
+    uint16_t y;
+    for (y = 0; y < 320 - blockSize; y += blockSize) {
+      const uint8_t yBlock = y / 4;
+      if(isEven(xBlock + yBlock))
+      {
+        fillRect(x, y, blockSize, blockSize, color);
+      }
+    }
+  }
 }
 
 void initCursor(){
