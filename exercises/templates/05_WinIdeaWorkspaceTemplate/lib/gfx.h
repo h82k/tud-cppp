@@ -11,11 +11,11 @@
 #define HEIGHT  320
 
 
-void fillScreen(int color);
-void drawFastHLine(int x, int y, int length, int color);
-void drawFastVLine(int x, int y, int length, int color);
+void fillScreen(int16_t color);
+void drawFastHLine(int x, int y, int length, int16_t color);
+void drawFastVLine(int x, int y, int length, int16_t color);
 void drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
-void fillRect(int x1, int y1, int w, int h, int fillcolor);
+void fillRect(int x1, int y1, int w, int h, int16_t fillcolor);
 void drawPixel(int16_t x, int16_t y, uint16_t color);
 void drawCircle(int x0, int y0, int r, unsigned int color);
 void drawCircleHelper( int x0, int y0, int r, char cornername, unsigned int color);
@@ -34,4 +34,4 @@ void write32BitValueOnLCD(uint32_t *value);
 void write3Digits8Bit(uint8_t *number);
 void write3Digits16Bit(uint16_t *number);
 
-#endif /* LCD_H */
+#endif

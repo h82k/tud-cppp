@@ -1,61 +1,91 @@
-\section{\ExercisePrefixEmbeddedC Touchdisplay ansteuern \optional}
-In diesem Abschnitt lernst du die Ansteuerung des 480 * 320 Pixel großen Touchdisplays kennen. Zunächst wirst du den Bildschirm in verschiedene Farben ausfüllen und die dafür benötigte Farbcodierung kennenlernen. Anschließend wirst du Funktionen implementieren, um auf dem Bildschirm regelmäßige Muster und Texte auszugeben. Alle in dieser Aufgabe verwendeten Funktionen müssen in der Datei display.c implementiert werden. 
-
-\begin{table}[]
+\section{\ExercisePrefixEmbeddedC Display ansteuern \optional}
+In diesem Abschnitt lernst du die Ansteuerung des Displays kennen.
+Das Display hat eine Auflösung von 480 * 320 Pixeln.
+Zunächst wirst du den Bildschirm in verschiedene Farben ausfüllen und die dafür benötigte Farbcodierung kennenlernen.
+Anschließend wirst du Funktionen implementieren, um auf dem Bildschirm regelmäßige Muster und Texte auszugeben.
+Alle in dieser Aufgabe verwendeten Funktionen müssen in der Datei \filename{display.c} implementiert werden. 
+\Cref{tab:displayFunctions} dokumentiert zu das erwartete Verhalten der zu implementierenden Funktionen.
+%
+\begin{table}
 	\centering
 	\caption{Wichtige Funktionen und Variablen für das Display}
-	\label{displayInfo}
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Funktionen/Variablen} & \textbf{Beschreibung} \\ \hline
-		void drawRect(int16\_t x, int16\_t y, int16\_t w, int16\_t h, uint16\_t color) & Zeichnet die Umrandung eines Rechtecks in der Farbe color mit der Breite w und der Höhe h an die Stelle x,y. \\ \hline
-		void fillRect(int x1, int y1, int w, int h, int fillcolor) & Zeichnet ein ausgefülltes Rechteck in der Farbe fillcolor mit der Breite w und der Höhe h an die Stelle x,y. \\ \hline
-		void drawPixel(int16\_t x, int16\_t y, uint16\_t color) & Zeichnet ein Pixel an x,y mit der Farbe color. \\ \hline
-		void fillScreen(int color) & Füllt den gesamten Bildschirm mit der Farbe color. \\ \hline
-		uint16\_t color565(uint8\_t r, uint8\_t g, uint8\_t b) & Umwandlung von RGB in HEX 565. \\ \hline
+	\label{tab:displayFunctions}
+	\begin{tabular}{p{7cm}p{7cm}}
+        \toprule
+		\textbf{Funktionen/Variablen} & \textbf{Beschreibung} \\
+        \midrule
+        \lstinline|void drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)|
+        & Zeichnet die Umrandung eines Rechtecks in der Farbe color mit der Breite w und der Höhe h an die Stelle x,y. \\ \hline
+		\lstinline|void fillRect(int x1, int y1, int w, int h, uint16_t fillcolor)|
+        & Zeichnet ein ausgefülltes Rechteck in der Farbe fillcolor mit der Breite w und der Höhe h an die Stelle x,y. \\ \hline
+		\lstinline|void drawPixel(int16_t x, int16_t y, uint16_t color)|
+        & Zeichnet ein Pixel an x,y mit der Farbe color. \\ \hline
+		\lstinline|void fillScreen(uint16_t color)| 
+        & Füllt den gesamten Bildschirm mit der Farbe color. \\ \hline
+		\lstinline|uint16_t color565(uint8_t r, uint8_t g, uint8_t b)|
+        & Umwandlung von RGB in HEX 565. \\
+        \bottomrule
 	\end{tabular}
 \end{table}
 
 \subsection{Bildschirm umfärben}
-Um den Bildschirm auszufüllen können die in der Library vordefinierten Farben verwendet werden:
-\hints{
-\item  
-BLACK   0x0000
+Das Display verwendet eine RGB565-Codierung für Farben (auch als \enquote{High Color} bekannt\footnote{\url{https://en.wikipedia.org/wiki/High_color}}).
+Bei der RGB565-Codierung werden 5 Bits für Rot, 6 Bits für Grün und 5 Bits für Blau verwendet (siehe \Cref{fig:rgb565})
+%
+\begin{figure}
+    \begin{centering}
+        \includegraphics[width=.5\textwidth]{./05_c/figures/rgb565}
+        \caption{RGB565 Codierung}
+        \label{fig:rgb565}
+    \end{centering}
+\end{figure}
+%
+Um auch eigene Farben nutzen zu können, implemnetierst du zunächst die Funktion \lstinline|color565(uint8_t r, uint8_t g, uint8_t b)|, welche RGB888-Farben in RGB565-Farben umzuwandelt.
+Der Umwandlungsalgorithmus arbeitet für drei gegebene Bytes (\lstinline|uint8_t| oder \lstinline|unsigend char|) \lstinline|r, g, b| wie folgt:
+\begin{enumerate}
 \item 
-BLUE    0x001F
+Extrahiere die höchstwertigen 5 Bits von \lstinline|r|, die höchstwertigen 6 Bits von \lstinline|g| und die höchstwertigen 5 Bits von \lstinline|b|.
+Nutze den Bit-Und-Operator mit einer passenden Bitmaske, um nur die entsprechenden Bits beizubehalten und alle anderen Bits auf 0 zu setzen.
+Verwende anschließend den Shift-Operator, um die extrahierten Bits ans untere Ende des Bytes zu schieben.
+Es folgt eine Skizze für den Rot-Kanal.
+\begin{lstlisting}
+uint8_t r          = 0xA7;   // --> 0b10100111
+uint8_t hiR        = r ______; // --> 0x00A0; 0b10100000
+uint8_t hiRShifted = r ______; // --> 0x0014; 0b00010100
+\end{lstlisting}
 \item 
-RED     0xF800
-\item 
-GREEN   0x07E0
-\item 
-YELLOW  0xFFE0
-\item 
-WHITE   0xFFFF
-}
-
-Das Display verwendet eine 565-Hexadezimal-Codierung für Farben. Bei der 565-Codierung werden 5 Bits für Rot, 6 Bits für Gelb und 5 Bits für Blau verwendet.
-Zunächst implementierst du die Funktion color565(uint8\_t r, uint8\_t g, uint8\_t b), um 888-RGB-Farben in 565-RGB-Farben umzuwandeln. Zur Validierung deiner Implementation kannst du folgende 888-RGB-Farben verwenden, und deine 565-Werte mit den vorgegebenen vergleichen.
-
+Füge die extrahierten Bits mittels des Bit-Oder-Operators zusammen, um den RGB565-Wert zu erhalten:
+Beachte dabei, dass du mithilfe des Links-Shift-Operators die einzelnen Teile korrekt ausrichtest.
+Beispielsweise muss \lstinline|hiRShifted| vor der Veroderung um 11 Bits nach links verschoben werden.
+Beachte, dass das Ergebnis 16 Bit lang sein muss und wir deshalb den Typ \lstinline|uint16_t| verwenden.
+\begin{lstlisting}
+uint16_t result = (hiRShifted ____) | (hiGShifted ____ ) | (hiBShifted ____);
+\end{lstlisting}
+\end{enumerate}
+Zum Testen deiner Implementation kannst du die Vergleichswerte in \Cref{tab:rgb565Table} nutzen.
 \begin{table}[]
 	\centering
-	\caption{RGB-565 Farbwerte}
-	\label{rgb565Table}
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\textbf{Farbe} & \textbf{RGB-888} & \textbf{RGB-565} \\ \hline
-		Cyan & 0x00EAFF & 0x075F \\ \hline
-		Rosa & 0xFC00FF & 0xF81F \\ \hline
-		Orange & 0xFFB400 & 0xFDA0 \\ \hline
+	\caption{RGB565-Farbwerte}
+	\label{tab:rgb565Table}
+	\begin{tabular}{lll}
+        \toprule
+		\textbf{Farbe} & \textbf{RGB888} & \textbf{RGB565} \\
+        \midrule
+		Cyan   & \lstinline|0x00EAFF| & \lstinline|0x075F| \\
+		Rosa   & \lstinline|0xFC00FF| & \lstinline|0xF81F| \\
+		Orange & \lstinline|0xFFB400| & \lstinline|0xFDA0| \\
+        \bottomrule
 	\end{tabular}
 \end{table}
-
-\begin{figure}
-	\begin{centering}
-		\includegraphics[width=.5\textwidth]{./05_c/figures/rgb565}
-		\caption{RGB-565 Codierung}
-		\label{fig:rgb565}
-	\end{centering}
-\end{figure}
+Gehe dazu wie folgt vor:
+\begin{enumerate}
+\item 
+Lege dir eine leere \lstinline|main|-Funktion an und binde den Header \filename{display.h} ein.
+\item 
+Füge die folgende Zeile ein, um deinen Code für die Farbe Cyan zu testen.
+\end{enumerate}
+\RKi{Beschreiben, wie man das mithilfe Debuggers macht.}
+Die Datei \filename{display.h} enthält außerdem einige vordefinierten Farben, die du ebenfalls bei den folgenden Aufgaben nutzen kannst: \lstinline|BLACK| (\lstinline|0x0000|), \lstinline|BLUE| (\lstinline|0x001F|), \lstinline|RED| (\lstinline|0xF800|), \lstinline|GREEN| (\lstinline|0x07E0|), \lstinline|YELLOW| (\lstinline|0xFFE0|), \lstinline|WHITE| (\lstinline|0xFFFF|).
 
 
 \subsection{Regelmäßiges Muster ausgeben}

@@ -9,7 +9,7 @@
 /**
  *  Fills all the Screen with the given color.
  */
-void fillScreen(int color){
+void fillScreen(int16_t color){
     setAddrWindow(0, 0, 480 - 1, 320 - 1);
     flood(color, 480 * 320);
 }
@@ -17,7 +17,7 @@ void fillScreen(int color){
 /**
  *  Draws a horizontal line starting at (x,y) and ending at (x+length,y)
  */
-void drawFastHLine(int x, int y, int length, int color) {
+void drawFastHLine(int x, int y, int length, int16_t color) {
     int _width = WIDTH;
     int _height = HEIGHT;
     int x2;
@@ -44,7 +44,7 @@ void drawFastHLine(int x, int y, int length, int color) {
 /**
  *  Draws a Vertical line starting at (x,y) and ending at (x,y+length).
  */
-void drawFastVLine(int x, int y, int length, int color) {
+void drawFastVLine(int x, int y, int length, int16_t color) {
     int _width = WIDTH;
     int _height = HEIGHT;
     int y2;
@@ -81,7 +81,7 @@ void drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color) {
  *  Draws a filled rectangle at (x,y) to (x+w,y+h).
  */
 
-void fillRect(int x1, int y1, int w, int h, int fillcolor) {
+void fillRect(int x1, int y1, int w, int h, int16_t fillcolor) {
     int _width = WIDTH;
     int _height = HEIGHT;
     int  x2, y2;

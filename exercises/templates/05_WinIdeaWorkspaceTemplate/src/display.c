@@ -7,7 +7,13 @@
 
 
 uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
-    return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
+  const uint8_t hiR = (r & 0xF8) >> 3; 
+  const uint8_t hiG = (g & 0xFC) >> 2;
+  const uint8_t hiB = (b & 0xF8) >> 3;
+  const uint16_t result = (hiR << 11) | (hiG << 5) | hiB;
+  return result;
+  // A more compact solution is:
+  // return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
 }
 
 void printPattern(){

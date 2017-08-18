@@ -12,13 +12,13 @@ void main(){
   setupLCD();
   initCursor();
   InitAdc();
-  fillScreen(BLACK);
+  fillScreen(color565(0x00, 0xEA, 0xFF));
   //BlinkRainbowMain();
-  controllLEDsInit();
+  //controllLEDsInit();
   //paintTouch();
   //newLEDinit();
   while(1){
     //printValues();
-    controllLEDs();
+    //controllLEDs();
   }
 }
