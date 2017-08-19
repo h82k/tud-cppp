@@ -139,6 +139,9 @@ void init(){
     //
     Gpio1pin_InitIn(GPIO1PIN_PF7, Gpio1pin_InitPullup(1u));
     
+    
+    // JS1_D
+    JS1_D_IO = 0u; // Input
 }
 
 /**

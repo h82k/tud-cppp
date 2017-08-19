@@ -1,0 +1,71 @@
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `color565':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:9: multiple definition of `color565'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:9: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `printPattern':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:13: multiple definition of `printPattern'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:13: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `initCursor':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:22: multiple definition of `initCursor'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:22: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `setCursor':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:30: multiple definition of `setCursor'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:30: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `setTextColor':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:35: multiple definition of `setTextColor'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:35: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `setTextSize':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:40: multiple definition of `setTextSize'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:40: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `setBackgroundColor':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:44: multiple definition of `setBackgroundColor'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:44: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `drawChar':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:48: multiple definition of `drawChar'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:48: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `writeAuto':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:72: multiple definition of `writeAuto'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:72: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `writeText':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:93: multiple definition of `writeText'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:93: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `writeTextln':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:100: multiple definition of `writeTextln'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:100: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display_s.o: In function `writeNumberOnDisplay':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/display_s.c:109: multiple definition of `writeNumberOnDisplay'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\display.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/display.c:109: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick_s.o: In function `newLEDinit':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/joystick_s.c:7: multiple definition of `newLEDinit'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/joystick.c:7: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick_s.o: In function `controllLEDsInit':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/joystick_s.c:56: multiple definition of `controllLEDsInit'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/joystick.c:56: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick_s.o: In function `controllLEDs':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/joystick_s.c:73: multiple definition of `controllLEDs'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/joystick.c:73: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick_s.o: In function `printValues':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/joystick_s.c:104: multiple definition of `printValues'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\joystick.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/joystick.c:104: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch_s.o: In function `debugTouch':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/touch_s.c:3: multiple definition of `debugTouch'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/touch.c:3: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch_s.o: In function `initPaintTouch':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/touch_s.c:33: multiple definition of `initPaintTouch'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/touch.c:33: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch_s.o: In function `loopPaintTouch':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/touch_s.c:51: multiple definition of `loopPaintTouch'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/touch.c:51: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch_s.o: In function `paintTouch':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/touch_s.c:105: multiple definition of `paintTouch'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\touch.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/touch.c:105: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\blink_s.o: In function `BlinkMain':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/blink_s.c:7: multiple definition of `BlinkMain'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\blink.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\src/blink.c:7: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\blinkrainbow_s.o: In function `BlinkRainbowMain':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/blinkrainbow_s.c:9: multiple definition of `BlinkRainbowMain'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\blinkrainbow.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/blinkrainbow.c:9: first defined here
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\button_s.o: In function `ButtonMain':
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\solution/button_s.c:7: multiple definition of `ButtonMain'
+C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceTemplate\release\button.o:C:\Users\puria\Desktop\tud-cppp\exercises\templates\05_WinIdeaWorkspaceSolution\src/button.c:7: first defined here
+collect2.exe: error: ld returned 1 exit status
+

@@ -40,13 +40,16 @@
 // JOYSTICK PINS
 #define JS1_X_IO    FM4_GPIO->DDRB_f.P0 // A16
 #define JS1_Y_IO    FM4_GPIO->DDRB_f.P3 // A19
+#define JS1_D_IO    FM4_GPIO->DDRF_f.P5 // JS1_D => PF5
 #define JS2_X_IO    FM4_GPIO->DDR1_f.PD // A13 
 #define JS2_Y_IO    FM4_GPIO->DDRB_f.P7 // A23
 
 #define JS1_X    FM4_GPIO->PDORB_f.P0 // JS1_X => PB0
 #define JS1_Y    FM4_GPIO->PDORB_f.P3 // JS1_Y => PB3
+#define JS1_D    FM4_GPIO->PDORF_f.P5 // JS1_D => PF5
 #define JS2_X    FM4_GPIO->PDOR1_f.PD // JS2_X => P1D
 #define JS2_Y    FM4_GPIO->PDORB_f.P7 // JS2_Y => PB7
+
 
 // DHT11 Pin
 #define DHT11_SIGNAL_OUT     FM4_GPIO->PDORF_f.P7   // PF7 PIN 75

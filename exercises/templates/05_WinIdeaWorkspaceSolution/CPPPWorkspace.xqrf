@@ -229,6 +229,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
@@ -430,6 +439,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
@@ -631,6 +649,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
@@ -832,6 +859,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
@@ -1033,6 +1069,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
@@ -1234,6 +1279,15 @@
        <File.24>
         <FileName>\PortableApps\Cypress\PDL\2.1.0\drivers\mfs\mfs.h</FileName>
        </File.24>
+       <File.25>
+        <FileName>$(IRFDIR)lib\init.h</FileName>
+       </File.25>
+       <File.26>
+        <FileName>$(IRFDIR)lib\init.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.26>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
