@@ -1,3 +1,6 @@
+#ifndef BUTTON_H
+#define BUTTON_H
+
 #include <stdint.h>
 #include "pdl_header.h"
 #include "s6e2ccxj.h"
@@ -34,3 +37,5 @@ static void toggleBlueLED();
  *  Sets the blue LED to its status.
  */
 static void setBlueLed(uint8_t status);
+
+#endif

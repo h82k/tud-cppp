@@ -4,13 +4,10 @@
 int main(){
   initBoard();
   
-  fillScreen(BLUE);
-  drawChar_s(100, 100, 'Ä', YELLOW, RED, 10); 
-  
-  // #include "blinkrainbox_s.h"
+  // #include "blinkrainbox.h"
   //BlinkRainbowMain_s();
   
-  // #include "button_s.h"
+  // #include "button.h"
   //ButtonToggleBlueLED_s();
   //ButtonHoldBlueLEDOn_s();
   
@@ -18,4 +15,12 @@ int main(){
   //testGraphics();
   //testText();
   //testRotateText(); 
+  
+  // #include "joystick.h"
+  //controlLedsInit_s();
+  while(1) {
+    //controlLeds_s();
+    printValues_s();
+  }
+  //printValues_s();
 }

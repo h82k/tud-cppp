@@ -52,7 +52,6 @@ void paintTouch(){
     // your code here ...
   
     while(1){
-        getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
         // your code here ...
     }
 }

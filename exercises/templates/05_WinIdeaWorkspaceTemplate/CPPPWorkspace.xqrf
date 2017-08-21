@@ -5,7 +5,7 @@
    <VersionLow>1</VersionLow>
   </REG_HEADER>
   <REG_ROOT>
-   <RegVer>1259470848</RegVer>
+   <RegVer>1279262720</RegVer>
    <Project>
     <CompilerType>0</CompilerType>
     <GlobalOptions>
@@ -45,7 +45,7 @@
      <LinkerRelPath>$(CMPDIR)bin\arm-none-eabi-gcc.exe</LinkerRelPath>
      <LInpExtensions>o;a</LInpExtensions>
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
-     <NewInvoke>1</NewInvoke>
+     <ParallelBuild>0</ParallelBuild>
      <PathSeparator>\</PathSeparator>
      <RootDir></RootDir>
      <RunAfterAsm></RunAfterAsm>
@@ -339,59 +339,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -606,59 +594,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -873,59 +849,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -1140,59 +1104,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -1407,59 +1359,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>
@@ -1674,59 +1614,47 @@
       <LinkGroup.2>
        <LinkGroupName>solution</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)solution\button_s.h</FileName>
-       </File.0>
-       <File.1>
         <FileName>$(IRFDIR)solution\display_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
-       </File.1>
-       <File.10>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.h</FileName>
-       </File.10>
-       <File.11>
-        <FileName>$(IRFDIR)solution\button_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.11>
-       <File.2>
-        <FileName>$(IRFDIR)solution\display_s.h</FileName>
-       </File.2>
-       <File.3>
+       </File.0>
+       <File.1>
         <FileName>$(IRFDIR)solution\joystick_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
+       </File.1>
+       <File.2>
+        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
        </File.3>
        <File.4>
-        <FileName>$(IRFDIR)solution\joystick_s.h</FileName>
+        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.4>
        <File.5>
-        <FileName>$(IRFDIR)solution\touch_s.c</FileName>
+        <FileName>$(IRFDIR)solution\button_s.c</FileName>
         <FileOptios>
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.5>
        <File.6>
-        <FileName>$(IRFDIR)solution\touch_s.h</FileName>
+        <FileName>$(IRFDIR)solution\graphicstest.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
        </File.6>
        <File.7>
-        <FileName>$(IRFDIR)solution\blink_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
+        <FileName>$(IRFDIR)solution\graphicstest.h</FileName>
        </File.7>
-       <File.8>
-        <FileName>$(IRFDIR)solution\blink_s.h</FileName>
-       </File.8>
-       <File.9>
-        <FileName>$(IRFDIR)solution\blinkrainbow_s.c</FileName>
-        <FileOptios>
-         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
-        </FileOptios>
-       </File.9>
       </LinkGroup.2>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>

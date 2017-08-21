@@ -8,7 +8,7 @@ static uint16_t textColor;
 static uint8_t textSize;
 static int textBackground;
 
-uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b){
+uint16_t color565_s(const uint8_t r, const uint8_t g, const uint8_t b){
   const uint8_t hiR = (r & 0xF8) >> 3; 
   const uint8_t hiG = (g & 0xFC) >> 2;
   const uint8_t hiB = (b & 0xF8) >> 3;
@@ -18,7 +18,7 @@ uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b){
   // return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
 }
 
-void printPattern_s(uint16_t backgroundColor, uint16_t foregroundColor) {
+void printPattern_s(const uint16_t backgroundColor, const uint16_t foregroundColor) {
   
   fillScreen(backgroundColor);
   
@@ -42,21 +42,21 @@ void initCursor_s(){
     textBackground = BLACK;
 }
 
-void setCursor_s(int16_t x, int16_t y) {
+void setCursor_s(const int16_t x, const int16_t y) {
     cursorX = x;
     cursorY = y;
 }
 
-void setTextColor_s(uint16_t c) {
+void setTextColor_s(const uint16_t c) {
     // For 'transparent' background, we'll set the bg to the same as the rest of the display
     textColor = c;
 }
 
-void setTextSize_s(uint8_t s) {
+void setTextSize_s(const uint8_t s) {
     textSize = (s > 0) ? s : 1;
 }
 
-void setBackgroundColor_s(int bg) {
+void setBackgroundColor_s(const int bg) {
     textBackground = bg;
 }
 
@@ -84,7 +84,7 @@ void drawChar_s(int x, int y,  char c,  int color,  int bg, char size) {
   }
 }
 
-void writeAuto_s(char c) {
+void writeAuto_s(const char c) {
     if(c == '\n') {
         cursorY -= textSize*8;
         cursorX  = 0;
@@ -105,14 +105,14 @@ void writeAuto_s(char c) {
     }
 }
 
-void writeText_s(char *text){
+void writeText_s(const char *text){
     int i;
     for(i = 0; text[i] != 0; i++){
         writeAuto_s(text[i]);
     }
 }
 
-void writeTextln_s(char *text){
+void writeTextln_s(const char *text){
     int i;
     for(i = 0; text[i] != 0; i++){
         writeAuto_s(text[i]);
@@ -121,7 +121,7 @@ void writeTextln_s(char *text){
     cursorX  = 0;
 }
 
-void writeNumberOnDisplay_s(uint16_t *value){
+void writeNumberOnDisplay_s(const uint16_t *value){
     char buffer[20];
     itoa(*value, buffer, 10);
     writeText_s(buffer);

@@ -17,8 +17,8 @@
 * MERCHANTABILITY, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR
 * PURPOSE.
 *******************************************************************************/
-#ifndef __PDL_USER_H__
-#define __PDL_USER_H__
+#ifndef __PDL_USER_H_
+#define __PDL_USER_H_
 
 #include "pdl.h"
 
@@ -1642,7 +1642,7 @@
  ******************************************************************************/
 #define DEBUG_PRINT
 
-#endif // __PDL_USER_H__
+#endif // __PDL_USER_H_
 
 /******************************************************************************/
 /* EOF (not truncated)                                                        */

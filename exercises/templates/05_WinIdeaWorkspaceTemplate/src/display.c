@@ -9,11 +9,11 @@ static uint16_t textColor;
 static uint8_t textSize;
 static int textBackground;
 
-uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
+uint16_t color565(const uint8_t r, const uint8_t g, const uint8_t b){
     // your code here... 
 }
 
-void printPattern(uint16_t backgroundColor, uint16_t foregroundColor) {
+void printPattern(const uint16_t backgroundColor, const uint16_t foregroundColor) {
   // your code here...
 }
 
@@ -22,24 +22,24 @@ void initCursor(){
   
 }
 
-void setCursor(int16_t x, int16_t y) {
+void setCursor(const int16_t x, int16_t y) {
   // your code here...
 }
 
-void setTextColor(uint16_t c) {
+void setTextColor(const uint16_t c) {
   // For 'transparent' background, we'll set the bg to the same as the rest of the display
   // your code here...
 }
 
-void setTextSize(uint8_t s) {
+void setTextSize(const uint8_t s) {
   // your code here...
 }
 
-void setBackgroundColor(int bg){
+void setBackgroundColor(const int bg){
   // your code here...
 }
 
-void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
+void drawChar(const int x, const int y, const char c, const int color, const int bg, const char size) {
     // if (x,y) is not inside the display return
 
     char i, j;
@@ -53,7 +53,7 @@ void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
     }
 }
 
-void writeAuto(char c) {
+void writeAuto(const char c) {
   // if char c == '\n' then jump cursor to next line
   
   // else
@@ -62,14 +62,14 @@ void writeAuto(char c) {
   // move cursorX
 }
 
-void writeText(char *text){
+void writeText(const char *text){
     // your code here ... 
 }
 
-void writeTextln(char *text){
+void writeTextln(const char *text){
     // your code here ... 
 }
 
-void writeNumberOnDisplay(uint16_t *value){
+void writeNumberOnDisplay(const uint16_t *value){
     // your code here...
 }

@@ -79,10 +79,11 @@ void pollData(uint32_t *u32Data){
 
 void getAnalogValues(uint8_t *analog11, uint8_t *analog12, uint8_t *analog13, uint8_t *analog16, uint8_t *analog17,  uint8_t *analog19, uint8_t *analog23){
   uint32_t u32Data = 0u;     // 32 Bit Data buffer for measurements
-  uint8_t i = 0;
+  
   // Start single ADC Scan 
   Adc_SwTriggerScan(&ADC0);
-  
+
+  uint8_t i = 0;
   for(i = 0; i<7; i++){
     pollData(&u32Data);
     // extract the ADC value from the data
@@ -131,8 +132,15 @@ uint16_t readTouchX(){
   
   
   /**
-    * DOUBLE SAMPLING
-    */
+   * DOUBLE SAMPLING
+   */
+  uint8_t analog11;
+  uint8_t analog12;
+  uint8_t analog13;
+  uint8_t analog16;
+  uint8_t analog19;
+  uint8_t analog23;
+  uint8_t analog17;
   uint16_t i = 0;
   uint16_t samples[2];
   for(i=0; i<2; i++){
@@ -167,8 +175,15 @@ uint16_t readTouchY(){
   bFM4_GPIO_ADE_AN12 = 1u;   // ANALOG 12 ON 
   
   /**
-    * DOUBLE SAMPLING
-    */
+   * DOUBLE SAMPLING
+   */
+  uint8_t analog11;
+  uint8_t analog12;
+  uint8_t analog13;
+  uint8_t analog16;
+  uint8_t analog19;
+  uint8_t analog23;
+  uint8_t analog17;
   uint16_t i = 0;
   uint16_t samples[2];
   for(i=0; i<2; i++){
@@ -209,6 +224,13 @@ uint16_t readTouchZ(){
   bFM4_GPIO_ADE_AN11 = 1u; //Xm/Analog 6 ON
   bFM4_GPIO_ADE_AN12 = 1u; //Yp/Analog 7 ON
   
+  uint8_t analog11;
+  uint8_t analog12;
+  uint8_t analog13;
+  uint8_t analog16;
+  uint8_t analog19;
+  uint8_t analog23;
+  uint8_t analog17;
   getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
   uint8_t z1 = analog11; // z1 = Xm = analog6
   uint8_t z2 = analog12; // z2 = Ym = analog7 

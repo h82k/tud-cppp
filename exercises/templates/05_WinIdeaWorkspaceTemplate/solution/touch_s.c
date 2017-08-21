@@ -1,33 +1,40 @@
 #include "touch_s.h"
 
 void debugTouch_s(){
-    getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
-    // Write headline on the display
-    setCursor_s(480,320);
-    char freeSpace[] = " ";
-    char headlineText[] = "      DEBUG TOUCHSCREEN";
-    writeTextln_s(freeSpace);
-    writeTextln_s(freeSpace);
-    writeTextln_s(freeSpace);
-    writeTextln_s(headlineText);
-    writeTextln_s(freeSpace);
-    
-    // Get analog values of the touchscreen
-    uint16_t touchX, touchY, touchZ;
-    touchX = readTouchX();
-    touchY = readTouchY();
-    touchZ = readTouchZ();
-    
-    // Write x,y, and z-values on the screen
-    char touchXText[] = "      Touch X: ";
-    char touchYText[] = "      Touch Y: ";
-    char touchZText[] = "      Touch Z: ";
-    writeText(touchXText);
-    write3Digits16Bit(&touchX);
-    writeText(touchYText);
-    write3Digits16Bit(&touchY);
-    writeText(touchZText);
-    write3Digits16Bit(&touchZ);
+  uint8_t analog11;
+  uint8_t analog12;
+  uint8_t analog13;
+  uint8_t analog16;
+  uint8_t analog19;
+  uint8_t analog23;
+  uint8_t analog17;
+  getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
+  // Write headline on the display
+  setCursor_s(480,320);
+  char freeSpace[] = " ";
+  char headlineText[] = "      DEBUG TOUCHSCREEN";
+  writeTextln_s(freeSpace);
+  writeTextln_s(freeSpace);
+  writeTextln_s(freeSpace);
+  writeTextln_s(headlineText);
+  writeTextln_s(freeSpace);
+  
+  // Get analog values of the touchscreen
+  uint16_t touchX, touchY, touchZ;
+  touchX = readTouchX();
+  touchY = readTouchY();
+  touchZ = readTouchZ();
+  
+  // Write x,y, and z-values on the screen
+  char touchXText[] = "      Touch X: ";
+  char touchYText[] = "      Touch Y: ";
+  char touchZText[] = "      Touch Z: ";
+  writeText(touchXText);
+  write3Digits16Bit(&touchX);
+  writeText(touchYText);
+  write3Digits16Bit(&touchY);
+  writeText(touchZText);
+  write3Digits16Bit(&touchZ);
 }
 
 void initPaintTouch_s(){
@@ -105,7 +112,7 @@ void loopPaintTouch_s(){
 void paintTouch_s(){
     initPaintTouch();
     while(1){
-        getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
+        //getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
         loopPaintTouch();
     }
 }

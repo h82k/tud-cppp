@@ -4,8 +4,8 @@ void initBoard(){
   init();
   reset();
   setupLCD();
-  initCursor();
+  initCursor_s();
   InitAdc();
   fillScreen(BLACK);
-  setCursor(480,320);
+  setCursor_s(480,320);
 }

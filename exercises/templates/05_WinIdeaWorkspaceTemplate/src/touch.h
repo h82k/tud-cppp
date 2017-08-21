@@ -1,3 +1,6 @@
+#ifndef TOUCH_H
+#define TOUCH_H
+
 #define BOXSIZE 40
 #define PENRADIUS 3
 
@@ -30,3 +33,5 @@ void loopPaintTouch();
  *
  */
 void paintTouch();
+
+#endif

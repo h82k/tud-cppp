@@ -34,6 +34,7 @@
 \usepackage{tocloft} % for manipulating the table of contents
 \usepackage{graphics}
 \usepackage{csquotes} % for \enquote{}
+\usepackage{siunitx}
 
 \usetikzlibrary{shapes}
 \usetikzlibrary{calc}
@@ -169,6 +170,8 @@
 % The first paramer is optional and arguments from lstinputlisting can be provided here.
 % The second parameter is the path to the listing.
 \newcommand{\cpppInputNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \lstinputlisting[#1]{#2} \end{minipage} }
+% Variant for inline-inserting code
+\newcommand{\cpppNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \begin{lstlisting}[#1]#2\end{lstlisting}\end{minipage} }
 
 % The cpppInputListing command allows a listing to continue on the next page.
 % The first paramer is optional and arguments from lstinputlisting can be provided here.

@@ -1,5 +1,5 @@
-#ifndef DISPLAY_H_
-#define DISPLAY_H_
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
 #include <stdint.h>
 
@@ -16,14 +16,14 @@
 /**
  * Converts RGB-888 color to RGB-565.
  */
-uint16_t color565(uint8_t r, uint8_t g, uint8_t b);
-uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b);
+uint16_t color565(const uint8_t r, const uint8_t g, const uint8_t b);
+uint16_t color565_s(const uint8_t r, const uint8_t g, const uint8_t b);
 
 /**
  * Prints a chess pattern on the display.
  */
-void printPattern(uint16_t backgroundColor, uint16_t foregroundColor);
-void printPattern_s(uint16_t backgroundColor, uint16_t foregroundColor);
+void printPattern(const uint16_t backgroundColor, const uint16_t foregroundColor);
+void printPattern_s(const uint16_t backgroundColor, const uint16_t foregroundColor);
 
 /**
  * Initializes cursor properties.
@@ -34,57 +34,57 @@ void initCursor_s();
 /**
  * Sets the textwriter cursor.
  */
-void setCursor(int16_t x, int16_t y);
-void setCursor_s(int16_t x, int16_t y);
+void setCursor(const int16_t x, int16_t y);
+void setCursor_s(const int16_t x, int16_t y);
 
 /**
  * Sets the color of the font in RGB-565 format.
  */
-void setTextColor(uint16_t color);
-void setTextColor_s(uint16_t color);
+void setTextColor(const uint16_t color);
+void setTextColor_s(const uint16_t color);
 
 /**
  * Sets the size of the font.
  */
-void setTextSize(uint8_t s);
-void setTextSize_s(uint8_t s);
+void setTextSize(const uint8_t s);
+void setTextSize_s(const uint8_t s);
 
 /**
  * Sets the color of the font background.
  */
-void setBackgroundColor(int bg);
-void setBackgroundColor_s(int bg);
+void setBackgroundColor(const int bg);
+void setBackgroundColor_s(const int bg);
 
 /**
  * Draws a char c on (x,y).
  * The character is shown in color c, and its background is colored using color bg.
  */
-void drawChar(int x, int y,  char c,  int color,  int bg, char size);
-void drawChar_s(int x, int y,  char c,  int color,  int bg, char size);
+void drawChar(const int x, const int y,  const char c, const int color,  const int bg, const char size);
+void drawChar_s(const int x, const int y, const char c, const int color, const int bg, const char size);
 
 
 /**
  * Draws a char c on the actual cursor position and updates the cursor afterwards.
  */
-void writeAuto(char c);
-void writeAuto_s(char c);
+void writeAuto(const char c);
+void writeAuto_s(const char c);
 
 /**
  * Draws a strings on the display with automated cursor update.
  */
-void writeText(char *text);
-void writeText_s(char *text);
+void writeText(const char *text);
+void writeText_s(const char *text);
 
 /**
  * Draws a string on the display with automated cursor update and linebreak.
  */
-void writeTextln(char *text);
-void writeTextln_s(char *text);
+void writeTextln(const char *text);
+void writeTextln_s(const char *text);
 
 /**
  *    Write a 16 bit variable on the display.
  */
-void writeNumberOnDisplay(uint16_t *value);
-void writeNumberOnDisplay_s(uint16_t *value);
+void writeNumberOnDisplay(const uint16_t *value);
+void writeNumberOnDisplay_s(const uint16_t *value);
 
 #endif
