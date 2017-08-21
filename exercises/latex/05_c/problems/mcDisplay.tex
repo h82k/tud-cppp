@@ -48,11 +48,13 @@ Extrahiere die höchstwertigen 5 Bits von \lstinline|r|, die höchstwertigen 6 B
 Nutze den Bit-Und-Operator mit einer passenden Bitmaske, um nur die entsprechenden Bits beizubehalten und alle anderen Bits auf 0 zu setzen.
 Verwende anschließend den Shift-Operator, um die extrahierten Bits ans untere Ende des Bytes zu schieben.
 Es folgt eine Skizze für den Rot-Kanal.
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
 uint8_t r          = 0xA7;   // --> 0b10100111
 uint8_t hiR        = r ______; // --> 0x00A0; 0b10100000
 uint8_t hiRShifted = r ______; // --> 0x0014; 0b00010100
 \end{lstlisting}
+\end{minipage}
 \item 
 Füge die extrahierten Bits mittels des Bit-Oder-Operators zusammen, um den RGB565-Wert zu erhalten:
 Beachte dabei, dass du mithilfe des Links-Shift-Operators die einzelnen Teile korrekt ausrichtest.
@@ -187,8 +189,15 @@ Die Funktion \lstinline|writeAuto(char c)| soll die Aufgabe übernehmen, einen B
 Hierbei sind Display-Grenzen und Zeilenumbrüche zu beachten.
 
 \item 
-Implementiere die Funktion \lstinline|writeText(char *text)|, welche einen C-String als Parameter erhält und diesen mithilfe von writeAuto auf dem Display schreiben soll. Außerdem soll noch eine Abwandlung writeTextln(char *text) implementiert werden, welche am Ende des Strings noch einen Zeilenumsprung einfügen soll.
+Implementiere die Funktion \lstinline|writeText(char *text)|, welche einen C-String als Parameter erhält und diesen mithilfe von \lstinline|writeAuto| auf das Display schreibt.
+
+\item 
+Implementiere abschließend die Funktion \lstinline|writeTextln(char *text)|, die sich ähnlich wie \lstinline|writeText| verhält, am Ende der Textausgabe jedoch zusätzlich einen Zeilenumbruch einfügt.
+
+\item 
+Implementiere zur Ausgabe von Zahlen soll die Funktion \lstinline|writeNumberOnDisplay(uint16_t *value)|.
+Verwende die Funktion \lstinline|itoa| (aus \filename{stdlib.h}), um den per Zeiger übergebenen Wert ein char-Array umzuwandeln.
+Dazu wirst du einen Zeichenpuffer benötigen.
+Gibt das Ergebnis anschließend mithilfe von \lstinline|writeText| auf dem Display aus.
 \end{enumerate}
 
-
-(5.) Zur Ausgabe von Zahlen soll die Funktion writeNumberOnDisplay(uint16\_t *value) implementiert werden, welche Integer in ein char-Array umwandelt und diesen mithilfe von writeText auf dem Display ausgibt. Die Funktion itoa aus der stdlib.h kann zur Lösung dieser Aufgabe hilfreich sein.
