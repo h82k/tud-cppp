@@ -51,13 +51,12 @@ void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
 }
 
 void writeAuto(char c) {
-    // if char c == '\n' then jump cursor to next line
+  // if char c == '\n' then jump cursor to next line
   
-   // else
-    // check for end of line and reset cursor. in the case of end of the display set cursorY to the starting point.
-        // draw the char
-        // move cursorX
-  
+  // else
+  // check for end of line and reset cursor. in the case of end of the display set cursorY to the starting point.
+  // draw the char
+  // move cursorX
 }
 
 void writeText(char *text){

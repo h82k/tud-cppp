@@ -1,5 +1,6 @@
 #include "init.h"
-#include "button_s.h"
+#include "button.h"
+#include "graphicstest.h"
 
 int main(){
   initBoard();
@@ -8,6 +9,10 @@ int main(){
   // BlinkRainbowMain_s();
   
   // #include "button_s.h"
-  ButtonToggleBlueLED_s();
+  //ButtonToggleBlueLED_s();
   //ButtonHoldBlueLEDOn_s();
+  
+  // #include "graphicstest.h"
+  //testGraphics();
+  testText();
 }
