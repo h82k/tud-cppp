@@ -10,12 +10,16 @@ void main(){
   init();
   reset();
   setupLCD();
+  
+  fillScreen(WHITE);
+  drawPixel(20, 20, BLACK);
+
   //InitAdc();
   //initCursor();
   
   //printPattern(color565(0x00, 0xEA, 0xFF));
   //fillRect(10, 10, 4, 4, color565(0x00, 0xEA, 0xFF));
-  drawPixel(20, 20, BLACK);
+  //drawPixel(20, 20, WHITE);
   //BlinkRainbowMain();
   //controllLEDsInit();
   //paintTouch();
