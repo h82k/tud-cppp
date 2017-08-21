@@ -7,14 +7,14 @@
 
 
 int BlinkRainbowMain() {
-  // declare pointers for the red, green and blue LED
+  // Declare pointers for the red, green and blue LED
   
 	
-  // turn analog off for red led and initialize direction and value
+  // Turn analog off for red led and initialize direction and value
   
-  // turn analog off for green led and initialize direction and value
+  // Turn analog off for green led and initialize direction and value
   
-  // turn analog off for blue led and initialize direction and value
+  // Turn analog off for blue led and initialize direction and value
   
 	
 	// Main loop. Color order: red, green, blue

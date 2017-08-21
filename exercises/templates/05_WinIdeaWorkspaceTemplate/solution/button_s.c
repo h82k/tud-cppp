@@ -1,59 +1,69 @@
-#include "button_s.h"
+#include "src/button.h"
 
-volatile uint32_t *blueLEDDirectionPort;
-volatile uint32_t *blueLEDValuePort;
-uint8_t LEDstatus;
+#include "pdl_header.h"
+#include "s6e2ccxj.h"
 
-void initLED_s(){
-  LEDstatus = 0u;
-  Gpio1pin_InitIn(GPIO1PIN_PF5, Gpio1pin_InitPullup(1u)); // initialize PF5 as input and activate pullup resistor
-  
-  blueLEDDirectionPort = &(FM4_GPIO->DDR1);
-  blueLEDValuePort = &(FM4_GPIO->PDOR1);
-  
-	bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
-  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
-  *blueLEDValuePort |= 0x0100; // Switch LED off
-}
+static volatile uint32_t *blueLedValuePort;
+static uint8_t ledStatus;
 
-void toggleBlueLED_s(){
-  if(LEDstatus)
-    LEDstatus = 0u;
-  else
-    LEDstatus = 1u;
-}
-
-void setBlueLED_s(uint8_t status){
-  if(status)
-    *blueLEDValuePort &= 0xFEFF; 
-  else
-    *blueLEDValuePort |= 0x0100; 
-}
-                  
-int ButtonToggleBlueLED_s(){
-   initLED_s();
+void ButtonToggleBlueLED_s(){
+  initLed();
+  const uint32_t sleepTime = 100000;
    
-   while(1){
-    if(Gpio1pin_Get(GPIO1PIN_PF5) == 0){ // if JS1 button pressed
-      toggleBlueLED_s();
-      while(Gpio1pin_Get(GPIO1PIN_PF5) == 0); // waits until the button is pressed
+  while(1){
+    if(isButtonPressed()){
+      toggleBlueLED();
+      while(isButtonPressed());
     }
-    setBlueLED_s(LEDstatus);
-   }
-          
+    setBlueLed(ledStatus);
+    microDelay(sleepTime);
+  }  
 }
                           
 void ButtonHoldBlueLEDOn_s() {
-  initLED_s();
-  uint32_t sleepTime = 100000;
+  initLed();
+  const uint32_t sleepTime = 100000;
   while(1){
-    while(Gpio1pin_Get(GPIO1PIN_PF5) == 0){ // Inverted logic as input is pulled up
-      // Clear 8th bit -> Switch LED on
-      setBlueLED_s(1u); 
+    
+    while(isButtonPressed()){
+      setBlueLed(1u); 
       microDelay(sleepTime);
     }
-    // Set 8th bit -> Switch LED off
-    setBlueLED_s(0u);
+    
+    setBlueLed(0u);
     microDelay(sleepTime);
+    
   }
 }
+
+static int isButtonPressed() {
+  // Inverted logic as input is pulled up
+  return Gpio1pin_Get(GPIO1PIN_PF5) == 0;                             
+}
+
+static void initLed(){
+  ledStatus = 0u;
+  Gpio1pin_InitIn(GPIO1PIN_PF5, Gpio1pin_InitPullup(1u)); // initialize PF5 as input and activate pullup resistor
+  
+  volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
+  blueLedValuePort = &(FM4_GPIO->PDOR1);
+  
+	bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
+  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
+  *blueLedValuePort |= 0x0100; // Switch LED off
+}
+
+static void toggleBlueLED(){
+  if(ledStatus)
+    ledStatus = 0u;
+  else
+    ledStatus = 1u;
+}
+
+static void setBlueLed(uint8_t status){
+  if(status)
+    *blueLedValuePort &= 0xFEFF; 
+  else
+    *blueLedValuePort |= 0x0100; 
+}
+                  

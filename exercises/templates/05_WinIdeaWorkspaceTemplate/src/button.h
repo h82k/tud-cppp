@@ -2,31 +2,35 @@
 #include "pdl_header.h"
 #include "s6e2ccxj.h"
 
-volatile uint32_t *blueLEDDirectionPort;
-volatile uint32_t *blueLEDValuePort;
-uint8_t LEDstatus;
+/**
+ * Scenario 1:
+ * Pressing the Joystick 1 Button toggles the LED, just like a light switch.
+ */
+void ButtonToggleBlueLED();
+void ButtonToggleBlueLED_s();
 
 /**
- *  Initializes the blue LED.
+ * Holding the Joystick 1 button turns the LED on, and releasing it turns the LED off.
+ */
+void ButtonHoldBlueLEDOn();
+void ButtonHoldBlueLEDOn_s();
+
+/**
+ * Returns true (1) iff the button is pressed
+ */
+static int isButtonPressed();
+
+/**
+ * Initializes the blue LED.
  */ 
-void initLED();
+static void initLed();
 
 /**
  *  Changes the status of the blue LED.
  */
-void toggleBlueLED();
+static void toggleBlueLED();
 
 /**
  *  Sets the blue LED to its status.
  */
-void setBlueLED(uint8_t status);
-
-/**
- * Pressing the Joystick 1 Button toggles the LED, just like a light switch.
- */
-int ButtonToggleBlueLED();
-
-/**
- * Holding the Joystick 1 Button turns the LED on and leaving it turns the LED off.
- */
-void ButtonHoldBlueLEDOn();
+static void setBlueLed(uint8_t status);

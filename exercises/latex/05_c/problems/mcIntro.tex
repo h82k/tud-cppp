@@ -115,40 +115,28 @@ Ganz in der Nähe befindet sich auch der \textbf{User Button}, den wir im Folgen
 
 \subsection{LED bunt blinken lassen}
 Als erste eigenständige Aufgabe erweiterst du die Funktion \lstinline|BlinkMain| so, dass abwechselnd alle drei möglichen LEDs angesteuert werden.
-Hierfür wirst du die folgenden Dokumente benötigen:
-\begin{itemize}
-\item 
-FM4 Starter Kit Guide: \url{http://www.cypress.com/file/290916/download}
-\item 
-Schaltbild: \url{http://www.cypress.com/file/290921/download}
-\end{itemize}
-
-Führe nun die folgenden Schritte aus:
+%
+Führe dazu die folgenden Schritte aus:
 \begin{enumerate}
 \item 
-Erzeuge ein \textbf{neues .h- und .c-File}, indem du jeweils \menuPath{File \menuSep New\dots} wählst.
-Benenne die Dateien \filename{blinkrainbow.h} und \filename{blinkrainbow.c} und lege sie im \filename{src}-Verzeichnis des Workspaces ab.
+Öffne die Dateien Dateien \filename{blinkrainbow.h} und \filename{blinkrainbow.c} (in der Gruppe \winIdeaGroupName{src}).
 
 \item 
-Klicke rechts auf die Gruppe \winIdeaGroupName{src}, wähle \menuPath{Add Files\dots} und füge die beiden neuen Dateien hinzu.
-
-\item 
-Du kannst den Inhalt der Dateien \filename{blink.h} und \filename{blink.c} als Ausgangspunkt nehmen, um diese Aufgabe zu lösen.
+Nutze die Dateien \filename{blink.h} und \filename{blink.c} als Ausgangspunkt, um diese Aufgabe zu lösen.
 
 \item
 Erweitere nun den Code so, dass du auch auf die Ports der roten und grünen LED zugreifst.
-\end{enumerate}
-
-\hints{
+\begin{itemize}
 \item 
-Die Ports und Pins der anderen LEDs findest du \unteranderem im Abschnitt \enquote{3.1.3 User Button and User LED} des Start Kit Guides.
+Die Ports und Pins der anderen LEDs findest du \unteranderem im Abschnitt \enquote{3.1.3 User Button and User LED} des FM4 Starter Kit Guides\footnote{\url{http://www.cypress.com/file/290916/download}}.
 
 \item 
 Die Pins der roten und grünen LED sind ebenfalls mit A-/D-Kanälen verbunden, die du deaktivieren musst.
-Nutze dazu das Schaltbild.
+Nutze dazu das Schaltbild des Evaluationskits\footnote{\url{http://www.cypress.com/file/290921/download}}.
 Auf Seite 2 findest du am unteren Rand die \enquote{RGB LED}.
 Davon ausgehend suchst du die entsprechenden Pins am Microcontroller heraus.
 Jeder Pin ist dort mit mehreren Funktionsbeschreibungen versehen.
 Die A-/D-Kanalbezeichnungen beginnen immer mit \enquote{AN}.
 Zum Beispiel hat die blaue LED den Pin 106, der auch als Pin 8 von Port 1 angesprochen werden kann und mit dem A-/D-Kanal 08 (AN08) verknüpft ist.
-}
+\end{itemize}
+\end{enumerate}

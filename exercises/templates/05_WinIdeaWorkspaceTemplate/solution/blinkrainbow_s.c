@@ -12,7 +12,7 @@ int BlinkRainbowMain_s() {
   volatile uint32_t *greenLEDDirectionPort = &(FM4_GPIO->DDRB);
   volatile uint32_t *greenLEDValuePort = &(FM4_GPIO->PDORB);
   volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
-  volatile uint32_t *blueLEDValuePort = &(FM4_GPIO->PDOR1);
+  volatile uint32_t *blueLedValuePort = &(FM4_GPIO->PDOR1);
   
 	
   bFM4_GPIO_ADE_AN10 = 0; // Disable analog-digital channel 10
@@ -25,14 +25,14 @@ int BlinkRainbowMain_s() {
   
   bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
   *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
-  *blueLEDValuePort |= 0x0100; // Switch LED off
+  *blueLedValuePort |= 0x0100; // Switch LED off
   
 	const uint32_t sleepTime = 1000000;
 	// Main loop. Color order: red, green, blue
 	while (1) {
     
 		// Set Port 1 Pin 8 -> Switch blue LED off
-    *blueLEDValuePort |= 0x0100;
+    *blueLedValuePort |= 0x0100;
     // Clear Port 1 Pin 10 -> Switch red LED on
     *redLEDValuePort &= 0xFBFF;
     
@@ -48,7 +48,7 @@ int BlinkRainbowMain_s() {
     // Set Port B Pin 2 -> Switch green LED off
     *greenLEDValuePort |= 0x0004;
 		// Clear Port 1 Pin 8 -> Switch blue LED on
-    *blueLEDValuePort &= 0xFEFF; 
+    *blueLedValuePort &= 0xFEFF; 
     
     microDelay(sleepTime); 
     

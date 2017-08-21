@@ -1,7 +1,13 @@
 #include "init.h"
 #include "button_s.h"
 
-void main(){
-  initBoard();  
-  ButtonHoldBlueLEDOn_s();
+int main(){
+  initBoard();
+  
+  // #include "blinkrainbox_s.h"
+  // BlinkRainbowMain_s();
+  
+  // #include "button_s.h"
+  ButtonToggleBlueLED_s();
+  //ButtonHoldBlueLEDOn_s();
 }
