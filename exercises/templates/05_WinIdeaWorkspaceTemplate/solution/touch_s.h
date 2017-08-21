@@ -7,7 +7,7 @@
 #include "analog.h"
 #include "gfx.h"
 #include "lcd.h"
-#include "display_s.h"
+#include "src/display.h"
 
 uint16_t oldcolor, currentcolor; 
 

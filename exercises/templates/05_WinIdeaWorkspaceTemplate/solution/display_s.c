@@ -1,4 +1,4 @@
-#include "display_s.h"
+#include "src/display.h"
 
 #include <stdint.h>
 #include "s6e2ccxj.h"
