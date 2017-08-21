@@ -5,6 +5,10 @@
 #include "gfx.h"
 #include "glcdfont.h"
 
+static int16_t cursorX, cursorY;
+static uint16_t textColor;
+static uint8_t textSize;
+static int textBackground;
 
 uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b){
   const uint8_t hiR = (r & 0xF8) >> 3; 

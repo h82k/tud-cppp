@@ -6,7 +6,7 @@ int main(){
   initBoard();
   
   // #include "blinkrainbox_s.h"
-  // BlinkRainbowMain_s();
+  BlinkRainbowMain_s();
   
   // #include "button_s.h"
   //ButtonToggleBlueLED_s();
@@ -14,5 +14,6 @@ int main(){
   
   // #include "graphicstest.h"
   //testGraphics();
-  testText();
+  //testText();
+  //testRotateText(); 
 }

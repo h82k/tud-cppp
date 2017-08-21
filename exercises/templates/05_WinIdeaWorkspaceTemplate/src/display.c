@@ -6,6 +6,12 @@
 #include "gfx.h"
 #include "glcdfont.h"
 
+
+static int16_t cursorX, cursorY;
+static uint16_t textColor;
+static uint8_t textSize;
+static int textBackground;
+
 uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
     // your code here... 
 }

@@ -3,14 +3,14 @@
 void debugTouch_s(){
     getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
     // Write headline on the display
-    setCursor(480,320);
+    setCursor_s(480,320);
     char freeSpace[] = " ";
     char headlineText[] = "      DEBUG TOUCHSCREEN";
-    writeTextln(freeSpace);
-    writeTextln(freeSpace);
-    writeTextln(freeSpace);
-    writeTextln(headlineText);
-    writeTextln(freeSpace);
+    writeTextln_s(freeSpace);
+    writeTextln_s(freeSpace);
+    writeTextln_s(freeSpace);
+    writeTextln_s(headlineText);
+    writeTextln_s(freeSpace);
     
     // Get analog values of the touchscreen
     uint16_t touchX, touchY, touchZ;
@@ -42,7 +42,7 @@ void initPaintTouch_s(){
     drawRect(0, 0, BOXSIZE, BOXSIZE, WHITE);
     currentcolor = RED;
     
-    setCursor(260, 25);
+    setCursor_s(260, 25);
     setTextSize(2);
     char text[] = "BILD ERNEUERN";
     writeText(text);

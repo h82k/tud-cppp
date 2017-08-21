@@ -1,6 +1,6 @@
 /**
  *  This code is based on:  https://github.com/adafruit/Adafruit-GFX-Library &  https://github.com/adafruit/TFTLCD-Library
- *  The code is converted by Puria Izady for the Cypress FM4  microcontroller
+ *  The code has been adjusted by Puria Izady for the Cypress FM4  microcontroller
  */
 
 #include "lcd.h"

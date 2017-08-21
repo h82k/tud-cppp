@@ -2,6 +2,7 @@
 
 #include "lcd.h"
 #include "gfx.h"
+#include "src/display.h"
 
  
 void testGraphics(void) {
@@ -59,7 +60,7 @@ void testGraphics(void) {
 
 void testRotateText(void) {
   uint8_t rotation;
-  for( rotation=0; rotation<4; rotation++) {
+  for(rotation=0; rotation<4; rotation++) {
     //setRotation(rotation);
     testText();
     delay(2000);
@@ -77,28 +78,30 @@ void testFillScreen(void){
 void testText(void) {
   char text[1000];
   fillScreen(BLACK);
-  setCursor(480, 320);
-  setTextColor(WHITE);  setTextSize(1);
-  writeTextln("Hello World!");
-  setTextColor(YELLOW);
-  setTextSize(2);
-  writeTextln("1234.56");
-  setTextColor(RED);   setTextSize(3);
-  writeTextln("0xDEADBEEF");
-  writeTextln(" ");
-  setTextColor(GREEN);
-  setTextSize(5);
-  writeTextln("Groop");
-  setTextSize(2);
-  writeTextln("I implore thee,");
-  setTextSize(1);
-  writeTextln("my foonting turlingdromes.");
-  writeTextln("And hooptiously drangle me");
-  writeTextln("with crinkly bindlewurdles,");
-  writeTextln("Or I will rend thee");
-  writeTextln("in the grobberwarts");
-  writeTextln("with my blurglecruncheon,");
-  writeTextln("see if I don't!");
+  setCursor_s(480, 320);
+  setTextColor_s(WHITE);
+  setTextSize_s(1);
+  writeTextln_s("Hello World!");
+  setTextColor_s(YELLOW);
+  setTextSize_s(2);
+  writeTextln_s("1234.56");
+  setTextColor_s(RED);
+  setTextSize_s(3);
+  writeTextln_s("0xDEADBEEF");
+  writeTextln_s(" ");
+  setTextColor_s(GREEN);
+  setTextSize_s(5);
+  writeTextln_s("Groop");
+  setTextSize_s(2);
+  writeTextln_s("I implore thee,");
+  setTextSize_s(1);
+  writeTextln_s("my foonting turlingdromes.");
+  writeTextln_s("And hooptiously drangle me");
+  writeTextln_s("with crinkly bindlewurdles,");
+  writeTextln_s("Or I will rend thee");
+  writeTextln_s("in the grobberwarts");
+  writeTextln_s("with my blurglecruncheon,");
+  writeTextln_s("see if I don't!");
 }
 
 void testLines(uint16_t color) {
