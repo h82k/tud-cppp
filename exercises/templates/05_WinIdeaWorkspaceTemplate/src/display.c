@@ -1,8 +1,5 @@
 #include "display.h"
 
-#include <stdint.h>
-#include <stdlib.h>
-#include "s6e2ccxj.h"
 #include "gfx.h"
 #include "glcdfont.h"
 
@@ -16,7 +13,7 @@ uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
     // your code here... 
 }
 
-void printPattern(uint16_t color){
+void printPattern(uint16_t backgroundColor, uint16_t foregroundColor) {
   // your code here...
 }
 

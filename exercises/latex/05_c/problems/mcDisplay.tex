@@ -111,16 +111,14 @@ Um das Programm weiterlaufen zu lassen, wähle \menuPath{Debug \menuSep Run Cont
 %
 Die Datei \filename{display.h} enthält einige vordefinierten Farben, die du ebenfalls bei den folgenden Aufgaben nutzen kannst: \lstinline|BLACK| (\lstinline|0x0000|), \lstinline|BLUE| (\lstinline|0x001F|), \lstinline|RED| (\lstinline|0xF800|), \lstinline|GREEN| (\lstinline|0x07E0|), \lstinline|YELLOW| (\lstinline|0xFFE0|), \lstinline|WHITE| (\lstinline|0xFFFF|).
 
-Im letzten Teil dieser Aufgabe färbst du den Bildschirm meiner Farbe deiner Wahl.
+Im letzten Teil dieser Aufgabe färbst du den Bildschirm mit der Farbe deiner Wahl.
 \begin{enumerate}
 \item 
 Beginne wieder mit einer leeren \lstinline|main|-Funktion.
 \item 
-Binde die Header \filename{lcd.h} (aus \winIdeaGroupName{lib}) und \filename{display.h} ein und füge den folgenden Initialisierungscode für das Display in \lstinline|main| ein:
+Binde die Header \filename{init.h} (aus \winIdeaGroupName{lib}) ein und füge den folgenden Initialisierungscode für das Board in \lstinline|main| ein:
 \begin{lstlisting}
-init();
-reset();
-setupLCD();
+initBoard();
 \end{lstlisting}
 \item 
 Um das Display in Cyan einzufärben, füge folgende Zeile an:
@@ -132,31 +130,65 @@ fillScreen(color565(0x00, 0xEA, 0xFF));
 
 
 \subsection{Regelmäßiges Muster ausgeben}
-In diesem Abschnitt implementierst du die Funktion void \lstinline|printPattern|.
-Diese Funktion ordnet auf dem Display Quadrate (4 x 4 Pixel) als schwarz-weißes Schachbrettmuster an.
-Verwende die gegebene Funktion \lstinline|fillRect|, um die einzelnen Quadrate zu erzeugen.
-
-\RKi{Continue here.}
+In diesem Abschnitt implementierst du die Funktion void \lstinline|printPattern(backgroundColor, foregroundColor)|.
+Diese Funktion ordnet auf dem Display Quadrate (4 x 4 Pixel) als Schachbrettmuster an.
+%
+\hints{
+\item 
+Nutze die Funktion \lstinline|fillScreen|, um zunächst den Bildschirm in der Farbe \lstinline|backgroundColor| zu füllen.
+Nutze anschließend die Funktion \lstinline|fillRect|, um die einzelnen Quadrate in der Farbe \lstinline|foregroundColor| zu erzeugen.
+\item 
+Eine einfache Möglichkeit ist, zwei geschachtelte \lstinline|for|-Schleifen zu verwenden, die den Schleifenzähler jeweils um die doppelte Blockgröße weiterschalten.
+}
 
 
 \subsection{Text ausgeben}
+In diesem Aufgabenteil wirst du einen Cursor implementieren, der es erlaubt, auf einfache Art und Weise Zeichen auf dem Bildschirm auszugeben.
+%
 \begin{figure}
 	\begin{centering}
 		\includegraphics[width=.5\textwidth]{./05_c/figures/ASCII57.png}
-		\caption{ASCII 5*7 Schriftart}
+		\caption{Schematische Darstellung des Zeichens 'A' in einer ASCII-5*7-Schriftart}
 		\label{fig:ascii57}
 	\end{centering}
 \end{figure}
-Zum Anzeigen von Buchstaben auf dem Bildschirm wird eine ASCII 5 * 7 Bibliothek verwendet. Diese besteht aus einem Array mit 255 Buchstaben, die jeweils aus f{\"u}nf 8-Bit gro{\ss}en Hexadezimalzahlen bestehen. Die 5 * 7 Bibliothek eignet sich f{\"u}r den 480 * 320 gro{\ss}en Bildschirm, da die Darstellung dier Schriftart mit einer Fl{\"a}che von 35 Pixeln f{\"u}r einen Buchstaben trotzdem sehr gut lesbar ist. Wenn man von einem 1 Pixel Abstand zwischen den Buchstaben ausgeht, passen auf das Display bis zu 3 200 Zeichen. Somit es ist m{\"o}glich l{\"a}ngere Textpassagen auf dem Bildschirm ohne Probleme abzubilden. Die Methode \texttt{drawChar} kann mit Hilfe der ASCII Schriftart Buchstaben an jeder Stelle des Bildschirms in verschiedenen abbilden. Zus{\"a}tzliche Parameter au{\ss}er der Position sind Schriftfarbe, -gr{\"o}{\ss}e und Hintergrundfarbe. Durch die setUp-Methode ist der Bildschirm so eingestellt, dass sich der Koordinatenurpsrung in der unteren linken Ecke des Bildschirms befindet.  
+%
+Zum Anzeigen von Buchstaben auf dem Bildschirm stellen wir dir eine kleine Fontbibliothek im ASCII-5*7-Format zur Verfügung.
+Du findest diese in der Datei \filename{glcdfont.h} (Gruppe \winIdeaGroupName{lib}).
+Die Bibliothek besteht aus einem Array mit 255 Buchstaben, die jeweils als 5 Bytes abgespeichert sind (siehe \Cref{fig:ascii57}).
+Das 5*7-Format eignet sich für den 480 * 320 großen Bildschirm, da die Darstellung dieser Schriftart mit einer Fläche von 35 Pixeln je Buchstaben immer noch gut lesbar ist.
+Wenn man von einem Pixel Abstand zwischen den Buchstaben ausgeht, passen auf das Display bis zu 3 200 Zeichen.
+Du wirst in dieser Aufgabe mehrere Funktionen in der Datei \filename{display.c}) implementieren.
+Der Koordinatenursprung $(0,0)$ des Bildschirms ist links unten.
+In der Vorlagendatei \filename{display.c} ist die Fontbibliothek \filename{glcdfont.h} bereits eingebunden.
+Um globale Grundeinstellungen für die Schriftart festzulegen, wurde bereits die Variablen \lstinline|cursorX|, \lstinline|cursorY|, \lstinline|textColor|, \lstinline|textSize| und \lstinline|textBackground| deklariert. 
 
-In display.h ist die Schriftart, welche in der Datei glcdfont.h im Array font abgelegt ist, bereits eingebunden. Um globale Grundeinstellungen für die Schriftart festzulegen, wurde bereits die Variablen cursorX, cursorY, textColor, textSize und textBackground deklariert. 
+\begin{enumerate}
+\item 
+Implementiere die Setter für den Cursor (\lstinline|setCursor(int16_t x, int16_t y)|), die Textfarbe (\lstinline|setTextColors(uint16_t c)|), die Textgröße (\lstinline|setTextSize(uint8_t s)|) sowie die Hintergrundfarbe (\lstinline|setBackgroundColor(int bg)|).
 
-(1.) Implementiere die Set-Funktionen für die Variablen cursorX, cursorY, textColor, textSize und textBackground.
+Zudem sollen in der Funktion \lstinline|initCursor| folgende Grundeinstellungen vorgenommen werden: 
+Der Cursor ist im Koordinatenursprung, die Textfarbe ist Weiß, die Hintergrundfarbe ist Schwarz und die Textgröße ist 2.
 
-(2.) Die Funktion drawChar soll einen Buchstaben der ASCII-Schriftart auf dem Display an der Position x,y in der Farbe color mit der Hintergrundfarbe bg und der Größe size abbilden. Zunächst muss überprüft werden, ob die angegeben x,y Positionen im gültigen Wertebereich des Display liegen. Sofern die Werte die Grenzen des Bildschirms überschreiten, soll die Funktion drawChar beendet werden. Als nächster Schritt soll auf die richtige Stelle des Array font zugegriffen werden und die Bits der Hexadezimalwerte in Farbwerte intepretiert werden. Abbildung \ref{fig:ascii57} zeigt den Aufbau der Buchstaben im Array font am Beispiel von A. Jeder Buchstabe ist in font an der Position c*5 des Array gespeichert, wenn c für den ASCII-Wert des char steht. Für diesen Buchstaben werden 40 Bits durchiteriert und für jedes Bit, welches gleich 1 ist, wird an dieser Stelle ein Pixel oder Rechteck auf dem Display ausgegeben. Ist die Größe der Schriftart größer als 1, empfiehlt es sich statt drawPixel die Funktion fillRect zu verwenden. 
+\item
+Die Funktion \lstinline|drawChar(x, y, c, color, bg, size)| soll einen Buchstaben \lstinline|c| in ASCII-Schriftart auf dem Display an der Position \lstinline|x|, \lstinline|y| in der Farbe \lstinline|color| mit der Hintergrundfarbe \lstinline|bg| und in der Größe \lstinline|size| abbilden.
+Zunächst muss überprüft werden, ob die angegebene Positionen gültig ist.
+Sofern die Werte die Grenzen des Bildschirms überschreiten, soll die Funktion \lstinline|drawChar| beendet werden.
+Als nächster Schritt soll auf die richtige Stelle des Array \lstinline|font| zugegriffen werden und die Bits der Hexadezimalwerte als Farbwerte intepretiert werden.
+\Cref{fig:ascii57} zeigt den Aufbau der Daten im Array \lstinline|font| am Beispiel des Buchstabens A.
+Ein Buchstabe \lstinline|c| ist in \lstinline|font| an der Position \lstinline|c * 5| gespeichert.
+Für diesen Buchstaben werden 5 Byte/40 Bits durchiteriert.
+Für jedes gesetzte Bit wird an der entsprechendne Stelle ein Pixel (für \lstinline|size == 1|) oder Rechteck (für \lstinline|size > 1|) auf dem Display ausgegeben.
 
-(3.) Um die Textausgabe auf dem Display für strings zu ermöglichen, müssen weitere Funktionen implementiert werden, die einen automatisierten Cursor verwenden, der die Position des letzten geschriebenen Buchstaben speichert. Die Funktion writeAuto(char c) soll die Aufgabe übernehmen einen Buchstaben c auf dem Display mit hilfe von drawChar zu schreiben und die Position der Cursor cursorX und cursorY zu verändern. Hierbei sind Display-Grenzen und Zeilenumbrüche zu beachten.
+\item 
+Um die Textausgabe auf dem Display für Strings zu ermöglichen, müssen weitere Funktionen implementiert werden, die einen automatischen Cursor verwenden.
+Dieser Cursor speichert die Position des letzten geschriebenen Buchstaben.
+Die Funktion \lstinline|writeAuto(char c)| soll die Aufgabe übernehmen, einen Buchstaben \lstinline|c| auf dem Display mithilfe von \lstinline|drawChar| zu schreiben und die Cursorposition zu verändern.
+Hierbei sind Display-Grenzen und Zeilenumbrüche zu beachten.
 
-(4.) Implementiere die Funktion writeText(char *text), welche einen char Array als Parameter erhält und diesen mithilfe von writeAuto auf dem Display schreiben soll. Außerdem soll noch eine Abwandlung writeTextln(char *text) implementiert werden, welche am Ende des Strings noch einen Zeilenumsprung einfügen soll.
+\item 
+Implementiere die Funktion \lstinline|writeText(char *text)|, welche einen C-String als Parameter erhält und diesen mithilfe von writeAuto auf dem Display schreiben soll. Außerdem soll noch eine Abwandlung writeTextln(char *text) implementiert werden, welche am Ende des Strings noch einen Zeilenumsprung einfügen soll.
+\end{enumerate}
+
 
 (5.) Zur Ausgabe von Zahlen soll die Funktion writeNumberOnDisplay(uint16\_t *value) implementiert werden, welche Integer in ein char-Array umwandelt und diesen mithilfe von writeText auf dem Display ausgibt. Die Funktion itoa aus der stdlib.h kann zur Lösung dieser Aufgabe hilfreich sein.

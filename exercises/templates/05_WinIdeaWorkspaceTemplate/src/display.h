@@ -1,4 +1,6 @@
-#include <stdlib.h>
+#ifndef DISPLAY_H_
+#define DISPLAY_H_
+
 #include <stdint.h>
 
 #define	BLACK   0x0000
@@ -20,8 +22,8 @@ uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b);
 /**
  * Prints a chess pattern on the display.
  */
-void printPattern(uint16_t color);
-void printPattern_s(uint16_t color);
+void printPattern(uint16_t backgroundColor, uint16_t foregroundColor);
+void printPattern_s(uint16_t backgroundColor, uint16_t foregroundColor);
 
 /**
  * Initializes cursor properties.
@@ -55,6 +57,7 @@ void setBackgroundColor_s(int bg);
 
 /**
  * Draws a char c on (x,y).
+ * The character is shown in color c, and its background is colored using color bg.
  */
 void drawChar(int x, int y,  char c,  int color,  int bg, char size);
 void drawChar_s(int x, int y,  char c,  int color,  int bg, char size);
@@ -83,3 +86,5 @@ void writeTextln_s(char *text);
  */
 void writeNumberOnDisplay(uint16_t *value);
 void writeNumberOnDisplay_s(uint16_t *value);
+
+#endif

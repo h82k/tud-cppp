@@ -1,7 +1,5 @@
 #include "src/display.h"
 
-#include <stdint.h>
-#include "s6e2ccxj.h"
 #include "gfx.h"
 #include "glcdfont.h"
 
@@ -20,14 +18,19 @@ uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b){
   // return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
 }
 
-void printPattern_s(uint16_t color){
+void printPattern_s(uint16_t backgroundColor, uint16_t foregroundColor) {
+  
+  fillScreen(backgroundColor);
+  
   const uint8_t blockSize = 4;
   uint16_t x;
-  for(x=0; x < 480; x += 2 * blockSize){
+  for(x = 0; x < 480; x += 2 * blockSize) {
+    
     uint16_t y;
-    for(y=0;y < 320; y += 2 * blockSize){
-      fillRect(x, y, blockSize, blockSize, WHITE);
+    for(y = 0;y < 320; y += 2 * blockSize) {
+      fillRect(x, y, blockSize, blockSize, foregroundColor);
     }
+    
   }
 }
 
@@ -53,32 +56,32 @@ void setTextSize_s(uint8_t s) {
     textSize = (s > 0) ? s : 1;
 }
 
-void setBackgroundColor_s(int bg){
+void setBackgroundColor_s(int bg) {
     textBackground = bg;
 }
 
 void drawChar_s(int x, int y,  char c,  int color,  int bg, char size) {
-    if((x >= 480)            || // Clip right
-       (y >= 320)           || // Clip bottom
-       ((x + 6 * size - 1) < 0) || // Clip left
-       ((y + 8 * size - 1) < 0))   // Clip top
-        return;
-
-    char i, j;
-    for(i=0; i<6; i++ ) {  // draw in x-direction
-        char line;
-        if(i < 5) line = font[(c*5)+i];  // save the i.x-line from (i,j) to (i,j+7) in the char line
-        else      line = 0x0;
-        for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
-            if(line & 0x1) {
-                if(size == 1) drawPixel(x+i, y-j, color);
-                else          fillRect(x+(i*size), y-(j*size), size, size, color);
-            } else if(bg != color) {
-                if(size == 1) drawPixel(x+i, y-j, bg);
-                else          fillRect(x+i*size, y-j*size, size, size, bg);
-            }
-        }
+  if((x >= 480)            || // Clip right
+     (y >= 320)           || // Clip bottom
+     ((x + 6 * size - 1) < 0) || // Clip left
+     ((y + 8 * size - 1) < 0))   // Clip top
+      return;
+  
+  char i, j;
+  for(i=0; i<6; i++ ) {  // draw in x-direction
+    char line;
+    if(i < 5) line = font[(c*5)+i];  // save the i.x-line from (i,j) to (i,j+7) in the char line
+    else      line = 0x0;
+    for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
+      if(line & 0x1) {
+        if(size == 1) drawPixel(x + i, y - j, color);
+        else          fillRect(x + (i * size), y - (j * size), size, size, color);
+      } else if(bg != color) {
+        if(size == 1) drawPixel(x + i, y - j, bg);
+        else          fillRect(x + (i * size), y - (j * size), size, size, bg);
+      }
     }
+  }
 }
 
 void writeAuto_s(char c) {
@@ -86,7 +89,7 @@ void writeAuto_s(char c) {
         cursorY -= textSize*8;
         cursorX  = 0;
     } else if(c == '\r') {
-
+  
     } else {
         if(((cursorX + textSize * 6) >= 480)) { // Heading off edge
             cursorX  = 0;            // Reset x to zero
