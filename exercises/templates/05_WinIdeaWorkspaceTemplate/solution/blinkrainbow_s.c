@@ -1,4 +1,4 @@
-#include "blinkrainbow_s.h"
+#include "src/blinkrainbow.h"
 
 #include <stdint.h>
 #include "delay.h"
