@@ -1,29 +1,40 @@
 #include "button.h"
 
-#include <stdint.h>
-#include "s6e2ccxj.h"
-
-#include "delay.h"
-
-int ButtonMain() {
-  volatile uint32_t* blueLEDValuePort = &(FM4_GPIO->PDOR1);
-  volatile uint32_t* blueLEDDirectionPort = &(FM4_GPIO->DDR1);
+void initLED(){
+  // set LED status
   
-	bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
-  *blueLEDValuePort |= 0x0100; // Switch LED off
-  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 9 as output pin
+  // initialize PF5 as input and activate pullup resistor
   
-	const uint32_t sleepTime = 1000000;
-	// Main loop
-	while (1) {
-		
-		// Clear 9th bit -> Switch LED on
-    *blueLEDValuePort &= 0xFEFF; 
-    microDelay(sleepTime); 
-		
-		// Set 9th bit -> Switch LED off
-    *blueLEDValuePort |= 0x0100;
-    microDelay(sleepTime);
-		
+  // initialize blue LED
+}
+
+void toggleBlueLED(){
+  // invert value of LEDstatus
+
+}
+
+void setBlueLED(uint8_t status){
+  // set value register of blue led to LEDstatus
+}
+                  
+int ButtonToggleBlueLED(){
+   // initialization
+   
+   while(1){
+    // if button pressed toggle LEDstatus and wait unitl button is released
+    // set LED
+   }
+          
+}
+                          
+void ButtonHoldBlueLEDOn() {
+  // initialization
+
+  while(1){
+    // while button pressed turn LED on
+    // delay of 0,01s
+    
+    // normal case LED is off
+    // delay of 0,01s
   }
 }

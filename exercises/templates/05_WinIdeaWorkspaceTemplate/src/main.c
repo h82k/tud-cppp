@@ -1,31 +1,7 @@
-#include "lcd.h"
-#include "display.h"
-//#include "analog.h"
-//#include "blink.h"
-//#include "blinkrainbow.h"
-//#include "button.h"
-//#include "joystick.h"
+#include "init.h"
+#include "button_s.h"
 
 void main(){
-  init();
-  reset();
-  setupLCD();
-  
-  fillScreen(WHITE);
-  drawPixel(20, 20, BLACK);
-
-  //InitAdc();
-  //initCursor();
-  
-  //printPattern(color565(0x00, 0xEA, 0xFF));
-  //fillRect(10, 10, 4, 4, color565(0x00, 0xEA, 0xFF));
-  //drawPixel(20, 20, WHITE);
-  //BlinkRainbowMain();
-  //controllLEDsInit();
-  //paintTouch();
-  //newLEDinit();
-  //while(1){
-    //printValues();
-    //controllLEDs();
-  //}
+  initBoard();  
+  ButtonHoldBlueLEDOn_s();
 }

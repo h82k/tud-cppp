@@ -1,4 +1,4 @@
-#include "display.h"
+#include "display_s.h"
 
 #include <stdint.h>
 #include "s6e2ccxj.h"
@@ -6,20 +6,28 @@
 #include "glcdfont.h"
 
 
-uint16_t color565(uint8_t r, uint8_t g, uint8_t b){
-    return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
+uint16_t color565_s(uint8_t r, uint8_t g, uint8_t b){
+  const uint8_t hiR = (r & 0xF8) >> 3; 
+  const uint8_t hiG = (g & 0xFC) >> 2;
+  const uint8_t hiB = (b & 0xF8) >> 3;
+  const uint16_t result = (hiR << 11) | (hiG << 5) | hiB;
+  return result;
+  // A more compact solution is:
+  // return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
 }
 
-void printPattern(){
-  uint16_t x,y;
-  for(x=0; x<480;x=x+8){
-    for(y=0;y<320;y=y+8){
-      fillRect(x,y,4,4,WHITE);
+void printPattern_s(uint16_t color){
+  const uint8_t blockSize = 4;
+  uint16_t x;
+  for(x=0; x < 480; x += 2 * blockSize){
+    uint16_t y;
+    for(y=0;y < 320; y += 2 * blockSize){
+      fillRect(x, y, blockSize, blockSize, WHITE);
     }
   }
 }
 
-void initCursor(){
+void initCursor_s(){
     cursorX = 0;
     cursorY = 0;
     textColor = WHITE;
@@ -27,25 +35,25 @@ void initCursor(){
     textBackground = BLACK;
 }
 
-void setCursor(int16_t x, int16_t y) {
+void setCursor_s(int16_t x, int16_t y) {
     cursorX = x;
     cursorY = y;
 }
 
-void setTextColor(uint16_t c) {
+void setTextColor_s(uint16_t c) {
     // For 'transparent' background, we'll set the bg to the same as the rest of the display
     textColor = c;
 }
 
-void setTextSize(uint8_t s) {
+void setTextSize_s(uint8_t s) {
     textSize = (s > 0) ? s : 1;
 }
 
-void setBackgroundColor(int bg){
+void setBackgroundColor_s(int bg){
     textBackground = bg;
 }
 
-void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
+void drawChar_s(int x, int y,  char c,  int color,  int bg, char size) {
     if((x >= 480)            || // Clip right
        (y >= 320)           || // Clip bottom
        ((x + 6 * size - 1) < 0) || // Clip left
@@ -55,7 +63,7 @@ void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
     char i, j;
     for(i=0; i<6; i++ ) {  // draw in x-direction
         char line;
-        if(i < 5) line = font[(c*5)+i];  // check if the char has a pixel at (i,j)
+        if(i < 5) line = font[(c*5)+i];  // save the i.x-line from (i,j) to (i,j+7) in the char line
         else      line = 0x0;
         for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
             if(line & 0x1) {
@@ -69,7 +77,7 @@ void drawChar(int x, int y,  char c,  int color,  int bg, char size) {
     }
 }
 
-void writeAuto(char c) {
+void writeAuto_s(char c) {
     if(c == '\n') {
         cursorY -= textSize*8;
         cursorX  = 0;
@@ -81,33 +89,33 @@ void writeAuto(char c) {
             cursorY -= textSize * 8; // Advance y one line
         }
         if(((cursorY - textSize * 6) <= 0)) { // Heading off edge
-            cursorY  = 319;            // Reset x to zero
-            cursorX  = 0; // Advance y one line
+            cursorY  = 319;            // Advance y one line
+            cursorX  = 0;              // Reset x to zero
         }
         
-        drawChar(cursorX ,cursorY , c, textColor, textBackground, textSize);
+        drawChar_s(cursorX ,cursorY , c, textColor, textBackground, textSize);
         cursorX += textSize * 6;
     }
 }
 
-void writeText(char *text){
+void writeText_s(char *text){
     int i;
     for(i = 0; text[i] != 0; i++){
-        writeAuto(text[i]);
+        writeAuto_s(text[i]);
     }
 }
 
-void writeTextln(char *text){
+void writeTextln_s(char *text){
     int i;
     for(i = 0; text[i] != 0; i++){
-        writeAuto(text[i]);
+        writeAuto_s(text[i]);
     }
     cursorY -= textSize*8;
     cursorX  = 0;
 }
 
-void writeNumberOnDisplay(uint16_t *value){
+void writeNumberOnDisplay_s(uint16_t *value){
     char buffer[20];
     itoa(*value, buffer, 10);
-    writeText(buffer);
+    writeText_s(buffer);
 }

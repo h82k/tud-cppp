@@ -1,4 +1,4 @@
-#include "blinkrainbow.h"
+#include "blinkrainbow_s.h"
 
 #include <stdint.h>
 #include "delay.h"
@@ -6,7 +6,7 @@
 #include "mcu.h"
 
 
-int BlinkRainbowMain() {
+int BlinkRainbowMain_s() {
   volatile uint32_t *redLEDDirectionPort = &(FM4_GPIO->DDR1);
   volatile uint32_t *redLEDValuePort = &(FM4_GPIO->PDOR1);
   volatile uint32_t *greenLEDDirectionPort = &(FM4_GPIO->DDRB);
