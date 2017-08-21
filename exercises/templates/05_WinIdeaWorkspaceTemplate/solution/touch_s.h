@@ -14,19 +14,19 @@ uint16_t oldcolor, currentcolor;
 /**
  * Prints the x,y and z-value of the touchscreen on the display.
  */
-void debugTouch();
+void debugTouch_s();
 
 /** 
  * Initializes the paint studio.
  */
-void initPaintTouch();
+void initPaintTouch_s();
 
 /**
  * Loop of paintTouch.
  */
-void loopPaintTouch();
+void loopPaintTouch_s();
 
 /**
  *
  */
-void paintTouch();
+void paintTouch_s();

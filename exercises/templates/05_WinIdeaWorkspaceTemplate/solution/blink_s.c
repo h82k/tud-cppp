@@ -4,7 +4,7 @@
 #include "delay.h"
 #include "s6e2ccxj.h"
 
-int BlinkMain() {
+int BlinkMain_s() {
   volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
   volatile uint32_t *blueLEDValuePort = &(FM4_GPIO->PDOR1);
   

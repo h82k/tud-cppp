@@ -1,6 +1,6 @@
 #include "touch_s.h"
 
-void debugTouch(){
+void debugTouch_s(){
     getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
     // Write headline on the display
     setCursor(480,320);
@@ -30,7 +30,7 @@ void debugTouch(){
     write3Digits16Bit(&touchZ);
 }
 
-void initPaintTouch(){
+void initPaintTouch_s(){
     fillScreen(BLACK);
     fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
     fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
@@ -48,7 +48,7 @@ void initPaintTouch(){
     writeText(text);
 }
 
-void loopPaintTouch(){
+void loopPaintTouch_s(){
     touchPoint.x = readTouchX();
     touchPoint.y = readTouchY();
     touchPoint.z = readTouchZ();
@@ -102,7 +102,7 @@ void loopPaintTouch(){
     }
 }
 
-void paintTouch(){
+void paintTouch_s(){
     initPaintTouch();
     while(1){
         getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);

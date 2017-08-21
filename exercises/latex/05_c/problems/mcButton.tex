@@ -1,11 +1,24 @@
 \section{\ExercisePrefixEmbeddedC Taster abfragen \optional}
 
 In dieser Aufgabe erweitern wir die vorherige Aufgabe um eine Benutzerinteraktion über den \textbf{User Button}.
-Ziel dieser Aufgabe ist es, einen Lichtschalter zu implementieren:
-Ist die LED an, schaltet ein Tastendruck sie aus; ist die LED aus, schalatet ein Tastendruck sie an.
+Ziel dieser Aufgabe ist es, mit dem User Button die RGB-LED in zwei verschiedenen Szenarien zu kontrollieren.
+Bei ersten Szenario soll es möglich sein die LED per Lichtschalter an und auszuschalten und beim zweiten Szenario soll die LED immer dann leuchten, wenn der \textbf{User Button} gedrückt ist.
 
 \begin{enumerate}
 \item 
-Lege dir auf die bekannte Art und Weise
+Zunächst werden wir die nötigen Variablen in \textbf{button.h} deklarieren. Lege dir in der bekannten Weise zwei Zeiger auf die Direction und Value Register der blauen LED an. Weiterhin soll für den Lichtschalter der aktuelle Zustand der LED in einem unsigned 8 Bit Integer \textbf{LEDstatus} gespeichert werden.
+
+\item Als User Button soll der digitale Button des Joystick 1, welcher an den Pin F5 des Mikrocontrollers angeschlossen ist, verwendet werden. Die Funktion \textbf{initLED()} soll den LED-Status, den Pin F5 und die blaue LED initialisieren. Der LED-Status soll zu Beginn 0 sein, und Pin F5 soll durch die Methode \textbf{Gpio1pin\_InitIn(pin, option) }initialiseren werden. Diese Funktion ist eine weitere Möglichkeit Pins des Mikrocontroller zu initialiseren. \textbf{Gpio1pin\_InitIn} intialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken. Der Name des Pins kann mit \textbf{GPIO1PIN\_PF5} angegeben werden und Pull-Up kann mit \textbf{Gpio1pin\_InitPullup(1u)} aktiviert werden. Abschließend soll die blaue LED in der dir bekannten Weise initialisiert werden. 
+
+\item Mit \textbf{toggleBlueLED()} soll es möglich sein den Status der LED zu verändern. Demnach soll bei jedem Aufruf von \textbf{toggleBlueLED} der aktuelle Wert des Status invertiert werden. Der aktuelle Status der LED kann mit \textbf{setBlueLED(uint8\_t status)} gesetzt werden. 
+
+\item Mithilfe der zuvor implementierten Funktionen sollen nun \textbf{ButtonToggleBlueLED()} und \textbf{ButtonHoldBlueLEDOn()} implementiert werden. \textbf{ButtonToggleBlueLED()} soll dem Button die Funktion eines Lichtschalters geben und  \textbf{ButtonHoldBlueLEDOn()} soll die LED zum leuchten bringen, solange der Button gedrückt gehalten wird. 
+
 \end{enumerate}
-\RKi{Fertigstellen}
+\hints{
+	\item Mit dem Aufruf \textbf{Gpio1pin\_Get(GPIO1PIN\_PF5)} kann der aktuelle Wert des Pin F5 ausgelesen werden.
+	
+	\item Es ist zu beachten, dass durch einen Pull-Up-Widerstand, sich die Spannung am Mikrocontroller invertiert. Folglich ist bei gedrückten Joystick das Eingangssignal am Mikrocontroller 0 und bei losgelassenem Button 1. 
+	
+	\item \textbf{while(Gpio1pin\_Get(GPIO1PIN\_PF5) == 0)} kann verwendet werden, um das Programm solange zu pausieren bis der Button losgelassen wird. 
+}
