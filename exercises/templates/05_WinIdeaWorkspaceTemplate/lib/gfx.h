@@ -28,10 +28,10 @@ void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, in
 void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color);
 
 
-void write8BitValueOnLCD(uint8_t *value);
-void write16BitValueOnLCD(uint16_t *value);
-void write32BitValueOnLCD(uint32_t *value);
-void write3Digits8Bit(uint8_t *number);
-void write3Digits16Bit(uint16_t *number);
+void write8BitValueOnLCD(const uint8_t *value);
+void write16BitValueOnLCD(const uint16_t *value);
+void write32BitValueOnLCD(const uint32_t *value);
+void write3Digits8Bit(const uint8_t *value);
+void write3Digits16Bit(const uint16_t *value);
 
 #endif

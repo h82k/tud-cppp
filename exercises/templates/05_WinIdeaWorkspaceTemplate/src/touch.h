@@ -1,37 +1,26 @@
 #ifndef TOUCH_H
 #define TOUCH_H
 
-#define BOXSIZE 40
-#define PENRADIUS 3
-
-#include <stdint.h>
-#include "s6e2ccxj.h"
-#include "pdl_header.h"
-#include "analog.h"
-#include "gfx.h"
-#include "lcd.h"
-#include "display.h"
-
-uint16_t oldcolor, currentcolor; 
-
 /**
  * Prints the x,y and z-value of the touchscreen on the display.
  */
 void debugTouch();
+void debugTouch_s();
+
+/**
+ * Painting application
+ */
+void paintTouch();
+void paintTouch_s();
 
 /** 
  * Initializes the paint studio.
  */
-void initPaintTouch();
+static void initPaintTouch();
 
 /**
  * Loop of paintTouch.
  */
-void loopPaintTouch();
-
-/**
- *
- */
-void paintTouch();
+static void loopPaintTouch();
 
 #endif

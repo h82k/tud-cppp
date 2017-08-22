@@ -12,7 +12,6 @@
 #define YELLOW  0xFFE0
 #define WHITE   0xFFFF
 
-
 /**
  * Converts RGB-888 color to RGB-565.
  */

@@ -4,6 +4,7 @@
  */
 #include "gfx.h"
 
+static const char *WHITESPACE = " ";
 
 
 /**
@@ -447,7 +448,7 @@ void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, in
 /**
  * Write a 8 bit variable on the display
  */
-void write8BitValueOnLCD(uint8_t *value){
+void write8BitValueOnLCD(const uint8_t *value){
   char buffer[20];
   itoa(*value, buffer, 10);
   writeText_s(buffer);
@@ -456,7 +457,7 @@ void write8BitValueOnLCD(uint8_t *value){
 /**
  * Write a 16 bit variable on the display
  */
-void write16BitValueOnLCD(uint16_t *value){
+void write16BitValueOnLCD(const uint16_t *value){
   char buffer[20];
   itoa(*value, buffer, 10);
   writeText_s(buffer);
@@ -465,7 +466,7 @@ void write16BitValueOnLCD(uint16_t *value){
 /**
  * Write a 32 bit variable on the display
  */
-void write32BitValueOnLCD(uint32_t *value){
+void write32BitValueOnLCD(const uint32_t *value){
   char buffer[20];
   itoa(*value, buffer, 10);
   writeText_s(buffer);
@@ -474,27 +475,25 @@ void write32BitValueOnLCD(uint32_t *value){
 /**
  * Write 3 digits long 8 bit variable on the screen with automatic freespace if number is smaller than 3 digits
  */
-void write3Digits8Bit(uint8_t *number){
-  char freeSpace[] = " ";
-  if(*number < 10){
-    writeText_s(freeSpace);
+void write3Digits8Bit(const uint8_t *value){
+  if(*value < 10){
+    writeText_s(WHITESPACE);
   }
-  if(*number < 100){
-    writeText_s(freeSpace);
+  if(*value < 100){
+    writeText_s(WHITESPACE);
   }
-  write8BitValueOnLCD(number);
+  write8BitValueOnLCD(value);
 }
 
 /**
  * Write 3 digits long 16 bit variable on the screen with automatic freespace if number is smaller than 3 digits
  */
-void write3Digits16Bit(uint16_t *number){
-  char freeSpace[] = " ";
-  if(*number < 10){
-    writeText_s(freeSpace);
+void write3Digits16Bit(const uint16_t *value){
+  if(*value < 10){
+    writeText_s(WHITESPACE);
   }
-  if(*number < 100){
-    writeText_s(freeSpace);
+  if(*value < 100){
+    writeText_s(WHITESPACE);
   }
-  write16BitValueOnLCD(number);
+  write16BitValueOnLCD(value);
 }

@@ -3,14 +3,13 @@
 #include "gfx.h"
 #include "glcdfont.h"
 
-
 static int16_t cursorX, cursorY;
 static uint16_t textColor;
 static uint8_t textSize;
 static int textBackground;
 
 uint16_t color565(const uint8_t r, const uint8_t g, const uint8_t b){
-    // your code here... 
+  // your code here... 
 }
 
 void printPattern(const uint16_t backgroundColor, const uint16_t foregroundColor) {
@@ -40,17 +39,17 @@ void setBackgroundColor(const int bg){
 }
 
 void drawChar(const int x, const int y, const char c, const int color, const int bg, const char size) {
-    // if (x,y) is not inside the display return
+  // if (x,y) is not inside the display return
 
-    char i, j;
-    for(i=0; i<6; i++ ) {  // draw in x-direction
-        char line; // line (i,j) ... (i,j+7)
-        // save the i.x-line from (i,j) to (i,j+7) in the char line
+  char i, j;
+  for(i=0; i<6; i++ ) {  // draw in x-direction
+    char line; // line (i,j) ... (i,j+7)
+    // save the i.x-line from (i,j) to (i,j+7) in the char line
+    
+    for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
         
-        for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
-            
-        }
     }
+  }
 }
 
 void writeAuto(const char c) {

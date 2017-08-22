@@ -1,5 +1,6 @@
 #include "init.h"
-#include "lcd.h"
+#include "touch.h"
+#include "joystick.h"
 
 int main(){
   initBoard();
@@ -18,9 +19,14 @@ int main(){
   
   // #include "joystick.h"
   //controlLedsInit_s();
-  while(1) {
+  //while(1) {
     //controlLeds_s();
-    printValues_s();
-  }
-  //printValues_s();
+    //printValues_s();
+  //}
+  
+  // #include "touch.h"
+  //while(1) {
+    //debugTouch_s();
+  //}
+  paintTouch_s();
 }

@@ -78,23 +78,6 @@ void printValues_s(){
   writeTextln_s(headlineText);
   writeTextln_s(freeSpace);
   
-  //fillScreen(BLACK);
-  const uint16_t touchZ = readTouchZ();
-  const uint16_t touchX = touchZ != 0 ? readTouchX() : 0;
-  const uint16_t touchY = touchZ != 0 ? readTouchY() : 0;
-  char touchXText[] = "  Touch X: ";
-  char touchYText[] = "  Touch Y: ";
-  char touchZText[] = "  Touch Z: ";
-  writeText_s(touchXText);
-  write3Digits16Bit(&touchX);
-  writeTextln_s("");
-  writeText_s(touchYText);
-  write3Digits16Bit(&touchY);
-  writeTextln_s("");
-  writeText_s(touchZText);
-  write3Digits8Bit(&touchZ);
-  writeTextln_s("");
-  
   char JS1XText[] = "  Joystick 1 X-Achse: ";
   char JS1YText[] = "  Joystick 1 Y-Achse: ";
   writeText_s(JS1XText);
