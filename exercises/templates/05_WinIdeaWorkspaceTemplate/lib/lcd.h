@@ -9,6 +9,7 @@
 #include "pdl_header.h"
 #include "registers.h"
 #include "pins.h"
+#include "analog.h"
 
 
 
@@ -23,14 +24,6 @@
 
 #define WIDTH   480
 #define HEIGHT  320
-
-#define TOUCHXMIN   22 
-#define TOUCHXMAX   220
-#define TOUCHYMIN   50
-#define TOUCHYMAX   192
-#define TOUCHZMIN   5
-#define TOUCHZMAX   185
-
 
 struct TouchPoint{
   uint16_t x;

@@ -1,16 +1,20 @@
 \section{\ExercisePrefixEmbeddedC Touchscreen ansteuern \optional}
+Eingebaut im mit dem Mikrocontroller verbundenen Bildschirm ist eine resistive 4-Wire Touchschicht.
+Der Name setzt sich zusammen aus den Eigenschaften dieser Schaltung.
+Resistiv steht für die Messung von Widerständen zum Erkennen von Touch-Gesten und 4-Wire, da für diese Durchführung vier Datenleitungen gebraucht werden.
+Ein 4-Wire resistiver Touchscreen ist wie in \Cref{fig:rsTouch} aufgebaut.
+Diese besteht aus einer Glass- oder Acryl-Schicht, einer äußeren resistiven Schicht die mit ITO (indium-tin-oxide) beschichtet ist, isolierender Punkten, der inneren resistiven Schicht aus ITO und einem Polyester-Film. Wie in Abbildung \ref{fig:fourRSTouch} dargestellt sind die beiden resistiven Schichten jeweils an 2 Polen angeschlossen. Die Schichten sind in Bezug auf ihre Pole um 90 Grad zueinander gedreht. Dies ist wichtig, um später die X- und Y-Koordinaten des Touch-Points zu lesen. Sobald ein Objekt, welches nicht leitfähig sein muss, die oberste Glaß- oder Acryl-Schicht berührt und genügend Druck ausübt, wird sich die oberste ITO-Schicht mit der unteren verbinden. Die X- und Y-Koordinate wird bestimmt, indem die Spannungen an den Polen gemessen werden. Zur Messung des X-Wertes werden X+ und X- über Gleichspannung geschaltet. Das heißt X+ ist beispielsweise auf Vcc und X- ist mit GND verbunden. Durch die Verbindung der beiden ITO-Schichten entsteht ein Stromfluss durch beide Schichten und es kommt zu einem Spannungsteiler in der X-Schicht. Die Spannungen zwischen X+ und der Druckposition und der Druckposition und X- lassen sich durch das Ausmessen von Y- und Y+ auslesen. Diese Information wird an einen Controller weitergegeben, der die gemessene Spannung in Relation zur Aufl{\"o}sung des Displays setzt. Die Y-Koordinate wird gemessen, indem Y+ und Y- an eine Gleichspannung gelegt und die Spannungen an X+ und X- ausgelesen werden. Die Library des FM4 enthält die Funktionen readTouchX(), readTouchY() und readTouchZ() die X,Y- und Z-Werte eines Berührungspunktes auf dem Touchscreen auslesen können. Ist der Z-Wert größer als ein bestimmter Threshold, kann von einer Berührung des Touchscreens ausgegangen werden. 
 \begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.35\textwidth]{./05_c/figures/4WireRSTouch.png}
-	\caption{Aufbau eines resistiven Touchscreens}
-	\label{img:rsTouch}
-\end{figure} \noindent
-Eingebaut im mit dem Mikrocontroller verbundenen Bildschirm ist eine resistive 4-Wire Touchschicht. Der Name setzt sich zusammen aus den Eigenschaften dieser Schaltung. Resistiv steht f{\"u}r die Messung von Widerst{\"a}nden zum Erkennen von Touch-Gesten und 4-Wire, da f{\"u}r diese Durchf{\"u}hrung vier Datenleitungen gebraucht werden. Ein 4-Wire resistiver Touchscreen ist wie in Abbildung \ref{img:rsTouch} aufgebaut. Diese besteht aus einer Glass- oder Acryl-Schicht, einer {\"a}u{\ss}eren resistiven Schicht die mit ITO (indium-tin-oxide) beschichtet ist, isolierender Punkten, der inneren resistiven Schicht aus ITO und einem Polyester-Film. Wie in Abbildung \ref{img:fourRSTouch} dargestellt sind die beiden resistiven Schichten jeweils an 2 Polen angeschlossen. Die Schichten sind in Bezug auf ihre Pole um 90 Grad zueinander gedreht. Dies ist wichtig, um sp{\"a}ter die X- und Y-Koordinaten des Touch-Points zu lesen. Sobald ein Objekt, welches nicht leitf{\"a}hig sein muss, die oberste Gla{\ss}- oder Acryl-Schicht ber{\"u}hrt und gen{\"u}gend Druck aus{\"u}bt, wird sich die oberste ITO-Schicht mit der unteren verbinden. Die X- und Y-Koordinate wird bestimmt, indem die Spannungen an den Polen gemessen werden. Zur Messung des X-Wertes werden X+ und X- {\"u}ber Gleichspannung geschaltet. Das hei{\ss}t X+ ist beispielsweise auf Vcc und X- ist mit GND verbunden. Durch die Verbindung der beiden ITO-Schichten entsteht ein Stromfluss durch beide Schichten und es kommt zu einem Spannungsteiler in der X-Schicht. Die Spannungen zwischen X+ und der Druckposition und der Druckposition und X- lassen sich durch das Ausmessen von Y- und Y+ auslesen. Diese Information wird an einen Controller weitergegeben, der die gemessene Spannung in Relation zur Aufl{\"o}sung des Displays setzt. Die Y-Koordinate wird gemessen, indem Y+ und Y- an eine Gleichspannung gelegt und die Spannungen an X+ und X- ausgelesen werden. Die Library des FM4 enthält die Funktionen readTouchX(), readTouchY() und readTouchZ() die X,Y- und Z-Werte eines Berührungspunktes auf dem Touchscreen auslesen können. Ist der Z-Wert größer als ein bestimmter Threshold, kann von einer Berührung des Touchscreens ausgegangen werden. 
+    \centering
+    \includegraphics[width=0.35\textwidth]{./05_c/figures/4WireRSTouch.png}
+    \caption{Aufbau eines resistiven Touchscreens}
+    \label{fig:rsTouch}
+\end{figure}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.3\textwidth]{./05_c/figures/ResistiveTS.png}
 	\caption{Aufbau eines 4-Wire resistiven Touchscreens }
-	\label{img:fourRSTouch}
+	\label{fig:fourRSTouch}
 \end{figure} 
 
 \subsection{Werte des Touchscreens debuggen}

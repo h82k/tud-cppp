@@ -10,26 +10,26 @@ void InitAdc()
   PDL_ZERO_STRUCT(stcConfig);
   PDL_ZERO_STRUCT(stcScanCfg);
      
-  stcScanCfg.u32ScanCannelSelect.AD_CH_17 = 1u;       // Analog Input -> Light Sensor
+  stcScanCfg.u32ScanCannelSelect.AD_CH_17 = 1u;  // Analog Input -> Light Sensor
   stcConfig.u32SamplingTimeSelect.AD_CH_17 = 1u; // Channel 17 uses sample time 1
     
   
-  stcScanCfg.u32ScanCannelSelect.AD_CH_11 = 1u;       // Analog Input -> TOUCH X-
+  stcScanCfg.u32ScanCannelSelect.AD_CH_11 = 1u;  // Analog Input -> TOUCH X-
   stcConfig.u32SamplingTimeSelect.AD_CH_11 = 1u; // 
      
-  stcScanCfg.u32ScanCannelSelect.AD_CH_12 = 1u;       // Analog Input -> TOUCH Y+
+  stcScanCfg.u32ScanCannelSelect.AD_CH_12 = 1u;  // Analog Input -> TOUCH Y+
   stcConfig.u32SamplingTimeSelect.AD_CH_12 = 1u; // 
     
-  stcScanCfg.u32ScanCannelSelect.AD_CH_13 = 1u;       // Analog Input -> J2 X
+  stcScanCfg.u32ScanCannelSelect.AD_CH_13 = 1u;  // Analog Input -> J2 X
   stcConfig.u32SamplingTimeSelect.AD_CH_13 = 1u; // 
 
-  stcScanCfg.u32ScanCannelSelect.AD_CH_16 = 1u;       // Analog Input -> Joystick1 X
+  stcScanCfg.u32ScanCannelSelect.AD_CH_16 = 1u;  // Analog Input -> Joystick1 X
   stcConfig.u32SamplingTimeSelect.AD_CH_16 = 1u; // JS1 X uses sample time 1
     
-  stcScanCfg.u32ScanCannelSelect.AD_CH_19 = 1u;       // Analog Input -> J1 Y
+  stcScanCfg.u32ScanCannelSelect.AD_CH_19 = 1u;  // Analog Input -> J1 Y
   stcConfig.u32SamplingTimeSelect.AD_CH_19 = 1u; // 
     
-  stcScanCfg.u32ScanCannelSelect.AD_CH_23 = 1u;       // Analog Input -> J2Y
+  stcScanCfg.u32ScanCannelSelect.AD_CH_23 = 1u;  // Analog Input -> J2Y
   stcConfig.u32SamplingTimeSelect.AD_CH_23 = 1u; // 
    
   
@@ -70,12 +70,13 @@ void pollData(uint32_t *u32Data){
   // Wait for ADC data to receive.
   do
   {
-    // read ADC Value
+    // Read ADC Value
     *u32Data = Adc_ReadScanFifo(&ADC0);
   
     // check if data is valid
   } while(AdcFifoDataValid != Adc_GetScanDataValid(&ADC0, *u32Data)); 
 }
+
 
 void getAnalogValues(uint8_t *analog11, uint8_t *analog12, uint8_t *analog13, uint8_t *analog16, uint8_t *analog17,  uint8_t *analog19, uint8_t *analog23){
   uint32_t u32Data = 0u;     // 32 Bit Data buffer for measurements
