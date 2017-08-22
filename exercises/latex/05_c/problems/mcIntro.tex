@@ -132,12 +132,19 @@ Erweitere nun den Code so, dass du auch auf die Ports der roten und grünen LED 
 Die Ports und Pins der anderen LEDs findest du \unteranderem im Abschnitt \enquote{3.1.3 User Button and User LED} des FM4 Starter Kit Guides\footnote{\url{http://www.cypress.com/file/290916/download}}.
 
 \item 
-Die Pins der roten und grünen LED sind ebenfalls mit A-/D-Kanälen verbunden, die du deaktivieren musst.
+Die Pins der roten und grünen LED sind ebenfalls mit A/D-Kanälen verbunden, die du deaktivieren musst.
 Nutze dazu das Schaltbild des Evaluationskits\footnote{\url{http://www.cypress.com/file/290921/download}}.
 Auf Seite 2 findest du am unteren Rand die \enquote{RGB LED}.
 Davon ausgehend suchst du die entsprechenden Pins am Microcontroller heraus.
 Jeder Pin ist dort mit mehreren Funktionsbeschreibungen versehen.
-Die A-/D-Kanalbezeichnungen beginnen immer mit \enquote{AN}.
-Zum Beispiel hat die blaue LED den Pin 106, der auch als Pin 8 von Port 1 angesprochen werden kann und mit dem A-/D-Kanal 08 (AN08) verknüpft ist.
+Die A/D-Kanalbezeichnungen beginnen immer mit \enquote{AN}.
+Zum Beispiel hat die blaue LED den Pin 106, der auch als Pin 8 von Port 1 angesprochen werden kann und mit dem A/D-Kanal 08 (AN08) verknüpft ist.
 \end{itemize}
 \end{enumerate}
+
+\hints{
+\item 
+Für diese und die folgenden Kennenlernaufgaben stellen wir dir Musterlösungen direkt im WinIDEA-Workspace bereit.
+Du findest sie in der Gruppe \winIdeaGroupName{solution}.
+Beachte, dass die (nicht-statischen) Funktionen der Musterlösung und deren entsprechende Implementierungsdateien stets auf \lstinline|_s| enden, um Namenskonflikte mit den Vorlagefunktionen zu vermeien.
+}
