@@ -52,14 +52,11 @@ static void initPaintTouch(){
 static void loopPaintTouch(){
   // Save the actual touchpoint in the struct touchpoint
   
-  
   // Correct touchpoint
   if (touchPoint.z > TOUCHZMIN && touchPoint.z < TOUCHZMAX) {
     // Erase
    
-    
     // Change color
-    
     
     // Draw a point on the screen
   

@@ -16,264 +16,275 @@
        <Combo>
         <ID.0>
          <Data.0>
-          <__>analog11</__>
+          <__>freeSpace</__>
          </Data.0>
          <Data.1>
-          <__>rotation</__>
+          <__>TOUCHXMAX</__>
          </Data.1>
          <Data.2>
-          <__>_s_s</__>
+          <__>analog11</__>
          </Data.2>
          <Data.3>
-          <__>_s</__>
+          <__>rotation</__>
          </Data.3>
          <Data.4>
-          <__>rotateAText</__>
+          <__>_s_s</__>
          </Data.4>
          <Data.5>
-          <__>toggleBlueLED</__>
+          <__>_s</__>
          </Data.5>
          <Data.6>
-          <__>blueLEDDirectionPort</__>
+          <__>rotateAText</__>
          </Data.6>
          <Data.7>
-          <__>_estack</__>
+          <__>toggleBlueLED</__>
          </Data.7>
         </ID.0>
        </Combo>
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>2</C>
-       <L>49</L>
-       <P>solution\button_s.c</P>
-       <VL>33</VL>
+       <C>7</C>
+       <L>18</L>
+       <P>src\touch.h</P>
       </PI.0>
       <PI.1>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>2</C>
+       <L>53</L>
+       <P>src\touch.c</P>
+      </PI.1>
+      <PI.10>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>8</C>
+       <L>40</L>
+       <P>src\blinkrainbow.c</P>
+       <VL>18</VL>
+      </PI.10>
+      <PI.11>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>12</C>
+       <L>16</L>
+       <P>src\blink.c</P>
+       <VL>3</VL>
+      </PI.11>
+      <PI.12>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>3</C>
+       <L>4</L>
+       <P>src\blink.h</P>
+      </PI.12>
+      <PI.13>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>27</C>
+       <L>78</L>
+       <P>solution\joystick_s.c</P>
+       <VL>75</VL>
+      </PI.13>
+      <PI.14>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>26</C>
+       <L>495</L>
+       <P>lib\gfx.c</P>
+       <VL>453</VL>
+      </PI.14>
+      <PI.15>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>44</C>
+       <L>34</L>
+       <P>lib\gfx.h</P>
+       <VL>12</VL>
+      </PI.15>
+      <PI.16>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>19</C>
+       <L>2</L>
+       <P>solution\touch_s.c</P>
+      </PI.16>
+      <PI.17>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>202</L>
+       <P>lib\analog.c</P>
+       <VL>192</VL>
+      </PI.17>
+      <PI.18>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>7</L>
+       <P>lib\analog.h</P>
+       <VL>24</VL>
+      </PI.18>
+      <PI.19>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>1</L>
+       <P>solution\touch_s.h</P>
+      </PI.19>
+      <PI.2>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>9</C>
+       <L>30</L>
+       <P>src\main.c</P>
+      </PI.2>
+      <PI.20>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>19</C>
+       <L>11</L>
+       <P>lib\lcd.h</P>
+       <VL>9</VL>
+      </PI.20>
+      <PI.21>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <P>lib\init.h</P>
+      </PI.21>
+      <PI.22>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>28</C>
        <P>solution\blinkrainbow_s.c</P>
        <VL>39</VL>
-      </PI.1>
-      <PI.10>
+      </PI.22>
+      <PI.23>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>37</L>
-       <P>solution\touch_s.c</P>
-      </PI.10>
-      <PI.11>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>30</C>
-       <L>81</L>
-       <P>solution\joystick_s.c</P>
-       <VL>60</VL>
-      </PI.11>
-      <PI.12>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>14</L>
-       <P>lib\analog.h</P>
-      </PI.12>
-      <PI.13>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>3</C>
-       <L>148</L>
-       <P>lib\analog.c</P>
-       <VL>125</VL>
-      </PI.13>
-      <PI.14>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>9</C>
-       <L>51</L>
-       <P>src\display.c</P>
-       <VL>44</VL>
-      </PI.14>
-      <PI.15>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>33</C>
-       <L>11</L>
-       <P>solution\touch_s.h</P>
-      </PI.15>
-      <PI.16>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>6</C>
-       <L>8</L>
-       <P>src\blink.h</P>
-      </PI.16>
-      <PI.17>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>6</C>
-       <L>36</L>
-       <P>src\touch.h</P>
-      </PI.17>
-      <PI.18>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>476</L>
-       <P>lib\gfx.c</P>
-       <VL>457</VL>
-      </PI.18>
-      <PI.19>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>14</L>
-       <P>solution\joystick_s.h</P>
-      </PI.19>
-      <PI.2>
+       <C>2</C>
+       <L>49</L>
+       <P>solution\button_s.c</P>
+       <VL>33</VL>
+      </PI.23>
+      <PI.24>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>1</L>
        <P>solution\display_s.c</P>
-      </PI.2>
-      <PI.20>
+      </PI.24>
+      <PI.25>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>14</L>
+       <P>solution\joystick_s.h</P>
+      </PI.25>
+      <PI.26>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>91</L>
        <P>lib\lcd.c</P>
        <VL>72</VL>
-      </PI.20>
-      <PI.21>
+      </PI.26>
+      <PI.27>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>8</L>
        <P>lib\glcdfont.h</P>
-      </PI.21>
-      <PI.22>
+      </PI.27>
+      <PI.28>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>6</C>
        <L>63</L>
        <P>solution\graphicstest.c</P>
        <VL>37</VL>
-      </PI.22>
-      <PI.23>
+      </PI.28>
+      <PI.29>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>9</C>
        <L>3</L>
        <P>lib\init.c</P>
-      </PI.23>
-      <PI.24>
+      </PI.29>
+      <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <P>lib\gfx.h</P>
-      </PI.24>
-      <PI.25>
+       <C>20</C>
+       <L>6</L>
+       <P>src\joystick.h</P>
+      </PI.3>
+      <PI.30>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>13</C>
        <L>9</L>
        <P>graphicstest.h</P>
-      </PI.25>
-      <PI.26>
+      </PI.30>
+      <PI.31>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>26</C>
        <L>1408</L>
        <P>C:\PortableApps\Cypress\PDL\2.1.0\cmsis\include\core_cm4.h</P>
        <VL>1405</VL>
-      </PI.26>
-      <PI.27>
+      </PI.31>
+      <PI.32>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>3</C>
        <L>9</L>
        <P>solution\display_s.h</P>
-      </PI.27>
-      <PI.28>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>4</C>
-       <L>6</L>
-       <P>src\button.c</P>
-      </PI.28>
-      <PI.29>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>33</C>
-       <L>11</L>
-       <P>src\blink.c</P>
-      </PI.29>
-      <PI.3>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>17</C>
-       <L>24</L>
-       <P>src\display.h</P>
-       <VL>12</VL>
-      </PI.3>
-      <PI.30>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>25</C>
-       <L>4</L>
-       <P>src\blinkrainbow.h</P>
-      </PI.30>
-      <PI.31>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>3</L>
-       <P>solution\blinkrainbow_s.h</P>
-      </PI.31>
-      <PI.32>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>6</L>
-       <P>solution\button_s.h</P>
       </PI.32>
       <PI.33>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <P>solution\blink_s.h</P>
+       <L>3</L>
+       <P>solution\blinkrainbow_s.h</P>
       </PI.33>
       <PI.34>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <P>solution\blink_s.c</P>
+       <L>6</L>
+       <P>solution\button_s.h</P>
       </PI.34>
       <PI.35>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>6</C>
-       <L>9</L>
-       <P>src\blinkrainbow.c</P>
+       <P>solution\blink_s.h</P>
       </PI.35>
       <PI.36>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <P>solution\blink_s.c</P>
+      </PI.36>
+      <PI.37>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>1</C>
        <L>26</L>
        <P>lib\delay.c</P>
-      </PI.36>
-      <PI.37>
+      </PI.37>
+      <PI.38>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>10</C>
        <L>6</L>
        <P>lib\delay.h</P>
-      </PI.37>
-      <PI.38>
+      </PI.38>
+      <PI.39>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>19</C>
        <L>217</L>
        <P>startup_s6e2cc.s</P>
        <VL>211</VL>
-      </PI.38>
-      <PI.39>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>15</C>
-       <L>11</L>
-       <P>C:\PortableApps\Cypress\PDL\2.1.0\devices\fm4\s6e2ccxj\common\s6e2ccxj.h</P>
       </PI.39>
       <PI.4>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>27</C>
-       <L>18</L>
-       <P>src\button.h</P>
-      </PI.4>
-      <PI.5>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <P>lib\init.h</P>
-      </PI.5>
-      <PI.6>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>13</C>
-       <L>53</L>
-       <P>src\touch.c</P>
-       <VL>29</VL>
-      </PI.6>
-      <PI.7>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>12</C>
-       <P>src\main.c</P>
-      </PI.7>
-      <PI.8>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>20</C>
-       <L>6</L>
-       <P>src\joystick.h</P>
-      </PI.8>
-      <PI.9>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>20</C>
        <L>7</L>
        <P>src\joystick.c</P>
+       <VL>27</VL>
+      </PI.4>
+      <PI.40>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>15</C>
+       <L>11</L>
+       <P>C:\PortableApps\Cypress\PDL\2.1.0\devices\fm4\s6e2ccxj\common\s6e2ccxj.h</P>
+      </PI.40>
+      <PI.5>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>13</L>
+       <P>src\display.h</P>
+       <VL>45</VL>
+      </PI.5>
+      <PI.6>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>4</L>
+       <P>src\display.c</P>
+      </PI.6>
+      <PI.7>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>27</C>
+       <L>18</L>
+       <P>src\button.h</P>
+      </PI.7>
+      <PI.8>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>4</C>
+       <L>6</L>
+       <P>src\button.c</P>
+      </PI.8>
+      <PI.9>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>8</C>
+       <L>1</L>
+       <P>src\blinkrainbow.h</P>
       </PI.9>
      </REG_ROOT>
     </EditorOptions>
@@ -745,131 +756,123 @@
      <Documents.0>
       <ActiveDocument>
        <Maximized>True</Maximized>
-       <RelativeFileName>lib\analog.c</RelativeFileName>
+       <RelativeFileName>src\touch.h</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
-       <FileBarIndex>7</FileBarIndex>
-       <RectPosBottom>455</RectPosBottom>
-       <RectPosLeft>26</RectPosLeft>
-       <RectPosRight>1229</RectPosRight>
-       <RectPosTop>26</RectPosTop>
-       <RelativeFileName>lib\analog.c</RelativeFileName>
+       <FileBarIndex>11</FileBarIndex>
+       <RectPosBottom>462</RectPosBottom>
+       <RectPosLeft>130</RectPosLeft>
+       <RectPosRight>1102</RectPosRight>
+       <RectPosTop>130</RectPosTop>
+       <RelativeFileName>src\blink.c</RelativeFileName>
       </Editor.0>
       <Editor.1>
-       <FileBarIndex>9</FileBarIndex>
-       <RectPosBottom>481</RectPosBottom>
-       <RectPosLeft>52</RectPosLeft>
-       <RectPosRight>1255</RectPosRight>
-       <RectPosTop>52</RectPosTop>
-       <RelativeFileName>lib\analog.h</RelativeFileName>
+       <FileBarIndex>12</FileBarIndex>
+       <RectPosBottom>436</RectPosBottom>
+       <RectPosLeft>104</RectPosLeft>
+       <RectPosRight>1076</RectPosRight>
+       <RectPosTop>104</RectPosTop>
+       <RelativeFileName>src\blink.h</RelativeFileName>
       </Editor.1>
       <Editor.10>
-       <FileBarIndex>11</FileBarIndex>
-       <RectPosBottom>429</RectPosBottom>
+       <FileBarIndex>2</FileBarIndex>
+       <RectPosBottom>332</RectPosBottom>
        <RectPosLeft>0</RectPosLeft>
-       <RectPosRight>1203</RectPosRight>
+       <RectPosRight>972</RectPosRight>
        <RectPosTop>0</RectPosTop>
-       <RelativeFileName>src\joystick.c</RelativeFileName>
+       <RelativeFileName>src\main.c</RelativeFileName>
       </Editor.10>
       <Editor.11>
-       <FileBarIndex>12</FileBarIndex>
-       <RectPosBottom>611</RectPosBottom>
-       <RectPosLeft>182</RectPosLeft>
-       <RectPosRight>1385</RectPosRight>
-       <RectPosTop>182</RectPosTop>
-       <RelativeFileName>src\joystick.h</RelativeFileName>
+       <FileBarIndex>1</FileBarIndex>
+       <RectPosBottom>358</RectPosBottom>
+       <RectPosLeft>26</RectPosLeft>
+       <RectPosRight>998</RectPosRight>
+       <RectPosTop>26</RectPosTop>
+       <RelativeFileName>src\touch.c</RelativeFileName>
       </Editor.11>
       <Editor.12>
-       <FileBarIndex>13</FileBarIndex>
-       <RectPosBottom>585</RectPosBottom>
-       <RectPosLeft>156</RectPosLeft>
-       <RectPosRight>1359</RectPosRight>
-       <RectPosTop>156</RectPosTop>
-       <RelativeFileName>src\main.c</RelativeFileName>
+       <FileBarIndex>0</FileBarIndex>
+       <RectPosBottom>384</RectPosBottom>
+       <RectPosLeft>52</RectPosLeft>
+       <RectPosRight>1024</RectPosRight>
+       <RectPosTop>52</RectPosTop>
+       <RelativeFileName>src\touch.h</RelativeFileName>
       </Editor.12>
-      <Editor.13>
-       <FileBarIndex>6</FileBarIndex>
-       <RectPosBottom>533</RectPosBottom>
-       <RectPosLeft>104</RectPosLeft>
-       <RectPosRight>1307</RectPosRight>
-       <RectPosTop>104</RectPosTop>
-       <RelativeFileName>src\touch.c</RelativeFileName>
-      </Editor.13>
       <Editor.2>
-       <FileBarIndex>5</FileBarIndex>
-       <RectPosBottom>637</RectPosBottom>
-       <RectPosLeft>208</RectPosLeft>
-       <RectPosRight>1411</RectPosRight>
-       <RectPosTop>208</RectPosTop>
-       <RelativeFileName>lib\init.h</RelativeFileName>
+       <FileBarIndex>10</FileBarIndex>
+       <RectPosBottom>488</RectPosBottom>
+       <RectPosLeft>156</RectPosLeft>
+       <RectPosRight>1128</RectPosRight>
+       <RectPosTop>156</RectPosTop>
+       <RelativeFileName>src\blinkrainbow.c</RelativeFileName>
       </Editor.2>
       <Editor.3>
-       <FileBarIndex>1</FileBarIndex>
-       <RectPosBottom>507</RectPosBottom>
-       <RectPosLeft>78</RectPosLeft>
-       <RectPosRight>1281</RectPosRight>
-       <RectPosTop>78</RectPosTop>
-       <RelativeFileName>solution\blinkrainbow_s.c</RelativeFileName>
+       <FileBarIndex>9</FileBarIndex>
+       <RectPosBottom>332</RectPosBottom>
+       <RectPosLeft>0</RectPosLeft>
+       <RectPosRight>972</RectPosRight>
+       <RectPosTop>0</RectPosTop>
+       <RelativeFileName>src\blinkrainbow.h</RelativeFileName>
       </Editor.3>
       <Editor.4>
-       <FileBarIndex>0</FileBarIndex>
-       <RectPosBottom>533</RectPosBottom>
-       <RectPosLeft>104</RectPosLeft>
-       <RectPosRight>1307</RectPosRight>
-       <RectPosTop>104</RectPosTop>
-       <RelativeFileName>solution\button_s.c</RelativeFileName>
+       <FileBarIndex>8</FileBarIndex>
+       <RectPosBottom>358</RectPosBottom>
+       <RectPosLeft>26</RectPosLeft>
+       <RectPosRight>998</RectPosRight>
+       <RectPosTop>26</RectPosTop>
+       <RelativeFileName>src\button.c</RelativeFileName>
       </Editor.4>
       <Editor.5>
-       <FileBarIndex>2</FileBarIndex>
-       <RectPosBottom>481</RectPosBottom>
+       <FileBarIndex>7</FileBarIndex>
+       <RectPosBottom>384</RectPosBottom>
        <RectPosLeft>52</RectPosLeft>
-       <RectPosRight>1255</RectPosRight>
+       <RectPosRight>1024</RectPosRight>
        <RectPosTop>52</RectPosTop>
-       <RelativeFileName>solution\display_s.c</RelativeFileName>
+       <RelativeFileName>src\button.h</RelativeFileName>
       </Editor.5>
       <Editor.6>
-       <FileBarIndex>10</FileBarIndex>
-       <RectPosBottom>637</RectPosBottom>
-       <RectPosLeft>208</RectPosLeft>
-       <RectPosRight>1411</RectPosRight>
-       <RectPosTop>208</RectPosTop>
-       <RelativeFileName>solution\joystick_s.c</RelativeFileName>
+       <FileBarIndex>6</FileBarIndex>
+       <RectPosBottom>410</RectPosBottom>
+       <RectPosLeft>78</RectPosLeft>
+       <RectPosRight>1050</RectPosRight>
+       <RectPosTop>78</RectPosTop>
+       <RelativeFileName>src\display.c</RelativeFileName>
       </Editor.6>
       <Editor.7>
-       <FileBarIndex>8</FileBarIndex>
-       <RectPosBottom>507</RectPosBottom>
-       <RectPosLeft>78</RectPosLeft>
-       <RectPosRight>1281</RectPosRight>
-       <RectPosTop>78</RectPosTop>
-       <RelativeFileName>solution\touch_s.c</RelativeFileName>
+       <FileBarIndex>5</FileBarIndex>
+       <RectPosBottom>436</RectPosBottom>
+       <RectPosLeft>104</RectPosLeft>
+       <RectPosRight>1076</RectPosRight>
+       <RectPosTop>104</RectPosTop>
+       <RelativeFileName>src\display.h</RelativeFileName>
       </Editor.7>
       <Editor.8>
        <FileBarIndex>4</FileBarIndex>
-       <RectPosBottom>429</RectPosBottom>
-       <RectPosLeft>0</RectPosLeft>
-       <RectPosRight>1203</RectPosRight>
-       <RectPosTop>0</RectPosTop>
-       <RelativeFileName>src\button.h</RelativeFileName>
+       <RectPosBottom>462</RectPosBottom>
+       <RectPosLeft>130</RectPosLeft>
+       <RectPosRight>1102</RectPosRight>
+       <RectPosTop>130</RectPosTop>
+       <RelativeFileName>src\joystick.c</RelativeFileName>
       </Editor.8>
       <Editor.9>
        <FileBarIndex>3</FileBarIndex>
-       <RectPosBottom>455</RectPosBottom>
-       <RectPosLeft>26</RectPosLeft>
-       <RectPosRight>1229</RectPosRight>
-       <RectPosTop>26</RectPosTop>
-       <RelativeFileName>src\display.h</RelativeFileName>
+       <RectPosBottom>488</RectPosBottom>
+       <RectPosLeft>156</RectPosLeft>
+       <RectPosRight>1128</RectPosRight>
+       <RectPosTop>156</RectPosTop>
+       <RelativeFileName>src\joystick.h</RelativeFileName>
       </Editor.9>
       <EditorHistoryFile.0>
-       <RelativeFileName>solution\touch_s.h</RelativeFileName>
+       <RelativeFileName>src\main.c</RelativeFileName>
       </EditorHistoryFile.0>
       <EditorHistoryFile.1>
-       <RelativeFileName>solution\display_s.c</RelativeFileName>
+       <RelativeFileName>lib\gfx.h</RelativeFileName>
       </EditorHistoryFile.1>
       <EditorHistoryFile.2>
-       <RelativeFileName>src\display.c</RelativeFileName>
+       <RelativeFileName>lib\gfx.c</RelativeFileName>
       </EditorHistoryFile.2>
       <EditorHistoryFile.3>
-       <RelativeFileName>src\main.c</RelativeFileName>
+       <RelativeFileName>solution\joystick_s.c</RelativeFileName>
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
@@ -1407,14 +1410,14 @@
      <GlobalData>
       <FindInFiles>
        <CaseSensitive>0</CaseSensitive>
-       <FindWhat.0>_H_</FindWhat.0>
-       <FindWhat.1>analog11</FindWhat.1>
-       <FindWhat.2>_s_s</FindWhat.2>
-       <FindWhat.3>setCurosr_s</FindWhat.3>
-       <FindWhat.4>setCursor</FindWhat.4>
-       <FindWhat.5>setTextColor</FindWhat.5>
-       <FindWhat.6>writeTextln</FindWhat.6>
-       <FindWhat.7>setBlueLED</FindWhat.7>
+       <FindWhat.0>PENRADIUS</FindWhat.0>
+       <FindWhat.1>TOUCHXMIN</FindWhat.1>
+       <FindWhat.2>_H_</FindWhat.2>
+       <FindWhat.3>analog11</FindWhat.3>
+       <FindWhat.4>_s_s</FindWhat.4>
+       <FindWhat.5>setCurosr_s</FindWhat.5>
+       <FindWhat.6>setCursor</FindWhat.6>
+       <FindWhat.7>setTextColor</FindWhat.7>
        <Folder.0></Folder.0>
        <Folder.1></Folder.1>
        <Folder.2></Folder.2>
@@ -1648,7 +1651,7 @@
        </Items.0>
       </OSWindow>
       <ProjectWindow>
-       <Selected>joystick_s.c</Selected>
+       <Selected>touch.h</Selected>
        <Items.0>
         <__>
          <Name>Files</Name>
@@ -1659,7 +1662,7 @@
            <Options>1</Options>
            <Items.0>
             <__>
-             <Name>pdl.c</Name>
+             <Name>system_s6e2cc.h</Name>
              <Options>4</Options>
             </__>
            </Items.0>

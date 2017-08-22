@@ -15,7 +15,6 @@ int BlinkMain() {
 	const uint32_t sleepTime = 1000000;
 	// Main loop
 	while (1) {
-		
 		// Clear 8th bit -> Switch LED on
     *blueLedValuePort &= 0xFEFF; 
     microDelay(sleepTime); 
