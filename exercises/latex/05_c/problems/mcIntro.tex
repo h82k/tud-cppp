@@ -74,7 +74,7 @@ Diese ist in der Datei \filename{blink.h} deklariert und in \filename{blink.c} d
 \item 
 Du findest den folgenden Quelltext (\Cref{lst:Blink}) vor:
 \cpppInputListing[frame=tb,caption={\filename{blink.c}},label={lst:Blink},numbers=left]{./05_c/listings/blink.c}
-%
+
 \begin{itemize}
 \item 
 Zu Beginn werden zwei Pointer auf das \emph{Data Direction Register (DDR)} und das \emph{Port Data Output Register (PDOR)} angelegt, die einen einfachen Zugriff auf die Datenübertragungsrichtung und die Pin-Belegung der blauen LED ermöglichen.
@@ -89,7 +89,7 @@ Wir zählen Pins immer von 0, \dasheisst es gibt 8 Pins vor dem 8.\;Pin und der 
 
 \item 
 Um das Projekt jetzt zu \textbf{compilieren} und zu \textbf{linken}, wähle im Menü \menuPath{Project} den Befehl \menuPath{Make} (oder drücke \shortcut{F7}).
-Dieser Befehl wird -- seinem Namen entsprechend -- nur diejenigen Teile neu-compilieren, die sich seit dem letzten Aufruf verändert haben.
+Dieser Befehl wird -- seinem Namen entsprechend -- nur diejenigen Teile neu kompilieren, die sich seit dem letzten Aufruf verändert haben.
 Mit dem Befehl \menuPath{Project \menuSep Rebuild} wird das Projekt von Grund auf neu gebaut.
 Der Vorgang sollte im \emph{Output}-Fenster\footnote{Kann über \menuPath{View \menuSep Output} oder \shortcut{Alt+2} geöffnet werden.} mit \texttt{0 Error(s)  0 Warning(s)} enden.
 
@@ -116,7 +116,6 @@ Ganz in der Nähe befindet sich auch der \textbf{User Button}, den wir im Folgen
 
 \subsection{LED bunt blinken lassen}
 Als erste eigenständige Aufgabe erweiterst du die Funktion \lstinline|BlinkMain| so, dass abwechselnd alle drei möglichen LEDs angesteuert werden.
-%
 Führe dazu die folgenden Schritte aus:
 \begin{enumerate}
 \item 

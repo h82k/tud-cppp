@@ -11,7 +11,6 @@ Im zweiten Szenario soll die blaue LED solange leuchten, wie der Taster gedrück
 In dieser Aufgabe wirst du mit den Dateien \filename{button.c} und \filename{button.h} arbeiten.
 
 \item 
-Um den Zustand der aktuellen LED zu speichern
 Zunächst werden wir die nötigen Variablen in \textbf{button.c} deklarieren:
 Um die blaue LED ansteuern zu können, benötigst du einen Zeiger auf das Daten-Register der blauen LED (\textbf{\lstinline|blueLEDValuePort|}).
 Weiterhin soll für den Lichtschalter der aktuelle Zustand der LED in einer vorzeichenlosen 8-Bit-Integer-Variablen \textbf{\lstinline|ledStatus|} gespeichert werden.
@@ -25,7 +24,7 @@ Der LED-Status soll zu Beginn 0 (= \enquote{aus}) sein.
 \item 
 Das Daten-Register der blauen LED soll entsprechend initialisiert sein, dass die LED angeschaltet ist.
 \item 
-und Pin F5 soll durch die PDL-Methode \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|} initialiseren werden.
+Pin F5 soll durch die PDL-Methode \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|} initialiseren werden.
 Diese Funktion ist eine weitere Möglichkeit Pins des Mikrocontroller zu initialiseren. 
 \textbf{\lstinline|Gpio1pin_InitIn|} intialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken.
 Der Name des Pins wird mit \textbf{\lstinline|GPIO1PIN_PF5|} angegeben.
@@ -34,7 +33,7 @@ Der Pull-Up-Widerstand wird mit der Option \textbf{\lstinline|Gpio1pin_InitPullu
 
 \item
 Implementiere nun die Funktion \textbf{\lstinline|toggleBlueLED()|}.
-Diese den Status von \lstinline|ledStatus| umkehren:
+Diese soll den Status von \lstinline|ledStatus| umkehren:
 War der Wert zuvor \lstinline|1|, soll er danach \lstinline|0| sein und umgekehrt.
 Der aktuelle Status der LED kann mit \textbf{\lstinline|setBlueLED(uint8_t status)|} gesetzt werden. 
 
@@ -46,7 +45,7 @@ Beachte, dass der Taster durch den Pull-Up-Widerstand genau dann gedrückt ist, 
 
 \item
 Implementiere nun mithilfe der zuvor erstellten Hilfsfunktionen die Hauptfunktionen \textbf{ButtonToggleBlueLED()} und \textbf{ButtonHoldBlueLEDOn()}.
-\textbf{ButtonToggleBlueLED()} soll dem Button die Funktion eines Lichtschalters geben und  \textbf{ButtonHoldBlueLEDOn()} soll die LED zum Leuchten bringen, solange der Taster gedrückt gehalten wird. 
+Die erste soll dem Button die Funktion eines Lichtschalters geben und die zweite soll die LED zum Leuchten bringen, solange der Taster gedrückt gehalten wird. 
 
 \end{enumerate}
 \hints{	
