@@ -45,3 +45,6 @@ tools/vm
 solutions/**/**/latex
 solutions/**/**/html
 Doxyfile
+
+# MAC files
+/**/.DS_Store

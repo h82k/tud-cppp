@@ -1,3 +1,121 @@
 \section{\ExercisePrefixEmbeddedC Joysticks abfragen \optional}
+In diesem Abschnitt nutzen wir die Funktionen der vorigen Aufgabe, um die analogen Werte der Joysticks auszugeben. Darauf aufbauend entwickelst du eine Aufgabe, die mithilfe des Joysticks die Farbe der RGB-LED verändert.
+Die zu implementierenden Funktionen befinden sich in der Datei \filename{joystick.c}.
+Solltest du die vorherige Aufgabe nicht (vollständig) bearbeitet haben, kannst du auf die Musterlösung in der Datei \filename{display\_s.c} zurückgreifen.
+Um diese statt deiner eigenen Lösung zu nutzen, hängst du an jeden Funktionsnamen das Suffix \filename{\_s} an (\bspw \lstinline|writeChar_s| statt \lstinline|writeChar|).
 
-\RKi{Ziel: (i) Joystick-Daten auslesen und (ii) auf dem Display ausgeben. Die Studenten können entweder ihr eigene writeText-Funktion nutzen oder auf die Musterlösung der vorirgen Aufgabe zugreifen.}
+\subsection{Analoge Werte auf dem Display anzeigen}
+
+Jeder Joystick besitzt zwei analoge Leitungen, welche die X- oder Y-Position des Steuerknüppels auslesen.
+Die analogen Werte entsprechend dabei der Spannung des jeweils Drehpotentiometers, welche zwischen \SI{0}{\volt} und \SI{5}{\volt} liegt.
+Die Spannungswerte der Joysticks werden durch den Analog-Digital-Wandler des Microcontrollers auf einen 8-Bit-Wert abgebildet (Wertebereich: 0 bis 255).
+Die Aufteilung der Wertebereiche sowie die Orientierung der X- und Y-Richtung sind in \Cref{fig:jostickValues} dargestellt.
+%
+\begin{figure}
+    \begin{centering}
+        \includegraphics[width=.4\textwidth]{./05_c/figures/joystickValues.png}
+        \caption{Wertebereich der Joysticks}
+        \label{fig:jostickValues}
+    \end{centering}
+\end{figure}
+%
+Die Aufteilung ist nicht gleichmäßig.
+Stattdessen ergibt sich in Neutralstellung der Wert $(190,190)$.
+Joystick 1 ist mit den analogen Anschlüssen AN16 (X) und AN19 (Y) und Joystick 2 ist mit AN13 (X) und AN23 (Y) verbunden. 
+
+\begin{enumerate}
+\item
+Implementiere die Funktion \lstinline|printValues|, welche über Zeiger auf die anlogen Leitungen AN13, AN16, AN19 und AN23 die Werte der Joysticks ausliest und diese auf dem Bildschirm ausgibt.  
+Nutze dazu die Funktionen in \Cref{tab:joystickInfo} und folgendes Codefragment, mithilfe dessen man die Analog-Kanäle ausliest:
+\begin{lstlisting}
+// #include "analog.h"
+uint8_t analog11;
+uint8_t analog12;
+uint8_t analog13;
+uint8_t analog16;
+uint8_t analog19;
+uint8_t analog23;
+uint8_t analog17;
+getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
+\end{lstlisting}
+%
+\begin{table}[]
+    \centering
+    \caption{Wichtige Funktionen und Variablen für die Verwendung der Joysticks}
+    \label{tab:joystickInfo}
+    \begin{tabular}{p{7cm}p{7cm}}
+        \toprule
+        \textbf{Funktionen/Variablen} & \textbf{Beschreibung} \\
+        \midrule
+        \lstinline|void setCursor(480,320)| & Setzt den Cursor auf den Anfang \\
+        \lstinline|void writeTextln(char *text)| & Schreibt \lstinline|text| auf das Display und verschiebt den Cursor mit Zeilensprung \\
+        \lstinline|void writeText(char *text)| & Schreibt \lstinline|text| auf das Display und verschiebt den Cursor ohne Zeilensprung \\
+        \lstinline|void write3Digits8Bit(uint8_t *number)| & Schreibt die per Pointer referenzierte Zahl \lstinline|number| an die Position des Cursors und verschiebt den Cursor\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\item 
+Um fortlaufend, die Positionsdaten des Joysticks auszugeben, rufe \lstinline|printValues| in einer Schleife auf:
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[]
+#include "init.h"
+
+int main(){
+  initBoard();
+  while(1) {
+    printValues();
+    delay(1000);
+  }
+}
+\end{lstlisting}\end{minipage} 
+\end{enumerate}
+
+
+
+
+
+\subsection{LED mit Joystick 1 kontrollieren}
+In dieser Aufgabe soll die Funktion \lstinline|controlLEDs| geschrieben werden, um die Farbe der RGB-LED durch die Bewegung des Joystick 1 nach links oder rechts zu verändern.
+\Cref{tab:controlLED} zeigt die verschiedenen möglichen Wertebereiche mit den anzusteuernden LEDs.
+%
+\begin{table}[]
+    \centering
+    \caption{Anzeigebereiche der LEDs}
+    \label{tab:controlLED}
+    \begin{tabular}{llllr}
+        \toprule
+        \textbf{Position des Joystick} & \textbf{LED-Farbe} & \textbf{Werebereich AN19} & \textbf{Ausgabe-Pin} & \textbf{Ausgabe-Analog-Kanal}\\
+        \midrule
+        Links & Grün & 255 \dots 200 & B2 & 8\\
+        Mitte & Blau & 200 \dots 180 & 18 & 18\\
+        Rechts & Rot & 180 \dots 0 & 1A & 10\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+%
+\begin{enumerate}
+\item
+Implementiere zunächst die Hilfsfunktion \lstinline|controlLEDsInit|, welche die Leitungen der RGB-LEDs initialsiert. Die analogen Kanäle der LEDs sollen ausgeschaltet werden.
+Definiere die Pins der LEDs als Ausgänge und initialisiere sie mit \lstinline|1u| (= \enquote{aus}). 
+
+\item
+Implementiere nun die Funktion \lstinline|controlLEDs|, welche die Position der X-Achse des Joystick über den analogen Kanal AN19 ausliest und die Farbe der RGB-LED gemäß Tabelle \ref{tab:controlLED} verändert. 
+
+\item 
+Dein Testcode sollte in etwas wie folgt aussehen:
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[]
+#include "init.h"
+
+int main(){
+  initBoard();
+  controlLedsInit();
+  while(1) {
+    controlLeds();
+    delay(1000);
+  }
+}
+\end{lstlisting}\end{minipage} 
+\end{enumerate}

@@ -33,6 +33,8 @@
 \usepackage{verbatim}
 \usepackage{tocloft} % for manipulating the table of contents
 \usepackage{graphics}
+\usepackage{csquotes} % for \enquote{}
+\usepackage{siunitx}
 
 \usetikzlibrary{shapes}
 \usetikzlibrary{calc}
@@ -117,12 +119,11 @@
 	\end{center}
 }
 
-\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
 \newcommand{\filename}[1]{\texttt{#1}\xspace}
 \newcommand{\bspw}{bspw.\xspace}
-\newcommand{\dasheisst}{d.\;h.\xspace}
-\newcommand{\zB}{z.\;B.\xspace}
-\newcommand{\unteranderem}{u.\;a.\xspace}
+\newcommand{\dasheisst}{d.\,h.\xspace}
+\newcommand{\zB}{z.\,B.\xspace}
+\newcommand{\unteranderem}{u.\,a.\xspace}
 
 \newcommand{\winIdeaGroupName}[1]{\textsf{#1}\xspace}
 \newcommand{\menuPath}[1]{\emph{#1}\xspace}
@@ -169,6 +170,8 @@
 % The first paramer is optional and arguments from lstinputlisting can be provided here.
 % The second parameter is the path to the listing.
 \newcommand{\cpppInputNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \lstinputlisting[#1]{#2} \end{minipage} }
+% Variant for inline-inserting code
+\newcommand{\cpppNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \begin{lstlisting}[#1]#2\end{lstlisting}\end{minipage} }
 
 % The cpppInputListing command allows a listing to continue on the next page.
 % The first paramer is optional and arguments from lstinputlisting can be provided here.
