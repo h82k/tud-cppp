@@ -1,11 +1,12 @@
 # pragma once
 
 #include <string>
+#include <cstddef>
 
 class Building {
 public:
-	Building(unsigned int numFloors);
+	Building(size_t numFloors);
 	const std::string toString() const;
 private:
-	unsigned int numFloors;
+	size_t numFloors;
 };

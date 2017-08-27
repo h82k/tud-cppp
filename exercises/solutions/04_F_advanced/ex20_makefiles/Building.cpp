@@ -1,7 +1,7 @@
 #include "Building.hpp"
 #include <sstream>
 
-Building::Building(unsigned int numFloors):
+Building::Building(size_t numFloors):
 	numFloors(numFloors)
 {}
 

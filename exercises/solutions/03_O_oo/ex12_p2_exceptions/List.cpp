@@ -37,8 +37,9 @@ void List::prependElement(const int &i) {
 	}
 }
 
-void List::insertElementAt(const int &i, int pos) {
-	if (pos < 0 || pos > getSize()) {
+void List::insertElementAt(const int &i, size_t pos) {
+	if (pos > getSize()) {
+		//Will also be true for negative values of pos, because of the wrap-around.
 		throw std::out_of_range("List::insertElementAt() out of range");
 	} else if (pos == 0) {
 		prependElement(i);
@@ -56,12 +57,12 @@ void List::insertElementAt(const int &i, int pos) {
 	}
 }
 
-int List::getSize() const {
+size_t List::getSize() const {
 	return currentSize;
 }
 
-int &List::getNthElement(int n) {
-	if (n < 0 || n >= getSize()) {
+int &List::getNthElement(size_t n) {
+	if (n >= getSize()) {
 		throw std::out_of_range("List::getNthElement() out of range");
 	}
 	ListItem* p = first;
@@ -108,8 +109,8 @@ void List::deleteLast() {
 
 /** delete element at given position. delete first/last if pos outside of range */
 
-void List::deleteAt(int pos) {
-	if (pos < 0 || pos >= getSize()) {
+void List::deleteAt(size_t pos) {
+	if (pos >= getSize()) {
 		throw std::out_of_range("List::deleteAt() out of range");
 	} else if (pos == 0) {
 		return deleteFirst();

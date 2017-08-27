@@ -80,5 +80,6 @@ void print_advanced() {
 
 int main() {
     print_easy();
-	fun::printCharFigure();
+    fun::task2_6_input();
+    fun::printCharFigure();
 }

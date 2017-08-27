@@ -8,7 +8,7 @@ void fun::printSpaces(int n) {
     }
 }
 
-void fun::printStars(int n, Direction d) {
+void fun::printStars(int n) {
     //Print required number of stars
     while (n-- > 0) {
 	    std::cout << '*';
@@ -23,14 +23,14 @@ void fun::printFigure(int width, Direction d) {
         if(d == right) {
             printSpaces(width-i);
         }
-		printStars(i, d);
+		printStars(i);
 	}
     //Print the lower part of the figure
 	for (int i = 1; i <= width; ++i) {
         if(d == right) {
             printSpaces(width-i);
         }
-		printStars(i, d);
+		printStars(i);
 	}
 }
 

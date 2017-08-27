@@ -52,7 +52,7 @@ public:
      */
 	void prependElement(int i);	// prepend an element to the beginning of the list
     /**
-     * @name insertElementAt(int i, int pos);
+     * @name insertElementAt(int i, size_t pos);
      * @brief insert an element at a specific position in the list
      * @author cppp
      * @param i the integer which will be inserted
@@ -66,7 +66,7 @@ public:
      */
 	size_t getSize() const;		// get the number of elements in list
     /**
-     * @name getNthElement(int n);
+     * @name getNthElement(size_t n);
      * @brief get the content of the n-th list item
      * @author cppp
      * @param n the position of the n-th item
@@ -102,7 +102,7 @@ public:
      */
 	int deleteLast();			// delete last element and return it (return 0 if empty)
     /**
-     * @name deleteAt(int pos);
+     * @name deleteAt(size_t pos);
      * @brief deleting the n-th element out of the list
      * @author cppp
      * @param pos the position at which the listitem will be deleted
