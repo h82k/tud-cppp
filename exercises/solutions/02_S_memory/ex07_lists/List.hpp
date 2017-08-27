@@ -1,6 +1,7 @@
 #ifndef LIST_HPP_
 #define LIST_HPP_
 
+#include <cstddef>
 #include "ListIterator.hpp"
 /**
  * @name ListItem;
@@ -57,13 +58,13 @@ public:
      * @param i the integer which will be inserted
      * @param pos the position
      */
-	void insertElementAt(int i, int pos);	// insert an element i at position pos
+	void insertElementAt(int i, size_t pos);	// insert an element i at position pos
     /**
      * @name getSize() const;
      * @brief get the current size of the list
      * @author cppp
      */
-	int getSize() const;		// get the number of elements in list
+	size_t getSize() const;		// get the number of elements in list
     /**
      * @name getNthElement(int n);
      * @brief get the content of the n-th list item
@@ -71,7 +72,7 @@ public:
      * @param n the position of the n-th item
      * @return the content of the n-th listitem as int reference
      */
-	int& getNthElement(int n);	// get content of the n-th element.
+	int& getNthElement(size_t n);	// get content of the n-th element.
     /**
      * @name getFirst();
      * @brief get the content of the first list item
@@ -107,7 +108,7 @@ public:
      * @param pos the position at which the listitem will be deleted
      * @return the content of the deleted element
      */
-	int deleteAt(int pos);		// delete element at position pos
+	int deleteAt(size_t pos);		// delete element at position pos
     /**
      * @name begin();
      * @brief returns a list iteration pointing to the first listitem
@@ -124,7 +125,7 @@ public:
 	ListIterator end();			// return an iterator pointing to the element after the last one
 private:
 	ListItem *first, *last;		// first and last item pointers (NULL if list is empty)
-	int currentSize;			// current size of the list
+	size_t currentSize;			// current size of the list
 	friend class ListIterator;
 };
 

@@ -39,8 +39,8 @@ void List::prependElement(int i) {
 	++currentSize;
 }
 
-void List::insertElementAt(int i, int pos) {
-	if (pos <= 0) {
+void List::insertElementAt(int i, size_t pos) {
+	if (pos == 0) {
 		prependElement(i);
 	}
 	else if (pos >= getSize()) {
@@ -57,12 +57,12 @@ void List::insertElementAt(int i, int pos) {
 	}
 }
 
-int List::getSize() const {
+size_t List::getSize() const {
 	return currentSize;
 }
 
-int& List::getNthElement(int n) {
-	int index = n;
+int& List::getNthElement(size_t n) {
+	size_t index = n;
 	ListItem* p = first;
 	// iterate over elements
 	while (index-- > 0) {
@@ -109,15 +109,15 @@ int List::deleteLast() {
 	return 0;
 }
 
-int List::deleteAt(int pos) {
-	if (pos <= 0) {
+int List::deleteAt(size_t pos) {
+	if (pos == 0) {
 		return deleteFirst();
 	}
 	else if (pos >= currentSize - 1) {
 		return deleteLast();
 	}
 	else {
-		int index = pos;
+		size_t index = pos;
 		ListItem* p = first;
 		// iterate over elements
 		while (index-- > 0) {

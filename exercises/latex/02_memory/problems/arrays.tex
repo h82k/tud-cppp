@@ -61,9 +61,31 @@ In C und C++ kann man Arrays nicht direkt an Funktionen übergeben.
 Stattdessen übergibt man einen Zeiger auf das erste Element des Arrays. Aufgrund der Äquivalenz von \textbf{*(p+i) } und \textbf{p[i]} kann man in der Funktion den Zeiger syntaktisch wie das Original-Array verwenden.
 
 Schreibe eine Funktion, die einen \lstinline{const}-Zeiger auf das erste Element eines Arrays bekommt und alle Elemente ausgibt.
-Da ein Array, wie bereits erwähnt, ein zusammenhängender Speicherbereich ist, hat die Funktion keine Möglichkeit, anhand des Zeigers herauszufinden, wie groß das Array ist. Denn das Ende des Arrays im Speicher ist unbekannt. Deshalb muss die Größe des Arrays durch einen weiteren Parameter übergeben werden\footnote{Statt \lstinline{unsigned int} wird oft der Standard-Typ \lstinline{size_t} genutzt (z.B. in \lstinline{std::vector}).}:
+Da ein Array, wie bereits erwähnt, ein zusammenhängender Speicherbereich ist, hat die Funktion keine Möglichkeit, anhand des Zeigers herauszufinden, wie groß das Array ist. 
+Denn das Ende des Arrays im Speicher ist unbekannt. 
+Deshalb muss die Größe des Arrays durch einen weiteren Parameter übergeben werden. Dazu solltest du folgenden Typen kennen.
+
+\paragraph{Der Typ \lstinline$size_t$}
+Oft wird für die Größenangabe oder Indexierung eines Arrays der Typ \lstinline{unsigned int} verwendet. 
+Besserer Stil ist es jedoch, für Array-Indexierung oder auch als Laufvariable bei Schleifen den Standard-Typen \lstinline$size_t$\footnote{siehe http://en.cppreference.com/w/cpp/types/size\_t} zu nutzen.
+Er ist per Definition \lstinline$unsigned$, da Größen bzw. Indizes nur positiv sein können.
+Handelt es sich um eine Indexierung von \lstinline{std::vector} oder \lstinline{std::string}, so sollte das entsprechende typedef \lstinline{size_type} genutzt werden
+\footnote{bei Strings nutzt man \lstinline$std::string::size_type$ und bei std::vector entsprechend \lstinline$std::vector<T>::size_type$}.
+Der Grund für die Verwendung dieser Typen anstelle von \lstinline{unsigned int} ist folgender: 
+Es wird damit sichergestellt, dass der Typ der Indexvariablen groß genug ist, um Objekte beliebiger Größe indexieren zu können.
+In diesem Fall würde zwar auch \lstinline{unsigned int} reichen. 
+Was wäre aber, wenn du keinen Einfluss auf die Größe des Arrays hättest, weil es durch einen Aufruf von außen übergeben wird?
+Unter extremen Umständen würde ein \lstinline{unsigned int} evtl. nicht reichen.
+Es ist deshalb sinnvoll, sich die Verwendung dieses Typs anzueignen.
+Außerdem trägt es zur Selbstdokumentation deines Codes bei, da sofort ersichtlich ist, dass ein Index oder eine Größe gemeint ist.
+
+Deine Funktion sollte also folgendermaßen aussehen:
 
 \cpppInputListing{02_memory/problems/listings/arrays_printelems.cpp}
+
+\hints{
+    \item Damit der Typ \lstinline$std::size_t$ genutzt werden kann, benötigst du den Standard-Library-Header \lstinline{#include <cstddef>}.
+}
 
 \subsection{Offset-basierte Ausgabe}
 Wie wir vorher gesehen haben, kann man mit Zeigern auch rechnen und diese nachträglich ändern.

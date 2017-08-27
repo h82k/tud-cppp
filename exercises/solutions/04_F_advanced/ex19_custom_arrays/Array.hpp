@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <memory>
+#include <cstddef>
 
 /**
  * Custom implementation of an array.
