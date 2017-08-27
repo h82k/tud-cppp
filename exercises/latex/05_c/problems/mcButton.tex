@@ -24,9 +24,9 @@ Der LED-Status soll zu Beginn 0 (= \enquote{aus}) sein.
 \item 
 Das Daten-Register der blauen LED soll entsprechend initialisiert sein, dass die LED ausgeschaltet ist.
 \item 
-Pin F5 soll durch die PDL-Methode \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|} initialiseren werden.
-Diese Funktion ist eine weitere Möglichkeit Pins des Mikrocontroller zu initialiseren. 
-\textbf{\lstinline|Gpio1pin_InitIn|} intialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken.
+Pin F5 soll durch die PDL-Methode\footnote{PDL Quick Start Guide: \href{http://www.cypress.com/file/307966/download}} \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|}\footnote{Die Dokumentation befindet sich als HTML im Ordner Cypress/PDL/2.1.0/doc} initialisiert werden.
+Diese Funktion ist eine weitere Möglichkeit, Pins des Mikrocontrollers zu initialiseren. 
+\textbf{\lstinline|Gpio1pin_InitIn|} initialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken.
 Der Name des Pins wird mit \textbf{\lstinline|GPIO1PIN_PF5|} angegeben.
 Der Pull-Up-Widerstand wird mit der Option \textbf{\lstinline|Gpio1pin_InitPullup(1u)|} aktiviert.
 \end{itemize}
@@ -39,7 +39,7 @@ Der aktuelle Status der LED kann mit \textbf{\lstinline|setBlueLED(uint8_t statu
 
 \item 
 Implementiere nun die Funktion \textbf{\lstinline|isButtonPressed|}, die zurückgibt, ob der Taster gerade gedrückt ist.
-Dazu kannst du die PDL-Funktion\footnote{PDL Quick Start Guide: \href{http://www.cypress.com/file/307966/download}} \lstinline|Gpio1pin_Get(pin)| nutzen\footnote{Die Dokumentation befindet sich als HTML im Ordner Cypress/PDL/2.1.0/doc}.
+Dazu kannst du die PDL-Funktion \lstinline|Gpio1pin_Get(pin)| nutzen.
 Diese Funktion liefert den aktuellen Wert (entweder 0 oder 1) des übergebenen Pins zurück (in diesem Fall für Pin \lstinline|GPIO1PIN_PF5|).
 Beachte, dass der Taster durch den Pull-Up-Widerstand genau dann gedrückt ist, wenn am Pin ein niedriger Pegel (\lstinline|0|) anliegt.
 
