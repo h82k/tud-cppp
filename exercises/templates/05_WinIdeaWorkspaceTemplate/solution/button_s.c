@@ -6,8 +6,20 @@
 static volatile uint32_t *blueLedValuePort;
 static uint8_t ledStatus;
 
+static void initLED(){
+  ledStatus = 0u;
+  Gpio1pin_InitIn(GPIO1PIN_PF5, Gpio1pin_InitPullup(1u)); // initialize PF5 as input and activate pullup resistor
+  
+  volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
+  blueLedValuePort = &(FM4_GPIO->PDOR1);
+  
+  bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
+  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
+  *blueLedValuePort |= 0x0100; // Switch LED off
+}
+
 void ButtonToggleBlueLED_s(){
-  initLed();
+  initLED();
   const uint32_t sleepTime = 100000;
    
   while(1){
@@ -15,22 +27,22 @@ void ButtonToggleBlueLED_s(){
       toggleBlueLED();
       while(isButtonPressed());
     }
-    setBlueLed(ledStatus);
+    setBlueLED(ledStatus);
     microDelay(sleepTime);
   }  
 }
                           
 void ButtonHoldBlueLEDOn_s() {
-  initLed();
+  initLED();
   const uint32_t sleepTime = 100000;
   while(1){
     
     while(isButtonPressed()){
-      setBlueLed(1u); 
+      setBlueLED(1u); 
       microDelay(sleepTime);
     }
     
-    setBlueLed(0u);
+    setBlueLED(0u);
     microDelay(sleepTime);
     
   }
@@ -41,18 +53,6 @@ static int isButtonPressed() {
   return Gpio1pin_Get(GPIO1PIN_PF5) == 0;                             
 }
 
-static void initLed(){
-  ledStatus = 0u;
-  Gpio1pin_InitIn(GPIO1PIN_PF5, Gpio1pin_InitPullup(1u)); // initialize PF5 as input and activate pullup resistor
-  
-  volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
-  blueLedValuePort = &(FM4_GPIO->PDOR1);
-  
-	bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
-  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
-  *blueLedValuePort |= 0x0100; // Switch LED off
-}
-
 static void toggleBlueLED(){
   if(ledStatus)
     ledStatus = 0u;
@@ -60,7 +60,7 @@ static void toggleBlueLED(){
     ledStatus = 1u;
 }
 
-static void setBlueLed(uint8_t status){
+static void setBlueLED(uint8_t status){
   if(status)
     *blueLedValuePort &= 0xFEFF; 
   else

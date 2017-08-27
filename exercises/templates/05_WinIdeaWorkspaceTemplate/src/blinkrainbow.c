@@ -28,7 +28,7 @@ int BlinkRainbowMain() {
     
     // Set Port 1 Pin 10 -> Switch red LED off
 
-    // Clear Port B Pin 2 -> Switch green LED off
+    // Clear Port B Pin 2 -> Switch green LED on
 
     
     // Delay 
