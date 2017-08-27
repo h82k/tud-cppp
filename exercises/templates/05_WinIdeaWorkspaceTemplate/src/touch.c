@@ -2,7 +2,7 @@
 
 void debugTouch(){
     // get analog values
-    ay
+    
     // set cursor to (480,320)
   
     // Write headline on the display with 1 linebreak before and 4 afterwards

@@ -57,7 +57,7 @@ void printValues_s(){
     getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
     // Read and print all analog values of the system
     
-    setCursor(480,320);       // set cursor of the display
+    setCursor_s(480,320);       // set cursor of the display
     char freeSpace[] = " ";
     char headlineText[] = "      DEBUG";
     writeTextln_s(freeSpace);
