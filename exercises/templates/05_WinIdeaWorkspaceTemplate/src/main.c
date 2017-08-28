@@ -4,7 +4,7 @@
 void main(){
   initBoard();
 
-  // your code here ...
+  // Your code here ...
   BlinkMain();           
 
 }

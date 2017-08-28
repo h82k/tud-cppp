@@ -154,7 +154,7 @@ In diesem Aufgabenteil wirst du einen Cursor implementieren, der es erlaubt, auf
 %
 Zum Anzeigen von Buchstaben auf dem Bildschirm stellen wir dir eine kleine Fontbibliothek im ASCII-5*7-Format zur Verfügung.
 Du findest diese in der Datei \filename{glcdfont.h} (Gruppe \winIdeaGroupName{lib}).
-Die Bibliothek besteht aus einem Array mit 255 Buchstaben, die jeweils als 5 Bytes abgespeichert sind (siehe \Cref{fig:ascii57}).
+Die Bibliothek besteht aus einem Array mit 255 Buchstaben, die jeweils als 5 Bytes abgespeichert sind (siehe Abbildung \ref{fig:ascii57}).
 Das 5*7-Format eignet sich für den 480 * 320 großen Bildschirm, da die Darstellung dieser Schriftart mit einer Fläche von 35 Pixeln je Buchstaben immer noch gut lesbar ist.
 Wenn man von einem Pixel Abstand zwischen den Buchstaben ausgeht, passen auf das Display bis zu 3200 Zeichen.
 
@@ -165,7 +165,7 @@ Um globale Grundeinstellungen für die Schriftart festzulegen, wurden bereits di
 
 \begin{enumerate}
 \item 
-Implementiere die Setter für den Cursor (\lstinline|setCursor(int16_t x, int16_t y)|), die Textfarbe (\lstinline|setTextColors(uint16_t c)|), die Textgröße (\lstinline|setTextSize(uint8_t s)|) sowie die Hintergrundfarbe (\lstinline|setBackgroundColor(int bg)|).
+Implementiere die Setter für den Cursor (\lstinline|setCursor(int16_t x, int16_t y)|), die Textfarbe (\lstinline|setTextColor(uint16_t c)|), die Textgröße (\lstinline|setTextSize(uint8_t s)|) sowie die Hintergrundfarbe (\lstinline|setBackgroundColor(int bg)|).
 
 Zudem sollen in der Funktion \lstinline|initCursor| folgende Grundeinstellungen vorgenommen werden: 
 Der Cursor ist im Koordinatenursprung, die Textfarbe ist Weiß, die Hintergrundfarbe ist Schwarz und die Textgröße ist 2.
@@ -174,8 +174,8 @@ Der Cursor ist im Koordinatenursprung, die Textfarbe ist Weiß, die Hintergrundf
 Die Funktion \lstinline|drawChar(x, y, c, color, bg, size)| soll einen Buchstaben \lstinline|c| in ASCII-Schriftart auf dem Display an der Position \lstinline|x|, \lstinline|y| in der Farbe \lstinline|color| mit der Hintergrundfarbe \lstinline|bg| und in der Größe \lstinline|size| abbilden.
 Zunächst muss überprüft werden, ob die angegebene Position gültig ist.
 Sofern die Werte die Grenzen des Bildschirms überschreiten, soll die Funktion \lstinline|drawChar| beendet werden.
-Als nächster Schritt soll auf die richtige Stelle des Arrays \lstinline|font| zugegriffen werden und die Bits der Hexadezimalwerte als Farbwerte intepretiert werden.
-\Cref{fig:ascii57} zeigt den Aufbau der Daten im Array \lstinline|font| am Beispiel des Buchstabens A.
+Als nächster Schritt soll auf die richtige Stelle des Arrays \lstinline|font| zugegriffen werden und die gesetzten Bits der Hexadezimalwerte als farbiges Pixel interpretiert werden.
+Abbildung \ref{fig:ascii57} zeigt den Aufbau der Daten im Array \lstinline|font| am Beispiel des Buchstabens A.
 Ein beliebiger Buchstabe \lstinline|c| ist in \lstinline|font| an der Position \lstinline|c * 5| gespeichert.
 Für diesen Buchstaben werden 5 Byte/40 Bits durchiteriert.
 Für jedes gesetzte Bit wird an der entsprechenden Stelle ein Pixel (für \lstinline|size == 1|) oder Rechteck (für \lstinline|size > 1|) auf dem Display ausgegeben.

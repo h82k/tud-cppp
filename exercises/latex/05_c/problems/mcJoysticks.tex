@@ -23,6 +23,19 @@ Die Aufteilung ist nicht gleichmäßig.
 Stattdessen ergibt sich in Neutralstellung der Wert $(190,190)$.
 Joystick 1 ist mit den analogen Anschlüssen AN16 (X) und AN19 (Y) und Joystick 2 ist mit AN13 (X) und AN23 (Y) verbunden. 
 
+\begin{enumerate}
+\item
+Implementiere die Funktion \lstinline|printValues|, welche über Zeiger auf die analogen Leitungen AN13, AN16, AN19 und AN23 die Werte der Joysticks ausliest und diese auf dem Bildschirm ausgibt.  
+Nutze dazu die Funktionen in Tabelle \ref{tab:joystickInfo} und folgendes Codefragment, mithilfe dessen man die Analog-Kanäle ausliest:
+
+\cpppInputListing{05_c/listings/readAnalog.c}
+
+\item 
+Um fortlaufend die Positionsdaten des Joysticks auszugeben, rufe \lstinline|printValues| in einer Schleife auf:
+
+\cpppInputNoPageBreakListing{05_c/listings/joystick_example.c}
+\end{enumerate}
+
 \begin{table}[!htb]
     \centering
     \caption{Wichtige Funktionen und Variablen für die Verwendung der Joysticks}
@@ -38,19 +51,6 @@ Joystick 1 ist mit den analogen Anschlüssen AN16 (X) und AN19 (Y) und Joystick 
         \bottomrule
     \end{tabular}
 \end{table}
-
-\begin{enumerate}
-\item
-Implementiere die Funktion \lstinline|printValues|, welche über Zeiger auf die analogen Leitungen AN13, AN16, AN19 und AN23 die Werte der Joysticks ausliest und diese auf dem Bildschirm ausgibt.  
-Nutze dazu die Funktionen in Tabelle \ref{tab:joystickInfo} und folgendes Codefragment, mithilfe dessen man die Analog-Kanäle ausliest:
-
-\cpppInputListing{05_c/listings/readAnalog.c}
-
-\item 
-Um fortlaufend die Positionsdaten des Joysticks auszugeben, rufe \lstinline|printValues| in einer Schleife auf:
-
-\cpppInputNoPageBreakListing{05_c/listings/joystick_example.c}
-\end{enumerate}
 
 
 \subsection{LED mit Joystick 1 kontrollieren}
@@ -78,7 +78,7 @@ Implementiere zunächst die Hilfsfunktion \lstinline|controlLEDsInit|, welche di
 Definiere die Pins der LEDs als Ausgänge und initialisiere sie mit \lstinline|1u| (= \enquote{aus}). 
 
 \item
-Implementiere nun die Funktion \lstinline|controlLEDs|, welche die Position der X-Achse des Joystick über den analogen Kanal AN19 ausliest und die Farbe der RGB-LED gemäß Tabelle \ref{tab:controlLED} verändert. 
+Implementiere nun die Funktion \lstinline|controlLEDs|, welche die Position der X-Achse des Joystick über den analogen Kanal AN16 ausliest und die Farbe der RGB-LED gemäß Tabelle \ref{tab:controlLED} verändert. 
 
 \item 
 Dein Testcode sollte in etwa wie folgt aussehen:
