@@ -16,7 +16,7 @@ Um die blaue LED ansteuern zu können, benötigst du einen Zeiger auf das Daten-
 Weiterhin soll für den Lichtschalter der aktuelle Zustand der LED in einer vorzeichenlosen 8-Bit-Integer-Variablen \textbf{\lstinline|ledStatus|} gespeichert werden.
 
 \item
-Implementiere zunächst die Funktion \textbf{\lstinline|initLed()|}.
+Implementiere zunächst die Funktion \textbf{\lstinline|initLED()|}.
 Diese soll \lstinline|ledStatus|, den Pin F5 und die blaue LED initialisieren.
 \begin{itemize}
 \item 
@@ -24,7 +24,7 @@ Der LED-Status soll zu Beginn 0 (= \enquote{aus}) sein.
 \item 
 Das Daten-Register der blauen LED soll entsprechend initialisiert sein, dass die LED ausgeschaltet ist.
 \item 
-Pin F5 soll durch die PDL-Methode\footnote{PDL Quick Start Guide: \href{http://www.cypress.com/file/307966/download}} \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|}\footnote{Die Dokumentation befindet sich als HTML im Ordner Cypress/PDL/2.1.0/doc} initialisiert werden.
+Pin F5 soll durch die PDL-Methode\footnote{PDL Quick Start Guide: \url{http://www.cypress.com/file/307966/download}} \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|}\footnote{Die Dokumentation befindet sich als HTML im Ordner Cypress/PDL/2.1.0/doc} initialisiert werden.
 Diese Funktion ist eine weitere Möglichkeit, Pins des Mikrocontrollers zu initialiseren. 
 \textbf{\lstinline|Gpio1pin_InitIn|} initialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken.
 Der Name des Pins wird mit \textbf{\lstinline|GPIO1PIN_PF5|} angegeben.
