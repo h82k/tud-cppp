@@ -84,11 +84,3 @@ Die Geschwindigkeit der Welle kannst du zusätzlich abhängig machen vom ausgeü
        \href{https://goo.gl/iL2L5M}{https://goo.gl/iL2L5M}
     \end{center}
 \end{minipage}
-
-
-\hints{
-	\item Möchte man ein Bild auf dem Board anzeigen, so empfiehlt es sich die einzelnen Pixeldaten in einem Array zu speichern.
-	GIMP bietet hierfür die Möglichkeit eine Bilddatei als Header im \texttt{GIMP header image file format} zu exportieren.
-	Da das Board nur zwei Farbwerte ermöglicht, sollte das Bild vor dem Exportieren über den Menüpunkt \textbf{Bild --> Modus} auf \textbf{indiziert \ldots} (Schwarz/Weiß-Palette (1-Bit)) gestellt werden.
-	Anschließend kann man das \lstinline{header_data} Array verwenden, um auf die Bilddaten zuzugreifen.
-}
