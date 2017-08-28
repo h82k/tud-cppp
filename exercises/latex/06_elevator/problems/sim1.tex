@@ -3,14 +3,14 @@
 \optionaltextbox
 
 In dieser Aufgabe soll ein Grundgerüst für den in der Vorlesung vorgestellten Aufzugsimulator geschaffen werden.
-Bei der Bearbeitung dieser Aufgaben geben wir die keinerlei zeitliche Vorgabe.
+Bei der Bearbeitung dieser Aufgaben geben wir dir keinerlei zeitliche Vorgabe.
 Du kannst diese Aufgaben direkt an dem Tag lösen, an dem ihr die dafür benötigten Konzepte gelernt habt oder auch nach hinten verschieben und als ausführliche Klausurvorbereitung nutzen.
 
 \subsection{Klasse Person}
 Implementiere die Klasse \lstinline{Person}, die eine Person mit einem gewünschten Zielstockwerk darstellt.
 Füge allen Konstruktoren und Destruktoren eine Ausgabe auf die Konsole hinzu, um später den Lebenszyklus der Objekte besser nachvollziehen zu können.
 
-\lstinputlisting{06_elevator/problems/listings/sim1_person.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_person.hpp}
 
 \subsection{Klasse Elevator}
 Implementiere die Klasse \lstinline{Elevator}, die einen Aufzug mit einer beliebigen Anzahl an Personen darstellt.
@@ -18,15 +18,15 @@ Implementiere die Klasse \lstinline{Elevator}, die einen Aufzug mit einer belieb
 Wenn sich der Aufzug bewegt, solltest du die verbrauchte Energie bei einer Bewegung sinnvoll anpassen.
 Addiere beispielsweise den Betrag der Differenz zwischen dem aktuellen und dem Zielstockwerk hinzu.
 
-\lstinputlisting{06_elevator/problems/listings/sim1_elevator.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_elevator.hpp}
 
 Um die Klasse \lstinline{std::vector} aus der Standardbibliothek zu nutzen musst du noch den Systemheader \lstinline{vector} einbinden.
 Der Container \lstinline{std::vector} kapselt ein Array und stellt eine ähnliche Funktionalität wie Javas \lstinline{Vector} Klasse bereit.
 Der Typ in spitzen Klammern (\lstinline{<Person>} in \lstinline{std::vector<Person>}) ist ein Template-Parameter und besagt, dass in dem Container \lstinline{Person}-Objekte gespeichert werden sollen.
 
-Folgende Funktion der Klasse \lstinline{std::vector} könnten dir von Nutzen sein. Weitere findest du z.B. unter \url{http://www.cplusplus.com/reference/vector/vector/}. Der Typ \lstinline{size_type} ist der größtmögliche vorzeichenloser Integer, die die verwendete Plattform unterstützt.
+Folgende Funktion der Klasse \lstinline{std::vector} könnten dir von Nutzen sein. Weitere findest du z.B. unter \url{http://www.cplusplus.com/reference/vector/vector/}. Der Typ \lstinline{size_type} ist der größtmögliche vorzeichenloser Integer (\lstinline{unsigned int}), den die verwendete Plattform unterstützt (bspw. 16, 32 oder 64 Bit).
 
-\lstinputlisting{06_elevator/problems/listings/sim1_sizetype.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_sizetype.cpp}
 
 \hints{
     \item Da \lstinline{containedPeople} leer initialisiert werden soll, brauchst du dafür keinen expliziten Aufruf in der Initialisierung.
@@ -40,27 +40,27 @@ Folgende Funktion der Klasse \lstinline{std::vector} könnten dir von Nutzen sei
 \subsection{Klasse Floor}
 Implementiere die Klasse \lstinline{Floor}, die ein Stockwerk mit einer beliebigen Anzahl an wartenden Personen darstellt.
 
-\lstinputlisting{06_elevator/problems/listings/sim1_floor.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_floor.hpp}
 
 \subsection{Klasse Building}
 Schreibe eine Klasse \lstinline{Building}, die einen Aufzug besitzt der sich zwischen einer definierbaren Menge an Stockwerken bewegt und Personen befördert.
 
-\lstinputlisting{06_elevator/problems/listings/sim1_building.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_building.hpp}
 
 \subsection{Komfortfunktionen}
 Erweitere die Klasse \lstinline{Building} um folgende \lstinline{public} Funktionen, um die Benutzung des Simulators von außen zu vereinfachen und lange Aufrufketten wie
-\lstinputlisting{06_elevator/problems/listings/sim1_comfort.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_comfort.cpp}
 %
 zu vermeiden (\emph{Law of Demeter}\footnote{\url{https://en.wikipedia.org/wiki/Law_of_Demeter}}).
 Der Simulator sollte nur mit Methoden der Klasse \lstinline{Building} kommunizieren.
 
-\lstinputlisting{06_elevator/problems/listings/sim1_comfort_ex.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_comfort_ex.cpp}
 
 \subsection{Beförderungsstrategie}
 Teste deine Implementation.
 Erstelle dazu zunächst ein Gebäude und füge einige Personen hinzu.
 %
-\lstinputlisting{06_elevator/problems/listings/sim1_main.cpp}
+\cpppInputListing{06_elevator/problems/listings/sim1_main.cpp}
 %
 Implementiere nun folgende Beförderungsstrategie.
 Diese sehr einfache (und ineffiziente) Strategie fährt alle Stockwerke nacheinander ab, sammelt die Leute ein und befördert sie jeweils zu ihren Zielstockwerken.

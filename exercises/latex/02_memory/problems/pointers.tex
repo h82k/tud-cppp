@@ -1,21 +1,38 @@
 \section{\ExercisePrefixMemory Zeiger und Referenzen Grundlagen}
+\label{sec:pointers}
 In dieser Aufgabe sollst du den Umgang mit Zeigern (\emph{Pointer}) und Referenzen erlernen.
-Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
+Diese erlauben es zum Beispiel Werte zwischen Funktionen auszutauschen, ohne eine Kopie der zu übermittelnden Daten zu erzeugen.
 Anstelle dessen kann ein (vergleichsweise kleiner) Zeiger auf einen Speicherbereich übergeben werden.
 Alternativ kann auch eine Referenz auf eine Variable übergeben werden, welche intern ähnlich wie ein Zeiger gehandhabt wird.
 
 \subsection{Experimente}
-Experimentiere mit Zeigern, Adressen und Referenzen.
-Mache dir eine Skizze, die verdeutlicht, wie Variablen und ihre Speicherabbilder zusammenhängen.
-Als Ausgangsbasis kann folgendes Programmfragment dienen.
+Experimentiere mit Zeigern, Adressen und Referenzen. Als Ausgangsbasis kann folgendes Programmfragment dienen.
+Fülle danach die untenstehende Skizze aus, um dir klarzumachen, wie Variablen und ihre Speicherabbilder zusammenhängen.
 
-\lstinputlisting{02_memory/problems/listings/pointers_intro.cpp}
+\cpppInputListing{02_memory/problems/listings/pointers_intro.cpp}
+
+\paragraph{Speicherabbild}
+Wir nehmen an, dass Speicheradressen immer 4 Byte (= 32 Bit) breit sind. 
+Trage nun die auftretenden Variablen \lstinline{intVal} und \lstinline{pIntVal} in das folgende Speicherabbild ein. Orientiere dich dabei an der Vorlesung (Folien 69 und 70) und trage folgende Dinge ein:
+\begin{itemize}
+	\item Typ, Name und Wert jeder Variablen
+	\item Speicheradressen in Bytes
+	\item Der Wert, der an der jeweiligen Speicheradresse steht.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{02_memory/figures/memory_image.png}
+\end{center}
+
+\hints{
+	\item Die Speicheradressen kannst du frei wählen, der Pointer sollte aber natürlich auf die entsprechend gewählte Adresse zeigen.
+}
 
 \subsection{Bedeutung verstehen}
 Versuche die Bedeutung folgender Ausdrücke zu verstehen.
 Welche Regelmäßigkeiten stellst du fest?
 
-\lstinputlisting{02_memory/problems/listings/pointers_intro_advanced.cpp}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_intro_advanced.cpp}
 
 \hints{
 	\item Gehe dabei von rechts nach links vor.
@@ -24,9 +41,7 @@ Welche Regelmäßigkeiten stellst du fest?
 \subsection{Gültigkeit}
 Warum sind folgende Ausdrücke ungültig, sinnlos oder sogar gefährlich?
 
-\vbox{ %fixes empty page
-\lstinputlisting{02_memory/problems/listings/pointers_intro_validity.cpp}
-}
+\cpppInputListing{02_memory/problems/listings/pointers_intro_validity.cpp}
 
 \hints{
 	\item Finde heraus, welchen Typ der Ausdruck hätte haben müssen.
@@ -41,9 +56,7 @@ Was würde passieren, wenn man die Variablen stattdessen per Wert übergeben wü
 \subsection{Programmanalyse}
 Sieh dir folgendes Programm an.
 
-\vbox{ %fixes empty page
-\lstinputlisting{02_memory/problems/listings/pointers_programm.cpp}
-}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_programm.cpp}
 
 Welche Adressen werden übereinstimmen, welche werden sich unterscheiden?
 Führe das Programm aus.
@@ -63,20 +76,20 @@ Versuche für jede der Variablen im folgenden Code je eine \emph{Verwendung} zu 
 Was ist jeweils der Grund?
 Welche Pointer verhalten sich gleich?
 
-\lstinputlisting{02_memory/problems/listings/pointers_behavior.cpp}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_behavior.cpp}
 
 \paragraph{Mehrstufige Pointer}
 
 Versuche nun das Gleiche mit den folgenden mehrstufigen Pointern.
 
-\lstinputlisting{02_memory/problems/listings/pointers_multi.cpp}
+\cpppInputNoPageBreakListing{02_memory/problems/listings/pointers_multi.cpp}
 
 \subsection{Übergabewerte}
 In der letzten Aufgabe direkt zu Pointern geht es darum, das gerade erlangte Verständnis über Pointer und Referenzen zu festigen und zu kontrollieren.
 In Tabelle \ref{table:uebergabewerte} sind in der ersten Spalte Funktionen mit verschiedenen Parametern gegeben.
-In der ersten Zeile findet ihr verschiedene Variablentypen.
-Eure Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus dem Variablen herzustellen.
-Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann tragt ihr bitte ein \xmark ein. \\\\
+In der ersten Zeile findest du verschiedene Variablentypen.
+Deine Aufgabe ist es nun, zu den verschiedenen Funktionen die passenden Parameter aus den Variablen herzustellen.
+Falls eine Variable nicht ohne großartige Konversationen verwendet werden kann trage bitte ein \xmark ein. \\\\
 Als Beispiel dient hierfür die erste Zeile. 
 
 \begin{table}[h]

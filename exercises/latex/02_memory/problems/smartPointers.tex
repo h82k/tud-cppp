@@ -3,15 +3,15 @@ In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut m
 
 
 \subsection{}
-Erstellen eine Klasse \lstinline{TreeNode}, die einen Knoten eines Binärbaums darstellt.
+Erstelle eine Klasse \lstinline{TreeNode}, die einen Knoten eines Binärbaums darstellt.
 Jeder Knoten hat einen Inhalt vom Typ \lstinline{int} sowie einen Zeiger auf seine beiden Kindknoten.
 Statt \glqq roher\grqq{} Zeiger verwenden wir Smart Pointers, die das Speichermanagement übernehmen.
 Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen.
 Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_treenode.hpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_treenode.hpp}
 
-Der Konstruktor von \lstinline{TreeNode} privat, weil nur die Smart Pointer die Verantwortung für die Lebenszeit eines Objektes übernehmen sollen und bestimmen, wann es gelöscht wird.
+Der Konstruktor von \lstinline{TreeNode} ist privat, weil nur die Smart Pointer die Verantwortung für die Lebenszeit eines Objektes übernehmen sollen und bestimmen, wann es gelöscht wird.
 Würde man \lstinline{TreeNode}-Objekte direkt auf dem Stack anlegen, kann es passieren, dass der Objektdestruktor mehrmals aufgerufen wird -- einmal vom Smart Pointer und einmal beim Verlassen der Funktion.
 Ebenso sollten wir keine Rohzeiger auf das Objekt erzeugen, da diese das Speichermanagement der Smart Pointer umgehen.
 Stattdessen stellen wir eine statische Methode bereit, um \lstinline{TreeNode}-Objekte auf dem Heap zu erzeugen und diese direkt einem Smart Pointer zu übergeben.
@@ -25,11 +25,11 @@ Füge auch hier eine Textausgabe ein, die die Zerstörung des Objekts sichtbar m
 Das Schlüsselwort \textbf{static} sowie die Default-Parameter müssen bei der Implementation der Methode ausgelassen werden.
 Der Smart Pointer für die Rückgabe wird mit einem Zeiger auf ein \lstinline{TreeNode}-Objekt initialisiert. Somit lautet der Methodenrumpf
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_createnode.cpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_createnode.cpp}
 
 \hints{
 	\item Über \lstinline{std::make_shared(<Konstruktorparameter>)} kann man auch einen Smart Pointer erhalten.
-	\item Zur Dokumentation von \lstinline{typedef} könnt ihr den Tag \lstinline{@typedef} verwenden.
+	\item Zur Dokumentation von \lstinline{typedef} kannst du den Tag \lstinline{@typedef} verwenden.
           Sonst verhält es sich mit dem Dokumentieren so wie immer.
 }
 
@@ -37,7 +37,7 @@ Der Smart Pointer für die Rückgabe wird mit einem Zeiger auf ein \lstinline{Tr
 Teste, ob die einzelnen Knoten tatsächlich gelöscht werden, sobald kein Zeiger mehr auf den Elternknoten zeigt.
 Erstelle dafür einen kleinen Baum:
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_tree.cpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_tree.cpp}
 
 Führe das Programm aus und beobachte die Ausgabe.
 Sobald \lstinline{main} verlassen wird, wird der Zeiger \lstinline{node} gelöscht, und somit auch das dahinterliegende \lstinline{TreeNode}-Objekt mit all seinen Kindknoten.
@@ -49,14 +49,14 @@ Füge in diesem Fall am Ende des Programms eine Textausgabe hinzu, damit ersicht
 Nun wollen wir \lstinline{TreeNode} so erweitern, dass jeder Knoten Kenntnisse über seinen Elternknoten besitzt.
 Füge das Attribut
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_parent.hpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_parent.hpp}
 
 hinzu.
 Da der Elternknoten beim Erzeugen eines \lstinline{TreeNode}s undefiniert ist, brauchst du den Konstruktor nicht zu ändern. \lstinline{parent} wird dann automatisch mit \lstinline{NULL} initialisiert.
 
 Implementiere die folgende Methode, die einem Knoten seinen Elternknoten zuweist:
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_setparent.hpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_setparent.hpp}
 
 \hints{
 	\item \lstinline{p} wird in diesem Fall nur deshalb als \lstinline{const} Referenz übergeben, da es verhältnismäßig aufwändig ist, einen Smart Pointer zu kopieren.
@@ -66,7 +66,7 @@ Implementiere die folgende Methode, die einem Knoten seinen Elternknoten zuweist
 Jetzt muss noch \lstinline{createNode()} modifiziert werden, sodass \lstinline{setParent()} auf den Kindknoten aufgerufen wird.
 Da ein Smart Pointer den \lstinline{operator*} und den \lstinline{operator->} überladen hat, lässt er sich syntaktisch wie ein normaler Zeiger benutzen. Um zu überprüfen, ob ein Smart Pointer auf ein Objekt zeigt, kann dieser implizit nach \lstinline{bool} gecastet werden. Somit lautet die neue Implementation von \lstinline{createNode()}:
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_createnode_w_parent.cpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_createnode_w_parent.cpp}
 
 \subsection{}
 Teste deine Implementation.
@@ -80,7 +80,7 @@ Um dieses Problem zu lösen, müssen die Verweise zum Elternknoten \emph{schwach
 Ein Knoten darf gelöscht werden, wenn nur noch schwache Zeiger (oder keine) auf ihn verweisen.
 Verwende dazu \lstinline{std::weak_ptr} und erstelle ein neues \lstinline{typedef} für einen schwachen \lstinline{TreeNode} Smart Pointer:
 
-\lstinputlisting{02_memory/problems/listings/smartPointers_weakptr.hpp}
+\cpppInputListing{02_memory/problems/listings/smartPointers_weakptr.hpp}
 
 Ändere nun den Typ von \lstinline{parent} auf \lstinline{TreeNodeWeakPtr}.
 Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\lstinline{shared_ptr}) implizit in schwache Zeiger (\lstinline{weak_ptr}) umgewandelt werden können.

@@ -16,10 +16,10 @@ Implementiere die Klasse \lstinline{ElevatorStrategy}.
 Diese soll die Basisklasse für verschiedene Aufzugstrategien sein.
 Damit die Strategie das Gebäude nicht selbst modifizieren kann, wird \lstinline{Building} per \lstinline{const} Pointer übergeben.
 
-\lstinputlisting{06_elevator/problems/listings/sim3_elev_strat.hpp}
+\cpppInputListing{06_elevator/problems/listings/sim3_elev_strat.hpp}
 
 \subsection{Eine einfache Aufzugstrategie}
-Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
+Implementiere eine einfache Aufzugstrategie, indem du eine neue Klasse erzeugst, die von \lstinline{ElevatorStrategy} erbt.
 Diese soll folgendermaßen vorgehen: 
 Falls der Aufzug momentan leer ist, soll zum tiefsten Stockwerk gefahren werden, wo sich noch Personen befinden.
 Falls der Aufzug nicht leer ist, wird das Zielstockwerk einer der Personen im Aufzug ausgewählt.
@@ -43,7 +43,7 @@ Teste die einfache Aufzugstrategie
 
 \subsection{Neue Aufzugstrategien \optional}
 \optionaltextbox
-Entwickle eine eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
+Entwickle eigene Aufzugstrategien, indem du erneut eine neue Klasse erzeugst die von \lstinline{ElevatorStrategy} erbt.
 Versuche, verschiedene Größen zu optimieren, wie z.B. die Anzahl der Stopps oder die verbrauchte Energie.
 Hierfür könnte Backtracking verwenden\footnote{Siehe \url{http://de.wikipedia.org/wiki/Backtracking}}, eine einfache Methode, um eine optimale Lösungen durch Ausprobieren zu finden.
 Beachte, dass der Aufzug auch kopiert werden kann, um verschiedene Strategien zu testen.
@@ -54,4 +54,4 @@ In der Vorlesung wurde das in C++11 neu hinzugekommene Schlüsselwort \lstinline
 Dieses Schlüsselwort kann überall dort anstelle eines Typbezeichners eingesetzt werden, wo der Compiler den Typ automatisch ableiten kann.
 Das ist besonders dann sinnvoll, wenn die Typbezeichnung aufgrund geschachtelter Templates oder geschachtelter Namensräume besonders lang und unleserlich wird, bspw. \lstinline{const std::vector<std::pair<const Person*, boolean (Floor, int)>>::const_iterator x;}.
 
-Versuche möglichst an möglichst vielen Stellen im Aufzugsimulator das Schlüsselwort \lstinline{auto} zu verwenden.
+Versuche, an möglichst vielen Stellen im Aufzugsimulator das Schlüsselwort \lstinline{auto} zu verwenden.

@@ -1,3 +1,3 @@
 /**
- * Commment content
+ * Comment content
  */

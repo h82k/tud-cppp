@@ -12,7 +12,7 @@ Im Vergleich zu CodeLite ist diese Umgebung speziell auf die Entwicklung von Emb
 Der Bauprozess für Embedded-C-Programme sieht teilweise anders aus als bei C++-Programmen:
 \begin{enumerate}
 \item 
-Das Ergebnis der \textbf{Link-Phase} ist kein auf dem PC ausführbares Programm, sondern ein sogenanntes \emph{Image}
+Das Ergebnis der \textbf{Link-Phase} ist kein auf dem PC ausführbares Programm, sondern ein sogenanntes \emph{Image}.
 Dieses Image wird in den statischen Speicher des Microcontrollers geladen.
 \item
 Nach der Link-Phase folgt die \textbf{Flash-Phase} (in WinIDEA auch \enquote{Download} genannt).
@@ -35,6 +35,7 @@ Dies ist das \enquote{Hello World}-Programm der Embedded-C-Welt.
 \item 
 Kopiere zunächst den \textbf{vorbereiteten WinIDEA-Workspace} (\filename{/exercises/templates/05\_Win\-Idea\-Workspace\-Template}) in ein Verzeichnis \textbf{außerhalb} deines Benutzerverzeichnisses (\bspw nach \filename{C:\textbackslash{}tmp}).
 \footnote{Leider ist es aus technischen Gründen nicht möglich, mit WinIDEA im Benutzerverzeichnis zu arbeiten, da dieses auf ein Netzlaufwerk abgebildet wird.}
+Falls du deinen eigenen PC verwendest, ist es sehr wichtig, dass der WinIDEA-Workspace und die verwendeten Bibliotheken (bspw. \filename{C:\textbackslash{}PortableApps\textbackslash{}Cypress\textbackslash{}PDL}) auf dem gleichen Laufwerk liegen.
 
 \item 
 \textbf{Öffne WinIDEA}:
@@ -42,7 +43,7 @@ Das Programm liegt unter \filename{C:\textbackslash{}PortableApps\textbackslash{
 Bei Bedarf kannst du dir eine Desktop-Verknüpfung erstellen.
 
 \item 
-\textbf{Wähle} in dem erscheinenden Dialogfenster den soeben \textbf{kopierten WinIDEA-Workspace} aus wie in \Cref{fig:WinIdeaSelectWorkspace} gezeigt (roter Rahmen).
+\textbf{Wähle} in dem erscheinenden Dialogfenster den soeben \textbf{kopierten WinIDEA-Workspace} aus wie in Abbildung \ref{fig:WinIdeaSelectWorkspace} gezeigt (roter Rahmen).
 \begin{figure}
 \begin{centering}
 \includegraphics[width=.5\textwidth]{./05_c/figures/WinIDEASelectWorkspace.png}
@@ -72,11 +73,11 @@ Diese ist in der Datei \filename{blink.h} deklariert und in \filename{blink.c} d
 
 \item 
 Du findest den folgenden Quelltext (\Cref{lst:Blink}) vor:
-\lstinputlisting[frame=tb,caption={\filename{blink.c}},label={lst:Blink},numbers=left]{./05_c/listings/blink.c}
-%
+\cpppInputListing[frame=tb,caption={\filename{blink.c}},label={lst:Blink},numbers=left]{./05_c/listings/blink.c}
+
 \begin{itemize}
 \item 
-Zu Beginn werden zwei Pointer auf das \emph{Data Direction Register (DDR)} und das \emph{Port Data Output Register (PDOR)} angelegt, die einen einfachen Zugriff auf Datenübertragungsrichtung und die Pin-Belegung der blauen LED ermöglichen.
+Zu Beginn werden zwei Pointer auf das \emph{Data Direction Register (DDR)} und das \emph{Port Data Output Register (PDOR)} angelegt, die einen einfachen Zugriff auf die Datenübertragungsrichtung und die Pin-Belegung der blauen LED ermöglichen.
 
 \item 
 Anschließend wird der zur LED gehörige Kanal (AN08) auf den digitalen (statt analogen) Modus geschaltet.
@@ -88,7 +89,7 @@ Wir zählen Pins immer von 0, \dasheisst es gibt 8 Pins vor dem 8.\;Pin und der 
 
 \item 
 Um das Projekt jetzt zu \textbf{compilieren} und zu \textbf{linken}, wähle im Menü \menuPath{Project} den Befehl \menuPath{Make} (oder drücke \shortcut{F7}).
-Dieser Befehl wird -- seinem Namen entsprechend -- nur diejenigen Teile neu-compilieren, die sich seit dem letzten Aufruf verändert haben.
+Dieser Befehl wird -- seinem Namen entsprechend -- nur diejenigen Teile neu kompilieren, die sich seit dem letzten Aufruf verändert haben.
 Mit dem Befehl \menuPath{Project \menuSep Rebuild} wird das Projekt von Grund auf neu gebaut.
 Der Vorgang sollte im \emph{Output}-Fenster\footnote{Kann über \menuPath{View \menuSep Output} oder \shortcut{Alt+2} geöffnet werden.} mit \texttt{0 Error(s)  0 Warning(s)} enden.
 
@@ -115,39 +116,34 @@ Ganz in der Nähe befindet sich auch der \textbf{User Button}, den wir im Folgen
 
 \subsection{LED bunt blinken lassen}
 Als erste eigenständige Aufgabe erweiterst du die Funktion \lstinline|BlinkMain| so, dass abwechselnd alle drei möglichen LEDs angesteuert werden.
-Hierfür wirst du die folgenden Dokumente benötigen:
-\begin{itemize}
-\item 
-FM4 Starter Kit Guide: \url{http://www.cypress.com/file/290916/download}
-\item 
-Schaltbild: \url{http://www.cypress.com/file/290921/download}
-\end{itemize}
-
+Führe dazu die folgenden Schritte aus:
 \begin{enumerate}
 \item 
-Erzeuge ein \textbf{neues .h- und .c-File}, indem du jeweils \menuPath{File \menuSep New\dots} wählst.
-Benenne die Dateien \filename{blinkrainbow.h} und \filename{linkrainbow.c} und lege sie im \filename{src}-Verzeichnis des Workspaces ab.
+Öffne die Dateien Dateien \filename{blinkrainbow.h} und \filename{blinkrainbow.c} (in der Gruppe \winIdeaGroupName{src}).
 
 \item 
-Klicke rechts auf die Gruppe \label{src}, wähle \menuPath{Add Files\dots} und füge die beiden neuen Dateien hinzu.
-
-\item 
-Du kannst den Inhalt der Dateien \filename{blink.h} und \filename{blink.c} als Ausgangspunkt nehmen, um diese Aufgabe zu lösen.
+Nutze die Dateien \filename{blink.h} und \filename{blink.c} als Ausgangspunkt, um diese Aufgabe zu lösen.
 
 \item
 Erweitere nun den Code so, dass du auch auf die Ports der roten und grünen LED zugreifst.
+\begin{itemize}
+\item 
+Die Ports und Pins der anderen LEDs findest du \unteranderem im Abschnitt \enquote{3.1.3 User Button and User LED} des FM4 Starter Kit Guides\footnote{\url{http://www.cypress.com/file/290916/download}}.
+
+\item 
+Die Pins der roten und grünen LED sind ebenfalls mit A/D-Kanälen verbunden, die du deaktivieren musst.
+Nutze dazu das Schaltbild des Evaluationskits\footnote{\url{http://www.cypress.com/file/290921/download}}.
+Auf Seite 2 findest du am unteren Rand die \enquote{RGB LED}.
+Davon ausgehend suchst du die entsprechenden Pins am Microcontroller heraus.
+Jeder Pin ist dort mit mehreren Funktionsbeschreibungen versehen.
+Die A/D-Kanalbezeichnungen beginnen immer mit \enquote{AN}.
+Zum Beispiel hat die blaue LED den Pin 106, der auch als Pin 8 von Port 1 angesprochen werden kann und mit dem A/D-Kanal 08 (AN08) verknüpft ist.
+\end{itemize}
 \end{enumerate}
 
 \hints{
 \item 
-Die Ports und Pins der anderen LEDs findest du \unteranderem im Abschnitt \enquote{3.1.3 User Button and User LED} des Start Kit Guides.
-
-\item 
-Die Pins der roten und grünen LED sind ebenfalls mit A-/D-Kanälen verbunden, die du deaktivieren musst.
-Nutze dazu das Schaltbild.
-Auf Seite 2 findest du am unteren Rand die \enquote{RGB LED}.
-Davon ausgehend suchst du die entsprechenden Pins am Microcontroller heraus.
-Jeder Pin ist dort mit mehreren Funktionsbeschreibungen versehen.
-Die A-/D-Kanalbezeichnungen beginnen immer mit \enquote{AN}.
-Zum Beispiel hat die blaue LED den Pin 106, der auch als Pin 8 von Port 1 angesprochen werden kann und mit dem A-/D-Kanal 08 (AN08) verknüpft ist.
+Für diese und die folgenden Kennenlernaufgaben stellen wir dir Musterlösungen direkt im WinIDEA-Workspace bereit.
+Du findest sie in der Gruppe \winIdeaGroupName{solution}.
+Beachte, dass die (nicht-statischen) Funktionen der Musterlösung und deren entsprechende Implementierungsdateien stets auf \lstinline|_s| enden, um Namenskonflikte mit den Vorlagefunktionen zu vermeien.
 }

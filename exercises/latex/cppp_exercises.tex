@@ -18,7 +18,6 @@
 \ExercisePrefixAdvanced{}: Fortgeschrittene Themen;
 \ExercisePrefixEmbeddedC{}: (Embedded) C;
 \ExercisePrefixElevator{}: Zusatzaufgaben zum Aufzugsimulator
-\ExercisePrefixAdditionalInformation{}: Zusatzmaterial
 )
 \setcounter{tocdepth}{1}
 %\setlength\cftsectionnumwidth{10em}
@@ -26,8 +25,12 @@
 \setlength\cftbeforesecskip{.1em} % line skip between sections ("sec")
 \tableofcontents
 
+\vspace*{\fill}
+\cclicense
+
 \newpage
 
+%\begin{comment}
 \setHeader{Aufgaben zu C/C++-Grundlagen}
 \input{01_basics/problems/intro}
 
@@ -77,7 +80,8 @@
 \newpage
 \input{04_advanced/problems/customArrays}
 \newpage
-\input{06_elevator/problems/sim4.tex}
+\input{04_advanced/problems/makefiles}
+%\end{comment}
 
 \newpage
 \setHeader{Aufgaben zu Embedded C}
@@ -87,6 +91,7 @@
 \input{05_c/problems/mcButton}
 \input{05_c/problems/mcDisplay}
 \input{05_c/problems/mcJoysticks}
+\input{05_c/problems/mcTouchScreen}
 \input{05_c/problems/mcGame}
 
 \newpage
@@ -96,9 +101,5 @@
 \input{06_elevator/problems/sim2.tex}
 \newpage
 \input{06_elevator/problems/sim3.tex}
-
-\newpage
-\setHeader{Zusatzmaterial}
-\input{07_cheatsheet/codelite}
 
 \end{document}

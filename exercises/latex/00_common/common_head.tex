@@ -8,8 +8,14 @@
   %twoside
 ]{tudexercise}
 
-\parindent1em
-%\parskip2ex
+\parindent0em
+
+% Vertical space of 2ex between paragraphs.
+% Allow LaTeX to increase or decrease this by 0.3ex. This enables
+% more dynamic typesetting.
+\setlength{\parskip}{2ex plus0.3ex minus0.3ex}
+
+\raggedbottom
 
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -26,6 +32,9 @@
 \usepackage{paralist}
 \usepackage{verbatim}
 \usepackage{tocloft} % for manipulating the table of contents
+\usepackage{graphics}
+\usepackage{csquotes} % for \enquote{}
+\usepackage{siunitx}
 
 \usetikzlibrary{shapes}
 \usetikzlibrary{calc}
@@ -40,7 +49,7 @@
 %\usepackage[disable]{todonotes} % Use this line to hide all todos
 
 \definecolor{commentgreen}{RGB}{50,127,50}
-\lstloadlanguages{C++,[gnu]make}
+\lstloadlanguages{C++,[gnu]make,bash}
 \lstset{language=C++}
 \lstset{captionpos=b}
 \lstset{tabsize=3}
@@ -63,11 +72,15 @@
 	{ä}{{\"a}}1
 	{ö}{{\"o}}1
 	{'}{{\textquotesingle}}1
+	{~}{$\sim$}1
 }
 
-\lstnewenvironment{lstmake} %
-{\lstset{language=[gnu]make}} %
-{}
+\lstnewenvironment{lstmake}
+    % Commands/Text at the beginning of the environment
+    {
+        \lstset{language=[gnu]make}
+    } 
+    { }
 
 
 \newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
@@ -102,16 +115,15 @@
 \newcommand{\experimentaltextbox}{
 	\bigskip
 	\begin{center}
-		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cpp-exercises/issues}}}
+		\ovalbox{\parbox{0.98\textwidth}{Diese Aufgabe wurde neu erstellt und kann noch Fehler und Inkonsistenzen enthalten. Falls euch etwas derartiges auffällt sprecht uns bitte darauf an oder stellt es auf GitHub in den Issuetracker unter \url{https://github.com/Echtzeitsysteme/tud-cppp/issues}}}
 	\end{center}
 }
 
-\newcommand{\enquote}[1]{\glqq#1\grqq\xspace}
 \newcommand{\filename}[1]{\texttt{#1}\xspace}
 \newcommand{\bspw}{bspw.\xspace}
-\newcommand{\dasheisst}{d.\;h.\xspace}
-\newcommand{\zB}{z.\;B.\xspace}
-\newcommand{\unteranderem}{u.\;a.\xspace}
+\newcommand{\dasheisst}{d.\,h.\xspace}
+\newcommand{\zB}{z.\,B.\xspace}
+\newcommand{\unteranderem}{u.\,a.\xspace}
 
 \newcommand{\winIdeaGroupName}[1]{\textsf{#1}\xspace}
 \newcommand{\menuPath}[1]{\emph{#1}\xspace}
@@ -129,3 +141,41 @@
 \newcommand{\ExercisePrefixEmbeddedC}{\ExercisePrefix{C}}
 \newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
 \newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}
+
+\newcommand{\cclicense}{
+\begin{center}
+    \ovalbox{
+        \parbox{0.98\textwidth}
+        {
+            \begin{minipage}{0.15\textwidth}
+                \includegraphics[width=1.0\textwidth]{00_common/cc_license.png}
+            \end{minipage}
+            \hfill
+            \begin{minipage}{0.80\textwidth}
+                \begin{small}
+                Dieses Werk ist unter einer Creative Commons Lizenz vom Typ Namensnennung - Nicht kommerziell - Keine Bearbeitungen 4.0 International zugänglich. 
+                Um eine Kopie dieser Lizenz einzusehen, konsultieren Sie \url{http://creativecommons.org/licenses/by-nc-nd/4.0/} oder 
+                wenden Sie sich brieflich an Creative Commons, Postfach 1866, Mountain View, California, 94042 USA.
+                \end{small}
+            \end{minipage}
+        }
+    }
+\end{center}
+}
+
+%% Custom commands for including a listing, based on \lstinputlisting
+
+% The cpppInputNoPageBreakListing command prevents that Latex inserts a page break in between of the listing.  
+% If the listing does not fit onto the page anymore, it will be put onto the next page as a whole.
+% The first paramer is optional and arguments from lstinputlisting can be provided here.
+% The second parameter is the path to the listing.
+\newcommand{\cpppInputNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \lstinputlisting[#1]{#2} \end{minipage} }
+% Variant for inline-inserting code
+\newcommand{\cpppNoPageBreakListing}[2][] { \begin{minipage}{\textwidth} \begin{lstlisting}[#1]#2\end{lstlisting}\end{minipage} }
+
+% The cpppInputListing command allows a listing to continue on the next page.
+% The first paramer is optional and arguments from lstinputlisting can be provided here.
+% The second parameter is the path to the listing.
+\newcommand{\cpppInputListing}[2][] { \vspace{1.5ex} \setbox0\vbox{ \lstinputlisting[#1]{#2} } \unvbox0 }
+
+

@@ -1,4 +1,5 @@
-\section{\ExercisePrefixBasics Operatorenüberladung}
+\section{\ExercisePrefixBasics Operatorenüberladung}\label{sec:overloading}
+\label{sec:overloading}
 In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\lstinline{operator+}), \textbf{*} (\lstinline{operator*}),\dots zu überladen.
 Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
 Du hast bereits das Objekt \lstinline{std::cout} der Klasse \lstinline{std::ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \lstinline{std::string}, \lstinline{int},\dots komfortabel zu tätigen.
@@ -15,27 +16,27 @@ In dieser Aufgabe sollst du eine eigene Vektor-Klasse schreiben und einige Opera
 Implementiere die folgende Klasse.
 Füge jedem Konstruktor und Destruktor eine Ausgabe auf der Konsole hinzu, um beim Programmlauf den Lebenszyklus der Objekte nachvollziehen zu können.
 
-  \lstinputlisting{01_basics/problems/listings/overloading_vector.hpp}
+  \cpppInputListing{01_basics/problems/listings/overloading_vector.hpp}
 
 Der Copy-Konstruktor wird aufgerufen, wenn das Objekt kopiert werden soll, z.B. für eine Call-by-Value Parameterübergabe.
 Jeder Copy-Konstruktor benötigt eine Referenz auf ein Objekt vom gleichen Typ wie die Klasse selbst als Parameter. 
 Sinnvollerweise wird noch \lstinline{const} vor oder nach der Typbezeichnung eingefügt (aber vor \lstinline{&}), da typischerweise das Ursprungsobjekt nicht verändert wird.
 
-Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen die das Objekt besitzt freizugeben.
+Der Destruktor wird aufgerufen, sobald die Lebenszeit eines Objekts endet. Er wird verwendet, um Ressourcen, die das Objekt besitzt, freizugeben.
 Die Syntax des Prototypen lautet
 
-  \lstinputlisting{01_basics/problems/listings/overloading_destructor.hpp}
+  \cpppInputListing{01_basics/problems/listings/overloading_destructor.hpp}
 
 und die Implementation entsprechend
 
-  \lstinputlisting{01_basics/problems/listings/overloading_destructor_impl.cpp}
+  \cpppInputListing{01_basics/problems/listings/overloading_destructor_impl.cpp}
 
 \hints{
-	\item Es dürfen eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
+	\item Es darf eine beliebige Anzahl an Konstruktoren mit verschiedenen Parametersätzen existieren.
 	\item Der Compiler wird automatisch einen \lstinline{public} Destruktor und \lstinline{public} Copy-Konstruktor erzeugen, falls sie nicht \emph{deklariert} wurden.
     Ebenso wird ein \lstinline{public} Defaultkonstruktor (keine Argumente) automatisch vom Compiler generiert, falls überhaupt keine Konstruktoren deklariert wurden.
     
-    Falls sie jedoch \emph{deklariert} wurden, musst du auch eine Implementierung angeben.
+    Falls du sie jedoch \emph{deklarierst}, musst du auch eine Implementierung angeben.
 	\item Würden beim Copy-Konstruktor \lstinline{other} by-Value übergeben werden, müsste eine Kopie von \lstinline{other} angelegt werden.
 	Dazu würde der Copy-Konstruktor aufgerufen, was zu einer unendlichen Rekursion führt, bis der Stack seine maximale Größe überschreitet und das Programm abstürzt.
 }
@@ -43,12 +44,12 @@ und die Implementation entsprechend
 \subsection{Vektoraddition, -subtraktion und Skalarprodukt}
 Erweitere die Klasse um folgende \lstinline{public} Funktionen, um Vektoren durch \lstinline{v1 + v2}, \lstinline{v1 - v2} und \lstinline{v1 * v2} addieren/subtrahieren und das Skalarprodukt bilden zu können, indem die Operatoren $+$, $-$ und $*$ überladen werden.
 
-  \lstinputlisting{01_basics/problems/listings/overloading_operators.hpp}
+  \cpppInputListing{01_basics/problems/listings/overloading_operators.hpp}
 
 Innerhalb der Methode kannst du durch \lstinline{a}, \lstinline{b} und \lstinline{c} auf eigene Attribute und über  \lstinline{rhs.a}, \lstinline{rhs.b} und \lstinline{rhs.c} auf Attribute der rechten Seite zugreifen.
-Denke daran, bei der Implementation den Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt anzugeben.
+Denke daran, bei der Implementation der Klassen den Scope der Klasse in der Sourcedatei vor jeder Elementbezeichnung durch zwei Doppelpunkte getrennt (den bereits bekannten Scope-Resolution-Operator) anzugeben.
 
-  \lstinputlisting{01_basics/problems/listings/overloading_operators_impl.cpp}
+  \cpppInputListing{01_basics/problems/listings/overloading_operators_impl.cpp}
 
 \hints{
 	\item Der Parameter \lstinline{rhs} steht für die rechte Seite ( \enquote{right-hand-side}) des jeweiligen Operators.
@@ -59,30 +60,30 @@ Denke daran, bei der Implementation den Klassen den Scope der Klasse in der Sour
 \subsection{Ausgabe}
 Überlade den \lstinline{operator<<} zur Ausgabe eines Vektors mit der gewohnten \lstinline{std::cout << ...} Syntax, indem du den folgenden Funktionsprototypen \textbf{außerhalb} der Klassendefinition setzt
 
-  \lstinputlisting{01_basics/problems/listings/overloading_stdout.hpp}
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/overloading_stdout.hpp}
 
 und innerhalb der Sourcedatei wie folgt implementierst.
 
-  \lstinputlisting{01_basics/problems/listings/overloading_stdout_impl.cpp}
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/overloading_stdout_impl.cpp}
 
 Da der \lstinline{operator<<} außerhalb der Klasse \lstinline{Vector3} liegt, hat dieser keinen Zugriff auf die privaten Member der Klasse.
-
 Du hast zwei Möglichkeiten, Zugriff auf diese zu erlangen: per Getter und per \lstinline{friend}-Deklaration.
 
 \paragraph{Getter}
-Definiere die folgenden Gettermethoden die die Werte für die \lstinline{private} Attribute \lstinline{a}, \lstinline{b} und \lstinline{c} zurückgeben:
-  \lstinputlisting{01_basics/problems/listings/overloading_getter.hpp}
+Definiere die folgenden Gettermethoden, die die Werte für die \lstinline{private} Attribute \lstinline{a}, \lstinline{b} und \lstinline{c} zurückgeben:
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/overloading_getter.hpp}
 
 \paragraph{friend}
 Füge die folgende Zeile am Ende der Klasse \texttt{Vector} hinzu:
-  \lstinputlisting{01_basics/problems/listings/overloading_friend.hpp}
-Von nun an, kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
+
+  \cpppInputNoPageBreakListing{01_basics/problems/listings/overloading_friend.hpp}
+Von nun an kann die entsprechende Funktion auf alle privaten Member der Klasse \texttt{Vector} zugreifen, was insbesondere praktisch ist, falls die Klasse verändert werden soll.
 
 \hints{
 	\item Denke daran, den Header \lstinline{iostream} einzubinden.
 	\item Diesmal musste die Überladung \textbf{außerhalb} der \lstinline{Vektor3}-Klasse definiert werden, weil das \lstinline{Vektor3}-Objekt auf der rechten Seite der Operation steht.
 	Als linke Seite wird hierbei ein \lstinline{std::ostream}-Objekt (wie z.B. \lstinline{std::cout}) erwartet, um Ausgabeketten \lstinline{std::cout << ... << ...} zu ermöglichen.
-	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden, damit das \lstinline{std::ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \lstinline{&} durchgereicht.
+	Hierzu muss das Ausgabeobjekt auch zurückgegeben werden. Damit das \lstinline{std::ostream}-Objekt aber nicht jedes Mal kopiert wird, wird es als Referenz \lstinline{&} durchgereicht.
 	\item Anstatt Getter und Setter für \lstinline{private} Attribute zu schreiben, kann man auch einer Klasse oder Funktion vollen Zugriff mit Hilfe des Schlüsselworts \lstinline{friend} erlauben. In der nächsten Übung wird hierauf noch einmal eingegangen.
 }
 

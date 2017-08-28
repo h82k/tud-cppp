@@ -5,6 +5,6 @@
 # Date:   2017-04-10
 #
 
-root=".."
+root="../.."
 workingDir=$(dirname $0)
-find . -name *.h -o -name *.c -o -name *.cpp -o -name *.tex -exec sh "$workingDir/CRLFtoLFSingle.bash" {} \;
+find . \( -name "*.h" -or -name "*.c" -or -name "*.cpp" -or -name "*.tex" \) -exec sh "$workingDir/CRLFtoLFSingle.bash" {} \;
