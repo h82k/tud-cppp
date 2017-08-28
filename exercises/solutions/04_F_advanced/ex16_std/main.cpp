@@ -11,7 +11,7 @@ void print(const T& t) {
 	std::copy(t.begin(), t.end(), std::ostream_iterator<typename T::value_type>(std::cout, ", "));
 	std::cout << "]" << std::endl;
 
-	// Solution 2: Write you own iterator-based loop
+	// Solution 2: Write your own iterator-based loop
 	// Here, you can even avoid the trailing ','
 	std::cout << "iterator-based version [";
 	for (typename T::const_iterator iter = t.begin(); iter != t.end(); ++iter) {

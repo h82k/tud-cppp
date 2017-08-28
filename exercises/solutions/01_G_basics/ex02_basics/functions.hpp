@@ -34,10 +34,9 @@ namespace fun {
      * @author cppp
      * @brief Prints a given number of stars ('*') and ends with a new line.
      * @param n Defines the number of printed stars.
-     * @param d The direction where to align the stars.
      * @return void
      */
-	void printStars(int n, Direction d);
+	void printStars(int n);
     
     /**
      * @name printFigure(Direction d);

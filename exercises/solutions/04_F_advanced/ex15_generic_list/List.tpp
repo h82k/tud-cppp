@@ -42,8 +42,8 @@ void List<T>::prependElement(const T& i) {
 }
 
 template<typename T>
-void List<T>::insertElementAt(const T& i, int pos) {
-	if (pos <= 0) {
+void List<T>::insertElementAt(const T& i, size_t pos) {
+	if (pos == 0) {
 		prependElement(i);
 	}
 	else if (pos >= getSize()) {
@@ -61,12 +61,12 @@ void List<T>::insertElementAt(const T& i, int pos) {
 }
 
 template<typename T>
-int List<T>::getSize() const {
+size_t List<T>::getSize() const {
 	return currentSize;
 }
 
 template<typename T>
-T& List<T>::getNthElement(int n) {
+T& List<T>::getNthElement(size_t n) {
 	ListItem<T>* p = first;
 	// iterate over elements
 	while (n-- > 0) {
@@ -115,7 +115,7 @@ void List<T>::deleteLast() {
 
 /** delete element at given position. delete first/last if pos outside of range */
 template<typename T>
-void List<T>::deleteAt(int pos) {
+void List<T>::deleteAt(size_t pos) {
 	if (pos <= 0) {
 		return deleteFirst();
 	}

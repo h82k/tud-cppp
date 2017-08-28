@@ -93,15 +93,15 @@ void getAnalogValues(uint8_t *analog11, uint8_t *analog12, uint8_t *analog13, ui
         break;
       case 1: *analog12 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
-      case 2: *analog13 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
+      case 2: *analog23 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
-      case 3: *analog16 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
+      case 3: *analog19 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
       case 4: *analog17 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
-      case 5: *analog19 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
+      case 5: *analog16 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
-      case 6: *analog23 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
+      case 6: *analog13 = (uint8_t)(Adc_GetScanData(&ADC0, u32Data) >> 4);
         break;
     }
   }

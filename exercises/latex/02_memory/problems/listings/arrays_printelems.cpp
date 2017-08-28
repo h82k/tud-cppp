@@ -1,1 +1,1 @@
-void printElements(const int *const array, const unsigned int size);
+void printElements(const int *const array, const size_t size);

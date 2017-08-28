@@ -1,3 +1,5 @@
+#include <cstddef>
+
 class List {
 public:
 	List();								// create an empty list
@@ -5,17 +7,17 @@ public:
 	List(const List &other);		// create a copy of another list
 	void appendElement(int i);		// append an element to the end of the list
 	void prependElement(int i);	// prepend an element to the beginning of the list
-	void insertElementAt(int i, int pos);	// insert an element i at position pos
-	int getSize() const;				// get the number of elements in list
-	int & getNthElement(int n);		// get content of the n-th element.
+	void insertElementAt(int i, size_t pos);	// insert an element i at position pos
+	size_t getSize() const;				// get the number of elements in list
+	int & getNthElement(size_t n);		// get content of the n-th element.
 	int & getFirst();					// get content of the first element
 	int & getLast();					// get content of the last element
 	int deleteFirst();			// delete first element and return it (return 0 if empty)
 	int deleteLast();				// delete last element and return it (return 0 if empty)
-	int deleteAt(int pos);		// delete element at position pos
+	int deleteAt(size_t pos);		// delete element at position pos
 private:
 	ListItem *first, *last;		// first and last item pointers (nullptr if list is empty)
-	int currentSize;				// current size of the list
+	size_t currentSize;				// current size of the list
 };
 
 #include <iostream>

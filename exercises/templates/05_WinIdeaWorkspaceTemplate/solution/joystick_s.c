@@ -33,26 +33,26 @@ void controlLeds_s(){
   getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
   const uint32_t sleepTime = 10000; // 0,01s
   // green => Pin104 PB2/A18    blue => Pin106 P18/A08     red => Pin108 P1A/A10
-  // JS1X is analog19
+  // JS1X is analog16
   
-  // left: JS1 X < 255 und >= 200   => green
+  // left: JS1 X < 255 && >= 200    => green
   // middle: JS1 X < 200 && >= 180  => blue
   // right: JS1 X <180 && >= 0      => red
   
   // joystick left
-  if(analog19 >= 220){
+  if(analog16 >= 220){
       FM4_GPIO->PDORB_f.P2 = 0u; // green on
       FM4_GPIO->PDOR1_f.P8 = 1u; // blue off
       FM4_GPIO->PDOR1_f.PA = 1u; // red off
   }
   // joystick middle
-  else if(analog19 < 220 && analog19 >= 180){
+  else if(analog16 < 220 && analog16 >= 180){
       FM4_GPIO->PDORB_f.P2 = 1u; // green off
       FM4_GPIO->PDOR1_f.P8 = 0u; // blue on
       FM4_GPIO->PDOR1_f.PA = 1u; // red off
   }
   // joystick right
-  else if(analog19 < 180){
+  else if(analog16 < 180){
       FM4_GPIO->PDORB_f.P2 = 1u; // green off
       FM4_GPIO->PDOR1_f.P8 = 1u; // blue off
       FM4_GPIO->PDOR1_f.PA = 0u; // red on
@@ -81,18 +81,18 @@ void printValues_s(){
   char JS1XText[] = "  Joystick 1 X-Achse: ";
   char JS1YText[] = "  Joystick 1 Y-Achse: ";
   writeText_s(JS1XText);
-  write3Digits8Bit(&analog19);
+  write3Digits8Bit(&analog16);
   writeTextln_s("");
   writeText_s(JS1YText);
-  write3Digits8Bit(&analog16);
+  write3Digits8Bit(&analog19);
   writeTextln_s("");
   
   char JS2XText[] = "  Joystick 2 X-Achse: ";
   char JS2YText[] = "  Joystick 2 Y-Achse: ";
   writeText_s(JS2XText);
-  write3Digits8Bit(&analog23);
+  write3Digits8Bit(&analog13);
   writeTextln_s("");
   writeText_s(JS2YText);
-  write3Digits8Bit(&analog13);
+  write3Digits8Bit(&analog23);
   writeTextln_s("");
 }

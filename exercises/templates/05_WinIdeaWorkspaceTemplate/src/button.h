@@ -6,6 +6,11 @@
 #include "s6e2ccxj.h"
 
 /**
+ * Initializes the blue LED.
+ */ 
+static void initLED();
+
+/**
  * Scenario 1:
  * Pressing the Joystick 1 Button toggles the LED, just like a light switch.
  */
@@ -19,14 +24,9 @@ void ButtonHoldBlueLEDOn();
 void ButtonHoldBlueLEDOn_s();
 
 /**
- * Returns true (1) iff the button is pressed
+ * Returns true (1) if the button is pressed
  */
 static int isButtonPressed();
-
-/**
- * Initializes the blue LED.
- */ 
-static void initLed();
 
 /**
  *  Changes the status of the blue LED.
@@ -36,6 +36,6 @@ static void toggleBlueLED();
 /**
  *  Sets the blue LED to its status.
  */
-static void setBlueLed(uint8_t status);
+static void setBlueLED(uint8_t status);
 
 #endif

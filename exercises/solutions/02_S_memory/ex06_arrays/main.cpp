@@ -1,14 +1,16 @@
+#include <cstddef>
 #include <iostream>
 
+
 // Task 6.2
-void printArray(const int *arr, int size) {
-	for (int i = 0; i < size; ++i) {
+void printArray(const int *arr, size_t size) {
+	for (size_t i = 0; i < size; ++i) {
 		std::cout << arr[i] << std::endl;
 	}
 }
 
 // Task 6.3
-void printArrayPointer(const int *arr, int size) {
+void printArrayPointer(const int *arr, size_t size) {
 	for (const int *p = arr; p != arr + size; ++p) {
 		std::cout << *p << std::endl;
 	}
@@ -21,14 +23,14 @@ void printArray(const int *begin, const int *end) {
 	}
 }
 
-int* readNumbers(int *size) {
-	int n;
+int* readNumbers(size_t *size) {
+	size_t n;
 	std::cout << "Geben Sie die Groesse ein: ";
 	std::cin >> n;
 	
 	std::cout << "Geben Sie " << n << " Zahlen ein: " << std::endl;
 	int *arr = new int[n];
-	for (int i = 0; i < n; ++i) {
+	for (size_t i = 0; i < n; ++i) {
 		std::cin >> arr[i];
 	}
 	*size = n;
@@ -38,7 +40,7 @@ int* readNumbers(int *size) {
 int main() {
 	// Task 6.1
 	int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	for (int i = 0; i < 10; ++i) {
+	for (size_t i = 0; i < 10; ++i) {
 		std::cout << arr[i] << std::endl;
 	}
 	
@@ -55,7 +57,7 @@ int main() {
 	printArray(arr + 3, arr + 7); // elements 4, 5, 6, 7
 	
 	// Task 6.6
-	int size;	// variable to store array size
+	size_t size;	// variable to store array size
 	int *pArr = readNumbers(&size);		// read some numbers
 	
 	printArray(pArr, pArr + size);		// print the numbers
