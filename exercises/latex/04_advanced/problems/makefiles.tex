@@ -78,7 +78,7 @@ Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building
 In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
 
 Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \filename{main.o} und \filename{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
-
+\begin{minipage}{\textwidth}
 \begin{lstmake}
 all: main.o Building.o
     g++ -o main.exe main.o Building.o
@@ -89,6 +89,7 @@ main.o: main.cpp
 Building.o: Building.cpp
     g++ -c -o Building.o Building.cpp
 \end{lstmake}
+\end{minipage}
 
 Baue das Projekt nun erneut, du solltest drei Aufrufe von \texttt{g++} sehen:
 
