@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cmath> // for std::sin, std::asin
 #include <iomanip> // for advanced output formatting, e.g., std::setw, std::left
+#include <iterator> // for std::back_inserter, std::back_insert_iterator
 
 ////////////////////////////////////////////////////////////////////////////////
 // Exercise 17.2 map, filter, reduce
@@ -52,7 +53,7 @@ template <class T>
 std::string to_string(std::string str, const T j) {
   std::ostringstream stm ;
   if (!str.empty()) {
-    stm << " - ";
+	stm << str << ", ";
   }
   stm << j;
   return stm.str();
@@ -76,10 +77,11 @@ void functionpointer() {
 		<< " ]"
 		<< std::endl;
 
-	filter_funcpointer(numbers.begin(), numbers.end(), numbers.begin(), is_odd);
+	std::vector<double> filteredNumbers;
+	filter_funcpointer(numbers.begin(), numbers.end(), std::back_inserter(filteredNumbers), is_odd);
 
 	std::cout 	<< "Filter:\t[ " 
-		<< reduce_funcpointer(numbers.begin(), numbers.end(), std::string{}, to_string<double>) 
+		<< reduce_funcpointer(filteredNumbers.begin(), filteredNumbers.end(), std::string{}, to_string<double>) 
 		<< " ]"
 		<< std::endl;
 
@@ -166,9 +168,11 @@ void functors() {
 	std::cout << "Map:\t[ " << reduce_funcpointer(numbers.begin(), numbers.end(), std::string{}, to_string<double>) << " ]"
 		<< std::endl;
 
-	filter_functor(numbers.begin(), numbers.end(), numbers.begin(), Odd());
 
-	std::cout << "Filter:\t[ " << reduce_funcpointer(numbers.begin(), numbers.end(), std::string{}, to_string<double>) << " ]"
+	std::vector<double> filteredNumbers;
+	filter_functor(numbers.begin(), numbers.end(), std::back_inserter(filteredNumbers), Odd());
+
+	std::cout << "Filter:\t[ " << reduce_funcpointer(filteredNumbers.begin(), filteredNumbers.end(), std::string{}, to_string<double>) << " ]"
 		<< std::endl;
 
 	std::cout << "Reduce:\t" << reduce_functor(numbers.begin(), numbers.end(), 0, Sum()) << std::endl;
