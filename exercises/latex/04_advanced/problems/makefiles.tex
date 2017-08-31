@@ -19,17 +19,13 @@ In dieser Übung wollen wir unser eigenes Makefile erstellen. Öffne dafür die 
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
 Lege nun das Target \lstinline{all} an und füge den folgenden Befehl an (Vergiss dabei nicht den Tab vor jedem Befehl!):
 
-\begin{lstmake}
-all:
-    @echo "Running all..."
-\end{lstmake}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_1.txt}
 
 Wenn du jetzt \emph{Build} aufrufst, sollte in der Konsole in etwa Folgendes erscheinen:
 \begin{verbatim}
-----------Building project:[ mktest - Debug ]----------
-Running all...
-====0 errors, 0 warnings====
-
+        ----------Building project:[ mktest - Debug ]----------
+        Running all...
+        ====0 errors, 0 warnings====
 \end{verbatim}
 
 \subsection{Erster Kompiliervorgang}
@@ -38,10 +34,8 @@ Lege dazu eine C++-Sourcedatei \filename{main.cpp} mit einer \lstinline{main}-Fu
 
 Entgegen unserer bisherigen Erfahrung musst du nun manuell im \filename{Makefile} eintragen, dass \filename{main.cpp} gebaut werden soll.
 Ersetze die Dummy-Ausgabe daher durch einen Compiler-Aufruf an \texttt{g++}:
-\begin{lstmake}
-all:
-    g++ -o main.exe main.cpp
-\end{lstmake}
+
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_2.txt}
 
 Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \filename{main.exe} im Projekthauptverzeichnis abgelegt.
 
@@ -54,22 +48,16 @@ Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \file
 Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet.
 
 Building.hpp:
-\begin{minipage}[t]{.45\textwidth}
 \cpppInputListing{06_elevator/problems/listings/sim4_building.hpp}
-\end{minipage}
 
 Building.cpp:
-\begin{minipage}[t]{.5\textwidth}
 \cpppInputListing{06_elevator/problems/listings/sim4_building.cpp}
-\end{minipage}
 
 Erzeuge in der \lstinline{main}-Funktion eine zweistöckige Instanz von \lstinline{Building} und gib diese mittels \lstinline{Building::toString} auf der Konsole aus.
 Damit das Projekt kompiliert, muss auch \lstinline{Building} im Makefile eingetragen werden.
 Passe dazu den Kompileraufruf an:
-\begin{lstmake}
-all:
-    g++ -o main.exe main.cpp Building.cpp
-\end{lstmake}
+
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_3.txt}
 
 Wenn du das Projekt gebaut hast und ausführst, sollte auf der Konsole eine Ausgabe deines Gebäudes erscheinen.
 
@@ -80,52 +68,34 @@ Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building
 In diesem Schritt zerlegen wir die Abhängigkeiten zu den einzelnen Dateien.
 
 Mache das Target \texttt{all} jetzt abhängig von den Objektdateien \filename{main.o} und \filename{Building.o} und erzeuge für jede Objektdatei ein eigenes Ziel, welches diese baut (Das Flag \texttt{-c} sorgt dafür, dass die Sourcedateien nur kompiliert, aber nicht gelinkt werden).
-\begin{minipage}{\textwidth}
-\begin{lstmake}
-all: main.o Building.o
-    g++ -o main.exe main.o Building.o
 
-main.o: main.cpp
-    g++ -c -o main.o main.cpp
-
-Building.o: Building.cpp
-    g++ -c -o Building.o Building.cpp
-\end{lstmake}
-\end{minipage}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_4.txt}
 
 Baue das Projekt nun erneut, du solltest drei Aufrufe von \texttt{g++} sehen:
 
-\begin{minipage}{\textwidth}
-\begin{lstmake}
-make all
-g++ -c -o main.o main.cpp
-g++ -c -o Building.o Building.cpp
-g++ -o main.exe main.o Building.o
-\end{lstmake}
-\end{minipage}
+\begin{verbatim}
+        make all
+        g++ -c -o main.o main.cpp
+        g++ -c -o Building.o Building.cpp
+        g++ -o main.exe main.o Building.o
+\end{verbatim}
 
 Baust du das Projekt nun ein weiteres Mal, so wird nur noch der Linker aufgerufen:
 \begin{verbatim}
-make all
-g++ -o main.exe main.o Building.o
+        make all
+        g++ -o main.exe main.o Building.o
 \end{verbatim}
 
 \subsection{Linker-Aufruf auslagern}
 Wie können wir diesen an sich unnötigen Aufruf ebenfalls noch loswerden?
 Eine Lösung ist es, das Target \texttt{all} von \filename{main.exe} abhängig zu machen und ein neues Ziel \filename{main.exe} zu definieren:
-\begin{lstmake}
-all: main.exe
 
-main.exe: main.o Building.o
-    g++ -o main.exe main.o Building.o
-
-# ...
-\end{lstmake}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_5.txt}
 
 Wenn du das Projekt jetzt baust, erhältst du erfreulicherweise die Rückmeldung, dass nichts zu tun ist:
 \begin{verbatim}
-make all
-make: Nothing to be done for `all'.
+        make all
+        make: Nothing to be done for `all'.
 \end{verbatim}
 
 \subsection{Inkrementelles Bauen:}
@@ -140,25 +110,20 @@ Wir sehen uns jetzt an, welche Tragweite dieses Problem haben kann.
 Du hast kennengelernt, dass man Implementationen auch \texttt{inline} in einem Header machen kann, zum Beispiel wenn diese klein sind.
 
 Bewege \lstinline{toString} nun nach \filename{Buidling.h}:
+
 \cpppInputListing{06_elevator/problems/listings/sim4_tostring.cpp}
 
 Baue das Projekt; es kompiliert nicht! Warum? Genau aus dem Grund, dass \texttt{make} das Header-File nicht \glqq kennt\grqq{}.
 Jetzt gibt es im Projekt keine Definition von \lstinline{toString} wie uns der Linker auch mitteilt:
 
-\begin{minipage}{\textwidth}
 \begin{verbatim}
-main.o:main.cpp:(.text+0x5c): undefined reference to `Building::toString() const'
-collect2: ld returned 1 exit status
+        main.o:main.cpp:(.text+0x5c): undefined reference to `Building::toString() const'
+        collect2: ld returned 1 exit status
 \end{verbatim}
-\end{minipage}
 
 Das Problem lässt sich lösen, indem wir im Makefile angeben, dass \filename{main.o} nicht nur abhängig von \filename{Building.cpp}, sondern auch von \filename{Building.h} ist:
-\begin{lstmake}
-# ...
-main.o: main.cpp Building.h
-    g++ -c -o main.o main.cpp
-# ...
-\end{lstmake}
+
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_6.txt}
 
 Ist das eine schöne Lösung?
 Sicherlich nicht, denn ab sofort müssten wir manuell alle Header ins Makefile eintragen, die wir per \lstinline{#include} in eine Sourcedatei einbinden.
@@ -171,20 +136,8 @@ Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
 Wir automatisieren jetzt die Erkennung von Headern als Abhängigkeiten.
 Lösche dazu die Abhängigkeit \filename{Building.h} des Targets \filename{main.o} und füge in den Compiler-Aufrufen die Parameter \texttt{-MMD -MP} hinzu.
 Binde außerdem die Dateien \filename{Building.d} und \filename{main.d} ein wie unten dargestellt:
-\begin{lstmake}
-all: main.exe
 
-main.exe: main.o Building.o
-    g++ -o main.exe main.o Building.o
-
-main.o: main.cpp
-    g++ -c -MMD -MP -o main.o main.cpp
-
-Building.o: Building.cpp
-    g++ -c -MMD -MP -o Building.o Building.cpp
-
--include Building.d main.d
-\end{lstmake}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_7.txt}
 
 Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\filename{main.exe, Building.h, Building.cpp}).
 Das anschließende Bauen sollte nun funktionieren.
@@ -196,12 +149,8 @@ Wenn du jetzt Änderungen an der \lstinline{toString}-Methode durchführst, werd
 
 Bisher mussten wir hin und wieder die kompilierten Dateien manuell löschen, wenn wir unser Projekt neu bauen wollten.
 Diese Aufgabe lässt sich mittels \texttt{make} ebenfalls automatisieren. Lege dazu ein neues Target \texttt{clean} ohne Abhängigkeiten an und füge einen entsprechenden Befehl zum Löschen ein:
-\begin{lstmake}
-clean:
-    rm -rf main.o Building.o main.d Building.d main.exe
 
-.PHONY: clean
-\end{lstmake}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_8.txt}
 Das Spezial-Target \texttt{.PHONY} dient dazu, \texttt{make} zu signalisieren, dass \texttt{clean} keine Datei ist, die gebaut werden soll.
 Würden wir dieses Target auslassen und eine Datei mit Namen \texttt{clean} erzeugen, würde \texttt{make} die Regel nie ausführen, weil die Datei ja existiert und keine Abhängigkeiten besitzt.
 Du solltest \texttt{all} ebenfalls als \texttt{.PHONY} deklarieren.
@@ -218,10 +167,8 @@ Dir ist sicherlich aufgefallen, dass wir zwei Targets haben, die mehr oder wenig
 \texttt{make} bietet für solche Situationen generische Regeln an, die mittels Wildcards beschrieben werden.
 
 Ersetze die beiden spezifischen Targets durch folgendes generisches:
-\begin{lstmake}
-%.o: %.cpp
-    g++ -MMD -MP -c $< -o $@
-\end{lstmake}
+
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_9.txt}
 Die etwas kryptischen Ausdrücke \lstinline{\$<} und \lstinline{\$@} werden durch die aktuelle Abhängigkeit und Target ersetzt.
 
 Lösche alle automatisch generierten Dateien (\texttt{make clean}) und baue das Projekt neu.
@@ -229,22 +176,8 @@ Lösche alle automatisch generierten Dateien (\texttt{make clean}) und baue das 
 \subsection{Variablen in make}
 
 Im Moment sieht unser Makefile in etwa so aus:
-\begin{lstmake}
-all: main.exe
 
-main.exe: main.o Building.o
-    g++ -o main.exe main.o Building.o
-
-%.o: %.cpp
-    g++ -MMD -MP -c $< -o $@
-
--include Building.d main.d
-
-clean:
-    rm -rf main.o Building.o main.d Building.d main.exe
-    
-.PHONY: clean all
-\end{lstmake}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_10.txt}
 
 Dir ist sicherlich eine andere Form der Redundanz aufgefallen:
 Noch immer haben wir die Tatsache, dass es im Moment zwei Sourcedateien gibt, an unterschiedlichen Stellen im Makefile festgelegt.
@@ -262,44 +195,14 @@ Wir würden also gerne nur an \emph{einer} Stelle definieren, welche Sourcedatei
 Da die Sourcedateien nirgendwo im Makefile auftreten, fangen wir mit den Objekt-Dateien an.
 Lege am Anfang des Makefiles eine Variable mit dem Inhalt '\lstinline{main.o Building.o}' und ersetze das Auftreten der beiden Objekt-Dateien mit dieser Variablen:
 
-\begin{minipage}{\textwidth}
-\begin{lstmake}
-OBJECTS=main.o Building.o
-
-all: main.exe
-
-main.exe: $(OBJECTS)
-    g++ -o main.exe $(OBJECTS)
-    
-# and so on...
-\end{lstmake}
-\end{minipage}
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_11.txt}
 
 Wiederhole die Prozedur für die Abhängigkeiten ('\lstinline{DEPEND=main.d Building.d}') und das ausführbare Programm ('\lstinline{BINARY=main.exe}').
 Lasse dein Programm zwischendurch immer wieder vollständig neu bauen, um sicherzustellen, dass nichts kaputt geht.
 
 Am Ende sollte dein Makefile in etwa so aussehen:
-\begin{lstmake}
-BINARY=main.exe
-OBJECTS=main.o Building.o
-DEPEND=main.d Building.d
 
-all: $(BINARY)
-
-$(BINARY): $(OBJECTS)
-    g++ -o $(BINARY) $(OBJECTS)
-
-%.o: %.cpp
-    g++ -MMD -MP -c $< -o $@
-
--include $(DEPEND)
-
-clean:
-    rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
-    
-.PHONY: clean all
-\end{lstmake}
-%$ for syntax highlighting
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_12.txt}
 
 Wie wir die verbliebene Redundanz auflösen, sehen wir in der nächsten Teilaufgabe.
 
@@ -310,48 +213,23 @@ Außerdem wäre es doch viel schöner, an einer Stelle die Sourcedateien zu defi
 
 Lege dazu eine neue Variable \lstinline{SOURCES} mit den beiden Sourcedateien an.
 Der folgende Snippet zeigt, wie man nun mittels Suffix-Ausdrücken die anderen beiden Variablen erzeugt:
-\begin{lstmake}
-BINARY  = main.exe
-SOURCES = main.cpp Building.cpp
-OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
-DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
-\end{lstmake}
+
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_13.txt}
 
 Es geht sogar noch allgemeiner:
 Du kannst per regulärem Ausdruck\footnote{\url{https://de.wikipedia.org/wiki/Regul\%C3\%A4rer_Ausdruck}} definieren, dass \emph{alle} Sourcedateien im aktuellen Ordner verwendet werden sollen, indem du \lstinline{SOURCES} wie folgt definierst:
 
-\begin{lstmake}
-SOURCES=$(wildcard ./*.cpp)
-\end{lstmake}
-%$ for syntax highlighting
+\begin{verbatim}
+        SOURCES=$(wildcard ./*.cpp)
+\end{verbatim}
 
 \subsection{Zusammenfassung}
 
 Das Produkt unserer Bemühungen in dieser Aufgabe ist ein Makefile, das unabhängig davon ist, wie viele Sourcedateien du im aktuellen Verzeichnis hältst und wie sie genau heißen -- wichtig ist nur die Endung \lstinline{cpp}.
 
 Hier nochmal das vollständige Makefile:
-\begin{lstmake}
-BINARY  = main.exe
-SOURCES = main.cpp Building.cpp
-OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
-DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
 
-all: $(BINARY)
-
-$(BINARY): $(OBJECTS)
-    g++ -o $(BINARY) $(OBJECTS)
-
-%.o: %.cpp
-    g++ -MMD -MP -c $< -o $@
-
--include $(DEPEND)
-
-clean:
-    rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
-
-.PHONY: clean
-\end{lstmake}
-%$ for syntax highlighting
+\cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_14.txt}
 
 \subsection{Nachwort}
 

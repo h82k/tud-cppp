@@ -1,0 +1,4 @@
+clean:
+    rm -rf main.o Building.o main.d Building.d main.exe
+
+.PHONY: clean
