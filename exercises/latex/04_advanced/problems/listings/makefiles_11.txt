@@ -1,0 +1,8 @@
+OBJECTS=main.o Building.o
+
+all: main.exe
+
+main.exe: $(OBJECTS)
+    g++ -o main.exe $(OBJECTS)
+    
+# and so on...

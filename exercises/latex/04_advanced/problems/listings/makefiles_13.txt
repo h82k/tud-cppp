@@ -1,0 +1,4 @@
+BINARY  = main.exe
+SOURCES = main.cpp Building.cpp
+OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
+DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))

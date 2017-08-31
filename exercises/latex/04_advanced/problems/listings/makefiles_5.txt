@@ -1,0 +1,6 @@
+all: main.exe
+
+main.exe: main.o Building.o
+    g++ -o main.exe main.o Building.o
+
+# ...
