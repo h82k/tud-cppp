@@ -1,0 +1,8 @@
+all: main.o Building.o
+    g++ -o main.exe main.o Building.o
+
+main.o: main.cpp
+    g++ -c -o main.o main.cpp
+
+Building.o: Building.cpp
+    g++ -c -o Building.o Building.cpp

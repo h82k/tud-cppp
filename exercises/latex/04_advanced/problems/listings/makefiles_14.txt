@@ -1,0 +1,19 @@
+BINARY  = main.exe
+SOURCES = main.cpp Building.cpp
+OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
+DEPEND  = $(patsubst %.cpp, %.d, $(SOURCES))
+
+all: $(BINARY)
+
+$(BINARY): $(OBJECTS)
+    g++ -o $(BINARY) $(OBJECTS)
+
+%.o: %.cpp
+    g++ -MMD -MP -c $< -o $@
+
+-include $(DEPEND)
+
+clean:
+    rm -rf $(OBJECTS) $(DEPEND) $(BINARY)
+
+.PHONY: clean
