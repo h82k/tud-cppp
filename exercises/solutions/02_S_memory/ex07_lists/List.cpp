@@ -100,7 +100,7 @@ int List::deleteLast() {
 		ListItem *prev = last->getPrevious();
 		delete last; // delete last element
 		last = prev; // and the current last element to previous of last element before
-		if (last == nullptr) {// do not forget to reset first element if list is empty
+		if (prev == nullptr) {// do not forget to reset first element if list is empty
 			first = nullptr;
 		}
 		--currentSize;
