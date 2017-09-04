@@ -7,12 +7,18 @@ Lecture: cppp_lecture.pdf
 * Hide slides 156-158: motivating example is not very helpful
 * Bugfix slide 162: "h.getName()" --> "h->getName()"
 * Bugfix slide 159: ":Mitarbeiter" --> ":Employee"
+* Bugfix slide 175: "Template-Instantiierung" --> "Template-Spezialisierung"
 * Mark slide 167 ("Mehrfachvererbung in Java (I)") as "Exkurs"
 * Slide 126: Add note about default constructor behavior of "std::shard_ptr"
 * Incubation:
   * Append slide that illustrates multi inheritance issues with "default" in Java 1.8 (to be inserted after s. 167)
   * Append slide for this pointer (to be inserted after s. 75)
-* Layouting: slide 75, 169
+  * Append slide with Elevator<T> (to be inserted after s. 175)
+* Layouting: slide 75, 169-182
+
+### Exercises
+* Bugfix in ListIterator exercise ("Aufgabe 7.5"):
+  * List::end() should return the iterator that is equal to the result of invoking "operator++" on the list iterator that points to the end of the list
 
 ## Changes on 2017-09-01
 

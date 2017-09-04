@@ -118,9 +118,14 @@ Zum besseren Verständnis ist ein Teil der Implementation gegeben:
 
 \paragraph{Iteratoren in List erzeugen} 
 Nun ist unsere Implementation fast komplett und wir brauchen nur noch Methoden, um Iteratoren zu erzeugen.
-Implementiere dazu die folgenden Methoden innerhalb der \lstinline{List} Klasse, um Iteratoren auf das erste und letzte Element der Liste zu erzeugen.
+Implementiere dazu die folgenden Methoden innerhalb der \lstinline{List} Klasse:
 
 \cpppInputListing{02_memory/problems/listings/linkedLists_listiterator_methods.hpp}
+
+Die erste Methode soll einen Iterator erzeugen, der auf das erste Listenelement zeigt. 
+\lstinline{end()} hingegen soll einen Iterator erzeugen, der nicht auf ein bestimmtes Element der Liste zeigt. 
+Stattdessen soll hier auf das ''Element'' hinter dem letzten Element der Liste gezeigt werden (\emph{past-the-end element}).
+Genauer gesagt: Es sollte konsistent mit dem Wert sein, den \lstinline{operator++} zurückgibt, wenn man ihn auf dem letzten Listenelement aufruft.
 
 Höchstwahrscheinlich wirst du Probleme bei der Kompilierung haben.
 Dies liegt an der zirkulären Abhängigkeit zwischen \lstinline{List} und \lstinline{ListIterator}.
