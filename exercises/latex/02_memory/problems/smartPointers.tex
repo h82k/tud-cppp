@@ -16,6 +16,9 @@ Würde man \lstinline{TreeNode}-Objekte direkt auf dem Stack anlegen, kann es pa
 Ebenso sollten wir keine Rohzeiger auf das Objekt erzeugen, da diese das Speichermanagement der Smart Pointer umgehen.
 Stattdessen stellen wir eine statische Methode bereit, um \lstinline{TreeNode}-Objekte auf dem Heap zu erzeugen und diese direkt einem Smart Pointer zu übergeben.
 
+Diese statische Methode \lstinline{createNode()} erhält zusätzlich zum Inhalt des Knotens noch zwei TreeNodePtr für das linke bzw. rechte Element.
+Als Defaultwert für diese Parameter ist \lstinline{TreeNodePtr()} angegeben. Dies erstellt einen leeren Smart Pointer, was dem Null-Pointer bei Rohzeigern entspricht.
+
 Implementiere den Konstruktor, Destruktor sowie \lstinline{createNode}.
 Der Konstruktor sollte die Attribute entsprechend initialisieren.
 Schreibe auch eine Textausgabe, die den Zeitpunkt der Erzeugung eines \lstinline{TreeNode}s deutlich macht.

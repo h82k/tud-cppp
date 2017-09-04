@@ -99,10 +99,14 @@ Als Beispiel dient hierfür die erste Zeile.
     \newcolumntype{s}{>{\hsize=.6\hsize}X}
 
     \begin{tabularx}{\textwidth}{b *5{| >{\centering\arraybackslash}s}@{}} 
-		& \mbox{\lstinline!int i!} & \mbox{\lstinline!int *j!} & \mbox{\lstinline!int const *const k!} & \mbox{\lstinline!int **l!} & \mbox{\lstinline!const int *m!} \\ \hline
-		\mbox{\lstinline!op1(int *)!}          & \mbox{\lstinline!&i!} & \mbox{\lstinline!j!} & \xmark & \mbox{\lstinline!*l!} & \xmark \\ \hline
-		\mbox{\lstinline!op2(int)!}            & & & & & \\ \hline
-		\mbox{\lstinline!op3(int &)!}         & & & & & \\ \hline
+       & \lstinline!int i! & \lstinline!int *j! & \lstinline!int const * const k!  & \lstinline!int **l! & \lstinline!const int *m! \\
+	    \hline
+		\mbox{\lstinline!op1(int *)!}          & \mbox{\lstinline!&i!} & \mbox{\lstinline!j!} & \xmark & \mbox{\lstinline!*l!} & \xmark \\ 
+		\hline
+		\mbox{\lstinline!op2(int)!}            & & & & & \\ 
+		\hline
+		\mbox{\lstinline!op3(int &)!}         & & & & & \\ 
+		\hline
 		\mbox{\lstinline!op4(const int **)!}   & & & & & 
     \end{tabularx}
     \caption{Tabelle für \emph{Übergabewerte} Aufgabe}
