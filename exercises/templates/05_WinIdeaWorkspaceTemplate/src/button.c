@@ -43,7 +43,7 @@ static void toggleBlueLED(){
 
 }
 
-static void setBlueLed(uint8_t status){
+static void setBlueLED(uint8_t status){
   // Set value register of blue LED to ledStatus
 }
                   
