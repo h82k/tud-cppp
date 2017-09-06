@@ -47,6 +47,8 @@ Achte bei den Methoden zum Einfügen und Entfernen von Elementen darauf, dass be
 Vergiss nicht, \lstinline{currentSize} bei jeder Operation entsprechend anzupassen.
 Falls die Liste leer ist, sollten \lstinline{deleteFirst()} und \lstinline{deleteLast()} einfach nichts ändern\footnote{Lieber würde man hier einen Fehler werfen, aber Exceptions haben wir an dieser Stelle noch nicht behandelt.}.
 
+Außerdem sollten alle erstellten ListItems auf dem Heap abgelegt werden.
+
 \paragraph{\lstinline{operator<<} implementieren}
 Implementiere außerdem den \lstinline{operator<<}, um bequem Listen auf der Kommandozeile auszugeben.
 Die übergebene Referenz ist -- entgegen der üblichen Konvention für \lstinline{operator<<} -- nicht \lstinline{const}, da wir ansonsten entsprechend eine \lstinline{const}-Version des  \lstinline{ListIterator} benötigen würden.
