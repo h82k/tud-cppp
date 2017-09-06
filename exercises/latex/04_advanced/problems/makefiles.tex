@@ -139,7 +139,7 @@ Binde außerdem die Dateien \filename{Building.d} und \filename{main.d} ein wie 
 
 \cpppInputListing[language={[gnu]make}]{04_advanced/problems/listings/makefiles_7.txt}
 
-Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\filename{main.exe, Building.h, Building.cpp}).
+Um den Effekt dieser Lösung zu sehen, müssen wir alle generierten Dateien löschen (\filename{main.exe, main.o, Building.o}).
 Das anschließende Bauen sollte nun funktionieren.
 Der Trick ist, dass \texttt{g++} beim Kompilieren für jede Sourcedatei ein Makefile generiert, das dessen eingebundene Header als Abhängigkeiten enthält (\filename{main.d, Building.d}).
 
