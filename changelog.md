@@ -1,6 +1,14 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-06
+
+### Lecture
+* Bugfix: Shift operator fills with '1' with if shifted value is negative
+* Improved explanations on slide 223 ("Bitoperationen – Bytes manipulieren")
+* Bugfix on slide 223 ("Bitoperationen – Bytes manipulieren"): fix bit mask, b, b' of third example
+* Layouting in C part
+
 ## Changes on 2017-09-04
 
 ### Lecture
