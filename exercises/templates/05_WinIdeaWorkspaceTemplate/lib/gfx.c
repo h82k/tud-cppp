@@ -3,6 +3,8 @@
  *  The code is converted by Puria Izady for the Cypress FM4  microcontroller
  */
 #include "gfx.h"
+#include "lcd.h"
+#include "src/display.h"
 
 static const char *WHITESPACE = " ";
 

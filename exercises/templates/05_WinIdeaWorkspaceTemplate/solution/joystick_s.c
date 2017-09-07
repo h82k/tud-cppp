@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "s6e2ccxj.h"
 #include "analog.h"
+#include "delay.h"
 #include "src/display.h"
 
 void controlLedsInit_s(){
@@ -71,28 +72,24 @@ void printValues_s(){
   getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
 
   
-  setCursor_s(480,320);       // set cursor of the display
+  setCursor_s(0, 319); // set to top-left corner
   char freeSpace[] = " ";
   char headlineText[] = "  DEBUG";
   writeTextln_s(freeSpace);
   writeTextln_s(headlineText);
   writeTextln_s(freeSpace);
   
-  char JS1XText[] = "  Joystick 1 X-Achse: ";
-  char JS1YText[] = "  Joystick 1 Y-Achse: ";
-  writeText_s(JS1XText);
-  write3Digits8Bit(&analog16);
+  writeText_s("  Joystick 1 X-Achse: ");
+  writeNumberOnDisplayRight_s(&analog16);
   writeTextln_s("");
-  writeText_s(JS1YText);
-  write3Digits8Bit(&analog19);
+  writeText_s("  Joystick 1 Y-Achse: ");
+  writeNumberOnDisplayRight_s(&analog19);
   writeTextln_s("");
   
-  char JS2XText[] = "  Joystick 2 X-Achse: ";
-  char JS2YText[] = "  Joystick 2 Y-Achse: ";
-  writeText_s(JS2XText);
-  write3Digits8Bit(&analog13);
+  writeText_s("  Joystick 2 X-Achse: ");
+  writeNumberOnDisplayRight_s(&analog13);
   writeTextln_s("");
-  writeText_s(JS2YText);
-  write3Digits8Bit(&analog23);
+  writeText_s("  Joystick 2 Y-Achse: ");
+  writeNumberOnDisplayRight_s(&analog23);
   writeTextln_s("");
 }

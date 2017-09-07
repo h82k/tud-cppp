@@ -31,6 +31,9 @@ void paintTouch(){
   }
 }
 
+/** 
+ * Initializes the paint studio.
+ */
 static void initPaintTouch(){
   fillScreen(BLACK);
   fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
@@ -49,6 +52,9 @@ static void initPaintTouch(){
   writeText(text);
 }
 
+/**
+ * Loop of paintTouch.
+ */
 static void loopPaintTouch(){
   // Save the actual touchpoint in the struct touchpoint
   

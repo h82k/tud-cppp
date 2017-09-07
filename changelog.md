@@ -1,6 +1,13 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-07
+
+## Exercises
+* Improve documentation in sample solutions
+* Improve code quality (remove static functions from headers, add missing includes,...)
+* Ex. 25 "Joysticks": Use setCursor(0, 319); to set cursor to top-left corner
+
 ## Changes on 2017-09-06
 
 ### Lecture

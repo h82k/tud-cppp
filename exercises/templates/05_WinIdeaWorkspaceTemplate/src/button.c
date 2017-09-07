@@ -34,16 +34,25 @@ void ButtonHoldBlueLEDOn() {
   }
 }
 
+/**
+ * Returns true (1) if the button is pressed
+ */
 static int isButtonPressed() {
-  // Return 1 if button is pressed, 0 otherwise. 
+  // Return 1 if button is pressed, 0 otherwise.
+  return -1;
 }
 
+/**
+ *  Changes the status of the blue LED.
+ */
 static void toggleBlueLED(){
   // invert value of LEDStatus
-
 }
 
+/**
+ *  Sets the blue LED to its status.
+ */
 static void setBlueLED(uint8_t status){
   // Set value register of blue LED to ledStatus
 }
-                  
+            

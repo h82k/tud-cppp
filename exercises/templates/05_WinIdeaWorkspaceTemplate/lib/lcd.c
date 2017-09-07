@@ -194,7 +194,6 @@ void setupLCD() {
         HX8357_DISPON, 0,
         TFTLCD_DELAY, 50,
     };
-    volatile unsigned long u32Delay;
     volatile unsigned long i = 0;
     reset();
     delay(200);

@@ -61,18 +61,19 @@ void setBackgroundColor_s(const int bg) {
 }
 
 void drawChar_s(int x, int y,  char c,  int color,  int bg, char size) {
-  if((x >= 480)            || // Clip right
-     (y >= 320)           || // Clip bottom
-     ((x + 6 * size - 1) < 0) || // Clip left
-     ((y + 8 * size - 1) < 0))   // Clip top
+  if((x >= 480) ||                // Clip right
+     (y >= 320) ||                // Clip top
+     ((x + 6 * size - 1) < 0) ||  // Clip left
+     ((y + 8 * size - 1) < 0)) {  // Clip bottom
       return;
+  }
   
   char i, j;
-  for(i=0; i<6; i++ ) {  // draw in x-direction
-    char line;
-    if(i < 5) line = font[(c*5)+i];  // save the i.x-line from (i,j) to (i,j+7) in the char line
-    else      line = 0x0;
-    for(j=0; j<8; j++, line >>= 1) {  // draw in y-direction
+  for(i=0; i < 6; i++ ) { // Draw in x-direction
+    char line; // Vertical line
+    if(i < 5) line = font[(c*5)+i]; // Save the i.x-line from (i,j) to (i,j+7) in the char line
+    else      line = 0x0; // Padding line toward next character
+    for(j=0; j<8; j++, line >>= 1) { // Draw in y-direction
       if(line & 0x1) {
         if(size == 1) drawPixel(x + i, y - j, color);
         else          fillRect(x + (i * size), y - (j * size), size, size, color);
@@ -89,7 +90,7 @@ void writeAuto_s(const char c) {
         cursorY -= textSize*8;
         cursorX  = 0;
     } else if(c == '\r') {
-  
+      // nop
     } else {
         if(((cursorX + textSize * 6) >= 480)) { // Heading off edge
             cursorX  = 0;            // Reset x to zero
@@ -121,8 +122,33 @@ void writeTextln_s(const char *text){
     cursorX  = 0;
 }
 
-void writeNumberOnDisplay_s(const uint16_t *value){
-    char buffer[20];
-    itoa(*value, buffer, 10);
-    writeText_s(buffer);
+void writeNumberOnDisplay_s(const uint8_t *value){
+  const uint8_t base = 10;
+  char buffer[6];
+  itoa(*value, buffer, base);
+  writeText_s(buffer);
+}
+
+void writeNumberOnDisplayRight_s(const uint8_t *value){
+  const uint8_t base = 10;
+  char buffer[6];
+  char *bufferStart = buffer;
+  if (*value < 10000) {
+    *bufferStart = ' ';
+    bufferStart++;
+    if (*value < 1000) {
+      *bufferStart = ' ';
+      bufferStart++;
+      if (*value < 100) {
+        *bufferStart = ' ';
+        bufferStart++;
+        if (*value < 10) {
+          *bufferStart = ' ';
+          bufferStart++;
+        }
+      }
+    }
+  }
+  itoa(*value, bufferStart, base);
+  writeText_s(buffer);
 }

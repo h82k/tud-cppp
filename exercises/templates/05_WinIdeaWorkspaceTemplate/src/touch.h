@@ -13,14 +13,4 @@ void debugTouch_s();
 void paintTouch();
 void paintTouch_s();
 
-/** 
- * Initializes the paint studio.
- */
-static void initPaintTouch();
-
-/**
- * Loop of paintTouch.
- */
-static void loopPaintTouch();
-
 #endif

@@ -16,6 +16,12 @@ void controlLeds_s();
 
 /**
  *  Prints the analog values of joystick 1 and 2 on the display.
+ *
+ * Code sample:
+   while(1) {
+     printValues_s();
+     microDelay(100000);
+   }
  */
 void printValues();
 void printValues_s();
