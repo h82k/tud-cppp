@@ -8,6 +8,13 @@ Further details (in German) are accessible at http://www.es.tu-darmstadt.de/lehr
 
 See LICENSE.txt for more information about the license of the slide set.
 
+## Impressions of summer semester 2017
+
+<img alt="Duck Hunt 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_DuckHunt_IMG_20170907_155214_206.jpg" width="400px"/>
+<img alt="Maze 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_Maze_IMG_20170907_152533.jpg"  width="400px"/>
+<img alt="Pong 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_Pong_IMG_20170907_155105_872.jpg"   width="400px"/>
+<img alt="Fun 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_Spass_IMG_20170907_154354_342.jpg" width="400px"/>
+
 ## CI status of master branch
 
 [![Run Status](https://api.shippable.com/projects/58eeab1b4dc5ce0700de5787/badge?branch=master)](https://app.shippable.com/github/Echtzeitsysteme/tud-cppp)
