@@ -1,4 +1,6 @@
 #include "init.h"
+#include "lcd.h"
+#include "src/display.h"
 
 void initBoard(){
   init();

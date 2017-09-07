@@ -202,7 +202,7 @@ uint16_t readTouchY(){
 }
 
 uint16_t readTouchZ(){
-  uint16_t rXPlate = 248;  // Resistance between X+ and X-
+  //uint16_t rXPlate = 248;  // Resistance between X+ and X-
   
   // Set X+ to ground
   TOUCH_XP_IO = 1u;   // pinMode(_xp, OUTPUT);

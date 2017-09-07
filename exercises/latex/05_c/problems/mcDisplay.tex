@@ -131,7 +131,7 @@ Um das Display in Cyan einzufärben, füge folgende Zeile an:
 \subsection{Regelmäßiges Muster ausgeben}
 In diesem Abschnitt implementierst du die Funktion void \lstinline|printPattern(backgroundColor, foregroundColor)|.
 Diese Funktion ordnet auf dem Display Quadrate (4 x 4 Pixel) als Schachbrettmuster an.
-
+%
 \hints{
 \item 
 Nutze die Funktion \lstinline|fillScreen|, um zunächst den Bildschirm in der Farbe \lstinline|backgroundColor| zu füllen.
@@ -172,13 +172,21 @@ Der Cursor ist im Koordinatenursprung, die Textfarbe ist Weiß, die Hintergrundf
 
 \item
 Die Funktion \lstinline|drawChar(x, y, c, color, bg, size)| soll einen Buchstaben \lstinline|c| in ASCII-Schriftart auf dem Display an der Position \lstinline|x|, \lstinline|y| in der Farbe \lstinline|color| mit der Hintergrundfarbe \lstinline|bg| und in der Größe \lstinline|size| abbilden.
+\begin{itemize}
+\item 
 Zunächst muss überprüft werden, ob die angegebene Position gültig ist.
 Sofern die Werte die Grenzen des Bildschirms überschreiten, soll die Funktion \lstinline|drawChar| beendet werden.
+
+\item 
 Als nächster Schritt soll auf die richtige Stelle des Arrays \lstinline|font| zugegriffen werden und die gesetzten Bits der Hexadezimalwerte als farbiges Pixel interpretiert werden.
-Abbildung \ref{fig:ascii57} zeigt den Aufbau der Daten im Array \lstinline|font| am Beispiel des Buchstabens A.
+Abbildung \ref{fig:ascii57} zeigt den Aufbau der Daten im Array \lstinline|font| am Beispiel des Buchstabens \lstinline|'A'|.
 Ein beliebiger Buchstabe \lstinline|c| ist in \lstinline|font| an der Position \lstinline|c * 5| gespeichert.
 Für diesen Buchstaben werden 5 Byte/40 Bits durchiteriert.
 Für jedes gesetzte Bit wird an der entsprechenden Stelle ein Pixel (für \lstinline|size == 1|) oder Rechteck (für \lstinline|size > 1|) auf dem Display ausgegeben.
+\item 
+Zusätzlich soll nach dem Buchstaben ein Leerraum gesetzt werden.
+Der Leerraum soll die Breite \lstinline|size| haben.
+\end{itemize}
 
 \item 
 Um die Textausgabe auf dem Display für Strings zu ermöglichen, müssen weitere Funktionen implementiert werden, die einen automatischen Cursor verwenden.
@@ -187,15 +195,15 @@ Die Funktion \lstinline|writeAuto(char c)| soll die Aufgabe übernehmen, einen B
 Hierbei sind Display-Grenzen und Zeilenumbrüche zu beachten.
 
 \item 
-Implementiere die Funktion \lstinline|writeText(char *text)|, welche einen C-String als Parameter erhält und diesen mithilfe von \lstinline|writeAuto| auf das Display schreibt.
+Implementiere die Funktion \lstinline|writeText(const char *text)|, welche einen C-String als Parameter erhält und diesen mithilfe von \lstinline|writeAuto| auf das Display schreibt.
 
 \item 
-Implementiere abschließend die Funktion \lstinline|writeTextln(char *text)|, die sich ähnlich wie \lstinline|writeText| verhält, am Ende der Textausgabe jedoch zusätzlich einen Zeilenumbruch einfügt.
+Implementiere abschließend die Funktion \lstinline|writeTextln(const char *text)|, die sich ähnlich wie \lstinline|writeText| verhält, am Ende der Textausgabe jedoch zusätzlich einen Zeilenumbruch einfügt.
 
 \item 
-Implementiere zur Ausgabe von Zahlen die Funktion \lstinline|writeNumberOnDisplay(uint16_t *value)|.
-Verwende die Funktion \lstinline|itoa| (aus \filename{stdlib.h}), um den per Zeiger übergebenen Wert in ein char-Array umzuwandeln.
-Dazu wirst du einen Zeichenpuffer benötigen.
-Gib das Ergebnis anschließend mithilfe von \lstinline|writeText| auf dem Display aus.
+Implementiere zur Ausgabe von Zahlen die Funktionen \lstinline|writeNumberOnDisplay(const uint8_t *value)| und \lstinline|writeNumberOnDisplayRight(const uint8_t *value)|.
+Erstere soll die per Pointer übergebene Zahl linksbündig ausgeben, Zweitere soll die Zahl rechtsbündig ausgeben.
+Rechtsbündig bedeutet hier, dass die Ausgabe immer diegleiche Breite hat, egal ob der Wert \lstinline|0| oder \lstinline|65535| ist (also: 5 Ziffern).
+Verwende die Funktion \lstinline|itoa| (aus \filename{stdlib.h}\footnote{\url{http://www.cplusplus.com/reference/cstdlib/itoa/}}), um den per Zeiger übergebenen Wert in ein \lstinline|char|-Array zu schreiben und anschließend mittels \lstinline|writeText| auf dem Display aus.
 \end{enumerate}
 

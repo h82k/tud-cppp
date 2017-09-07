@@ -44,10 +44,10 @@ Um fortlaufend die Positionsdaten des Joysticks auszugeben, rufe \lstinline|prin
         \toprule
         \textbf{Funktionen/Variablen} & \textbf{Beschreibung} \\
         \midrule
-        \lstinline|void setCursor(480,320)| & Setzt den Cursor auf den Anfang \\
+        \lstinline|setCursor(0, 319)| & Setzt den Cursor auf die linke obere Ecke\\
         \lstinline|void writeTextln(char *text)| & Schreibt \lstinline|text| auf das Display und verschiebt den Cursor mit Zeilensprung \\
         \lstinline|void writeText(char *text)| & Schreibt \lstinline|text| auf das Display und verschiebt den Cursor ohne Zeilensprung \\
-        \lstinline|void write3Digits8Bit(uint8_t *number)| & Schreibt die per Pointer referenzierte Zahl \lstinline|number| an die Position des Cursors und verschiebt den Cursor\\
+        \lstinline|void writeNumberOnDisplayRight(const uint8_t *number)| & Schreibt die per Pointer referenzierte Zahl \lstinline|number| an die Position des Cursors und verschiebt den Cursor\\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -65,9 +65,9 @@ Tabelle \ref{tab:controlLED} zeigt die verschiedenen möglichen Wertebereiche mi
         \toprule
         \textbf{Position des Joystick} & \textbf{LED-Farbe} & \textbf{Werebereich AN16} & \textbf{Ausgabe-Pin} & \textbf{Ausgabe-Analog-Kanal}\\
         \midrule
-        Links & Grün & 255 \dots 200 & B2 & 8\\
-        Mitte & Blau & 200 \dots 180 & 18 & 18\\
-        Rechts & Rot & 180 \dots 0 & 1A & 10\\
+        Links & Grün & 255 \dots 200 & PB2 & 8\\
+        Mitte & Blau & 200 \dots 180 & P18 & 18\\
+        Rechts & Rot & 180 \dots 0 & P1A & 10\\
         \bottomrule
     \end{tabular}
 \end{table}

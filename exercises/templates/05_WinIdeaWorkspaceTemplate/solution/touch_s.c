@@ -11,6 +11,16 @@
 
 static uint16_t oldcolor, currentcolor; 
 
+/** 
+ * Initializes the paint studio.
+ */
+static void initPaintTouch();
+
+/**
+ * Loop of paintTouch.
+ */
+static void loopPaintTouch();
+
 void debugTouch_s(){
   uint8_t analog11;
   uint8_t analog12;
@@ -57,7 +67,7 @@ void paintTouch_s(){
   }
 }
 
-static void initPaintTouch(){
+static void initPaintTouch() {
   fillScreen(BLACK);
   fillRect(0, 0, BOXSIZE, BOXSIZE, RED);
   fillRect(BOXSIZE, 0, BOXSIZE, BOXSIZE, YELLOW);
@@ -75,7 +85,7 @@ static void initPaintTouch(){
   writeText_s(text);
 }
 
-static void loopPaintTouch(){
+static void loopPaintTouch() {
   touchPoint.x = readTouchX();
   touchPoint.y = readTouchY();
   touchPoint.z = readTouchZ();

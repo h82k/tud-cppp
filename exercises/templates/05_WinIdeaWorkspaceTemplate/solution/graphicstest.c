@@ -57,16 +57,6 @@ void testGraphics(void) {
   //Serial.println(F("Done!"));
 }
 
-
-void testRotateText(void) {
-  uint8_t rotation;
-  for(rotation=0; rotation<4; rotation++) {
-    //setRotation(rotation);
-    testText();
-    delay(2000);
-  }
-}
-
 void testFillScreen(void){
   fillScreen(BLACK);
   fillScreen(RED);
@@ -76,7 +66,6 @@ void testFillScreen(void){
 }
 
 void testText(void) {
-  char text[1000];
   fillScreen(BLACK);
   setCursor_s(480, 320);
   setTextColor_s(WHITE);

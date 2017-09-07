@@ -1,10 +1,15 @@
+/**
+ * This header specifies a number of graphics tests
+ */
 #ifndef GRAPHICSTEST
 #define GRAPHICSTEST
 
 #include <stdint.h>
 
+/**
+ * Run all graphics tests in sequence
+ */
 void testGraphics(void);
-void testRotateText(void);
 
 void testFillScreen();
 void testText(void);
