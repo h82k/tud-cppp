@@ -1,6 +1,20 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-11
+
+## Lecture
+
+* Remove motivation slides for multiple inheritance (previously: slides 156-158)
+* Remove slide on multiple inheritance problems in "Template" part ("Containerproblem und Mehrfachvererbung", previously: slide 171)
+* Introduce motivation slide for generic programming ("Generische Programmierung: Motivation", now: 168)
+* Improve quality of slides (layout, explanations) in "Template" part
+* Insert prepared slides from incubation section ("Beispiel: Template-Klasse Elevator<T>", "Der this-Zeiger", "Exkurs: Mehrfachvererbung in Java? (II)")
+
+## Exercises
+
+* Add hint regarding RGB565 export from Gimp to Ex. 27.
+
 ## Changes on 2017-09-07
 
 ## Exercises
