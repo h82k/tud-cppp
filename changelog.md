@@ -11,6 +11,10 @@ Lecture: cppp_lecture.pdf
 * Improve quality of slides (layout, explanations) in "Template" part
 * Insert prepared slides from incubation section ("Beispiel: Template-Klasse Elevator<T>", "Der this-Zeiger", "Exkurs: Mehrfachvererbung in Java? (II)")
 
+## Exercises
+
+* Add hint regarding RGB565 export from Gimp to Ex. 27.
+
 ## Changes on 2017-09-07
 
 ## Exercises
