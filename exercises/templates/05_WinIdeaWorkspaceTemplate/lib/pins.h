@@ -37,7 +37,7 @@
 #define TOUCH_YM_IO FM4_GPIO->DDRF_f.P6  // TOUCH_YM => PF6
 #define TOUCH_YP_IO FM4_GPIO->DDR1_f.PC  // TOUCH_YP => P1C / A12
 
-// JOYSTICK PINS
+// JOYSTICK ANALOG PINS
 #define JS1_X_IO    FM4_GPIO->DDRB_f.P0 // A16
 #define JS1_Y_IO    FM4_GPIO->DDRB_f.P3 // A19
 #define JS1_D_IO    FM4_GPIO->DDRF_f.P5 // JS1_D => PF5
@@ -55,5 +55,31 @@
 #define DHT11_SIGNAL_OUT     FM4_GPIO->PDORF_f.P7   // PF7 PIN 75
 #define DHT11_SIGNAL_IO  FM4_GPIO->DDRF_f.P7        // PF7 PIN 75
 #define DHT11_SIGNAL_IN  FM4_GPIO->PDIRF_f.P7       // PF7 PIN 75
+
+// RGB LED pins
+#define LED_RED_DDR FM4_GPIO->DDR1   // Data direction register.
+#define LED_RED_DOR FM4_GPIO->PDOR1  // Data output register.
+#define LED_RED_PIN 0x0A             // Pin number.
+
+#define LED_GREEN_DDR FM4_GPIO->DDRB
+#define LED_GREEN_DOR FM4_GPIO->PDORB
+#define LED_GREEN_PIN 0x02
+
+#define LED_BLUE_DDR FM4_GPIO->DDR1
+#define LED_BLUE_DOR FM4_GPIO->PDOR1
+#define LED_BLUE_PIN 0x08
+
+// Joystick button pins
+#define BUTTON_LEFT_DDR FM4_GPIO->DDRF  // Data direction register.
+#define BUTTON_LEFT_PCR FM4_GPIO->PCRF  // Pullup configuration register.
+#define BUTTON_LEFT_DIR FM4_GPIO->PDIRF // Data input register.
+#define BUTTON_LEFT_PIN 0x05            // Pin number.
+
+#define BUTTON_RIGHT_DDR FM4_GPIO->DDRF
+#define BUTTON_RIGHT_PCR FM4_GPIO->PCRF
+#define BUTTON_RIGHT_DIR FM4_GPIO->PDIRF
+#define BUTTON_RIGHT_PIN 0x03
+
+
 
 #endif /* pins_h */
