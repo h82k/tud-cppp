@@ -16,7 +16,7 @@
 # * Run `winetricks vcrun2013`
 # * Unpack *WinIDEA_Driver.zip* so that *~/.wine/drive_c/PortableApps* contains the subfolders *iSYSTEM* and *Cypress*.
 # * Copy this script to *~/.wine/drive_c/PortableApps/iSYSTEM/winIDEAOpen9*
-# * Execute the copied script
+# * Execute the copied script and answer both questions with 'yes'
 # * Start *winIDEA.exe* (some dependencies may be installed automatically during the first start)
 #
 
