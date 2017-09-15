@@ -1,10 +1,11 @@
 #include "init.h"
 #include "blink.h"
+#include "blinkrainbow.h"
 
 int main(){
   initBoard();
 
-  // Your code here ...
   BlinkMain();
+  
   return 0;
 }

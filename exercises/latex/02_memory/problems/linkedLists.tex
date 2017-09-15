@@ -45,9 +45,14 @@ Dadurch können beide nie aufgerufen werden und der Kompiler kann dies zur Kompi
 Implementiere nun die Klasse \lstinline{List}.
 Achte bei den Methoden zum Einfügen und Entfernen von Elementen darauf, dass bei einer leeren Liste eventuell sowohl die \lstinline{first} als auch \lstinline{last} Zeiger modifiziert werden müssen.
 Vergiss nicht, \lstinline{currentSize} bei jeder Operation entsprechend anzupassen.
-Falls die Liste leer ist, sollten \lstinline{deleteFirst()} und \lstinline{deleteLast()} einfach nichts ändern\footnote{Lieber würde man hier einen Fehler werfen, aber Exceptions haben wir an dieser Stelle noch nicht behandelt.}.
 
 Außerdem sollten alle erstellten ListItems auf dem Heap abgelegt werden.
+
+Falls die Liste leer ist, sollten \lstinline{deleteFirst()} und \lstinline{deleteLast()} einfach nichts ändern.
+Außerdem werden in dem Fall \lstinline{getFirst(), getLast()} und \lstinline{getNthElement()} einen Segmentation fault produzieren. 
+Lieber würde man hier einen Fehler werfen, aber Exceptions haben wir an dieser Stelle noch nicht behandelt. 
+Die Erweiterung um Exceptions folgt dann in \ref{subsec:list_exceptions}.
+
 
 \paragraph{\lstinline{operator<<} implementieren}
 Implementiere außerdem den \lstinline{operator<<}, um bequem Listen auf der Kommandozeile auszugeben.

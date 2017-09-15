@@ -55,7 +55,7 @@ Um fortlaufend die Positionsdaten des Joysticks auszugeben, rufe \lstinline|prin
 
 \subsection{LED mit Joystick 1 kontrollieren}
 In dieser Aufgabe soll die Funktion \lstinline|controlLEDs| geschrieben werden, um die Farbe der RGB-LED durch die Bewegung des Joysticks 1 nach links oder rechts zu verändern.
-Tabelle \ref{tab:controlLED} zeigt die verschiedenen möglichen Wertebereiche mit den anzusteuernden LEDs.
+\Cref{tab:controlLED} zeigt die verschiedenen möglichen Wertebereiche mit den anzusteuernden Ports und Pins der LEDs (wie in \filename{pins.h} definiert).
 
 \begin{table}[!htb]
     \centering
@@ -63,11 +63,15 @@ Tabelle \ref{tab:controlLED} zeigt die verschiedenen möglichen Wertebereiche mi
     \label{tab:controlLED}
     \begin{tabular}{llllr}
         \toprule
-        \textbf{Position des Joystick} & \textbf{LED-Farbe} & \textbf{Werebereich AN16} & \textbf{Ausgabe-Pin} & \textbf{Ausgabe-Analog-Kanal}\\
+        \textbf{Position des Joystick} & 
+        \textbf{LED-Farbe} & 
+        \textbf{Werebereich AN16} & 
+        \textbf{Daten-Port} & 
+        \textbf{Ausgabe-Pin}\\
         \midrule
-        Links & Grün & 255 \dots 200 & PB2 & 8\\
-        Mitte & Blau & 200 \dots 180 & P18 & 18\\
-        Rechts & Rot & 180 \dots 0 & P1A & 10\\
+        Links & Grün & 255 \dots 200 & \lstinline|LED_GREEN_DOR| & \lstinline|LED_GREEN_PIN| \\
+        Mitte & Blau & 200 \dots 180 & \lstinline|LED_BLUE_DOR| & \lstinline|LED_BLUE_PIN| \\
+        Rechts & Rot & 180 \dots 0 & \lstinline|LED_RED_DOR| & \lstinline|LED_RED_PIN| \\
         \bottomrule
     \end{tabular}
 \end{table}

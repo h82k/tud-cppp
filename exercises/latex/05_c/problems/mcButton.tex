@@ -1,7 +1,6 @@
 \section{\ExercisePrefixEmbeddedC Taster abfragen \optional}
 
 In dieser Aufgabe erweiterst du die vorherige Aufgabe um eine Benutzerinteraktion über den Taster des linken Joysticks (\textbf{Joystick 1}).
-Der Taster ist als digitaler Eingang am \textbf{Pin F5} des Mikrocontrollers angeschlossen.
 Ziel dieser Aufgabe ist es, mithilfe des Tasters die RGB-LED in zwei verschiedenen Szenarien zu kontrollieren.
 Im ersten Szenario soll der Taster als Lichtschalter arbeiten: Wird der Taster einmal betätigt, schaltet sich die blaue LED ein; wird der Taster erneut betätigt, schaltet sie sich wieder ab.
 Im zweiten Szenario soll die blaue LED solange leuchten, wie der Taster gedrückt gehalten wird.
@@ -12,42 +11,33 @@ In dieser Aufgabe wirst du mit den Dateien \filename{button.c} und \filename{but
 
 \item 
 Zunächst werden wir die nötigen Variablen in \textbf{button.c} deklarieren:
-Um die blaue LED ansteuern zu können, benötigst du einen Zeiger auf das Daten-Register der blauen LED (\textbf{\lstinline|blueLEDValuePort|}).
-Weiterhin soll für den Lichtschalter der aktuelle Zustand der LED in einer vorzeichenlosen 8-Bit-Integer-Variablen \textbf{\lstinline|ledStatus|} gespeichert werden.
+Um den aktuellen Zustand der LED zu speichern wird eine vorzeichenlose 8-Bit-Integer-Variable \textbf{\lstinline|ledStatus|} angelegt.
 
 \item
 Implementiere zunächst die Funktion \textbf{\lstinline|initLED()|}.
-Diese soll \lstinline|ledStatus|, den Pin F5 und die blaue LED initialisieren.
+Diese soll \lstinline|ledStatus| und den Pin der blauen LED initialisieren.
 \begin{itemize}
 \item 
 Der LED-Status soll zu Beginn 0 (= \enquote{aus}) sein.
+\item
+Der Pin der blauen LED muss als Ausgang konfiguriert werden.
 \item 
 Das Daten-Register der blauen LED soll entsprechend initialisiert sein, dass die LED ausgeschaltet ist.
-\item 
-Pin F5 soll durch die PDL-Methode\footnote{PDL Quick Start Guide: \url{http://www.cypress.com/file/307966/download}} \textbf{\lstinline|Gpio1pin_InitIn(pin, option)|}\footnote{Die Dokumentation befindet sich als HTML im Ordner Cypress/PDL/2.1.0/doc} initialisiert werden.
-Diese Funktion ist eine weitere Möglichkeit, Pins des Mikrocontrollers zu initialiseren. 
-\textbf{\lstinline|Gpio1pin_InitIn|} initialisiert einen Pin als Eingang und kann zusätzlich zu diesem einen Pull-Up-Widerstand schalten, um das ankommende Signal zu verstärken.
-Der Name des Pins wird mit \textbf{\lstinline|GPIO1PIN_PF5|} angegeben.
-Der Pull-Up-Widerstand wird mit der Option \textbf{\lstinline|Gpio1pin_InitPullup(1u)|} aktiviert.
 \end{itemize}
 
 \item
 Implementiere nun die Funktion \textbf{\lstinline|toggleBlueLED()|}.
 Diese soll den Status von \lstinline|ledStatus| umkehren:
 War der Wert zuvor \lstinline|1|, soll er danach \lstinline|0| sein und umgekehrt.
-Der aktuelle Status der LED kann mit \textbf{\lstinline|setBlueLED(uint8_t status)|} gesetzt werden. 
+Der aktuelle Status der LED soll mit \textbf{\lstinline|setBlueLED(uint8_t status)|} gesetzt werden.
 
 \item 
-Implementiere nun die Funktion \textbf{\lstinline|isButtonPressed|}, die zurückgibt, ob der Taster gerade gedrückt ist.
-Dazu kannst du die PDL-Funktion \lstinline|Gpio1pin_Get(pin)| nutzen.
-Diese Funktion liefert den aktuellen Wert (entweder 0 oder 1) des übergebenen Pins zurück (in diesem Fall für Pin \lstinline|GPIO1PIN_PF5|).
+Implementiere nun die Funktion \textbf{\lstinline|isButtonPressed|}, die zurück gibt, ob der Taster gerade gedrückt ist.
 Beachte, dass der Taster durch den Pull-Up-Widerstand genau dann gedrückt ist, wenn am Pin ein niedriger Pegel (\lstinline|0|) anliegt.
+Ein Beispiel für die Abfrage des Tasters findest du in \Cref{lst:IO_example}.
 
 \item
 Implementiere nun mithilfe der zuvor erstellten Hilfsfunktionen die Hauptfunktionen \textbf{ButtonToggleBlueLED()} und \textbf{ButtonHoldBlueLEDOn()}.
 Die erste soll dem Button die Funktion eines Lichtschalters geben und die zweite soll die LED zum Leuchten bringen, solange der Taster gedrückt gehalten wird. 
 
 \end{enumerate}
-\hints{	
-	\item \textbf{\lstinline|while(Gpio1pin_Get(GPIO1PIN_PF5) == 0)|} kann verwendet werden, um das Programm solange zu pausieren, bis der Taster losgelassen wird. 
-}

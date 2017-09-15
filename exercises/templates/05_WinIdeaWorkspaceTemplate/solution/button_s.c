@@ -4,7 +4,8 @@
 #include "pdl_header.h"
 #include "s6e2ccxj.h"
 
-static volatile uint32_t *blueLedValuePort;
+#include "pins.h"
+
 static uint8_t ledStatus;
 
 /**
@@ -35,9 +36,9 @@ void ButtonToggleBlueLED_s(){
   while(1){
     if(isButtonPressed()){
       toggleBlueLED();
+      setBlueLED(ledStatus);
       while(isButtonPressed());
     }
-    setBlueLED(ledStatus);
     microDelay(sleepTime);
   }  
 }
@@ -60,20 +61,19 @@ void ButtonHoldBlueLEDOn_s() {
 
 static void initLED() {
   ledStatus = 0u;
-  Gpio1pin_InitIn(GPIO1PIN_PF5, Gpio1pin_InitPullup(1u)); // initialize PF5 as input and activate pullup resistor
   
-  volatile uint32_t *blueLEDDirectionPort = &(FM4_GPIO->DDR1);
-  blueLedValuePort = &(FM4_GPIO->PDOR1);
+  // Initialize left button as input and activate pullup resistor
+  BUTTON_LEFT_DDR &= ~(1 << BUTTON_LEFT_PIN);
+  BUTTON_LEFT_PCR |= (1 << BUTTON_LEFT_PIN); 
   
-  bFM4_GPIO_ADE_AN08 = 0; // Disable analog-digital channel 08
-  *blueLEDDirectionPort |= 0x0100; // Configure Port 1 Pin 8 as output pin
-  *blueLedValuePort |= 0x0100; // Switch LED off
+  LED_BLUE_DDR |= (1 << LED_BLUE_PIN); // Configure blue led as output pin
+  LED_BLUE_DOR |= (1 << LED_BLUE_PIN); // Switch LED off
 }
 
 
 static int isButtonPressed() {
   // Inverted logic as input is pulled up
-  return Gpio1pin_Get(GPIO1PIN_PF5) == 0;                             
+  return !(BUTTON_LEFT_DIR & (1 << BUTTON_LEFT_PIN));                             
 }
 
 static void toggleBlueLED(){
@@ -85,8 +85,8 @@ static void toggleBlueLED(){
 
 static void setBlueLED(uint8_t status) {
   if(status)
-    *blueLedValuePort &= 0xFEFF; 
+    LED_BLUE_DOR &= ~(1 << LED_BLUE_PIN); 
   else
-    *blueLedValuePort |= 0x0100; 
+    LED_BLUE_DOR |= (1 << LED_BLUE_PIN); 
 }
                   

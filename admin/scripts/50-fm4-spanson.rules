@@ -1,0 +1,1 @@
+ ATTR{idVendor}=="1A6A", ATTR{idProduct}=="2000", GROUP="users", MODE="0660", NAME="CypressFM4"
