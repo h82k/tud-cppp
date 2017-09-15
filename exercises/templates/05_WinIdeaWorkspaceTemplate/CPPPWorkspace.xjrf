@@ -44,152 +44,150 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>11</C>
-       <L>8</L>
-       <P>src\main.c</P>
+       <C>41</C>
+       <L>75</L>
+       <P>solution\display_s.c</P>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>3</C>
+       <C>18</C>
        <L>2</L>
-       <P>solution\graphicstest.h</P>
+       <P>solution\button_s.c</P>
       </PI.1>
       <PI.10>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>18</C>
+       <L>5</L>
+       <P>solution\joystick_s.c</P>
+      </PI.10>
+      <PI.11>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>6</C>
+       <L>195</L>
+       <P>lib\lcd.c</P>
+       <VL>159</VL>
+      </PI.11>
+      <PI.12>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>3</L>
        <P>src\button.h</P>
        <VL>3</VL>
-      </PI.10>
-      <PI.11>
+      </PI.12>
+      <PI.13>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>12</C>
        <L>57</L>
        <P>src\touch.c</P>
        <VL>41</VL>
-      </PI.11>
-      <PI.12>
+      </PI.13>
+      <PI.14>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>24</C>
        <L>2</L>
        <P>lib\init.c</P>
-      </PI.12>
-      <PI.13>
+      </PI.14>
+      <PI.15>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>33</L>
        <P>lib\gfx.h</P>
        <VL>12</VL>
-      </PI.13>
-      <PI.14>
+      </PI.15>
+      <PI.16>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>3</C>
        <L>476</L>
        <P>lib\gfx.c</P>
        <VL>449</VL>
-      </PI.14>
-      <PI.15>
+      </PI.16>
+      <PI.17>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>10</C>
        <L>6</L>
        <P>lib\delay.h</P>
-      </PI.15>
-      <PI.16>
+      </PI.17>
+      <PI.18>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>3</C>
        <L>4</L>
        <P>src\blink.h</P>
-      </PI.16>
-      <PI.17>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>41</C>
-       <L>75</L>
-       <P>solution\display_s.c</P>
-       <VL>48</VL>
-      </PI.17>
-      <PI.18>
+      </PI.18>
+      <PI.19>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>14</L>
        <P>src\touch.h</P>
-      </PI.18>
-      <PI.19>
+      </PI.19>
+      <PI.2>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>28</C>
+       <P>solution\blinkrainbow_s.c</P>
+      </PI.2>
+      <PI.20>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>3</C>
        <L>5</L>
        <P>src\joystick.h</P>
-      </PI.19>
-      <PI.2>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>29</C>
-       <L>16</L>
-       <P>solution\touch_s.c</P>
-      </PI.2>
-      <PI.20>
+      </PI.20>
+      <PI.21>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>53</C>
        <L>90</L>
        <P>src\display.h</P>
        <VL>27</VL>
-      </PI.20>
-      <PI.21>
+      </PI.21>
+      <PI.22>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>8</C>
        <L>1</L>
        <P>src\blinkrainbow.h</P>
-      </PI.21>
-      <PI.22>
+      </PI.22>
+      <PI.23>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>12</C>
        <L>16</L>
        <P>src\blink.c</P>
        <VL>3</VL>
-      </PI.22>
-      <PI.23>
+      </PI.23>
+      <PI.24>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>8</C>
        <L>40</L>
        <P>src\blinkrainbow.c</P>
        <VL>18</VL>
-      </PI.23>
-      <PI.24>
+      </PI.24>
+      <PI.25>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>20</C>
        <L>7</L>
        <P>src\joystick.c</P>
        <VL>27</VL>
-      </PI.24>
-      <PI.25>
+      </PI.25>
+      <PI.26>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>7</L>
        <P>lib\analog.h</P>
        <VL>24</VL>
-      </PI.25>
-      <PI.26>
+      </PI.26>
+      <PI.27>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>1</L>
        <P>solution\touch_s.h</P>
-      </PI.26>
-      <PI.27>
+      </PI.27>
+      <PI.28>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>19</C>
        <L>11</L>
        <P>lib\lcd.h</P>
        <VL>9</VL>
-      </PI.27>
-      <PI.28>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <P>lib\init.h</P>
       </PI.28>
       <PI.29>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>28</C>
-       <P>solution\blinkrainbow_s.c</P>
-       <VL>39</VL>
+       <P>lib\init.h</P>
       </PI.29>
       <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>4</C>
-       <L>204</L>
-       <P>lib\analog.c</P>
-       <VL>197</VL>
+       <C>11</C>
+       <L>13</L>
+       <P>src\main.c</P>
       </PI.3>
       <PI.30>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -246,10 +244,9 @@
       </PI.39>
       <PI.4>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>12</C>
-       <L>54</L>
-       <P>src\button.c</P>
-       <VL>16</VL>
+       <C>3</C>
+       <L>2</L>
+       <P>solution\graphicstest.h</P>
       </PI.4>
       <PI.40>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -266,36 +263,37 @@
       </PI.41>
       <PI.5>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>18</C>
-       <L>2</L>
-       <P>solution\button_s.c</P>
+       <C>29</C>
+       <L>16</L>
+       <P>solution\touch_s.c</P>
       </PI.5>
       <PI.6>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>4</C>
+       <L>204</L>
+       <P>lib\analog.c</P>
+       <VL>197</VL>
+      </PI.6>
+      <PI.7>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>12</C>
+       <L>54</L>
+       <P>src\button.c</P>
+       <VL>16</VL>
+      </PI.7>
+      <PI.8>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>15</C>
        <L>12</L>
        <P>src\display.c</P>
        <VL>3</VL>
-      </PI.6>
-      <PI.7>
+      </PI.8>
+      <PI.9>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>21</C>
        <L>67</L>
        <P>solution\graphicstest.c</P>
        <VL>52</VL>
-      </PI.7>
-      <PI.8>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>18</C>
-       <L>5</L>
-       <P>solution\joystick_s.c</P>
-      </PI.8>
-      <PI.9>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>6</C>
-       <L>195</L>
-       <P>lib\lcd.c</P>
-       <VL>159</VL>
       </PI.9>
      </REG_ROOT>
     </EditorOptions>
@@ -770,13 +768,37 @@
        <RelativeFileName>src\main.c</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
+       <FileBarIndex>2</FileBarIndex>
+       <RectPosBottom>471</RectPosBottom>
+       <RectPosLeft>22</RectPosLeft>
+       <RectPosRight>1235</RectPosRight>
+       <RectPosTop>22</RectPosTop>
+       <RelativeFileName>solution\blinkrainbow_s.c</RelativeFileName>
+      </Editor.0>
+      <Editor.1>
+       <FileBarIndex>1</FileBarIndex>
+       <RectPosBottom>493</RectPosBottom>
+       <RectPosLeft>44</RectPosLeft>
+       <RectPosRight>1257</RectPosRight>
+       <RectPosTop>44</RectPosTop>
+       <RelativeFileName>solution\button_s.c</RelativeFileName>
+      </Editor.1>
+      <Editor.2>
        <FileBarIndex>0</FileBarIndex>
+       <RectPosBottom>515</RectPosBottom>
+       <RectPosLeft>66</RectPosLeft>
+       <RectPosRight>1279</RectPosRight>
+       <RectPosTop>66</RectPosTop>
+       <RelativeFileName>solution\display_s.c</RelativeFileName>
+      </Editor.2>
+      <Editor.3>
+       <FileBarIndex>3</FileBarIndex>
        <RectPosBottom>533</RectPosBottom>
        <RectPosLeft>104</RectPosLeft>
        <RectPosRight>1307</RectPosRight>
        <RectPosTop>104</RectPosTop>
        <RelativeFileName>src\main.c</RelativeFileName>
-      </Editor.0>
+      </Editor.3>
       <EditorHistoryFile.0>
        <RelativeFileName>src\button.c</RelativeFileName>
       </EditorHistoryFile.0>
@@ -791,10 +813,10 @@
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
-      <b>598</b>
-      <l>516</l>
-      <r>1020</r>
-      <t>234</t>
+      <b>702</b>
+      <l>708</l>
+      <r>1212</r>
+      <t>338</t>
      </Progress>
      <Watches>
       <ActiveWatchPane>2</ActiveWatchPane>
@@ -1566,7 +1588,7 @@
        </Items.0>
       </OSWindow>
       <ProjectWindow>
-       <Selected>main.c</Selected>
+       <Selected>display_s.c</Selected>
        <Items.0>
         <__>
          <Name>Files</Name>
@@ -1577,7 +1599,7 @@
            <Options>1</Options>
            <Items.0>
             <__>
-             <Name>pdl.c</Name>
+             <Name>mfs.c</Name>
              <Options>4</Options>
             </__>
            </Items.0>
