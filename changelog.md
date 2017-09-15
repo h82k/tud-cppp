@@ -1,6 +1,12 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-15
+
+### Lecture
+* Bugfixes in "Call by x" slides 95 + 100-103: Use proper constructor of Floor that takes std::string and int
+* Get rid of several artefacts in PDF export ('orange blocks')
+
 ## Changes on 2017-09-14
 
 ### Lecture
