@@ -1,7 +1,5 @@
 #include "button.h"
 
-static volatile uint32_t *blueLEDDirectionPort;
-static volatile uint32_t *blueLedValuePort;
 static uint8_t ledStatus;
 
 static void initLED(){
