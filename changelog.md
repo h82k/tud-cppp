@@ -1,9 +1,14 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-14
+
+### Lecture
+* Bugfix on slide 30 ("Header und Implementierungs-Dateien"): The shown code is a class definition (not declaration)
+
 ## Changes on 2017-09-11
 
-## Lecture
+### Lecture
 
 * Remove motivation slides for multiple inheritance (previously: slides 156-158)
 * Remove slide on multiple inheritance problems in "Template" part ("Containerproblem und Mehrfachvererbung", previously: slide 171)
@@ -11,13 +16,13 @@ Lecture: cppp_lecture.pdf
 * Improve quality of slides (layout, explanations) in "Template" part
 * Insert prepared slides from incubation section ("Beispiel: Template-Klasse Elevator<T>", "Der this-Zeiger", "Exkurs: Mehrfachvererbung in Java? (II)")
 
-## Exercises
+### Exercises
 
 * Add hint regarding RGB565 export from Gimp to Ex. 27.
 
 ## Changes on 2017-09-07
 
-## Exercises
+### Exercises
 * Improve documentation in sample solutions
 * Improve code quality (remove static functions from headers, add missing includes,...)
 * Ex. 25 "Joysticks": Use setCursor(0, 319); to set cursor to top-left corner
