@@ -62,7 +62,7 @@ void ButtonHoldBlueLEDOn_s() {
 static void initLED() {
   ledStatus = 0u;
   
-  // initialize left button as input and activate pullup resistor
+  // Initialize left button as input and activate pullup resistor
   BUTTON_LEFT_DDR &= ~(1 << BUTTON_LEFT_PIN);
   BUTTON_LEFT_PCR |= (1 << BUTTON_LEFT_PIN); 
   
