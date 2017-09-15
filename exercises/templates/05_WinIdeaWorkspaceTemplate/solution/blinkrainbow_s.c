@@ -5,6 +5,7 @@
 #include "s6e2ccxj.h"
 #include "mcu.h"
 
+#include "pins.h"
 
 int BlinkRainbowMain_s() {
   LED_BLUE_DDR |= (1 << LED_BLUE_PIN); // Configure blue LED pin as output.
