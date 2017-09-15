@@ -126,10 +126,13 @@ Nutze die Dateien \filename{blink.h} und \filename{blink.c} als Ausgangspunkt, u
 Erweitere nun den Code so, dass du auch auf die Ports der roten und grünen LED zugreifst und die LED abwechselnd rot, grün und blau leuchtet.
 \end{enumerate}
 
-\Cref{lst:IO_example} zeigt an den Beispielen der blauen LED und des linken Joystick-Buttons wie man auf IO-Pins zugreifen kann. Die Bit-Operatoren wurden bereits in Aufgabe \ref{task:bitops} behandelt. Die Namen der verschiedenen Register für die LEDs und Buttons sind in der Datei \lstinline|pins.h| definiert. Ausdrücke wie \lstinline{LED_BLUE_DDR |= (1 << LED_BLUE_PIN)} oder \lstinline{BUTTON_LEFT_DDR &= ~(1 << BUTTON_LEFT_PIN)} werden verwendet, um ein einzelnes Bit in einem Register zu setzen oder zu löschen.
-
-\cpppInputListing[frame=tb,caption={\filename{iopins.c}},label={lst:IO_example},numbers=left]{./05_c/listings/iopins.c}
-
+\Cref{lst:IO_example} zeigt am Beispiel der blauen LED und des linken Joystick-Buttons wie man auf IO-Pins zugreifen kann.
+Die Bit-Operatoren wurden bereits in \ref{task:bitops} behandelt.
+Die Namen der verschiedenen Register für die LEDs und Buttons sind in der Datei \filename{pins.h} definiert.
+Ausdrücke wie \lstinline{LED_BLUE_DDR |= (1 << LED_BLUE_PIN)} oder \lstinline{BUTTON_LEFT_DDR &= ~(1 << BUTTON_LEFT_PIN)} werden verwendet, um ein einzelnes Bit in einem Register zu setzen oder zu löschen.
+%
+\cpppInputListing[frame=tb,caption={Beispiele zur Ansteuerung von Ein-/Ausgabepins},label={lst:IO_example},numbers=left]{./05_c/listings/iopins.c}
+%
 \hints{
 \item 
 Für diese und die folgenden Kennenlernaufgaben stellen wir dir Musterlösungen direkt im WinIDEA-Workspace bereit.

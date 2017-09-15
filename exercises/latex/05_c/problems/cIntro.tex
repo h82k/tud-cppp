@@ -199,7 +199,7 @@ Zum Beispiel ist die Ausgabe von \lstinline|fmt(23)| der String \lstinline|"0b00
 Fülle zunächst die mit \lstinline|// TODO implement me| gekennzeichneten Zeilen aus, sodass die Ausgabe korrekt ist.
 Beispiele sind für \texttt{NEG} und \texttt{NOT} gegeben.
 
-Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwarteten Ergebnisse in folgender Tabelle übereinstimmen\\
+Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwarteten Ergebnisse in folgender Tabelle übereinstimmen\\[2ex]
 \begin{tabular}{lr}
 \toprule
 \textbf{Ausdruck} & \textbf{Ergebnis}\\
@@ -213,14 +213,10 @@ Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwa
 \bottomrule
 \end{tabular}
 
-Die folgende Tabelle enthält die erwarteten Ergebnisse der logischen Operatoren für 
-\begin{inparaenum}
-\item \lstinline|a = 1, b = 1|
-\item \lstinline|a = 1, b = 0|
-\end{inparaenum} :\\
+Die folgende Tabelle enthält die erwarteten Ergebnisse der logischen Operatoren für alle Wertkombinationen von \lstinline|a| und \lstinline|b|:\\[2ex]
 \begin{tabular}{lrrrr}
     \toprule
-    \textbf{Ausdruck} & \multicolumn{2}{c}{\textbf{Ergebnis}}\\
+    \textbf{Ausdruck} & \multicolumn{4}{c}{\textbf{Ergebnis}}\\
     & \lstinline|a=1,b=1| & \lstinline|a=1, b=0| & \lstinline|a=0, b=1| & \lstinline|a=0, b=0|\\
     \midrule
     \texttt{a LAND s}  & 1  & 0& 0& 0\\
