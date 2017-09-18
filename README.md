@@ -2,7 +2,9 @@
 
 [![Run Status](https://api.shippable.com/projects/58eeab1b4dc5ce0700de5787/badge?branch=master)](https://app.shippable.com/github/Echtzeitsysteme/tud-cppp)
 
+<!--
 [![codebeat badge](https://codebeat.co/badges/20e99507-96cb-4b7f-accf-699e0e2c85e3)](https://codebeat.co/projects/github-com-echtzeitsysteme-tud-cppp-master)
+-->
 
 This repository contains the slides of the C++ lab held at the Department of Electrical Engineering and Information Technology of the TU Darmstadt, Germany.
 
