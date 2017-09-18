@@ -1,6 +1,12 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-18
+
+### Lecture
+* Minor layout improvements in OO part (slides 136-166)
+* Fix typos on slides 165 und 166
+
 ## Changes on 2017-09-15
 
 ### Lecture
