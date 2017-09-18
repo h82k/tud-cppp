@@ -10,7 +10,7 @@ See LICENSE.txt for more information about the license of the slide set.
 
 ## Impressions of summer semester 2017
 
-<table>
+<table border="0">
 <tr>
 <td><img alt="Duck Hunt 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_DuckHunt_IMG_20170907_155214_206.jpg" width="400px"/></td>
 <td><img alt="Maze 2017" src="https://github.com/Echtzeitsysteme/tud-cppp/raw/wiki/images/MCProject2017_Maze_IMG_20170907_152533.jpg"  width="400px"/></td>
