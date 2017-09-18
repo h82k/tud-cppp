@@ -152,7 +152,7 @@ In diesem Aufgabenteil wirst du einen Cursor implementieren, der es erlaubt, auf
 	\end{centering}
 \end{figure}
 %
-Zum Anzeigen von Buchstaben auf dem Bildschirm stellen wir dir eine kleine Fontbibliothek im ASCII-5*7-Format zur Verfügung.
+Zum Anzeigen von Buchstaben auf dem Bildschirm stellen wir dir eine kleine Fontbibliothek im Extended-ASCII 5*7-Format zur Verfügung.
 Du findest diese in der Datei \filename{glcdfont.h} (Gruppe \winIdeaGroupName{lib}).
 Die Bibliothek besteht aus einem Array mit 255 Buchstaben, die jeweils als 5 Bytes abgespeichert sind (siehe Abbildung \ref{fig:ascii57}).
 Das 5*7-Format eignet sich für den 480 * 320 großen Bildschirm, da die Darstellung dieser Schriftart mit einer Fläche von 35 Pixeln je Buchstaben immer noch gut lesbar ist.
@@ -206,4 +206,10 @@ Erstere soll die per Pointer übergebene Zahl linksbündig ausgeben, Zweitere so
 Rechtsbündig bedeutet hier, dass die Ausgabe immer diegleiche Breite hat, egal ob der Wert \lstinline|0| oder \lstinline|65535| ist (also: 5 Ziffern).
 Verwende die Funktion \lstinline|itoa| (aus \filename{stdlib.h}\footnote{\url{http://www.cplusplus.com/reference/cstdlib/itoa/}}), um den per Zeiger übergebenen Wert in ein \lstinline|char|-Array zu schreiben und anschließend mittels \lstinline|writeText| auf dem Display aus.
 \end{enumerate}
+
+\hints {
+    \item Falls du Sonderzeichen darstellen möchtest, kannst du dich an folgender Tabelle orientieren: \url{http://www.theasciicode.com.ar/american-standard-code-information-interchange/ascii-codes-table.png}.
+    
+    Um beispielsweise ein 'ß' auszugeben, definierst du es einfach als \lstinline{char ss = '\\xE1';}
+}
 

@@ -1,6 +1,27 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-18
+
+### Lecture
+* Minor layout improvements in OO part (slides 136-166)
+* Fix typos on slides 165 und 166
+
+## Changes on 2017-09-15
+
+### Lecture
+* Bugfixes in "Call by x" slides 95 + 100-103: Use proper constructor of Floor that takes std::string and int
+* Get rid of several artefacts in PDF export ('orange blocks')
+* Add ref. to https://www.onlinegdb.com/ (Appears to more mature than cpp.sh)
+
+### Exercises
+
+* Ex. 7 ("Verkettete Listen"): Elaborate more on exceptions and behavior of delete[]
+* Ex. 22.3 ("LED bunt blinken lasssen"): Add listing that explains how to configure I/O in a generic way
+* Ex. 22,23: Use defines in introductory C exercises instead of pointer variables
+* Ex. 24 ("Display ansteuern"): Hint to font map and on how to write umlauts 
+
+
 ## Changes on 2017-09-14
 
 ### Lecture

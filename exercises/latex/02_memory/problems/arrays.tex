@@ -126,6 +126,13 @@ Beispiel:
 
 Beachte die \textbf{[]} nach \lstinline{delete}.
 Diese bewirken, dass das gesamte Array und nicht bloß das erste Element gelöscht wird.
+Woher weiß \lstinline{delete[]} aber, wie viel Speicher freigegeben werden muss? 
+Wenn du Speicher auf dem Heap mit \lstinline{new/new[]} reservierst, merkt sich die Speicherverwaltung intern, wie groß dieser allozierte Bereich ist. 
+Die Information wird normalerweise in einem ``Head-Segment'' vor dem Speicherbereich, der die eigentlichen Daten enthält, abgelegt.
+Dieser Speicherort ist allerdings nicht standardisiert und kann je nach Compiler variieren.
+Beim Aufruf von \lstinline{delete/delete[]} wird diese Information dann ausgelesen. 
+\lstinline{delete} ruft den Destruktor des Objekts auf, das an dieser Speicherstelle liegt und gibt danach den Speicher an das Betriebssystem zurück. \lstinline{delete[]} hingegen ruft für \textbf{jedes} Element des Arrays den Destruktor auf und gibt danach ebenfalls den Speicher frei.
+
 Ein Anwendungsfall von dynamischen Arrays auf dem Heap sind Funktionen, die ein Array von vorher unbekannter Größe zurückgeben.
 
 Schreibe nun eine Funktion, die beliebig viele Zahlen von der Konsole mittels \lstinline{std::cin} einliest.

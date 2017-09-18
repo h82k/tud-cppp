@@ -5,9 +5,12 @@
 #include "gfx.h"
 #include "lcd.h"
 #include "src/display.h"
+#include <stdlib.h>
 
 static const char *WHITESPACE = " ";
 
+// Fix for the missing declaration of ito in stdlib.h.
+char* itoa(int, char* , int);
 
 /**
  *  Fills all the Screen with the given color.
