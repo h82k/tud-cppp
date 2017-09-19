@@ -32,12 +32,13 @@ OutIt filter_funcpointer(InIt first, InIt last,
 	return out_first; 
 }
 
-template<typename InIt, typename T>
-T reduce_funcpointer(InIt first, InIt last, T init, T(*func)(T i, double j)) {
+template<typename InIt, typename T, typename U>
+T reduce_funcpointer(InIt first, InIt last, T init, T(*func)(T i, U j)) {
+	T result = init;
 	while(first != last) {
-        init = func(init, *first++);
+        result = func(result, *first++);
     }
-    return init;
+    return result;
 }
 
 // for map
