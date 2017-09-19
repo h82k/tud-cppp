@@ -75,14 +75,14 @@ In diesem Fall wird der Speicher Byte-weise solange ausgegeben, bis ein Null-Byt
 \item 
 Beginne mit einer leeren \lstinline|main|-Funktion.
 \item 
-Lege einen Puffer der Größe 6 an:
+Lege einen Puffer der Größe 8 an:
 \begin{lstlisting}
-char *buffer = malloc(6 * sizeof(char));
+char *buffer = malloc(8 * sizeof(char));
 \end{lstlisting}
 \item 
-Kopiere mittels \lstinline|strcpy| (aus dem Header \lstinline|string.h|) den String \lstinline|"Hello"| in den Puffer:
+Kopiere mittels \lstinline|strcpy| (aus dem Header \lstinline|string.h|) den String \lstinline|"Hello!!"| in den Puffer:
 \begin{lstlisting}
-strcpy(buffer, "Hello");
+strcpy(buffer, "Hello!!");
 \end{lstlisting}
 \item 
 Nun gib den Inhalt des Puffers mittels \lstinline|printf| aus:
@@ -90,25 +90,44 @@ Nun gib den Inhalt des Puffers mittels \lstinline|printf| aus:
 printf("%s\n", buffer);
 \end{lstlisting}
 Wenn du das Programm jetzt kopilierst und ausführst, sollte nur der String \lstinline|Hello| erscheinen.
-\item 
-Jetzt beginnt der spannende Teil:
-Überschreibe das Null-Byte mit einem beliebigen Zeichen (bspw. \lstinline|'_'|).
+\end{itemize}
+
+\paragraph{Speicher auslesen (Heap)}
+Im Folgenden sehen wir uns den Effekt an, den das Weglassen des Nullbytes bewirkt.
+Überschreibe zunächst das Null-Byte mit einem beliebigen Zeichen (bspw. \lstinline|'_'|):
 \begin{lstlisting}
 buffer[5] = '_';
 \end{lstlisting}
 Wenn du jetzt den Inhalt des Puffers ausgibst, kann alles passieren (\enquote{Undefined Behavior}).
 Die Funktion \lstinline|printf| wird solange den Speicher auslesen, bis sie ein Null-Byte trifft.
+Du wirst allerdings nur das neu eingefügte Zeichen (\lstinline|'_'|) zusätzlich sehen, da das Betriebssystem den Heap-Speicher des Programms standardmäßig mit \lstinline|'\0'| überschreibt.
+
+Um einen beeindruckenderen Effekt zu sehen, musst du selber dafür sorgen, dass der Speicher \enquote{sinnvolle} Daten enthält.
+Füge dazu den folgenden Code vor dem \lstinline|malloc|-Aufruf von \lstinline|buffer| ein.
+\begin{lstlisting}
+char *dummyBuffer = malloc(19 * sizeof(char));
+strcpy(dummyBuffer, "AlterTextAlterText");
+free(dummyBuffer);
+\end{lstlisting}
+Wenn du jetzt erneut versuchst, über das Ende von \lstinline|buffer| hinaus zu lesen, solltest du \enquote{Reste} von \lstinline|dummyBuffer| sehen.
+Falls du nur \lstinline|Hello!!_| siehst, kann es sein, dass der zweite \lstinline|malloc|-Aufruf einen anderen Speicherbereich zurückliefert als der erste.
+Dies kannst du mithilfe der Formatierungsoption \lstinline|%p| prüfen:
+\begin{lstlisting}
+printf("Address of dummyBuffer: %p\n", dummyBuffer);
+printf("Address of buffer:      %p\n", buffer);
+\end{lstlisting}
 Dieses Experiment zeigt, dass es sehr wichtig ist, bei der Manipulation von C-Strings gut aufzupassen -- 
 zahlreiche Sicherheitslücken basieren auf dieser Schwäche!
-\item
-Ändere zum Abschluss die Art, wie der Puffer allokiert wird wie folgt:
+
+\paragraph{Speicher auslesen (Konstanten)}
+Ändere nun die Art, wie der Puffer allokiert wird, wie folgt:
 \begin{lstlisting}
 char *myString = "Hello";
 \end{lstlisting}
 Jetzt liegt der Puffer nicht mehr auf dem Heap (wie bei \lstinline|malloc|) sondern im \texttt{data}-Segment.
-Wenn du den Code nun kompilierst und ausführst, solltest du einen Speicherzugriffsfehler (\enquote{Segmentation Fault}) erhalten, da Schreibzugriffe in diesem Speicherbereich verboten sind.
-\end{itemize}
+Wenn du nun versuchst, das Nullbyte von \lstinline|"myString"| zu überschreiben, solltest du einen Speicherzugriffsfehler (\enquote{Segmentation Fault}) erhalten, da Schreibzugriffe in diesem Speicherbereich verboten sind.
 
+\paragraph{Strings einkürzen}
 Es ist auch möglich, einen C-String \emph{einzukürzen}, indem man das Null-Byte verschiebt innerhalb des Puffers nach vorne verschiebt.
 \begin{itemize}
 \item
