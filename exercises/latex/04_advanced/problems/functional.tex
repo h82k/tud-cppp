@@ -98,7 +98,8 @@ Erstelle eine Funktion \lstinline{reduce}, die der folgenden Signatur folgt.
 %
 \cpppInputListing{04_advanced/problems/listings/functional_reduce_sig.cpp}
 %
-Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst.
+Hierbei muss ein passender initialer Wert übergeben werden, der mit dem Rückgabewert und dem ersten Argument der übergebenen Funktion zusammenpasst (\lstinline|typename RetT|).
+Der zweite Parameter der Funktion kann sich im Typ sogar unterscheiden (\lstinline|typename RHS|).
 
 \subsubsection{Hilfsfunktionen implementieren}
 
