@@ -1,6 +1,11 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-19
+
+### Exercises
+* Ex. 21.3: Improve structure and fix bug due to the heap being zero by default.
+
 ## Changes on 2017-09-18
 
 ### Lecture
