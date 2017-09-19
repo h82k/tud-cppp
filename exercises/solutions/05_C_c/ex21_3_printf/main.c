@@ -29,14 +29,24 @@ int main(void) {
   
   // Option 2: 
   // String 'Hello' resides on heap. 
+  char *dummyBuffer = malloc(19 * sizeof(char));
+  strcpy(dummyBuffer, "AlterTextAlterText");
+  free(dummyBuffer);
+  printf("Address of dummyBuffer: %p\n", dummyBuffer);
   char *buffer = malloc(6 * sizeof(char));
+  printf("Address of buffer:      %p\n", buffer);
+  for (int i = 0; i < 19; ++i)
+  {
+	  printf("%x ", buffer[i]);
+  }
   
-  strcpy(buffer, "Hello");
+  strcpy(buffer, "Hello!!");
   printf("%s\n", buffer);
   
-  // 'myString' is a char-array of length 6 (incl. '\0')
-  buffer[5] = '_';
+  // 'buffer' is a char-array of length 6 (incl. '\0')
+  buffer[strlen(buffer)] = '_';
   printf("%s\n", buffer); // (for option 2): Should produce 'Hello_' + something surprising
+
   
   /*
    * Quick 'n' dirty shortening of a C string
