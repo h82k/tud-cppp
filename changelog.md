@@ -4,6 +4,9 @@ Lecture: cppp_lecture.pdf
 ## Changes on 2017-09-19
 
 ### Exercises
+* Ex. 12 (sample solution): Contrary to the comment in the sample solution, it is possible to catch the same exception type by value and by (const) reference at the same time. The compiler should issue a warning in this case
+* Ex. 17: The RHS parameter of the function passed to 'reduce' may now have an arbitray type
+  * Instead of only 'double' 
 * Ex. 21.3: Improve structure and fix bug due to the heap being zero by default.
 
 ## Changes on 2017-09-18

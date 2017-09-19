@@ -16,8 +16,10 @@ public:
 	}
 };
 
-// NOTE: This will NOT compile if both catches are used simultaneously.
-// The catch by value conflicts with the catch by reference.
+/*
+ * Note: If both catch blocks are used, the compiler will issue a warning because
+ * the first catch block 'hides' the second one
+ */
 int main() {
 	try {
 		throw C();
