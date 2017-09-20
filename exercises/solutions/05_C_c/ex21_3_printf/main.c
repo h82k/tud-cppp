@@ -25,7 +25,7 @@ int main(void) {
   // Option 1: 
   // String 'Hello' resides in 'data' segment. 
   // Writing to this segment results in a runtime error ('Segmentation fault')
-  // char *myString = "Hello";
+  // char *myString = "Hello!!";
   
   // Option 2: 
   // String 'Hello' resides on heap. 
