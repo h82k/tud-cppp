@@ -12,6 +12,7 @@ Lecture: cppp_lecture.pdf
 ## Exercises
 
 * Ex. 20.1: Need to set "Executable to Run/Debug" to "$(ProjectPath)/main.exe" and "Working Directory" to "$(ProjectPath)"
+* Ex. 20.10/20.11: Missing '%' in wildcard rules
 * Ex. 21.3: "buffer[5]" -> "buffer[strlen(buffer)]" or "buffer[7]"
 
 

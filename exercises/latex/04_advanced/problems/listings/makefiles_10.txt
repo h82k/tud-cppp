@@ -3,7 +3,7 @@ all: main.exe
 main.exe: main.o Building.o
     g++ -o main.exe main.o Building.o
 
-.o: %.cpp
+%.o: %.cpp
     g++ -MMD -MP -c $< -o $@
 
 -include Building.d main.d
