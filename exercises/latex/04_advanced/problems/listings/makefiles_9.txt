@@ -1,2 +1,2 @@
-.o: %.cpp
+%.o: %.cpp
     g++ -MMD -MP -c $< -o $@
