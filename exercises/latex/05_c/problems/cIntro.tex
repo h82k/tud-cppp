@@ -89,15 +89,16 @@ Nun gib den Inhalt des Puffers mittels \lstinline|printf| aus:
 \begin{lstlisting}
 printf("%s\n", buffer);
 \end{lstlisting}
-Wenn du das Programm jetzt kopilierst und ausführst, sollte nur der String \lstinline|Hello| erscheinen.
+Wenn du das Programm jetzt kopilierst und ausführst, sollte nur der String \lstinline|Hello!!| erscheinen.
 \end{itemize}
 
 \paragraph{Speicher auslesen (Heap)}
 Im Folgenden sehen wir uns den Effekt an, den das Weglassen des Nullbytes bewirkt.
 Überschreibe zunächst das Null-Byte mit einem beliebigen Zeichen (bspw. \lstinline|'_'|):
 \begin{lstlisting}
-buffer[5] = '_';
+buffer[strlen(buffer)] = '_'; // or: buffer[7] = '_'
 \end{lstlisting}
+Die Funktion \lstinline|strlen| liefert die \enquote{gemessene} Länge von \lstinline|buffer| zurück, also die Anzahl an Bytes, bis zum Nullbyte.
 Wenn du jetzt den Inhalt des Puffers ausgibst, kann alles passieren (\enquote{Undefined Behavior}).
 Die Funktion \lstinline|printf| wird solange den Speicher auslesen, bis sie ein Null-Byte trifft.
 Du wirst allerdings nur das neu eingefügte Zeichen (\lstinline|'_'|) zusätzlich sehen, da das Betriebssystem den Heap-Speicher des Programms standardmäßig mit \lstinline|'\0'| überschreibt.
@@ -122,7 +123,7 @@ zahlreiche Sicherheitslücken basieren auf dieser Schwäche!
 \paragraph{Speicher auslesen (Konstanten)}
 Ändere nun die Art, wie der Puffer allokiert wird, wie folgt:
 \begin{lstlisting}
-char *myString = "Hello";
+char *myString = "Hello!!";
 \end{lstlisting}
 Jetzt liegt der Puffer nicht mehr auf dem Heap (wie bei \lstinline|malloc|) sondern im \texttt{data}-Segment.
 Wenn du nun versuchst, das Nullbyte von \lstinline|"myString"| zu überschreiben, solltest du einen Speicherzugriffsfehler (\enquote{Segmentation Fault}) erhalten, da Schreibzugriffe in diesem Speicherbereich verboten sind.

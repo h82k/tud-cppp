@@ -8,12 +8,16 @@ Das Programm \emph{make}\footnote{Dokumentation \url{https://www.gnu.org/softwar
 Außerdem kann es verwendet werden, um weitere Nebenaufgaben während der verschiedenen Kompilationsphasen zu definieren, wie zum Beispiel das automatische Löschen der später unnötigen Kompilationsdateien.
 All das werden wir in dieser Aufgabe ausprobieren.
 
-\subsection{Projekt anlegen:}
+\subsection{Projekt anlegen}
 Wähle \emph{Workspace $\to$ New project} und wähle als Projekttyp \textbf{CPPP/C++ Projekt}.
 
 Das erzeugte Projekt enthält bereits eine Datei \texttt{Makefile} (im Ordner \texttt{resources}) und eine \texttt{main.cpp}.
 
 In dieser Übung wollen wir unser eigenes Makefile erstellen. Öffne dafür die Datei \texttt{Makefile} und lösche ihren Inhalt. 
+
+Außerdem werden wir der Einfachheit halber alle Ausgabedateien von Compiler und Linker in das Wurzelverzeichnis des Projekts generieren lassen.
+Damit Codelite das entstehende Programm noch findet, passt du die Projekteinstellungen wie folgt an.
+Klicke rechts auf das Projekt und wähle dann \menuPath{Settings \menuSep General} und setze \menuPath{Executable to Run / Debug} auf \filename{\$(ProjektPath)/main.exe} sowie \menuPath{Working Directory} auf \filename{\$(ProjectPath)}.
 
 \texttt{Make} erwartet, dass das Makefile ein Target mit dem Namen \lstinline{all} hat.
 Um unser Projekt zu testen, geben wir zunächst eine einfache Meldung auf der Kommandozeile aus.
@@ -44,7 +48,7 @@ Wenn du jetzt \emph{Build} aufrufst, wird dein Programm kompiliert und als \file
     Die Option $-o$ für g++ erwartet als ersten Parameter den Namen der gewünschten Zieldatei.
 }
 
-\subsection{Klasse \lstinline{Building}:}
+\subsection{Klasse \lstinline{Building}}
 Jetzt fügen wir die Klasse \lstinline{Building} zu unserem Projekt hinzu, die allerdings nur minimale Funktionalität bietet.
 
 Building.hpp:
@@ -61,7 +65,7 @@ Passe dazu den Kompileraufruf an:
 
 Wenn du das Projekt gebaut hast und ausführst, sollte auf der Konsole eine Ausgabe deines Gebäudes erscheinen.
 
-\subsection{Compiler-Aufrufe auslagern:}
+\subsection{Compiler-Aufrufe auslagern}
 In der Vorlesung haben wir gesehen, dass \emph{make} anhand der Zeitstempel von Dateien dazu in der Lage ist, zu erkennen, wann ein Programmteil neu gebaut werden muss.
 Aktuell nutzen wir diese Möglichkeit noch nicht:
 Egal ob wir \filename{main.cpp}, \filename{Building.cpp} oder \filename{Building.h} verändert haben, immer wird das gesamte Projekt neu gebaut.
@@ -98,7 +102,7 @@ Wenn du das Projekt jetzt baust, erhältst du erfreulicherweise die Rückmeldung
         make: Nothing to be done for `all'.
 \end{verbatim}
 
-\subsection{Inkrementelles Bauen:}
+\subsection{Inkrementelles Bauen}
 Wir erproben jetzt, wie sich Veränderungen an einer der drei Dateien auf die Ausführung von \texttt{make} auswirken.
 Mache nacheinander kleine Änderungen -- das können auch Kommentare sein -- an den Dateien \filename{main.cpp}, \filename{Building.h} und \filename{Building.cpp} und baue das Projekt nach jeder Änderung.
 
@@ -131,7 +135,7 @@ Schlimmer noch: Wir müssten über rekursive Inkludierungen Bescheid wissen, z.B
 
 Glücklicherweise hilft uns \texttt{g++} bei diesem Problem.
 
-\subsection{Header automatisch als Abhängigkeiten deklarieren:}
+\subsection{Header automatisch als Abhängigkeiten deklarieren}
 
 Wir automatisieren jetzt die Erkennung von Headern als Abhängigkeiten.
 Lösche dazu die Abhängigkeit \filename{Building.h} des Targets \filename{main.o} und füge in den Compiler-Aufrufen die Parameter \texttt{-MMD -MP} hinzu.

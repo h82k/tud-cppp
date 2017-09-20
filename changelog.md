@@ -1,6 +1,20 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-20
+
+## Lecture
+
+* Slide 218: Fix title
+* Slide 223: Bugfixes in second and third part (0x03 -> 0x07 and b' = 0100 0000 for "Determine status of 6th bit")
+* Slide 228: "RAM" -> "Adressraum"
+
+## Exercises
+
+* Ex. 20.1: Need to set "Executable to Run/Debug" to "$(ProjectPath)/main.exe" and "Working Directory" to "$(ProjectPath)"
+* Ex. 21.3: "buffer[5]" -> "buffer[strlen(buffer)]" or "buffer[7]"
+
+
 ## Changes on 2017-09-19
 
 ### Exercises
