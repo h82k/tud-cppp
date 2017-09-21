@@ -6,10 +6,12 @@
  */
 #include "s6e2ccxj.h"
 #include "init.h"    
-#include "touch.h"  
+#include "src/touch.h"  
 #include "Maze.h"  
-#include "display.h"  
-#include "pdl_header.h"  
+#include "src/display.h"
+#include "lib/delay.h"  
+#include "lib/gfx.h"
+#include "pdl_header.h"
 
 struct image {
   unsigned int 	 width;
@@ -21,8 +23,8 @@ struct image {
 #include "esLogo.h"
 #include "cypressLogo.h"  
                                           
-stc_rtc_config_t stcRtcConfig; 
-stc_rtc_time_t stcTimeDate;
+//stc_rtc_config_t stcRtcConfig; 
+//stc_rtc_time_t stcTimeDate;
    
 // Time variables
 volatile uint8_t 
@@ -37,7 +39,7 @@ volatile uint8_t
   secs2 = 0;
 
 //Writes the time to the current display position
-void writeTime(uint16_t mins, uint16_t secs) {  
+void writeTime(uint8_t mins, uint8_t secs) {  
   if(mins<10) {
     writeNumberOnDisplay_s(0);
   }
@@ -58,8 +60,8 @@ void updateTime() {
     ++minutes;
   }
                             
-  uint16_t secs = seconds;
-  uint16_t mins = minutes;
+  uint8_t secs = seconds;
+  uint8_t mins = minutes;
   setCursor_s(210,306);      
   setTextSize_s(2);    
   setTextColor_s(WHITE);    

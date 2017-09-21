@@ -7,7 +7,7 @@
  * Maze generation algorithm from https://en.wikipedia.org/wiki/Maze_generation_algorithm
  */
 #include "Maze.h"       
-#include "display.h"   
+#include "src/display.h"   
 #include "analog.h"  
                                                  
 //Maze dimensions, must be odd
