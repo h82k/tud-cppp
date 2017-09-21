@@ -18,9 +18,13 @@ Unter anderem musst du jeweils einen \lstinline{const} und einen nicht-\lstinlin
 Du kannst auch Exceptions (z.B. \lstinline{std::out_of_range} aus \lstinline{<stdexcept>}) verwenden, um falsche Indices korrekt abzufangen.
 
 \item 
-Eine fortgeschrittene Übung ist es, Iteratoren oder \lstinline{operator+(unsigned int)} für \lstinline{Array} bereitzustellen, sodass du z.B. die Funktion \lstinline{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
+Eine fortgeschrittene Übung ist es, Iteratoren für \lstinline{Array} bereitzustellen, sodass du z.B. die Funktion \lstinline{std::copy} aus der Standardbibliothek verwenden kannst, um ein Array zu kopieren:
 
 \cpppInputListing{04_advanced/problems/listings/customArrays_vector.cpp}
+
+Da \lstinline{std::copy} als ersten und zweiten Parameter einen Typ erwartet, der das Interface eines \lstinline{InputIterator}s erfüllt, muss deine Array-Klasse dies auch erfüllen. 
+Dazu kannst du dich an \url{http://en.cppreference.com/w/cpp/concept/InputIterator} orientieren, um die nötigen Operatoren zu überladen.
+Falls deine Array-Klasse auch durch einen \lstinline{std::copy}-Aufruf gefüllt werden können soll, benötigst du außerdem alle Operatoren des \lstinline{OutputIterator}-Interfaces: \url{http://en.cppreference.com/w/cpp/concept/OutputIterator}.
 
 \item
 Denke daran, für Indizes den Typ \lstinline$size_t$ zu verwenden.
