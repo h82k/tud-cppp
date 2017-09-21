@@ -91,7 +91,7 @@ void setAddrWindow(int x1, int y1, int x2, int y2){
  */
 void init(){
     // Set LCD Data Pins orientation to output
-    LCD_DATA_IO  = 0xFF; // Direction: Output
+    LCD_DATA_IO  |= 0xFF; // Direction: Output
 
     
     // Set all LCD Data Pins to LOW

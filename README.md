@@ -12,7 +12,7 @@ The course is held in German.
 
 Further details (in German) are accessible at http://www.es.tu-darmstadt.de/lehre/aktuelle-veranstaltungen/c-und-c-p
 
-See LICENSE.txt for more information about the license of the slide set.
+See [LICENSE.txt](LICENSE.txt) for more information about the license of the slide set.
 
 ## Impressions of summer semester 2017
 
