@@ -3,6 +3,8 @@
  * systems lab at TU Darmstadt.
  *
  * Author: Nicolas Himmelmann
+ *
+ * Maze generation algorithm from https://en.wikipedia.org/wiki/Maze_generation_algorithm
  */
 #include "Maze.h"       
 #include "display.h"   
