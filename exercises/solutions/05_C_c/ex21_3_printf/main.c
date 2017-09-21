@@ -44,7 +44,7 @@ int main(void) {
   printf("%s\n", buffer);
   
   // 'buffer' is a char-array of length 6 (incl. '\0')
-  buffer[strlen(buffer)] = '_';
+  buffer[strlen(buffer)] = '+';
   printf("%s\n", buffer); // (for option 2): Should produce 'Hello_' + something surprising
 
   
