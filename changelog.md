@@ -10,6 +10,7 @@ Lecture: cppp_lecture.pdf
 
 ## Exercises
 * Add Maze project (2017/mcProjects/Maze). See also README.md therein.
+* 19: Proper instructions for creating iterators for the custom Array class
 * 20.1: Fix typo "Projekt" -> "Project"
 * 21.3: Fix type "Hello Welt" -> "Hello World"
 * 21.3: Change zero-byte replacement character from '_' to '+'

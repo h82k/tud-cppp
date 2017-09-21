@@ -22,9 +22,10 @@ Eine fortgeschrittene Übung ist es, Iteratoren für \lstinline{Array} bereitzus
 
 \cpppInputListing{04_advanced/problems/listings/customArrays_vector.cpp}
 
-Da \lstinline{std::copy} als ersten und zweiten Parameter einen Typ erwartet, der das Interface eines \lstinline{InputIterator}s erfüllt, muss deine Array-Klasse dies auch erfüllen. 
+Da \lstinline{std::copy} als ersten und zweiten Parameter einen Typ erwartet, der das Interface eines \lstinline{InputIterator}s erfüllt, ist es sinnvoll, dass du eine zusätzliche Iterator-Klasse implementierst.
 Dazu kannst du dich an \url{http://en.cppreference.com/w/cpp/concept/InputIterator} orientieren, um die nötigen Operatoren zu überladen.
 Falls deine Array-Klasse auch durch einen \lstinline{std::copy}-Aufruf gefüllt werden können soll, benötigst du außerdem alle Operatoren des \lstinline{OutputIterator}-Interfaces: \url{http://en.cppreference.com/w/cpp/concept/OutputIterator}.
+Ist es auch sinnvoll, die Klasse \lstinline|Array| kompatibel mit \lstinline|std::back_insert_iterator| zu machen?
 
 \item
 Denke daran, für Indizes den Typ \lstinline$size_t$ zu verwenden.
