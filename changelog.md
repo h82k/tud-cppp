@@ -1,6 +1,21 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes on 2017-09-21
+
+## Lecture
+* Insert slide 110 ("Exceptions")
+* Remove (hidden) slide 135 (Summary of memory mgmt section)
+* Bugfix on slide 222: Logical "XOR" not equivalent to '!=' if operands may have arbitrary values
+
+## Exercises
+* Add Maze project (2017/mcProjects/Maze). See also README.md therein.
+* 19: Proper instructions for creating iterators for the custom Array class
+* 20.1: Fix typo "Projekt" -> "Project"
+* 21.3: Fix type "Hello Welt" -> "Hello World"
+* 21.3: Change zero-byte replacement character from '_' to '+'
+* 21.6: Clarification of meaning of "IMP" and "BIIMP"
+
 ## Changes on 2017-09-20
 
 ## Lecture

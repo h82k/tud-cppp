@@ -1,5 +1,5 @@
 #include <stdio.h>
-printf("Hello Welt\n"); // Print 'Hello World' and add a line break
+printf("Hello World\n"); // Print 'Hello World' and add a line break
 
 int i;
 printf("i = %d\n", i);  // Print integer

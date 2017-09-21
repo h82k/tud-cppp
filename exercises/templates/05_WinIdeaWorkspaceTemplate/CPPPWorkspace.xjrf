@@ -44,15 +44,14 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>41</C>
-       <L>75</L>
-       <P>solution\display_s.c</P>
+       <L>11</L>
+       <P>src\main.c</P>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>18</C>
-       <L>2</L>
-       <P>solution\button_s.c</P>
+       <C>41</C>
+       <L>75</L>
+       <P>solution\display_s.c</P>
       </PI.1>
       <PI.10>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -118,8 +117,9 @@
       </PI.19>
       <PI.2>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>28</C>
-       <P>solution\blinkrainbow_s.c</P>
+       <C>18</C>
+       <L>2</L>
+       <P>solution\button_s.c</P>
       </PI.2>
       <PI.20>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -185,9 +185,8 @@
       </PI.29>
       <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>11</C>
-       <L>13</L>
-       <P>src\main.c</P>
+       <C>28</C>
+       <P>solution\blinkrainbow_s.c</P>
       </PI.3>
       <PI.30>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -768,7 +767,7 @@
        <RelativeFileName>src\main.c</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
-       <FileBarIndex>2</FileBarIndex>
+       <FileBarIndex>1</FileBarIndex>
        <RectPosBottom>471</RectPosBottom>
        <RectPosLeft>22</RectPosLeft>
        <RectPosRight>1235</RectPosRight>
@@ -776,7 +775,7 @@
        <RelativeFileName>solution\blinkrainbow_s.c</RelativeFileName>
       </Editor.0>
       <Editor.1>
-       <FileBarIndex>1</FileBarIndex>
+       <FileBarIndex>2</FileBarIndex>
        <RectPosBottom>493</RectPosBottom>
        <RectPosLeft>44</RectPosLeft>
        <RectPosRight>1257</RectPosRight>
@@ -813,10 +812,10 @@
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
-      <b>702</b>
-      <l>708</l>
-      <r>1212</r>
-      <t>338</t>
+      <b>598</b>
+      <l>516</l>
+      <r>1020</r>
+      <t>234</t>
      </Progress>
      <Watches>
       <ActiveWatchPane>2</ActiveWatchPane>
@@ -1588,18 +1587,18 @@
        </Items.0>
       </OSWindow>
       <ProjectWindow>
-       <Selected>display_s.c</Selected>
+       <Selected>Files [S6E2CCA_release]</Selected>
        <Items.0>
         <__>
          <Name>Files</Name>
-         <Options>1</Options>
+         <Options>5</Options>
          <Items.0>
           <__>
            <Name>lib</Name>
-           <Options>1</Options>
+           <Options>5</Options>
            <Items.0>
             <__>
-             <Name>mfs.c</Name>
+             <Name>adc.c</Name>
              <Options>4</Options>
             </__>
            </Items.0>
@@ -1608,25 +1607,13 @@
          <Items.1>
           <__>
            <Name>solution</Name>
-           <Options>5</Options>
-           <Items.0>
-            <__>
-             <Name>blinkrainbow_s.c</Name>
-             <Options>4</Options>
-            </__>
-           </Items.0>
+           <Options>1</Options>
           </__>
          </Items.1>
          <Items.2>
           <__>
            <Name>src</Name>
            <Options>1</Options>
-           <Items.0>
-            <__>
-             <Name>blink.c</Name>
-             <Options>4</Options>
-            </__>
-           </Items.0>
           </__>
          </Items.2>
         </__>
@@ -1665,7 +1652,7 @@
     <RegVer>1279262720</RegVer>
     <Project_Local>
      <Project.0>
-      <DefaultTargetName>S6E2CC8_release</DefaultTargetName>
+      <DefaultTargetName>S6E2CCA_release</DefaultTargetName>
      </Project.0>
     </Project_Local>
    </REG_ROOT>

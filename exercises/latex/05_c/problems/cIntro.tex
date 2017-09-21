@@ -94,14 +94,14 @@ Wenn du das Programm jetzt kopilierst und ausführst, sollte nur der String \lst
 
 \paragraph{Speicher auslesen (Heap)}
 Im Folgenden sehen wir uns den Effekt an, den das Weglassen des Nullbytes bewirkt.
-Überschreibe zunächst das Null-Byte mit einem beliebigen Zeichen (bspw. \lstinline|'_'|):
+Überschreibe zunächst das Null-Byte mit einem beliebigen Zeichen (bspw. \lstinline|'+'|):
 \begin{lstlisting}
-buffer[strlen(buffer)] = '_'; // or: buffer[7] = '_'
+buffer[strlen(buffer)] = '+'; // or: buffer[7] = '+'
 \end{lstlisting}
 Die Funktion \lstinline|strlen| liefert die \enquote{gemessene} Länge von \lstinline|buffer| zurück, also die Anzahl an Bytes, bis zum Nullbyte.
 Wenn du jetzt den Inhalt des Puffers ausgibst, kann alles passieren (\enquote{Undefined Behavior}).
 Die Funktion \lstinline|printf| wird solange den Speicher auslesen, bis sie ein Null-Byte trifft.
-Du wirst allerdings nur das neu eingefügte Zeichen (\lstinline|'_'|) zusätzlich sehen, da das Betriebssystem den Heap-Speicher des Programms standardmäßig mit \lstinline|'\0'| überschreibt.
+Du wirst allerdings nur das neu eingefügte Zeichen (\lstinline|'+'|) zusätzlich sehen, da das Betriebssystem den Heap-Speicher des Programms standardmäßig mit \lstinline|'\0'| überschreibt.
 
 Um einen beeindruckenderen Effekt zu sehen, musst du selber dafür sorgen, dass der Speicher \enquote{sinnvolle} Daten enthält.
 Füge dazu den folgenden Code vor dem \lstinline|malloc|-Aufruf von \lstinline|buffer| ein.
@@ -219,7 +219,8 @@ Zum Beispiel ist die Ausgabe von \lstinline|fmt(23)| der String \lstinline|"0b00
 Fülle zunächst die mit \lstinline|// TODO implement me| gekennzeichneten Zeilen aus, sodass die Ausgabe korrekt ist.
 Beispiele sind für \texttt{NEG} und \texttt{NOT} gegeben.
 
-Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwarteten Ergebnisse in folgender Tabelle übereinstimmen\\[2ex]
+Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwarteten Ergebnisse in folgender Tabelle übereinstimmen\\[1ex]
+\begin{center}
 \begin{tabular}{lr}
 \toprule
 \textbf{Ausdruck} & \textbf{Ergebnis}\\
@@ -232,8 +233,11 @@ Stelle sicher, dass deine Ergebnisse für \lstinline|a = 23, b = 3| mit den erwa
 \texttt{a LEFT s} & 92\\
 \bottomrule
 \end{tabular}
+\end{center}
 
-Die folgende Tabelle enthält die erwarteten Ergebnisse der logischen Operatoren für alle Wertkombinationen von \lstinline|a| und \lstinline|b|:\\[2ex]
+Die folgende Tabelle enthält die erwarteten Ergebnisse der logischen Operatoren für alle Wertkombinationen von \lstinline|a| und \lstinline|b|.
+Mit \texttt{IMP} ist Implikation gemeint ($\Rightarrow$) und mit \texttt{BIIMP} ist Biimplikation/Äquivalenz gemeint ($\Leftrightarrow$).\\[1ex]
+\begin{center}
 \begin{tabular}{lrrrr}
     \toprule
     \textbf{Ausdruck} & \multicolumn{4}{c}{\textbf{Ergebnis}}\\
@@ -246,6 +250,7 @@ Die folgende Tabelle enthält die erwarteten Ergebnisse der logischen Operatoren
     \texttt{a BIIMP s} & 1  & 0& 0& 1\\
     \bottomrule
 \end{tabular}
+\end{center}
 \item 
 Im Allgemeinen entspricht eine Verschiebung nach links/rechts einer Multiplikation mit/Division durch 2.
 Dazu werden jeweils von rechts/links 0-Bits eingeschoben.

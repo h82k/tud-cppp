@@ -9,7 +9,7 @@
 #ifndef pins_h
 #define pins_h
 
-#define LCD_DATA FM4_GPIO->PDOR1  // LCD_DATA
+#define LCD_DATA FM4_GPIO->PDOR1LL  // LCD_DATA
 
 
 #define LCD_DATA_IO FM4_GPIO->DDR1 // LCD_DATA_IO
