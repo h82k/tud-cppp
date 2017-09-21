@@ -8,6 +8,8 @@ static uint16_t textColor;
 static uint8_t textSize;
 static int textBackground;
 
+void itoa(uint8_t, char*, uint8_t);
+
 uint16_t color565_s(const uint8_t r, const uint8_t g, const uint8_t b){
   const uint8_t hiR = (r & 0xF8) >> 3; 
   const uint8_t hiG = (g & 0xFC) >> 2;
