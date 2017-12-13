@@ -1,6 +1,14 @@
 Exercises: cppp_exercises.pdf
 Lecture: cppp_lecture.pdf
 
+## Changes in December 2017
+
+## Lecture
+* Heavy restructuring
+  * Move '[Exkurs]' slides into separate section
+  * Remove outdated, non-helpful slides entirely
+  * Move 'Einführung in (Embedded) C' in front of 'Fortgeschrittene Themen' to allow for getting started with the µC faster 
+
 ## Changes in November 2017
 
 ## Lecture
