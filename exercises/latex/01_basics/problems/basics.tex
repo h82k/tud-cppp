@@ -1,9 +1,12 @@
-\section{\ExercisePrefixBasics C++ Grundlagen, Funktionen und Strukturierung}
+%!TeX spellcheck = de_DE
+
+\section{\ExercisePrefixBasics C++: Grundlagen, Funktionen und Strukturierung}
 \label{sec:basics}
+\cpppSolutionName{basics}
 Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
 \subsection*{Primitive Datentypen} 
-Die primitiven Datentypen in C++ sind ähnlich denen in Java.
+Die primitiven Datentypen in C++ sind ähnlich zu denen in Java.
 Allerdings sind alle Ganzzahl-Typen in C++ sowohl mit als auch ohne Vorzeichen verfügbar.
 Standardmäßig sind Zahlen vorzeichenbehaftet.
 Mittels \lstinline{unsigned} kann man vorzeichenlose Variablen deklarieren.
@@ -22,9 +25,12 @@ Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in 
 \cpppInputListing{01_basics/problems/listings/basics_types_ex.cpp}
 
 \hints{
-    \item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
-    \item Die C++ Klasse \lstinline{std::numeric_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
+
+\item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
+
+\item Die C++ Klasse \lstinline{std::numeric_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
 Einbinden lässt sich diese über den Header \lstinline{limits}.
+
 }
 
 \subsection{Sternenmuster mit Funktionen malen}
@@ -139,13 +145,13 @@ Hier ein kleines Beispiel dazu, damit du eine Vorstellung davon bekommst, wie da
 
 \cpppInputListing{01_basics/problems/listings/basics_doxygen_example.hpp}
 
-\paragraph{Letzendliches Erstellen der Dokumentation}
+\paragraph{Erstellen der HTML-Dokumentation}
 Erstellen kannst du die Dokumentation am Ende über die Kommandozeile.
 Dafür öffnest du das Terminal mit \lstinline{STRG + ALT + t} und wechselst in das Verzeichnis, in dem dein Projekt liegt (üblicherweise \lstinline{cd ~/CPPP-Workspace/NameDeinesProjektes}).
 Dort gibst du \lstinline{doxygen -g} ein, was dir eine vorgefertigte Konfigurationsdatei für Doxygen generiert. 
 Mit dem Befehl \lstinline{doxygen} kannst du dir jetzt die fertige Dokumentation generieren lassen.
 Diese befindet sich nun im Verzeichnis \filename{html} in der Datei \filename{index.html}.
-Öffnest du diese Datei per Doppelklick, findest du unter dem Menüpunkt \lstinline{Files} die von dir dokumentierte \filename{functions.{h,hpp}}.
+Öffnest du diese Datei per Doppelklick, findest du unter dem Menüpunkt \lstinline{Files} die von dir dokumentierten Dateien.
 
 \subsection{Eingabe}
 \paragraph{Eingabe der Breite}

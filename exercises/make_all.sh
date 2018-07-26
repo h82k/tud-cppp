@@ -8,8 +8,7 @@ templatesDirectory=$EXERCISES_ROOT/templates
 
 for file in \
   $(find ${latexDirectory} -name "Makefile") \
-  $(find ${solutionsDirectory}/{01,02,03,04,06}* -name "Makefile") \
-  $(find ${solutionsDirectory}/05_C_c -name "Makefile") \
+  $(find ${solutionsDirectory}/* -name "Makefile") \
   $(find ${templatesDirectory}/05_c -name "Makefile");
 do
   echo "---"

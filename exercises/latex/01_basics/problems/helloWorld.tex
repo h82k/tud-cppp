@@ -1,3 +1,5 @@
+%!TeX spellcheck = de_DE
+
 \section{\ExercisePrefixBasics Hello World}
 Lege ein neues C++ Projekt an, indem du \textbf{Workspace $\rightarrow$ New project} im CodeLite Menü wählst und als Projekttyp \textbf{CPPP/C++ Projekt} auswählst.
 Wähle einen passenden Projektnamen, z.b. \texttt{Tag1\_Aufgabe1}. Als Projektpfad sollte \texttt{/home/cppp/CPPP-Workspace} ausgewählt sein. Achte darauf, dass der Haken bei \texttt{Create the project under a separate directory} gesetzt ist.
@@ -40,7 +42,7 @@ Der Grund hierfür ist, dass es durch einen Fehler zu weiteren Folgefehlern komm
 Dieser Fehler wird von CodeLite geworfen, wenn es nach dem Kompilieren das lauffähige Programm nicht findet.
 Das kann zwei Gründe haben:
 \begin{itemize}
-\item Der Kompiliervorgang ist gescheitert. Prüfe die \texttt{Console} auf Fehler.
+\item Der Kompiliervorgang ist gescheitert. Prüfe die Konsole auf Fehler.
 \item Der Kompiliervorgang wurde noch nicht ausgeführt. Kompiliere das Programm mit einem Klick auf das Build-Symbol.
 \end{itemize}
 
@@ -54,7 +56,7 @@ Beachte, dass \emph{die Zeile davor} auch die letzte Zeile einer eingebundenen H
 
 \cpppInputListing{01_basics/problems/listings/helloworld_error_main.cpp}
 
-Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile \glqq{}\lstinline{int main() {}\grqq{} beziehen!!
+Falls im Header \filename{main.h} in der letzten Zeile ein Semikolon fehlt, wird der Compiler die Fehlermeldung trotzdem auf die Zeile beziehen, in der \lstinline{int main() {} steht.
 
 \begin{verbatim}
   error: invalid conversion from <A> to <B>.
