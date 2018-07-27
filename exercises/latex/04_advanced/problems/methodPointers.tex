@@ -1,0 +1,17 @@
+\subsection{\ExercisePrefixAdvanced Methodenzeiger \optional}
+\optionaltextbox
+\cpppSolutionName{functional_programming}{functional\_ programming}
+\label{sec:functional_method}
+Es gibt auch die Möglichkeit, Methoden\footnote{Hier ist eine einfache Erklärung zu dem Unterschied von Funktion und Methode zu finden \url{http://stackoverflow.com/a/155655}} via Zeiger auszuführen (sogenannte \textbf{Methodenzeiger}).
+Hierzu muss man zusätzlich zu dem Funktionsnamen noch ein Objekt übergeben, auf das die Methode angewendet wird.
+
+In unserem Beispiel aus Aufgabe \ref{sec:functional} von \lstinline{Square} fügen wir noch eine weitere Methode \lstinline{squareroot} hinzu, welche das Inverse der Quadrierung ausführt.
+Unsere Klasse Square verändert sich dementsprechend zu
+%
+\cpppInputListing{04_advanced/problems/listings/functional_method_square.cpp}
+%
+und unser \lstinline{map} zu 
+%
+\cpppInputListing{04_advanced/problems/listings/functional_method_map.cpp}
+%
+Deine Aufgabe ist es nun, eine neue Implementation von \lstinline{map} hinzuzufügen, deinem für \lstinline{map} geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementation mit allen implementierten Methoden zu testen.
