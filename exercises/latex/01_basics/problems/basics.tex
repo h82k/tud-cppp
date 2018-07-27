@@ -3,7 +3,7 @@
 \section{\ExercisePrefixBasics C++: Grundlagen, Funktionen und Strukturierung}
 \label{sec:basics}
 \cpppSolutionName{basics}
-Für diese Aufgabe kannst du entweder das vorherige Programm weiter entwickeln oder genauso wie vorher ein neues Projekt anlegen.
+Für diese Aufgabe kannst du entweder das vorherige Programm weiterentwickeln oder genauso wie vorher ein neues Projekt anlegen.
 
 \subsection*{Primitive Datentypen} 
 Die primitiven Datentypen in C++ sind ähnlich zu denen in Java.
@@ -15,18 +15,18 @@ Durch das freie Vorzeichenbit kann ein größerer positiver Wertebereich dargest
 \cpppInputListing{01_basics/problems/listings/basics_types_intro.cpp}
 
 Eine andere Besonderheit von C++ ist, dass Ganzzahlwerte implizit in Boolesche Werte (Typ: \lstinline{bool}) umgewandelt werden.
-Alles ungleich 0 wird als \lstinline{true} gewertet, 0 als \lstinline{false}.
+Werte, die ungleich 0 sind, werden als \lstinline{true} gewertet, 0 als \lstinline{false}.
 Somit können Ganzzahlen direkt in Bedingungen ausgewertet werden.
 
 \subsection{Größe von Datentypen}
-Die Größe von den verschiedenen Datentypen ist essentiell zu wissen, wenn man mit ihnen arbeiten möchte.
+Oft ist es notwendig die tatsächliche Größe der Datentypen im Speicher zu kennen. Diese kann mit Hilfe des \href{http://en.cppreference.com/w/c/language/sizeof}{\lstinline{sizeof}-Operators} ermittelt werden.
 Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in Bits, wie auch deren minimalen und maximalen Wert ausgeben lassen.
 
 \cpppInputListing{01_basics/problems/listings/basics_types_ex.cpp}
 
 \hints{
 
-\item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
+%\item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
 
 \item Die C++ Klasse \lstinline{std::numeric_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
 Einbinden lässt sich diese über den Header \lstinline{limits}.
@@ -35,21 +35,20 @@ Einbinden lässt sich diese über den Header \lstinline{limits}.
 
 \subsection{Sternenmuster mit Funktionen malen}
 
-Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal ein * auf der Konsole ausgibt und mit einem Zeilenumbruch abschließt.
+Schreibe eine Funktion \lstinline{printStars(int n)}, die \lstinline{n}-mal einen Stern (*) auf die Konsole ausgibt und mit einem Zeilenumbruch abschließt.
 Ein Aufruf von \lstinline{printStars(5)} sollte folgende Ausgabe generieren:
 
 \cpppInputListing{01_basics/problems/listings/basics_stars.cpp}
 
-Platziere die Funktion \textbf{vor} der \lstinline{main}, da sie sonst von dort aus nicht aufgerufen werden kann.
-Benutze die erstellte Funktion \lstinline{printStars(int n)}, um eine weitere Funktion \lstinline{printFigure(int n)} zu schreiben, die eine Figur wie unten dargestellt ausgibt.
-Verwende hierzu Schleifen.
+Platziere die Funktion \textbf{vor} \lstinline{main}, da sie ansonsten von dort aus nicht aufgerufen werden kann.
+Erstelle nun eine zweite Funktion \lstinline{printFigure(int n)}, die \lstinline{printStars(int n)} nutzt um eine Figur wie unten dargestellt auszugeben.
+Verwende hierzu eine Schleife.
 
 \cpppInputNoPageBreakListing{01_basics/problems/listings/basics_starpattern.cpp}
 
 \hints{
     \item Was die Benennung von Funktionen, Variablen und Klassen angeht, bist du frei. Für Klassen ist \enquote{CamelCase} wie in Java üblich. Bei Funktionen und Variablen wird zumeist entweder auch CamelCase oder Kleinschreibung mit Unterstrichen verwendet.
-    \item Klassen beginnen mit einem Großbuchstaben. Funktionen und Variablen hingegen sollten mit Kleinbuchstaben beginnen.
-    \item Um Strings auszugeben, stellt dir C++ \lstinline{std::cout} zur Verfügung, welches den String zu dem Standard Output Stream weitergibt. Diesen Output Stream kann man mit dem Manipulator \lstinline{std::endl} zu einem Zeilenumbruch zwingen.
+    \item Um Strings auszugeben, stellt dir C++ den Stream \lstinline{std::cout} zur Verfügung, welches den String auf die Standardausgabe ausgiebt. Einen Zeilenumbruch erreicht man, durch anfügen von \lstinline{std::endl}.
 }
 
 \subsection{Erweiterung durch einen enum-Typen}
@@ -66,8 +65,8 @@ Nutzen kann man den Enum-Typ nun, indem man eine Variable von diesem Typ deklari
 
 \cpppInputListing{01_basics/problems/listings/basics_enum_example_3.cpp}
 
-Deine Aufgabe ist es jetzt, das Programm um einen enum-Typen \lstinline{Direction} zu erweitern, der die Richtung (left oder right) angibt, in die das Pattern ausgegeben werden soll. Erweitere dazu, falls nötig, die Funktionen \lstinline{printStars} bzw. \lstinline{printFigure}. Es könnte außerdem nützlich sein, eine Funktion \lstinline{printSpaces} einzuführen.
-Das ganze soll am Ende jeweils folgendermaßen aussehen:
+Deine Aufgabe ist es jetzt, das Programm um einen Enum-Typen \lstinline{Direction} zu erweitern, der die Richtung (Left,Right) angibt, in die das Pattern ausgegeben werden soll. Erweitere dazu, falls nötig, die Funktionen \lstinline{printStars} bzw. \lstinline{printFigure}. Es könnte außerdem nützlich sein, eine Funktion \lstinline{printSpaces} einzuführen.
+Das Resultat soll am Ende jeweils folgendermaßen aussehen:
 
 \cpppInputNoPageBreakListing{01_basics/problems/listings/basics_starpattern_alignment.cpp} 
 
@@ -76,7 +75,7 @@ Erstelle eine neue Header-Datei \textbf{\filename{functions.h}} und eine neue
 Sourcedatei \textbf{\filename{functions.cpp}}.
 Klicke hierzu mit der \textbf{rechten Maustaste} auf den Ordner \textbf{\filename{src}} und wähle \textbf{Add a New File}, wähle den Dateitypen \texttt{Header File} und gebe der Datei den Namen \filename{functions}. 
 Bestätige den Dialog mit \textbf{OK}.
-Das ganze wiederholst du mit dem Dateitypen \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
+Wiederhole diesen Schritt entsprechend für \texttt{C++ Source File} und ebenfalls dem Namen \filename{functions}.
 Füge in der Headerdatei die folgenden Include Guards hinzu.
 
 \cpppInputListing{01_basics/problems/listings/basics_hpp_guards.hpp}
@@ -86,16 +85,16 @@ Binde danach \filename{functions.h} in beide Sourcedateien (\filename{functions.
 \cpppInputListing{01_basics/problems/listings/basics_hpp_include.hpp}
 
 verwendest.
-\textbf{Verschiebe} deine beiden Funktionen nach \filename{functions.cpp}.
+\textbf{Verschiebe} die beiden zuvor erstellten Funktionen nach \filename{functions.cpp}.
 
-Schreibe nun in \filename{functions.h} \textbf{Funktionsprototypen} für die Funktionen aus den beiden vorherigen Aufgaben.
+Schreibe nun in \filename{functions.h} \textbf{Funktionsprototypen} für die Funktionen, die sich nun in \filename{functions.cpp} befinden.
 Funktionsprototypen dienen dazu, dem Compiler mitzuteilen, dass eine Funktion mit bestimmtem Namen, Parametern und Rückgabewert existiert.
-Ein Prototyp ist im Wesentlichen eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
+Ein Prototyp ist eine mit \textbf{;} abgeschlossene Signatur der Funktion ohne Funktionsrumpf.
 Der Prototyp von \lstinline{printStars(int n)} lautet 
 
 \cpppInputListing{01_basics/problems/listings/basics_printstars_sig.hpp}
 
-Auch der in der vorherigen Aufgabe erstellte enum-Typ sollte in der Header-Datei platziert werden.
+Auch der in der vorherigen Aufgabe erstellte Enum-Typ sollte in der Header-Datei platziert werden.
 
 Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
 
@@ -103,26 +102,24 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
     \item Sourcedateien tragen in der Regel die Endung \filename{.cpp}, Headerdateien \filename{.h} oder \filename{.hpp}.
     \item Denke daran, auch in \filename{functions.cpp} den Header \lstinline{iostream} einzubinden, falls du dort Ein- und Ausgaben verwenden willst (\lstinline{#include<iostream>}).
     \item Beachte, dass es zwei verschiedene Möglichkeiten gibt, eine Header-Datei einzubinden - per \lstinline{\#include <Bibliotheksname>} sowie per \lstinline{\#include "Dateiname"}.
-    Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante auch die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für eigene, projektspezifische Header.
+    Bei der ersten Variante sucht der Compiler nur in den Include-Verzeichnissen der Compiler-Toolchain, während bei der zweiten Variante die Projektordner durchsucht werden. Somit eignet sich die erste Schreibweise für System-Header und die zweite für projektspezifische Header.
     \item Anstelle der Include Guards kannst du auch die Präprozessordirektive \lstinline{\#pragma once} verwenden.
     Diese ist zwar nicht standardisiert, wird aber von den meisten Compilern unterstützt.
 }
 
 \subsection{Dokumentation} \label{basics:doc}
 Für die Lesbarkeit eines Programms ist eine ausführliche Dokumentation des Programmcodes essentiell.
-Damit du einen Einblick darin bekommt, wird es deine Aufgabe sein, deinen geschriebenen Code durchgehend zu kommentieren. 
-Zum Erstellen der Dokumentation werden wir das Tool \emph{Doxygen}\footnote{Doxygen-Link als Referenz: \url{http://www.doxygen.nl/}} verwenden.
+Dazu wirst du in dieser Aufgabe den Header \filename{functions.hpp} mit Kommentaren versehen, die das Tool \emph{Doxygen}\footnote{Doxygen-Projektseite: \url{http://www.doxygen.nl/}} interpretieren kann.
 
 Damit Doxygen deine Kommentare erkennt, muss ein spezielles Format eingehalten werden.
 \begin{itemize}
     \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
-    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)\footnote{Es gibt noch andere Formate, aber wir werden hier in dem Praktikum den sogenannten JavaDoc-Style verwenden.}
+    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)
     
 		\cpppInputListing{01_basics/problems/listings/basics_doxygen_comment.cpp}}
 \end{itemize}
 
-Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Kommandos \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann seinen Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
-Um aber so ausführlich wie möglich zu sein, werden wir diese Kommandos verwenden.
+Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Befehle \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann seinen Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
 Beispiele unter \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html\#docexamples}}.
 Diese Kommandos sind die folgenden:
 
@@ -156,45 +153,44 @@ Diese befindet sich nun im Verzeichnis \filename{html} in der Datei \filename{in
 \subsection{Eingabe}
 \paragraph{Eingabe der Breite}
 Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
-Die Breite soll dabei eine im Programmcode vorgegebene Grenze nicht überschreiten dürfen. 
+Die Breite soll dabei eine im Programmcode vorgegebene maximale Breite nicht überschreiten dürfen. 
 Gib gegebenenfalls eine Fehlermeldung aus.
 Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in folgendem Beispiel.
 
   \cpppInputListing{01_basics/problems/listings/basics_cin.cpp}
   
 \paragraph{Eingabe der Richtung}
-In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Pattern ausgegeben werden kann. 
-Füge nun eine weitere Eingabeaufforderung hinzu, die die vom Nutzer gewünschte Richtung abfragt (beispielsweise 0 für left und 1 für right). 
+In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Muster ausgegeben wird. 
+Füge nun eine weitere Eingabeaufforderung hinzu, die vom Nutzer die gewünschte Richtung erfragt (beispielsweise 0 für left und 1 für right). 
 Gibt der Nutzer eine ungültige Richtung ein, kannst du eine Fehlermeldung ausgeben oder erneut die Eingabe abfragen.\\
 \\
-Erstelle auch für diesen Aufgabenteil eine eigene Funktion und lagere diese nach \filename{functions.cpp} aus.
+Erstelle auch für diesen Aufgabenteil eine eigene Funktion in \filename{functions.cpp}.
 
 \subsection{Fortlaufendes Alphabet ausgeben}
 Statt eines einzelnen Zeichens soll nun das fortlaufende Alphabet ausgegeben werden.
-Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \emph{a}.
+Sobald das Ende des Alphabets erreicht wurde, beginnt die Ausgabe erneut bei \texttt{a}.
 Beispiel:
 
   \cpppInputListing{01_basics/problems/listings/basics_charpattern.cpp}
 
 Implementiere dazu eine Funktion \lstinline{char nextChar()}.
-Diese soll bei jedem Aufruf das nächste auszugebende Zeichen vom Typ \lstinline{char} zurückgeben, beginnend bei \emph{a}.
+Diese soll bei jedem Aufruf das nächste auszugebende Zeichen vom Typ \lstinline{char} zurückgeben, beginnend bei 'a'.
 Dazu muss sich \lstinline{nextChar()} intern das aktuelle Zeichen merken.
 Dies kann durch die Verwendung von statischen Variablen erreicht werden. 
 Diese behalten ihren aktuellen Wert auch nach Verlassen der Funktion. 
 Das heißt, wenn \lstinline{nextChar()} das nächste Mal aufgerufen wird, steht der Wert des vorherigen Zeichens noch zur Verfügung.
-Eine statische Variable \lstinline{c} wird mittels
+Eine statische Variable \lstinline{c} wird wie folgt deklariert:
 
   \cpppInputListing{01_basics/problems/listings/basics_staticchar.cpp}
 
-deklariert.
 In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig beim ersten Aufruf} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
 
 \hints{
-    \item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden.
+    \item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden um am Ende des Alphabets wieder zu 'a' umzubrechen.
 }
 
 \subsection{Namensräume}
-Bibliotheken werden in einen eigenen Namensraum gekapselt, damit ihre Funktionen nicht mit gleichnamigen Funktionen in anderen Bibliotheken kollidieren.
+Ein Namensraum (namespace) dient dazu, Namenskonflikte zu vermeiden.
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
 folgt in einen \lstinline{namespace} setzt. Achte auch auf das Semikolon nach der schließenden Klammer.
 

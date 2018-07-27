@@ -2,7 +2,7 @@
 Ziel dieser Aufgabe ist es, die vorherige Aufgabe objektorientiert zu lösen. Schreibe hierfür manuell eine Klasse, die das aktuelle Zeichen als Attribut enthält und durch Methoden ausgelesen und inkrementiert werden kann.
 
 \hints{
-	\item Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{Rechtsklick auf den Ordner src/ $\rightarrow$ New class...}) von CodeLite!
+	\item Verwende in dieser Aufgabe noch \textbf{nicht} den Klassengenerator (\textbf{Rechtsklick auf den Ordner src/ $\rightarrow$ New class...}) von CodeLite! Es ist besser, wenn man zumindest einmal eine Klasse und ihren Header selbst angelegt hat, da in der Klausur kein Klassengenerator zur Verfügung steht.:-)
 }
 
 \subsection{Definition}
@@ -20,13 +20,10 @@ Füge noch einen \lstinline{public} Funktionsprototypen \lstinline{char generate
 
 \hints{
 	\item Ein Konstruktor wird als eine Funktion ohne Rückgabetyp deklariert, die den gleichen Namen wie die Klasse hat, und beliebige Parameter beinhalten kann.
+	\item Es bietet sich an auch hier den Programmcode zu dokumentieren.
+	Das funktioniert wieder sehr ähnlich wie in Aufgabe \ref{basics:doc}, nur tauschst du den Tag \lstinline{@file} gegen \lstinline{@class} aus und platzierst die Dokumentation vor der Definition der Klasse. Während der Bearbeitung der weiteren Aufgaben kannst du die Dokumentation angepassen und entdecken wie \texttt{doxygen} deine Kommentare in eine fertige Dokumentation umsetzt.
 }
 
-\subsection{Dokumentation von Klassen}
-Auch in dieser Aufgabe geht es wieder darum, deinen Programmcode zu dokumentieren.
-Das funktioniert wieder sehr ähnlich wie in Aufgabe \ref{basics:doc}, nur tauschst du den Tag \lstinline{@file} gegen \lstinline{@class} aus und platzierst die Dokumentation vor der Definition der Klasse.
-Dies kannst du fortlaufend in der Aufgabe erfüllen, es muss nicht direkt jetzt geschehen.
-Am Ende erstellst du dir wieder eine Dokumentation der Klassen und kannst so entdecken, wie \texttt{doxygen} deine Kommentare in eine fertige Dokumentation umsetzt.
 
 \subsection{Implementation}
 Wie bei der Verwendung von \lstinline{namespace} muss der Scope der Klasse (der Klassenname) in der Sourcedatei vor jeder Elementbezeichnung (Konstruktor, Funktion, \dots) durch zwei Doppelpunkte (den Scope-Resolution-Operator) getrennt angegeben werden.
@@ -55,7 +52,7 @@ Erzeuge wie aus den vorherigen Aufgaben bekannt eine \filename{main.cpp} mit ein
 Überprüfe das Ergebnis über die Konsole oder den Debugger.
 
 \hints{
-	\item Um ein Objekt zu erzeugen, muss in C++ kein \lstinline{new} verwendet werden (siehe dazu nächste Vorlesung).
+	\item Um ein Objekt zu erzeugen, muss in C++, anders als in Java, kein \lstinline{new} verwendet werden (siehe dazu nächste Vorlesung).
 }
 
 \subsection{Default-Parameter}
@@ -76,7 +73,7 @@ Um ein Startzeichen anzugeben, lege das Objekt wie folgt an:
 }
 
 \subsection{PatternPrinter}
-Implementiere folgende Klasse.
+Implementiere folgende Klasse gemäß der Kommentare neben den Methodenprototypen.
 
   \cpppInputListing{01_basics/problems/listings/classes_pattern_printer.hpp}
 

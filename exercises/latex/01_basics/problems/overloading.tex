@@ -1,13 +1,11 @@
 \section{\ExercisePrefixBasics Operatorenüberladung}\label{sec:overloading}
 \label{sec:overloading}
-In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\lstinline{operator+}), \textbf{*} (\lstinline{operator*}),\dots zu überladen.
+In C++ besteht die Möglichkeit, Operatoren wie \textbf{+} (\lstinline{operator+}), \textbf{*} (\lstinline{operator*}), \dots zu überladen.
 Man kann selber spezifizieren, was beim Verknüpfen von Objekten mit einem Operator geschehen soll, um zum Beispiel den Quellcode übersichtlicher zu gestalten.
-Du hast bereits das Objekt \lstinline{std::cout} der Klasse \lstinline{std::ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \lstinline{std::string}, \lstinline{int},\dots komfortabel zu tätigen.
+Du hast bereits das Objekt \lstinline{std::cout} der Klasse \lstinline{std::ostream} kennengelernt, welche den $<<$-Operator überlädt, um Ausgaben von \lstinline{std::string}, \lstinline{int}, \dots komfortabel zu tätigen.
 In dieser Aufgabe sollst du eine eigene Vektor-Klasse schreiben und einige Operatoren überladen.
 
 \hints{
-	\item Am Tag 4 soll dieser Vektor um weitere Funktionen erweitern werden.
-	Falls du mit dieser Aufgabe bis dahin nicht fertig sein solltest, kannst du natürlich auf die Musterlösung zurückgreifen.
     
     \item Ausführliche Hinweise zum Überladen von Operatoren findest du hier: \url{http://en.cppreference.com/w/cpp/language/operators}.
 }
@@ -93,5 +91,5 @@ Teste deine bisher definierten Methoden und Funktionen.
 Probiere auch Kombinationen von verschiedenen Operatoren aus und beobachte das Ergebnis.
 Schreibe auch eine einfache Funktion, die Vektoren als Parameter nimmt.
 Wie du siehst, werden sehr viele \lstinline{Vector3}-Objekte erstellt, kopiert und gelöscht.
-Dies liegt daran, dass die Objekte immer per Call-By-Value übergeben und dabei kopiert werden.
-Wie dies vermieden werden kann, siehst du im nächsten Teil des Praktikums.
+Dies liegt daran, dass die Objekte immer per Call-by-Value übergeben und dabei kopiert werden.
+Wie dies vermieden werden kann, siehst du im Themenbereich Speicherverwaltung.
