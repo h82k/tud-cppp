@@ -26,8 +26,6 @@ Deshalb sollst du dir in dieser Aufgabe die Größe der folgenden Datentypen in 
 
 \hints{
 
-%\item Zum Überprüfen der Größe von Datentypen kann man den \lstinline{sizeof()} Operator\footnote{\url{http://en.cppreference.com/w/c/language/sizeof}} verwenden.
-
 \item Die C++ Klasse \lstinline{std::numeric_limits}\footnote{\url{http://en.cppreference.com/w/cpp/types/numeric_limits}} bietet Funktionen sich minimale und maximale Werte von Datentypen ausgeben zu lassen. 
 Einbinden lässt sich diese über den Header \lstinline{limits}.
 
@@ -65,7 +63,8 @@ Nutzen kann man den Enum-Typ nun, indem man eine Variable von diesem Typ deklari
 
 \cpppInputListing{01_basics/problems/listings/basics_enum_example_3.cpp}
 
-Deine Aufgabe ist es jetzt, das Programm um einen Enum-Typen \lstinline{Direction} zu erweitern, der die Richtung (Left,Right) angibt, in die das Pattern ausgegeben werden soll. Erweitere dazu, falls nötig, die Funktionen \lstinline{printStars} bzw. \lstinline{printFigure}. Es könnte außerdem nützlich sein, eine Funktion \lstinline{printSpaces} einzuführen.
+Deine Aufgabe ist es jetzt, das Programm um einen Enum-Typen \lstinline{Direction} zu erweitern, der die Richtung (\lstinline{Left}, \lstinline{Right}) angibt, in die das Pattern ausgegeben werden soll.
+Erweitere dazu, falls nötig, die Funktionen \lstinline{printStars} bzw. \lstinline{printFigure}. Es könnte außerdem nützlich sein, eine Funktion \lstinline{printSpaces} einzuführen.
 Das Resultat soll am Ende jeweils folgendermaßen aussehen:
 
 \cpppInputNoPageBreakListing{01_basics/problems/listings/basics_starpattern_alignment.cpp} 
@@ -107,19 +106,26 @@ Fertig -- die Ausgabe des Programms sollte sich nicht verändert haben.
     Diese ist zwar nicht standardisiert, wird aber von den meisten Compilern unterstützt.
 }
 
-\subsection{Dokumentation} \label{basics:doc}
+\subsection{Dokumentation \optional} \label{basics:doc}
+
+\optionaltextbox
+
 Für die Lesbarkeit eines Programms ist eine ausführliche Dokumentation des Programmcodes essentiell.
 Dazu wirst du in dieser Aufgabe den Header \filename{functions.hpp} mit Kommentaren versehen, die das Tool \emph{Doxygen}\footnote{Doxygen-Projektseite: \url{http://www.doxygen.nl/}} interpretieren kann.
 
 Damit Doxygen deine Kommentare erkennt, muss ein spezielles Format eingehalten werden.
 \begin{itemize}
-    \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (z.B. Funktionen) stehen.
-    \item{Mehrzeilige Kommentare müssen den folgenden Stil einhalten (beachte hierbei das zusätzliche \lstinline{*} in der ersten Zeile)
+    \item Kommentare müssen vor den jeweiligen zu kommentierenden Elementen (\zB Funktionen, Klassen) stehen.
+    \item{
+    Mehrzeilige Kommentare müssen den folgenden Stil einhalten und mit einem Doppelstern beginnen (\lstinline{/**}):
     
-		\cpppInputListing{01_basics/problems/listings/basics_doxygen_comment.cpp}}
+	\cpppInputListing{01_basics/problems/listings/basics_doxygen_comment.cpp}
+    }
 \end{itemize}
 
-Außerdem müssen bestimmte Kommandos\footnote{Liste aller Doxygen Befehle \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}} in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann\footnote{Man kann seinen Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
+Außerdem müssen bestimmte Befehle in den Kommentaren verwendet werden, die Doxygen bei der Dokumentationsgenerierung verwenden kann.
+Eine Liste aller Doxygen-Befehle findest du bei Interesse unter \url{http://www.stack.nl/~dimitri/doxygen/manual/commands.html}.
+\footnote{Man kann seinen Kommentar auch speziell formatieren und so diese Kommandos teilweise weglassen.
 Beispiele unter \url{http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html\#docexamples}}.
 Diese Kommandos sind die folgenden:
 
@@ -144,7 +150,7 @@ Hier ein kleines Beispiel dazu, damit du eine Vorstellung davon bekommst, wie da
 
 \paragraph{Erstellen der HTML-Dokumentation}
 Erstellen kannst du die Dokumentation am Ende über die Kommandozeile.
-Dafür öffnest du das Terminal mit \lstinline{STRG + ALT + t} und wechselst in das Verzeichnis, in dem dein Projekt liegt (üblicherweise \lstinline{cd ~/CPPP-Workspace/NameDeinesProjektes}).
+Dafür öffnest du das Terminal mit \lstinline{Ctrl + Shift + T} und wechselst in das Verzeichnis, in dem dein Projekt liegt (üblicherweise \lstinline{cd ~/CPPP-Workspace/NameDeinesProjektes}).
 Dort gibst du \lstinline{doxygen -g} ein, was dir eine vorgefertigte Konfigurationsdatei für Doxygen generiert. 
 Mit dem Befehl \lstinline{doxygen} kannst du dir jetzt die fertige Dokumentation generieren lassen.
 Diese befindet sich nun im Verzeichnis \filename{html} in der Datei \filename{index.html}.
@@ -152,16 +158,16 @@ Diese befindet sich nun im Verzeichnis \filename{html} in der Datei \filename{in
 
 \subsection{Eingabe}
 \paragraph{Eingabe der Breite}
-Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite der auszugebenden Figur.
-Die Breite soll dabei eine im Programmcode vorgegebene maximale Breite nicht überschreiten dürfen. 
-Gib gegebenenfalls eine Fehlermeldung aus.
+Erweitere das Programm um eine Eingabeaufforderung zur Bestimmung der Breite des auszugebenden Musters.
+Die Breite soll dabei eine im Programmcode vorgegebene maximale Breite (\zB \numprint{80} Zeichern) nicht überschreiten dürfen. 
+Gib gegebenenfalls eine Fehlermeldung aus und frage den Benutzer erneut nach der Breite des Musters.
 Verwende zum Einlesen \lstinline{std::cin} und \lstinline{operator>>} wie in folgendem Beispiel.
 
   \cpppInputListing{01_basics/problems/listings/basics_cin.cpp}
   
 \paragraph{Eingabe der Richtung}
 In \ref{sec:basics_enumtype} hast du einen enum-Typen definiert, der die Richtungen definiert, in die das Muster ausgegeben wird. 
-Füge nun eine weitere Eingabeaufforderung hinzu, die vom Nutzer die gewünschte Richtung erfragt (beispielsweise 0 für left und 1 für right). 
+Füge nun eine weitere Eingabeaufforderung hinzu, die vom Nutzer die gewünschte Richtung erfragt (beispielsweise 0 für \lstinline{Left} und 1 für \lstinline{Right}). 
 Gibt der Nutzer eine ungültige Richtung ein, kannst du eine Fehlermeldung ausgeben oder erneut die Eingabe abfragen.\\
 \\
 Erstelle auch für diesen Aufgabenteil eine eigene Funktion in \filename{functions.cpp}.
@@ -186,11 +192,11 @@ Eine statische Variable \lstinline{c} wird wie folgt deklariert:
 In diesem Fall wird die Variable \lstinline{c} \textbf{einmalig beim ersten Aufruf} mit \lstinline{'a'} initialisiert und kann später beliebig verändert werden.
 
 \hints{
-    \item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, d.h. man kann z.B. die Modulooperation \lstinline{\%} verwenden um am Ende des Alphabets wieder zu 'a' umzubrechen.
+\item Der Datentyp \lstinline{char} kann wie eine Zahl verwendet werden, \dasheisst man kann die Modulooperation \lstinline{\%} verwenden um am Ende des Alphabets wieder zu \lstinline{'a'} umzubrechen.
 }
 
 \subsection{Namensräume}
-Ein Namensraum (namespace) dient dazu, Namenskonflikte zu vermeiden.
+Ein Namensraum (engl. namespace) dient dazu, Namenskonflikte zu vermeiden.
 Erweitere dazu das Programm, indem du im Header die Funktionsprototypen wie
 folgt in einen \lstinline{namespace} setzt. Achte auch auf das Semikolon nach der schließenden Klammer.
 
