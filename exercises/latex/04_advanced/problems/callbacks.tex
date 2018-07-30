@@ -1,5 +1,7 @@
-\section{\ExercisePrefixAdvanced Callbacks (Funktionszeiger, Funktoren)}
+\section{\ExercisePrefixElevator Callbacks (Funktionszeiger, Funktoren) \optional}
 \label{sec:callbacks}
+
+\optionaltextbox
 
 \paragraph*{Motivation für Callbacks}
 In dieser Aufgabe werden mehrere Methoden zur Realisierung von Callbacks in C++ vorgestellt und implementiert.
@@ -8,6 +10,7 @@ Beispielsweise kann man einem GUI-Button eine Callback-Funktion übergeben, die 
 Wir werden Callbacks dazu verwenden, um den Benutzer bei jedem Schritt eines laufenden Algorithmus über den aktuellen Fortschritt zu informieren.
 
 \subsection{Basisalgorithmus}
+\cpppSolutionName{callbacks_p01}{callbacks\_ p01}
 Implementiere folgenden Algorithmus, der das Problem der Türme von Hanoi löst.\footnote{\url{http://de.wikipedia.org/wiki/Turm_von_Hanoi}}\\
 \begin{algorithm}[H]
  \SetAlgoLined
@@ -27,6 +30,7 @@ Bei einem Aufruf von \textbf{hanoi(3, 1, 2, 3)} soll folgende Ausgabe erfolgen:
 \cpppInputListing{04_advanced/problems/listings/callbacks_output.cpp}
 
 \subsection{Callbacks mit Funktionszeigern}
+\cpppSolutionName{callbacks_p02}{callbacks\_ p02}
 Nun wollen wir die fest einprogrammierte Ausgabe durch ein Callback ersetzen. Dadurch wird es möglich, die Funktion auszutauschen und z.B. eine graphische Ausgabe zu implementieren, ohne jedoch den Algorithmus selbst zu ändern.
 
 Eine simple Art des Callbacks, die auch in C verfügbar ist, ist die Übergabe eines Funktionszeigers, der die Adresse der aufzurufenden Funktion beinhaltet.
@@ -39,6 +43,7 @@ Nun können wir eine Funktion mit zwei Parametern an \lstinline{hanoi()} überge
 \cpppInputListing{04_advanced/problems/listings/callbacks_print.cpp}
 
 \subsection{Callbacks mit Funktoren}
+\cpppSolutionName{callbacks_p03}{callbacks\_ p03}
 Ein Nachteil der vorherigen Implementation ist, dass nur reine Funktionen als Callback übergeben werden können.
 Eine Möglichkeit dies zu umgehen ist die Verwendung von Templates.
 Der Callback-Typ wird dabei durch einen Template-Parameter spezifiziert:
@@ -58,6 +63,7 @@ Schreibe dafür eine einfache Klasse und überlade deren \lstinline{operator()}:
 \cpppInputListing{04_advanced/problems/listings/callbacks_functor_op.hpp}
 
 \subsection{Callbacks mit \lstinline{Callback}-Klasse}
+\cpppSolutionName{callbacks_p04}{callbacks\_ p04}
 
 \paragraph*{Probleme der bisherigen Implementation}
 Die Verwendung von Templates hat uns zwar eine sehr flexible und syntaktisch ansprechende Möglichkeit für Callbacks geliefert, beherbergt jedoch mehrere, teils gravierende, Schattenseiten.
@@ -136,6 +142,8 @@ Teste deine Implementation.
     \item Verwende beispielsweise folgende Signatur für den Konstruktor von \lstinline{MethodCallback}: \lstinline{MethodCallback(void(ClassT::*method)(ParamT), ClassT *object)}
     \item Gegeben einen Zeiger \lstinline{object} auf ein Objekt, einen Zeiger \lstinline{method} auf eines seiner Methoden und einen Parameter \lstinline{p} für die Methode, sieht ein Aufruf von \lstinline{method} wie folgt aus: \lstinline{(object->*method)(p);}
 }
+
+\cpppSolutionName{callbacks_p05}{callbacks\_ p05}
 
 \subsection{Klasse \lstinline{Callback}}
 Wir haben jetzt den Typ des Callbacks vollständig von seiner Verwendung entkoppelt.

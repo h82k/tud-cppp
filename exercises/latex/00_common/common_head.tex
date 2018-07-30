@@ -132,16 +132,16 @@ Wir empfehlen aber trotzdem sie zu bearbeiten.
 \newcommand{\ExercisePrefixObjectOrientation}{\ExercisePrefix{O}}
 \newcommand{\ExercisePrefixAdvanced}{\ExercisePrefix{F}}
 \newcommand{\ExercisePrefixEmbeddedC}{\ExercisePrefix{C}}
-\newcommand{\ExercisePrefixElevator}{\ExercisePrefix{A}}
-\newcommand{\ExercisePrefixAdditionalInformation}{\ExercisePrefix{Z}}
+\newcommand{\ExercisePrefixElevator}{\ExercisePrefix{Z}}
 
 % Displays a hint at the sample solution.
-% #1 should be the name of the folder in exercises/solutions that contains the solution
-\newcommand{\cpppSolutionName}[1]{Ein Lösungsvorschlag für diese Aufgabe liegt im Ordner \href{exercises/solutions/#1/.}{\texttt{./exercises/solutions/#1}}.}
+% #1 is the name of the folder in exercises/solutions that contains the solution (e.g., linked_list)
+% #2 is similar to #1, but should be valid LaTeX code in text mode (e.g., linked\_list)
+\newcommand{\cpppSolutionName}[2]{Ein Lösungsvorschlag für diese Aufgabe liegt im Ordner \href{./exercises/solutions/#1/.}{\texttt{./exercises/solutions/#2}}.}
 
 \newcommand{\cclicense}{
 \begin{center}
-    \ovalbox{
+    \fbox{
         \parbox{0.98\textwidth}
         {
             \begin{minipage}{0.15\textwidth}

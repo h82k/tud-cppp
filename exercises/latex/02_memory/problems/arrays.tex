@@ -1,5 +1,6 @@
 \section{\ExercisePrefixMemory Arrays und Zeigerarithmetik}
 \label{sec:arrays}
+\cpppSolutionName{arrays}{arrays}
 Arrays sind zusammenhängende Speicherbereiche, die mehrere Variablen von gleichem Typ speichern können.
 Arrays werden in C++ folgendermaßen angelegt: \lstinline{<Typ> <name>[<Größe>];}, zum Beispiel:
 
@@ -37,9 +38,9 @@ In C++ findet keine automatische Bereichsprüfung bei Arrayzugriffen statt.
 Du bist als Programmierer selbst dafür verantwortlich, dass niemals auf ein Element außerhalb der Array-Grenze zugegriffen wird.
 Falls doch, kann es zu Programmabstürzen oder unerwünschten Effekten wie Buffer-Overflows kommen, die ein erhebliches Sicherheitsrisiko darstellen.
 Bevorzuge deshalb Container-Klassen wie \lstinline{std::vector} (oder \lstinline{std::array} ab C++11) aus der Standardbibliothek anstelle von \glqq rohen\grqq{} Arrays.
-Beachte außerdem, dass der \lstinline{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \lstinline{NULL} setzt.
+Beachte außerdem, dass der \lstinline{delete[]}-Operator zwar das Array löscht, den Zeiger jedoch \textbf{nicht} auf \lstinline{nullptr} setzt.
 Dabei entsteht ein \emph{Dangling Pointer}, welcher dazu führen kann, dass später im Programm auf Speicherstellen zugegriffen wird, die nicht reserviert sind.
-Setze deshalb Zeiger nach einem \lstinline{delete}/\lstinline{delete[]} sofort auf \lstinline{NULL}, um Speicherfehler zu vermeiden.
+Setze deshalb Zeiger nach einem \lstinline{delete}/\lstinline{delete[]} sofort auf \lstinline{nullptr}, um Speicherfehler zu vermeiden.
 
 Um die Größe eines Arrays zu ermitteln, kannst du den \lstinline{sizeof()}-Operator benutzen.
 Dieser gibt generell die Anzahl der Bytes an, die eine Variable verbraucht.
@@ -67,10 +68,10 @@ Deshalb muss die Größe des Arrays durch einen weiteren Parameter übergeben we
 
 \paragraph{Der Typ \lstinline$size_t$}
 Oft wird für die Größenangabe oder Indexierung eines Arrays der Typ \lstinline{unsigned int} verwendet. 
-Besserer Stil ist es jedoch, für Array-Indexierung oder auch als Laufvariable bei Schleifen den Standard-Typen \lstinline$size_t$\footnote{siehe http://en.cppreference.com/w/cpp/types/size\_t} zu nutzen.
+Besserer Stil ist es jedoch, für Array-Indexierung oder auch als Laufvariable bei Schleifen den Standard-Typen \lstinline$size_t$\footnote{Siehe http://en.cppreference.com/w/cpp/types/size\_t} zu nutzen.
 Er ist per Definition \lstinline$unsigned$, da Größen bzw. Indizes nur positiv sein können.
 Handelt es sich um eine Indexierung von \lstinline{std::vector} oder \lstinline{std::string}, so sollte das entsprechende typedef \lstinline{size_type} genutzt werden
-\footnote{bei Strings nutzt man \lstinline$std::string::size_type$ und bei std::vector entsprechend \lstinline$std::vector<T>::size_type$}.
+\footnote{Bei Strings nutzt man \lstinline$std::string::size_type$ und bei \lstinline{std::vector} entsprechend \lstinline{std::vector<T>::size_type}}.
 Der Grund für die Verwendung dieser Typen anstelle von \lstinline{unsigned int} ist folgender: 
 Es wird damit sichergestellt, dass der Typ der Indexvariablen groß genug ist, um Objekte beliebiger Größe indexieren zu können.
 In diesem Fall würde zwar auch \lstinline{unsigned int} reichen. 
@@ -84,7 +85,7 @@ Deine Funktion sollte also folgendermaßen aussehen:
 \cpppInputListing{02_memory/problems/listings/arrays_printelems.cpp}
 
 \hints{
-    \item Damit der Typ \lstinline$std::size_t$ genutzt werden kann, benötigst du den Standard-Library-Header \lstinline{#include <cstddef>}.
+\item Damit der Typ \lstinline{std::size_t} genutzt werden kann, benötigst du den Standard-Library-Header \lstinline{cstddef}.
 }
 
 \subsection{Offset-basierte Ausgabe}
@@ -124,7 +125,7 @@ Beispiel:
 
 \cpppInputListing{02_memory/problems/listings/arrays_heap.cpp}
 
-Beachte die \textbf{[]} nach \lstinline{delete}.
+Beachte die eckigen Klammern \textbf{[]} nach \lstinline{delete}.
 Diese bewirken, dass das gesamte Array und nicht bloß das erste Element gelöscht wird.
 Woher weiß \lstinline{delete[]} aber, wie viel Speicher freigegeben werden muss? 
 Wenn du Speicher auf dem Heap mit \lstinline{new/new[]} reservierst, merkt sich die Speicherverwaltung intern, wie groß dieser allozierte Bereich ist. 
@@ -143,7 +144,31 @@ Hier ist ein Beispiel wie \lstinline{std::cin} zu verwenden ist:
 \cpppInputListing{02_memory/problems/listings/arrays_cin_size.cpp}
 
 Zusätzlich zum Zeiger muss die Funktion auch die Möglichkeit haben, ihrem Aufrufer die Größe des angelegten Arrays mitzuteilen.
-Füge der Funktion deshalb einen weiteren Parameter hinzu, in dem entweder per Referenz oder per Zeiger eine Variable übergeben wird, um dort die Größe abzulegen\footnote{Du merkst sicherlich schon jetzt, dass es umständlich/fehleranfällig ist, wenn man die Größe eines Arrays separat speichern und übergeben muss.}.
+Füge der Funktion deshalb einen weiteren Parameter hinzu, in dem entweder per Referenz oder per Zeiger eine Variable übergeben wird, um dort die Größe des Arrays abzulegen.
 
 Gib die eingelesenen Werte auf der Konsole aus.
 Vergiss nicht, am Ende den Speicher freizugeben.
+
+\subsection{Parameterübergabe an \lstinline{main}}
+Wir können die Größe \lstinline{size} des anzulegenden Arrays auch mithilfe von Kommandozeilenparametern an die \lstinline{main}-Funktion übergeben, statt sie interaktiv über \lstinline{std::cin} zu erfragen.
+Dazu verwenden wir die Langform von \lstinline{main}, die zwei Parameter annimmt: \lstinline{argc} und \lstinline{argv}.
+\lstinline{argc} speichert dabei die Anzahl der übergebenen Parameter. 
+\lstinline{argv} speichert in einem Array von C-Strings die eigentlichen Paramter und hat die Länge \lstinline{argc}.
+
+Ergänze nun die Parameterliste von main, mit den folgenden beiden Parameter: \lstinline{int argc, char** argv}.
+
+\lstinline{argc} ist immer mindestens 1, da \lstinline{argv[0]} gleich dem Programmnamen ist.
+Dies wird vom Betriebssystem sichergestellt, wenn dein Programm aufgerufen wird.
+Gib \lstinline{argv[0]} über \lstinline{std::cout} aus, um dieses Verhalten zu bestätigen.
+
+Nun konvertiere \lstinline{argv[1]} mithilfe der Funktion \lstinline{std::stoi} aus dem Header \lstinline{string}\footnote{\url{http://www.cplusplus.com/reference/string/stoi/}} in eine Ganzzahl und speichere den Wert in der Variablen \lstinline{size}.
+
+Was passiert, wenn du nun das Programm ausführst? 
+
+Das Programm bricht mit einer Fehlermeldung ab (\lstinline{std::invalid_argument}).
+Der Grund ist, dass du noch keinen Paramter an \lstinline{main} übergibst.
+Um dies zu ändern, klicke rechts auf dein Projet, wähle \menuPath{Settings\dots \menuSep General \menuSep Program Arguments} und füge hier eine Zahl ein (\zB 4).
+
+Jetzt sollte dein Programm wie erwartet arbeiten.
+
+Versieh dein Programm zum Schluss mit einer \lstinline{if}-Abfrage, die eine aussagekräftige Fehlermeldung ausgibt, falls \lstinline{argc} zu klein ist.
