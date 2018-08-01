@@ -157,11 +157,13 @@ Dazu verwenden wir die Langform von \lstinline{main}, die zwei Parameter annimmt
 
 Ergänze nun die Parameterliste von main, mit den folgenden beiden Parameter: \lstinline{int argc, char** argv}.
 
-\lstinline{argc} ist immer mindestens 1, da \lstinline{argv[0]} gleich dem Programmnamen ist.
+Der Parameter \lstinline{argc} ist stets mindestens 1, da \lstinline{argv[0]} gleich dem Programmnamen ist.
 Dies wird vom Betriebssystem sichergestellt, wenn dein Programm aufgerufen wird.
+
 Gib \lstinline{argv[0]} über \lstinline{std::cout} aus, um dieses Verhalten zu bestätigen.
 
-Nun konvertiere \lstinline{argv[1]} mithilfe der Funktion \lstinline{std::stoi} aus dem Header \lstinline{string}\footnote{\url{http://www.cplusplus.com/reference/string/stoi/}} in eine Ganzzahl und speichere den Wert in der Variablen \lstinline{size}.
+Passe deine Implementierung aus dem vorherigen Aufgabenteil so an, dass \lstinline{size} mithilfe der übergebenen Kommandozeilenparameter initialisiert wird (und nicht mehr über \lstinline{std::cin}).
+Nutze dazu die Funktion \lstinline{std::stoi} aus dem Header \lstinline{string}\footnote{\url{http://www.cplusplus.com/reference/string/stoi/}}, um \lstinline{argv[0]} in eine Ganzzahl zu konvertieren.
 
 Was passiert, wenn du nun das Programm ausführst? 
 
@@ -172,3 +174,4 @@ Um dies zu ändern, klicke rechts auf dein Projet, wähle \menuPath{Settings\dot
 Jetzt sollte dein Programm wie erwartet arbeiten.
 
 Versieh dein Programm zum Schluss mit einer \lstinline{if}-Abfrage, die eine aussagekräftige Fehlermeldung ausgibt, falls \lstinline{argc} zu klein ist.
+Welchen Eingabefehler kannst du damit noch immer nicht abfangen?
