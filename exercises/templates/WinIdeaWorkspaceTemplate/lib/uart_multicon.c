@@ -80,8 +80,8 @@ void uartMulticonListen(){
   stc_mfs_uart_config_t stcUartConfig; 
   uint8_t u8Count; 
   PDL_ZERO_STRUCT(stcUartConfig); 
-  SetPinFunc_SIN7_0();
-  SetPinFunc_SOT7_0();
+  SetPinFunc_SIN3_1();
+  SetPinFunc_SOT3_1();
   stcUartConfig.enMode = UartNormal;
   stcUartConfig.u32BaudRate = 115200u;
   stcUartConfig.enParity = UartParityNone; // No parity 
