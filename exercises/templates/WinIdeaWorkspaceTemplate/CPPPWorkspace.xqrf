@@ -242,9 +242,36 @@
          <CompilerOptions>-x c -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -Wall</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -Wall</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -Wall</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -Wall</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>
@@ -494,9 +521,36 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>
@@ -746,9 +800,36 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>
@@ -998,9 +1079,36 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>
@@ -1250,9 +1358,36 @@
          <CompilerOptions>-x c  -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c  -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c  -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c  -std=c11 -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>
@@ -1502,9 +1637,36 @@
          <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
         </FileOptios>
        </File.26>
+       <File.27>
+        <FileName>$(IRFDIR)lib\uart_usb.h</FileName>
+       </File.27>
+       <File.28>
+        <FileName>$(IRFDIR)lib\uart_multicon.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.28>
+       <File.29>
+        <FileName>$(IRFDIR)lib\uart_multicon.h</FileName>
+       </File.29>
        <File.3>
         <FileName>$(IRFDIR)lib\delay.h</FileName>
        </File.3>
+       <File.30>
+        <FileName>$(IRFDIR)lib\uart_usb.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.30>
+       <File.31>
+        <FileName>$(IRFDIR)lib\debug.c</FileName>
+        <FileOptios>
+         <CompilerOptions>-x c   -mcpu=cortex-m4  -mthumb $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME)</CompilerOptions>
+        </FileOptios>
+       </File.31>
+       <File.32>
+        <FileName>$(IRFDIR)lib\debug.h</FileName>
+       </File.32>
        <File.4>
         <FileName>$(IRFDIR)lib\delay.c</FileName>
         <FileOptios>

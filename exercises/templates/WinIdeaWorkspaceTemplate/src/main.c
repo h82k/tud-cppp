@@ -2,10 +2,18 @@
 #include "blink.h"
 #include "blinkrainbow.h"
 
+#include "lib/debug.h"
+#include "lib/uart_usb.h"
+#include "lib/uart_multicon.h"
+
+
 int main(){
   initBoard();
-
-  BlinkMain();
-  
+  //UART_USB_Init();
+  //UART_USB();
+  //BlinkMain();
+  //debugCPPPBoard();
+  //testMulticonConnection();
+  uartMulticonListen();
   return 0;
 }
