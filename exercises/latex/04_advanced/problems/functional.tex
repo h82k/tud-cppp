@@ -1,6 +1,7 @@
-\section{\ExercisePrefixAdvanced Funktionales Programmieren} %\experimental}
+\section{\ExercisePrefixAdvanced Funktionales Programmieren (Funktionszeiger, Funktoren)}
 \label{sec:functional}
 %\experimentaltextbox
+\cpppSolutionName{functional_programming}{functional\_ programming}
 
 In dieser Aufgabe werden Funktionen aus der funktionalen Programmierung vorgestellt.
 Diese sind \lstinline{map}, \lstinline{filter} und \lstinline{reduce}.
@@ -15,8 +16,6 @@ In \ref{sec:map-filter-reduce-basic-impl} wirst du diese Funktionen und zusätzl
 In \ref{sec:functional_functor} wirst du deine Hilfsfunktionen als \emph{Funktoren} implementieren und \lstinline{map}, \lstinline{filter} und \lstinline{reduce} entsprechend anpassen.
 \item
 In \ref{sec:functional_template} wirst du den Code auf Templates umstellen, damit Funktionen und Funktoren austauschbar verwendet werden können.
-\item
-In \ref{sec:functional_method} wirst du zusätzlich mit Methodenzeigern arbeiten.
 \end{itemize}
 
 \subsection{Erklärung \lstinline{map}, \lstinline{filter} und \lstinline{reduce}}
@@ -136,22 +135,6 @@ Erstelle Varianten der Funktionen \lstinline{map}, \lstinline{filter} und \lstin
 \cpppInputListing{04_advanced/problems/listings/functional_template_typename.cpp}
 %
 Vergleiche die Ausgabe deiner Template-basierten Lösung mit den Ergebnissen der Funktionszeiger- und Funktor-basierten Lösungen.
-
-\subsection{Methodenzeiger}
-\label{sec:functional_method}
-Es gibt auch die Möglichkeit, Methoden\footnote{Hier ist eine einfache Erklärung zu dem Unterschied von Funktion und Methode zu finden \url{http://stackoverflow.com/a/155655}} via Zeiger auszuführen (sogenannte \textbf{Methodenzeiger}).
-Hierzu muss man zusätzlich zu dem Funktionsnamen noch ein Objekt übergeben, auf das die Methode angewendet wird.
-
-In unserem Beispiel von \lstinline{Square} fügen wir noch eine weitere Methode \lstinline{squareroot} hinzu, welche das Inverse der Quadrierung ausführt.
-Unsere Klasse Square verändert sich dementsprechend zu
-%
-\cpppInputListing{04_advanced/problems/listings/functional_method_square.cpp}
-%
-und unser \lstinline{map} zu 
-%
-\cpppInputListing{04_advanced/problems/listings/functional_method_map.cpp}
-%
-Deine Aufgabe ist es nun, eine neue Implementation von \lstinline{map} hinzuzufügen, deinem für \lstinline{map} geschriebenen Funktor eine weitere Methode hinzuzufügen und anschließend deine Implementation mit allen implementierten Methoden zu testen.
 
 \subsection*{Nachwort zu dieser Aufgabe}
 Für produktive C++-Programme bietet die Standardbibliothek fertige Funktionen und Klassen, um die gerade erlernten Prinzipien dieser Aufgabe zu realisieren, z.B. \lstinline{std::function<...>}\footnote{\url{http://en.cppreference.com/w/cpp/utility/functional/function}} und \lstinline{std::bind()}\footnote{\url{http://en.cppreference.com/w/cpp/utility/functional/bind}}.

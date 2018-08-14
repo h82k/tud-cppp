@@ -24,8 +24,9 @@ clean:
 	find . -type f -name '*.out' -delete
 	find . -type f -name '*.fls' -delete
 	find . -type f -name '*.fdb_latexmk' -delete
+	find . -type f -name '*.synctex.gz' -delete
 
 # clean all created data (incl. PDF file)
 clean_all: clean
-	rm cppp_exercises.pdf
+	rm -f cppp_exercises.pdf
 

@@ -1,1 +1,1 @@
-static char c = 'a';
+static unsigned char c = 'a';
