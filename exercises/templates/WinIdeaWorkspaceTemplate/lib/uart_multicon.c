@@ -83,7 +83,7 @@ void uartMulticonListen(){
   SetPinFunc_SIN3_1();
   SetPinFunc_SOT3_1();
   stcUartConfig.enMode = UartNormal;
-  stcUartConfig.u32BaudRate = 115200u;
+  stcUartConfig.u32BaudRate = 9600u;
   stcUartConfig.enParity = UartParityNone; // No parity 
   stcUartConfig.enStopBit = UartOneStopBit; // 1 Stop bit 
   stcUartConfig.enDataLength = UartEightBits; // 8 Bit Character Length 
@@ -97,23 +97,25 @@ void uartMulticonListen(){
   }
   Mfs_Uart_EnableFunc(pstcUart3, UartTx); 
   Mfs_Uart_EnableFunc(pstcUart3, UartRx);
-  
+  setCursor_s(480,320); 
+  char headlineText[] = "  BLE Multicon UART Test";
+  writeTextln_s(headlineText);
+  writeTextln_s("");
+  writeText_s("  UART received: ");
   while(1u) {
     // wait until RX buffer full
-    //setCursor_s(480,320); 
-    //char headlineText[] = "  BLE Multicon UART Test";
-    //writeTextln_s(headlineText);
-    //writeTextln_s("");
+
     if (TRUE == Mfs_Uart_GetStatus(pstcUart3, UartRxFull)) {
       // received data from the BLE module
-      //writeText_s("  UART received: ");
-      uint16_t tmp = Mfs_Uart_ReceiveData(pstcUart3);
+      uint8_t tmp = Mfs_Uart_ReceiveData(pstcUart3);
       char tmpChar = (char) tmp;
+      /*
       if(tmpChar == 'a')
-        LED_BLUE_DOR |= (1 << LED_BLUE_PIN);
+        LED_BLUE_DOR &= ~(1 << LED_BLUE_PIN);
       else
         LED_BLUE_DOR |= (1 << LED_BLUE_PIN);
-      //writeAuto_s(tmpChar);
+        */
+      writeAuto_s(tmpChar);
     }
   }
   
