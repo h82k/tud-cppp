@@ -1,3 +1,4 @@
+% !TeX spellcheck = de_DE
 \section{\ExercisePrefixEmbeddedC Die Programmiersprache C im Vergleich zu C++}
 \label{sec:CVersusCPlusPlus}
 
@@ -58,7 +59,7 @@ Diese sind im Header \filename{stdlib.h} deklariert.
   \cpppInputListing{05_c/problems/listings/cintro_mallocfree.c}
 
 \subsection{Ausgabe auf Konsole per \lstinline{printf}}
-\cpppSolutionName{microcontroller_c_basics}{microcontroller\_ c\_ basics}
+\cpppSolutionName{microcontroller_c_basics}{micro\-con\-troller\_c\_bas\-ics}
 
 Um Daten auf der Konsole auszugeben, kann die Funktion \lstinline{printf} verwendet werden.
 \lstinline{printf} nimmt einen Format-String sowie eine beliebige Anzahl weiterer Argumente entgegen.
@@ -149,7 +150,7 @@ Beginne mit einer leeren \lstinline|main|-Funktion.
 \item 
 Lege erneut einen Puffer auf dem Heap an:
 
-\begin{minipage}{\textwidth}
+\begin{minipage}{.96\textwidth}
 \begin{lstlisting}
 char *buffer = malloc(100 * sizeof(char));
 \end{lstlisting}
@@ -158,7 +159,7 @@ char *buffer = malloc(100 * sizeof(char));
 \item 
 Gib den Puffer direkt mittels \lstinline|printf| aus:
 
-\begin{minipage}{\textwidth}
+\begin{minipage}{.96\textwidth}
 \begin{lstlisting}
 printf(buffer);
 \end{lstlisting}
@@ -167,7 +168,7 @@ printf(buffer);
 Dies zeigt, dass es sehr gefährlich ist, mit uninitialisierten C-Strings zu hantieren.
 Sicherer wäre es, direkt nach der Allokation ein Null-Byte an Index 0 des Puffers zu platzieren:
 
-\begin{minipage}{\textwidth}
+\begin{minipage}{.96\textwidth}
 \begin{lstlisting}
 buffer[0] = '\0';
 \end{lstlisting}
@@ -212,8 +213,8 @@ Bit-Operatoren sind für ganzzahlige Typen definiert (bspw. \lstinline|(unsigned
 Ein Bit-Operator bezieht sich dabei auf jedes einzelne Bit.
 Im Gegensatz dazu beziehen sich logische Operatoren (\lstinline{||, &&}) immer auf den gesamten Wert.
 
-Zum Experimentieren stellen wir dir eine Vorlage zur Verfügung: \url{https://github.com/Echtzeitsysteme/tud-cppp/blob/master/exercises/templates/05_c/ex21_6_BitAndLogicOperations/ex21_6_BitAndLogicOperations.c}.
-Die Funktion \lstinline|fmt| wandelt ein Byte in einen String um, der das Bit-Pattern darstellt.
+Zum Experimentieren stellen wir dir eine Vorlage zur Verfügung: \url{https://github.com/Echtzeitsysteme/tud-cppp/blob/master/exercises/templates/BitAndLogicOperations/BitAndLogicOperations.c}.
+Die Funktion \lstinline|fmt| wandelt ein Byte in einen String um, der das Bit-Muster darstellt.
 Zum Beispiel ist die Ausgabe von \lstinline|fmt(23)| der String \lstinline|"0b00010111"| ($19 = 1 + 2 + 4 + 16$).
 \begin{itemize}
 \item 
