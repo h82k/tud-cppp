@@ -12,8 +12,18 @@
 
 static char txBuf[] = "test"; 
 
+void initUART3();
+
 int uartMulticon(void);
 
 void uartMulticonListen();
+
+void initRGBLED();
+
+void setRGBLED(uint8_t color);
+
+void uartListenRainbowLED();
+
+void uartMulticonWrite();
 
 #endif

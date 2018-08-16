@@ -14,6 +14,8 @@ int main(){
   //BlinkMain();
   //debugCPPPBoard();
   //testMulticonConnection();
-  uartMulticonListen();
+  //uartMulticonListen();
+  //uartListenRainbowLED();
+  uartMulticonWrite();
   return 0;
 }
