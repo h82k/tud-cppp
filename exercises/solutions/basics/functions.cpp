@@ -1,5 +1,6 @@
 #include "functions.hpp"
 #include <iostream>
+#include <limits>     // necessary to clear cin state (if invalid because of bad input)
 
 void fun::printSpaces(int n) {
     //Print necessary spaces to right-align the figure
@@ -39,6 +40,10 @@ void fun::task2_6_input() {
     //Keep asking until a valid value has been entered
 	do {
 		std::cout << "Geben Sie die Breite ein (zwischen 1 und 75): ";
+		if(!std::cin){ // check validity of cin state
+			std::cin.clear(); //clear cin internal error state, that is set if input is no int or exceeds
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //clear current buffer of cin
+			}
 		std::cin >> width;
 	} while (width < 1 || width > 75);
     
