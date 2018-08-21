@@ -3,10 +3,10 @@ In dieser Aufgabe werden wir uns mit der Benutzung von Smart Pointers vertraut m
 
 
 \subsection{}
-\cpppSolutionName{smart_pointers_p01}{smart\_ pointers\_ p01}
+\cpppSolutionName{smart_pointers_p01}{smart\_pointers\_p01}
 Erstelle eine Klasse \lstinline{TreeNode}, die einen Knoten eines Binärbaums darstellt.
 Jeder Knoten hat einen Inhalt vom Typ \lstinline{int} sowie einen Zeiger auf seine beiden Kindknoten.
-Statt \glqq roher\grqq{} Zeiger verwenden wir Smart Pointers, die das Speichermanagement übernehmen.
+Statt \glqq roher\grqq{} Zeiger verwenden wir Smart Pointer, die das Speichermanagement übernehmen.
 Dadurch wird es nicht nötig sein, Kindknoten manuell zu löschen.
 Sie werden automatisch entfernt, sobald der Wurzelknoten gelöscht ist und keine Zeiger mehr auf den Kindknoten zeigen.
 
@@ -50,7 +50,7 @@ Um ganz sicher zu gehen, dass der Baum tatsächlich beim Löschen des letzten Ze
 Füge in diesem Fall am Ende des Programms eine Textausgabe hinzu, damit ersichtlich wird, dass der erste Baum noch vor Verlassen der \lstinline{main} gelöscht wurde.
 
 \subsection{}
-\cpppSolutionName{smart_pointers_p02}{smart\_ pointers\_ p02}
+\cpppSolutionName{smart_pointers_p02}{smart\_pointers\_p02}
 Nun wollen wir \lstinline{TreeNode} so erweitern, dass jeder Knoten Kenntnisse über seinen Elternknoten besitzt.
 Füge das Attribut
 
@@ -90,10 +90,9 @@ Verwende dazu \lstinline{std::weak_ptr} und erstelle ein neues \lstinline{typede
 Ändere nun den Typ von \lstinline{parent} auf \lstinline{TreeNodeWeakPtr}.
 Es müssen keine weiteren Änderungen gemacht werden, da starke Zeiger (\lstinline{shared_ptr}) implizit in schwache Zeiger (\lstinline{weak_ptr}) umgewandelt werden können.
 
+Teste deine Implementation.
+Nun sollte sich \lstinline{TreeNode} wie gewünscht verhalten.
+
 \hints{
 	\item \textbf{Faustregel}: Wenn ein Objekt ein anderes kontrolliert oder enthält, verwende Shared Pointer vom Container/Besitzer zum anderen Objekt und einen Weak Pointer für die umgekehrte Richtung.
 }
-
-\subsection{}
-Teste deine Implementation.
-Nun sollte sich \lstinline{TreeNode} wie gewünscht verhalten.

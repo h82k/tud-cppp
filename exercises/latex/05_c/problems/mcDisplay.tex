@@ -60,7 +60,7 @@ Beachte dabei, dass du mithilfe des Links-Shift-Operators die einzelnen Teile ko
 Beispielsweise muss \lstinline|hiRShifted| vor der Veroderung um 11 Bits nach links verschoben werden.
 Beachte, dass das Ergebnis 16 Bit lang sein muss und wir deshalb den Typ \lstinline|uint16_t| verwenden.
 
-\lstinline$uint16_t result = (hiRShifted ____) | (hiGShifted ____ ) | (hiBShifted ____);$
+\lstinline$uint16_t result=(hiRShifted ____) | (hiGShifted ____ ) | (hiBShifted ____);$
 \end{enumerate}
 
 \begin{table}[!htb]
@@ -132,7 +132,7 @@ Um das Display in Cyan einzufärben, füge folgende Zeile an:
 
 
 \subsection{Regelmäßiges Muster ausgeben}
-In diesem Abschnitt implementierst du die Funktion void \lstinline|printPattern(backgroundColor, foregroundColor)|.
+In diesem Abschnitt implementierst du die Funktion \lstinline|void printPattern(backgroundColor, foregroundColor)|.
 Diese Funktion ordnet auf dem Display Quadrate (4 x 4 Pixel) als Schachbrettmuster an.
 %
 \hints{

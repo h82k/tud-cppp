@@ -142,7 +142,7 @@ Wir empfehlen aber trotzdem sie zu bearbeiten.
 \newcommand{\cclicense}{
 \begin{center}
     \fbox{
-        \parbox{0.98\textwidth}
+        \parbox{0.96\textwidth}
         {
             \begin{minipage}{0.15\textwidth}
                 \includegraphics[width=1.0\textwidth]{00_common/cc_license.png}
@@ -175,5 +175,28 @@ Wir empfehlen aber trotzdem sie zu bearbeiten.
 % The second parameter is the path to the listing.
 \newcommand{\cpppInputListing}[2][] { \vspace{1.5ex} \setbox0\vbox{ \lstinputlisting[#1]{#2} } \unvbox0 }
 \newcommand{\cpppListing}[2][] { \vspace{1.5ex} \setbox0\vbox{ \begin{lstlisting}[#1]#2 \end{lstlisting} } \unvbox0 }
+
+\newcommand{\chapterstartpage}[1]{%
+	\clearpage% Clearpage first, then use pagestyle plain
+	\pagestyle{plain}%
+	\begingroup
+	\vspace*{6cm}
+	\centering%
+	\begin{tikzpicture}
+	%\draw (0,0) \node[rectangle, minimum height=3cm,minimum width=8cm,draw]  { \Huge \textbf{#1}};
+	\draw node[rectangle, ultra thick, inner sep= 1cm,draw]{\Huge \textbf{#1}};
+	
+	\end{tikzpicture}
+	 
+
+	%\Huge \textbf{#1}%%
+	
+	%% Add more space here, do more formatting also here
+	\vspace{\baselineskip}%
+	%\textbf{#1}%
+	\endgroup
+	\clearpage
+}%
+
 
 
