@@ -19,9 +19,9 @@ uint8_t readDHT11_s(uint8_t *feuchtigkeit, uint8_t *temperatur) {
 	timeout = 1000;	
 	while(Gpio1pin_Get(GPIO1PIN_PF7) == 1) {if (!timeout--) {return 4;}}				// Preparation for sending data (80us)
   timeout = 1000;  
-  while(Gpio1pin_Get(GPIO1PIN_PF7) == 0) {if (!timeout--) {return 8;}}        
+  while(Gpio1pin_Get(GPIO1PIN_PF7) == 0) {if (!timeout--) {return 5;}}        
   timeout = 1000;  
-  while(Gpio1pin_Get(GPIO1PIN_PF7) == 1) {if (!timeout--) {return 9;}}  
+  while(Gpio1pin_Get(GPIO1PIN_PF7) == 1) {if (!timeout--) {return 6;}}  
 	uint8_t dht11_data[5]={0};
   uint8_t i,j = 0;
 	for(i=0;i<5;i++)
@@ -30,23 +30,23 @@ uint8_t readDHT11_s(uint8_t *feuchtigkeit, uint8_t *temperatur) {
 		for(j=1;j<=8;j++)
 		{
 			timeout = 1000;
-			while(Gpio1pin_Get(GPIO1PIN_PF7) == 0) {if (!timeout--) {return 5;}}		// Start to transmit 1-Bit (50 us)
+			while(Gpio1pin_Get(GPIO1PIN_PF7) == 0) {if (!timeout--) {return 7;}}		// Start to transmit 1-Bit (50 us)
 			microDelay(30);
 			dht11byte <<= 1;
 			if (Gpio1pin_Get(GPIO1PIN_PF7) == 1)										// Hi > 30us (70 us) -> Bit=1										
 			{
 				dht11byte |= 1;
 				timeout = 1000;
-				while(Gpio1pin_Get(GPIO1PIN_PF7) == 1) {if (!timeout--) {return 6;}}
+				while(Gpio1pin_Get(GPIO1PIN_PF7) == 1) {if (!timeout--) {return 8;}}
 			}														// Hi <  30us (26-28 us) -> Bit=0	
 		}
 		dht11_data[i] = dht11byte;
 	}
   
-	//if (dht11_data[0]+dht11_data[1]+dht11_data[2]+dht11_data[3] != dht11_data[4]) 	// Checksum
+  // Checksum
   if( !(data[4] == ((data[0] + data[1] + data[2] + data[3]) & 0xFF)) )
 	{
-		return 7;													
+		return 9;													
 	}	
   
 	*feuchtigkeit = dht11_data[0];
@@ -70,12 +70,6 @@ void rauminformationen_s(){
       uint8_t feuchtigkeit, temperatur  = 0;
       uint8_t result = readDHT11_s(&feuchtigkeit, &temperatur);
       
-      /*
-      char helligkeitText[] = "      Helligkeit (%) : ";
-      writeText(helligkeitText);
-      uint8_t helligkeit = map(analog17, 0, 255, 0, 100);
-      write3Digits8Bit(&helligkeit);
-      */
       char temperaturText[] = "      Temperatur (Celsius) : ";
       writeText_s(temperaturText);
       writeNumberOnDisplay_s(&temperatur);
