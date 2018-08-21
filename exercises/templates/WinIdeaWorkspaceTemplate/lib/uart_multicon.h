@@ -24,6 +24,10 @@ void setRGBLED(uint8_t color);
 
 void uartListenRainbowLED();
 
-void uartMulticonWrite();
+void uartMulticonWriteTest();
+
+void uartMulticonWrite(uint8_t data);
+
+void uartSendJoystick1XValue();
 
 #endif

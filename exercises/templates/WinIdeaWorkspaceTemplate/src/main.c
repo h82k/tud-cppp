@@ -10,12 +10,22 @@
 int main(){
   initBoard();
   //UART_USB_Init();
-  //UART_USB();
+  //UART_USB();   
+  //initUART3();
   //BlinkMain();
   //debugCPPPBoard();
   //testMulticonConnection();
   //uartMulticonListen();
   //uartListenRainbowLED();
-  uartMulticonWrite();
+  //uartMulticonWriteTest();
+  /*
+  while(1u){
+    uartSendJoystick1XValue();
+  }
+  */
+  //testAcceleration();
+  while(1u){
+    rauminformationen_s();
+  }
   return 0;
 }

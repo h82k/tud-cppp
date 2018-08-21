@@ -200,9 +200,47 @@ void uartListenRainbowLED(){
   } 
 }  
 
-void uartMulticonWrite(){
+void uartMulticonWriteTest(){
   initUART3();
   char data = 'a';
   while (TRUE != Mfs_Uart_GetStatus(&UART3, UartTxEmpty)){}
   Mfs_Uart_SendData(&UART3, data);
+}
+
+void uartMulticonWrite(uint8_t data){
+  while (TRUE != Mfs_Uart_GetStatus(&UART3, UartTxEmpty)){}
+  Mfs_Uart_SendData(&UART3, data);
+} 
+
+void uartSendJoystick1XValue(){
+  uint8_t analog11;
+  uint8_t analog12;
+  uint8_t analog13;
+  uint8_t analog16;
+  uint8_t analog19;
+  uint8_t analog23;
+  uint8_t analog17;
+  getAnalogValues(&analog11, &analog12, &analog13, &analog16, &analog17, &analog19, &analog23);
+  setCursor_s(0, 319); // set to top-left corner
+  char freeSpace[] = " ";
+  char headlineText[] = "  UART DEBUG";
+  writeTextln_s(freeSpace);
+  writeTextln_s(headlineText);
+  writeTextln_s(freeSpace);
+  
+  writeText_s("  Joystick 1 X-Achse: ");
+  writeNumberOnDisplayRight_s(&analog16);
+  uartMulticonWrite(analog16);
+  
+  writeTextln_s("");
+  writeText_s("  Joystick 1 Y-Achse: ");
+  writeNumberOnDisplayRight_s(&analog19);
+  writeTextln_s("");
+  
+  writeText_s("  Joystick 2 X-Achse: ");
+  writeNumberOnDisplayRight_s(&analog13);
+  writeTextln_s("");
+  writeText_s("  Joystick 2 Y-Achse: ");
+  writeNumberOnDisplayRight_s(&analog23);
+  writeTextln_s("");
 }
