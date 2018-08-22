@@ -1,4 +1,5 @@
 #include "uart_usb.h"
+#include "src\display.h"
 
 void UART_USB_Init(){
   pstcUart0 = &UART0; 

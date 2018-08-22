@@ -2,3 +2,4 @@
 /debug
 /*.slo
 /$*
+/src/testAcceleration.c

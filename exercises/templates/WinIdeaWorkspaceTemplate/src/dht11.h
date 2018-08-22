@@ -6,6 +6,7 @@
 #include "analog.h"
 #include "delay.h"
 #include "gfx.h"
+#include "display.h"
 
 uint8_t data[5];
 
