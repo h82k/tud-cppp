@@ -4,7 +4,7 @@ Als Anschlüsse hat der DHT11 4 Pins von denen im Rahmen des Praktikums  3 verwe
 Zwei Pins werden für \lstinline|GND| und \lstinline|VCC| genutzt und ein Pin für die digitale Datenübertragung zwischen dem DHT11 und dem µController.
 Abbildung \ref{fig:dht11Pins} zeigt die Pin-Belegung des DHT11.
 Pin 1 wird mit \lstinline|VCC| verbunden und Pin 4 mit \lstinline|GND|. Pin 2 ist ein I/O Pin zur digitalen Datenübertragung.
-In dieser Aufgabe ist es das Ziel die Temperatur- und Feuchtigkeitswerte des Sensors konitnuierlich auszulesen und diese auf dem Display darzustellen.
+In dieser Aufgabe ist es das Ziel die Temperatur- und Feuchtigkeitswerte des Sensors kontinuierlich auszulesen und diese auf dem Display darzustellen.
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.2\textwidth]{./05_c/figures/DHT11.png}
@@ -17,8 +17,8 @@ In dieser Aufgabe ist es das Ziel die Temperatur- und Feuchtigkeitswerte des Sen
 Zunächst trenne den µController von der Stromzufuhr und stelle sicher, dass dieser ausgeschaltet ist.
 Verbinde gemäß Abbildung \ref{fig:dht11Schematics} den DHT11 mit dem µController.
 Der DHT11 wird, von links gezählt, an den dritten Pin des CN9 Steckers des µControllers angeschlossen.
-Nutze als Untersützung Abbildung \ref{fig:cpppWiring}, die schematisch die GPIOs des µControllers darstellt.
-Bevor du den µController wieder an deinen Computer anschließt, lasse deine Anordnung von einem Tutor überprüfen.
+Nutze als Untersützung Abbildung \ref{fig:cpppWiring}, die schematisch die GPIO-Verbindungen des µControllers darstellt.
+Bevor der µController wieder an den Computer angeschlossen wird, lasse die Verkabelung von einem Tutor überprüfen.
 
 \begin{figure}[!htb]
 	\centering
@@ -34,14 +34,18 @@ Bevor du den µController wieder an deinen Computer anschließt, lasse deine Ano
 \end{figure} 
 \item 
 In der Funktion \lstinline|readDHT11(uint8_t* humidity, uint8_t* temperature)| wird zunächst eine Präambel vom DHT11 an den µController gesendet.
-Durch die Präambel wird die Verbindung zwischen dem Sensor und dem µController sichergestellt und der Sensor beginnt 40 Bits an den µController zu senden.
+Hierdurch wird die Verbindung zwischen dem DHT11 und dem µController synchronisiert. 
+Nach der Präambel beginnt der DHT11 40 Bits an den µController zu senden.
 Abbildung \ref{fig:dht11Package} zeigt die Aufteilung der Bitgruppen.
-Implementiere die fehlenden Stellen der Funktion \lstinline|readDHT11(uint8_t* humidity, uint8_t* temperature)|.
-Nach der Präambel musst du zunächst über zwei Schleifen die 40 Bits durchiterieren und in einem Array mit 5 Einträgen je 8 Bits speichern.
+Implementiere die fehlenden Stellen der Funktion \lstinline|readDHT11(uint8_t* humidity, uint8_t* temperature)|, indem folgende Teilschritte umgesetzt werden.
+Nach der Präambel müssen zunächst die ankommenden Signale als 40 Bits interpretiert und in einem Array mit 5 Einträgen je 8 Bits gespeichert werden.
 Lese mit \lstinline|Gpio1pin_Get(GPIO1PIN_PF7)| den aktuellen Wert des digitalen Pins aus und entscheide entsprechend der folgenden Logik, ob es sich um eine 1 oder 0 handelt.
 Ist der Pin länger als 30µs auf \lstinline|HIGH| gesetzt $t_{HIGH} > 30$µs, dann interpretiere dieses Signal als eine 1 und im umgekehrten Fall $t_{HIGH} < 30$µs als eine 0.
-Nachdem alle 40 Bits empfangen wurden, bilde die Checksumme, und verlasse die Methode, sofern diese nicht stimmt.
-Ist die Checksumme richtig, speichere die aktuelle Temperatur und Feuchtigkeit in den übergebenen Parametern ab.
+Nachdem alle 40 Bits empfangen wurden, bilde die Checksumme, welche die Summe der ersten 32 Bits darstellt. 
+Ist der folgende Pseudocode erfüllt, dann ist die Übertragung der Daten erfolgreich gewesen.
+\cpppInputListing{05_c/listings/dht11_checksum.c}
+Beende die Methode  \lstinline|readDHT11readDHT11|, sofern die Checksumme nicht stimmt. 
+Ist die Checksumme richtig, speichere die aktuelle Temperatur und Feuchtigkeit in den übergebenen Parametern \lstinline|humidity| und \lstinline|temperature|.
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{./05_c/figures/dht11Bits.pdf}
@@ -55,11 +59,11 @@ Ist die Checksumme richtig, speichere die aktuelle Temperatur und Feuchtigkeit i
 \cpppInputListing{05_c/listings/dht11.c}
 
 \item 
-Nutze die Methoden writeTextln() und writeNumberOnDisplay() der Display-Library, um die Sensorenwerte auf dem Display auszugeben.
+Nutze die Methoden \lstinline|writeTextln| und \lstinline|writeNumberOnDisplay| der Display-Library, um die Sensorenwerte auf dem Display auszugeben.
 
 \hints{
 	\item 
-	Falls du die Methoden writeTextln() und writeNumberOnDisplay() noch nicht implementiert hast, kannst du die Musterlösungen mit dem Suffix \_s nutzen.
+	Falls du die Methoden writeTextln() und writeNumberOnDisplay() noch nicht implementiert hast, kannst du die Methoden der Musterlösung mit der Konkatenation des Suffix \lstinline|_s| nutzen.
 }
 
 \end{enumerate}
